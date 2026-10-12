@@ -161,6 +161,11 @@ These are finite checks. They corroborate the proof for n <= 8; they do not repl
   bridged framework structures", Phys. Rev. B 74, 134302 (2006). The q = 0 and plane-wise extra modes are standard
   rigid-unit-mode spectrum material: S. C. Power, "Polynomials for crystal frameworks and the rigid unit mode spectrum",
   Phil. Trans. R. Soc. A 372, 20120030 (2014).
+* **Closest physical study of the cab framework, KNOWN**: L. Li, K. Refson and M. T. Dove, "The contribution of phonons to the thermal expansion of some
+  simple cubic hexaboride structures: SmB6, CaB6, SrB6 and BaB6", Phys. Chem. Chem. Phys. 25, 10749 (2023), doi:10.1039/d3cp01306e (abstract read, full
+  text not). DFT lattice dynamics focused on rigid unit modes involving rotations of the B6 octahedra, as in Zn(CN)2, Prussian blue and Si(NCN)2; it reports
+  very low flexibility of the connected octahedra. This is a study of one real compound, not a count of modes for the ideal bar framework in n
+  dimensions, so the NOT FOUND below is not affected. I have not checked whether it counts the flat bands the way this result does.
 * The periodic Maxwell-Calladine count: J. C. Maxwell, Phil. Mag. 27, 294 (1864); C. R. Calladine, Int. J. Solids Struct.
   14, 161 (1978).
 * **NOT FOUND**: the closed forms in n (n(n-1)/2 and n(n-3)/2 per cell, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the

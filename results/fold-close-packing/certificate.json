@@ -99,8 +99,8 @@
         "contacts_per_ball_max": 12,
         "contacts_per_ball_min": 12,
         "end_lattice_cos_angles": [
-          4.52551e-17,
-          -2.33766e-17,
+          4.28961e-17,
+          -2.50227e-17,
           -0.5
         ],
         "final_density": 0.7404804897,

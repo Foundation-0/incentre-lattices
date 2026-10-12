@@ -3,12 +3,12 @@
   "results": [
     {
       "certificate": "results/rigidity-nd/certificate.json",
-      "certificate_sha256": "7ad36f302d7649deba2a0f73e51447c0ae4dd6ff6ceb08f5c4900e698f657ec2",
+      "certificate_sha256": "feb189ba2f81eb2ee4a9a8cf057752ae9c3a6c3f74986f7f5c99d030fd36f844",
       "evidence_label": "PROVEN for all n >= 3 (written proof, results/rigidity-nd/PROOF.md); VERIFIED (finite check) for n = 2..8",
       "id": "rigidity-nd",
       "input_hashes": {
         "results/rigidity-nd/proof_steps.py": "4f7bed89024d02133291542327b09e5ce8f410a41daf4bb783f6a396190604e0",
-        "results/rigidity-nd/rigidity_nd.py": "d0d6b024aecff1c6195f64b1b2b84fb91a6086dafecee412955d637eb24162a7"
+        "results/rigidity-nd/rigidity_nd.py": "4a113d40e26c871441e4a8d5bf086950af1810d43962beb67e25d8ac028dccb2"
       },
       "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The n-dimensional closed forms were NOT FOUND in the literature (absence of evidence only).",
       "statement": "The contact framework of the truncated n-cubic honeycomb (2n balls per cell, 2n^2-n bars of one length, dots at the pyramid incentres) has, at a generic wavevector, exactly n(n-1)/2 zero modes (the cluster rotations) and n(n-3)/2 self-stresses per cell, its cross-polytope cell is infinitesimally rigid for n >= 3, and with unit springs and full internal relaxation C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), all shear moduli vanish, nu_100 = 1/(n^2-n-1).",
@@ -101,7 +101,7 @@
     },
     {
       "certificate": "results/fold-close-packing/certificate.json",
-      "certificate_sha256": "510a3d4410d7176ab195e0e49b5d8882d4e1ff84e523ff4081fc472a95bf1d4d",
+      "certificate_sha256": "69d650a5d7affe80aa9987472510910da18f512a933bba6045c23fa8fddceec2",
       "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
       "id": "fold-close-packing",
       "input_hashes": {

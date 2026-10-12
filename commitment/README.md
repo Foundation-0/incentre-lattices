@@ -4,7 +4,8 @@
 and the two path files (`autoresearch-fold/best/path.npz`, the hcp path, and `results/fold-close-packing/path_fcc.npz`, the fcc extension). `ROOT` is the sha256 of the `SHA256SUMS` file itself,
 so one 64-character string commits to all of it.
 
-Purpose: a public record that these exact artefacts existed in this form at a given time, posted before any paper that relies on them. **Posted 2026-10-12 as a public gist** (see Public timestamp below).
+Purpose: a public record that these exact artefacts existed in this form at a given time, to be posted before any paper that relies on them. **It has not been posted anywhere.** Where and when
+to post it (a gist, a signed tag, a timestamp service) is for the maintainers to decide; this repository does not publish it for you.
 
 ## Verify
 

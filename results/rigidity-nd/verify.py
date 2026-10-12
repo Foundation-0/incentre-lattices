@@ -34,6 +34,7 @@ import rigidity_nd as eng  # noqa: E402
 
 NS = range(2, 9)
 CS = (2 - np.sqrt(2), 0.3, 0.75)
+TOL_ELASTIC = 1e-12  # absolute tolerance on C11, C12, shear, coupling, cubic form
 
 
 def predicted(n):
@@ -75,10 +76,17 @@ def main():
         c12 = Fraction(4, n ** 2 * 2 ** n)
         for c in CS:
             C11, C12, sh, cp_, nu, Cn = eng.elastic(n, c)
-            ok = (abs(C11 - float(c11)) < 1e-12 and abs(C12 - float(c12)) < 1e-12 and sh < 1e-12 and cp_ < 1e-12
-                  and abs(nu - float(pn)) < 1e-10)
-            cubic = np.allclose(Cn, float(c12) * np.ones((n, n)) + float(c11 - c12) * np.eye(n), atol=1e-12)
-            certlib.require(ok and cubic, f"n={n}, c={c:.4f}: elastic constants")
+            # The exact values are proven in PROOF.md; this replay checks that the numerical relaxation
+            # (rigidity_nd.elastic, threshold-free up to a checked spectral gap) agrees with them to 1e-12.
+            # Residuals are printed on failure.
+            tol = TOL_ELASTIC
+            cubic_exp = float(c12) * np.ones((n, n)) + float(c11 - c12) * np.eye(n)
+            resid = {"C11": abs(C11 - float(c11)), "C12": abs(C12 - float(c12)), "shear": sh, "coupling": cp_,
+                     "cubic_form": float(np.abs(Cn - cubic_exp).max())}
+            ok = all(v < tol for v in resid.values()) and abs(nu - float(pn)) < 1e-10
+            detail = ", ".join(f"{k}={v:.3e}" for k, v in resid.items())
+            certlib.require(ok, f"n={n}, c={c:.4f}: elastic constants (tol {tol:.3e}; {detail}; "
+                                f"nu100 residual {abs(nu - float(pn)):.3e} vs 1e-10)")
         elastic.append({"n": n, "C11_exact": str(c11), "C12_exact": str(c12), "C11_over_C12": str(c11 / c12),
                         "nu100_exact": str(pn), "nu100_value": certlib.sig(float(pn), 10),
                         "matches_numerics_for_c_values": [certlib.sig(c, 6) for c in CS],

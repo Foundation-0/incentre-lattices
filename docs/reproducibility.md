@@ -61,7 +61,8 @@ inputs are the files whose hashes are recorded. It does not mean that any statem
   slides, 1193 states, 0.77 MB). Together they are 1.7 MB. `path_fcc.npz` is regenerated from the hcp path (`make_fcc_path.py`, no random numbers) in
   every replay and must agree with the stored file to 1e-9; the stored file is what the checkers read. Nothing was decimated.
 * Random choices: `rigidity_nd.py` samples random wavevectors with a fixed seed; nothing else uses random numbers. The search that produced the hcp path
-  (`autoresearch-fold/search.py`) is deterministic as well; it is not rerun by `make verify` (it takes minutes and is a search, not a check).
+  (`autoresearch-fold/search.py`) is not part of `make verify` (it takes minutes and is a search, not a check). It is step-bounded with BLAS pinned to one
+  thread, but it is not guaranteed to regenerate the stored path on another machine; `best/path.npz` is the certificate (see `docs/audit.md`).
 
 ## Commitment
 
