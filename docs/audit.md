@@ -49,8 +49,8 @@ Known limits: the all-pairs non-overlap at the optimum is checked, not argued; t
 | Claim | Label | Checked by |
 |---|---|---|
 | The linkage and the fold | KNOWN (Flores; Stuart) | citation only |
-| gap(theta) = 2 sqrt2 c cos(theta + pi/4); first contact at pi/4; L = 4R; strain -(sqrt2-1)^2; density 0.5390 to pi/4 | PROVEN exactly | sympy |
-| No closer non-bonded pair before pi/4; the incentre is the only c with a single-distance square lattice | VERIFIED on a scan (six values of c, 0.01-degree grid) | `fold2d.py` |
+| gap(theta) = 2 sqrt2 c cos(theta + pi/4), which vanishes at pi/4; L = 4R; strain -(sqrt2-1)^2; density 0.5390 to pi/4 | PROVEN exactly | sympy |
+| That pi/4 is the first new contact (no closer non-bonded pair before pi/4); among the six c scanned, the incentre is the only one with a single-distance square lattice; for c < 2 - sqrt2 the fold locks elsewhere (66.37, 56.96, 49.51 degrees) | VERIFIED on a scan (six values of c, 0.01-degree grid), not proved | `fold2d.py` |
 
 Known limits: the symmetric path only (the framework has other flexes, including shear); the uniqueness of the incentre is a scan, not a proof.
 

@@ -11,7 +11,8 @@ Certificate: `certificate.json`. Stored paths: `autoresearch-fold/best/path.npz`
 Model. Cube cells of side 2 each hold six dots at the cell centre +- (2 - sqrt2) e_i; balls have radius R = sqrt2 - 1; bars of length
 2R join the 12 octahedron edges of each cell and each +e_i dot to the -e_i dot of the neighbouring cell (the CaB6 / RCSR `cab`,
 sphere-packing type 5/3/c3 contact framework, density pi R^3 = 0.2233). The lattice may shear. Work in a 2 x 2 x 2 periodic supercell:
-48 balls, 120 bars, 27 first-order degrees of freedom (48*3 + 9 - 120 - 3 - 3).
+48 balls, 120 bars. The generic Maxwell count is 27 (flexes minus self-stresses: 48*3 + 9 - 120 - 3 - 3). At the hcp and fcc end states the locked checker's
+replay finds 29 first-order flexes of the bars alone (`flex_bars_only` in `certificate.json`, both end states), hence 2 self-stresses (120 bars minus rank 118).
 
 **Finding (hcp, found by the autoresearch search in `autoresearch-fold/`).** There is a sequence of 793 states from the canonical
 open cubic state, keeping every bar length to 1e-9 (relative) and with no two balls overlapping, ending in a hexagonal close packing:
