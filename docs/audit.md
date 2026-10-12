@@ -76,7 +76,7 @@ Known limits (the important ones):
 * **Continuity is certified only by sampling.** Consecutive states differ by at most 0.01 in dot position and lattice; overlap is checked at the states, at midpoints and at 10
   interpolated sub-states. Linear interpolation between states shortens or lengthens bars by up to 1.5e-5 (relative), so the interpolated curve is not exactly bar-preserving.
   This is not an interval-arithmetic or analytic certificate of a continuous motion.
-* **Only the m = 2 family** (48 balls) is known to reach close packing. m = 1, 3 and 4 are unexplored or failed.
+* **This result is m = 2 only** (48 balls). m = 1, and through it every m in principle (the lift needs subdivided paths; see `results/fold-m1/PROOF.md`), is in `results/fold-m1`.
 * Both checkers were written inside the project, by the same group; they share the model definition. Neither is an outside review.
 * The density along the path is not monotone (dips to 0.7294 during the fcc slides).
 * First-order rigidity at the end state is not a proof of jamming.
@@ -92,6 +92,17 @@ Known limits (the important ones):
 | Controls | must be rejected | one dot moved by K/3; axis permutation dropped; wrong lattice row; hcp labelled fcc |
 
 Known limits: the end states only, not the path; the image-shift box for the overlap check is computed in floating point with one spare lattice step; one implementation, internal review only.
+
+### results/fold-m1: close packing in the 1 x 1 x 1 cell
+
+| Claim | Label | Checked by |
+|---|---|---|
+| A 333-state path from the open cab state to hcp at m = 1 (free density descent, no target) | VERIFIED (finite, sampled), NEW-COMPUTATION | locked `autoresearch-fold/verify.py` and `results/fold-close-packing/chk_independent.py` (10 sub-states) |
+| A 268-state path to pure fcc at m = 1 (steered to an explicit end state), det L strictly decreasing at every step | VERIFIED (finite, sampled), NEW-COMPUTATION | the same two checkers; monotonicity at the samples only |
+| Both end states exact (12 contacts, density pi/sqrt18, hcp / fcc) | PROVEN (integer arithmetic) | `results/fold-end-exact/exact_end.py` |
+| Controls | must be rejected | displaced dot; scaled lattice; 100 deleted states; monotone test on the hcp path |
+
+Known limits: sampled continuity as for m = 2; the lift to larger m is an argument, not a replayed check, and needs subdivided paths (the locked checker rejects the unsubdivided lifts, only on the continuity step limit); searches reproduce byte for byte on one machine only.
 
 ## What is not covered at all
 
