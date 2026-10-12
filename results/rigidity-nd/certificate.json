@@ -520,7 +520,7 @@
   },
   "inputs": {
     "results/rigidity-nd/proof_steps.py": "4f7bed89024d02133291542327b09e5ce8f410a41daf4bb783f6a396190604e0",
-    "results/rigidity-nd/rigidity_nd.py": "d0d6b024aecff1c6195f64b1b2b84fb91a6086dafecee412955d637eb24162a7"
+    "results/rigidity-nd/rigidity_nd.py": "4a113d40e26c871441e4a8d5bf086950af1810d43962beb67e25d8ac028dccb2"
   },
   "must_fail_controls_rejected": [
     "n >= 3 generic counts claimed at n = 2",
