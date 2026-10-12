@@ -13,6 +13,10 @@ on:
 permissions:
   contents: read
 
+env:
+  OPENBLAS_NUM_THREADS: "1"
+  OMP_NUM_THREADS: "1"
+
 jobs:
   verify:
     name: make verify (Python ${{ matrix.python-version }})
