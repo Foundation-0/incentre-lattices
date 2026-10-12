@@ -4,15 +4,19 @@
 #   make verify-fast     the quick targets only (about 30 seconds)
 #   make certificates    verify, then regenerate certificates/selected-results.json,
 #                        certificates/SHA256SUMS and commitment/ (run this after a deliberate change)
-#   make verify-<result> one result: rigidity, radius-ratio, cab6, fold2d, fold3d, fold-cp, fold-tests
+#   make verify-<result> one result: rigidity, radius-ratio, cab6, fold2d, fold3d, fold-cp, fold-exact, fold-tests
 # Setup: python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
 # After `make verify`, `git diff --exit-code results certificates commitment` must be empty.
 # All finite checks are labelled as such; see docs/audit.md for what each target does and does not show.
 
 PY ?= python3
 
+# One BLAS thread: multi-threaded reductions round differently from run to run and machine to machine.
+export OPENBLAS_NUM_THREADS = 1
+export OMP_NUM_THREADS = 1
+
 FAST = verify-rigidity verify-radius-ratio verify-cab6 verify-fold2d verify-fold-tests
-SLOW = verify-fold3d verify-fold-cp   # fold3d about 1 minute; fold-cp about 3 minutes (independent checker interpolates 10 sub-states per step)
+SLOW = verify-fold3d verify-fold-cp verify-fold-exact   # fold3d about 1 minute; fold-cp about 3 minutes (independent checker interpolates 10 sub-states per step); fold-exact about 30 seconds
 
 .PHONY: verify verify-fast certificates check-hashes clean help $(FAST) $(SLOW)
 
@@ -52,6 +56,9 @@ verify-fold3d:   # slow
 
 verify-fold-cp:  # slow: runs both checkers on the hcp path and on the fcc extension
 	$(PY) results/fold-close-packing/verify.py
+
+verify-fold-exact:  # exact (integer) closed forms of the hcp and fcc end states
+	$(PY) results/fold-end-exact/verify.py
 
 verify-fold-tests:  # the locked checker's own unit tests, and its hash lock
 	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold
