@@ -10,3 +10,4 @@ share/
 research/intmult/
 autoresearch-fold/prior-art-scripts/run_*/
 autoresearch-fold/prior-art-scripts/vcheck/
+.claude/
