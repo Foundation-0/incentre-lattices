@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite it as below. A paper preprint is pending; cite the repository until it appears."
+message: "If you use this work, please cite the preprint below (preferred-citation); cite the repository for the code and data."
 title: "Incentre lattice"
 type: software
 authors:
@@ -25,3 +25,14 @@ keywords:
   - radius ratio
   - hexaboride
   - reproducible research
+preferred-citation:
+  type: article
+  title: "The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB6 packing maximum"
+  authors:
+    - family-names: "Arifuddin"
+      given-names: "Ahraz"
+      affiliation: "Aska Digital"
+  year: 2026
+  status: preprint
+  url: "https://aska-digital.github.io/incentre-lattice/papers/incentre-lattice.pdf"
+  notes: "Preprint, not peer reviewed. Source in papers/source."

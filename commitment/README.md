@@ -38,3 +38,7 @@ A matching hash shows that the files are the ones committed to. It does not show
 Posted 2026-10-12 as a public gist: https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706
 
 The gist also records the sha256 of the then-unpublished preprint PDF: `9d6dbf351d62c91f17a4b0da10e5e8ef3fe0185374f31586fcf074565068e48a`.
+
+## Published preprint
+
+The preprint was published on 2026-10-12 as `papers/incentre-lattice.pdf`, sha256 `64a59f3c6fdd15419f0819ee897091dcb02ebff1bfc1b7b2a42c1b156404ee26`. It differs from the hash timestamped earlier the same day only by bibliography corrections and the placement of the origin note. Both hashes are recorded in the gist.

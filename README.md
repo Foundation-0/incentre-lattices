@@ -16,6 +16,10 @@ Most of the geometry is classical. The dot is the Wythoff point of the cube's re
 
 Nothing here has been peer reviewed.
 
+## Paper
+
+Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/). Its SHA-256 hash is recorded in the public commitment (see below).
+
 ## Results
 
 Every result below has a folder in `results/` with a `PROOF.md` (statement, scope, evidence label, proof, prior art, open obligations), a deterministic `verify.py`, and a
@@ -53,7 +57,7 @@ file; `commitment/` holds a SHA-256 manifest and its root hash, with instruction
 ## Credit, notices, citation
 
 [CONTRIBUTORS.md](CONTRIBUTORS.md) (including AI assistance and which models did which roles), [NOTICE](NOTICE) (third-party data and licences; note the mixed licences of the
-COD extracts), [CITATION.cff](CITATION.cff) (a paper preprint is pending). Pull requests use `.github/pull_request_template.md`; reviews use the "Research review" issue template.
+COD extracts), [CITATION.cff](CITATION.cff) (cites the preprint). Pull requests use `.github/pull_request_template.md`; reviews use the "Research review" issue template.
 
 ## Licence
 
