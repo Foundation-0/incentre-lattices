@@ -149,7 +149,7 @@ def fig_fold(t):
     ax.plot(np.arange(n_h), d_hcp, color=t["teal"], lw=2.4, label=f"fold to hcp ({n_h} states)")
     ax.plot(np.arange(n_h - 1, len(d_fcc)), d_fcc[n_h - 1:], color=t["amber"], lw=1.8, ls=(0, (4, 2)),
             label=f"two layer slides to fcc ({len(d_fcc)} states in all)")
-    for y, lab, dy in ((d_hcp[0], f"start  {d_hcp[0]:.4f}", 0.02), (lock, f"cubic-path lock  {lock:.4f}", 0.02),
+    for y, lab, dy in ((d_hcp[0], f"start  {d_hcp[0]:.4f}", 0.02), (lock, f"cubic-path lock  {lock:.4f}\n(reference; not on this path)", 0.02),
                        (KEPLER, "π/√18  = 0.7405", 0.02)):
         ax.axhline(y, color=t["muted"], lw=0.9, ls=":")
         ax.text(len(d_fcc) * 0.02, y + dy, lab, color=t["muted"], fontsize=9, va="bottom")
@@ -282,7 +282,7 @@ def fig_frames(t):
     Ls, Xs = hcp["Ls"], hcp["Xs"]
     d = density(Ls)
     lock = 27 * np.pi * np.sqrt(2) / 256
-    picks = [(0, "start"), (int(np.argmax(d >= lock)), "at the cubic-path lock value"),
+    picks = [(0, "start"), (int(np.argmax(d >= lock)), "passing density 0.469 (free continuation)"),
              (len(d) - 1, "end: hcp")]
     rot = np.array([[0.866, 0.0, -0.5], [0.25, 0.866, 0.433], [0.433, -0.5, 0.75]])  # fixed view
     fig, axs = plt.subplots(1, 3, figsize=(9.6, 3.4))

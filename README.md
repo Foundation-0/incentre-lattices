@@ -57,12 +57,12 @@ Every number drawn below is read from the committed certificates and path files 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/fold-density-dark.png">
-  <img src="docs/img/fold-density-light.png" alt="Packing density along the verified fold path of 793 states, rising from 0.2233 to pi over root 18, 0.7405, for hcp. Dotted lines mark the start 0.2233, the cubic-path lock 0.4686 and pi over root 18. A dashed amber continuation shows the two layer slides to fcc, 1193 states in all, which dip to about 0.729 and return to 0.7405.">
+  <img src="docs/img/fold-density-light.png" alt="Packing density along the verified fold path of 793 states, rising from 0.2233 to pi over root 18, 0.7405, for hcp. Dotted lines mark the start 0.2233, the cubic-path lock 0.4686 (a reference value, not a state on this path) and pi over root 18. A dashed amber continuation shows the two layer slides to fcc, 1193 states in all, which dip to about 0.729 and return to 0.7405.">
 </picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/fold-frames-dark.png">
-  <img src="docs/img/fold-frames-light.png" alt="Three frames of the 2 by 2 by 2 cell of 48 balls along the verified path: the start at density 0.2233, a state at density 0.4690, and the end state hcp at density 0.7405. The cell is drawn to the same scale in each frame.">
+  <img src="docs/img/fold-frames-light.png" alt="Three frames of the 2 by 2 by 2 cell of 48 balls along the verified path: the start at density 0.2233, a state passing density 0.469 on the free continuation (the path is not the cubic-restricted one), and the end state hcp at density 0.7405. The cell is drawn to the same scale in each frame.">
 </picture>
 
 <picture>
