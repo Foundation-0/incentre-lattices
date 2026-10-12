@@ -34,7 +34,7 @@ import rigidity_nd as eng  # noqa: E402
 
 NS = range(2, 9)
 CS = (2 - np.sqrt(2), 0.3, 0.75)
-RTOL = 1e-9  # elastic-constant tolerance, relative to the exact C11 (see main)
+TOL_ELASTIC = 1e-12  # absolute tolerance on C11, C12, shear, coupling, cubic form
 
 
 def predicted(n):
@@ -76,13 +76,10 @@ def main():
         c12 = Fraction(4, n ** 2 * 2 ** n)
         for c in CS:
             C11, C12, sh, cp_, nu, Cn = eng.elastic(n, c)
-            # The exact values are proven in PROOF.md; this replay only checks that floating-point
-            # linear algebra (pinv/solve, whose last bits depend on the BLAS kernel the CPU selects)
-            # agrees with them. The moduli shrink like 4(n-1)^2/(n^2 2^n), so an absolute 1e-12 is a
-            # moving target across n; the tolerance is relative to the exact C11 (rtol 1e-9). This is
-            # still far below any difference that matters (the exact values are rationals with small
-            # denominators) and far above round-off. nu100 is O(1) and keeps its 1e-10.
-            tol = RTOL * float(c11)
+            # The exact values are proven in PROOF.md; this replay checks that the numerical relaxation
+            # (rigidity_nd.elastic, threshold-free up to a checked spectral gap) agrees with them to 1e-12.
+            # Residuals are printed on failure.
+            tol = TOL_ELASTIC
             cubic_exp = float(c12) * np.ones((n, n)) + float(c11 - c12) * np.eye(n)
             resid = {"C11": abs(C11 - float(c11)), "C12": abs(C12 - float(c12)), "shear": sh, "coupling": cp_,
                      "cubic_form": float(np.abs(Cn - cubic_exp).max())}
