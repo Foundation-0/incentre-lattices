@@ -78,7 +78,7 @@ Known limits (the important ones):
 * Both checkers were written inside the project, by the same group; they share the model definition. Neither is an outside review.
 * The density along the path is not monotone (dips to 0.7294 during the fcc slides).
 * First-order rigidity at the end state is not a proof of jamming.
-* The search is deterministic; "several seeds" gave one path.
+* The stored `autoresearch-fold/best/path.npz` is the certificate; the search that found it is not a certificate and is not guaranteed to reproduce that exact path on another machine. The original run bounded stage B by wall clock, and one slower machine stopped at a jammed state (density 0.618718). `search.py` is now bounded by a step count with BLAS pinned to one thread; a rerun on one machine gave a different valid path (791 states, diverging from the stored one at state 285) reaching the same end density 0.740480.
 * A geometry and rigidity result, not a prediction for real CaB6 or Prussian-blue materials.
 
 ### results/fold-end-exact: exact closed forms of the close-packed end states (m = 2)
