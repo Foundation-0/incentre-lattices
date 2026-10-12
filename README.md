@@ -30,6 +30,7 @@ searches listed", not "new".
 | [2D fold](results/fold-2d/PROOF.md) | density 0.5390 to pi/4 at theta = pi/4 | KNOWN linkage (Flores; Stuart); corollaries PROVEN | `make verify-fold2d` | known mechanism |
 | [3D fold, cubic-restricted](results/fold-3d-cubic/PROOF.md) | 27 pi sqrt2/256 = 0.4686 at 60 degrees; a lock of the cubic path, not a jam | VERIFIED | `make verify-fold3d` | Prussian-blue tilts known; end net matches RCSR sms (ten terms) |
 | [Fold to close packing](results/fold-close-packing/PROOF.md) | pi/sqrt18 = 0.74048: sampled bar-preserving, overlap-free path in the 2x2x2 supercell to hcp (793 states) and fcc (1193 states) | VERIFIED (sampled continuity, step <= 0.01; two checkers); fcc extension is new work | `make verify-fold-cp` | not found; closest is the ReO3 to VF3 tilt (O'Keeffe and Hyde 1977) |
+| [Exact fold end states](results/fold-end-exact/PROOF.md) | the hcp and fcc end states of the m = 2 paths in closed form: every coordinate an integer multiple of (2 - sqrt2)/3 | PROVEN (integer arithmetic); match to the stored paths VERIFIED to 1e-7 | `make verify-fold-exact` | not searched separately (see the fold row) |
 
 Only the m = 2 supercell is known to reach close packing. The fold is a geometry and rigidity result, not a predicted phase transition of real CaB6 or Prussian-blue materials.
 
