@@ -47,7 +47,7 @@ Treat the contact graph as a pin-jointed mechanism (balls glued at their contact
 
 **Strains (VERIFIED NUMERICALLY, `strain_modes.py`):** let the lattice deform. In n ≥ 3 the first-order mechanisms produce exactly the n(n−1)/2 pure shears, and every normal strain is blocked. In 2D they produce the 2-dimensional deviatoric space, so only the bulk modulus is non-zero: a fluid-like, "2D pentamode" material.
 
-**Elastic constants (PROVEN by exact symbolic minimisation for n = 2…7, numerics agree; CONJECTURE for all n):** take unit springs on every bar and the symmetric relaxation in which vertices move only along their own axes. Then
+**Elastic constants (PROVEN for every n ≥ 3 by an explicit minimisation, `results/rigidity-nd`; the same algebra gives ν = 1 formally at n = 2; numerics agree for n = 2…8):** take unit springs on every bar and the symmetric relaxation in which vertices move only along their own axes. Then
 
   C₁₁ = 4(n−1)²/(n²2ⁿ), C₁₂ = 4/(n²2ⁿ), C₄₄ = 0, so **ν₁₀₀ = 1/(n² − n − 1)**: 1, 1/5, 1/11, 1/19, 1/29, 1/41.
 
@@ -55,7 +55,7 @@ In 3D, **ν = 1/5 exactly**, and it does not depend on t for unit springs. For s
 
 ### 3. Wythoff census: the incentre is mechanically ordinary, and simplicial vertex figures give pentamodes (`wythoff.py`)
 
-For all 9 affine Coxeter groups and every ringing (159 frameworks), I compared the uniform (incentre-type) point with a random point on the same face of the fundamental simplex. **The counts were identical in every case**: generic-q zero modes and self-stresses, q = 0 counts, and flexible-lattice strain dimension (VERIFIED NUMERICALLY). Moving the dot off the incentre without changing which mirrors it lies on never changes the linear mechanics. The incentre extremises packing quantities, not mode counts.
+For all 9 affine Coxeter groups and every nonempty ringing of their diagrams (159 frameworks = 3·7 + 3·15 + 3·31), I compared the uniform (incentre-type) point with a random point on the same face of the fundamental simplex. **The counts were identical in every case**: generic-q zero modes and self-stresses, q = 0 counts, and flexible-lattice strain dimension (VERIFIED NUMERICALLY). How much that shows needs care. In the 36 single-ringed cases the face is a single vertex of the simplex, so the "random" point is the incentre-type point and the agreement is automatic. Ringings related by a symmetry of the diagram are counted separately (for C̃2, the rings (0,) and (2,) have identical rows in `census_summary.txt`). The non-trivial comparison is therefore the 123 multi-ringed cases, which drop to 70 once each symmetry class is counted once (91 classes in all, of which 21 are single-ringed). Moving the dot off the incentre without changing which mirrors it lies on never changes the linear mechanics. The incentre extremises packing quantities, not mode counts.
 
 Patterns:
 * Every framework with **z = n+1** (all 2D truncated and omnitruncated tilings; in 3D the omnitruncated honeycombs and C̃3 rings (1,2) and (1,2,3); in 4D the z = 5 cases) has 0 self-stress at generic q and **exactly 1 at q = 0**. Its achievable strain space has dimension n(n+1)/2 − 1: only dilation is blocked, i.e. a pentamode (3D) or bulk-only (2D) material.
@@ -85,12 +85,12 @@ Suppose balls are fused at small necks, so the necks act as flexural hinges.
 
 **Map the full configuration space of the ball/bar contact framework, as a real algebraic variety, for every Wythoff orbit.** Questions:
 * Which tilt paths, in Glazer-like notation for split-hinge frameworks, are finite?
-* Where do they end in new contact states? In 2D the end state is the square packing; in 3D the [111] fold gives a z = 6 packing of density 0.4686 whose rigidity and symmetry are not yet identified.
+* Where do they end in new contact states? In 2D the end state is the square packing; in 3D the cubic-lattice [111] fold stalls at a z = 6 packing of density 0.4686, a waypoint and not a jam: if the lattice may shear, the machine search in `autoresearch-fold/` continues to hexagonal close packing, density π/√18 = 0.74048 (fcc follows by two layer slides; `results/fold-close-packing`, VERIFIED, first-order rigid). A trigonal grid scan alone already reaches 0.6477 (`results/fold-3d-cubic`).
 * Is the incentre always the unique point whose folds end in a uniform (single edge length) packing?
 
 The 2D theorem ("4.8.8 folds isometrically onto the square packing at 45°, only at the incentre") suggests a general principle: Wythoff orbits and the contact graphs they create are linked by finite mechanisms. That would connect the radius-ratio and packing side of this project to rigid-unit-mode crystallography and to transformable metamaterials.
 
 ## Honesty notes
-* All 3D tilt results use a 2×2×2 checkerboard with lattice vectors kept on the axes. Other (sheared) branches of the mechanism exist and were not explored.
+* All 3D tilt results use a 2×2×2 checkerboard with lattice vectors kept on the axes. Letting the lattice shear is a separate branch of the mechanism: its continuation is the hcp and fcc path of `results/fold-close-packing`, which is checked on the 2×2×2 supercell only (larger blocks and other stackings are untested).
 * The ball-collision test checks the nearest non-bonded neighbours of one cluster in a 5ⁿ block. That block is enough for the end states found, but it is not a proof of global non-overlap along the path. For 2D the 45° end is proven analytically.
 * Prior-art searches were web searches only, not a full literature review. The 2D fold in particular may exist as folklore in the rotating-units or kirigami literature.
