@@ -9,6 +9,8 @@ Pipeline:  [stage A] analytic cubic [111] checkerboard fold to FOLD_END rad (bas
                      constraints = sliding contact); random kicks escape stationary points.
 """
 import os
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")  # one BLAS thread, set before numpy is imported:
+os.environ.setdefault("OMP_NUM_THREADS", "1")       # threaded reductions round differently run to run
 import sys
 import time
 import numpy as np
@@ -26,10 +28,12 @@ M = 2                    # supercell (cubic checkerboard fold needs M even)
 FOLD_END = np.pi / 6     # stage A end angle (rad); 0 = skip stage A (start from canonical state)
 CONTINUE = True          # stage B on/off
 SEED = 3
-TIME_BUDGET = 240.0      # seconds of wall clock for the whole script (run.sh kills at 300)
+WALL_LIMIT = 3000.0      # safety limit only (s). Stage B is bounded by MAX_STEPS and STALL_KICKS, not by time.
+                         # If the limit is hit the run is INCOMPLETE: nothing is written and the exit code is 2,
+                         # so a slow machine can never silently produce a different end state.
 HX = 0.006               # max dot displacement per step (verify limit 0.01)
 HL = 0.006               # max lattice Frobenius change per step (verify limit 0.01)
-MAX_STEPS = 4000
+MAX_STEPS = 4000         # stage B step bound (the search ends here or at a stall, whichever is first)
 STALL_KICKS = 25         # stop after this many consecutive kicks without new best density
 CONTACT_MARGIN = 0.03    # relative distance within which non-bar pairs become LP constraints
 TRIM_TO_BEST = True      # cut path at its max-density state
@@ -200,6 +204,7 @@ class Engine:
 
 
 def stage_b(m, L, X, deadline):
+    """Returns (Ls, Xs, complete); complete is False only if the wall-clock safety limit was hit."""
     eng = Engine(m)
     N = eng.N
     Ls, Xs = [L.copy()], [X.copy()]
@@ -210,7 +215,8 @@ def stage_b(m, L, X, deadline):
     logt = time.time()
     for k in range(MAX_STEPS):
         if time.time() > deadline:
-            log("stage B: deadline"); break
+            log("stage B: INCOMPLETE (wall-clock safety limit %.0f s hit at step %d)" % (WALL_LIMIT, k))
+            return Ls, Xs, False
         u, rate = eng.direction(X, L)
         mode = "descent"
         if u is None or rate > -1e-7 * 0.01:
@@ -261,7 +267,7 @@ def stage_b(m, L, X, deadline):
             logt = time.time()
             dens = N * 4 / 3 * np.pi * R ** 3 / det
             log("k=%d density=%.5f best=%.5f mode=%s h=%.2e" % (k, dens, N * 4 / 3 * np.pi * R ** 3 / best, mode, h))
-    return Ls, Xs
+    return Ls, Xs, True
 
 
 # ----------------------------------------------------------------- main
@@ -274,7 +280,10 @@ def main():
         Ls, Xs = [L0], [X0]
     log("stage A done: %d states, density %.5f" % (len(Ls), 6 * m ** 3 * 4 / 3 * np.pi * R ** 3 / np.linalg.det(Ls[-1])))
     if CONTINUE:
-        L2, X2 = stage_b(m, Ls[-1], Xs[-1], T0 + TIME_BUDGET)
+        L2, X2, complete = stage_b(m, Ls[-1], Xs[-1], T0 + WALL_LIMIT)
+        if not complete:
+            log("search INCOMPLETE: no path written")
+            sys.exit(2)
         Ls += L2[1:]
         Xs += X2[1:]
     Ls = np.array(Ls); Xs = np.array(Xs)

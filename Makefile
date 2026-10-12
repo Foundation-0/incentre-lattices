@@ -11,6 +11,10 @@
 
 PY ?= python3
 
+# One BLAS thread: multi-threaded reductions round differently from run to run and machine to machine.
+export OPENBLAS_NUM_THREADS = 1
+export OMP_NUM_THREADS = 1
+
 FAST = verify-rigidity verify-radius-ratio verify-cab6 verify-fold2d verify-fold-tests
 SLOW = verify-fold3d verify-fold-cp verify-fold-exact verify-fold-m1   # fold3d about 1 minute; fold-cp about 3 minutes (independent checker interpolates 10 sub-states per step); fold-exact about 30 seconds; fold-m1 about 10 seconds
 

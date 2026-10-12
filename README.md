@@ -1,6 +1,8 @@
 # Incentre lattice
 
-One drawing, followed all the way down.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23322079.svg)](https://doi.org/10.5281/zenodo.23322079)
+
+One abstract drawing, a hunch followed, a thread unravelled. (Where the drawing came from is told on the Drift page, `drift.html`.)
 
 Draw a square and its two diagonals. In each of the four triangles, mark the point that is the same distance from all three sides, and join it to the triangle's corners. That one rule, carried into a cube and then into any number of dimensions, lands on uniform honeycombs, on the radius-ratio limits of chemistry, on the boron framework of calcium hexaboride, and on a framework whose rigidity has a closed form in every dimension.
 
@@ -12,9 +14,13 @@ This repository is an open, agent-assisted research project around that construc
 
 ## What is known and what is ours
 
-Most of the geometry is classical. The dot is the Wythoff point of the cube's reflection group (Wythoff 1918, Coxeter), its orbit is the truncated square tiling in 2D and the truncated cubic honeycomb in 3D, the 3D arrangement is Pauling and Weinbaum's CaB6 boron net (RCSR `cab`), and the 2D fold is a known hinged tiling (Flores, after Stuart 1963). The results we have not found in print, after web searches only, are: the rigidity counts and Poisson ratio of the contact framework in every dimension, a single radius-ratio identity, and the closed form of the CaB6 hard-sphere packing maximum. The fold of the 3D framework to close packing (0.2233 to π/√18 in hcp, 2×2×2 family, two checkers) is the other result; no prior description was found (searches listed in `autoresearch-fold/`). The closest known relative is the ReO3 to VF3 tilt of corner-sharing octahedra toward hcp (O'Keeffe & Hyde 1977); in the cab framework that tilt stalls at density 0.4686, and reaching close packing needs a symmetry-breaking continuation with lattice shear. Two rigid layer slides then reach fcc (accepted by two independent checkers). This is a geometry result, not a predicted phase transition in real CaB6 or Prussian-blue materials. The ledger page (`open.html`) labels every claim as PROVEN, VERIFIED NUMERICALLY, CONJECTURE or KNOWN.
+Most of the geometry is classical. The dot is the Wythoff point of the cube's reflection group (Wythoff 1918, Coxeter), its orbit is the truncated square tiling in 2D and the truncated cubic honeycomb in 3D, the 3D arrangement is Pauling and Weinbaum's CaB6 boron net (RCSR `cab`), and the 2D fold is a known hinged tiling (Flores, after Stuart 1963). The results we have not found in print, after web searches only, are: the rigidity counts and Poisson ratio of the contact framework in every dimension, a single radius-ratio identity, and the closed form of the CaB6 hard-sphere packing maximum (its location, gamma = sqrt2 - 1, may already be known from Travesset 2017, which could not be read). The fold of the 3D framework to close packing (0.2233 to π/√18 in hcp, 2×2×2 family, two checkers) is the other result; no prior description was found (searches listed in `autoresearch-fold/`). The corner-sharing version is textbook: in ReO3, rotating the octahedra alone reaches hcp at 30 degrees about <111> (Johnsson & Lemmens 2006; Shan et al., under pressure; O'Keeffe & Hyde 1977). In the cab framework, where octahedra are joined by bars, the cubic tilt stalls at density 0.4686 (0.2637 at 30 degrees), and reaching close packing needs a symmetry-breaking continuation with lattice shear. Only that cab result is "not found". The closest physical study of the cab framework's flexibility is Li, Refson & Dove 2023 (CaB6 rigid unit modes). Two rigid layer slides then reach fcc (accepted by two independent checkers). This is a geometry result, not a predicted phase transition in real CaB6 or Prussian-blue materials. The ledger page (`open.html`) labels every claim as PROVEN, VERIFIED NUMERICALLY, CONJECTURE or KNOWN.
 
 Nothing here has been peer reviewed.
+
+## Paper
+
+Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079) (all versions; v1.0.0 is [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080)). Its SHA-256 hash is recorded in the public commitment (see below).
 
 ## Results
 
@@ -26,10 +32,10 @@ searches listed", not "new".
 |---|---|---|---|---|
 | [n-dimensional rigidity](results/rigidity-nd/PROOF.md) | generic zero modes n(n-1)/2, self-stresses n(n-3)/2 per cell; nu_100 = 1/(n^2-n-1); shear moduli 0 | PROVEN n >= 3; VERIFIED n = 2..8 | `make verify-rigidity` | 3D case KNOWN (Goodwin 2006); n-D closed forms not found |
 | [Radius ratio](results/radius-ratio/PROOF.md) | hole/ball of the dot construction = classical radius ratio, under mirror walls or insphere plus equal dihedral angles | PROVEN under H1 or H2; VERIFIED on 20 polytopes | `make verify-radius-ratio` | not found as a statement; ingredients known |
-| [CaB6 packing](results/cab6-packing/PROOF.md) | maximum (pi/6)(30 sqrt2 - 41) = 0.746865 at gamma = sqrt2 - 1; beats fcc for 0.4102 < gamma < 0.4159 | PROVEN upper bound; attainment VERIFIED | `make verify-cab6` | curve plotted by Horst and Travesset 2016; closed form not found |
+| [CaB6 packing](results/cab6-packing/PROOF.md) | maximum (pi/6)(30 sqrt2 - 41) = 0.746865 at gamma = sqrt2 - 1; beats fcc for 0.4102 < gamma < 0.4159 | PROVEN upper bound; attainment VERIFIED | `make verify-cab6` | curve plotted by Horst and Travesset 2016; location of the peak possibly in Travesset 2017 (not read); closed form not found, not confirmed new |
 | [2D fold](results/fold-2d/PROOF.md) | density 0.5390 to pi/4 at theta = pi/4 | KNOWN linkage (Flores; Stuart); corollaries PROVEN | `make verify-fold2d` | known mechanism |
 | [3D fold, cubic-restricted](results/fold-3d-cubic/PROOF.md) | 27 pi sqrt2/256 = 0.4686 at 60 degrees; a lock of the cubic path, not a jam | VERIFIED | `make verify-fold3d` | Prussian-blue tilts known; end net matches RCSR sms (ten terms) |
-| [Fold to close packing](results/fold-close-packing/PROOF.md) | pi/sqrt18 = 0.74048: sampled bar-preserving, overlap-free path in the 2x2x2 supercell to hcp (793 states) and fcc (1193 states) | VERIFIED (sampled continuity, step <= 0.01; two checkers); fcc extension is new work | `make verify-fold-cp` | not found; closest is the ReO3 to VF3 tilt (O'Keeffe and Hyde 1977) |
+| [Fold to close packing](results/fold-close-packing/PROOF.md) | pi/sqrt18 = 0.74048: sampled bar-preserving, overlap-free path in the 2x2x2 supercell to hcp (793 states) and fcc (1193 states) | VERIFIED (sampled continuity, step <= 0.01; two checkers); fcc extension is new work | `make verify-fold-cp` | cab result not found; corner-sharing ReO3 to hcp by rotation alone is KNOWN (Johnsson and Lemmens 2006; Shan et al.; O'Keeffe and Hyde 1977) |
 | [Exact fold end states](results/fold-end-exact/PROOF.md) | the hcp and fcc end states of the m = 2 paths in closed form: every coordinate an integer multiple of (2 - sqrt2)/3 | PROVEN (integer arithmetic); match to the stored paths VERIFIED to 1e-7 | `make verify-fold-exact` | not searched separately (see the fold row) |
 | [Fold at m = 1](results/fold-m1/PROOF.md) | one octahedron per cell (6 balls) folds to hcp (free descent, 333 states) and to fcc (268 states, density rising at every sample) | VERIFIED (sampled continuity; two checkers); end states PROVEN exact; new work | `make verify-fold-m1` | not searched separately (see the fold row) |
 
@@ -50,13 +56,13 @@ per track), [docs/review-ledger.md](docs/review-ledger.md) (reviews so far; inte
 ## Certificates and commitment
 
 `certificates/selected-results.json` has one record per result (statement, value, label, verifier command, input hashes); `certificates/SHA256SUMS` lists every certificate and path
-file; `commitment/` holds a SHA-256 manifest and its root hash, with instructions to check it ([commitment/README.md](commitment/README.md)). The commitment has not been published.
+file; `commitment/` holds a SHA-256 manifest and its root hash, with instructions to check it ([commitment/README.md](commitment/README.md)). The commitment was posted publicly on 2026-10-12 ([gist](https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706)).
 
 ## Credit, notices, citation
 
 [CONTRIBUTORS.md](CONTRIBUTORS.md) (including AI assistance and which models did which roles), [NOTICE](NOTICE) (third-party data and licences; note the mixed licences of the
-COD extracts), [CITATION.cff](CITATION.cff) (a paper preprint is pending). Pull requests use `.github/pull_request_template.md`; reviews use the "Research review" issue template.
+COD extracts), [CITATION.cff](CITATION.cff) (cites the preprint). Pull requests use `.github/pull_request_template.md`; reviews use the "Research review" issue template.
 
 ## Licence
 
-Code: MIT. Text, figures and site content: CC BY 4.0. Credit: @ahrazzle @aska-digital and @claude
+Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [@claude](https://github.com/claude) (Claude Opus 5.5 from Anthropic).

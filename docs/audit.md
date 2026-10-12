@@ -74,11 +74,11 @@ Known limits (the important ones):
 * **Continuity is certified only by sampling.** Consecutive states differ by at most 0.01 in dot position and lattice; overlap is checked at the states, at midpoints and at 10
   interpolated sub-states. Linear interpolation between states shortens or lengthens bars by up to 1.5e-5 (relative), so the interpolated curve is not exactly bar-preserving.
   This is not an interval-arithmetic or analytic certificate of a continuous motion.
-* **This result is m = 2 only** (48 balls). m = 1, and through it every m, is in `results/fold-m1`.
+* **This result is m = 2 only** (48 balls). m = 1, and through it every m in principle (the lift needs subdivided paths; see `results/fold-m1/PROOF.md`), is in `results/fold-m1`.
 * Both checkers were written inside the project, by the same group; they share the model definition. Neither is an outside review.
 * The density along the path is not monotone (dips to 0.7294 during the fcc slides).
 * First-order rigidity at the end state is not a proof of jamming.
-* The search is deterministic; "several seeds" gave one path.
+* The stored `autoresearch-fold/best/path.npz` is the certificate; the search that found it is not a certificate and is not guaranteed to reproduce that exact path on another machine. The original run bounded stage B by wall clock, and one slower machine stopped at a jammed state (density 0.618718). `search.py` is now bounded by a step count with BLAS pinned to one thread; a rerun on one machine gave a different valid path (791 states, diverging from the stored one at state 285) reaching the same end density 0.740480.
 * A geometry and rigidity result, not a prediction for real CaB6 or Prussian-blue materials.
 
 ### results/fold-end-exact: exact closed forms of the close-packed end states (m = 2)
@@ -100,7 +100,7 @@ Known limits: the end states only, not the path; the image-shift box for the ove
 | Both end states exact (12 contacts, density pi/sqrt18, hcp / fcc) | PROVEN (integer arithmetic) | `results/fold-end-exact/exact_end.py` |
 | Controls | must be rejected | displaced dot; scaled lattice; 100 deleted states; monotone test on the hcp path |
 
-Known limits: sampled continuity as for m = 2; the lift to larger m is an argument, not a replayed check; searches reproduce byte for byte on one machine only.
+Known limits: sampled continuity as for m = 2; the lift to larger m is an argument, not a replayed check, and needs subdivided paths (the locked checker rejects the unsubdivided lifts, only on the continuity step limit); searches reproduce byte for byte on one machine only.
 
 ## What is not covered at all
 

@@ -155,8 +155,21 @@ def elastic(n, c):
             Aeps[r, m] = d @ Eij @ l
         Bw[r, n * a:n * a + n] -= d
         Bw[r, n * b:n * b + n] += d
-    # Schur complement: K = A^T (I - B B^+) A
-    P = np.eye(len(bars)) - Bw @ np.linalg.pinv(Bw)
+    # Schur complement: K = A^T (I - B B^+) A, with I - B B^+ the projector onto the orthogonal complement of
+    # range(B). np.linalg.pinv is NOT used: its default cutoff (max(M,N) * eps * s_max, about 1e-13) sits only
+    # about two orders above the round-off noise of the null singular values of B (1e-16 and below), and a
+    # single noise value kept as "nonzero" changes the projector enough to give C11 wrong at the 1e-5 level
+    # (observed on a GitHub runner; reproduced locally with pinv(rcond=3e-16)). Instead the rank is read off the
+    # spectrum with an explicit cutoff in the middle of a gap that is checked to exist: the singular values of
+    # B are either below 1e-9 (round-off zeros; actually about 1e-16) or above 1e-3 (the smallest genuine one is 1.0 for n = 2..8).
+    U, sv, _ = np.linalg.svd(Bw)
+    zero, nonzero = sv[sv < 1e-8], sv[sv >= 1e-8]
+    if zero.size and zero.max() > 1e-9 or nonzero.min() < 1e-3:
+        raise RuntimeError("elastic(%d, %g): no clean gap in the singular values of the bar matrix "
+                           "(largest 'zero' %.3e, smallest 'nonzero' %.3e)"
+                           % (n, c, zero.max() if zero.size else 0.0, nonzero.min()))
+    Ur = U[:, :nonzero.size]
+    P = np.eye(len(bars)) - Ur @ Ur.T
     K = Aeps.T @ P @ Aeps / 2 ** n  # W = (1/2) x^T K x in variables (eps_ii, eps_ij)
     C11 = K[0, 0]
     C12 = K[0, 1]

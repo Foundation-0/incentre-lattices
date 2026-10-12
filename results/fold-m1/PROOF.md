@@ -28,7 +28,7 @@ Both paths are accepted by the locked checker `autoresearch-fold/verify.py` and 
 | fcc | 268 | 0.00421 / 0.00367 | 1.00011 | 1.6e-5 |
 
 **End states (PROVEN, integer arithmetic).** In the cube frame of the octahedron, with the origin at its centre and units
-K = 2 − √2, the dots sit at ±e_i, so the octahedron ends unrotated. The lattice rows are:
+K = 2 − √2, the dots sit at ±e_i, so the octahedron ends unrotated in the octahedron's own frame. In the lab frame it does rotate (by about 0.44 rad on the hcp path and 0.61 rad on the fcc path, from a best-fit rotation of the 6 dots, start to end). The lattice rows are:
 
 | End state | lattice rows | det L |
 |---|---|---|

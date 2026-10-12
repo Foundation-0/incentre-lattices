@@ -31,8 +31,10 @@ and the corners are the calcium atoms.
   exactly (Ba, Ca, Ce, Er, Gd, Nd, Pr, Pu, Sr, Th, Y, Yb; these are records from 1934 to 1954 and handbook
   re-entries; COD 1009052, 2311004 and 5910016 were checked by hand). These entries are the equal-bond
   assumption copied forward, not measurements. The 17 modern refinements (Ca, Ce, Eu, La, Sm, Th) give
-  x = 0.197–0.204, with inter/intra B–B = **0.947 on average** (range 0.920–0.977). So the bond between
-  octahedra is ~5% shorter than the "touching" ideal. This is consistent with the known bonding picture:
+  x = 0.197–0.204. Over those 17 entries (x ≠ 0.207) inter/intra B–B = **0.947 on average** (range 0.920–0.977);
+  `borides_real.py` itself prints the mean over all 31 MB6 entries, 0.9704 (range 0.920–0.999), because the 14
+  copied-forward entries sit at 0.999. So in modern refinements the bond between octahedra is ~5% shorter than
+  the "touching" ideal. This is consistent with the known bonding picture:
   each B has one 2-centre exo bond and multicentre bonds inside the cage (Longuet-Higgins & Roberts 1954).
   **The ideal is a geometric zero, and the deviation from it measures the bonding asymmetry.**
 - The perovskite reading (KNOWN in outline, framing ours): Ca is at the A site and the empty octahedron centre
@@ -52,8 +54,11 @@ are mirrors, and it has 12 rhombic pyramids:
   B sits at 48i (½, x, x) with **x = 1/6**, and a = 3√2·d(B–B). This is the UB12 (D2f, cF52) structure.
   (VERIFIED NUMERICALLY)
 - The metal sits at the 4-valent cell vertex, in a 24-B **truncated octahedron**, at M–B = √(5/2)·d =
-  1.5811 d. Its hole/ball ratio is 2.1623, which is the truncated-octahedron radius ratio. Real (Sc, Y, Yb, Zr):
-  1.567; inter/intra = 0.949 (0.931–0.967), the same ~5% shortening as MB6. The empty tetrahedral hole is a
+  1.5811 d. Its hole/ball ratio is 2.1623, which is the truncated-octahedron radius ratio. Real (Sc, U, Y, Yb, Zr):
+  M–B/d = 1.567; inter/intra = 0.9559 on average over the 14 entries (range 0.931–1.012), as `borides_real.py`
+  prints. That is a shortening of about 4% on average, not a uniform ~5%: U (COD 1008115) has 1.012, a
+  lengthening, and the other four metals lie between 0.931 and 0.967. (The earlier figure 0.949 is a mean of
+  per-metal means with U left out.) The empty tetrahedral hole is a
   12-B truncated tetrahedron with ratio 1.3452. (VERIFIED NUMERICALLY)
 - So the rule, tiled over a lattice whose Voronoi cell is face-transitive with mirror walls, produces the
   equal-edge augmented net (pcu → CaB6, fcu → UB12). The cage around each lattice vertex is an Archimedean
@@ -67,17 +72,20 @@ are mirrors, and it has 12 rhombic pyramids:
 - Novelty: UB12 = B12 cuboctahedra in a NaCl arrangement, with M in truncated B24 octahedra, is KNOWN (AFLOW
   prototype A12B_cF52_225_h_b; arXiv 2010.16239). That the equal-bond x is 1/6, and that both boride families
   come from one "pyramid insphere in the Voronoi cell" rule: **we found no prior reference** after
-  searching for augmented nets fcu-a/pcu-a with borides and for Voronoi/insphere constructions. RCSR was
-  unreachable (connection refused, and the archive pages are JavaScript-only), so we could not check RCSR's
-  unit-edge embeddings, which very likely contain x = 1/6 implicitly.
+  searching for augmented nets fcu-a/pcu-a with borides and for Voronoi/insphere constructions. RCSR's raw data file
+  (http://rcsr.net/data/3dall.txt) is reachable. Its `ubt` entry ("UB12", Fm-3m, a = 3√2 for unit edge, vertex at
+  (1/6, 1/6, 0), 5-coordinated) and its `cab` entry (Pm-3m, a = 1 + √2, vertex at (0.2929, 0, 0)) list the
+  equal-edge geometries derived here, so x = 1/6 is stated there implicitly; the one-rule link between the two
+  families is still not found in print.
 
-## Finding 3. CaB6-type binary sphere packing peaks exactly at the dot geometry: γ = √2−1, φ = (π/6)(30√2−41) = 0.7469
+## Finding 3. CaB6-type binary sphere packing peaks exactly at the dot geometry: γ = √2−1, φ = (π/6)(30√2−41) = 0.746865
 
 Treat Ca as a large sphere and B as small spheres, then maximise the packing fraction over x and a for each
 size ratio γ = r_S/r_L (`bnsl.py`):
-- The maximum of the CaB6 type is at **γ = 0.4142, x = 0.2071, φ = 0.74690**. At that point the large spheres
-  form a touching simple-cubic array, and all small spheres touch five neighbours: every constraint binds at
-  once. φ = (4π/3)[1/8 + 6((√2−1)/2)³] = (π/6)(30√2 − 41). (VERIFIED NUMERICALLY; closed form checked)
+- The maximum of the CaB6 type is at **γ = 0.4142, x = 0.2071, φ = 0.746865**. At that point the large spheres
+  form a touching simple-cubic array, and each small sphere touches five other small spheres. Ca and B do **not**
+  touch: d(Ca–B) = 0.7368 a against r_L + r_S = 0.7071 a, a gap of 0.0297 a, so Ca is held by Ca–Ca contact
+  (`results/cab6-packing`). φ = (4π/3)[1/8 + 6((√2−1)/2)³] = (π/6)(30√2 − 41). (VERIFIED NUMERICALLY; closed form checked)
 - This is slightly above fcc (0.7405) but below NaCl at the same γ (0.793), so hard spheres alone do not favour
   it. That is consistent with CaB6 nanocrystal superlattices being described as low-density, kinetically or
   ligand-stabilised phases (KNOWN: Shevchenko et al., *Nature* 439, 55 (2006) reports CaB6-type BNSLs;
@@ -92,17 +100,20 @@ size ratio γ = r_S/r_L (`bnsl.py`):
 
 ## Finding 4. The general rule reproduces exactly the radius-ratio limits of equal-edged, vertex-transitive coordination polyhedra, and nothing else
 
-**Theorem (PROVEN).** Take a polytope P and put the dot of each facet-pyramid at the point equidistant from its
-walls, with radius R = that distance. Suppose P is facet-transitive and every wall (the plane through the
-centre and a ridge) is a mirror of P. Then:
+**Theorem (PROVEN under H1 or H2; clause (iv) under H2 only).** Take a polytope P and put the dot of each
+facet-pyramid at the point equidistant from its walls, with radius R = that distance. H1: every wall (the plane
+through the centre and a ridge) is a mirror of P. H2: P has an insphere centred at the centre and the dihedral
+angle is the same at every ridge. Under H1 or H2:
 (i) all dots are equivalent, at distance t;
 (ii) a ball and its mirror image touch at the wall, so every pair of ridge-adjacent dots is at 2R: the
 dots form an equal-edged, vertex-transitive polytope Q combinatorially dual to P;
 (iii) hole/ball = (t−R)/R = t/(e/2) − 1, which is the classical radius-ratio limit of Q;
-(iv) equivalently, hole/ball = 1/sin θ − 1 with 2θ the angle between adjacent facet normals. **The base facet
-never enters the ratio.** It only sets the scale, and it gives the contacts across faces when tiled.
+(iv) under H2 only, hole/ball = 1/sin θ − 1 with 2θ the angle between adjacent facet normals. Mirror walls alone do
+not give (iv): the triangular bipyramid satisfies H1 at every height and its true ratio is 0.5275 throughout, but
+1/sin θ − 1 gives 1.236 and 0.291 at height 1 (the two kinds of adjacent normals) and 0.633 and 0.414 at height 0.5
+(`results/radius-ratio`). **The base facet never enters the ratio.** It only sets the scale, and it gives the contacts across faces when tiled.
 In kaleidoscope language the dot is a Wythoff point, and the walls being mirrors is exactly what makes
-the balls touch.
+the balls touch (H1).
 
 Results (VERIFIED NUMERICALLY, LP insphere plus brute-force contacts):
 
@@ -122,7 +133,7 @@ Results (VERIFIED NUMERICALLY, LP insphere plus brute-force contacts):
 | Catalan duals | 12–30 | all | 1.3452, 2.1623, 2.5576, 1.7979, 2.2361 | truncated tetra., truncated octa., truncated cube, rhombicuboct., icosidodec. ✓ |
 | tetragonal trapezohedron | 8 | **only at one shape** (16/16), otherwise 8/16 | 0.6453 | square antiprism CN8 ✓ only by tuning |
 | 5-cell / tesseract / 16-cell / 24-cell (4D) | 5/8/16/24 | all | 0.2649 / 0.4142 / 1.0000 / 1.0000 | 4D: 24-cell = 4D kissing |
-| cuboctahedron, truncated octahedron, prisms (not facet-transitive) | — | **no** (unequal R) | — | fails |
+| cuboctahedron, truncated octahedron, prisms (not facet-transitive) | n/a | **no** (unequal R) | n/a | fails |
 
 Why it fails where it does (PROVEN):
 - **Antiprisms** (square antiprism CN8, 0.645) are snub-type and not Wythoffian. The trapezohedron's walls are
@@ -169,15 +180,15 @@ unreachable shapes are over-represented among violations; not tested.)
 
 ## What was not done
 
-- RCSR could not be reached, so the net symbols are taken from OEIS A299266 and the Yaghi group's MOK-net notes.
-- No DFT. The ~5% exo-bond shortening is from the literature data only.
+- RCSR's raw data file (http://rcsr.net/data/3dall.txt) was reached late: it confirms the `cab` and `ubt` geometries, but the net symbols elsewhere in these notes still come from OEIS A299266 and the Yaghi group's MOK-net notes.
+- No DFT. The shortening of the inter-octahedron bond in modern refinements (about 5% for MB6, about 4% on average for MB12, with U lengthened) is from the literature data only.
 - Glazer tilts as rigid-unit modes were not explored.
 
 ## Best open question (PhD-sized)
 
 **Is "Voronoi-cell Wythoff points → equal-bond cluster frameworks" a generative rule for boron-rich (and other
 cluster) solids?** Cube → CaB6 and rhombic dodecahedron → UB12 both work, with the metal cage giving an
-Archimedean radius ratio and the real structures ~5% off ideal in the same direction. Next steps:
+Archimedean radius ratio and the real MB6 structures about 5% off ideal and the MB12 ones about 4% off on average (U goes the other way). Next steps:
 (a) enumerate all face-transitive, mirror-walled cells of space groups (and their sub-tilings) and list the
 resulting augmented nets as candidate MBn frameworks;
 (b) explain the dodecahedron case: icosahedral B12 (5+1 bonding, α-boron) is the frustrated version that cannot

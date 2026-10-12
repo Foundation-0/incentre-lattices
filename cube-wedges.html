@@ -1,5 +1,16 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cube in four wedges</title>
+<meta name="description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Incentre lattice">
+<meta property="og:title" content="Cube in four wedges">
+<meta property="og:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results.">
+<meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/cube-wedges.html">
+<meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cube in four wedges"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <style>
   html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
   canvas{display:block;width:100vw;height:100vh;cursor:grab}
@@ -86,5 +97,5 @@ function seg(a,b,col,w){g.beginPath();g.moveTo(a.x,a.y);g.lineTo(b.x,b.y);g.stro
 function dot(p){const r=5.5*p.s/80;const gr=g.createRadialGradient(p.x-r/3,p.y-r/3,r/5,p.x,p.y,r);gr.addColorStop(0,'#5a6b80');gr.addColorStop(1,'#111a24');g.beginPath();g.arc(p.x,p.y,r,0,7);g.fillStyle=gr;g.fill()}
 function sphere(p,r,col){const gr=g.createRadialGradient(p.x-r*.35,p.y-r*.35,r*.1,p.x,p.y,r);gr.addColorStop(0,'#ffffff');gr.addColorStop(1,col);g.globalAlpha=.28;g.beginPath();g.arc(p.x,p.y,r,0,7);g.fillStyle=gr;g.fill();g.globalAlpha=1}
 frame();
-</script><div id="sign">by <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br>with <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5 from Anthropic, PBC</a></div>
+</script><div id="sign">Ahraz Arifuddin from <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5</a> from Anthropic</div>
 </body></html>
