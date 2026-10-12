@@ -15,7 +15,7 @@ const PAGES=[
  ['seek.html','SEARCH','drift + check'],
  ['open.html','LEDGER','claims']
 ];
-const EXTRA=[['cube-six.html','the cube'],['deeper.html','the full story']];
+const EXTRA=[['cube-six.html','The cube, hands-on'],['deeper.html','Atoms, tilings and dimensions']];
 const Q=new URLSearchParams(location.search);
 const here=(location.pathname.split('/').pop()||'index.html');
 const C={g:'#37ff9a',c:'#35e6ff',a:'#ffb23a',r:'#ff4a3d',dim:'#2f8f68',bg:'#02090c',ink:'#eafff4'};
@@ -46,7 +46,7 @@ function nav(){
   const p=el('nav',{'class':'panel hud',id:'p-nav'});
   let b='';
   for(const [u,n,d] of PAGES)b+='<a href="'+u+'"'+(u===here?' class="cur"':'')+'>'+(u===here?'&gt; ':'')+n+'<span>'+d+'</span></a>';
-  b+='<hr><div class="foot">CLASSIC // simple, clean reading</div>';
+  b+='<hr><div class="foot">CLASSIC // plain light pages</div>';
   for(const [u,n] of EXTRA)b+='<a href="'+u+'"'+(u===here?' class="cur"':'')+'>'+n+'<span>classic</span></a>';
   b+='<div class="foot">[H] hide HUD</div>';
   p.innerHTML='<button class="burger" aria-expanded="false" aria-controls="p-nav-body">&equiv; INDEX<span>R=&radic;2&minus;1</span></button><header><span class="tabtitle">INDEX // R=&radic;2&minus;1</span><button class="mb" title="minimise">&ndash;</button></header><div class="body" id="p-nav-body">'+b+'</div>';
@@ -151,7 +151,7 @@ CX.ease=t=>t<0?0:t>1?1:t*t*(3-2*t);
 function sign(){
   if(document.getElementById('sign'))return;
   const L=(u,t)=>'<a href="'+u+'" target="_blank" rel="noopener">'+t+'</a>';
-  document.body.appendChild(el('div',{id:'sign'},'by '+L('https://digital.askaconsult.com','Aska Digital')+'<br>with '+L('https://www.anthropic.com/claude','Claude Opus 5.5 from Anthropic, PBC')));
+  document.body.appendChild(el('div',{id:'sign'},'Ahraz Arifuddin from '+L('https://digital.askaconsult.com','Aska Digital')+'<br>'+L('https://www.anthropic.com/claude','Claude Opus 5.5')+' from Anthropic'));
 }
 
 function ready(){

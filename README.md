@@ -1,6 +1,8 @@
 # Incentre lattice
 
-One drawing, followed all the way down.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23322079.svg)](https://doi.org/10.5281/zenodo.23322079)
+
+One abstract drawing, a hunch followed, a thread unravelled. (Where the drawing came from is told on the Drift page, `drift.html`.)
 
 Draw a square and its two diagonals. In each of the four triangles, mark the point that is the same distance from all three sides, and join it to the triangle's corners. That one rule, carried into a cube and then into any number of dimensions, lands on uniform honeycombs, on the radius-ratio limits of chemistry, on the boron framework of calcium hexaboride, and on a framework whose rigidity has a closed form in every dimension.
 
@@ -15,6 +17,10 @@ This repository is an open, agent-assisted research project around that construc
 Most of the geometry is classical. The dot is the Wythoff point of the cube's reflection group (Wythoff 1918, Coxeter), its orbit is the truncated square tiling in 2D and the truncated cubic honeycomb in 3D, the 3D arrangement is Pauling and Weinbaum's CaB6 boron net (RCSR `cab`), and the 2D fold is a known hinged tiling (Flores, after Stuart 1963). The results we have not found in print, after web searches only, are: the rigidity counts and Poisson ratio of the contact framework in every dimension, a single radius-ratio identity, and the closed form of the CaB6 hard-sphere packing maximum. The fold of the 3D framework to close packing (0.2233 to π/√18 in hcp, 2×2×2 family, two checkers) is the other result; no prior description was found (searches listed in `autoresearch-fold/`). The closest known relative is the ReO3 to VF3 tilt of corner-sharing octahedra toward hcp (O'Keeffe & Hyde 1977); in the cab framework that tilt stalls at density 0.4686, and reaching close packing needs a symmetry-breaking continuation with lattice shear. Two rigid layer slides then reach fcc (accepted by two independent checkers). This is a geometry result, not a predicted phase transition in real CaB6 or Prussian-blue materials. The ledger page (`open.html`) labels every claim as PROVEN, VERIFIED NUMERICALLY, CONJECTURE or KNOWN.
 
 Nothing here has been peer reviewed.
+
+## Paper
+
+Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079) (all versions; v1.0.0 is [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080)). Its SHA-256 hash is recorded in the public commitment (see below).
 
 ## Results
 
@@ -49,13 +55,13 @@ per track), [docs/review-ledger.md](docs/review-ledger.md) (reviews so far; inte
 ## Certificates and commitment
 
 `certificates/selected-results.json` has one record per result (statement, value, label, verifier command, input hashes); `certificates/SHA256SUMS` lists every certificate and path
-file; `commitment/` holds a SHA-256 manifest and its root hash, with instructions to check it ([commitment/README.md](commitment/README.md)). The commitment has not been published.
+file; `commitment/` holds a SHA-256 manifest and its root hash, with instructions to check it ([commitment/README.md](commitment/README.md)). The commitment was posted publicly on 2026-10-12 ([gist](https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706)).
 
 ## Credit, notices, citation
 
 [CONTRIBUTORS.md](CONTRIBUTORS.md) (including AI assistance and which models did which roles), [NOTICE](NOTICE) (third-party data and licences; note the mixed licences of the
-COD extracts), [CITATION.cff](CITATION.cff) (a paper preprint is pending). Pull requests use `.github/pull_request_template.md`; reviews use the "Research review" issue template.
+COD extracts), [CITATION.cff](CITATION.cff) (cites the preprint). Pull requests use `.github/pull_request_template.md`; reviews use the "Research review" issue template.
 
 ## Licence
 
-Code: MIT. Text, figures and site content: CC BY 4.0. Credit: @ahrazzle @aska-digital and @claude
+Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [@claude](https://github.com/claude) (Claude Opus 5.5 from Anthropic).

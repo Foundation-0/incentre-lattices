@@ -1,0 +1,10 @@
+{
+  "title": "The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB6 packing maximum",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "description": "Cut an n-cube into the 2n pyramids that join its centre to its facets and place a ball at the incentre of each pyramid. The centres are the Wythoff points of the [4,3^(n-2),4] kaleidoscope. We prove that at a generic wavevector the contact framework has exactly n(n-1)/2 zero modes and n(n-3)/2 states of self-stress per cell, and that with unit springs every shear modulus vanishes and the Poisson ratio is 1/(n^2-n-1). We also record a radius-ratio identity, the closed form (pi/6)(30 sqrt2 - 41) for the maximal packing fraction of the CaB6 structure type, and a verified bar-preserving, overlap-free fold of the three-dimensional framework to hexagonal and face-centred cubic close packing. The archive contains the preprint, the interactive site, replayable verifiers and certificates. Not peer reviewed.",
+  "creators": [{"name": "Arifuddin, Ahraz", "affiliation": "Aska Digital"}],
+  "keywords": ["rigidity theory", "contact frameworks", "sphere packing", "radius ratio", "hexaboride", "Wythoff construction", "reproducible research"],
+  "license": "cc-by-4.0",
+  "notes": "Computation, proofs, checking and writing were carried out with AI assistance (Claude Opus 5.5 and other Claude models from Anthropic) under the author's direction; see CONTRIBUTORS.md."
+}

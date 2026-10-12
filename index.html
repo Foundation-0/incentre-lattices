@@ -1,8 +1,18 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ABSTRACT // Incentre lattice</title>
-<meta name="description" content="One drawing, followed all the way down: a square, its diagonals, and the point equidistant from each triangle's sides. An infographic abstract.">
+<title>One abstract drawing // Incentre lattice</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Incentre lattice">
+<meta property="og:title" content="One abstract drawing. A hunch followed. A thread unravelled.">
+<meta property="og:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. An infographic abstract with proofs and verified results.">
+<meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/">
+<meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One abstract drawing. A hunch followed. A thread unravelled."><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. An infographic abstract with proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
+<meta name="description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. An infographic abstract with proofs and verified results.">
 <link rel="stylesheet" href="codex.css">
 <style>
 main.land{max-width:760px;padding:22px 20px 40px}
@@ -138,6 +148,8 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
   .chain i,.go,.ent,.enter .vp:after,.one svg .pulse{animation:none}
   .js .ip.pre{opacity:1;transform:none}
 }
+.auth .pdf{margin-left:10px;font-size:.92em;letter-spacing:.08em;color:var(--g,#37ff9a);border:1px solid rgba(55,255,154,.45);padding:2px 8px;white-space:nowrap}
+.auth .pdf:hover{background:rgba(55,255,154,.12);box-shadow:0 0 12px rgba(55,255,154,.3)}
 </style>
 <script>document.documentElement.className+=' js'</script>
 </head><body>
@@ -146,16 +158,16 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 <!-- 1 TITLE -->
 <section class="ip hero" id="s1">
  <div class="lbl"><span>00 // INFOGRAPHIC ABSTRACT</span><span class="tg conj">NOT PEER REVIEWED</span></div>
- <h1>One drawing, followed all the way down</h1>
- <p class="hook">A square, its X, and one rule: put a dot the same distance from every wall.</p>
- <div class="auth">Ahraz Arifuddin, Aska Digital</div>
- <p class="abs">Draw a square and its two diagonals, then mark, in each of the four triangles, the one point that is the same distance from all three sides. Carried into a cube and into higher dimensions, this simple drawing lands on known structures: a tiling by squares and octagons, a honeycomb of truncated cubes, the radius-ratio limits of crystal chemistry and the boron framework of calcium hexaboride, all classical (Wythoff, Coxeter, Pauling) and credited as such. What we could not find in print is exact: how rigid the framework of touching balls is in every dimension, one identity behind the radius-ratio limits, a closed form for the densest packing of the boron structure, and a bar-preserving, overlap-free fold of the 3D framework from density 0.2233 to close packing. These come from a web search and two independent checkers, not from peer review, and every claim carries an evidence label.</p>
+ <h1>One abstract drawing<br>a hunch followed<br>a thread unravelled</h1>
+ <p class="hook">A pattern of incentres in a square, extended to every dimension, and the places it meets crystal chemistry, sphere packing and rigidity theory.</p>
+ <div class="auth">Ahraz Arifuddin, Aska Digital &nbsp;<a class="pdf" href="papers/incentre-lattice.pdf" target="_blank" rel="noopener">[ READ THE PAPER · PDF ]</a></div>
+ <p class="abs">Draw a square and its two diagonals, then mark, in each of the four triangles, the incentre: the one point equally far from all three sides, the centre of the inscribed circle. Carried into a cube and into higher dimensions, the drawing lands on known structures: a tiling by squares and octagons, a honeycomb of truncated cubes, the radius-ratio limits of crystal chemistry and the boron framework of calcium hexaboride, all classical (Wythoff, Coxeter, Pauling) and credited as such. What we could not find in print is exact: how rigid the framework of touching balls is in every dimension, one identity behind the radius-ratio limits, a closed form for the densest packing of the boron structure, and a bar-preserving, overlap-free fold of the 3D framework from density 0.2233 to close packing. These come from a web search and two independent checkers, not from peer review, and every claim carries an evidence label.</p>
 </section>
 <div class="chain"><i></i></div>
 
 <!-- 2 THE RULE -->
 <section class="ip" id="s2">
- <div class="lbl"><b>01 // THE RULE</b><span>square + X + four dots</span></div>
+ <div class="lbl"><b>01 // THE RULE</b><span>square + diagonals + four incentres</span></div>
  <div class="vis"><canvas id="cv-rule" aria-label="Animated drawing: a square, its two diagonals, the point equidistant from the three sides of each triangle, and lines from each point to its triangle's corners"></canvas><div class="corner">THE DRAWING</div><div class="corner r">LOOP</div></div>
  <p class="cap">The circles show the equal distances: each dot is exactly R from its three sides. The red lines are the loops of the drawing. Everything on this site follows from repeating this step.</p>
 </section>
@@ -294,7 +306,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 <section class="ip" id="s8">
  <div class="lbl"><b>07 // DOORWAYS</b><span>read in any order</span></div>
  <div class="doors">
-  <a class="door" href="origin.html"><span class="n">01</span><span class="t">THE DRAWING</span><span class="d">The square, the X, the dot, and why R = &radic;2 &minus; 1.</span></a>
+  <a class="door" href="origin.html"><span class="n">01</span><span class="t">THE DRAWING</span><span class="d">The square, its diagonals, the incentre, and why R = &radic;2 &minus; 1.</span></a>
   <a class="door" href="mirrors.html"><span class="n">02</span><span class="t">MIRRORS</span><span class="d">Why this dot is the canonical one.</span></a>
   <a class="door" href="matter.html"><span class="n">03</span><span class="t">MATTER</span><span class="d">Crystals, radius ratios, CaB<sub>6</sub>.</span></a>
   <a class="door" href="motion.html"><span class="n">04</span><span class="t">MOTION</span><span class="d">The fold, rigidity and Poisson ratio.</span></a>
@@ -303,17 +315,17 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
   <a class="door" href="seek.html"><span class="n">07</span><span class="t">SEARCH</span><span class="d">Drift chooses where to look, a checker decides.</span></a>
   <a class="door" href="open.html"><span class="n">08</span><span class="t">LEDGER</span><span class="d">Every claim and its evidence label.</span></a>
  </div>
- <div class="sub">CLASSIC // clean reading</div>
+ <div class="sub">CLASSIC // plain light pages</div>
  <div class="doors cls">
-  <a class="door" href="cube-six.html"><span class="t">The cube</span><span class="d">Six pyramids, one dot each, in 3D.</span></a>
-  <a class="door" href="deeper.html"><span class="t">The full story</span><span class="d">Atoms, tilings and higher dimensions.</span></a>
+  <a class="door" href="cube-six.html"><span class="t">The cube, hands-on</span><span class="d">Turn it, pull it apart, see six pyramids with one dot each.</span></a>
+  <a class="door" href="deeper.html"><span class="t">Atoms, tilings and dimensions</span><span class="d">An illustrated long read, from crystals to n dimensions.</span></a>
   <a class="door" href="cube-pyramids.html"><span class="t">Three pyramids</span><span class="d">The same cube, cut another way.</span></a>
   <a class="door" href="cube-wedges.html"><span class="t">Four wedges</span><span class="d">And another.</span></a>
  </div>
  <div class="sub">PROJECT</div>
  <div class="doors two">
   <a class="door" href="https://github.com/aska-digital/incentre-lattice" target="_blank" rel="noopener"><span class="n">GITHUB</span><span class="t">Contribute to an open track</span><span class="d">Open questions with a fixed checker and one score. Code, notes and tracks: aska-digital/incentre-lattice.</span></a>
-  <div class="door soon"><span class="n">PAPER</span><span class="t">Coming soon</span><span class="d">A paper is in preparation and is not public yet.</span></div>
+  <a class="door" href="papers/incentre-lattice.pdf" target="_blank" rel="noopener"><span class="n">PAPER</span><span class="t">Read the preprint (PDF)</span><span class="d">12 pages: rigidity in every dimension, the radius-ratio identity, the CaB6 packing maximum. DOI 10.5281/zenodo.23322079. Not peer reviewed.</span></a>
  </div>
 </section>
 </main>

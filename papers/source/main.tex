@@ -1,0 +1,314 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\va}{\mathbf{a}}
+\newcommand{\vb}{\mathbf{b}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\nus}{\nu_{100}}
+
+\title[Rigidity and packing of the truncated $n$-cubic contact framework]{The incentre of the centre-cut pyramid: rigidity of the truncated $n$-cubic contact framework, a radius-ratio identity, and the CaB$_6$ packing maximum}
+
+\author{Ahraz Arifuddin}
+\address{Aska Digital}
+
+\date{12 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+Cut an $n$-cube into the $2n$ pyramids that join its centre to its facets and place a ball at the incentre of each pyramid. The centres are the Wythoff points of the $[4,3^{n-2},4]$ kaleidoscope, and in the plane and in space the resulting arrangements (the 4.8.8 tiling, the truncated cubic honeycomb, the boron net of CaB$_6$) are classical. We study the framework of bars between touching balls. Our main result, proved for every $n\ge 3$ by an explicit block decomposition of the periodic rigidity matrix, is that at a generic wavevector this framework has exactly $n(n-1)/2$ zero modes and $n(n-3)/2$ states of self-stress per cell, with explicit bases, and that with unit springs every shear modulus vanishes while $C_{11}/C_{12}=(n-1)^2$, so that $\nus=1/(n^2-n-1)$. For $n=2$ the counts are $2$ and $0$ and the network is bulk-only. We also record three smaller facts. (i) For a polytope whose centre-to-ridge walls are all mirrors, the hole/ball ratio of the incentre construction equals the classical radius-ratio limit of the polytope formed by the incentres; a second hypothesis (tangential with equal dihedral angles) gives the formula $1/\sin(\varphi/2)-1$, and we show by example that facet-transitivity and an insphere alone do not suffice. (ii) The maximal packing fraction of hard spheres in the CaB$_6$ structure type is $(\pi/6)(30\sqrt2-41)\approx0.74686$, attained only at $r_{\rm B}/r_{\rm Ca}=\sqrt2-1$ with Ca held by Ca--Ca contact; it exceeds the fcc value only for $0.4102<r_{\rm B}/r_{\rm Ca}<0.4159$. (iii) Elementary corollaries of the known hinged-squares mechanism, and a cubic-restricted three-dimensional motion that reaches a six-contact state at $60^\circ$ but is not jammed. All numbers are reproduced by short scripts.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Consider the following planar drawing: draw a square and its diagonals, mark the incentre of each of the four triangles, and join each incentre to the corners of its triangle. The four incentres turn out to be special. A ball of radius equal to the inradius, placed at each incentre, touches its two neighbours across the diagonals, and when the square is repeated over the plane the balls of neighbouring squares touch across the shared side. The same holds in every dimension: if an $n$-cube of side $2$ is cut into the $2n$ pyramids joining its centre to its facets, the incentre of each pyramid lies on an axis at distance $c=2-\sqrt2$ from the centre, its inradius is $R=\sqrt2-1$, and balls of radius $R$ at these $2n$ points touch along all edges of the cross-polytope they span and across every facet of the cubic tiling (Fig.~\ref{fig:construction}).
+
+\emph{What is known.} The triangles of the drawing are fundamental domains of the $[4,4]$ reflection group, the incentre is the point equidistant from the three mirrors, and its orbit is the vertex set of the truncated square tiling 4.8.8. This is the Wythoff construction \cite{Coxeter1973,ConwayBurgielGS2008,GrunbaumShephard1987}. In dimension $n$ the incentre is the Wythoff point of the ringing $t_{0,1}\{4,3^{n-2},4\}$, so the balls sit on the vertices of the truncated $n$-cubic honeycomb with all edges of length $2R$. In three dimensions this vertex set, with equal bonds, is the boron net of CaB$_6$ in Pauling and Weinbaum's model \cite{PaulingWeinbaum1934}, catalogued as the RCSR net \textsf{cab} \cite{RCSR,DelgadoFriedrichs2003}. The analogous construction on the rhombic dodecahedron gives the equal-bond UB$_{12}$ boron net, RCSR \textsf{ubt}, with $x=1/6$ \cite{RCSR}. The planar framework of squares joined by rods, which folds the 4.8.8 arrangement into the square tiling, is the ``hinged squares with rods'' of Flores \cite{Flores}, who credits Stuart \cite{Stuart1963}; its Poisson ratio $-1$ along the motion follows from the symmetry criterion of Mitschke et al.\ \cite{Mitschke2013EPL}. The three-dimensional framework of octahedra joined by linear bridges is the Prussian-blue topology, whose flat bands of rigid unit modes were found by Goodwin \cite{Goodwin2006}. We claim none of this.
+
+\emph{What we add.}
+\begin{enumerate}[leftmargin=2em]
+\item Theorem~\ref{thm:main}: exact zero-mode and self-stress counts, with explicit bases, for the contact framework of the truncated $n$-cubic honeycomb in every dimension $n\ge3$, and its unit-spring elastic tensor, giving $\nus=1/(n^2-n-1)$. The proof reduces the rigidity matrix to four decoupled scalar systems using the sign-change symmetries of the cross-polytope. The three-dimensional counts are consistent with \cite{Goodwin2006}; we did not find the $n$-dimensional closed forms in the literature.
+\item Theorem~\ref{thm:ratio}: a short statement and proof that the hole/ball ratio of the incentre construction on a mirror-walled polytope is the classical radius-ratio limit \cite{Pauling1929} of the polytope of incentres, with the exact conditions under which it holds and fails.
+\item Theorem~\ref{thm:cab6}: the closed form of the maximal packing fraction of the CaB$_6$ structure type and of the whole curve $\phi_{\max}(\gamma)$. The curve itself was plotted by Horst and Travesset \cite{HorstTravesset2016}.
+\item Section~\ref{sec:fold}: corollaries of the hinged-squares motion for balls, and a three-dimensional observation, both stated with their limitations.
+\end{enumerate}
+These results are elementary. Their interest is that they are exact in every dimension and that they connect a single geometric construction to rigidity, packing and crystal chemistry.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_construction.pdf}
+\caption{(a) The planar construction: incentres of the four triangles cut by the diagonals, with balls of the inradius and lines to the corners. (b) In three dimensions the six incentres of the centre-to-face pyramids form an octahedron of edge $2R$. (c) Two cells of the contact framework: the cross-polytope bars inside each cell and one cross bar between cells.}
+\label{fig:construction}
+\end{figure}
+
+\section{The construction and the contact framework}\label{sec:construction}
+
+Let $Q_n=[-1,1]^n$ and let $\e_1,\dots,\e_n$ be the standard basis. The pyramid over the facet $x_i=1$ is $\{x\in Q_n: x_i\ge |x_j|\ \forall j\}$; its facets are the base $x_i=1$ and the walls $x_i=\pm x_j$. A point $t\e_i$ has distance $1-t$ to the base and $t/\sqrt2$ to every wall, so the incentre is $c\,\e_i$ with
+\[
+c=2-\sqrt2,\qquad R=1-c=\sqrt2-1,\qquad c\sqrt2=2R .
+\]
+The dots are $p_i^{s}=s\,c\,\e_i$ for $i=1,\dots,n$ and $s\in\{+1,-1\}$. Two dots $p_i^s,p_j^t$ with $i\ne j$ are at distance $c\sqrt2=2R$; the dot $p_i^+$ and the dot $p_i^-+2\e_i$ of the next cell are at distance $2-2c=2R$. All other distances are larger. Tiling by the lattice $2\Z^n$ we obtain:
+
+\begin{definition}
+The \emph{contact framework} $\mathcal F_n$ has the dots $p_i^s+2z$ ($z\in\Z^n$) as joints and bars between touching balls: the $2n(n-1)$ \emph{intra bars} $\{p_i^s,p_j^t\}$, $i<j$, in each cell (the edges of the cross-polytope), and the $n$ \emph{cross bars} $X_i=\{p_i^+,\ p_i^-+2\e_i\}$ per cell. Every bar has length $2R$.
+\end{definition}
+
+Per cell there are $2n$ joints, hence $2n^2$ degrees of freedom, and $E=2n(n-1)+n=2n^2-n$ bars. Each ball touches $2n-1$ others. For the periodic theory we use Bloch displacements $\vu(p+2z)=\vu(p)\,e^{2i q\cdot z}$ and write $z_i=e^{2iq_i}$. The rigidity matrix $R(q)$ has one row per bar; the row of a bar from joint $a$ to joint $b$ with unit direction $\hat d$ is $\vu\mapsto \hat d\cdot(\vu_b-\vu_a)$, where $\vu_b$ carries the phase of its cell. A \emph{zero mode} is a vector in $\ker R(q)$ and a \emph{self-stress} a vector in $\ker R(q)^*$. By rank--nullity, $\#\text{zero modes}-\#\text{self-stresses}=2n^2-E=n$ at every $q$, the periodic form of the Maxwell--Calladine count \cite{Maxwell1864,Calladine1978,Power2014}. The proof below uses only the bar directions, so all counting statements hold for dots at $\pm t\e_i$ with any $t\in(0,1)$.
+
+\section{Rigidity and elasticity in every dimension}\label{sec:main}
+
+\begin{theorem}\label{thm:main}
+Let $n\ge3$.
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+\item The cross-polytope framework (intra bars of one cell) is infinitesimally rigid in $\R^n$ and has exactly $n(n-3)/2$ independent self-stresses. A basis: put tension $w_{ij}$ on all four bars $\{p_i^\pm,p_j^\pm\}$, where $w=(w_{ij})_{i<j}$ satisfies $\sum_{j\ne i}w_{ij}=0$ for every $i$.
+\item At a wavevector with $q_i\notin\pi\Z$ for all $i$, $\mathcal F_n$ has exactly $n(n-1)/2$ zero modes per cell, namely the infinitesimal rotations $\vu(p_i^s)=\Omega\,p_i^s$ ($\Omega^T=-\Omega$) of each cross-polytope with the same Bloch phase, and exactly $n(n-3)/2$ self-stresses, those of (a) with zero tension on the cross bars. If exactly $k$ of the $q_i$ lie in $\pi\Z$ there are $n(n-1)/2+k$ zero modes and $n(n-3)/2+k$ self-stresses. At $q=0$ there are $n(n+1)/2$ zero modes and $n(n-1)/2$ self-stresses: for every $w\in\R^{\binom n2}$, tension $w_{ij}$ on the four bars $\{p_i^\pm,p_j^\pm\}$ and tension $\tau_i=\sqrt2\sum_{j\ne i}w_{ij}$ on $X_i$.
+\item Give every bar unit spring constant, so a bar extended by $\delta$ stores energy $\delta^2/2$. Impose a homogeneous strain $\varepsilon$ and relax all joints. The energy per unit volume is
+\begin{equation}\label{eq:W}
+W(\varepsilon)=\frac{1}{2^{n}}\Bigl[\frac{2(n-1)^2}{n^2}\sum_i\varepsilon_{ii}^2+\frac{2}{n^2}\sum_{i\ne j}\varepsilon_{ii}\varepsilon_{jj}\Bigr],
+\end{equation}
+independent of the off-diagonal strains. Hence, with $W=\tfrac12 C_{ijkl}\varepsilon_{ij}\varepsilon_{kl}$,
+\[
+C_{11}=\frac{4(n-1)^2}{n^2\,2^n},\qquad C_{12}=\frac{4}{n^2\,2^n},\qquad C_{44}=0,\qquad \frac{C_{11}}{C_{12}}=(n-1)^2,
+\]
+every component of $C$ involving a shear strain vanishes, and the Poisson ratio for uniaxial stress along a cube axis is
+\[
+\nus=\frac{C_{12}}{C_{11}+(n-2)C_{12}}=\frac{1}{n^2-n-1}.
+\]
+\end{enumerate}
+\end{theorem}
+
+The values of $\nus$ are $1/5,1/11,1/19,1/29,1/41,\dots$ for $n=3,4,5,6,7$ (Fig.~\ref{fig:modes}).
+
+\subsection{The block decomposition}
+Fix one cell. For displacements $\vu_i^s=\vu(p_i^s)$ write
+\[
+\va_i=\tfrac12(\vu_i^++\vu_i^-),\qquad \vb_i=\tfrac12(\vu_i^+-\vu_i^-),
+\]
+and denote the $k$-th component of a vector by a superscript. For $i<j$ define the four scalars
+\[
+\alpha_{ij}=a_i^i-a_j^i,\quad \beta_{ij}=a_i^j-a_j^j,\quad \kappa_{ij}=b_i^i+b_j^j,\quad \sigma_{ij}=b_i^j+b_j^i .
+\]
+
+\begin{lemma}\label{lem:block}
+Under a homogeneous strain $\varepsilon$ plus displacements $\vu$, the first-order extension of the intra bar from $p_j^t$ to $p_i^s$ is
+\begin{equation}\label{eq:ext}
+\delta_{ij}^{st}=\tfrac{1}{\sqrt2}\Bigl[c(\varepsilon_{ii}+\varepsilon_{jj})+\kappa_{ij}+s\,\alpha_{ij}-t\,\beta_{ij}-st\,(2c\,\varepsilon_{ij}+\sigma_{ij})\Bigr].
+\end{equation}
+For a periodic displacement, the extension of the cross bar $X_i$ is $2R\,\varepsilon_{ii}-2b_i^i$. For a Bloch displacement and $\varepsilon=0$ it is $\e_i\cdot(z_i\vu_i^--\vu_i^+)$.
+\end{lemma}
+
+\begin{proof}
+The bar vector is $\ell=c(s\e_i-t\e_j)$ with unit vector $\ell/(c\sqrt2)$, and $\delta=\hat\ell\cdot(\varepsilon\ell+\vu_i^s-\vu_j^t)$. Expand with $\vu_i^s=\va_i+s\vb_i$ and $s^2=t^2=1$. For $X_i$ the bar vector is $2R\,\e_i$ and the displacement difference is $\vu_i^--\vu_i^+=-2\vb_i$ in the periodic case.
+\end{proof}
+
+The four functions $1,s,t,st$ on $\{\pm1\}^2$ are orthogonal. Hence the four bars between axes $i$ and $j$ impose exactly the four scalar conditions $\kappa_{ij}=\alpha_{ij}=\beta_{ij}=\sigma_{ij}=0$ when $\varepsilon=0$, and
+\begin{equation}\label{eq:sum}
+\tfrac12\sum_{s,t}(\delta_{ij}^{st})^2=\bigl(c(\varepsilon_{ii}+\varepsilon_{jj})+\kappa_{ij}\bigr)^2+\alpha_{ij}^2+\beta_{ij}^2+\bigl(2c\,\varepsilon_{ij}+\sigma_{ij}\bigr)^2 .
+\end{equation}
+The rigidity problem has split into four independent linear systems: one in the $n$ diagonal entries $b_i^i$ (via $\kappa$), one in the $n^2$ entries of the $\va_i$ (via $\alpha,\beta$), and one in the $n(n-1)$ off-diagonal entries $b_i^j$ (via $\sigma$).
+
+\subsection{Proof of Theorem~\ref{thm:main}(a)}
+\emph{The $\va$-block.} The conditions $\alpha_{ij}=\beta_{ij}=0$ for all $i<j$ say that, for each $k$, all the numbers $a_j^k$ ($j=1,\dots,n$) equal $a_k^k$. So the solutions are $\va_j=\vv$ for all $j$, an $n$-dimensional space of translations. The map $\va\mapsto(\alpha,\beta)$ goes from $\R^{n^2}$ to $\R^{n(n-1)}$ with an $n$-dimensional kernel, so it is onto: these $n(n-1)$ conditions are independent.
+
+\emph{The $\sigma$-block.} Each $\sigma_{ij}$ involves the two variables $b_i^j,b_j^i$, which occur in no other condition. So the $\binom n2$ conditions are independent, and the solutions are the matrices $B=(b_i^j)$ with zero symmetric off-diagonal part.
+
+\emph{The $\kappa$-block.} The conditions $b_i^i+b_j^j=0$ for all $i<j$ form the system $x_i+x_j=0$ over the edges of the complete graph $K_n$. For $n\ge3$ any triangle $i,j,k$ gives $x_i=-x_j=x_k=-x_i$, so $x=0$. The coefficient matrix is the unsigned incidence matrix of $K_n$, of rank $n$, and its left kernel, the vectors $w$ on edges with $\sum_{j\ne i}w_{ij}=0$ at each vertex, has dimension $\binom n2-n=n(n-3)/2$.
+
+Together, the zero modes are $\va_j=\vv$, $b_i^i=0$ and $B$ antisymmetric, that is $\vu_i^s=\vv+s\,\Omega' \e_i$ with $\Omega'$ antisymmetric; with $\Omega=\Omega'/c$ these are the translations plus the rotations $\vu_i^s=\vv+\Omega p_i^s$. So the kernel has dimension $n+n(n-1)/2$ and the framework is infinitesimally rigid. The rank is $2n^2-n(n+1)/2=n(3n-1)/2$, and the number of self-stresses is $2n(n-1)-n(3n-1)/2=n(n-3)/2$.
+
+For the explicit basis, expand a stress on the four bars of the pair $(i,j)$ in the characters $1,s,t,st$. By \eqref{eq:ext}, its pairing with a displacement is a combination of $\kappa_{ij},\alpha_{ij},\beta_{ij},\sigma_{ij}$ with the four character coefficients. Since the $\va$- and $\sigma$-blocks have no relations, the $s$, $t$ and $st$ coefficients must vanish, and the character-$1$ coefficients $w_{ij}$ must satisfy $\sum_{i<j}w_{ij}\kappa_{ij}=\sum_i b_i^i\sum_{j\ne i}w_{ij}\equiv0$, i.e.\ $\sum_{j\ne i}w_{ij}=0$. Physically: equal tension on the four bars of the square spanned by $p_i^\pm,p_j^\pm$ pulls $p_i^s$ inward along $\e_i$ with force $\sqrt2\,w_{ij}$, and these pulls cancel at each joint. \qed
+
+\subsection{Proof of Theorem~\ref{thm:main}(b)}
+Intra bars join joints of the same cell, so their rows carry no phase. A zero mode of $\mathcal F_n$ therefore restricts on each cell to an infinitesimal motion of the cross-polytope, which by (a) is $\vu_i^s=\vv+\Omega p_i^s$ with complex $\vv,\Omega$. Since $\e_i\cdot\Omega\e_i=0$, both $\e_i\cdot\vu_i^+$ and $\e_i\cdot\vu_i^-$ equal $v^i$, and by Lemma~\ref{lem:block} the cross bar $X_i$ requires
+\[
+(z_i-1)\,v^i=0 .
+\]
+If $z_i\ne1$ for all $i$ then $\vv=0$ and $\Omega$ is free: $n(n-1)/2$ zero modes. If exactly $k$ of the $z_i$ equal $1$, the corresponding $v^i$ are free: $n(n-1)/2+k$ zero modes. The self-stress counts follow from rank--nullity, $\#\text{self-stresses}=\#\text{zero modes}-n$. The stresses of (a) remain stresses of $\mathcal F_n$ with zero cross-bar tension, because intra rows carry no phase; at generic $q$ they are all of them. At $q=0$, take any $w$ and the tensions of the statement. At $p_i^s$ the intra tensions give the force $-\sqrt2\,s\,\e_i\sum_{j}w_{ij}$ and the cross bar gives $s\,\tau_i\e_i$, so the choice $\tau_i=\sqrt2\sum_j w_{ij}$ balances every joint. These stresses form a space of dimension $\binom n2=n(n-1)/2$, which is the full count. \qed
+
+\subsection{Proof of Theorem~\ref{thm:main}(c)}
+A homogeneous macroscopic strain produces the same bar extensions in every cell. In a Bloch decomposition of the relaxation over any periodic supercell, only the $q=0$ component couples linearly to $\varepsilon$; the other components add a non-negative energy and are optimally zero. So it suffices to relax over one-cell-periodic displacements, for which Lemma~\ref{lem:block} and \eqref{eq:sum} give the energy per cell
+\[
+\mathcal E=\sum_{i<j}\Bigl[\bigl(c(\varepsilon_{ii}+\varepsilon_{jj})+\kappa_{ij}\bigr)^2+\alpha_{ij}^2+\beta_{ij}^2+\bigl(2c\varepsilon_{ij}+\sigma_{ij}\bigr)^2\Bigr]+2\sum_i\bigl(R\,\varepsilon_{ii}-b_i^i\bigr)^2 .
+\]
+The variables $\va$ appear only in $\alpha,\beta$; choose $\va=0$. The off-diagonal $b_i^j$ appear only in $\sigma_{ij}$, and each $\sigma_{ij}$ can be chosen freely, so choose $\sigma_{ij}=-2c\,\varepsilon_{ij}$. This removes every off-diagonal strain from the energy: all shear moduli vanish. (The relaxed motion keeps each cross-polytope undeformed; the shear is taken up by first-order rotations of the cross bars.)
+
+With $e_i=\varepsilon_{ii}$, $x_i=b_i^i$ and $y_i=x_i+c\,e_i$, and using $c+R=1$, the remaining energy is
+\[
+\mathcal E=\sum_{i<j}(y_i+y_j)^2+2\sum_i(e_i-y_i)^2 .
+\]
+Its Hessian in $y$ is $2(nI+J)$, with $J$ the all-ones matrix, which is positive definite. The stationarity conditions $n y_k+\sum_j y_j=2e_k$ give $\sum_j y_j=\tfrac1n\sum_j e_j$ and
+\[
+y_k=\frac1n\Bigl(2e_k-\frac1n\sum_j e_j\Bigr).
+\]
+For a quadratic $y^T My-2(2e)\cdot y+2|e|^2$ the minimum is $2|e|^2-2e\cdot y$, which evaluates to
+\[
+\mathcal E_{\min}=\frac{2(n-2)}{n}\sum_i e_i^2+\frac{2}{n^2}\Bigl(\sum_ie_i\Bigr)^2=\frac{2(n-1)^2}{n^2}\sum_ie_i^2+\frac{2}{n^2}\sum_{i\ne j}e_ie_j .
+\]
+Dividing by the cell volume $2^n$ gives \eqref{eq:W}. For uniaxial stress along $\e_1$ the conditions $\partial W/\partial e_j=0$ ($j\ge2$) read $C_{12}e_1+(C_{11}+(n-2)C_{12})e_\perp=0$, which gives the stated $\nus$, and $C_{11}+(n-2)C_{12}=(4/n^22^n)\bigl((n-1)^2+n-2\bigr)$ yields $1/(n^2-n-1)$. \qed
+
+\begin{remark}[The case $n=2$]
+The proof of (c) does not use $n\ge3$, so \eqref{eq:W} holds for $n=2$: $C_{11}=C_{12}=1/4$, all shear moduli vanish, and only the bulk modulus is non-zero; formally $\nus=1$. The counts in (a) and (b) change, because the $\kappa$-block for $K_2$ is the single condition $b_1^1+b_2^2=0$: the four-bar square has one internal flex. At generic $q$ this flex couples to the translations through the cross bars and survives, giving $2$ zero modes and $0$ self-stresses per cell; at $q=0$ there are $3$ zero modes and $1$ self-stress. These agree with the numerical check.
+\end{remark}
+
+\begin{remark}
+(1) All statements hold for dots at $\pm t\e_i$ with any $0<t<1$: the counts use only directions, and in (c) the cross bars have length $2-2t$, so the identity $t+(1-t)=1$ replaces $c+R=1$. The incentre is the unique $t$ at which all bars have the same length, so that ``unit springs'' means ``identical bars''. (2) For $n=3$ the framework is the Prussian-blue topology, and the flat bands of (b) are the rigid unit modes of \cite{Goodwin2006}; our contribution is the closed form in $n$ and the explicit bases. (3) At generic $q$ the self-stresses live inside the cross-polytopes, so for $n\ge4$ the framework is over-braced at the scale of one cell and under-braced at the scale of the lattice at the same time.
+\end{remark}
+
+\emph{Numerical check.} The script \texttt{proofs/rigidity\_nd.py} builds $R(q)$ and the relaxed elastic tensor directly from coordinates, without using the decomposition, for $n=2,\dots,8$. It confirms every count in Theorem~\ref{thm:main} at random $q$, at $q=0$ and on the planes $q_1=\dots=q_k=0$; that the stated bases span the self-stress spaces and the rotations span the generic zero modes; and the elastic constants to $10^{-12}$ with full, unconstrained relaxation, for $c=2-\sqrt2$ and for two other values of $c$. The script \texttt{proofs/proof\_steps.py} checks \eqref{eq:ext}, \eqref{eq:sum} and the minimisation symbolically for $n=2,\dots,8$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/fig3_modes.pdf}
+\caption{(a) Zero modes and self-stresses per cell at a generic wavevector (lines: Theorem~\ref{thm:main}; markers: rank of the numerically assembled rigidity matrix). (b) Poisson ratio $\nus$ with unit springs (line: formula; markers: full numerical relaxation).}
+\label{fig:modes}
+\end{figure}
+
+\section{A radius-ratio identity}\label{sec:ratio}
+
+Let $P\subset\R^n$ be a convex polytope with the origin $O$ in its interior. For a facet $F$ let $\Pi_F=\operatorname{conv}(O\cup F)$, and for a ridge $E=F\cap G$ let $W_E$ be the hyperplane through $O$ and $E$ (the \emph{wall}). Suppose each $\Pi_F$ has an \emph{inscribed ball}, a ball in $\Pi_F$ tangent to every facet of $\Pi_F$; its centre $d_F$ is the \emph{dot} and its radius $r_F$.
+
+\begin{lemma}\label{lem:unique}
+If a convex polytope has a ball tangent to all its facet hyperplanes from inside, that ball is its unique largest inscribed ball.
+\end{lemma}
+
+\begin{proof}
+Let the facets be $n_k\cdot x\le h_k$ with unit $n_k$, the tangent ball $B(x,r)$, so $n_k\cdot x+r=h_k$. If $B(y,r')$ lies inside with $r'\ge r$, then $n_k\cdot(y-x)\le r-r'\le0$ for all $k$. Since the polytope is bounded there are $\lambda_k>0$ with $\sum\lambda_kn_k=0$, which forces $n_k\cdot(y-x)=0$ for all $k$ and $r'=r$; as the $n_k$ span $\R^n$, $y=x$.
+\end{proof}
+
+\begin{theorem}\label{thm:ratio}
+Assume one of the following.
+\begin{enumerate}[label=(H\arabic*),leftmargin=3em]
+\item Every wall $W_E$ is a mirror of $P$, and $\Pi_F$ has an inscribed ball for one (hence every) facet.
+\item $P$ has an insphere centred at $O$, and the angle $\varphi$ between the normals of any two adjacent facets is the same for all ridges.
+\end{enumerate}
+Then all dots have the same radius $r$ and the same distance $D$ from $O$; the balls of two facets sharing a ridge touch, at a point of the common wall; no two balls overlap; and the ball of radius $D-r$ centred at $O$ touches every ball. Consequently the hole/ball ratio is
+\[
+\frac{D-r}{r}=\frac{2D}{e}-1,\qquad e=2r,
+\]
+which is the classical radius-ratio limit of the polytope $Q$ of dots: anions of radius $e/2$ on a sphere of radius $D$, touching their neighbours and a central cation. Under (H1) $P$ is facet-transitive and $Q$ is vertex-transitive. Under (H2) $Q$ is a scaled polar dual of $P$, inscribed with all edges equal to $2r$, and
+\[
+\frac{D-r}{r}=\frac{1}{\sin(\varphi/2)}-1 ;
+\]
+conversely every convex inscribed polytope with equal edges and its circumcentre inside arises in this way.
+\end{theorem}
+
+\begin{proof}
+\emph{(H1).} Let $E=F\cap G$ and let $\rho_E$ be the reflection in $W_E$. It is a symmetry of $P$ fixing $O$ and $E$ pointwise, so it permutes the two facets through $E$. It cannot fix $F$: the plane of $F$ contains $E\subset W_E$ and does not contain $O$, so if it were $\rho_E$-invariant it would be perpendicular to $W_E$ and $F$ would lie on both sides of $E$ in its plane. So $\rho_E(F)=G$, $\rho_E(\Pi_F)=\Pi_G$, and an inscribed ball of $\Pi_F$ maps to one of $\Pi_G$; by Lemma~\ref{lem:unique} $\rho_E(B_F)=B_G$. The ball $B_F$ is tangent to $W_E$ at a point fixed by $\rho_E$, so $B_F$ and $B_G$ touch there, and $r_F=r_G$, $|Od_F|=|Od_G|$. The ridge graph of a polytope is connected, so $r$ and $D$ are constant, and the reflections generate a group acting transitively on facets. Balls lie in pyramids with disjoint interiors, so they do not overlap. The remaining claims are immediate.
+
+\emph{(H2).} Let $\varrho$ be the inradius, $\mathbf n_F$ the unit outer normal and $T_F=\varrho\,\mathbf n_F\in F$ the tangency point. Since $O$ is equidistant from the planes of $F$ and $G$ and lies on the inner side of both, $W_E$ is the internal bisector of the dihedral angle at $E$, with normal proportional to $\mathbf n_F-\mathbf n_G$. The angle $\theta$ between $\mathbf n_F$ and $W_E$ satisfies $\sin\theta=\mathbf n_F\cdot(\mathbf n_F-\mathbf n_G)/|\mathbf n_F-\mathbf n_G|=\sin(\varphi/2)$. The point $d=(\varrho-r)\mathbf n_F$ on the segment $OT_F$ therefore has distance $r$ from the base and $(\varrho-r)\sin(\varphi/2)$ from each wall of $\Pi_F$; with $r=\varrho\sin(\varphi/2)/(1+\sin(\varphi/2))$ these agree, so $d=d_F$ and $D=\varrho-r=r/\sin(\varphi/2)$. The reflection in $W_E$ exchanges $\mathbf n_F$ and $\mathbf n_G$, hence $d_F$ and $d_G$, whose distance is $2D\sin(\varphi/2)=2r$. The dots $D\mathbf n_F$ are $D\varrho$ times the vertices $\mathbf n_F/\varrho$ of the polar dual, whose edges correspond to ridges of $P$. Conversely, if $Q$ is inscribed in a sphere about $O$ with equal edges, its polar has all facets at the same distance from $O$, and the angle between the normals at the ridge dual to an edge $qq'$ is $\angle qOq'$, the same for all edges.
+\end{proof}
+
+\begin{remark}[Scope]
+(1) (H1) holds for the regular polytopes in every dimension, the rhombic dodecahedron, the $k$-gonal bipyramids of \emph{every} height (for which $Q$ is always the uniform $k$-prism: the mirrors force all edges equal), and the Catalan duals of Wythoffian uniform polyhedra, whose walls are the perpendicular bisector planes of the dual edges. (2) (H2) adds the duals of snub polyhedra and the tetragonal trapezohedron of the single shape dual to the uniform square antiprism. (3) Facet-transitivity and an insphere do not suffice: for tetragonal trapezohedra polar to square antiprisms of height $0.7$ and $1.3$ times the uniform one, every pyramid has an inscribed ball, but the distances between adjacent dots range over $[1,1.017]\cdot2r$ and $[1,1.006]\cdot 2r$, so half the contacts open (\texttt{proofs/radius\_ratio.py}). (4) A prism $P$ is not facet-transitive: for the triangular prism with square sides the pyramids have different inradii and the theorem does not apply.
+\end{remark}
+
+\begin{table}[t]
+\caption{Hole/ball ratio of the incentre construction (LP for the inscribed balls) against the classical radius-ratio limit of $Q$. All rows satisfy (H1) except the last two, which satisfy (H2).}
+\label{tab:ratio}
+\begin{tabular}{llcc}
+\toprule
+$P$ & $Q$ (coordination) & hole/ball & classical \\
+\midrule
+tetrahedron & tetrahedron (CN4) & 0.2247 & $\sqrt{3/2}-1=0.2247$\\
+cube & octahedron (CN6) & 0.4142 & $\sqrt2-1=0.4142$\\
+octahedron & cube (CN8) & 0.7321 & $\sqrt3-1=0.7321$\\
+dodecahedron & icosahedron (CN12) & 0.9021 & 0.9021\\
+rhombic dodecahedron & cuboctahedron (CN12) & 1.0000 & 1\\
+triangular bipyramid, any height & trigonal prism (CN6) & 0.5275 & 0.5275\\
+icosahedron & dodecahedron (CN20) & 1.8025 & 1.8025\\
+tesseract & 16-cell (4D) & 0.4142 & 0.4142\\
+\midrule
+pentagonal icositetrahedron & snub cube & 1.6874 & 1.6874\\
+trapezohedron (one shape) & square antiprism (CN8) & 0.6453 & 0.6453\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Unreachable shapes.} The CN7 and CN9 polyhedra of the radius-ratio tables, and the dodecahedral CN8, are not vertex-transitive, so no polytope satisfying (H1) produces them. Under (H2) $Q$ must be inscribed with all edges equal. For the triangulated shapes (pentagonal bipyramid CN7, snub disphenoid CN8, tricapped trigonal prism CN9) all faces would then be equilateral, and by the classical enumeration of the eight convex deltahedra the only ones with these combinatorics are the Johnson solids $J_{13}$, $J_{84}$, $J_{51}$. None is inscribed: for unit edge their vertex orbits lie at distances $0.851$ and $0.526$, $0.930$ and $0.677$, $0.764$ and $0.996$ from the centre. So these limits are unreachable by either route. We did not examine the capped CN7 shapes under (H2). The square antiprism is reached only under (H2) and only at one shape; under (H1) every adjacent pair of dots is exchanged by a reflection symmetry, and no reflection symmetry of the antiprism exchanges the ends of a lateral edge. The construction thus explains one structural limitation of the radius-ratio rule (it applies naturally only to mirror-generated, equal-edged polyhedra); it does not address the softness and size effects behind most of the rule's failures \cite{George2020}.
+
+\section{The CaB$_6$ packing maximum}\label{sec:cab6}
+
+Tiled by the cubic lattice, the dots of the cube are the boron positions of Pauling and Weinbaum's equal-bond model of CaB$_6$ \cite{PaulingWeinbaum1934}: Ca at $1a$ $(0,0,0)$, B at $6f$ $(x,\tfrac12,\tfrac12)$ and permutations, $x=(\sqrt2-1)/2$, at which the B--B distances inside and between octahedra are equal \cite{RCSR}. Consider hard spheres of radius $r_{\rm L}$ on the Ca sites and $r_{\rm S}$ on the B sites, with $x$ and the lattice parameter $a$ free, and $\gamma=r_{\rm S}/r_{\rm L}$.
+
+\begin{theorem}\label{thm:cab6}
+The maximal packing fraction of the CaB$_6$ structure type at size ratio $\gamma$ is
+\[
+\phi_{\max}(\gamma)=\begin{cases}\dfrac{\pi}{6}\bigl(1+6\gamma^3\bigr), & 0<\gamma\le\sqrt2-1,\\[2mm]
+\dfrac{\pi}{6}(\sqrt2-1)^3\bigl(6+\gamma^{-3}\bigr), & \gamma\ge\sqrt2-1.\end{cases}
+\]
+Its global maximum is $\phi^*=\frac{\pi}{6}(30\sqrt2-41)=0.746865$, attained only at $\gamma=\sqrt2-1$, $x=(\sqrt2-1)/2$, $a=2r_{\rm L}$. There the Ca spheres touch each other and each B sphere touches five B spheres, but Ca and B do not touch: $d_{\rm Ca\text{-}B}=0.73681\,a>r_{\rm L}+r_{\rm S}=0.70711\,a$. Moreover $\phi_{\max}(\gamma)>\pi/(3\sqrt2)$ (fcc) exactly when
+\[
+\Bigl(\tfrac{\sqrt2-1}{6}\Bigr)^{1/3}=0.41023<\gamma<(4+7\sqrt2)^{-1/3}=0.41591 .
+\]
+\end{theorem}
+
+\begin{proof}
+Set $a=1$; then $\phi=\frac{4\pi}{3}(r_{\rm L}^3+6r_{\rm S}^3)$. The constraints include Ca--Ca: $2r_{\rm L}\le1$; B--B inside an octahedron: $2r_{\rm S}\le\sqrt2(\tfrac12-x)$; B--B between octahedra: $2r_{\rm S}\le2x$. The last two give $r_{\rm S}\le m(x)=\min\bigl((\tfrac12-x)/\sqrt2,\,x\bigr)\le m^*=(\sqrt2-1)/2$, with equality only at $x^*=(\sqrt2-1)/2$. Hence $\phi\le\frac{4\pi}{3}\cdot\frac18(1+6\gamma^3)$ from $r_{\rm L}\le\frac12$, and $\phi=\frac{4\pi}{3}r_{\rm S}^3(\gamma^{-3}+6)\le\frac{4\pi}{3}m^{*3}(6+\gamma^{-3})$ from $r_{\rm S}\le m^*$. The first bound is smaller for $\gamma\le\sqrt2-1$ and the second for $\gamma\ge\sqrt2-1$. Both are attained at $x=x^*$: for $\gamma\le\sqrt2-1$ take $r_{\rm L}=\frac12$, $r_{\rm S}=\gamma/2\le m^*$; for $\gamma\ge\sqrt2-1$ take $r_{\rm S}=m^*$, $r_{\rm L}=m^*/\gamma\le\frac12$. The Ca--B distance is $\sqrt{x^{*2}+\frac12}=0.73681$, and $r_{\rm L}+r_{\rm S}\le0.73681$ holds in the first case for $\gamma\le0.4736$ and in the second for $\gamma\ge0.3910$, so it holds throughout. All other pair distances at $x^*$ exceed these (checked over a $5^3$ block). The maximum of $\phi_{\max}$ is at the junction $\gamma=\sqrt2-1$, where $1+6(\sqrt2-1)^3=30\sqrt2-41$. The window follows from $\frac\pi6(1+6\gamma^3)>\frac{\pi}{3\sqrt2}\iff6\gamma^3>\sqrt2-1$ and $(\sqrt2-1)^3(6+\gamma^{-3})>\sqrt2\iff\gamma^{-3}>\sqrt2(5\sqrt2+7)-6=4+7\sqrt2$.
+\end{proof}
+
+\begin{remark}
+(1) The curve was plotted, for this and 23 other lattices, by Horst and Travesset \cite[Fig.~3]{HorstTravesset2016}; the peak position can be read from their figure. We did not find the closed forms in text. (2) The maximum is a cusp (Fig.~\ref{fig:cab6}), and the window above fcc is narrow and asymmetric, $-0.0040$ and $+0.0017$ about $\sqrt2-1$. (3) CaB$_6$ is not a densest binary packing at this size ratio: the NaCl structure at $\gamma=\sqrt2-1$ has $\phi=\pi(5-3\sqrt2)/3=0.7931$, and CaB$_6$ is absent from the densest binary packings of Hopkins et al.\ \cite{Hopkins2012}. The Murray--Sanders list of structures beating fcc \cite{MurraySanders1980} does not mention CaB$_6$, consistent with the window being so narrow. CaB$_6$-type nanoparticle superlattices are observed \cite{Shevchenko2006}.
+\end{remark}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/fig4_cab6.pdf}
+\caption{(a) Maximal packing fraction of the CaB$_6$ type versus size ratio (Theorem~\ref{thm:cab6}); dashed line: fcc. (b) Detail of the cusp; shaded: the window where it exceeds fcc.}
+\label{fig:cab6}
+\end{figure}
+
+\section{Remarks on finite motions}\label{sec:fold}
+
+In this section the balls are joined by centre-to-centre bars of length $2R$ (balls may roll on each other); a model with pins at the contact points behaves differently.
+
+\emph{The plane.} The 4.8.8 framework of squares and rods folds into the square tiling \cite{Flores,Stuart1963}, a relative of the rotating-squares mechanism \cite{GrimaEvans2000}: alternate squares rotate by $\pm\theta$, the cross bars stay on the axes, and the period becomes $L(\theta)=2R+2c\cos\theta$ in both directions, so the motion is isotropic with $\nu=-1$ along it, as the criterion of \cite{Mitschke2013EPL} predicts. The motion is the symmetric path; the periodic framework has other infinitesimal flexes, including a shear.
+
+\begin{corollary}\label{cor:fold}
+Along this motion the closest pair of non-bonded balls has gap $2\sqrt2\,c\cos(\theta+\pi/4)$ (numerically no other pair comes closer), so the first new contact occurs at $\theta=\pi/4$. There $L=4R$, the linear strain is $L/2-1=-R^2=-(3-2\sqrt2)$, the dots form a square lattice of spacing $2R$, and the packing fraction has risen from $\pi(\sqrt2-1)^2=0.5390$ to $\pi/4$ (Fig.~\ref{fig:fold}). Among dots placed on the axis mirror lines at $\pm t\e_i$, only $t=2-\sqrt2$ ends in a square lattice with a single contact distance (for $t<2-\sqrt2$ this part is numerical).
+\end{corollary}
+
+The last statement is clear at $\theta=\pi/4$: the dot spacings along each axis then alternate between $t\sqrt2$ and $2-2t$, equal only at the incentre. For $t<2-\sqrt2$ the motion continues past $\pi/4$ and stops at a state with three contacts per ball (numerical scan, \texttt{proofs/fold.py}). The range $[0.539,\pi/4]$ is the flexibility window of this framework in the sense of \cite{Sartbaeva2006}; the kagome analogue, triangles twisted by $30^\circ$ into the triangular packing, is of the same type \cite{Donev2004,Sun2012}. We expect these facts to be regarded as folklore.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/fig2_fold.pdf}
+\caption{Endpoints of the hinged-squares motion of \cite{Flores,Stuart1963}, drawn with balls of radius $R$ and bars of length $2R$. Dashed: one cell.}
+\label{fig:fold}
+\end{figure}
+
+\emph{Space.} Rotate the octahedra of the three-dimensional framework alternately by $\pm\theta$ about $[111]$ (the analogue of the $a^-a^-a^-$ tilt \cite{Glazer1972}) and \emph{keep the lattice cubic}. The bars then fix the lattice parameter $a(\theta)=K_1+\sqrt{4R^2-2K_2^2}$, with $K_2=\frac23c(1-\cos\theta)$ and $K_1=2c\cos\theta+K_2$. At $\theta=60^\circ$ we find $a=8c/3$ exactly, every ball has exactly six contacts, and the packing fraction is $27\pi\sqrt2/256=0.4686$ (from $\pi R^3=0.2233$ at $\theta=0$); numerically no earlier contact occurs. This is \emph{not} a jammed state. If the lattice may become trigonal, with lattice vectors the rows of $\left(\begin{smallmatrix}a&b&b\\b&a&b\\b&b&a\end{smallmatrix}\right)$, all bar lengths are still preserved, and the set of non-overlapping states connected to $\theta=0$ on a $1^\circ\times0.01$ grid contains states of packing fraction up to $0.648$ (near $\theta=31^\circ$, with large shear). The six-contact net at $60^\circ$ has coordination sequence $6,17,42,68,110,153,212,272,348,425$, which matches RCSR \textsf{sms} (sphere-packing type 6/3/h2) term by term \cite{RCSR}. We checked the coordination sequence only, not an isomorphism, and record the match as an observation.
+
+\section{Outlook}
+
+The rigidity counts of Theorem~\ref{thm:main} rest on the sign-change symmetries of the cross-polytope, and the same character decomposition should apply to other frameworks built from centrally symmetric clusters joined along symmetry axes. A full description of the configuration space of these ball-and-bar frameworks, beyond the symmetric paths of Section~\ref{sec:fold}, is open, as is whether the incentre is always the unique dot position whose motions end in single-edge-length packings. Finally, whether people perceive the centre of a triangle nearer its incentre or its centroid appears not to have been tested; an early study of perceived centres of polygons found them closest to the area barycentre among the mathematical centres it compared \cite{Davi}.
+
+\section*{Acknowledgments}
+The drawing began as a doodle the author made on the backs of tests and on napkins, because the pattern was satisfying. Computational assistance, including drafting of proofs, code and text, a literature search, and an independent numerical re-derivation of the results, was provided by an AI system (Claude, Anthropic). Responsibility for the content rests with the author.
+
+\section*{Code availability}
+Every number in this paper is produced by the scripts in \texttt{proofs/} and \texttt{figures/}; the accompanying \texttt{README.md} lists which script gives which result.
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+
+\end{document}
