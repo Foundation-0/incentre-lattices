@@ -31,7 +31,7 @@ Conversely, every convex inscribed polytope with equal edges and its circumcentr
 square antiprisms of height 0.7 and 1.3 times the uniform height, every pyramid has an inscribed ball, yet the distances between
 adjacent dots range over [1, 1.017] * 2r and [1, 1.006] * 2r, so some contacts open. (Replay controls 1 and 2.) The theorem
 holds for the trapezohedron only at the single shape dual to the uniform antiprism, and only under H2. A triangular prism with
-square sides is not facet-transitive: its pyramids have different inradii (0.1667 and 0.1340) and the theorem does not apply
+square sides is not facet-transitive: its pyramids have different inradii (0.1667 and 0.1340 for unit edge) and the theorem does not apply
 (control 3). The cuboctahedron is not facet-transitive either (control 4).
 
 ## Proof
@@ -78,7 +78,12 @@ and the hole/ball ratio. `verify.py` requires, for all 20 cases that satisfy H1 
 two Catalan solids, bipyramids of six heights over k = 3, 4, 6, the pentagonal icositetrahedron, the uniform trapezohedron and
 four regular 4-polytopes), that every pyramid has an inscribed ball, r and D are constant to 1e-6, all adjacent dots are at
 2r, no pair is closer, and hole/ball equals the classical value (and 1/sin(phi/2) - 1 for the H2 cases). The 4 counterexamples
-above must violate that conclusion. These are finite checks at floating-point precision; they do not prove the theorem.
+above must violate that conclusion, and the replay also asserts their premises (an inscribed ball in every pyramid; facet-transitivity for the two
+trapezohedra, its failure for the prism and the cuboctahedron) and the numbers quoted above (prism inradii, trapezohedron contact ranges, deltahedra
+orbit radii, each to 6e-4, the rounding of the quoted digits). Hypothesis H1 is checked numerically: for each of the 18 cases claimed under H1, the
+vertex set of P is reflected in every wall (plane through O and a ridge) and must map onto itself (distance below 1e-9; the reflections are exact to about
+1e-15). The two H2-only cases and the four counterexamples are asserted NOT to have mirror walls. H2 is checked by the equal normal angles and facet
+offsets (below 1e-6). These are finite checks at floating-point precision; they do not prove the theorem.
 
 ## Prior art
 

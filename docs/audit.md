@@ -29,7 +29,8 @@ the model is ideal central-force springs, so shear moduli of exactly zero say no
 |---|---|---|
 | Under H1 (mirror walls) or H2 (insphere plus equal dihedral angles) all dots equal, adjacent balls touch, hole/ball = classical ratio, and 1/sin(phi/2) - 1 under H2 | PROVEN (`PROOF.md`) | the written proof |
 | 20 polytopes (Platonic, Catalan, bipyramids, 4D regular, snub-cube dual, uniform trapezohedron) | VERIFIED | `radius_ratio.py`: inscribed balls by `linprog`, tolerances 1e-6 |
-| The corrected hypotheses: facet-transitivity plus an insphere is not enough | VERIFIED (counterexamples) | trapezohedra at 0.7x and 1.3x: contacts open to 1.017 and 1.006 times 2r; prism and cuboctahedron outside the hypotheses |
+| H1 (every wall is a mirror) on the 18 cases claimed under H1 | VERIFIED | `verify.py` reflects the vertex set in every wall and requires it to map onto itself (1e-9); the H2-only cases and the counterexamples are asserted not to have mirror walls |
+| The corrected hypotheses: facet-transitivity plus an insphere is not enough | VERIFIED (counterexamples) | trapezohedra at 0.7x and 1.3x: contacts open to 1.017 and 1.006 times 2r; prism and cuboctahedron outside the hypotheses; the premises (an inscribed ball in every pyramid) and the quoted numbers (prism inradii, contact ranges, deltahedra orbit radii) are asserted |
 | CN7, CN9 and dodecahedral CN8 shapes are not inscribed | VERIFIED for J13, J51, J84; classification of deltahedra is cited, not replayed | `radius_ratio.py` |
 
 Known limits: floating-point LP at 1e-6; the families satisfying H1 or H2 are not classified; the capped CN7 shapes under H2 were not examined.
