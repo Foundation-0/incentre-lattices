@@ -34,8 +34,8 @@ simplifies to 27 pi sqrt2/256 (difference below 1e-25 at 30 digits).
 
 ## What the replay adds
 
-The cubic path scan, the exact 60-degree algebra, the coordination sequence against the RCSR `sms` sequence (read from the RCSR
-data file `3dall.txt`), and the trigonal grid scan with its connected component. Must-fail controls: the 60-degree state claimed
+The cubic path scan, the exact 60-degree algebra, the coordination sequence against the RCSR `sms` sequence (hardcoded
+in `verify.py`; checked against the RCSR data file `3dall.txt`, which is not vendored in this repo), and the trigonal grid scan with its connected component. Must-fail controls: the 60-degree state claimed
 to be a jam; a shifted lattice constant claimed to keep six contacts; the coordination sequence claimed to be fcc's.
 
 ## Prior art

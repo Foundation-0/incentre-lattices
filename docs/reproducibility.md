@@ -67,8 +67,7 @@ inputs are the files whose hashes are recorded. It does not mean that any statem
 ## Commitment
 
 `commitment/SHA256SUMS` lists the hashes of every certificate, `certificates/*` and both path files; `commitment/ROOT` is the sha256 of that
-list. `commitment/README.md` explains how to check it. The commitment is not published anywhere yet; whether and where to post it is a decision
-for the maintainers.
+list. `commitment/README.md` explains how to check it. The commitment was posted 2026-10-12 as a public gist (see `commitment/README.md`).
 
 ## Optional: Lean
 

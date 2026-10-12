@@ -70,6 +70,8 @@ def build(src=FOLD / "best" / "path.npz", steps=200):
         v = Y[j] + s @ M - Y[i]
         sgn = np.sign(v @ n)
         vl = v - (v @ n) * n
+        if vl @ vl > D ** 2:
+            raise ValueError("interface bar planar component exceeds D: sqrt of negative")
         dz = sgn * np.sqrt(D ** 2 - vl @ vl) - (v @ n)
         return apply(dz)
 

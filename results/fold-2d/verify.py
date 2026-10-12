@@ -5,7 +5,7 @@ Exact (sympy): gap(theta) = 2 sqrt2 c cos(theta + pi/4), first contact at pi/4, 
 strain -R^2, density pi(sqrt2-1)^2 -> pi/4.  Numerical (numpy): lock angle and nearest
 distances for dots placed at +-c e_i for several c; only c = 2 - sqrt2 ends in a square lattice
 with a single contact distance (checked on a scan, not proved for all c).
-Must-fail controls: wrong gap formula, wrong lock angle, and a non-incentre c claimed to end in a
+Must-fail controls: wrong gap formula, wrong lock angle, wrong end density, and a non-incentre c claimed to end in a
 single-distance square lattice are all rejected.  Writes certificate.json.  Usage: python verify.py
 """
 import pathlib

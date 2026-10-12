@@ -9,7 +9,7 @@ analysis (CNA) of the end state. The checks are the same as in chk.py:
     120 bars of length 2R = 2(sqrt2-1) for m = 2) with FIXED integer lattice shifts;
   * every bar length is checked in every state;
   * the minimum distance between non-bonded dots, over all periodic images, is checked in
-    every state (overlap = distance < 2R);
+    every state (overlap = distance < 2R), over all image shifts derived from the lattice;
   * step sizes between consecutive states; optional 10-substate linear interpolation
     between every pair of states (the midpoint-style overlap check);
   * the end state: density, contacts per ball, CNA signatures.
@@ -58,40 +58,66 @@ def build_bars(m):
     return P0, L0, bars
 
 
+def shift_range(X, L, rcut):
+    """Integer bound rngn such that EVERY lattice shift n with |X_j - X_i + n L| <= rcut for some
+    dots i, j lies in [-rngn, rngn]^3 (rigorous, derived from the lattice and the dots).
+    With fractional coordinates F = X L^-1, a vector v of length <= rcut has |v_k| <= rcut |Linv[:,k]|
+    along lattice axis k, so |n_k| <= max|F_j,k - F_i,k| + rcut |Linv[:,k]|."""
+    Linv = np.linalg.inv(L)
+    F = X @ Linv
+    spread = F.max(0) - F.min(0)
+    return int(np.ceil((spread + rcut * np.linalg.norm(Linv, axis=0)).max()))
+
+
 def bar_lengths(X, L, bars):
     return np.array([np.linalg.norm(X[j] + np.array(n) @ L - X[i]) for i, j, n in bars])
 
 
 class Mind:
-    """Minimum non-bonded distance (all images in a 5^3 shift block) and the full table."""
+    """Minimum non-bonded distance and the full distance table. The image-shift block is derived
+    from the lattice and dots of each state (shift_range with rcut = 2 * 2R, so every image that
+    could be a non-bonded overlap or the next-nearest shell is included), never a fixed size.
+    Blocks and bond masks are cached per rngn."""
 
-    def __init__(self, bars, N, rngn=2):
-        self.ns = np.array(list(itertools.product(range(-rngn, rngn + 1), repeat=3)))
-        self.mask = np.ones((N, N, len(self.ns)), bool)
-        zero = np.where((self.ns == 0).all(1))[0][0]
-        for a in range(N):
-            self.mask[a, a, zero] = False
-        for i, j, n in bars:
-            s = np.where((self.ns == np.array(n)).all(1))[0][0]
-            self.mask[i, j, s] = False
-            s2 = np.where((self.ns == -np.array(n)).all(1))[0][0]
-            self.mask[j, i, s2] = False
+    def __init__(self, bars, N, rcut=2 * B):
+        self.bars, self.N, self.rcut = bars, N, rcut
+        self._cache = {}
+
+    def _block(self, rngn):
+        if rngn not in self._cache:
+            ns = np.array(list(itertools.product(range(-rngn, rngn + 1), repeat=3)))
+            mask = np.ones((self.N, self.N, len(ns)), bool)
+            zero = np.where((ns == 0).all(1))[0][0]
+            for a in range(self.N):
+                mask[a, a, zero] = False
+            for i, j, n in self.bars:
+                s = np.where((ns == np.array(n)).all(1))[0][0]
+                mask[i, j, s] = False
+                s2 = np.where((ns == -np.array(n)).all(1))[0][0]
+                mask[j, i, s2] = False
+            self._cache[rngn] = (ns, mask)
+        return self._cache[rngn]
 
     def table(self, X, L):
-        sh = self.ns @ L
+        return self._table_mask(X, L)[0]
+
+    def _table_mask(self, X, L):
+        ns, mask = self._block(max(shift_range(X, L, self.rcut), 1))
+        sh = ns @ L
         D = X[None, :, None, :] - X[:, None, None, :] + sh[None, None, :, :]
-        return np.linalg.norm(D, axis=-1)
+        return np.linalg.norm(D, axis=-1), mask
 
     def __call__(self, X, L):
-        r = self.table(X, L)
-        return r[self.mask].min(), r
+        r, mask = self._table_mask(X, L)
+        return r[mask].min(), r
 
 
 def cna_signatures(X, L, tol=1e-6):
     """Common-neighbour analysis from contacts (distance < 2R(1+tol)); returns a Counter of
     (n_common, n_bonds, 2 if the bonds share an atom else 1) over all directed contacts."""
     N = len(X)
-    ns = list(itertools.product(range(-2, 3), repeat=3))
+    rngn = max(shift_range(X, L, B * (1 + tol)), 1)
+    ns = list(itertools.product(range(-rngn, rngn + 1), repeat=3))
     ct = collections.defaultdict(set)
     for i in range(N):
         for j in range(N):

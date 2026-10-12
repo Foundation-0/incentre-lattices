@@ -54,7 +54,9 @@ verify-fold2d:
 verify-fold3d:   # slow
 	$(PY) results/fold-3d-cubic/verify.py
 
-verify-fold-cp:  # slow: runs both checkers on the hcp path and on the fcc extension
+verify-fold-cp:  # slow: runs both checkers on the hcp path and on the fcc extension; the second checker and the path generator are hash-locked
+	$(PY) tools/sha256check.py results/fold-close-packing/checkers.sha256 results/fold-close-packing
+	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold
 	$(PY) results/fold-close-packing/verify.py
 
 verify-fold-exact:  # exact (integer) closed forms of the hcp and fcc end states
