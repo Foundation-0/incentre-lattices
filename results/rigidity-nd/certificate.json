@@ -1,0 +1,538 @@
+{
+  "claim": {
+    "C11": "4(n-1)^2/(n^2 2^n)",
+    "C12": "4/(n^2 2^n)",
+    "C44": 0,
+    "generic_q_self_stresses_per_cell": "n(n-3)/2",
+    "generic_q_zero_modes_per_cell": "n(n-1)/2",
+    "nu100": "1/(n^2-n-1)",
+    "q0_self_stresses": "n(n-1)/2",
+    "q0_zero_modes": "n(n+1)/2"
+  },
+  "counts_by_n": [
+    {
+      "all_bar_lengths_equal": true,
+      "bars_per_cell": 6,
+      "crosspolytope_bars_rank_zeromodes_selfstresses": [
+        4,
+        4,
+        4,
+        0
+      ],
+      "dofs_per_cell": 8,
+      "generic_q_all_three_samples_equal": true,
+      "generic_q_zero_modes_selfstresses": [
+        2,
+        0
+      ],
+      "n": 2,
+      "note": "n = 2 is outside the theorem: the K_2 kappa-block has one internal flex",
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          3,
+          1
+        ]
+      ],
+      "q0_zero_modes_selfstresses": [
+        3,
+        1
+      ]
+    },
+    {
+      "all_bar_lengths_equal": true,
+      "bars_per_cell": 15,
+      "crosspolytope_bars_rank_zeromodes_selfstresses": [
+        12,
+        12,
+        6,
+        0
+      ],
+      "dofs_per_cell": 18,
+      "explicit_stress_basis_dimension": 0,
+      "explicit_stress_basis_spans_all_stresses": true,
+      "generic_q_all_three_samples_equal": true,
+      "generic_q_zero_modes_selfstresses": [
+        3,
+        0
+      ],
+      "generic_zero_modes_equal_cluster_rotations": true,
+      "n": 3,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          1,
+          4,
+          1
+        ],
+        [
+          2,
+          5,
+          2
+        ],
+        [
+          3,
+          6,
+          3
+        ]
+      ],
+      "q0_stress_formula_tau_i_equals_sqrt2_sum_w_ij": true,
+      "q0_zero_modes_selfstresses": [
+        6,
+        3
+      ]
+    },
+    {
+      "all_bar_lengths_equal": true,
+      "bars_per_cell": 28,
+      "crosspolytope_bars_rank_zeromodes_selfstresses": [
+        24,
+        22,
+        10,
+        2
+      ],
+      "dofs_per_cell": 32,
+      "explicit_stress_basis_dimension": 2,
+      "explicit_stress_basis_spans_all_stresses": true,
+      "generic_q_all_three_samples_equal": true,
+      "generic_q_zero_modes_selfstresses": [
+        6,
+        2
+      ],
+      "generic_zero_modes_equal_cluster_rotations": true,
+      "n": 4,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          6,
+          2
+        ],
+        [
+          1,
+          7,
+          3
+        ],
+        [
+          2,
+          8,
+          4
+        ],
+        [
+          3,
+          9,
+          5
+        ],
+        [
+          4,
+          10,
+          6
+        ]
+      ],
+      "q0_stress_formula_tau_i_equals_sqrt2_sum_w_ij": true,
+      "q0_zero_modes_selfstresses": [
+        10,
+        6
+      ]
+    },
+    {
+      "all_bar_lengths_equal": true,
+      "bars_per_cell": 45,
+      "crosspolytope_bars_rank_zeromodes_selfstresses": [
+        40,
+        35,
+        15,
+        5
+      ],
+      "dofs_per_cell": 50,
+      "explicit_stress_basis_dimension": 5,
+      "explicit_stress_basis_spans_all_stresses": true,
+      "generic_q_all_three_samples_equal": true,
+      "generic_q_zero_modes_selfstresses": [
+        10,
+        5
+      ],
+      "generic_zero_modes_equal_cluster_rotations": true,
+      "n": 5,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          10,
+          5
+        ],
+        [
+          1,
+          11,
+          6
+        ],
+        [
+          2,
+          12,
+          7
+        ],
+        [
+          3,
+          13,
+          8
+        ],
+        [
+          4,
+          14,
+          9
+        ],
+        [
+          5,
+          15,
+          10
+        ]
+      ],
+      "q0_stress_formula_tau_i_equals_sqrt2_sum_w_ij": true,
+      "q0_zero_modes_selfstresses": [
+        15,
+        10
+      ]
+    },
+    {
+      "all_bar_lengths_equal": true,
+      "bars_per_cell": 66,
+      "crosspolytope_bars_rank_zeromodes_selfstresses": [
+        60,
+        51,
+        21,
+        9
+      ],
+      "dofs_per_cell": 72,
+      "explicit_stress_basis_dimension": 9,
+      "explicit_stress_basis_spans_all_stresses": true,
+      "generic_q_all_three_samples_equal": true,
+      "generic_q_zero_modes_selfstresses": [
+        15,
+        9
+      ],
+      "generic_zero_modes_equal_cluster_rotations": true,
+      "n": 6,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          15,
+          9
+        ],
+        [
+          1,
+          16,
+          10
+        ],
+        [
+          2,
+          17,
+          11
+        ],
+        [
+          3,
+          18,
+          12
+        ],
+        [
+          4,
+          19,
+          13
+        ],
+        [
+          5,
+          20,
+          14
+        ],
+        [
+          6,
+          21,
+          15
+        ]
+      ],
+      "q0_stress_formula_tau_i_equals_sqrt2_sum_w_ij": true,
+      "q0_zero_modes_selfstresses": [
+        21,
+        15
+      ]
+    },
+    {
+      "all_bar_lengths_equal": true,
+      "bars_per_cell": 91,
+      "crosspolytope_bars_rank_zeromodes_selfstresses": [
+        84,
+        70,
+        28,
+        14
+      ],
+      "dofs_per_cell": 98,
+      "explicit_stress_basis_dimension": 14,
+      "explicit_stress_basis_spans_all_stresses": true,
+      "generic_q_all_three_samples_equal": true,
+      "generic_q_zero_modes_selfstresses": [
+        21,
+        14
+      ],
+      "generic_zero_modes_equal_cluster_rotations": true,
+      "n": 7,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          21,
+          14
+        ],
+        [
+          1,
+          22,
+          15
+        ],
+        [
+          2,
+          23,
+          16
+        ],
+        [
+          3,
+          24,
+          17
+        ],
+        [
+          4,
+          25,
+          18
+        ],
+        [
+          5,
+          26,
+          19
+        ],
+        [
+          6,
+          27,
+          20
+        ],
+        [
+          7,
+          28,
+          21
+        ]
+      ],
+      "q0_stress_formula_tau_i_equals_sqrt2_sum_w_ij": true,
+      "q0_zero_modes_selfstresses": [
+        28,
+        21
+      ]
+    },
+    {
+      "all_bar_lengths_equal": true,
+      "bars_per_cell": 120,
+      "crosspolytope_bars_rank_zeromodes_selfstresses": [
+        112,
+        92,
+        36,
+        20
+      ],
+      "dofs_per_cell": 128,
+      "explicit_stress_basis_dimension": 20,
+      "explicit_stress_basis_spans_all_stresses": true,
+      "generic_q_all_three_samples_equal": true,
+      "generic_q_zero_modes_selfstresses": [
+        28,
+        20
+      ],
+      "generic_zero_modes_equal_cluster_rotations": true,
+      "n": 8,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          28,
+          20
+        ],
+        [
+          1,
+          29,
+          21
+        ],
+        [
+          2,
+          30,
+          22
+        ],
+        [
+          3,
+          31,
+          23
+        ],
+        [
+          4,
+          32,
+          24
+        ],
+        [
+          5,
+          33,
+          25
+        ],
+        [
+          6,
+          34,
+          26
+        ],
+        [
+          7,
+          35,
+          27
+        ],
+        [
+          8,
+          36,
+          28
+        ]
+      ],
+      "q0_stress_formula_tau_i_equals_sqrt2_sum_w_ij": true,
+      "q0_zero_modes_selfstresses": [
+        36,
+        28
+      ]
+    }
+  ],
+  "elastic_by_n": [
+    {
+      "C11_exact": "1/4",
+      "C11_over_C12": "1",
+      "C12_exact": "1/4",
+      "matches_numerics_for_c_values": [
+        0.585786,
+        0.3,
+        0.75
+      ],
+      "n": 2,
+      "nu100_exact": "1",
+      "nu100_value": 1.0,
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
+      "shear_moduli_zero": true
+    },
+    {
+      "C11_exact": "2/9",
+      "C11_over_C12": "4",
+      "C12_exact": "1/18",
+      "matches_numerics_for_c_values": [
+        0.585786,
+        0.3,
+        0.75
+      ],
+      "n": 3,
+      "nu100_exact": "1/5",
+      "nu100_value": 0.2,
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
+      "shear_moduli_zero": true
+    },
+    {
+      "C11_exact": "9/64",
+      "C11_over_C12": "9",
+      "C12_exact": "1/64",
+      "matches_numerics_for_c_values": [
+        0.585786,
+        0.3,
+        0.75
+      ],
+      "n": 4,
+      "nu100_exact": "1/11",
+      "nu100_value": 0.09090909091,
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
+      "shear_moduli_zero": true
+    },
+    {
+      "C11_exact": "2/25",
+      "C11_over_C12": "16",
+      "C12_exact": "1/200",
+      "matches_numerics_for_c_values": [
+        0.585786,
+        0.3,
+        0.75
+      ],
+      "n": 5,
+      "nu100_exact": "1/19",
+      "nu100_value": 0.05263157895,
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
+      "shear_moduli_zero": true
+    },
+    {
+      "C11_exact": "25/576",
+      "C11_over_C12": "25",
+      "C12_exact": "1/576",
+      "matches_numerics_for_c_values": [
+        0.585786,
+        0.3,
+        0.75
+      ],
+      "n": 6,
+      "nu100_exact": "1/29",
+      "nu100_value": 0.03448275862,
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
+      "shear_moduli_zero": true
+    },
+    {
+      "C11_exact": "9/392",
+      "C11_over_C12": "36",
+      "C12_exact": "1/1568",
+      "matches_numerics_for_c_values": [
+        0.585786,
+        0.3,
+        0.75
+      ],
+      "n": 7,
+      "nu100_exact": "1/41",
+      "nu100_value": 0.0243902439,
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
+      "shear_moduli_zero": true
+    },
+    {
+      "C11_exact": "49/4096",
+      "C11_over_C12": "49",
+      "C12_exact": "1/4096",
+      "matches_numerics_for_c_values": [
+        0.585786,
+        0.3,
+        0.75
+      ],
+      "n": 8,
+      "nu100_exact": "1/55",
+      "nu100_value": 0.01818181818,
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
+      "shear_moduli_zero": true
+    }
+  ],
+  "evidence": {
+    "proven": "all n >= 3 (written proof, PROOF.md)",
+    "verified": "n = 2..8 (finite numerical rank checks)"
+  },
+  "inputs": {
+    "results/rigidity-nd/proof_steps.py": "4f7bed89024d02133291542327b09e5ce8f410a41daf4bb783f6a396190604e0",
+    "results/rigidity-nd/rigidity_nd.py": "d0d6b024aecff1c6195f64b1b2b84fb91a6086dafecee412955d637eb24162a7"
+  },
+  "must_fail_controls_rejected": [
+    "n >= 3 generic counts claimed at n = 2",
+    "wrong Poisson formula 1/(n^2 - n) at n = 4",
+    "wrong C11/C12 ratio n^2 at n = 4",
+    "generic zero-mode count unchanged after deleting a cross bar (n = 5; cross bars carry no generic-q stress)",
+    "wrong stress-basis dimension n(n-3)/2 + 1 at n = 5"
+  ],
+  "numerical_tolerances": {
+    "elastic": 1e-12,
+    "rank_threshold": 1e-09
+  },
+  "result": "rigidity-nd",
+  "symbolic_proof_steps_n2_to_n8": true
+}

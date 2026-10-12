@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below. A paper preprint is pending; cite the repository until it appears."
+title: "Incentre lattice"
+type: software
+authors:
+  - family-names: "Arifuddin"
+    given-names: "Ahraz"
+    affiliation: "Aska Digital"
+repository-code: "https://github.com/aska-digital/incentre-lattice"
+url: "https://github.com/aska-digital/incentre-lattice"
+license:
+  - MIT
+  - CC-BY-4.0
+abstract: >-
+  Incentre lattice: a construction (incentres of the pyramids of a polytope, joined into a contact framework) with interactive
+  explanations and replayable checks. The checked results are the n-dimensional rigidity counts and Poisson ratio of the
+  contact framework of the truncated n-cubic honeycomb, a radius-ratio identity, the maximal packing fraction of the CaB6
+  structure type, and a sampled bar-preserving path from the cab contact framework to hcp and fcc close packing in a 2x2x2
+  supercell. Claims are labelled PROVEN (written proof), VERIFIED (finite check, not a proof) or KNOWN (cited).
+  Code is MIT licensed; text and figures are CC BY 4.0. Parts were produced with AI assistance; see CONTRIBUTORS.md.
+keywords:
+  - rigidity theory
+  - contact frameworks
+  - sphere packing
+  - radius ratio
+  - hexaboride
+  - reproducible research

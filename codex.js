@@ -4,17 +4,20 @@
 (function(){
 "use strict";
 const PAGES=[
- ['lattice.html','LATTICE','hub'],
+ ['index.html','ABSTRACT','overview'],
+ ['lattice.html','LATTICE','the visual'],
  ['origin.html','THE DRAWING','origin'],
  ['mirrors.html','MIRRORS','why'],
  ['matter.html','MATTER','crystals'],
  ['motion.html','MOTION','the fold'],
  ['mind.html','PERCEPTION','mind'],
+ ['drift.html','DRIFT','wandering mind'],
+ ['seek.html','SEARCH','drift + check'],
  ['open.html','LEDGER','claims']
 ];
 const EXTRA=[['cube-six.html','the cube'],['deeper.html','the full story']];
 const Q=new URLSearchParams(location.search);
-const here=(location.pathname.split('/').pop()||'lattice.html');
+const here=(location.pathname.split('/').pop()||'index.html');
 const C={g:'#37ff9a',c:'#35e6ff',a:'#ffb23a',r:'#ff4a3d',dim:'#2f8f68',bg:'#02090c',ink:'#eafff4'};
 const TAU=Math.PI*2;
 const CX=window.CX={C,TAU,Q};
@@ -46,9 +49,11 @@ function nav(){
   b+='<hr><div class="foot">CLASSIC // simple, clean reading</div>';
   for(const [u,n] of EXTRA)b+='<a href="'+u+'"'+(u===here?' class="cur"':'')+'>'+n+'<span>classic</span></a>';
   b+='<div class="foot">[H] hide HUD</div>';
-  p.innerHTML='<header><span class="tabtitle">INDEX // R=&radic;2&minus;1</span><button class="mb" title="minimise">&ndash;</button></header><div class="body">'+b+'</div>';
+  p.innerHTML='<button class="burger" aria-expanded="false" aria-controls="p-nav-body">&equiv; INDEX<span>R=&radic;2&minus;1</span></button><header><span class="tabtitle">INDEX // R=&radic;2&minus;1</span><button class="mb" title="minimise">&ndash;</button></header><div class="body" id="p-nav-body">'+b+'</div>';
   document.body.insertBefore(p,document.body.firstChild);
-  if((Q.get('min')||'').split(',').includes('index')||Q.get('min')==='all')p.classList.add('min');
+  const bg=p.querySelector('.burger');
+  bg.onclick=()=>{const o=p.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+  if(!matchMedia('(max-width:700px)').matches&&((Q.get('min')||'').split(',').includes('index')||Q.get('min')==='all'))p.classList.add('min');
 }
 
 function panels(){
@@ -142,8 +147,15 @@ CX.fmt=(x,d)=>(+x).toFixed(d==null?4:d);
 CX.kv=function(node,rows){node.innerHTML=rows.map(r=>'<span>'+r[0]+'</span><span'+(r[2]?' class="'+r[2]+'"':'')+'>'+r[1]+'</span>').join('')};
 CX.ease=t=>t<0?0:t>1?1:t*t*(3-2*t);
 
+/* ---- signature badge (stays visible when the HUD is hidden) ---- */
+function sign(){
+  if(document.getElementById('sign'))return;
+  const L=(u,t)=>'<a href="'+u+'" target="_blank" rel="noopener">'+t+'</a>';
+  document.body.appendChild(el('div',{id:'sign'},'by '+L('https://digital.askaconsult.com','Aska Digital')+'<br>with '+L('https://www.anthropic.com/claude','Claude Opus 5.5 from Anthropic, PBC')));
+}
+
 function ready(){
-  decor();nav();
+  decor();nav();sign();
   // footer prev/next
   const i=PAGES.findIndex(p=>p[0]===here);
   const m=document.querySelector('main');

@@ -1,0 +1,42 @@
+name: verify
+
+# Reruns every verifier on three Python versions and fails if any regenerated certificate differs
+# from the committed one. Finite checks only: a green run means the recorded computations
+# replay, not that any statement beyond them is proved (see docs/audit.md).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: make verify (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install pinned requirements
+        run: python -m pip install -r requirements.txt
+
+      # Slow targets: verify-fold3d (about 1 minute) and verify-fold-cp (about 3 minutes).
+      - name: Run every verifier
+        run: make verify
+
+      - name: Regenerated certificates must equal the committed ones
+        run: git diff --exit-code -- results certificates commitment

@@ -1,0 +1,97 @@
+{
+  "exact": {
+    "L_at_pi_over_4_minus_4R": 0,
+    "L_of_theta": "2R + 2c cos(theta)",
+    "density_end": "pi/4",
+    "density_end_value": 0.7853981634,
+    "density_start": 0.5390120845,
+    "gap_at_pi_over_4": 0,
+    "gap_of_theta": "2 sqrt(2) c cos(theta + pi/4)",
+    "linear_strain_at_pi_over_4": "-(sqrt(2)-1)^2"
+  },
+  "inputs": {
+    "results/fold-2d/fold2d.py": "52d508dea82c9dc05ecc0d7c88d47baa4ae48430c3adc5ad8b8071de6f582200"
+  },
+  "model": "squares of 4 dots at +-c e_i in cells of side 2; cross bars along the axes; balls radius R = sqrt2 - 1 (c = 2 - sqrt2)",
+  "must_fail_controls_rejected": [
+    "wrong gap formula cos(theta - pi/4)",
+    "lock at 45 degrees claimed for c = 0.5",
+    "c = 0.62 claimed to end in a single-distance square lattice",
+    "final density claimed to be pi/3 instead of pi/4"
+  ],
+  "result": "fold-2d",
+  "scan_over_c": [
+    {
+      "c": 0.45,
+      "four_contacts_at_2r": false,
+      "lock_angle_deg_0.01_grid": 66.37,
+      "nearest_over_2r": [
+        0.9997,
+        1.0,
+        1.0,
+        1.414,
+        1.652
+      ]
+    },
+    {
+      "c": 0.5,
+      "four_contacts_at_2r": false,
+      "lock_angle_deg_0.01_grid": 56.96,
+      "nearest_over_2r": [
+        0.9998,
+        1.0,
+        1.0,
+        1.414,
+        1.414
+      ]
+    },
+    {
+      "c": 0.55,
+      "four_contacts_at_2r": false,
+      "lock_angle_deg_0.01_grid": 49.51,
+      "nearest_over_2r": [
+        0.9998,
+        1.0,
+        1.0,
+        1.157,
+        1.414
+      ]
+    },
+    {
+      "c": 0.585786,
+      "four_contacts_at_2r": true,
+      "lock_angle_deg_0.01_grid": 45.0,
+      "nearest_over_2r": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.414
+      ]
+    },
+    {
+      "c": 0.62,
+      "four_contacts_at_2r": false,
+      "lock_angle_deg_0.01_grid": 45.0,
+      "nearest_over_2r": [
+        1.0,
+        1.0,
+        1.154,
+        1.154,
+        1.414
+      ]
+    },
+    {
+      "c": 0.7,
+      "four_contacts_at_2r": false,
+      "lock_angle_deg_0.01_grid": 45.0,
+      "nearest_over_2r": [
+        1.0,
+        1.0,
+        1.414,
+        1.65,
+        1.65
+      ]
+    }
+  ]
+}

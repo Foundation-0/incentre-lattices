@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DRIFT // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+</head><body>
+<main>
+<div class="kick">06 // DRIFT</div>
+<h1>Drift</h1>
+<p class="lede">A mind left to wander sometimes produces a pattern that later turns out to be deep. The drawing at the centre of this site is a worked example: a doodle-sized rule in a square that lands, without being aimed, on structures that geometers and crystallographers reached by other roads. This page asks why that can happen, what the science of spontaneous thought does and does not show, how the same pattern-finding machinery can overshoot, and what it might mean that a drifting hand and a crystal of calcium boride arrive at the same place. It is a discussion piece, and every claim carries a label for how strong its support is.</p>
+
+<div class="note">This page makes no claim about any person. It discusses a general phenomenon and uses the drawing only as an example of a simple rule that turns out to sit on deep structure. Nothing here is a diagnosis or a suggestion of one.</div>
+
+<h2 id="why"><span class="n">1</span>Why a doodle can land on deep structure</h2>
+<p>Start by counting choices. &ldquo;Put a dot somewhere in this triangle&rdquo; leaves two numbers free, the dot&rsquo;s two coordinates, and so a continuum of answers. &ldquo;Put the dot where it is equally far from all three edges&rdquo; leaves none. The rule has exactly one answer, the incentre, as the first page shows.<span class="tg known">KNOWN</span> (classical geometry) A rule with no free parameters cannot be tuned. Anyone who applies it, by hand or by machine, in any century, gets the same point. That is the first reason an idle rule can coincide with expert work: it has nowhere else to go.</p>
+<p>Symmetry narrows things further. Each triangle of the drawing has a mirror line, the line from the square&rsquo;s centre straight down to the middle of the base. Any rule that treats left and right alike must put its point on that line, because otherwise the point&rsquo;s mirror image would satisfy the rule equally well and the rule would have two answers. On that line, in a square of side 2, the classical centres of the triangle sit at four heights: the circumcentre (centre of the circle through the corners) at 0, the centroid (balance point) at 1/3, the incentre at &radic;2&nbsp;&minus;&nbsp;1&nbsp;&asymp;&nbsp;0.414, and the orthocentre (where the altitudes meet) at 1, the right-angled corner.<span class="tg proven">PROVEN</span> (direct calculation) So the choice collapses from a plane, to a line, to a handful of points.</p>
+<p>A fair objection: &ldquo;canonical&rdquo; points are not rare. Clark Kimberling&rsquo;s <i>Encyclopedia of Triangle Centers</i> lists more than 70,000 named centres as of early 2026.<span class="tg known">KNOWN</span> (count as reported on the encyclopedia&rsquo;s Wikipedia page, February 2026) What singles out the incentre here is narrower. It answers the shortest rule that can be stated in the drawing&rsquo;s own terms, distance to edges. And it is the only point on the mirror line that makes the tiled pattern regular, with every edge the same length. The figure below lets you test that second claim by hand.</p>
+<p>Put those together and free play over simple rules becomes a search over a small space. Short rules are few, and among their answers the symmetric, parameter-free ones are over-represented, because a rule with a free parameter needs a number from somewhere and a doodling hand has no reason to pick one value over another. Experts searching systematically pass through the same small space, so the two meet. The idea of measuring simplicity by the length of the shortest description of an object comes from algorithmic information theory, developed in the 1960s by Solomonoff, Kolmogorov and Chaitin.<span class="tg known">KNOWN</span> That free doodling actually over-samples such points, compared with chance, has not been measured.<span class="tg conj">CONJECTURE</span> (see section 5)</p>
+<p>The same argument explains why such objects recur in nature. A crystal is not trying to be elegant. It is settling into low energy under laws that do not prefer one direction to another. When the calcium hexaboride structure asks for all boron&ndash;boron bonds to be equal, the condition is the same equation as &ldquo;the dot is equally far from every edge&rdquo;, and it gives the same number, x&nbsp;=&nbsp;(&radic;2&nbsp;&minus;&nbsp;1)/2.<span class="tg proven">PROVEN</span> (matter page; the structure itself is Pauling and Weinbaum, 1934) Minds and crystals that face the same constraint reach the same answer.</p>
+<p>Finally, rediscovery is evidence. Robert Merton argued that independent multiple discoveries are the normal pattern in science, not the exception (&ldquo;Singletons and Multiples in Scientific Discovery&rdquo;, <i>Proceedings of the American Philosophical Society</i> 105, 1961).<span class="tg known">KNOWN</span> One reading of that pattern: when many routes reach the same object, the object is a property of the problem, not of the route. The ledger concludes that the drawing is a rediscovery of known structures by a new path. Read this way, that is evidence that the structures are canonical, not evidence of special insight in whoever drew it.<span class="tg pos">POSITION</span></p>
+
+<div class="wide" id="fig13">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv13"></canvas><div class="corner" id="c13t">DRIFT // DRAG THE POINT IN THE TRIANGLE</div><div class="corner r">FIG 13 // DRIFT</div></div>
+ <section class="panel fp hud" id="p-fig13">
+  <header><span class="tabtitle">CTRL // DRIFT</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">MOTION</div>
+    <div class="row"><button id="b13walk">WANDER</button><button id="b13taste">WANDER + TASTE</button><button id="b13stop">STOP</button></div>
+    <div class="lab">JUMP TO</div>
+    <div class="row"><button id="b13rand">RANDOM</button><button id="b13cen">CENTROID</button><button id="b13inc">INCENTRE</button><button id="b13clr">CLEAR TRAIL</button></div>
+    <div class="hint">Drag the point in the triangle on the right. Dragging snaps within 0.02 of the incentre so it can be found by hand; the wander modes never snap.</div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv13"></div></div>
+  </div>
+ </section>
+ <figcaption>Left: one dot in the bottom triangle of a square, copied into the other three triangles by quarter turns and into neighbouring squares by mirror reflection, with lines to its triangle&rsquo;s corners. The cyan edges join neighbouring dots. Right: the triangle, shaded by how irregular the resulting pattern is (bright means close to regular), with the classical centres marked. WANDER is a blind random walk. WANDER + TASTE is the same walk with one bias: it keeps steps that make the pattern more regular and usually rejects steps that make it less so. It is never told where the answer is.</figcaption>
+</figure>
+</div>
+
+<p>What the figure computes. With the dot at a general point, the cyan edges come in two lengths: the four edges of the small square in the middle of each cell, and the short edges that cross each cell wall to the dot&rsquo;s mirror image. The pattern is the regular 4.8.8 tiling (squares and regular octagons, three of them at every corner) only when those two lengths agree <i>and</i> the small squares sit at 45&deg;. Two conditions on two coordinates leave one point, and it is the incentre.<span class="tg proven">PROVEN</span> At the centroid, for comparison, the two lengths differ by 34%.<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+<p>How rare is the regular pattern by chance? Of two million points drawn uniformly in the triangle, about 2 in 100,000 gave a pattern within 1% of regular. A blind random walk of 2,000 steps, started off-centre, typically got no closer than 34% irregular. The same walk with the &ldquo;taste&rdquo; bias reached within 1% in a median of about 280 steps.<span class="tg verified">VERIFIED NUMERICALLY</span> (this page&rsquo;s own model, 200 runs each) The toy suggests a modest point: undirected search plus a preference for regularity finds canonical objects without knowing what it is looking for. Whether human aesthetic preference works like that bias is a separate question.<span class="tg conj">CONJECTURE</span></p>
+
+<h2 id="science"><span class="n">2</span>What the science says about wandering minds</h2>
+<p><b>Mind-wandering</b> is thought that drifts away from the task at hand, or arises with no task at all. Christoff, Irving, Fox, Spreng and Andrews-Hanna proposed treating it as one member of a family of <b>spontaneous thought</b> that also includes creative thinking and dreaming (&ldquo;Mind-wandering as spontaneous thought: a dynamic framework&rdquo;, <i>Nature Reviews Neuroscience</i> 17:718, 2016).<span class="tg known">KNOWN</span> Their framework sorts thoughts by how strongly they are held in place, either deliberately, by goals, or automatically, by whatever grabs attention. Mind-wandering is thought with little of either kind of constraint. They tie the generation of such thought to the <b>default mode network</b>, a set of brain regions that is more active when attention is not on an external task, with other networks supplying the constraint. This is a framework, a way of organising findings, not a single tested prediction.</p>
+<p><b>Incubation</b> is the effect of setting a problem aside before returning to it. Sio and Ormerod pooled the experimental literature (&ldquo;Does incubation enhance problem solving? A meta-analytic review&rdquo;, <i>Psychological Bulletin</i> 135:94, 2009).<span class="tg known">KNOWN</span> They found a positive effect overall. It was larger for divergent tasks, which have many acceptable answers, than for insight puzzles with one answer. A longer preparation period before the break helped, and for word-based insight problems a light, undemanding task during the break did better than rest. That is a reasonably solid average result, with large variation between studies.</p>
+<p>Does mind-wandering cause the incubation benefit? Baird, Smallwood, Mrazek, Kam, Franklin and Schooler reported that an undemanding task during the break improved scores on a test of unusual uses for objects, and that the gain went with more mind-wandering (&ldquo;Inspired by distraction&rdquo;, <i>Psychological Science</i> 23:1117, 2012).<span class="tg known">KNOWN</span> A later replication by Murray and colleagues, two studies with 443 participants, found no such benefit (<i>Psychology of Aesthetics, Creativity, and the Arts</i>, 2024).<span class="tg known">KNOWN</span> (from the replication record and abstract) So the specific link is mixed at best.</p>
+<p>Then there is testimony. Henri Poincaré, in a 1908 lecture to the Psychological Society in Paris (&ldquo;L&rsquo;invention math&eacute;matique&rdquo;), described a key idea about the functions he was studying arriving as he stepped onto a bus at Coutances, after he had put the work aside. Jacques Hadamard, prompted by that lecture, collected accounts from mathematicians in <i>An Essay on the Psychology of Invention in the Mathematical Field</i> (Princeton University Press, 1945).<span class="tg known">KNOWN</span> These are valuable as descriptions of experience, but they are not data. They are written after success, by people whose failures went unrecorded, from memories that rebuild themselves around the outcome. August Kekul&eacute;&rsquo;s reverie of a snake biting its tail, told in an 1890 speech a quarter-century after his benzene work, is the most famous case and the shakiest. Historians disagree, and John Wotiz argued at length that the story was invented (<i>The Kekul&eacute; Riddle</i>, 1993).<span class="tg known">KNOWN</span> (the dispute, not its resolution)</p>
+<p>One piece of evidence bears directly on geometry. Dehaene, Izard, Pica and Spelke found that Munduruku adults and children in the Amazon, with little or no schooling in geometry, show core geometric intuitions (<i>Science</i> 311:381, 2006).<span class="tg known">KNOWN</span> Untrained minds carry geometric concepts, so it is not surprising that undirected play can work with them.</p>
+<div class="tscroll"><table class="tb"><thead><tr><th>claim</th><th>strength of evidence</th></tr></thead><tbody>
+<tr><td>Spontaneous thought is common, measurable, and tied to identifiable brain networks</td><td>strong, as a description</td></tr>
+<tr><td>Setting a problem aside helps, on average</td><td>moderate (meta-analysis, large spread)</td></tr>
+<tr><td>Mind-wandering itself is what produces the incubation benefit</td><td>mixed (a positive study and a failed replication)</td></tr>
+<tr><td>Famous discoveries arrived in moments of drift</td><td>anecdotal (self-report, survivorship, some doubtful)</td></tr>
+<tr class="hi"><td>Untrained minds carry core geometric intuitions</td><td>good, within the tasks tested</td></tr></tbody></table></div>
+
+<h2 id="over"><span class="n">3</span>Pattern and over-pattern</h2>
+<p>Any detector working in noise faces a trade. Signal detection theory (Green and Swets, <i>Signal Detection Theory and Psychophysics</i>, 1966) separates two things: how well a detector can tell signal from noise, and where it sets its threshold.<span class="tg known">KNOWN</span> Lower the threshold and you get more <b>hits</b> (real patterns caught) and more <b>false alarms</b> (patterns reported that are not there). Raise it and both fall. Only a better detector improves one without costing the other. A mind that notices connections easily will catch more real ones and more imaginary ones, by the same mechanism.</p>
+<p>Psychiatry has studied the far end of that dial with care. Klaus Conrad, describing the early stages of schizophrenia in <i>Die beginnende Schizophrenie</i> (1958), coined <b>apophenia</b>: an unmotivated seeing of connections, accompanied by a specific feeling of abnormal meaningfulness.<span class="tg known">KNOWN</span> The word is now used loosely for any false pattern; Conrad&rsquo;s sense was clinical and specific. Shitij Kapur proposed that psychosis can be understood as a state of <b>aberrant salience</b>: dopamine, which normally helps mark events as significant, assigns significance to things that do not merit it, and delusions can be read as the mind&rsquo;s attempt to explain that felt significance (<i>American Journal of Psychiatry</i> 160:13, 2003).<span class="tg known">KNOWN</span> It is an influential framework, not a settled account, and critics have argued that &ldquo;salience&rdquo; is too loosely defined.</p>
+<p><b>Schizotypy</b> is a set of personality traits, measured across the general population, that resemble in mild form some features of psychosis: unusual perceptual experiences and magical thinking on one side, withdrawal and flattened emotion on the other. Its link to creativity is real but small, and it depends on which traits are measured. Acar and Sen combined 45 articles (<i>Psychology of Aesthetics, Creativity, and the Arts</i> 7:214, 2013) and found an average correlation of r&nbsp;=&nbsp;0.07, positive (0.14) for the unusual-experience and impulsive traits and negative (&minus;0.09) for the withdrawn and disorganised ones.<span class="tg known">KNOWN</span> Anna Abraham asked whether the relation is an inverted U, with mild traits helping and clinical illness hindering (&ldquo;Is there an inverted-U relationship between creativity and psychopathology?&rdquo;, <i>Frontiers in Psychology</i> 5:750, 2014).<span class="tg known">KNOWN</span> That is a hypothesis under study. A correlation of 0.14 explains about 2% of the variation. Most people with high trait scores are not ill, most creative people are not ill, and psychotic illness brings real suffering and usually makes sustained work harder, not easier. There is nothing romantic in it.</p>
+<p>The key point for this page is that <b>how a pattern was found does not decide whether it is real</b>. A felt sense of rightness accompanies both true insights and false ones; Conrad&rsquo;s &ldquo;abnormal meaningfulness&rdquo; and the ordinary &ldquo;aha&rdquo; can feel alike from the inside.<span class="tg pos">POSITION</span> What separates them is what happens next, outside the head:</p>
+<ol class="cl">
+<li><b>Independent re-derivation.</b> Someone else, or another method, reaches the same result without copying the first route.</li>
+<li><b>Prior-art search.</b> If the pattern is real and simple, others have probably found it. Finding them is confirmation; not finding them is weak evidence of novelty, never proof.</li>
+<li><b>Prediction.</b> A real pattern says something about cases not yet examined, and those cases can come out wrong.</li>
+</ol>
+<p>This project tried to run all three on itself, and the record is public. The <a href="open.html">ledger</a> labels every claim by evidence and novelty, and a claim marked &ldquo;no reference found&rdquo; stays that way rather than being upgraded to &ldquo;new&rdquo;. The 3D fold on the <a href="motion.html">motion page</a> was first described as ending where balls collide at 60&deg;. An independent re-derivation found that if the lattice is allowed to shear, every bar keeps its length past 60&deg; and the packing keeps tightening, so that state is a waypoint, not a jam; the page now says so.<span class="tg verified">VERIFIED NUMERICALLY</span> On the <a href="matter.html">matter page</a>, real calcium hexaboride crystals turned out to have the bond between octahedra about 5% shorter than the drawing&rsquo;s ideal, and the difference is reported, not smoothed over. On the <a href="mind.html">perception page</a>, papers read only from abstracts are marked as such. That is the ordinary machinery for telling a real pattern from a compelling false one, and it works the same whether the pattern came from a lab notebook or a margin.</p>
+
+<h2 id="meta"><span class="n">4</span>Found or forced</h2>
+<p>Eugene Wigner called it a miracle that mathematics, often developed for its own sake, describes the physical world so well (&ldquo;The Unreasonable Effectiveness of Mathematics in the Natural Sciences&rdquo;, <i>Communications on Pure and Applied Mathematics</i> 13:1, 1960).<span class="tg known">KNOWN</span> A drawing that lands on a crystal structure is a small instance of the same puzzle. There are several ways to read it. These are philosophical positions, not results, and they are labelled as such.</p>
+<p><b>The structures are found.</b> On the Platonist reading, mathematical objects exist independently of minds and matter. A doodler and a crystallographer reach the same tiling because they are perceiving the same thing. Roger Penrose gives one well-known picture of this: three worlds, the mathematical, the physical and the mental, each connected to the next in ways he regards as deep and not yet understood (<i>The Road to Reality</i>, 2004).<span class="tg pos">POSITION</span></p>
+<p><b>The structures are forced.</b> On the constraint reading, no separate realm is needed. Symmetry and a rule with no free parameters leave only one solution, and any system that satisfies the same constraints, a crystal lowering its energy or a hand following a rule, must arrive there. The mind and the crystal agree because they are solving the same equation, not because either is consulting the other or a third thing.<span class="tg pos">POSITION</span></p>
+<p><b>The universe is the structure.</b> At the speculative extreme, Max Tegmark&rsquo;s mathematical universe hypothesis holds that physical reality is a mathematical structure (&ldquo;The Mathematical Universe&rdquo;, <i>Foundations of Physics</i> 38:101, 2008). On that view the agreement is unsurprising, since minds and crystals are both parts of one structure.<span class="tg pos">POSITION</span><span class="tg spec">SPECULATIVE</span></p>
+<p>Can anything tell these apart? Honestly, probably not by any experiment on drawings. The constraint reading makes a checkable claim, that convergence happens only where constraints are shared, so the objects people reach independently should be the ones with short descriptions under the symmetries in play. But the Platonist reading predicts the same convergence; it adds an account of what the shared solution <i>is</i>, not a different observation. The positions differ mainly over why the constraints are mathematical in the first place, and that question sits above any single study. This page leans toward the constraint reading because it explains the drawing without adding anything, but that is a preference for economy, not a demonstration.<span class="tg pos">POSITION</span></p>
+<p>What might it mean, then, that an undirected mind and a calcium boride crystal agree? The most defensible answer is modest. Canonical objects can be reached from many starting points, and that is exactly what makes them checkable: anyone can walk another road and see whether it ends in the same place. A drifting mind is one more road. Its arrival is not a sign that the mind is channelling anything. It is a sign that the destination was fixed by the problem.<span class="tg pos">POSITION</span></p>
+
+<h2 id="open"><span class="n">5</span>Open questions</h2>
+<ol class="cl">
+<li><b>Does free drawing over-sample canonical points?</b> Ask many people to &ldquo;put a dot in each triangle wherever feels right&rdquo;, with triangles where the classical centres are well separated (the tall and lopsided ones on the perception page). Compare the placements with a uniform baseline and with the incentre, centroid and other centres. Preregister the analysis. This pairs with the <a href="mind.html#exp">tap experiment</a> proposed on the perception page.<span class="tg conj">CONJECTURE</span><span class="tg noref">NO REFERENCE FOUND</span> (web searches only)</li>
+<li><b>Does a taste for regularity find the incentre?</b> Give people the figure above without the shading or markers, and ask them to move the dot until the pattern &ldquo;looks best&rdquo;. If aesthetic judgment behaves like the figure&rsquo;s bias, settings should cluster at the incentre; if not, they should spread. This is cheap to run online.<span class="tg conj">CONJECTURE</span></li>
+<li><b>Are rediscovered objects simpler?</b> For a set of mathematical objects with documented independent discoveries, compare description lengths with those of comparable objects found once. Merton&rsquo;s thesis and the argument of section 1 predict that multiples are shorter to describe.<span class="tg conj">CONJECTURE</span></li>
+<li><b>Calibration.</b> Do people&rsquo;s confidence ratings in patterns they have found predict which patterns survive the three checks above? A study of this kind would measure the detector, not diagnose anyone.<span class="tg conj">CONJECTURE</span></li>
+</ol>
+<p>The <a href="seek.html">next page</a> follows this line of thought further: the project as a live case of drift choosing where to look and a checked machine search finding the endpoint, the trade-off between exploring and exploiting, beauty read as compression, and what all of it suggests for how to do research.</p>
+</main>
+
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,TAU=CX.TAU,R=Math.SQRT2-1,$=id=>document.getElementById(id);
+/* ---------- geometry ---------- */
+const rot=p=>[2-p[1],p[0]];                         // quarter turn about the square centre (1,1)
+const rotk=(p,k)=>{for(let i=0;i<k;i++)p=rot(p);return p};
+const cellMap=(p,i,j)=>{const mi=((i%2)+2)%2,mj=((j%2)+2)%2;return [2*i+(mi?2-p[0]:p[0]),2*j+(mj?2-p[1]:p[1])]};
+function irr(x,y){const a=Math.SQRT2*Math.hypot(x-1,y-1),b=2*y,es=Math.abs(a-b)/((a+b)/2),th=Math.atan2(x-y,2-x-y),ad=(th-Math.PI/4)*180/Math.PI;
+  return {a,b,es,ad,v:es+Math.abs(ad)/45}}
+const inside=(x,y)=>y>0.004&&y<x-0.004&&x+y<2-0.004;
+const CENT=[['incentre',[1,R],C.r],['centroid',[1,1/3],C.c],['circumcentre',[1,0.004],C.dim],['orthocentre',[1,0.996],C.dim]];
+/* ---------- state ---------- */
+const st={p:[1.42,0.22],mode:null,trail:[],steps:0,best:9,acc:0,T:0.02};
+const q=CX.Q.get('pt');if(q==='incentre')st.p=[1,R];else if(q==='centroid')st.p=[1,1/3];
+if(CX.Q.get('wander')==='taste')st.mode='taste';else if(CX.Q.get('wander')==='1')st.mode='walk';
+let G=null,heat=null,heatKey='';
+function layout(W,H){
+  const side=W>=600;let tile,ins;
+  if(side){tile={x:0,y:0,w:W*0.6,h:H};ins={x:W*0.6,y:0,w:W*0.4,h:H}}
+  else{tile={x:0,y:0,w:W,h:H*0.6};ins={x:0,y:H*0.6,w:W,h:H*0.4}}
+  const si=Math.min((ins.w-30)/2,(ins.h-60)/1),ox=ins.x+ins.w/2-si,oy=ins.y+ins.h/2+si/2+6;
+  return {tile,ins,si,ox,oy,X:u=>ox+u*si,Y:v=>oy-v*si,inv:(px,py)=>[(px-ox)/si,(oy-py)/si]};
+}
+function buildHeat(g,dpr){
+  const c=document.createElement('canvas'),w=Math.ceil(2*g.si*dpr),h=Math.ceil(g.si*dpr);c.width=w;c.height=h;
+  const x=c.getContext('2d'),im=x.createImageData(w,h);
+  for(let py=0;py<h;py++)for(let px=0;px<w;px++){const u=px/(dpr*g.si),v=1-py/(dpr*g.si);if(v<0||v>u||u+v>2)continue;
+    const r=irr(u,v).v,k=Math.max(0,Math.min(1,(Math.log10(r+1e-6)+3)/3.4)),b=Math.pow(1-k,1.3),o=(py*w+px)*4;
+    im.data[o]=20+140*b*b;im.data[o+1]=40+215*b;im.data[o+2]=36+150*b;im.data[o+3]=255}
+  x.putImageData(im,0,0);return c;
+}
+/* ---------- draw ---------- */
+const fig=CX.canvas($('cv13'),function(ctx,W,H,t,dt){
+  G=layout(W,H);const key=W+'x'+H+'@'+fig_dpr();if(key!==heatKey){heat=buildHeat(G,fig_dpr());heatKey=key}
+  step(dt);
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  const P=st.p,I=irr(P[0],P[1]),lock=I.v<0.01;
+  /* tiling */
+  const T=G.tile,s=Math.max(18,Math.min((T.w-16)/7,(T.h-30)/5)),
+        cols=Math.ceil(T.w/(2*s))+1,rows=Math.ceil(T.h/(2*s))+1,ox=T.x+(T.w-cols*2*s)/2,oy=T.y+T.h-(T.h-rows*2*s)/2;
+  const X=u=>ox+u*s,Y=v=>oy-v*s;
+  ctx.save();ctx.beginPath();ctx.rect(T.x+8,T.y+22,T.w-16,T.h-30);ctx.clip();
+  const A=[0,0],B=[2,0],Cc=[1,1];
+  for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){
+    const m=p=>cellMap(p,i,j);
+    // square and diagonals
+    ctx.strokeStyle='rgba(55,255,154,.16)';ctx.lineWidth=1;
+    const sq=[[0,0],[2,0],[2,2],[0,2]].map(m);ctx.beginPath();sq.forEach((p,k)=>k?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1])));ctx.closePath();ctx.stroke();
+    ctx.beginPath();ctx.moveTo(X(sq[0][0]),Y(sq[0][1]));ctx.lineTo(X(sq[2][0]),Y(sq[2][1]));ctx.moveTo(X(sq[1][0]),Y(sq[1][1]));ctx.lineTo(X(sq[3][0]),Y(sq[3][1]));ctx.stroke();
+    const D=[0,1,2,3].map(k=>m(rotk(P,k)));
+    // lines from dot to its triangle's corners
+    for(let k=0;k<4;k++){const a=m(rotk(A,k)),b=m(rotk(B,k)),c=m(rotk(Cc,k)),d=D[k];
+      CX.glowLine(ctx,X(d[0]),Y(d[1]),X(a[0]),Y(a[1]),'rgba(255,74,61,.55)',1,0);CX.glowLine(ctx,X(d[0]),Y(d[1]),X(b[0]),Y(b[1]),'rgba(255,74,61,.55)',1,0);
+      CX.glowLine(ctx,X(d[0]),Y(d[1]),X(c[0]),Y(c[1]),'rgba(255,178,58,.5)',1,0)}
+    // dot graph: inner square and wall-crossing edges
+    if(lock){ctx.fillStyle='rgba(53,230,255,.10)';ctx.beginPath();D.forEach((p,k)=>k?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1])));ctx.closePath();ctx.fill()}
+    const ec=lock?'#9ff6ff':C.c,ew=lock?2:1.4,eb=lock?10:4;
+    for(let k=0;k<4;k++){const a=D[k],b=D[(k+1)%4];CX.glowLine(ctx,X(a[0]),Y(a[1]),X(b[0]),Y(b[1]),ec,ew,eb);
+      const mir=m(rotk([P[0],-P[1]],k));CX.glowLine(ctx,X(a[0]),Y(a[1]),X(mir[0]),Y(mir[1]),ec,ew,eb)}
+    D.forEach(d=>CX.dot(ctx,X(d[0]),Y(d[1]),2.6,'#eafff4',lock?12:6));
+  }
+  ctx.restore();
+  ctx.strokeStyle='rgba(55,255,154,.3)';ctx.lineWidth=1;ctx.strokeRect(T.x+8,T.y+22,T.w-16,T.h-30);
+  CX.text(ctx,lock?'LOCK // REGULAR 4.8.8':'IRREGULARITY '+(I.v*100).toFixed(1)+'%',T.x+14,T.y+T.h-16,lock?C.g:C.a,12);
+  /* inset */
+  const g=G;
+  if(W>=600){ctx.strokeStyle='rgba(55,255,154,.25)';ctx.beginPath();ctx.moveTo(g.ins.x+0.5,30);ctx.lineTo(g.ins.x+0.5,H-10);ctx.stroke()}
+  ctx.drawImage(heat,g.X(0),g.Y(1),2*g.si,g.si);
+  ctx.strokeStyle=C.g;ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(g.X(0),g.Y(0));ctx.lineTo(g.X(2),g.Y(0));ctx.lineTo(g.X(1),g.Y(1));ctx.closePath();ctx.stroke();
+  ctx.setLineDash([3,4]);CX.glowLine(ctx,g.X(1),g.Y(0),g.X(1),g.Y(1),'rgba(55,255,154,.35)',1,0);ctx.setLineDash([]);
+  CX.text(ctx,'mirror line',g.X(1)+5,g.Y(0.86),C.dim,10);
+  CENT.forEach(([n,p,col],k)=>{CX.dot(ctx,g.X(p[0]),g.Y(p[1]),3.5,col,8);CX.text(ctx,n,g.X(p[0])+(k%2?-8:8),g.Y(p[1])+(k===2?-6:4),col,10.5,k%2?'right':'left')});
+  // trail
+  if(st.trail.length>1){ctx.strokeStyle='rgba(255,178,58,.55)';ctx.lineWidth=1;ctx.beginPath();st.trail.forEach((p,k)=>k?ctx.lineTo(g.X(p[0]),g.Y(p[1])):ctx.moveTo(g.X(p[0]),g.Y(p[1])));ctx.stroke()}
+  CX.dot(ctx,g.X(P[0]),g.Y(P[1]),5.5,lock?C.g:'#ffffff',14);
+  ctx.strokeStyle=lock?C.g:C.a;ctx.beginPath();ctx.arc(g.X(P[0]),g.Y(P[1]),10+2*Math.sin(t*5),0,TAU);ctx.stroke();
+  CX.text(ctx,'bright = close to regular (log scale)',g.ins.x+g.ins.w/2,g.ins.y+g.ins.h-12,C.dim,10.5,'center');
+  $('c13t').textContent=st.mode?'DRIFT // '+(st.mode==='taste'?'WANDER + TASTE':'BLIND WANDER')+' // STEP '+st.steps:'DRIFT // DRAG THE POINT IN THE TRIANGLE';
+  readout(I,lock);
+},{aspect:w=>w<600?1.25:0.58});
+function fig_dpr(){return Math.min(window.devicePixelRatio||1,2)}
+/* ---------- motion ---------- */
+function step(dt){
+  if(!st.mode)return;st.acc+=dt*40;
+  while(st.acc>=1){st.acc--;
+    const [x,y]=st.p,h=st.mode==='taste'?0.04:0.04;let nx=x+(Math.random()-.5)*h,ny=y+(Math.random()-.5)*h;
+    if(!inside(nx,ny))continue;st.steps++;
+    if(st.mode==='walk'){st.p=[nx,ny]}
+    else{const c=irr(x,y).v,v=irr(nx,ny).v;if(v<c||Math.random()<Math.exp(-(v-c)/st.T))st.p=[nx,ny]}
+    st.best=Math.min(st.best,irr(st.p[0],st.p[1]).v);
+    st.trail.push(st.p.slice());if(st.trail.length>600)st.trail.shift();
+  }
+}
+function readout(I,lock){
+  CX.kv($('kv13'),[
+    ['point (x, y)',CX.fmt(st.p[0],3)+', '+CX.fmt(st.p[1],3)],
+    ['inner edge a',CX.fmt(I.a,4)],['wall edge b',CX.fmt(I.b,4)],
+    ['edge spread',(I.es*100).toFixed(2)+'%',I.es<0.005?'ok':''],
+    ['square tilt off 45°',I.ad.toFixed(2)+'°',Math.abs(I.ad)<0.25?'ok':''],
+    ['irregularity',(I.v*100).toFixed(2)+'%',lock?'ok':'warn'],
+    ['status',lock?'LOCKED: regular 4.8.8':'drifting',lock?'ok':''],
+    ['mode',st.mode==='taste'?'wander + taste':st.mode==='walk'?'blind wander':'manual'],
+    ['steps / closest',st.steps+' / '+(st.best<9?(st.best*100).toFixed(2)+'%':'-')]
+  ]);
+}
+/* ---------- input ---------- */
+function setP(px,py,snap){if(!G)return;let [u,v]=G.inv(px,py);
+  v=Math.max(0.005,v);if(v>u-0.005){const m=(u+v)/2;u=m+0.003;v=m-0.003}if(u+v>2-0.005){const m=(u+v-1.995)/2;u-=m;v-=m}v=Math.max(0.005,v);
+  if(snap&&Math.hypot(u-1,v-R)<0.02){u=1;v=R}st.p=[u,v];st.best=Math.min(st.best,irr(u,v).v)}
+const inIns=(x,y)=>G&&x>=G.ins.x&&x<=G.ins.x+G.ins.w&&y>=G.ins.y&&y<=G.ins.y+G.ins.h;
+let dragging=false;
+CX.pointer($('cv13'),{down:(x,y)=>{if(!inIns(x,y))return;dragging=true;st.mode=null;sync();setP(x,y,true)},drag:(x,y)=>{if(dragging)setP(x,y,true)},up:()=>{dragging=false}});
+function sync(){$('b13walk').classList.toggle('on',st.mode==='walk');$('b13taste').classList.toggle('on',st.mode==='taste')}
+function start(m){if(st.mode===m){st.mode=null}else{st.mode=m;st.steps=0;st.best=irr(st.p[0],st.p[1]).v;st.trail=[st.p.slice()]}sync()}
+$('b13walk').onclick=()=>start('walk');$('b13taste').onclick=()=>start('taste');
+$('b13stop').onclick=()=>{st.mode=null;sync()};
+$('b13rand').onclick=()=>{let x,y;do{x=Math.random()*2;y=Math.random()}while(!inside(x,y));st.p=[x,y];st.trail=[];st.steps=0;st.best=irr(x,y).v};
+$('b13cen').onclick=()=>{st.mode=null;st.p=[1,1/3];sync()};
+$('b13inc').onclick=()=>{st.mode=null;st.p=[1,R];sync()};
+$('b13clr').onclick=()=>{st.trail=[];st.steps=0;st.best=irr(st.p[0],st.p[1]).v};
+sync();
+});
+</script>
+</body></html>

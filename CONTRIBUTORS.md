@@ -1,0 +1,45 @@
+# Contributors and credit
+
+## Originator and direction
+
+**Ahraz Arifuddin, Aska Digital** originated the construction (the incentre-and-spokes reading of the 4.8.8 tiling and its generalisation
+to pyramids over the facets of a polytope), chose the questions, and directed the project. He decides what is claimed and what is published.
+
+## AI assistance
+
+Most of the computation, proofs, checking and writing in this repository was done by AI models under his direction: **Claude Opus 5.5
+and other Claude models by Anthropic, PBC.** Their roles, in general terms:
+
+| Model family | Role |
+|---|---|
+| Claude Opus | proofs and derivations, research and novelty judgment, prior-art review, decisions about what a result can honestly be called |
+| Claude Sonnet | builds and checks: verifiers, replay scripts, tests, certificates, continuous integration, documentation |
+| Claude Haiku | operations: running known scripts, searching and retrieval, file moves and repository housekeeping |
+
+No AI model is an author in the legal or scholarly sense, and none can vouch for a result. The labels PROVEN, VERIFIED and KNOWN in
+`docs/audit.md` say what was actually done; a person has not independently re-derived every proof. Internal reviews so far were performed
+by AI models under direction (see `docs/review-ledger.md`); that is "internal pre-publication review" and not outside review.
+
+## Prior work this repository builds on
+
+Credit for the ideas below belongs to the cited people; where we reuse a construction we say so in the `PROOF.md` of the result.
+
+* The hinged-squares linkage: Antonio Flores ("Hinged tilings"), crediting Donald Stuart (1963); Daniel Wells for the term "hinged tessellations".
+* Rigid unit modes of linearly bridged frameworks and the rigid-unit-mode spectrum: Andrew L. Goodwin; Stephen C. Power.
+* Maxwell-Calladine counting: James Clerk Maxwell; C. R. Calladine.
+* Sphere packing nets and catalogues: the Reticular Chemistry Structure Resource (RCSR); Fischer, Koch and Sowa on homogeneous sphere packings.
+* Packing of the CaB6 type and binary packings: Horst and Travesset; Hopkins, Stillinger and Torquato; Murray and Sanders; Pauling and Weinbaum.
+* The ReO3 to VF3 octahedral tilt towards hcp anions: O'Keeffe and Hyde; Glazer's tilt notation.
+* Packing and jamming methods: Torquato and Jiao; Donev, Torquato, Stillinger and Connelly.
+* Perovskite tolerance-factor data (used in `research/chemistry`): Christopher J. Bartel and co-authors.
+* Crystal structure data: the Crystallography Open Database and its contributors.
+* The shape of this repository (hash-pinned certificates, a CI matrix that reruns every verifier, scoped claims, review ledger) follows
+  CrocSwap/integer-mult-bounds (Douglas Colkitt and community contributors) and Swapnil-jain/gf2m-circuits (per-result folders,
+  standard-library verifier, must-fail controls, public commitment of artefacts). We thank them for setting the standard.
+
+Full citations are in the `PROOF.md` of each result. See `NOTICE` for third-party material and licences.
+
+## How to be added
+
+Open a pull request using `.github/pull_request_template.md`. Say what you contributed, disclose AI assistance, and your credit will be recorded here
+and in `docs/review-ledger.md` for reviews.

@@ -1,5 +1,5 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>Cube in six pyramids</title>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cube in six pyramids</title>
 <style>
   html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
   canvas{display:block;width:100vw;height:100vh;cursor:grab}
@@ -27,8 +27,28 @@
   .panel.min .body{display:none}
   .hint{position:fixed;bottom:10px;left:16px;font-size:11.5px;color:#a39a87}
 #ui,#notes{margin-top:30px}
+#sign{position:fixed;z-index:60;white-space:nowrap;font:12px/1.45 -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;color:#5b6573;background:#fffdf8ee;
+  border:1px solid #e3ddd0;border-radius:8px;padding:6px 10px;text-decoration:none;box-shadow:0 1px 3px rgba(29,43,58,.06)}
+#sign a{color:#1d2b3a;text-decoration:none;border-bottom:1px solid #cfc8b8}
+#sign a:hover{color:#c0392b;border-bottom-color:#c0392b}
+@media (max-width:600px){#sign{font-size:10.5px;padding:4px 7px;white-space:normal;max-width:calc(100vw - 24px)}}
+#sign{left:50%;bottom:10px;transform:translateX(-50%)}
+@media (max-width:999px) and (min-width:601px){#sign{left:auto;right:12px;top:44px;bottom:auto;transform:none}}
+@media (max-width:600px){#sign{bottom:4px}}
+@media (max-width:700px){
+  .cbar span{display:none}
+  .cbar{font-size:12px!important;gap:3px 12px!important;padding:6px 10px!important}
+  #ui,#notes{position:fixed;left:8px;right:8px;width:auto;max-width:none;margin-top:0}
+  #ui{top:58px;max-height:34vh;max-height:34dvh}
+  #notes{top:auto;bottom:34px;max-height:26vh;max-height:26dvh}
+  .hint{display:none}
+  #sign{font-size:9.5px;white-space:nowrap;padding:3px 7px;bottom:6px}
+  #sign br{display:none}
+  #sign a:first-of-type{margin-right:.45em}
+  .panel.min{padding:8px 12px}
+}
 </style></head><body>
-<div style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
+<div class="cbar" style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
 
 <canvas id="c"></canvas>
 <div id="ui" class="panel">
@@ -182,4 +202,5 @@ if(q.get('faces')==='0')$('faces').checked=false;
 if(q.get('tet')){$('tets').checked=true;tetIdx=+q.get('tet');showTet()}
 if(q.get('view')){const v=VIEWS[q.get('view')];yaw=v.yaw;pitch=v.pitch;$('ex').value=0;$('spin').checked=false;$('ortho').checked=true;$('caption').innerHTML=v.text}
 frame();
-</script></body></html>
+</script><div id="sign">by <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br>with <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5 from Anthropic, PBC</a></div>
+</body></html>

@@ -6,4 +6,7 @@ __pycache__/
 paper/
 Going deeper_*.html
 autoresearch-fold/out/
-drift.html
+share/
+research/intmult/
+autoresearch-fold/prior-art-scripts/run_*/
+autoresearch-fold/prior-art-scripts/vcheck/

@@ -1,0 +1,63 @@
+{
+  "coordination_sequence_equals_RCSR_sms_first_10_terms": true,
+  "coordination_sequence_first_10": [
+    6,
+    17,
+    42,
+    68,
+    110,
+    153,
+    212,
+    272,
+    348,
+    425
+  ],
+  "coordination_sequence_note": "first 10 terms only; this is evidence for the net sms, not an isomorphism proof",
+  "cubic_path": {
+    "bar_length_deviation_below_1e-12": true,
+    "first_nonbonded_contact_deg_grid_3000": 60.007
+  },
+  "exact_at_60_degrees": {
+    "a": "8c/3 = 8(2 - sqrt(2))/3",
+    "a_value": 1.562097167,
+    "all_contacts_exactly_2R": true,
+    "contacts_per_ball": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "density": "27 pi sqrt(2)/256",
+    "density_value": 0.4685853099,
+    "next_distance_over_2R": [
+      1.3744,
+      1.3744,
+      1.3744,
+      1.3744,
+      1.3744,
+      1.3744
+    ],
+    "start_density_pi_R3": 0.2232661157
+  },
+  "inputs": {
+    "results/fold-3d-cubic/fold3d.py": "4f3c51d467cc91e76a243cd7de389d5211fbb591e934d89831ad4b27f48fe6ea"
+  },
+  "model": "octahedra of 6 dots (c = 2 - sqrt2) rotated alternately by +-theta about [111]; lattice cubic; bars of length 2R kept",
+  "must_fail_controls_rejected": [
+    "60-degree cubic state claimed to be a jam (no denser feasible state)",
+    "lattice constant a(60) + 0.01 claimed to keep six contacts at 2R for a dot",
+    "coordination sequence claimed to match fcc (12, 42, 92, ...)"
+  ],
+  "result": "fold-3d-cubic",
+  "trigonal_grid_scan": {
+    "bar_deviation_below_1e-12": true,
+    "densest_density": 0.647679,
+    "densest_theta_deg": 31.0,
+    "densest_u": 0.47,
+    "feasible_states": 5008,
+    "grid": "theta 0..90 deg step 1; u -0.6..0.6 step 0.01",
+    "grid_connected_to_start": 5008
+  }
+}

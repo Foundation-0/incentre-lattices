@@ -38,8 +38,25 @@
   .tint-b{color:#3b7dd8}.tint-g{color:#2e9e6a}.tint-a{color:#d08a1e}
   .hint{font-size:12.5px;color:#a39a87;margin:4px 2px 0}
 body{padding-top:36px}
+#sign{position:fixed;z-index:60;white-space:nowrap;font:12px/1.45 -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;color:#5b6573;background:#fffdf8ee;
+  border:1px solid #e3ddd0;border-radius:8px;padding:6px 10px;text-decoration:none;box-shadow:0 1px 3px rgba(29,43,58,.06)}
+#sign a{color:#1d2b3a;text-decoration:none;border-bottom:1px solid #cfc8b8}
+#sign a:hover{color:#c0392b;border-bottom-color:#c0392b}
+@media (max-width:600px){#sign{font-size:10.5px;padding:4px 7px;white-space:normal;max-width:calc(100vw - 24px)}}
+#sign{right:16px;bottom:16px}
+@media (max-width:1519px){#sign{position:static;max-width:calc(100% - 24px);display:block;width:max-content;margin:0 auto 30px}}
+@media (max-width:700px){
+  .cbar span{display:none}
+  .cbar{font-size:12px!important;gap:3px 12px!important;padding:6px 10px!important}
+  body{padding-top:58px}
+  .wrap{padding:12px 14px 60px}
+  h1{font-size:26px}h2{font-size:21px}
+  table{display:block;max-width:100%;overflow-x:auto}
+  .ctl input[type=range]{width:100%;max-width:240px}
+  .m,code{overflow-wrap:anywhere}
+}
 </style></head><body>
-<div style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
+<div class="cbar" style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
 <div class="wrap">
 
 <a class="back" href="cube-six.html">← back to the cube</a>
@@ -392,4 +409,5 @@ $('n10').addEventListener('input',upd10);upd10();
 {const qq=new URLSearchParams(location.search);for(const id of['t4','x4','o_ball','o_ghost'])if(qq.get(id))$(id).checked=true;if(qq.get('mode'))setMode(qq.get('mode'));if(qq.get('r3')){$('r3').checked=true;draw3()}if(qq.get('n3')){$('n3').value=qq.get('n3');draw3()}}
 {const sc=new URLSearchParams(location.search).get('scroll');if(sc)setTimeout(()=>{$(sc).scrollIntoView()},50)}
 window.__ok=true;
-</script></div></body></html>
+</script></div><div id="sign">by <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br>with <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5 from Anthropic, PBC</a></div>
+</body></html>

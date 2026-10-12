@@ -1,0 +1,107 @@
+{
+  "checker_agreement": true,
+  "fcc_regeneration_matches_stored_file_to_1e-9": true,
+  "inputs": {
+    "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
+    "autoresearch-fold/verify.py": "5062e649aafe62ad2d08c8faf5255049865cf474c6d14840c24e3166d788f00b",
+    "results/fold-close-packing/chk_independent.py": "0e4b3883983dcd82892a09903e33ede05ffc117d0de67469345d1fa4d6cc0567",
+    "results/fold-close-packing/make_fcc_path.py": "7e1dd724a8f88cbb045e6adbd00a727837175ca05f89c169b0827fe6341f3644",
+    "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1"
+  },
+  "model": "m = 2 (48 balls, 120 bars)",
+  "must_fail_controls_rejected": [
+    "locked checker: one dot displaced by 0.05 (bar lengths broken)",
+    "independent checker: one dot displaced by 0.05 (bar lengths broken)",
+    "locked checker: lattice scaled by 0.97 in one state (overlaps and bar lengths broken)",
+    "independent checker: lattice scaled by 0.97 in one state (overlaps and bar lengths broken)",
+    "locked checker: state replaced by a half-way blend (bars not preserved)"
+  ],
+  "paths": {
+    "fcc": {
+      "independent_checker": {
+        "accepted": true,
+        "bar_error_below_1e-9_relative": true,
+        "bars": 120,
+        "dots": 48,
+        "end_cna": {
+          "(4, 2, 1)": 576
+        },
+        "end_contacts_per_ball": {
+          "12": 48
+        },
+        "end_density": 0.7404804897,
+        "end_density_equals_kepler_to_1e-12": true,
+        "end_next_distance_over_2R": 1.4142136,
+        "interp_max_bar_dev_over_2R": 1.54e-05,
+        "interp_min_nonbonded_over_2R": 0.999994,
+        "max_dot_step": 0.005874,
+        "max_lattice_step": 0.004869,
+        "min_density_during_slides": 0.729419,
+        "min_nonbonded_over_2R_at_least_1_minus_1e-9": true,
+        "overlap_violations": 0,
+        "slide_states": 400,
+        "start_density": 0.2232661157,
+        "states": 1193
+      },
+      "locked_checker": {
+        "contact_degree_histogram": {
+          "12": 48
+        },
+        "contact_pairs": 288,
+        "contacts_per_ball_max": 12,
+        "contacts_per_ball_min": 12,
+        "final_density": 0.7404804897,
+        "first_order_jammed": true,
+        "flex_bars_only": 29,
+        "flex_bars_plus_contacts": 0,
+        "m": 2,
+        "reasons": [],
+        "states": 1193,
+        "valid": true
+      }
+    },
+    "hcp": {
+      "independent_checker": {
+        "accepted": true,
+        "bar_error_below_1e-9_relative": true,
+        "bars": 120,
+        "dots": 48,
+        "end_cna": {
+          "(4, 2, 1)": 288,
+          "(4, 2, 2)": 288
+        },
+        "end_contacts_per_ball": {
+          "12": 48
+        },
+        "end_density": 0.7404804897,
+        "end_density_equals_kepler_to_1e-12": true,
+        "end_next_distance_over_2R": 1.4142136,
+        "interp_max_bar_dev_over_2R": 1.54e-05,
+        "interp_min_nonbonded_over_2R": 0.999994,
+        "max_dot_step": 0.005874,
+        "max_lattice_step": 0.004869,
+        "min_nonbonded_over_2R_at_least_1_minus_1e-9": true,
+        "overlap_violations": 0,
+        "start_density": 0.2232661157,
+        "states": 793
+      },
+      "locked_checker": {
+        "contact_degree_histogram": {
+          "12": 48
+        },
+        "contact_pairs": 288,
+        "contacts_per_ball_max": 12,
+        "contacts_per_ball_min": 12,
+        "final_density": 0.7404804897,
+        "first_order_jammed": true,
+        "flex_bars_only": 29,
+        "flex_bars_plus_contacts": 0,
+        "m": 2,
+        "reasons": [],
+        "states": 793,
+        "valid": true
+      }
+    }
+  },
+  "result": "fold-close-packing"
+}

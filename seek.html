@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEARCH // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+</head><body>
+<main>
+<div class="kick">07 // SEARCH</div>
+<h1>Search</h1>
+<p class="lede">The <a href="drift.html">previous page</a> asked why a wandering mind can land on deep structure. This one follows the thought further, using the project itself as a live case: undirected play chose a starting point, a directed machine search found an endpoint nobody had in hand, and a locked checker decided what counted. That suggests a division of labour between drift, which chooses where to look, and verification, which decides what is true. The page looks at that split through the trade-off between exploring and exploiting, through beauty read as compression, and through the question of whether meaning lives in a pattern or in its finder, and it ends with what this implies for how to do research.</p>
+
+<div class="note">As on the previous page: no claim here is about any person. The labels are the site&rsquo;s usual ones, with <span class="tg pos">POSITION</span> for stances that are argued but not testable as stated.</div>
+
+<h2 id="case"><span class="n">1</span>A live case: drift picked the start, search found the end</h2>
+<p>Here is what happened, stated with the same care as the rest of the site. The drawing&rsquo;s rule, carried into 3D, puts six balls in each cube of side 2, one inside each of the cube&rsquo;s six pyramids, at radius &radic;2&nbsp;&minus;&nbsp;1. Joining touching balls with rigid bars gives a framework with the topology of the boron net in calcium hexaboride: octahedra of balls, linked to their neighbours by single bars (<a href="matter.html">matter page</a>). The framework is loose, filling only 22.33% of space, and it can fold without any bar changing length (<a href="motion.html">motion page</a>).<span class="tg proven">PROVEN</span> On the simplest folding path, where the lattice stays cubic, the balls first collide at 60&deg;, at a density of 0.4686.<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+<p>The question &ldquo;how dense can a continuous, bar-preserving, overlap-free fold get, if the lattice may shear?&rdquo; was then handed to an automated loop modelled on Andrej Karpathy&rsquo;s <i>autoresearch</i>. An agent may edit exactly one file, a search script. A separate checker, whose fingerprint (a cryptographic hash) is recorded so that any edit to it is detected and refused, rebuilds the framework from scratch and scores each proposed path: every bar length kept, no two balls overlapping, every step small enough to count as continuous. A path that fails any test is worth nothing. A valid path is kept only if it beats the best so far; otherwise the script is reverted, and the failed attempt stays in the log.</p>
+<p>In five recorded runs on a periodic block of 2&nbsp;&times;&nbsp;2&nbsp;&times;&nbsp;2 cubes (48 balls), the best density went 0.4686, then 0.7109, then 0.7405. One run in between was rejected: on a larger block, its steps were too coarse to count as continuous, and the checker caught it. The winning change was a change of where to start: stop the cubic fold early, at 30&deg;, then let the lattice shear freely. That path ends at a density of &pi;/&radic;18&nbsp;=&nbsp;0.74048, with every ball touching 12 others, in the arrangement known as hexagonal close packing.<span class="tg verified">VERIFIED NUMERICALLY</span> (locked checker, and a second checker written independently from scratch) That number is the ceiling for any packing of equal balls whatever: Kepler conjectured it in 1611, Thomas Hales proved it (<i>Annals of Mathematics</i>, 2005), and the Flyspeck project checked the proof by machine (<i>Forum of Mathematics, Pi</i>, 2017).<span class="tg known">KNOWN</span></p>
+<p>What is and is not established. The fold is continuous and valid on the 2&nbsp;&times;&nbsp;2&nbsp;&times;&nbsp;2 block. Its end state is rigid to first order, which is a linear test and not a proof that nothing can move. Larger blocks and other stackings are untested. The prior-art search is done, for what a web search can show. No prior description found (searches listed in the repo). The closest known relative is the ReO<sub>3</sub> &rarr; VF<sub>3</sub> tilt of corner-sharing octahedra toward hcp (O&rsquo;Keeffe &amp; Hyde 1977); in the cab framework that tilt stalls at density 0.4686, and reaching close packing needs a symmetry-breaking continuation with lattice shear. The end states are easy to verify; the content is the overlap-free path. This is a geometry result, not a predicted phase transition in real CaB<sub>6</sub> or Prussian-blue materials.<span class="tg noref">NO REFERENCE FOUND</span></p>
+<p>Now the division of labour. Nobody aimed at this result. The framework exists because a rule doodled in a square was followed into 3D; that choice of where to look came from drift. The machine did not choose the question. It explored a precisely stated space, quickly and tirelessly, including a branch (stop early, then shear) that the hand calculation had not tried. And neither the drifting nor the searching decided what was true: the checker did, and then a second checker that shared no code with the first. Drift is good at proposing places worth looking that no objective would have pointed to. Search is good at covering a space once it is defined. Verification is the only one of the three whose output deserves belief.<span class="tg pos">POSITION</span></p>
+
+<h2 id="explore"><span class="n">2</span>Explore or exploit</h2>
+<p>Every searcher faces the same dilemma. <b>Exploiting</b> means taking the best option you know. <b>Exploring</b> means trying something uncertain, at a cost now, in case it turns out better. In reinforcement learning, the study of agents that learn from reward, this is the explore&ndash;exploit trade-off, and no fixed rule is best in every environment. Daw, O&rsquo;Doherty, Dayan, Seymour and Dolan studied it in people choosing between slot machines whose payoffs drifted (<i>Nature</i> 441:876, 2006).<span class="tg known">KNOWN</span> Choices were well described by a model that mostly picks the best-looking option and sometimes, with a probability that falls as the gap in expected value grows, picks another. Exploratory choices went with activity in frontopolar cortex and intraparietal sulcus; exploitative ones with striatum and ventromedial prefrontal cortex.</p>
+<p>Animals searching for food face it in space. Viswanathan and colleagues argued that a <b>L&eacute;vy flight</b>, a random walk with mostly short steps and occasional very long ones, is an efficient strategy for finding sparse targets, and reported such patterns in deer and bumblebees, extending an earlier study of albatrosses (<i>Nature</i> 401:911, 1999).<span class="tg known">KNOWN</span> Edwards and colleagues re-analysed those data and found the evidence did not hold up, partly because some apparent long flights were time spent sitting on the nest (<i>Nature</i> 449:1044, 2007).<span class="tg known">KNOWN</span> The theory of when heavy-tailed search pays is sound in its own terms; whether particular animals use it is disputed.</p>
+<p>The figure is a toy that shows the shape of the argument. It is an invented landscape, not a model of a brain or of the drawing: a broad, gentle hill of height 0.6 with three narrow peaks of height 1 off to the sides. Three searchers start from the same random point. The <span style="color:var(--a)">greedy climber</span> takes a small step only if it goes uphill. The <span style="color:var(--c)">blind walker</span> steps at random. The <span style="color:var(--g)">drifter</span> climbs like the greedy one, but when it has gone 25 steps without improvement it jumps from its best point by a random distance, usually short and occasionally long.</p>
+
+<div class="wide" id="fig14">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv14"></canvas><div class="corner" id="c14t">TRIAL 1 // STEP 0</div><div class="corner r">FIG 14 // EXPLORE / EXPLOIT</div></div>
+ <section class="panel fp hud" id="p-fig14">
+  <header><span class="tabtitle">CTRL // SEARCH</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">STEPS PER TRIAL</div>
+    <div class="sl"><input id="s14" type="range" min="300" max="4000" step="100" value="600"><b id="s14v">600</b></div>
+    <div class="row"><button id="b14run" class="on">RUN</button><button id="b14new">NEW START</button><button id="b14batch">BATCH 300 TRIALS</button><button id="b14fast">FAST</button></div>
+    <div class="hint">A trial succeeds if the searcher reaches score 0.9, the top of a narrow peak. BATCH runs 300 trials per searcher at the chosen budget.</div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv14"></div></div>
+  </div>
+ </section>
+ <figcaption>Left: the landscape (brighter is higher), with the three searchers&rsquo; current positions and trails. Right: success rates over the trials run so far, and the latest batch. Amber is greedy, cyan is blind, green is the drifter.</figcaption>
+</figure>
+</div>
+
+<p>Over 2,000 trials of 600 steps, the greedy climber reached a peak 18% of the time, the blind walker 14% and the drifter 24%. At 4,000 steps the numbers were 18%, 57% and 57%.<span class="tg verified">VERIFIED NUMERICALLY</span> (this page&rsquo;s toy) The instructive part is the first column. The greedy climber&rsquo;s success is fixed by where it happens to start: if it starts in a peak&rsquo;s small catchment it wins, and otherwise it climbs the broad hill and stops for good. More time does not help it at all. Anything that keeps moving keeps finding, and the drifter, which explores but keeps its best result, gets there sooner than the blind walker.</p>
+<p>Read back onto the drawing: the &ldquo;taste&rdquo; walk on the previous page converged because, once the rule is fixed as &ldquo;one dot in each triangle, lines to the corners&rdquo;, the regularity landscape has a single peak. The hard step is earlier and is not a small improvement of anything. Going from &ldquo;a dot somewhere&rdquo; to &ldquo;the dot that is equally far from every edge&rdquo;, or from a flat doodle to its 3D lift, changes the question rather than refining the answer. A mind that only exploits polishes the drawing it already has. It needs some drift to reach a different drawing. On this reading, mind-wandering is a cheap exploration policy: it tries remote options at little cost, while deliberate thought exploits whatever looks promising.<span class="tg conj">CONJECTURE</span> The idea is a framing, consistent with the incubation results on the previous page but not tested by them.</p>
+
+<h2 id="beauty"><span class="n">3</span>Beauty as compression</h2>
+<p>J&uuml;rgen Schmidhuber proposed that what an observer finds beautiful is data it can compress well, that is, describe briefly given what it already knows, and that what it finds <i>interesting</i> is the rate at which its compression improves: the moment a shorter description is found (&ldquo;Driven by compression progress&rdquo;, 2009, arXiv:0812.4360).<span class="tg known">KNOWN</span> The drawing makes this concrete. A general dot position needs two numbers on top of the square to describe the tiled pattern: its two coordinates. The regular 4.8.8 needs none, because the rule fixes everything. When the figure on the previous page &ldquo;locks&rdquo;, the description of the pattern drops from two numbers to zero. On Schmidhuber&rsquo;s account, that drop is exactly what should feel like an insight.<span class="tg pos">POSITION</span></p>
+<p>Physicists have long said beauty guides them. Paul Dirac wrote that &ldquo;it is more important to have beauty in one&rsquo;s equations than to have them fit experiment&rdquo; (<i>Scientific American</i>, May 1963). Freeman Dyson recalled Hermann Weyl saying, half joking, &ldquo;My work always tried to unite the true with the beautiful; but when I had to choose one or the other, I usually chose the beautiful&rdquo; (Weyl&rsquo;s obituary, <i>Nature</i> 177:458, 1956).<span class="tg known">KNOWN</span> These are testimony from people for whom the bet paid off.</p>
+<p>The counterweights are as famous. Johannes Kepler&rsquo;s first cosmology, in <i>Mysterium Cosmographicum</i> (1596), nested the five regular solids between the orbits of the six known planets. It was beautiful, it fitted the data roughly, and it was wrong. William Thomson (later Lord Kelvin) proposed in 1867 that atoms are knotted vortex rings in the ether, an elegant idea that was taken seriously for decades and then abandoned (&ldquo;On Vortex Atoms&rdquo;, <i>Proceedings of the Royal Society of Edinburgh</i>).<span class="tg known">KNOWN</span> Sabine Hossenfelder argues that a preference for beautiful theories has misled recent fundamental physics (<i>Lost in Math</i>, 2018).<span class="tg pos">POSITION</span> (hers) Kepler is the neatest case of both sides at once: the same man who was misled by the solids also conjectured, in 1611, the packing bound that the fold in section 1 reaches, and that conjecture was right.</p>
+<p>A consistent reading: beauty, understood as compressibility, is a good guide to <i>where to look</i>, because canonical objects are short to describe and the world&rsquo;s symmetries make short descriptions common. It is a poor judge of <i>what is true</i>, because many short descriptions are false. Beauty belongs on the proposing side of the division of labour, never on the deciding side.<span class="tg pos">POSITION</span></p>
+
+<h2 id="meaning"><span class="n">4</span>Is the meaning in the pattern or in the finder?</h2>
+<p>Partly in the finder. The <a href="mind.html">perception page</a> collects evidence that the visual system computes something like a shape&rsquo;s skeleton, its medial axis: contrast sensitivity is enhanced there, and where people tap on a shape clusters on it.<span class="tg known">KNOWN</span> (details unverified for two of the studies, as noted there) The three lines the drawing puts in each triangle are that triangle&rsquo;s skeleton. So it is plausible that a hand drawing &ldquo;the natural lines&rdquo; is tracing what its own visual machinery already computes.<span class="tg conj">CONJECTURE</span> On that view the drawing&rsquo;s starting point was not random at all; it was selected by the finder&rsquo;s apparatus.</p>
+<p>Partly in the pattern. Whatever made someone notice it, the regular tiling has equal edges, the 3D framework has the calcium hexaboride topology, and the fold reaches &pi;/&radic;18. None of that depends on who looks. Anyone can recompute it, and two independent checkers did.</p>
+<p>The <a href="drift.html#over">previous page</a> made the uncomfortable point that the same faculty produces both discoveries and false patterns, and that from the inside they can feel alike. Put that together with the two paragraphs above and a picture emerges. <i>Noticing</i> is in the finder, and it is biased in useful ways. <i>Validity</i> is in the pattern. The bridge between them is not inside any one head. It is the filter a community applies: independent re-derivation, search for prior work, prediction, and here, the <a href="open.html">ledger</a> and the locked checkers. An individual with a vivid pattern and no access to that filter cannot tell which kind they have. The filter is what turns a felt meaning into a shared one.<span class="tg pos">POSITION</span></p>
+
+<h2 id="how"><span class="n">5</span>What follows for how to do research</h2>
+<p>A short, practical coda, drawn from what worked here.<span class="tg pos">POSITION</span></p>
+<ol class="cl">
+<li><b>Let drift choose where to look, and write down what it chose.</b> Unaimed play is a cheap way to reach starting points no objective would suggest. Record them; most will go nowhere, and that is the price of exploration.</li>
+<li><b>Turn each question into something a machine can check.</b> One scalar score, one trusted checker, and a fingerprint on the checker so that nobody, human or agent, can quietly change the rules.</li>
+<li><b>Separate proposing from judging.</b> The searcher may be clever, fast and wrong. The checker should be simple, slow to change and independent. Write a second checker from scratch for anything that matters.</li>
+<li><b>Keep the failures.</b> The search log keeps every rejected run, including the one the checker caught. A record of what did not work is what lets a reader trust what did.</li>
+<li><b>Label every claim, and never upgrade a label without new evidence.</b> &ldquo;No reference found&rdquo; is not &ldquo;new&rdquo;. &ldquo;Rigid to first order&rdquo; is not &ldquo;jammed&rdquo;.</li>
+<li><b>Open the tracks.</b> The project keeps a list of open questions, each with its own score and checker: the fold-density track above, and proposed tracks on running the rule through every reflection group, generating candidate boron frameworks, and the perception experiment. Anyone can propose a path; the checker decides.</li>
+</ol>
+<p>None of this is new as method. It is the ordinary discipline of science, made explicit enough that a drifting mind and a tireless machine can both contribute without either being trusted.</p>
+</main>
+
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,TAU=CX.TAU,$=id=>document.getElementById(id);
+/* ---------- landscape (matches the numbers quoted in the text) ---------- */
+const HC=[0.4,0.45],SH=0.32,SP=0.022,PK=[[0.78,0.22],[0.8,0.78],[0.18,0.82]];
+const F0=(x,y)=>0.6*Math.exp(-((x-HC[0])**2+(y-HC[1])**2)/(2*SH*SH));
+PK.forEach(c=>c[2]=1-F0(c[0],c[1]));
+function f(x,y){let v=F0(x,y);for(const c of PK)v+=c[2]*Math.exp(-((x-c[0])**2+(y-c[1])**2)/(2*SP*SP));return v}
+const cl=v=>Math.max(0,Math.min(1,v));
+const KINDS=[['greedy','GREEDY',C.a],['blind','BLIND',C.c],['drift','DRIFTER',C.g]];
+function agent(kind,x,y){const v=f(x,y);return {kind,x,y,fx:v,best:v,bx:x,by:y,since:0,trail:[[x,y]],hit:v>0.9}}
+function stepA(a){
+  if(a.kind==='drift'&&a.since>25){const L=Math.min(1,0.05*Math.pow(Math.random(),-1/1.1)),t=Math.random()*TAU;
+    a.x=cl(a.bx+L*Math.cos(t));a.y=cl(a.by+L*Math.sin(t));a.fx=f(a.x,a.y);a.since=0;a.jump=true;
+    if(a.fx>a.best){a.best=a.fx;a.bx=a.x;a.by=a.y}}
+  else{a.jump=false;const nx=cl(a.x+(Math.random()-.5)*0.03),ny=cl(a.y+(Math.random()-.5)*0.03),v=f(nx,ny);
+    if(a.kind==='blind'||v>a.fx){a.x=nx;a.y=ny;a.fx=v}
+    if(a.fx>a.best+1e-6){a.best=a.fx;a.bx=a.x;a.by=a.y;a.since=0}else a.since++}
+  if(a.best>0.9)a.hit=true;
+}
+function trialOnce(kind,N){const a=agent(kind,Math.random(),Math.random());for(let s=0;s<N&&!a.hit;s++)stepA(a);return a.hit}
+/* ---------- state ---------- */
+const st={N:+(CX.Q.get('n')||600),run:CX.Q.get('run')!=='0',fast:false,step:0,trial:1,acc:0,ag:[],tally:{greedy:[0,0],blind:[0,0],drift:[0,0]},batch:null};
+function newTrial(){const x=Math.random(),y=Math.random();st.ag=KINDS.map(k=>agent(k[0],x,y));st.step=0}
+newTrial();
+if(CX.Q.get('batch')==='1')setTimeout(runBatch,50);
+let heat=null,heatKey='';
+function buildHeat(sz,dpr){const c=document.createElement('canvas'),n=Math.ceil(sz*dpr);c.width=c.height=n;const x=c.getContext('2d'),im=x.createImageData(n,n);
+  for(let j=0;j<n;j++)for(let i=0;i<n;i++){const v=f(i/n,1-j/n),o=(j*n+i)*4,b=Math.pow(v,1.6);
+    im.data[o]=10+40*b;im.data[o+1]=18+230*b;im.data[o+2]=22+140*b;im.data[o+3]=255}
+  x.putImageData(im,0,0);
+  // contour at 0.9
+  return c}
+const fig=CX.canvas($('cv14'),function(ctx,W,H,t,dt){
+  const side=W>=600,sz=side?Math.min(H-40,W*0.56):Math.min(W-30,H*0.6),lx=side?18:(W-sz)/2,ly=side?(H-sz)/2+6:28;
+  const dpr=Math.min(window.devicePixelRatio||1,2),key=sz+'@'+dpr;if(key!==heatKey){heat=buildHeat(sz,dpr);heatKey=key}
+  // advance
+  if(st.run){st.acc+=dt*(st.fast?2400:160);
+    while(st.acc>=1){st.acc--;
+      if(st.step>=st.N){st.ag.forEach(a=>{st.tally[a.kind][1]++;if(a.hit)st.tally[a.kind][0]++});st.trial++;newTrial();continue}
+      st.ag.forEach(a=>{if(!a.hit){stepA(a);if(!st.fast){a.trail.push([a.x,a.y]);if(a.trail.length>400)a.trail.shift()}}});st.step++}}
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  ctx.drawImage(heat,lx,ly,sz,sz);ctx.strokeStyle='rgba(55,255,154,.45)';ctx.lineWidth=1;ctx.strokeRect(lx,ly,sz,sz);
+  const X=u=>lx+u*sz,Y=v=>ly+(1-v)*sz;
+  PK.forEach(c=>{ctx.strokeStyle='rgba(255,255,255,.35)';ctx.setLineDash([2,3]);ctx.beginPath();ctx.arc(X(c[0]),Y(c[1]),SP*sz*1.6,0,TAU);ctx.stroke();ctx.setLineDash([])});
+  CX.text(ctx,'broad hill 0.6',X(HC[0]),Y(HC[1])+4,'rgba(2,9,12,.75)',11,'center');
+  st.ag.forEach((a,k)=>{const col=KINDS[k][2];
+    if(a.trail.length>1){ctx.strokeStyle=col;ctx.globalAlpha=.55;ctx.lineWidth=1.2;ctx.beginPath();
+      a.trail.forEach((p,i)=>{const q=a.trail[i-1];if(i&&Math.hypot(p[0]-q[0],p[1]-q[1])>0.05)ctx.moveTo(X(p[0]),Y(p[1]));else i?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1]))});ctx.stroke();ctx.globalAlpha=1}
+    CX.dot(ctx,X(a.x),Y(a.y),a.hit?6:4.5,a.hit?'#ffffff':col,12);
+    if(a.hit){ctx.strokeStyle=col;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(X(a.x),Y(a.y),10,0,TAU);ctx.stroke()}});
+  // bars
+  const bx=side?lx+sz+40:18,by=side?ly+20:ly+sz+40,bw=side?W-bx-24:W-36,bh=side?sz-30:H-by-16;
+  CX.text(ctx,'SUCCESS RATE, '+st.N+' STEPS',bx,by,C.dim,11);
+  const rows=KINDS.map(k=>{const tl=st.tally[k[0]];return [k,tl[1]?tl[0]/tl[1]:0,st.batch?st.batch[k[0]]:null]});
+  const rh=Math.min(56,(bh-60)/3);
+  rows.forEach(([k,r,b],i)=>{const y=by+22+i*rh;CX.text(ctx,k[1],bx,y+12,k[2],11);
+    const x0=bx+78,w=bw-130;ctx.strokeStyle='rgba(55,255,154,.25)';ctx.strokeRect(x0,y+2,w,12);
+    ctx.fillStyle=k[2]+'55';ctx.fillRect(x0,y+2,w*r,12);CX.text(ctx,(r*100).toFixed(0)+'% live',x0+w+6,y+12,'#eafff4',10.5);
+    if(b!=null){ctx.fillStyle=k[2];ctx.fillRect(x0,y+19,w*b,5);CX.text(ctx,(b*100).toFixed(0)+'% batch',x0+w+6,y+26,k[2],10.5)}});
+  CX.text(ctx,'thin bar: latest batch of 300',bx,by+22+3*rh+8,C.dim,10.5);
+  $('c14t').textContent='TRIAL '+st.trial+' // STEP '+st.step+' / '+st.N+(st.fast?' // FAST':'');
+  CX.kv($('kv14'),[['trials (live)',String(st.trial-1)],
+    ...KINDS.map((k,i)=>[k[1].toLowerCase()+' best now',st.ag[i].best.toFixed(3)+(st.ag[i].hit?' PEAK':''),st.ag[i].hit?'ok':'']),
+    ['batch',st.batch?KINDS.map(k=>(st.batch[k[0]]*100).toFixed(0)+'%').join(' / '):'not run']]);
+},{aspect:w=>w<600?1.35:0.56});
+function runBatch(){const b={};KINDS.forEach(k=>{let h=0;for(let i=0;i<300;i++)if(trialOnce(k[0],st.N))h++;b[k[0]]=h/300});st.batch=b}
+function sync(){$('b14run').classList.toggle('on',st.run);$('b14fast').classList.toggle('on',st.fast);$('s14v').textContent=st.N;$('s14').value=st.N}
+$('s14').oninput=e=>{st.N=+e.target.value;st.tally={greedy:[0,0],blind:[0,0],drift:[0,0]};st.batch=null;st.trial=1;newTrial();sync()};
+$('b14run').onclick=()=>{st.run=!st.run;sync()};
+$('b14new').onclick=()=>{newTrial()};
+$('b14fast').onclick=()=>{st.fast=!st.fast;sync()};
+$('b14batch').onclick=()=>{$('b14batch').textContent='RUNNING';setTimeout(()=>{runBatch();$('b14batch').textContent='BATCH 300 TRIALS'},20)};
+sync();
+});
+</script>
+</body></html>

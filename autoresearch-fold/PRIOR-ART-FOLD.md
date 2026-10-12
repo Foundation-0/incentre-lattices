@@ -1,0 +1,80 @@
+# Prior art and significance: the cab contact framework folds to close packing
+
+Date 2026-10-12. Model: opus (novelty judgment). Labels: KNOWN (with citation), NOT FOUND (with the searches run), ANALYSIS (my own reasoning or computation). Scratch scripts are in /tmp/foldpa (temporary, outside the project). No project file other than this one was touched.
+
+## Summary
+
+- Nothing I found states the exact result: a pin-jointed contact framework of equal balls with the CaB6 (cab, 5/3/c3) topology moving, with every bar length kept and no overlaps, from its open cubic state all the way to a close packing. Treat it as NOT FOUND, which is not the same as proven new.
+- The closest prior art is a different framework. Rigid octahedra that share corners (ReO3 type) are known to tilt about [111] in the a-a-a- pattern (R-3c, VF3 type) until the anions form hcp. That is the same tilt system as our stage A, and FeF3, GaF3 and TeO3 under pressure follow it. The cab case is different in three ways: its octahedra are joined by a bar between vertices rather than by a shared corner, the balls are the octahedron vertices themselves, and the [111] fold on its own gets cab only to 0.4686. Reaching close packing needs a symmetry-breaking continuation in which the lattice shears.
+- New computation (ANALYSIS, accepted by verify.py): **fcc can also be reached.** Starting from the hcp end state, two rigid layer slides keep every bar, never overlap, and finish in pure fcc. Each slide is a stacking shift that rides over the bridge site. A 4-layer mixed stacking (dhcp-like) also exists as an end state. So in the m = 2 family the end state is not special to hcp. In close-packed terms the framework is indifferent to stacking.
+- The real content is the path, not the end state. Showing that the bar graph is a subgraph of the hcp or fcc contact graph is easy once you have the explicit construction (see Q2). What is hard is the overlap-free continuous path through a 27-dimensional configuration space that is full of jammed dead ends (see the runs table).
+
+## Q1. Is it known?
+
+### KNOWN: closest analogues
+
+1. **The ReO3 to VF3 tilt reaches hcp anions.** Coupled rotations of corner-sharing MX6 octahedra about a cubic body diagonal take ReO3 (Pm-3m) to the VF3/RhF3 type (R-3c). As the rotation grows, the X array tends to hexagonal close packing. Sources: O'Keeffe & Hyde, Acta Cryst. B33, 3802 (1977), "Some structures topologically related to cubic perovskite (E21), ReO3 (D09) and Cu3Au (L12)"; Hyde & Andersson, *Inorganic Crystal Structures* (1989). In tilt notation this is Glazer's a-a-a- (Glazer, Acta Cryst. B28, 3384 (1972)).
+   - The sphere-packing version: VF3-type compression is described as a rhombohedral deformation of the 8/3/c2 sphere packing in which contacts are kept (Sowa & Ahsbahs 1998, seen only via secondary citation in the FeF3/GaF3 papers; check the journal reference). Under pressure FeF3 and GaF3 follow this deformation "up to the pressures where the fluorine atoms become hexagonally close-packed" (Jørgensen & Smith, Acta Cryst. B62 (2006), FeF3 neutron study to 8.28 GPa; Jørgensen, Olsen & Gerward, "Compression mechanism of GaF3 and FeF3: a high-pressure X-ray diffraction study"). TeO3 behaves the same way (arXiv:2101.11842). After that, VF3 amorphizes (Dalton Trans. 2021).
+   - How it differs from ours: corner sharing (3 anions per octahedron, not 6 balls), a single symmetric parameter, and the hcp is of the anions only. Our stage A uses the same a-a-a- tilt on cab and stalls far below close packing. A free, symmetry-breaking continuation is needed (the path passes through states where all 48 balls are inequivalent; at t = 528 there are 48 distinct environments).
+2. **Sphere-packing deformations in the Fischer–Koch–Sowa tradition.** Homogeneous sphere packings are classified as k/m/fn, and families with free parameters deform with their contacts kept until limiting forms gain extra contacts. cab is sphere-packing type 5/3/c3 (RCSR/EPINET entry "cab"; notation from Koch, Fischer & Sowa, Acta Cryst. A62, 152 (2006); Int. Tables C, ch. 9.1; Fischer, Acta Cryst. A60 (2004), minimal densities of the 199 cubic types). These are deformations at fixed symmetry. I found no Fischer/Koch/Sowa paper that deforms 5/3/c3 to 12/... at all, let alone with the symmetry breaking a 2×2×2 supercell allows.
+3. **Flexibility window.** Frameworks of rigid units with hard-sphere O–O limits have a range of densities over which the units can stay ideal: Sartbaeva, Wells, Treacy & Thorpe, Nature Mater. 5, 962 (2006); Kapko, Dawson, Treacy & Thorpe, PCCP (2010, issue 30); Wells & Sartbaeva's review of geometric simulation (2012). Our result is a flexibility-window statement for a model framework whose window turns out to reach all the way to the Kepler bound. I found no flexibility-window paper that reports a framework whose window reaches close packing.
+4. **The method.** Our search is in substance Torquato–Jiao sequential linear programming with a deformable periodic cell (PRE 82, 061302 (2010); the Adaptive Shrinking Cell, Nature 460, 876 (2009)) with bar equalities added. The first-order jamming test is Donev, Torquato, Stillinger & Connelly, J. Comput. Phys. 197, 139 (2004). The jamming categories (local, collective, strict) are Torquato & Stillinger, J. Phys. Chem. B 105, 11849 (2001). Periodic rigidity with a flexible lattice: Borcea & Streinu, Proc. R. Soc. A 466, 2633 (2010); Connelly, Eur. J. Combin. 29, 1862 (2008); Connelly, Shen & Smith, DCG 52 (2014), "Ball packings with periodic constraints".
+5. **Sticky spheres.** Finite clusters only. Rigid and maximum-contact clusters are enumerated, and the most hyperstatic ones are fragments of close packings: Arkus, Manoharan & Brenner, PRL 103, 118303 (2009); Meng et al., Science 327, 560 (2010); Holmes-Cerfon, SIAM Rev. (2016), arXiv:1407.3285; Kallus & Holmes-Cerfon, PRE 95, 022130 (2017); Hoy, Harwayne-Gidansky & O'Hern, arXiv:1011.5412 (n < 13 maximum-contact packings are hcp subunits). None of these treats periodic frameworks with prescribed bonds moving to close packing.
+6. **Real cab and Prussian-blue materials do not behave like this model.** CaB6 has no structural transition up to about 40 GPa in one study (Chin. Phys. B 28, 068101 (2019)), an orthorhombic transition at 12 GPa in another (Wang et al. 2013), and B24 units after laser heating above 30 GPa (Kolmogorov et al., PRL 109, 075501 (2012)). Prussian-blue analogues show pressure-driven octahedral tilt transitions (Boström & Brant, J. Mater. Chem. C (2022) perspective; CsMnCo(CN)6 at about 2 GPa). The physical relevance of the result is therefore weak. It is a geometry and rigidity result.
+7. **Mechanism metamaterials.** Rotating squares and rigid-unit auxetics (Grima & Evans, J. Mater. Sci. Lett. 19 (2000)); Bertoldi, Vitelli, Christensen & van Hecke, Nat. Rev. Mater. 2, 17066 (2017); twisted kagome (Sun, Souslov, Mao & Lubensky, PNAS 109, 12369 (2012)); RUM-driven transitions (Giddy, Dove, Pawley & Heine, Acta Cryst. A49, 697 (1993); Hammonds et al., Am. Mineral. 81, 1057 (1996)). None of these drives a framework to close packing.
+8. **Endpoint bound.** π/√18 is the maximum density of any sphere packing (Hales, Ann. Math. 162 (2005); Flyspeck, Forum Math. Pi (2017)).
+
+### NOT FOUND (searches run, web, 2026-10-12)
+- "ReO3 octahedra rotation about [111] anions hexagonal close packing RhF3 VF3 O'Keeffe Hyde" (found the ReO3/VF3/hcp analogy above)
+- "flexibility window zeolite Sartbaeva Wells Treacy Thorpe" (no window that reaches close packing)
+- "continuous deformation sphere packing contacts preserved framework mechanism reaches close packing hcp" (extended): nothing
+- "Sowa sphere packing FeF3 high pressure hcp", "Sowa sphere packing approach pressure-induced phase transitions", "Sowa Ahsbahs 8/3/c2": only the VF3 case
+- "RCSR cab net CaB6 sphere packing 5/3 Fischer Koch": gives the type 5/3/c3, no deformation study
+- "Torquato Jiao adaptive shrinking cell", "hard spheres connected by rigid bonds ... densest reachable packing" (extended): nothing on bonded frameworks
+- "Wells Dove Tucker geometric simulation ... perovskite density limits": nothing
+- "CaB6 high pressure ...", "Prussian blue analogue pressure-induced amorphization ...": tilts only, no close-packing endpoint
+- "Holmes-Cerfon sticky spheres periodic ...": finite clusters only
+- "truncated cubic sphere packing ... densification close packing" (extended): nothing
+- "pressure-induced amorphization zeolite oxygen sublattice close packing": silica O-sublattice tends toward close packing (Scandolo-type MD), but not as a framework mechanism
+- "Connelly periodic sphere packing rigidity ... Borcea Streinu": theory only, no such example
+
+Not searched, and worth a library check before any public claim: the full text of Sowa's deformation papers; Koch & Fischer on deformations of the 5/3 types; O'Keeffe & Hyde's *Crystal Structures I* (1996) on the cab/ReO3 relationship; Conway & Sloane, SPLAG ch. 1 on the fcc to hcp transformations (those are layer slides, as here, but on bare packings).
+
+## Q2. Surprising or generic? (ANALYSIS)
+
+**Dimension count, m = 2.** 48·3 + 9 − 120 − 3 (translations) − 3 (rotations) = **27**. Equivalently, 8 rigid regular octahedra (Cauchy rigidity: each stays congruent, drift 9e-16 along the path) give 8·6 + 9 − 24 linking bars − 6 = 27. For general m it is 3m³ + 3, so about 3 degrees of freedom per octahedron. verify.py reports flex_bars_only = 29 at the end state (it subtracts 6). Two extra first-order flexes above the generic 27 suggest a special point. Those two are consistent with the two layer slides below, which are bar-only motions that the contacts block to first order.
+
+**Subgraph check: yes, explicitly, for hcp, fcc and a mixed stacking.**
+- *hcp (the found end state).* Balls lie in 4 close-packed layers per c. Each octahedron spans an adjacent layer pair: octahedra sit only in alternate gaps, (0,1) and (2,3). In each of those gaps a third of the octahedral holes are chosen, so that every ball belongs to exactly one octahedron. Of the 24 linking bars, 16 lie within a layer. The other 8 cross the empty gaps (1,2) and (3,0), and **all 8 point the same lateral way** (240°). Every ball has the same distance environment.
+- *fcc (new).* Because all the bars crossing one empty gap point the same way, the layer pair above that gap can be slid by one stacking vector, A to C, choosing the one of the three slide directions that keeps those bars as contacts. The slide goes over the bridge site, with lift set by the bar, so no overlap occurs. Doing this at both empty gaps (slide u(0°) on layers 2–3 with c, then u(120°) on c) gives an end state with CNA 576 × (4,2,1), which is pure fcc: 12 contacts per ball, density π/√18. Appending these 400 states to best/path.npz gives a 1193-state path that **verify.py accepts** (valid, max bar error 8e-16, min distance/2R = 1 − 2e-15, density dips to 0.7294 during the slides, end first-order jammed). File: /tmp/foldpa/vcheck/path_fcc.npz; scripts slide.py, fcc2.py, cnafinal.py in /tmp/foldpa. Only one checker (verify.py plus my CNA) has looked at this, not two.
+- *Mixed stacking.* Other shift choices give 432 × (4,2,1) + 144 × (4,2,2), a 4-layer polytype (dhcp-like).
+
+**Which part is the real content.** The end state is a combinatorial fact: cover the close-packed spheres exactly with octahedral holes in alternate gaps, then match the leftover vertices in the cab pattern. It is not obvious beforehand, but it is easy to check once written down, and it is stacking-agnostic. The real content is the **path**: start and end lie in the same connected component of the overlap-free configuration space (bars plus non-overlap). That is not automatic. Greedy density ascent from other starts jams well below Kepler:
+
+| start (stage A fold angle) | end max density | end state |
+|---|---|---|
+| 0° (no fold, seed 8) | 0.5827 | jammed or stuck, 5.5 contacts |
+| 20° | 0.6187 | 6 contacts |
+| 25°, 30°, 32°, 35° | 0.74048 | hcp, all four |
+| 28° | 0.6096 | 6.75 contacts |
+| 40° | 0.5834 | 6.3 contacts |
+| 45°, 60° | 0.7109 | trigonal, first-order jammed |
+
+The 30° continuation is deterministic: seeds 1–6 give the identical 793-state path, because no random kicks were used. So "several seeds" adds no independence. The basin around 25–35° is real but fragile (28° fails). The configuration space has many first-order-jammed dead ends, so the found path is the interesting object. With about 3 degrees of freedom per octahedron and an end state needing about 6 contact constraints per ball, close packing is a heavily over-constrained special point. Reaching it is plausible but not generic for a greedy method.
+
+**Is it generic for underconstrained frameworks?** Heuristically, a framework can reach close packing only if (a) its periodic bar graph embeds in a close-packed contact graph with compatible translations, which is a real filter (ring sizes, octahedra or tetrahedra must coincide with holes, voltage constraints), and (b) the component is connected through to that embedding. For cab, (a) holds in the m = 2 family for all 4-layer stackings. I would not claim (b) for frameworks in general. The 0.58–0.71 jams show that local traps are common.
+
+**Caveat.** Continuity is certified only at the sampling level: steps of at most 0.01 and midpoint overlap checks. A rigorous continuous path needs either regularity of the constraint Jacobian between samples plus a margin argument, or an interval-arithmetic certificate, or an analytic piecewise path. Density along the hcp path is not monotone (smallest step −7e-5).
+
+## Q3. Significance and framing (ANALYSIS)
+
+**Modest framing.** "Equal balls at the vertices of the truncated cubic honeycomb, pin-jointed to their 5 contacts (the cab or CaB6 net, density 0.2233), are not locked away from close packing. In the 2×2×2 periodic family with a free lattice there is a continuous bar-preserving, overlap-free motion from the fully extended cubic state to hcp at π/√18, and two further layer slides reach fcc. The first stage is the a-a-a- octahedral tilt known from ReO3 to VF3. The rest is a symmetry-breaking continuation found by sequential LP." Credit the ReO3/VF3/8/3/c2 line and Torquato–Jiao, and say "not found in the literature" rather than "new".
+
+**What would make it stronger, roughly in order of value:**
+1. **An explicit closed-form end-state embedding**: space group, Wyckoff sites, the octahedral-hole pattern and the matching. Ideally also a short proof that the cab quotient for m = 2 embeds in every 4-layer close packing.
+2. **A certified path**: piecewise analytic segments, or interval-checked samples. Then replace the 30° numerical continuation with a low-dimensional symmetric family if one exists. A path that keeps some subgroup would make a clean theorem.
+3. **The minimal supercell**: does m = 1 (6 balls, 6 internal degrees of freedom) admit a close-packed embedding or a path? What about m = 3? Odd m forbids the checkerboard tilt, so a positive odd-m result would show the a-a-a- tilt is not essential.
+4. **The full set of close-packed end states and their connectivity.** The hcp to fcc slides already show the close-packed end states are linked through dips in density.
+5. **Whether a monotone (density non-decreasing) path exists**, and the minimum density dip, which is an energy-barrier analogue under pressure.
+6. **Comparison nets**: diamond (dia, 4 bars), sodalite, ReO3 with bars (cab is augmented pcu), other 5/3 types. This would test whether "reaches Kepler" is cab-specific.
+7. **Physical relevance**: say plainly that real CaB6 and Prussian-blue analogues have bond-angle stiffness, so this is a geometric statement and not a predicted phase transition.

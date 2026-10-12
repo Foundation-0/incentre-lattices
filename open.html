@@ -14,7 +14,7 @@
 </style>
 </head><body>
 <main>
-<div class="kick">06 // LEDGER</div>
+<div class="kick">08 // LEDGER</div>
 <h1>Ledger</h1>
 <p class="lede">This page lists every claim made across the site, with the strength of its evidence and whether it is likely new. The short version: the drawing is a rediscovery of known structures by a new route, plus a handful of results that were not found in the literature after web searches. Nothing here has been through peer review, and no search was a full literature review.</p>
 
@@ -24,6 +24,7 @@
 <li><span class="tg verified">VERIFIED NUMERICALLY</span> computed in code to a stated tolerance, with no proof.</li>
 <li><span class="tg conj">CONJECTURE</span> proposed, tested only in part or not at all. Guesses and speculation go here too.</li>
 <li><span class="tg known">KNOWN</span> in the literature, with a citation. Several are cited from abstracts and summaries only.</li>
+<li><span class="tg pos">POSITION</span> a philosophical or interpretive stance, argued for but not testable as stated (Drift and Search pages).</li>
 </ul>
 <p>The second label on each row says whether the claim is likely new. <span class="nv kn">ESTABLISHED</span> means it is known. <span class="nv elem">ELEMENTARY</span> means it is easy to derive and probably folklore. <span class="nv new">NO REFERENCE FOUND</span> means that web searches found no prior statement, which is weaker than &ldquo;nobody has done this&rdquo;. <span class="nv view">OUR ROUTE</span> means the facts are known and only the path or the framing is ours.</p>
 
@@ -89,7 +90,7 @@ const ROWS=[
 ['matter','Unreachable shapes are over-represented among oxide environments that violate the first rule.',[J],EL,'Not tested.'],
 ['matter','MB12 forms with smaller metals and MB6 with larger ones, and the cage sizes agree.',[J],KN,'Trend known in boride literature; no classifier built.'],
 ['motion','Counter-rotating clusters fold the lattice with a(θ) = 2 − 2t(1 − cos θ) and Poisson ratio −1, exactly.',[P],EL,'Bar error < 1e-15 in code.'],
-['motion','The 2D fold locks at exactly 45°: strain −(√2−1)², density from 0.539 to π/4, 4 contacts per ball.',[P],EL,'The linkage is known (Flores, hinged tilings, after Stuart 1963); ν = −1 by symmetry (Mitschke et al. 2013). Ball numbers are direct corollaries'],NW,'Sympy and numerics. Related: Grima and Evans 2000 (rotating squares); may be folklore.'],
+['motion','The 2D fold locks at exactly 45°: strain −(√2−1)², density from 0.539 to π/4, 4 contacts per ball.',[P],EL,'The linkage is known (Flores, hinged tilings, after Stuart 1963); ν = −1 by symmetry (Mitschke et al. 2013). Ball numbers are direct corollaries. Sympy and numerics; related: Grima and Evans 2000 (rotating squares).'],
 ['motion','Only the incentre gives a fold that ends in the regular square lattice.',[P],EL,'Corollary of the known hinged tiling; not printed anywhere found.'],
 ['motion','Rotating-squares auxetics have Poisson ratio −1; tilt limits in perovskites; NTE by rotation.',[K],KN,'Grima and Evans 2000; Glazer 1972; O’Keeffe and Hyde 1977 (not retrieved); Goodwin 2006.'],
 ['motion','3D folds end at 45° [001], 54.7356° [011], 60° [111] with the listed contacts and densities.',[V],NW,'Cubic-lattice path only: a trigonal branch keeps folding past 60°, so these are not jams. [111] spacing 8t/3 proven; others numerical.'],
@@ -108,9 +109,22 @@ const ROWS=[
 ['mind','The drawing is not a known traditional (Hankin or other) construction.',[J],NW,'Absence of evidence only; key paper unreadable; no frame matched to a named pattern.'],
 ['mind','Square plus X is the tetrakis tiling; the drawing is it with its dual on top; a local 8-fold rosette appears at octagon centres.',[V],VW,'Dual relation is standard; the framing is ours.'],
 ['mind','A 3D Hankin-style rule on the truncated cubic honeycomb is an untried route to space-filling star lattices.',[J],NW,'Not searched exhaustively.'],
-['mind','A teaching path from the drawing to Wythoff points and crystals.',[J],NW,'No such curriculum found.']
+['mind','A teaching path from the drawing to Wythoff points and crystals.',[J],NW,'No such curriculum found.'],
+['drift','A parameter-free rule (equidistant from every edge) has one answer; mirror symmetry confines canonical points to the mirror line, where the classical centres sit at heights 0, 1/3, √2 − 1 and 1.',[P],EL,'Direct calculation.'],
+['drift','Only the incentre makes the tiled dot pattern regular 4.8.8 (equal edges and 45° squares); at the centroid the two edge lengths differ by 34%.',[P,V],EL,'Two conditions on two coordinates; drift.html figure.'],
+['drift','About 2 in 100,000 uniformly random dot positions give a pattern within 1% of regular; a blind 2,000-step walk typically stays above 34%; a walk biased toward regularity reaches 1% in a median of about 280 steps.',[V],EL,'Toy model on drift.html, 2 million samples and 200 runs each.'],
+['drift','Free doodling over simple rules over-samples canonical points compared with chance.',[J],NW,'Untested; corpus study proposed. Web searches only.'],
+['drift','Rediscovery is evidence that a structure is canonical (a property of the problem), not evidence of special insight.',['pos'],VW,'Draws on Merton 1961 on multiple discovery.'],
+['drift','Incubation helps on average; that mind-wandering drives it is mixed.',[K],KN,'Sio and Ormerod 2009; Baird et al. 2012; failed replication Murray et al. 2024.'],
+['drift','Pattern-finding trades hits against false alarms; apophenia and aberrant salience describe the far end; schizotypy and creativity correlate weakly (r = 0.07 overall).',[K],KN,'Green and Swets 1966; Conrad 1958; Kapur 2003; Acar and Sen 2013; Abraham 2014.'],
+['drift','Platonist, constraint and mathematical-universe readings of why minds and crystals agree; no drawing experiment distinguishes them.',['pos'],VW,'Wigner 1960; Penrose 2004; Tegmark 2008.'],
+['search','Drift chose the starting framework; a keep-or-discard machine search against a locked checker found a continuous fold from density 0.2233 to π/√18 = 0.74048 (hcp, 12 contacts per ball, 2×2×2 supercell).',[V],NW,'autoresearch-fold; two independent checkers; first-order rigid only. No prior description found (searches in the repo). Closest relative: ReO3 to VF3 tilt toward hcp (O’Keeffe and Hyde 1977), which stalls at 0.4686 in the cab framework; close packing needs a symmetry-breaking continuation with lattice shear. Geometry result, not a predicted phase transition in real CaB6 or Prussian-blue materials.'],
+['search','From the hcp end state, two rigid layer slides keep every bar, never overlap, and reach fcc (2×2×2 family).',[V],NW,'Accepted by the locked checker (verify.py); second, independent check pending. The end states are easy to verify; the content is the overlap-free path.'],['search','A greedy climber stalls on a broad foothill; drift with occasional long jumps finds narrow peaks more often.',[V],EL,'Toy landscape on seek.html; a generic property of search, not a claim about brains.'],
+['search','Mind-wandering works as an exploration policy.',[J],EL,'Framed with Daw et al. 2006 (explore/exploit) and the disputed Lévy-flight foraging literature.'],
+['search','Beauty, read as compressibility, is a good guide to where to look and a poor judge of what is true.',['pos'],VW,'Schmidhuber 2009; Dirac 1963 and Weyl (via Dyson 1956) as testimony; Kepler 1596, Thomson 1867 and Hossenfelder 2018 as counterweights.'],
+['search','The faculty that finds patterns is the same in discovery and delusion; the separating filter is external and social.',['pos'],VW,'Links the perception and drift pages.']
 ];
-const LAB={proven:'PROVEN',verified:'VERIFIED NUMERICALLY',conj:'CONJECTURE',known:'KNOWN'};
+const LAB={proven:'PROVEN',verified:'VERIFIED NUMERICALLY',conj:'CONJECTURE',known:'KNOWN',pos:'POSITION'};
 const NOV={kn:'ESTABLISHED',elem:'ELEMENTARY',new:'NO REFERENCE FOUND',view:'OUR ROUTE'};
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const tb=document.querySelector('#tb tbody');
@@ -118,7 +132,7 @@ ROWS.forEach((r,i)=>{const tr=document.createElement('tr');tr.dataset.l=r[2].joi
   tr.innerHTML='<td class="pg">'+r[0]+'</td><td class="cl">'+esc(r[1])+'</td><td>'+r[2].map(l=>'<span class="tg '+(l==='conj'?'conj':l)+'">'+LAB[l]+'</span>').join('')+'</td><td><span class="nv '+r[3]+'">'+NOV[r[3]]+'</span></td><td>'+esc(r[4])+'</td>';
   tb.appendChild(tr)});
 const cnt={};ROWS.forEach(r=>{r[2].forEach(l=>cnt['l'+l]=(cnt['l'+l]||0)+1);cnt['n'+r[3]]=(cnt['n'+r[3]]||0)+1});
-const BARS=[['l'+P,'PROVEN',C.g],['l'+V,'VERIFIED',C.c],['l'+J,'CONJECTURE',C.a],['l'+K,'KNOWN','#9aa8ff'],['n'+NW,'NO REF FOUND',C.r],['n'+VW,'OUR ROUTE',C.a],['n'+EL,'ELEMENTARY',C.c],['n'+KN,'ESTABLISHED','#9aa8ff']];
+const BARS=[['l'+P,'PROVEN',C.g],['l'+V,'VERIFIED',C.c],['l'+J,'CONJECTURE',C.a],['l'+K,'KNOWN','#9aa8ff'],['lpos','POSITION','#e08cc4'],['n'+NW,'NO REF FOUND',C.r],['n'+VW,'OUR ROUTE',C.a],['n'+EL,'ELEMENTARY',C.c],['n'+KN,'ESTABLISHED','#9aa8ff']];
 let filt=CX.Q.get('f')||null,hit=[];
 function apply(){document.querySelectorAll('#tb tbody tr').forEach(tr=>{let ok=true;
   if(filt){ok=filt[0]==='l'?tr.dataset.l.split(' ').includes(filt.slice(1)):tr.dataset.n===filt.slice(1)}tr.classList.toggle('dim',!ok)});
@@ -132,7 +146,7 @@ const fig=CX.canvas($('cv12'),function(ctx,W,H,t){
     CX.text(ctx,String(v),x+bw/2,base-h-6,'#eafff4',13,'center');
     CX.text(ctx,b[1],x+bw/2,base+16,b[2],W<600?8.5:10.5,'center');ctx.globalAlpha=1;hit.push([x,x+bw,b[0]])});
   ctx.strokeStyle='rgba(55,255,154,.3)';ctx.beginPath();ctx.moveTo(14,base);ctx.lineTo(W-14,base);ctx.stroke();
-  CX.text(ctx,'evidence',20,base+34,C.dim,10.5);CX.text(ctx,'novelty',20+4*(bw+gap),base+34,C.dim,10.5);
+  CX.text(ctx,'evidence',20,base+34,C.dim,10.5);CX.text(ctx,'novelty',20+5*(bw+gap),base+34,C.dim,10.5);
 },{aspect:w=>w<600?0.7:0.36,always:true});
 CX.pointer($('cv12'),{down:(x)=>{const h=hit.find(b=>x>=b[0]&&x<=b[1]);if(h){filt=filt===h[2]?null:h[2];apply()}}});
 $('b12clear').onclick=()=>{filt=null;apply()};

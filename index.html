@@ -1,1 +1,556 @@
-<!doctype html><meta charset="utf-8"><title>Incentre lattice</title><meta http-equiv="refresh" content="0; url=lattice.html"><a href="lattice.html">Enter</a>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ABSTRACT // Incentre lattice</title>
+<meta name="description" content="One drawing, followed all the way down: a square, its diagonals, and the point equidistant from each triangle's sides. An infographic abstract.">
+<link rel="stylesheet" href="codex.css">
+<style>
+main.land{max-width:760px;padding:22px 20px 40px}
+.ip{position:relative;border:1px solid rgba(55,255,154,.35);background:rgba(2,12,9,.80);box-shadow:0 0 18px rgba(55,255,154,.10),inset 0 0 26px rgba(55,255,154,.04);padding:16px 20px 20px;transition:opacity .7s ease,transform .7s ease}
+.js .ip.pre{opacity:0;transform:translateY(16px)}
+.ip .lbl{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font:11px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.2em;color:var(--dim);margin:0 0 12px}
+.ip .lbl b{font-weight:400;color:var(--c);text-shadow:0 0 6px rgba(53,230,255,.5)}
+.ip h2{margin:0 0 10px;font-size:20px}
+.ip p{margin:0 0 .9em}
+.ip p:last-child{margin-bottom:0}
+.chain{height:36px;position:relative}
+.chain:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed rgba(55,255,154,.55)}
+.chain i{position:absolute;left:50%;top:0;width:7px;height:7px;margin:-4px 0 0 -4px;background:var(--g);box-shadow:0 0 10px var(--g);transform:rotate(45deg);animation:flow 2.6s linear infinite}
+@keyframes flow{0%{top:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
+
+/* 1 hero */
+.hero h1{font-size:clamp(28px,6vw,44px);margin:6px 0 12px;line-height:1.1}
+.hook{font:17px/1.55 ui-monospace,Menlo,monospace;color:#e4fff2;margin:0 0 14px!important}
+.auth{font:13px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--a);margin:0 0 18px;text-shadow:0 0 8px rgba(255,178,58,.4)}
+.abs{font-size:16.5px;line-height:1.7;border-left:2px solid var(--g);padding-left:14px;color:var(--ink)}
+.abs+.abs{margin-top:.2em}
+
+/* canvases */
+.vis{position:relative;border:1px solid rgba(55,255,154,.3);background:#02090c;overflow:hidden}
+.vis canvas,.vis svg{display:block;width:100%}
+.vis .corner{position:absolute;left:8px;top:6px;color:var(--dim);font:10.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.14em;pointer-events:none;z-index:2}
+.vis .corner.r{left:auto;right:8px;text-align:right}
+.cap{font-size:13.5px;line-height:1.55;color:var(--ink2);margin:9px 1px 0}
+
+/* 3 one number */
+.one{display:grid;grid-template-columns:1.05fr 1fr;gap:18px;align-items:center}
+.big{font:clamp(22px,4.6vw,32px)/1.25 ui-monospace,Menlo,monospace;color:#eafff4;text-shadow:0 0 14px rgba(55,255,154,.6);margin:0 0 10px!important}
+.big small{display:block;font-size:.55em;color:var(--a);text-shadow:none;letter-spacing:.06em}
+.one svg{width:100%;height:auto;display:block;background:#02090c;border:1px solid rgba(55,255,154,.3)}
+.one svg text{font:10px ui-monospace,Menlo,monospace;fill:#9fc9b8}
+.one svg .pulse{animation:pls 2.8s ease-in-out infinite;transform-origin:170px 78px}
+@keyframes pls{0%,100%{opacity:.55}50%{opacity:1}}
+
+/* 4 thumbs */
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.th .vis{aspect-ratio:1}
+.th .tt{font:12px/1.35 ui-monospace,Menlo,monospace;color:var(--g);margin:8px 0 3px;letter-spacing:.04em}
+.th .cit{font-size:12px;line-height:1.4;color:var(--dim);margin-top:3px}
+.th .tg{margin:0 6px 0 0}
+.rr .bars{width:100%;height:100%}
+.rr rect.b{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.rr.in rect.b{transform:scaleY(1)}
+.rr rect.b:nth-of-type(2){transition-delay:.15s}.rr rect.b:nth-of-type(3){transition-delay:.3s}
+.rr text{font:9px ui-monospace,Menlo,monospace;fill:#9fc9b8}
+.rr text.v{fill:#eafff4;font-size:10px}
+
+/* 5 cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{border:1px solid rgba(55,255,154,.28);background:rgba(55,255,154,.035);padding:12px 14px 14px;min-width:0}
+.card.span2{grid-column:1/-1}
+.card .tgs{margin:0 0 8px}
+.card .tgs .tg{margin:0 6px 0 0}
+.card .stat{font:clamp(17px,3.6vw,22px)/1.25 ui-monospace,Menlo,monospace;color:#eafff4;text-shadow:0 0 12px rgba(55,255,154,.55);margin:0 0 4px!important}
+.card .stat.a{color:#fff0d0;text-shadow:0 0 12px rgba(255,178,58,.5)}
+.card h3{margin:6px 0 6px;font-size:14.5px;color:var(--c)}
+.card p{font-size:14px;line-height:1.55;color:var(--ink2)}
+.card table.tb{margin:8px 0 8px;font-size:12px}
+.card table.tb td,.card table.tb th{padding:3px 6px}
+.card .sm{font-size:12.5px;color:var(--dim)}
+
+/* 6 status */
+.status{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.st{border:1px solid;padding:10px 12px;min-width:0}
+.st.k{border-color:#7d8ee6;background:rgba(125,142,230,.06)}
+.st.n{border-color:var(--r);background:rgba(255,74,61,.05)}
+.st.o{border-color:var(--a);background:rgba(255,178,58,.06)}
+.st h3{margin:0 0 6px;font-size:12px;letter-spacing:.14em}
+.st.k h3{color:#b6c4ff}.st.n h3{color:#ff9a8f}.st.o h3{color:var(--a)}
+.st ul{margin:0;padding:0 0 0 16px;font-size:13px;line-height:1.5;color:var(--ink2)}
+.st li{margin:0 0 4px}
+.banner{margin-top:12px;border:1px dashed rgba(255,178,58,.6);padding:8px 12px;font:12.5px/1.5 ui-monospace,Menlo,monospace;color:#fff0d0;letter-spacing:.06em;text-align:center;background:rgba(255,178,58,.05)}
+
+/* 7 enter */
+.ent{padding:14px 14px 18px;border-color:rgba(55,255,154,.7);animation:edge 3.2s ease-in-out infinite;background:rgba(2,12,9,.9)}
+@keyframes edge{0%,100%{box-shadow:0 0 22px rgba(55,255,154,.25),0 0 60px rgba(53,230,255,.10),inset 0 0 26px rgba(55,255,154,.06)}50%{box-shadow:0 0 34px rgba(55,255,154,.55),0 0 90px rgba(53,230,255,.25),inset 0 0 36px rgba(55,255,154,.10)}}
+a.enter{display:block;border:0;color:inherit}
+a.enter:hover{color:inherit}
+.enter .vp{position:relative;aspect-ratio:16/9;background:#02070a;border:1px solid rgba(53,230,255,.5);overflow:hidden}
+.enter iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .6s}
+.enter iframe.on{opacity:1}
+.enter .ld{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:11px ui-monospace,Menlo,monospace;letter-spacing:.3em;color:var(--dim)}
+.enter .vp:after{content:"";position:absolute;left:0;right:0;height:40%;top:-40%;background:linear-gradient(to bottom,rgba(53,230,255,0),rgba(53,230,255,.10),rgba(53,230,255,0));animation:sweep 5s linear infinite;pointer-events:none}
+@keyframes sweep{to{top:100%}}
+.enter .cn{position:absolute;width:16px;height:16px;border:2px solid var(--c);filter:drop-shadow(0 0 5px var(--c));z-index:3}
+.enter .cn.a{left:6px;top:6px;border-right:0;border-bottom:0}.enter .cn.b{right:6px;top:6px;border-left:0;border-bottom:0}
+.enter .cn.c{left:6px;bottom:6px;border-right:0;border-top:0}.enter .cn.d{right:6px;bottom:6px;border-left:0;border-top:0}
+.enter .cta{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:14px}
+.enter .cta small{flex:1 1 220px;font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.go{display:inline-flex;align-items:center;gap:12px;padding:13px 24px;font:17px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#02150d;background:linear-gradient(90deg,var(--g),var(--c));box-shadow:0 0 22px rgba(55,255,154,.7),0 0 56px rgba(53,230,255,.35);animation:glow 2.4s ease-in-out infinite;white-space:nowrap}
+.go b{font-weight:400;display:inline-block;transition:transform .25s}
+a.enter:hover .go b{transform:translateX(7px)}
+@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25) saturate(1.2)}}
+.ent .lbl{margin-bottom:10px}
+
+/* 8 doors */
+.doors{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.door{display:block;border:1px solid rgba(55,255,154,.3);background:rgba(55,255,154,.03);padding:10px 12px 12px;color:var(--ink);min-width:0;transition:background .2s,box-shadow .2s,border-color .2s}
+a.door:hover{background:rgba(55,255,154,.12);box-shadow:0 0 14px rgba(55,255,154,.3);border-color:var(--g);color:var(--ink)}
+.door .n{font:10.5px ui-monospace,Menlo,monospace;color:var(--a);letter-spacing:.14em}
+.door .t{display:block;font:13px/1.3 ui-monospace,Menlo,monospace;color:var(--g);letter-spacing:.06em;margin:3px 0 4px}
+.door .d{display:block;font-size:12.5px;line-height:1.45;color:var(--ink2)}
+.sub{font:11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:var(--dim);margin:18px 0 8px}
+.doors.two{grid-template-columns:repeat(2,1fr)}
+.doors.cls a.door{border-color:rgba(255,178,58,.35);background:rgba(255,178,58,.03)}
+.doors.cls a.door:hover{background:rgba(255,178,58,.10);box-shadow:0 0 14px rgba(255,178,58,.25);border-color:var(--a)}
+.doors.cls .t{color:#fff0d0}
+.door.soon{border-style:dashed;opacity:.75;cursor:default}
+a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:rgba(55,255,154,.3)}
+.mini{font-size:13px;color:var(--dim);margin-top:10px}
+.mini a{margin-right:12px}
+
+@media (max-width:700px){
+  main.land{padding:14px 12px 30px}
+  .ip{padding:13px 12px 16px}
+  .chain{height:28px}
+  .hook{font-size:15.5px}
+  .abs{font-size:16px;padding-left:11px}
+  .one{grid-template-columns:1fr}
+  .thumbs{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:1fr}
+  .status{grid-template-columns:1fr}
+  .doors{grid-template-columns:1fr 1fr}
+  .enter .vp{aspect-ratio:4/3}
+  .go{padding:13px 16px;font-size:15px;width:100%;justify-content:center}
+  .enter .cta small{flex-basis:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .chain i,.go,.ent,.enter .vp:after,.one svg .pulse{animation:none}
+  .js .ip.pre{opacity:1;transform:none}
+}
+</style>
+<script>document.documentElement.className+=' js'</script>
+</head><body>
+<main class="land">
+
+<!-- 1 TITLE -->
+<section class="ip hero" id="s1">
+ <div class="lbl"><span>00 // INFOGRAPHIC ABSTRACT</span><span class="tg conj">NOT PEER REVIEWED</span></div>
+ <h1>One drawing, followed all the way down</h1>
+ <p class="hook">A square, its X, and one rule: put a dot the same distance from every wall.</p>
+ <div class="auth">Ahraz Arifuddin, Aska Digital</div>
+ <p class="abs">Draw a square and its two diagonals, then mark, in each of the four triangles, the one point that is the same distance from all three sides. Carried into a cube and into higher dimensions, this simple drawing lands on known structures: a tiling by squares and octagons, a honeycomb of truncated cubes, the radius-ratio limits of crystal chemistry and the boron framework of calcium hexaboride, all classical (Wythoff, Coxeter, Pauling) and credited as such. What we could not find in print is exact: how rigid the framework of touching balls is in every dimension, one identity behind the radius-ratio limits, a closed form for the densest packing of the boron structure, and a bar-preserving, overlap-free fold of the 3D framework from density 0.2233 to close packing. These come from a web search and two independent checkers, not from peer review, and every claim carries an evidence label.</p>
+</section>
+<div class="chain"><i></i></div>
+
+<!-- 2 THE RULE -->
+<section class="ip" id="s2">
+ <div class="lbl"><b>01 // THE RULE</b><span>square + X + four dots</span></div>
+ <div class="vis"><canvas id="cv-rule" aria-label="Animated drawing: a square, its two diagonals, the point equidistant from the three sides of each triangle, and lines from each point to its triangle's corners"></canvas><div class="corner">THE DRAWING</div><div class="corner r">LOOP</div></div>
+ <p class="cap">The circles show the equal distances: each dot is exactly R from its three sides. The red lines are the loops of the drawing. Everything on this site follows from repeating this step.</p>
+</section>
+<div class="chain"><i></i></div>
+
+<!-- 3 ONE NUMBER -->
+<section class="ip" id="s3">
+ <div class="lbl"><b>02 // ONE NUMBER</b><span class="tg proven">EXACT</span></div>
+ <div class="one">
+  <div>
+   <p class="big">&radic;2 &minus; 1<br>= tan 22.5&deg;<small>&asymp; 0.41421, the dot&rsquo;s distance to each wall (square of side 2)</small></p>
+   <p class="cap" style="margin-top:0">Two mirror walls meet at 45&deg;. A dot on the line that bisects them, one unit along a wall, is exactly &radic;2 &minus; 1 from both. The same number turns up in every later panel.</p>
+  </div>
+  <svg viewBox="0 0 270 170" role="img" aria-label="A dot on the bisector of two mirror walls at 45 degrees, equally far from both walls">
+   <line x1="20" y1="140" x2="262" y2="140" stroke="#37ff9a" stroke-width="2.4"/>
+   <line x1="20" y1="140" x2="150" y2="10" stroke="#37ff9a" stroke-width="2.4"/>
+   <g stroke="#37ff9a" opacity=".35"><line x1="262" y1="140" x2="262" y2="146"/><line x1="20" y1="140" x2="12" y2="148"/><line x1="40" y1="140" x2="32" y2="148"/><line x1="60" y1="140" x2="52" y2="148"/><line x1="80" y1="140" x2="72" y2="148"/><line x1="100" y1="140" x2="92" y2="148"/><line x1="120" y1="140" x2="112" y2="148"/><line x1="140" y1="140" x2="132" y2="148"/><line x1="160" y1="140" x2="152" y2="148"/><line x1="180" y1="140" x2="172" y2="148"/><line x1="200" y1="140" x2="192" y2="148"/><line x1="220" y1="140" x2="212" y2="148"/><line x1="240" y1="140" x2="232" y2="148"/></g>
+   <line x1="20" y1="140" x2="235" y2="58" stroke="#35e6ff" stroke-dasharray="4 4" opacity=".8"/>
+   <circle class="pulse" cx="170" cy="78" r="62.1" fill="rgba(53,230,255,.06)" stroke="#35e6ff" stroke-width="1.2"/>
+   <line x1="170" y1="78" x2="170" y2="140" stroke="#ffb23a" stroke-width="1.4"/>
+   <line x1="170" y1="78" x2="125.9" y2="121.9" stroke="#ffb23a" stroke-width="1.4"/>
+   <path d="M170 134 h-6 v6" fill="none" stroke="#ffb23a" opacity=".7"/>
+   <circle cx="170" cy="78" r="5" fill="#ffb23a"/>
+   <line x1="20" y1="154" x2="170" y2="154" stroke="#9fc9b8" opacity=".6"/><line x1="20" y1="151" x2="20" y2="157" stroke="#9fc9b8" opacity=".6"/><line x1="170" y1="151" x2="170" y2="157" stroke="#9fc9b8" opacity=".6"/>
+   <text x="88" y="166" text-anchor="middle">1</text>
+   <text x="176" y="112" fill="#ffb23a" style="fill:#ffb23a">d</text>
+   <text x="136" y="96" style="fill:#ffb23a">d</text>
+   <text x="62" y="128" style="fill:#35e6ff">22.5&deg;</text>
+   <text x="88" y="52" style="fill:#37ff9a" transform="rotate(-45 88 52)">mirror</text>
+   <text x="214" y="132" style="fill:#37ff9a">mirror</text>
+   <text x="180" y="72" style="fill:#fff0d0">dot</text>
+  </svg>
+ </div>
+</section>
+<div class="chain"><i></i></div>
+
+<!-- 4 WHERE IT LANDS -->
+<section class="ip" id="s4">
+ <div class="lbl"><b>03 // WHERE IT LANDS</b><span>all of this is classical</span></div>
+ <div class="thumbs">
+  <figure class="th" style="margin:0">
+   <div class="vis"><svg id="svg-488" viewBox="-0.5 -0.5 5.8 5.8" preserveAspectRatio="xMidYMid slice" aria-label="The 4.8.8 tiling with regular octagons and squares"></svg></div>
+   <div class="tt">4.8.8 tiling</div><span class="tg known">KNOWN</span>
+   <div class="cit">Regular octagons and squares; the dots are its vertices. Wythoff 1918, Coxeter.</div>
+  </figure>
+  <figure class="th" style="margin:0">
+   <div class="vis"><canvas id="cv-tc" aria-label="A rotating truncated cube, the cell of the truncated cubic honeycomb"></canvas></div>
+   <div class="tt">truncated cubic honeycomb</div><span class="tg known">KNOWN</span>
+   <div class="cit">One cell shown. The dots are its vertices. Wythoff, Coxeter.</div>
+  </figure>
+  <figure class="th" style="margin:0">
+   <div class="vis"><canvas id="cv-cab" aria-label="The CaB6 boron net: octahedra of balls joined by bars"></canvas></div>
+   <div class="tt">CaB<sub>6</sub> boron net</div><span class="tg known">KNOWN</span>
+   <div class="cit">Octahedra joined by bars (RCSR <i>cab</i>). Pauling and Weinbaum 1934.</div>
+  </figure>
+  <figure class="th rr" style="margin:0" id="rr">
+   <div class="vis"><svg class="bars" viewBox="0 0 160 160" role="img" aria-label="Bar chart of the radius-ratio limits 0.225, 0.414 and 0.732">
+    <line x1="14" y1="130" x2="150" y2="130" stroke="#2f8f68"/>
+    <rect class="b" x="24" y="100" width="28" height="30" fill="rgba(55,255,154,.35)" stroke="#37ff9a"/>
+    <rect class="b" x="66" y="75" width="28" height="55" fill="rgba(255,178,58,.4)" stroke="#ffb23a"/>
+    <rect class="b" x="108" y="33" width="28" height="97" fill="rgba(55,255,154,.35)" stroke="#37ff9a"/>
+    <text class="v" x="38" y="94" text-anchor="middle">0.225</text><text class="v" x="80" y="69" text-anchor="middle" style="fill:#fff0d0">0.414</text><text class="v" x="122" y="27" text-anchor="middle">0.732</text>
+    <text x="38" y="142" text-anchor="middle">tetra</text><text x="80" y="142" text-anchor="middle">octa</text><text x="122" y="142" text-anchor="middle">cube</text>
+    <text x="80" y="154" text-anchor="middle" style="font-size:8px">cation / anion radius, lower limit</text>
+   </svg></div>
+   <div class="tt">radius-ratio limits</div><span class="tg known">KNOWN</span>
+   <div class="cit">0.414 is &radic;2 &minus; 1, the number of the drawing. Pauling 1929.</div>
+  </figure>
+ </div>
+</section>
+<div class="chain"><i></i></div>
+
+<!-- 5 WHAT'S NEW -->
+<section class="ip" id="s5">
+ <div class="lbl"><b>04 // WHAT&rsquo;S NEW, AS FAR AS SEARCHED</b><span>web search only</span></div>
+ <div class="cards">
+  <div class="card">
+   <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">NO REFERENCE FOUND</span></div>
+   <div class="stat">n(n&minus;1)/2 zero modes<br>n(n&minus;3)/2 self-stresses</div>
+   <h3>Rigidity in every dimension</h3>
+   <table class="tb"><thead><tr><th>n</th><th class="n">zero modes</th><th class="n">self-stresses</th><th class="n">&nu;<sub>100</sub></th></tr></thead><tbody>
+    <tr><td>3</td><td class="n">3</td><td class="n">0</td><td class="n">1/5</td></tr><tr><td>4</td><td class="n">6</td><td class="n">2</td><td class="n">1/11</td></tr><tr><td>5</td><td class="n">10</td><td class="n">5</td><td class="n">1/19</td></tr><tr><td>6</td><td class="n">15</td><td class="n">9</td><td class="n">1/29</td></tr></tbody></table>
+   <p>&nu;<sub>100</sub> = 1/(n&sup2;&minus;n&minus;1) with unit springs. Proven for all n &ge; 3. The 3D counts agree with Goodwin (2006); the n-dimensional closed forms were not found in print.</p>
+  </div>
+  <div class="card">
+   <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">NO REFERENCE FOUND</span></div>
+   <div class="stat">(D&minus;r)/r = 1/sin(&phi;/2) &minus; 1</div>
+   <h3>The radius-ratio identity</h3>
+   <p>The hole-to-ball ratio of the construction equals the classical radius-ratio limit of the polytope the dots form. For the cube, &phi; = 90&deg; gives &radic;2 &minus; 1.</p>
+   <p class="sm">Holds under stated conditions (mirror walls, or an insphere with equal dihedral angles); the theorem also says where it fails.</p>
+  </div>
+  <div class="card">
+   <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">NO REFERENCE FOUND</span></div>
+   <div class="stat a">(&pi;/6)(30&radic;2 &minus; 41)<br>&asymp; 0.7469</div>
+   <h3>CaB<sub>6</sub> packing maximum</h3>
+   <p>The densest packing of the CaB<sub>6</sub> structure type, as a closed form. The curve itself was plotted by Horst and Travesset (2016); the closed form was not found in print.</p>
+  </div>
+  <div class="card">
+   <div class="tgs"><span class="tg verified">VERIFIED NUMERICALLY</span><span class="tg noref">NO PRIOR DESCRIPTION FOUND</span></div>
+   <div class="stat a">0.2233 &rarr; &pi;/&radic;18</div>
+   <h3>The fold, to hexagonal close packing</h3>
+   <p>Every bar length kept, no overlaps, 2&times;2&times;2 family, two independent checkers. The end states are easy to verify; the content is the path. Two layer slides then reach fcc (confirmed by two independent checkers).</p>
+   <p class="sm">The animation below plays the real path.</p>
+  </div>
+  <div class="card span2" style="padding:12px 12px 14px">
+   <div class="vis"><canvas id="cv-fold" aria-label="Animation of the 48-ball framework folding while its packing density climbs from 0.2233 to 0.7405"></canvas><div class="corner">THE FOLD // REAL DATA</div><div class="corner r">LOOP</div></div>
+   <p class="cap">The framework (48 balls, 120 bars, one 2&times;2&times;2 block with periodic boundaries) deforms continuously through 793 states exported from <span class="m">autoresearch-fold/best/path.npz</span>. Density at each state is exact, from the cell volume. The dashed line at 0.4686 is where the cubic tilt alone stalls; the rest needs the lattice to shear. A geometry result, not a predicted phase transition in real CaB<sub>6</sub> or Prussian-blue materials. Prior art: the closest known relative is the ReO<sub>3</sub> to VF<sub>3</sub> tilt toward hcp (O&rsquo;Keeffe and Hyde 1977).</p>
+  </div>
+ </div>
+</section>
+<div class="chain"><i></i></div>
+
+<!-- 6 HONEST STATUS -->
+<section class="ip" id="s6">
+ <div class="lbl"><b>05 // HONEST STATUS</b><span class="tg conj">NOT PEER REVIEWED</span></div>
+ <div class="status">
+  <div class="st k"><h3>KNOWN</h3><ul><li>Wythoff construction, 4.8.8 and the truncated cubic honeycomb</li><li>CaB<sub>6</sub> boron net</li><li>radius-ratio limits</li><li>hinged-squares fold in 2D</li><li>ReO<sub>3</sub> to VF<sub>3</sub> tilt</li></ul></div>
+  <div class="st n"><h3>NEW, AS FAR AS SEARCHED</h3><ul><li>rigidity counts in every dimension</li><li>the radius-ratio identity</li><li>closed-form CaB<sub>6</sub> packing maximum</li><li>an overlap-free path to hcp</li></ul></div>
+  <div class="st o"><h3>OPEN</h3><ul><li>closed-form end state</li><li>certified path</li><li>smallest supercell (m = 1, odd m)</li><li>monotone density</li></ul></div>
+ </div>
+ <div class="banner">NOT PEER REVIEWED. Searches were web searches only. <a href="open.html">Every claim and its evidence label is in the ledger.</a></div>
+</section>
+<div class="chain"><i></i></div>
+
+<!-- 7 ENTER -->
+<section class="ip ent" id="s7">
+ <div class="lbl"><b>06 // ENTER THE LATTICE</b><span>live, in your browser</span></div>
+ <a class="enter" href="lattice.html" aria-label="Enter the lattice">
+  <div class="vp"><div class="ld">LOADING LATTICE</div><iframe id="ifr" data-src="lattice.html?embed=1&amp;n=3&amp;zoom=1.3" title="Live preview of the lattice" tabindex="-1" aria-hidden="true"></iframe><i class="cn a"></i><i class="cn b"></i><i class="cn c"></i><i class="cn d"></i></div>
+  <div class="cta"><small>The drawing as a 3D lattice you can turn, fold and read: layers, spheres, the 24 tetrahedra, mirror views and the codex of numbers.</small><span class="go">Enter the lattice <b>&rarr;</b></span></div>
+ </a>
+</section>
+<div class="chain"><i></i></div>
+
+<!-- 8 DOORWAYS -->
+<section class="ip" id="s8">
+ <div class="lbl"><b>07 // DOORWAYS</b><span>read in any order</span></div>
+ <div class="doors">
+  <a class="door" href="origin.html"><span class="n">01</span><span class="t">THE DRAWING</span><span class="d">The square, the X, the dot, and why R = &radic;2 &minus; 1.</span></a>
+  <a class="door" href="mirrors.html"><span class="n">02</span><span class="t">MIRRORS</span><span class="d">Why this dot is the canonical one.</span></a>
+  <a class="door" href="matter.html"><span class="n">03</span><span class="t">MATTER</span><span class="d">Crystals, radius ratios, CaB<sub>6</sub>.</span></a>
+  <a class="door" href="motion.html"><span class="n">04</span><span class="t">MOTION</span><span class="d">The fold, rigidity and Poisson ratio.</span></a>
+  <a class="door" href="mind.html"><span class="n">05</span><span class="t">PERCEPTION</span><span class="d">Incentre or centroid: which centre do eyes find?</span></a>
+  <a class="door" href="drift.html"><span class="n">06</span><span class="t">DRIFT</span><span class="d">How a wandering mind can land on structure.</span></a>
+  <a class="door" href="seek.html"><span class="n">07</span><span class="t">SEARCH</span><span class="d">Drift chooses where to look, a checker decides.</span></a>
+  <a class="door" href="open.html"><span class="n">08</span><span class="t">LEDGER</span><span class="d">Every claim and its evidence label.</span></a>
+ </div>
+ <div class="sub">CLASSIC // clean reading</div>
+ <div class="doors cls">
+  <a class="door" href="cube-six.html"><span class="t">The cube</span><span class="d">Six pyramids, one dot each, in 3D.</span></a>
+  <a class="door" href="deeper.html"><span class="t">The full story</span><span class="d">Atoms, tilings and higher dimensions.</span></a>
+  <a class="door" href="cube-pyramids.html"><span class="t">Three pyramids</span><span class="d">The same cube, cut another way.</span></a>
+  <a class="door" href="cube-wedges.html"><span class="t">Four wedges</span><span class="d">And another.</span></a>
+ </div>
+ <div class="sub">PROJECT</div>
+ <div class="doors two">
+  <a class="door" href="https://github.com/aska-digital/incentre-lattice" target="_blank" rel="noopener"><span class="n">GITHUB</span><span class="t">Contribute to an open track</span><span class="d">Open questions with a fixed checker and one score. Code, notes and tracks: aska-digital/incentre-lattice.</span></a>
+  <div class="door soon"><span class="n">PAPER</span><span class="t">Coming soon</span><span class="d">A paper is in preparation and is not public yet.</span></div>
+ </div>
+</section>
+</main>
+
+<script src="fold-path.js"></script>
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+"use strict";
+const TAU=Math.PI*2,S2=Math.SQRT2,RB=S2-1;
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const T0=+CX.Q.get('t')||0;
+const C=CX.C;
+const $=id=>document.getElementById(id);
+
+/* ---- reveal on scroll ---- */
+const secs=[...document.querySelectorAll('.ip')];
+if('IntersectionObserver' in window&&!REDUCE){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{threshold:.05});
+  secs.forEach((s,i)=>{const r=s.getBoundingClientRect();if(i>0&&r.top>innerHeight){s.classList.add('pre')}io.observe(s)});
+}
+
+/* ---- lazy-start canvas animation: runs only while on screen ---- */
+function anim(cv,draw,aspect){
+  const ctx=cv.getContext('2d');
+  const o={W:0,H:0,dpr:1,t:REDUCE?T0+8.5:T0,run:false,raf:0};
+  function size(){
+    const w=Math.max(120,cv.parentElement.clientWidth);
+    const h=Math.round(w*(typeof aspect==='function'?aspect(w):aspect));
+    o.dpr=Math.min(devicePixelRatio||1,2);o.W=w;o.H=h;
+    cv.style.height=h+'px';cv.width=Math.round(w*o.dpr);cv.height=Math.round(h*o.dpr);
+  }
+  function paint(dt){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);ctx.clearRect(0,0,o.W,o.H);try{draw(ctx,o.W,o.H,o.t,dt)}catch(e){CX.fail(e)}}
+  let last=0;
+  function loop(now){o.raf=requestAnimationFrame(loop);const dt=Math.min(.05,(now-last)/1000)||.016;last=now;o.t+=dt;paint(dt)}
+  function start(){if(o.run||REDUCE)return;o.run=true;last=performance.now();o.raf=requestAnimationFrame(loop)}
+  function stop(){o.run=false;cancelAnimationFrame(o.raf)}
+  size();paint(0);
+  addEventListener('resize',()=>{size();paint(0)});
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{es[0].isIntersecting?start():stop()},{rootMargin:'60px'}).observe(cv);else start();
+  return o;
+}
+
+/* ---- 2. THE RULE ---- */
+function pseg(c,a,b,f,col,w,blur){
+  if(f<=0)return;f=Math.min(1,f);
+  CX.glowLine(c,a[0],a[1],a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,col,w,blur);
+}
+const DIRS=[[0,1],[1,0],[0,-1],[-1,0]];
+function ruleDraw(c,W,H,t){
+  const k=2-S2;
+  const side=Math.min(H*.70,W*.62),S=side/2,cx=W/2,cy=H*.46;
+  const P=(x,y)=>[cx+x*S,cy+y*S];
+  const TL=11.5,u=t%TL;
+  c.globalAlpha=u>10.6?Math.max(0,1-(u-10.6)/.9):1;
+  const ph=(a,b)=>CX.ease((u-a)/(b-a));
+  const sq=[[-1,-1],[1,-1],[1,1],[-1,1]];
+  const p1=ph(0,1.6);
+  for(let i=0;i<4;i++)pseg(c,P(...sq[i]),P(...sq[(i+1)%4]),p1*4-i,C.g,2,8);
+  const p2=ph(1.6,3.1);
+  pseg(c,P(-1,-1),P(1,1),p2,C.c,1.2,4);pseg(c,P(1,-1),P(-1,1),p2,C.c,1.2,4);
+  const e1=[S2/2,S2/2],e2=[S2/2,-S2/2];
+  DIRS.forEach((d,q)=>{
+    const I=[d[0]*k,d[1]*k],pr=[d[1],d[0]];
+    const f=ph(3.2+q*.35,4.9+q*.35);
+    if(f>0){
+      c.strokeStyle='rgba(53,230,255,'+(.15+.8*f)+')';c.lineWidth=1.4;c.shadowColor=C.c;c.shadowBlur=6;
+      const [px,py]=P(...I);c.beginPath();c.arc(px,py,RB*S*f,0,TAU);c.stroke();c.shadowBlur=0;
+      c.fillStyle='rgba(53,230,255,'+(.07*f)+')';c.fill();
+      if(f>.55){
+        const a=(f-.55)/.45,feet=[[d[0],d[1]],[(I[0]*e1[0]+I[1]*e1[1])*e1[0],(I[0]*e1[0]+I[1]*e1[1])*e1[1]],[(I[0]*e2[0]+I[1]*e2[1])*e2[0],(I[0]*e2[0]+I[1]*e2[1])*e2[1]]];
+        c.setLineDash([3,3]);c.strokeStyle='rgba(255,178,58,'+a*.9+')';c.lineWidth=1;
+        for(const ft of feet){const q2=P(...ft);c.beginPath();c.moveTo(px,py);c.lineTo(q2[0],q2[1]);c.stroke()}
+        c.setLineDash([]);
+        if(q===0)CX.text(c,'R',(px+P(...feet[0])[0])/2+6,(py+P(...feet[0])[1])/2+4,'rgba(255,178,58,'+a+')',11);
+      }
+      CX.dot(c,px,py,4.2*Math.min(1,f*1.5),C.a,10);
+    }
+    const g=ph(6.3+q*.25,7.5+q*.25);
+    const cs=[[d[0]+pr[0],d[1]+pr[1]],[d[0]-pr[0],d[1]-pr[1]],[0,0]];
+    for(const cc of cs)pseg(c,P(...I),P(...cc),g,C.r,1.5,6);
+  });
+  const lab=u<1.6?'1  draw a square':u<3.2?'2  add its two diagonals: four triangles':u<6.3?'3  in each, the point equidistant from 3 sides':u<8.7?'4  join each point to its triangle’s corners':'that is the whole rule';
+  CX.text(c,lab,W/2,H-12,u<8.7?C.g:C.a,W<420?11:12.5,'center');
+  c.globalAlpha=1;
+}
+anim($('cv-rule'),ruleDraw,w=>w<460?.95:.62);
+
+/* ---- 4a. 4.8.8 tiling (static svg) ---- */
+(function(){
+  const a=1+S2,rho=1/(2*Math.sin(Math.PI/8)),s=$('svg-488');let h='';
+  const pts=(cx,cy,r,off,n)=>{let d='';for(let i=0;i<n;i++){const an=off+i*TAU/n;d+=(i?'L':'M')+(cx+r*Math.cos(an)).toFixed(3)+' '+(cy+r*Math.sin(an)).toFixed(3)}return d+'Z'};
+  for(let i=-1;i<4;i++)for(let j=-1;j<4;j++){
+    const hi=(i===1&&j===1);
+    h+='<path d="'+pts(i*a,j*a,rho,Math.PI/8,8)+'" fill="'+(hi?'rgba(55,255,154,.22)':'rgba(55,255,154,.05)')+'" stroke="#37ff9a" stroke-width=".05"'+(hi?' class="hi"':'')+'/>';
+    h+='<path d="'+pts((i+.5)*a,(j+.5)*a,1/S2,0,4)+'" fill="rgba(255,178,58,.10)" stroke="#ffb23a" stroke-width=".04"/>';
+  }
+  for(let i=-1;i<4;i++)for(let j=-1;j<4;j++)for(let k=0;k<8;k++){const an=Math.PI/8+k*TAU/8;h+='<circle cx="'+(i*a+rho*Math.cos(an)).toFixed(3)+'" cy="'+(j*a+rho*Math.sin(an)).toFixed(3)+'" r=".07" fill="#ffb23a"/>'}
+  s.innerHTML=h;
+  const hi=s.querySelector('.hi');if(hi&&!REDUCE){hi.style.animation='pls 3s ease-in-out infinite'}
+})();
+
+/* ---- 4b. truncated cube ---- */
+const TCV=[],TCE=[];
+(function(){
+  const x=RB;
+  for(const sx of[-1,1])for(const sy of[-1,1])for(const sz of[-1,1]){TCV.push([x*sx,sy,sz],[sx,x*sy,sz],[sx,sy,x*sz])}
+  for(let i=0;i<TCV.length;i++)for(let j=i+1;j<TCV.length;j++){const d=Math.hypot(TCV[i][0]-TCV[j][0],TCV[i][1]-TCV[j][1],TCV[i][2]-TCV[j][2]);if(Math.abs(d-2*x)<1e-6)TCE.push([i,j])}
+})();
+function rot3(p,yaw,pitch){
+  const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+  const x1=cy*p[0]+sy*p[2],z1=-sy*p[0]+cy*p[2];
+  return [x1,cp*p[1]-sp*z1,sp*p[1]+cp*z1];
+}
+anim($('cv-tc'),function(c,W,H,t){
+  const sc=Math.min(W,H)*.30,cx=W/2,cy=H/2,yaw=t*.5,pitch=.5;
+  const V=TCV.map(p=>{const r=rot3(p,yaw,pitch);return [cx+r[0]*sc,cy-r[1]*sc,r[2]]});
+  c.lineWidth=1.3;
+  for(const [i,j] of TCE){const z=(V[i][2]+V[j][2])/2,a=.3+.5*(z+1.8)/3.6;c.strokeStyle='rgba(55,255,154,'+Math.max(.15,Math.min(.9,a))+')';c.beginPath();c.moveTo(V[i][0],V[i][1]);c.lineTo(V[j][0],V[j][1]);c.stroke()}
+  for(const v of V){const a=.4+.6*(v[2]+1.8)/3.6;c.fillStyle='rgba(255,178,58,'+Math.max(.3,Math.min(1,a))+')';c.beginPath();c.arc(v[0],v[1],2.4,0,TAU);c.fill()}
+},1);
+
+/* ---- fold framework renderer (real data) ---- */
+const FP=window.FOLDPATH,FR=FP.frames,NF=FR.idx.length;
+const NB=48;
+function inv3(L){ // rows are lattice vectors; returns inverse
+  const [a,b,c,d,e,f,g,h,i]=L,A=e*i-f*h,B=-(d*i-f*g),Cc=d*h-e*g,det=a*A+b*B+c*Cc;
+  return [A/det,-(b*i-c*h)/det,(b*f-c*e)/det,B/det,(a*i-c*g)/det,-(a*f-c*d)/det,Cc/det,-(a*h-b*g)/det,(a*e-b*d)/det];
+}
+function foldState(p){
+  const s=Math.max(0,Math.min(1,p))*(FP.n-1);let k=0;while(k<NF-2&&FR.idx[k+1]<=s)k++;
+  const a=FR.idx[k],b=FR.idx[k+1],f=Math.max(0,Math.min(1,(s-a)/(b-a)));
+  const mix=(u,v)=>u.map((x,i)=>x+(v[i]-x)*f);
+  return {L:mix(FR.L[k],FR.L[k+1]),X:mix(FR.X[k],FR.X[k+1]),s:s};
+}
+/* bar graph from the first state: pairs at distance 2R under integer lattice shifts */
+const BARS=[];
+(function(){
+  const L=FR.L[0],X=FR.X[0];
+  for(let i=0;i<NB;i++)for(let j=i+1;j<NB;j++)for(let a=-1;a<=1;a++)for(let b=-1;b<=1;b++)for(let c=-1;c<=1;c++){
+    const dx=X[3*j]+a*L[0]+b*L[3]+c*L[6]-X[3*i],dy=X[3*j+1]+a*L[1]+b*L[4]+c*L[7]-X[3*i+1],dz=X[3*j+2]+a*L[2]+b*L[5]+c*L[8]-X[3*i+2];
+    if(Math.abs(Math.hypot(dx,dy,dz)-2*RB)<4e-3)BARS.push([i,j,a,b,c]);
+  }
+})();
+function foldDraw(c,st,x0,y0,w,h,yaw,pitch,alpha,flat){
+  const L=st.L,X=st.X,iv=inv3(L);
+  const sc=.5*Math.min(w,h)*.92/3.6,cx=x0+w/2,cy=y0+h/2;
+  const ctr=[(L[0]+L[3]+L[6])/2,(L[1]+L[4]+L[7])/2,(L[2]+L[5]+L[8])/2];
+  const W=[],Wf=[];
+  for(let i=0;i<NB;i++){
+    const f=[0,1,2].map(m=>X[3*i]*iv[m]+X[3*i+1]*iv[3+m]+X[3*i+2]*iv[6+m]);
+    const wf=f.map(Math.floor);Wf.push(wf);
+    const g=f.map((v,m)=>v-wf[m]);
+    W.push([0,1,2].map(m=>g[0]*L[m]+g[1]*L[3+m]+g[2]*L[6+m]));
+  }
+  const sh=(s)=>[s[0]*L[0]+s[1]*L[3]+s[2]*L[6],s[0]*L[1]+s[1]*L[4]+s[2]*L[7],s[0]*L[2]+s[1]*L[5]+s[2]*L[8]];
+  const pr=p=>{const r=rot3([p[0]-ctr[0],p[1]-ctr[1],p[2]-ctr[2]],yaw,pitch);return [cx+r[0]*sc,cy-r[1]*sc,r[2]]};
+  const items=[],seen={};
+  const ball=(i,s)=>{const key=i+':'+s.join(',');if(seen[key])return;seen[key]=1;const o=sh(s),q=pr([W[i][0]+o[0],W[i][1]+o[1],W[i][2]+o[2]]);items.push({b:1,x:q[0],y:q[1],z:q[2]})};
+  for(let i=0;i<NB;i++)ball(i,[0,0,0]);
+  for(const [i,j,a,b,cc] of BARS){
+    const s=[a+Wf[j][0]-Wf[i][0],b+Wf[j][1]-Wf[i][1],cc+Wf[j][2]-Wf[i][2]],o=sh(s);
+    const A=pr(W[i]),B=pr([W[j][0]+o[0],W[j][1]+o[1],W[j][2]+o[2]]);
+    items.push({x:A[0],y:A[1],x2:B[0],y2:B[1],z:(A[2]+B[2])/2});
+    const A2=pr([W[i][0]-o[0],W[i][1]-o[1],W[i][2]-o[2]]),B2=pr(W[j]);
+    items.push({x:A2[0],y:A2[1],x2:B2[0],y2:B2[1],z:(A2[2]+B2[2])/2});
+    if(s[0]||s[1]||s[2]){ball(j,s);ball(i,s.map(v=>-v))}
+  }
+  items.sort((p,q)=>p.z-q.z);
+  // cell outline
+  const cor=[];for(let m=0;m<8;m++){const o=sh([m&1,(m>>1)&1,(m>>2)&1]);cor.push(pr(o))}
+  c.save();c.globalAlpha=alpha*.45;c.strokeStyle=C.a;c.setLineDash([4,4]);c.lineWidth=1;
+  for(let m=0;m<8;m++)for(const bit of[1,2,4])if(!(m&bit)){const A=cor[m],B=cor[m|bit];c.beginPath();c.moveTo(A[0],A[1]);c.lineTo(B[0],B[1]);c.stroke()}
+  c.restore();c.setLineDash([]);
+  const rpx=RB*sc;
+  for(const it of items){
+    const da=Math.max(.35,Math.min(1,.68+it.z*.1))*alpha;
+    if(it.b){
+      if(flat){c.fillStyle='rgba(53,230,255,'+.28*da+')';c.strokeStyle='rgba(53,230,255,'+.9*da+')';c.lineWidth=1;c.beginPath();c.arc(it.x,it.y,rpx,0,TAU);c.fill();c.stroke()}
+      else CX.shade(c,it.x,it.y,rpx,'rgba(53,230,255,X)',.9*da);
+    }else{c.strokeStyle='rgba(55,255,154,'+.85*da+')';c.lineWidth=Math.max(1.5,rpx*.18);c.lineCap='round';c.beginPath();c.moveTo(it.x,it.y);c.lineTo(it.x2,it.y2);c.stroke()}
+  }
+}
+const ST0=foldState(0);
+anim($('cv-cab'),function(c,W,H,t){foldDraw(c,ST0,0,0,W,H,t*.45,.5,1,true)},1);
+
+/* ---- 5. the fold card ---- */
+const D0=FP.dens[0],DE=FP.dens[FP.n-1];
+function foldCard(c,W,H,t){
+  const wide=W>=560;
+  const CYC=13,u=t%CYC;
+  const p=u<9?CX.ease(u/9):1;
+  const al=u>12?Math.max(0,CYC-u):(u<.4?u/.4:1);
+  const st=foldState(p),di=Math.round(p*(FP.n-1)),d=FP.dens[di];
+  const rg=wide?[0,0,W*.5,H]:[0,H*.12,W,H*.46];
+  foldDraw(c,st,rg[0],rg[1],rg[2],rg[3],t*.4+.6,.5,al,false);
+  // chart
+  const ch=wide?{x:W*.56,y:H*.3,w:W*.40,h:H*.5}:{x:W*.12,y:H*.66,w:W*.82,h:H*.22};
+  const ymin=.18,ymax=.78,Y=v=>ch.y+ch.h*(1-(v-ymin)/(ymax-ymin)),Xs=i=>ch.x+ch.w*i/(FP.n-1);
+  c.globalAlpha=1;
+  c.strokeStyle='rgba(55,255,154,.35)';c.lineWidth=1;c.beginPath();c.moveTo(ch.x,ch.y);c.lineTo(ch.x,ch.y+ch.h);c.lineTo(ch.x+ch.w,ch.y+ch.h);c.stroke();
+  const fs=W<420?9.5:10.5;
+  c.setLineDash([4,4]);
+  c.strokeStyle='rgba(255,178,58,.7)';c.beginPath();c.moveTo(ch.x,Y(Math.PI/Math.sqrt(18)));c.lineTo(ch.x+ch.w,Y(Math.PI/Math.sqrt(18)));c.stroke();
+  c.strokeStyle='rgba(255,74,61,.55)';c.beginPath();c.moveTo(ch.x,Y(.4686));c.lineTo(ch.x+ch.w,Y(.4686));c.stroke();
+  c.setLineDash([]);
+  CX.text(c,'π/√18 = 0.7405  hcp',ch.x+4,Y(Math.PI/Math.sqrt(18))-5,C.a,fs);
+  CX.text(c,'0.4686  cubic tilt stalls',ch.x+4,Y(.4686)-5,'#ff9a8f',fs);
+  CX.text(c,'0.2233',ch.x+4,Y(D0)-5,C.dim,fs);
+  CX.text(c,'state 0',ch.x,ch.y+ch.h+13,C.dim,fs);CX.text(c,'793',ch.x+ch.w,ch.y+ch.h+13,C.dim,fs,'right');
+  
+  // curve up to playhead
+  c.beginPath();c.moveTo(Xs(0),Y(FP.dens[0]));
+  const step=Math.max(1,Math.floor(FP.n/Math.max(60,ch.w)));
+  for(let i=0;i<=di;i+=step)c.lineTo(Xs(i),Y(FP.dens[i]));
+  c.lineTo(Xs(di),Y(d));
+  c.strokeStyle=C.g;c.lineWidth=2;c.shadowColor=C.g;c.shadowBlur=8;c.stroke();c.shadowBlur=0;
+  c.lineTo(Xs(di),ch.y+ch.h);c.lineTo(Xs(0),ch.y+ch.h);c.closePath();c.fillStyle='rgba(55,255,154,.10)';c.fill();
+  CX.dot(c,Xs(di),Y(d),4.5,C.c,12);
+  // readout
+  const rx=wide?W*.56:W*.04,ry=wide?H*.1:H*.115;
+  CX.text(c,'STATE '+(di+1)+' / '+FP.n,rx,ry,C.dim,fs+1);
+  CX.text(c,'DENSITY '+d.toFixed(4),rx,ry+15,'#eafff4',fs+3);
+  if(u>=9)CX.text(c,wide?'end state: hcp, 12 contacts per ball':'end: hcp, 12 contacts per ball',wide?W*.56:W*.5,wide?H*.9:H*.96,C.c,fs+.5,wide?'left':'center');
+  else CX.text(c,'every bar length kept, no overlaps',wide?W*.56:W*.5,wide?H*.9:H*.96,C.dim,fs+.5,wide?'left':'center');
+}
+anim($('cv-fold'),foldCard,w=>w>=560?.46:1.3);
+
+/* ---- radius-ratio bars: grow when seen ---- */
+const rr=$('rr');
+if('IntersectionObserver' in window&&!REDUCE){new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){rr.classList.add('in');o.disconnect()}},{threshold:.3}).observe(rr)}else rr.classList.add('in');
+
+/* ---- live lattice preview: load only when near the screen ---- */
+const ifr=$('ifr');
+if(CX.Q.get('eager'))setTimeout(()=>{loadIfr();secs.forEach(x=>x.classList.remove('pre'))},50);
+function loadIfr(){if(ifr.src)return;ifr.src=ifr.dataset.src;ifr.onload=()=>ifr.classList.add('on')}
+if('IntersectionObserver' in window)new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){loadIfr();o.disconnect()}},{rootMargin:'300px'}).observe(ifr.parentElement);else loadIfr();
+});
+</script>
+</body></html>
