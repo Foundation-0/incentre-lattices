@@ -1,5 +1,7 @@
 # Incentre lattice
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23322079.svg)](https://doi.org/10.5281/zenodo.23322079)
+
 One abstract drawing, a hunch followed, a thread unravelled. (Where the drawing came from is told on the Drift page, `drift.html`.)
 
 Draw a square and its two diagonals. In each of the four triangles, mark the point that is the same distance from all three sides, and join it to the triangle's corners. That one rule, carried into a cube and then into any number of dimensions, lands on uniform honeycombs, on the radius-ratio limits of chemistry, on the boron framework of calcium hexaboride, and on a framework whose rigidity has a closed form in every dimension.
@@ -18,7 +20,7 @@ Nothing here has been peer reviewed.
 
 ## Paper
 
-Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/). Its SHA-256 hash is recorded in the public commitment (see below).
+Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079) (all versions; v1.0.0 is [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080)). Its SHA-256 hash is recorded in the public commitment (see below).
 
 ## Results
 

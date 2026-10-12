@@ -6,6 +6,7 @@ authors:
   - family-names: "Arifuddin"
     given-names: "Ahraz"
     affiliation: "Aska Digital"
+doi: "10.5281/zenodo.23322079"
 repository-code: "https://github.com/aska-digital/incentre-lattice"
 url: "https://github.com/aska-digital/incentre-lattice"
 license:
@@ -33,6 +34,7 @@ preferred-citation:
       given-names: "Ahraz"
       affiliation: "Aska Digital"
   year: 2026
+  doi: "10.5281/zenodo.23322079"
   status: preprint
   url: "https://aska-digital.github.io/incentre-lattice/papers/incentre-lattice.pdf"
   notes: "Preprint, not peer reviewed. Source in papers/source."
