@@ -84,7 +84,21 @@ replay and must agree to 1e-9.
 Full notes in `autoresearch-fold/PRIOR-ART-FOLD.md` (opus novelty judgment, 2026-10-12). Summary:
 
 * **NOT FOUND**: a pin-jointed contact framework of equal balls with the cab topology moving, with every bar length kept and no overlaps, from
-  its open cubic state to a close packing. Not the same as proven new.
+  its open cubic state to a close packing. Not the same as proven new. This label covers only the cab result. The corner-sharing version is KNOWN
+  and textbook (next bullets).
+* **KNOWN, corner-sharing analogue**: in ReO3, rotating the octahedra alone reaches hcp of the anions (RhF3 type), at a rotation of 30 degrees
+  about <111>. Johnsson and Lemmens, "Crystallography and Chemistry of Perovskites", Handbook of Magnetism and Advanced Magnetic Materials (Wiley 2006),
+  doi:10.1002/9780470022184.hmm411, arXiv:cond-mat/0506606 (full text read): "The ReO3 structure type can be converted to a more dense packing by
+  rotating the octahedra until a hexagonal close packing is obtained of the RhF3 type." Observed under pressure: Shan et al., arXiv:2304.09011,
+  Natl. Sci. Rev. (2026), doi:10.1093/nsr/nwag425 (arXiv full text read): ReO3 reaches "a hexagonal close-packed arrangement at a rotation angle of 30
+  degrees above 30 GPa", and further compression cannot come from rotation alone.
+* **What differs in cab (ANALYSIS, this repo's data)**: rotation alone does not reach close packing. On the cubic-restricted [111] path
+  (`results/fold-3d-cubic`) the density is 0.2637 at 30 degrees, below the hcp value 0.7405, and the path locks at 0.4686 at 60 degrees. Close packing
+  needs a symmetry-breaking continuation with lattice shear (the search folds to 30 degrees, then lets the lattice go free). The 30 degrees
+  of the search is a hand-over point, not the ReO3 hcp angle.
+* **Closest physical study, KNOWN**: Li, Refson and Dove, Phys. Chem. Chem. Phys. 25, 10749 (2023), doi:10.1039/d3cp01306e (abstract read, full text not):
+  rigid unit modes involving rotations of the B6 octahedra in CaB6 and the other cubic hexaborides, with very low flexibility of the connected
+  octahedra network. A near-equilibrium lattice-dynamics calculation, not a finite-amplitude hard-contact path, so it does not change the NOT FOUND above.
 * **Closest, KNOWN**: corner-sharing MX6 octahedra of ReO3 tilt about [111] in the a-a-a- pattern to the VF3 type with hcp anions (O'Keeffe and Hyde,
   Acta Cryst. B 33, 3802 (1977); Glazer, Acta Cryst. B 28, 3384 (1972)); FeF3 and GaF3 follow it under pressure (Jorgensen and Smith, Acta Cryst.
   B 62 (2006)). Same tilt as our stage A, but in the cab framework that stalls at 0.4686 and the symmetry-breaking continuation is needed.

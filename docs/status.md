@@ -11,6 +11,13 @@ As of 2026-10-12. Labels as in `docs/audit.md`. No paper has been published; a p
 | 3D fold, cubic-restricted [111] | density 27 pi sqrt2/256 = 0.4686 at 60 degrees, six contacts; a lock of the cubic path, not a jam | VERIFIED | `make verify-fold3d` |
 | **Fold density** (`autoresearch-fold`) | **pi/sqrt18 = 0.74048 (Kepler bound)**: sampled bar-preserving, overlap-free path in the 2x2x2 supercell to hcp (793 states) and, by two layer slides, to pure fcc (1193 states); both checkers accept both paths | VERIFIED (sampled continuity, step <= 0.01); fcc is NEW-COMPUTATION | `make verify-fold-cp`, `make verify-fold-tests` |
 
+## Prior-art framing (updated 2026-10-12)
+
+* Corner-sharing ReO3 reaches hcp by octahedral rotation alone, at 30 degrees about <111>: KNOWN (Johnsson and Lemmens 2006, textbook; Shan et al., under pressure). Only the cab result is "not found": with octahedra joined by bars, the cubic tilt stalls at 0.4686 (0.2637 at 30 degrees, against 0.7405 for hcp), and close packing needs a symmetry-breaking continuation with lattice shear.
+* Closest physical study of the cab framework: Li, Refson and Dove, PCCP 25, 10749 (2023), rigid unit modes of the B6 octahedra in CaB6 (abstract read).
+* CaB6 packing: the location of the maximum, gamma = sqrt2 - 1, may be known from Travesset, ACS Nano 11, 5375 (2017), which could not be read; the closed form is not confirmed new.
+* 2D fold, related work with a different linkage: Tarnai, Fowler, Guest and Kovacs, Symmetry 14, 232 (2022).
+
 ## Open problems (fold)
 
 * A certified path: interval arithmetic or an analytic piecewise path in place of sampled continuity.
