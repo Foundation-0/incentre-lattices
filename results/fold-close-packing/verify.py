@@ -52,7 +52,7 @@ def locked_summary(rep):
     out["final_density"] = certlib.sig(rep["final_density"], 10)
     out["contact_degree_histogram"] = rep["contact_degree_histogram"]
     if "end_lattice_cos_angles" in rep:
-        out["end_lattice_cos_angles"] = [certlib.sig(v, 6) for v in rep["end_lattice_cos_angles"]]
+        out["end_lattice_cos_angles"] = [round(float(v), 9) + 0.0 for v in rep["end_lattice_cos_angles"]]  # absolute rounding: cos = 0 is roundoff noise that differs by platform
     return out
 
 

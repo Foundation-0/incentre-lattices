@@ -101,7 +101,7 @@
     },
     {
       "certificate": "results/fold-close-packing/certificate.json",
-      "certificate_sha256": "69d650a5d7affe80aa9987472510910da18f512a933bba6045c23fa8fddceec2",
+      "certificate_sha256": "475b62cd01b8809bfaf4ad3568457327c842ecf8de966825a21abdac348fb6a6",
       "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
       "id": "fold-close-packing",
       "input_hashes": {
