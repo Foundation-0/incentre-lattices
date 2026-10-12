@@ -18,4 +18,4 @@ Nothing here has been peer reviewed.
 
 ## Licence
 
-Code: MIT. Text, figures and site content: CC BY 4.0. Credit: Ahraz Arifuddin, Aska Digital, and contributors.
+Code: MIT. Text, figures and site content: CC BY 4.0. Credit: @ahrazzle @aska-digital and @claude
