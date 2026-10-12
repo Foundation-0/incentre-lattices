@@ -96,7 +96,7 @@
 
 <h2 id="modes"><span class="n">5</span>How many other motions are there? Counting floppy modes</h2>
 <p>The fold is one finite motion. To find all the small motions, count. Each of the 2n dots in a cell can move in n directions, giving 2n&sup2; freedoms per cell. Each bar takes one away. Per cell there are 2n(n&nbsp;&minus;&nbsp;1) bars inside the cluster (every pair of dots except antipodes) plus n cross bars, 2n&sup2;&nbsp;&minus;&nbsp;n in all. So the freedoms exceed the bars by n per cell. This is the counting of Maxwell and Calladine: floppy modes minus self-stresses equals freedoms minus bars, here n per cell.<span class="tg proven">PROVEN</span> (arithmetic) A <b>floppy mode</b> is a way to move the dots that keeps every bar length unchanged (to first order). A <b>state of self-stress</b> is a way to put tension and compression on the bars so that every dot is in force balance with nothing pushing from outside. The split between the two counts needs its own proof, given below.</p>
-<p>The result for a generic wavevector (that is, for a wavelike motion that repeats from cell to cell with a generic phase) is that there are exactly <b>n(n&minus;1)/2 floppy modes per cell</b> and <b>n(n&minus;3)/2 states of self-stress</b>, which is 0 in 3D, 2 in 4D, 5 in 5D and 9 in 6D. The floppy modes are the small rotations of the cross-polytopes (the octahedra in 3D), and they cost no energy at any wavelength: their frequencies form flat bands.<span class="tg proven">PROVEN</span> for n&nbsp;&ge;&nbsp;3, <span class="tg verified">VERIFIED NUMERICALLY</span> for n&nbsp;=&nbsp;2 to 6 (singular-value rank, tolerance 10<sup>&minus;8</sup>, several random wavevectors).</p>
+<p>The result for a generic wavevector (that is, for a wavelike motion that repeats from cell to cell with a generic phase) is that there are exactly <b>n(n&minus;1)/2 floppy modes per cell</b> and <b>n(n&minus;3)/2 states of self-stress</b>, which is 0 in 3D, 2 in 4D, 5 in 5D and 9 in 6D. The floppy modes are the small rotations of the cross-polytopes (the octahedra in 3D), and they cost no energy at any wavelength: their frequencies form flat bands.<span class="tg proven">PROVEN</span> for n&nbsp;&ge;&nbsp;3, <span class="tg verified">VERIFIED NUMERICALLY</span> for n&nbsp;=&nbsp;2 to 8 (singular-value rank, tolerance 10<sup>&minus;9</sup>, several random wavevectors).</p>
 <p>The proof, for n&nbsp;&ge;&nbsp;3: the skeleton of a cross-polytope is infinitesimally rigid, because it is a simplicial polytope (Cauchy, Dehn, Alexandrov, Whiteley). So in a zero mode each cluster moves as a stiff body: a translation plus a rotation. The cross bar along axis i lies on the line joining the two cluster centres, so the rotation drops out of its length change, and the bar condition reduces to a condition on the translations alone. In wave form it reads (e<sup>2iq<sub>i</sub></sup>&nbsp;&minus;&nbsp;1)v<sub>i</sub>&nbsp;=&nbsp;0, which forces the translation to vanish at a generic wavevector. Only the n(n&minus;1)/2 rotations are left. In 2D the argument fails because a 4-bar square is not rigid: there are 2 zero modes per cell and no self-stress. On each plane q<sub>i</sub>&nbsp;=&nbsp;0 there is one extra mode (rigid sliding of rows along axis i).</p>
 <p>The counts do not depend on where the dot sits on the axis, for any t between 0 and 1. The incentre does not change the mode count.<span class="tg proven">PROVEN</span></p>
 <p>In 3D this is the Prussian-blue topology of the previous page, and Goodwin&rsquo;s 2006 paper reports its density of rigid unit modes.<span class="tg known">KNOWN</span> The formula for every n and the self-stress count n(n&minus;3)/2: no prior reference found.<span class="tg noref">NO REFERENCE FOUND</span> (web searches only)</p>
@@ -116,7 +116,7 @@
   <div class="body"><div class="grp"><div class="lab">DIMENSION n</div><div class="sl"><input id="s9" type="range" min="2" max="9" step="1" value="3"><b id="s9v">3</b></div></div>
   <div class="grp kvg"><div class="kv" id="kv9"></div></div></div>
  </section>
- <figcaption>FIG 9. The n = 2 row is the exception: 2 floppy modes and no self-stress. Rows above n = 7 are the formula, not a proof.</figcaption>
+ <figcaption>FIG 9. The n = 2 row is the exception: 2 floppy modes and no self-stress. Rows n = 3 to 8 are proven exactly; n = 9 is the formula, not a proof.</figcaption>
 </figure>
 </div>
 
@@ -261,7 +261,7 @@ const tb=document.querySelector('#tb9 tbody');
 for(let n=2;n<=9;n++){
   const modes=n===2?2:n*(n-1)/2,stress=n===2?0:n*(n-3)/2,den=n*n-n-1;
   const tr=document.createElement('tr');tr.id='q'+n;
-  tr.innerHTML='<td class="n">'+n+'</td><td class="n">'+modes+(n===2?' *':'')+'</td><td class="n">'+stress+(n===2?' *':'')+'</td><td class="n">'+(modes-stress)+'</td><td class="n">1/'+den+'</td><td class="n">'+(1/den).toFixed(4)+'</td><td>'+(n<=7?'proven (exact)':'conjecture')+'</td>';
+  tr.innerHTML='<td class="n">'+n+'</td><td class="n">'+modes+(n===2?' *':'')+'</td><td class="n">'+stress+(n===2?' *':'')+'</td><td class="n">'+(modes-stress)+'</td><td class="n">1/'+den+'</td><td class="n">'+(1/den).toFixed(4)+'</td><td>'+(n===2?'verified (exact)':n<=8?'proven (exact)':'conjecture')+'</td>';
   tb.appendChild(tr);
 }
 function s9(){const n=+$('s9').value;$('s9v').textContent=n;for(let k=2;k<=9;k++)$('q'+k).classList.toggle('hi',k===n);
