@@ -1,0 +1,4 @@
+# Extra packages for regenerating the README figures (docs/img/make_readme_figures.py).
+# Kept apart from requirements.txt so the CI dependencies do not change.
+-r requirements.txt
+matplotlib>=3.8

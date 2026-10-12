@@ -2,9 +2,16 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23322079.svg)](https://doi.org/10.5281/zenodo.23322079)
 
+![Incentre lattice: one abstract drawing, a hunch followed, a thread unravelled. A lattice of translucent spheres beside the title.](og.jpg)
+
 One abstract drawing, a hunch followed, a thread unravelled. (Where the drawing came from is told on the Drift page, `drift.html`.)
 
 Draw a square and its two diagonals. In each of the four triangles, mark the point that is the same distance from all three sides, and join it to the triangle's corners. That one rule, carried into a cube and then into any number of dimensions, lands on uniform honeycombs, on the radius-ratio limits of chemistry, on the boron framework of calcium hexaboride, and on a framework whose rigidity has a closed form in every dimension.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/construction-dark.png">
+  <img src="docs/img/construction-light.png" alt="The construction. Left: a unit square with both diagonals, the incentre of each of the four triangles marked with its inscribed circle and segments to the triangle corners. Right: a three by three tiling of that square, with the incentres joined into squares and regular octagons, the 4.8.8 truncated square tiling.">
+</picture>
 
 This repository is an open, agent-assisted research project around that construction. It holds:
 
@@ -13,6 +20,22 @@ This repository is an open, agent-assisted research project around that construc
 - **Open tracks** in `tracks/`: questions with a fixed, trusted checker and a single score, so that people and AI agents can attack them in parallel. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## What is known and what is ours
+
+```mermaid
+flowchart TD
+    A["Construction<br/>square, diagonals, incentres"] --> B["Wythoff point of the cube's<br/>reflection group<br/>KNOWN"]
+    B --> C["4.8.8 tiling and truncated cubic honeycomb<br/>CaB6 boron net<br/>KNOWN"]
+    B --> D["Radius-ratio identity<br/>PROVEN under H1 or H2<br/>VERIFIED on 20 polytopes"]
+    B --> E["Contact framework<br/>rigidity in n dimensions<br/>PROVEN n >= 3, VERIFIED n = 2..8"]
+    C --> G["CaB6 packing maximum<br/>PROVEN upper bound<br/>attainment VERIFIED"]
+    C --> F["Fold to hcp and fcc<br/>VERIFIED, sampled path,<br/>two checkers"]
+    classDef known fill:#e6f2f0,stroke:#0f766e,color:#10302c
+    classDef ours fill:#fdf0d9,stroke:#b45309,color:#3d2308
+    class A,B,C known
+    class D,E,F,G ours
+```
+
+How the pieces connect. Teal boxes are classical or the construction itself; amber boxes are the results of this project. Evidence labels as in the ledger (`open.html`).
 
 Most of the geometry is classical. The dot is the Wythoff point of the cube's reflection group (Wythoff 1918, Coxeter), its orbit is the truncated square tiling in 2D and the truncated cubic honeycomb in 3D, the 3D arrangement is Pauling and Weinbaum's CaB6 boron net (RCSR `cab`), and the 2D fold is a known hinged tiling (Flores, after Stuart 1963). The results we have not found in print, after web searches only, are: the rigidity counts and Poisson ratio of the contact framework in every dimension, a single radius-ratio identity, and the closed form of the CaB6 hard-sphere packing maximum (its location, gamma = sqrt2 - 1, may already be known from Travesset 2017, which could not be read). The fold of the 3D framework to close packing (0.2233 to π/√18 in hcp, 2×2×2 family, two checkers) is the other result; no prior description was found (searches listed in `autoresearch-fold/`). The corner-sharing version is textbook: in ReO3, rotating the octahedra alone reaches hcp at 30 degrees about <111> (Johnsson & Lemmens 2006; Shan et al., under pressure; O'Keeffe & Hyde 1977). In the cab framework, where octahedra are joined by bars, the cubic tilt stalls at density 0.4686 (0.2637 at 30 degrees), and reaching close packing needs a symmetry-breaking continuation with lattice shear. Only that cab result is "not found". The closest physical study of the cab framework's flexibility is Li, Refson & Dove 2023 (CaB6 rigid unit modes). Two rigid layer slides then reach fcc (accepted by two independent checkers). This is a geometry result, not a predicted phase transition in real CaB6 or Prussian-blue materials. The ledger page (`open.html`) labels every claim as PROVEN, VERIFIED NUMERICALLY, CONJECTURE or KNOWN.
 
@@ -27,6 +50,37 @@ Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity
 Every result below has a folder in `results/` with a `PROOF.md` (statement, scope, evidence label, proof, prior art, open obligations), a deterministic `verify.py`, and a
 `certificate.json`. Labels: **PROVEN** = written proof; **VERIFIED** = finite check, not a proof; **KNOWN** = published and cited. Prior-art entries mean "not found in the
 searches listed", not "new".
+
+### Results at a glance
+
+Every number drawn below is read from the committed certificates and path files by [`docs/img/make_readme_figures.py`](docs/img/make_readme_figures.py) (`pip install -r requirements-dev.txt`, then run the script).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/fold-density-dark.png">
+  <img src="docs/img/fold-density-light.png" alt="Packing density along the verified fold path of 793 states, rising from 0.2233 to pi over root 18, 0.7405, for hcp. Dotted lines mark the start 0.2233, the cubic-path lock 0.4686 (a reference value, not a state on this path) and pi over root 18. A dashed amber continuation shows the two layer slides to fcc, 1193 states in all, which dip to about 0.729 and return to 0.7405.">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/fold-frames-dark.png">
+  <img src="docs/img/fold-frames-light.png" alt="Three frames of the 2 by 2 by 2 cell of 48 balls along the verified path: the start at density 0.2233, a state passing density 0.469 on the free continuation (the path is not the cubic-restricted one), and the end state hcp at density 0.7405. The cell is drawn to the same scale in each frame.">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/cab6-packing-dark.png">
+  <img src="docs/img/cab6-packing-light.png" alt="Maximum hard-sphere packing fraction of the CaB6 structure type against the size ratio gamma. The curve peaks at 0.7469 at gamma equal to root 2 minus 1, above the fcc line at 0.7405. An inset shows the narrow window, gamma from 0.4102 to 0.4159, where it beats fcc.">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/rigidity-dark.png">
+  <img src="docs/img/rigidity-light.png" alt="Three panels for dimension n from 2 to 8: generic zero modes per cell n(n-1)/2, self-stresses per cell n(n-3)/2, and the Poisson ratio nu 100 equal to 1 over n squared minus n minus 1. Checked values lie on the formula curves for n of 3 and above; n equal to 2 is outside the theorem.">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/radius-ratio-dark.png">
+  <img src="docs/img/radius-ratio-light.png" alt="Horizontal bars of the hole to ball ratio from the construction for tetrahedron 0.2247, cube 0.4142, octahedron 0.7321, dodecahedron 0.9021 and rhombic dodecahedron 1.0, each matching the classical closed form marked beside it.">
+</picture>
+
+### Results table
 
 | Result | Value | Label | Verify | Prior art |
 |---|---|---|---|---|
