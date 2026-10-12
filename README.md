@@ -63,4 +63,4 @@ COD extracts), [CITATION.cff](CITATION.cff) (cites the preprint). Pull requests 
 
 ## Licence
 
-Code: MIT. Text, figures and site content: CC BY 4.0. Credit: @ahrazzle @aska-digital and @claude
+Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [Claude](https://www.anthropic.com/claude) (Claude Opus 5.5 from Anthropic).
