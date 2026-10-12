@@ -15,8 +15,8 @@ As of 2026-10-12. Labels as in `docs/audit.md`. No paper has been published; a p
 
 * A certified path: interval arithmetic or an analytic piecewise path in place of sampled continuity.
 * ~~A closed-form end state~~: exact integer closed forms for the hcp and fcc end states of the m = 2 paths, PROVEN (`results/fold-end-exact`, `make verify-fold-exact`). Still open: space group, Wyckoff sites and an orbit description of the hole pattern.
-* The smallest supercell: m = 1 and odd m (m = 3); only m = 2 is known to reach close packing.
-* A monotone-density path, and the minimum density dip.
+* ~~The smallest supercell~~: m = 1 reaches hcp (free descent) and fcc (steered), both checkers accept, end states exact (`results/fold-m1`, `make verify-fold-m1`, VERIFIED, NEW-COMPUTATION). An m = 1 motion is an m-periodic motion for every m, so odd m is covered too.
+* ~~A monotone-density path~~: the m = 1 fcc path has det L strictly decreasing at all 267 steps (sampled; `results/fold-m1`). Still open: a monotone path to hcp, and monotonicity between samples.
 * The set of close-packed end states and their connectivity; comparison nets (diamond, sodalite, ReO3 with bars).
 * An outside review of both checkers, or a third independent implementation.
 

@@ -8,8 +8,8 @@
 
 - ~~**A closed-form end state**~~: done for m = 2 (`results/fold-end-exact/`): both end states are exact, with every coordinate an integer multiple of (2 − √2)/3, and are checked in integer arithmetic. Remaining: space group and Wyckoff sites.
 - **A certified path**: replace the numerical path with one whose bar lengths and non-overlap are proven, for example by interval arithmetic or an explicit construction.
-- **The smallest supercell**: does the fold work for m = 1, or for odd m? So far only the 2×2×2 family is known to reach close packing.
-- **Monotone density**: is there a path along which the density never decreases?
+- ~~**The smallest supercell**~~: m = 1 works (`results/fold-m1/`): 6 balls, free descent to hcp and a steered path to fcc, accepted by both checkers. An m = 1 motion is also an m-periodic motion for every m, so odd m is covered.
+- ~~**Monotone density**~~: the m = 1 fcc path increases density at every one of its 268 samples (`results/fold-m1/`). Open: monotone between samples, and a monotone path to hcp.
 - ~~**fcc second check**~~: done (`results/fold-close-packing/chk_independent.py`). Remaining: a certified, non-sampled path.
 
 ## Proposed next tracks (checker not written yet; contributions welcome)

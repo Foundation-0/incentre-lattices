@@ -1,0 +1,172 @@
+{
+  "inputs": {
+    "autoresearch-fold/verify.py": "5062e649aafe62ad2d08c8faf5255049865cf474c6d14840c24e3166d788f00b",
+    "results/fold-close-packing/chk_independent.py": "0e4b3883983dcd82892a09903e33ede05ffc117d0de67469345d1fa4d6cc0567",
+    "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b",
+    "results/fold-m1/path_fcc_m1.npz": "79067d0479d905b8cfc9268ca01af9fb544c195ac96930710ff8198dd1033479",
+    "results/fold-m1/path_hcp_m1.npz": "5f54326a2bdb8e386ce93589b993c20210946c3e68aa6f535110ee2083b7ab26",
+    "results/fold-m1/search_fcc_m1.py": "8af1e289ee7d0d57a9ab9cf3ff4a628e120ea0dfa9aaeafe69c46595d8ce6b94",
+    "results/fold-m1/search_hcp_m1.py": "f2476ba65a70e862cf8a2f7b3169f7388fead095e2186a881c1bf4dbb15406a9"
+  },
+  "model": "m = 1 (6 balls, 15 bars)",
+  "must_fail_controls_rejected": [
+    "locked checker: one dot displaced by 0.05 (bar lengths broken)",
+    "independent checker: one dot displaced by 0.05 (bar lengths broken)",
+    "locked checker: lattice scaled by 0.97 in one state (bars and overlaps broken)",
+    "independent checker: lattice scaled by 0.97 in one state (bars and overlaps broken)",
+    "locked checker: states 100 to 199 deleted (step too large)",
+    "independent checker: states 100 to 199 deleted (step too large)",
+    "monotone test on the hcp path (its density dips)"
+  ],
+  "paths": {
+    "fcc": {
+      "det_L_strictly_decreasing_at_every_step": true,
+      "exact_end_state": {
+        "bars_exact": true,
+        "cna_pairs": {
+          "(4,2,1)": 72
+        },
+        "contacts_per_ball": {
+          "12": 6
+        },
+        "density_is_pi_over_sqrt18_exactly": true,
+        "det_L": 12,
+        "exact_ok": true,
+        "lattice_rows": [
+          [
+            2,
+            -1,
+            -1
+          ],
+          [
+            1,
+            2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            2
+          ]
+        ],
+        "no_overlap_exact": true,
+        "structure": "fcc",
+        "unit": "K/1, K = 2 - sqrt2"
+      },
+      "independent_checker": {
+        "accepted": true,
+        "bar_error_below_1e-9_relative": true,
+        "bars": 15,
+        "dots": 6,
+        "end_cna": {
+          "(4, 2, 1)": 72
+        },
+        "end_contacts_per_ball": {
+          "12": 6
+        },
+        "end_density": 0.7404804897,
+        "end_density_equals_kepler_to_1e-12": true,
+        "interp_max_bar_dev_over_2R": 1.626e-05,
+        "interp_min_nonbonded_over_2R": 1.00011,
+        "max_dot_step": 0.00421,
+        "max_lattice_step": 0.003665,
+        "min_nonbonded_over_2R_at_least_1_minus_1e-9": true,
+        "overlap_violations": 0,
+        "start_density": 0.2232661157,
+        "states": 268
+      },
+      "locked_checker": {
+        "contact_degree_histogram": {
+          "12": 6
+        },
+        "contact_pairs": 36,
+        "contacts_per_ball_max": 12,
+        "contacts_per_ball_min": 12,
+        "final_density": 0.7404804897,
+        "first_order_jammed": true,
+        "flex_bars_only": 6,
+        "flex_bars_plus_contacts": 0,
+        "m": 1,
+        "reasons": [],
+        "states": 268,
+        "valid": true
+      }
+    },
+    "hcp": {
+      "det_L_strictly_decreasing_at_every_step": false,
+      "exact_end_state": {
+        "bars_exact": true,
+        "cna_pairs": {
+          "(4,2,1)": 36,
+          "(4,2,2)": 36
+        },
+        "contacts_per_ball": {
+          "12": 6
+        },
+        "density_is_pi_over_sqrt18_exactly": true,
+        "det_L": 324,
+        "exact_ok": true,
+        "lattice_rows": [
+          [
+            7,
+            -1,
+            4
+          ],
+          [
+            -4,
+            7,
+            -1
+          ],
+          [
+            -3,
+            3,
+            6
+          ]
+        ],
+        "no_overlap_exact": true,
+        "structure": "hcp",
+        "unit": "K/3, K = 2 - sqrt2"
+      },
+      "independent_checker": {
+        "accepted": true,
+        "bar_error_below_1e-9_relative": true,
+        "bars": 15,
+        "dots": 6,
+        "end_cna": {
+          "(4, 2, 1)": 36,
+          "(4, 2, 2)": 36
+        },
+        "end_contacts_per_ball": {
+          "12": 6
+        },
+        "end_density": 0.7404804897,
+        "end_density_equals_kepler_to_1e-12": true,
+        "interp_max_bar_dev_over_2R": 1.888e-05,
+        "interp_min_nonbonded_over_2R": 0.999996,
+        "max_dot_step": 0.00421,
+        "max_lattice_step": 0.004821,
+        "min_nonbonded_over_2R_at_least_1_minus_1e-9": true,
+        "overlap_violations": 0,
+        "start_density": 0.2232661157,
+        "states": 333
+      },
+      "locked_checker": {
+        "contact_degree_histogram": {
+          "12": 6
+        },
+        "contact_pairs": 36,
+        "contacts_per_ball_max": 12,
+        "contacts_per_ball_min": 12,
+        "final_density": 0.7404804897,
+        "first_order_jammed": true,
+        "flex_bars_only": 6,
+        "flex_bars_plus_contacts": 0,
+        "m": 1,
+        "reasons": [],
+        "states": 333,
+        "valid": true
+      }
+    }
+  },
+  "result": "fold-m1"
+}
