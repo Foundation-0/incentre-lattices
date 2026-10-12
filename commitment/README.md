@@ -32,3 +32,9 @@ A matching hash shows that the files are the ones committed to. It does not show
 ## Regenerate (after a deliberate change)
 
 `make certificates` reruns the verifiers and rewrites `certificates/` and this folder. Review the diff: every change to a certificate changes `ROOT`.
+
+## Public timestamp
+
+Posted 2026-10-12 as a public gist: https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706
+
+The gist also records the sha256 of the then-unpublished preprint PDF: `9d6dbf351d62c91f17a4b0da10e5e8ef3fe0185374f31586fcf074565068e48a`.
