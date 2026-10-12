@@ -32,8 +32,11 @@ bars, 16 lie inside a layer and the other 8 cross the two empty gaps, and all 8 
 a gap can slide by one stacking vector without losing those contacts. The end state is a combinatorial embedding of the cab bar graph into a
 close-packed contact graph, easy to check once written down. The real content is the path: start and end lie in one connected component of the
 overlap-free configuration space, which is not automatic. Greedy density ascent from other starting folds jams well below Kepler (0.58, 0.61,
-0.62, 0.71), and the basin that works, fold angles about 25 to 35 degrees, is fragile (28 degrees fails). The search is deterministic (no random kicks),
-so six "seeds" gave one path, not six independent confirmations.
+0.62, 0.71), and the basin that works, fold angles about 25 to 35 degrees, is fragile (28 degrees fails). The stored `path.npz` is the certificate. The search is
+not guaranteed to reproduce it: it is a numerical continuation with kicks (seeded), its original stage B stopped on a wall-clock deadline, and one slower machine
+ended at a jammed state of density 0.618718. The current `search.py` stops on a step count (BLAS pinned to one thread) and reports "incomplete" if a wall-clock
+safety limit is hit; one rerun gave a different valid path (791 states, not 793, diverging at state 285) that ends at the same density 0.740480. Rerunning it
+adds no independent confirmation of the certificate.
 
 ## Two checkers
 
