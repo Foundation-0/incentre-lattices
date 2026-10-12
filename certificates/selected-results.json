@@ -101,13 +101,13 @@
     },
     {
       "certificate": "results/fold-close-packing/certificate.json",
-      "certificate_sha256": "5aa43b7cb09ed695f41e44561f0f05ab646a2f8db636bc88c500bdbbd5ca6c6c",
+      "certificate_sha256": "5fe414b921319a969d94b0894c3cdfd49602a1562be503e20181e40a45aef3d6",
       "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
       "id": "fold-close-packing",
       "input_hashes": {
         "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
         "autoresearch-fold/verify.py": "5062e649aafe62ad2d08c8faf5255049865cf474c6d14840c24e3166d788f00b",
-        "results/fold-close-packing/chk_independent.py": "0e4b3883983dcd82892a09903e33ede05ffc117d0de67469345d1fa4d6cc0567",
+        "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
         "results/fold-close-packing/make_fcc_path.py": "7e1dd724a8f88cbb045e6adbd00a727837175ca05f89c169b0827fe6341f3644",
         "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1"
       },

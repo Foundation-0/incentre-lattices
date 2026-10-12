@@ -46,9 +46,10 @@ adds no independent confirmation of the certificate.
    the end-state contacts and first-order rigidity.
 2. **Independent checker** `chk_independent.py`, a re-implementation (numpy only, no import of `verify.py`) of
    `autoresearch-fold/independent/chk.py`, taking the path as an argument. It rebuilds the bar graph with fixed integer lattice shifts, checks all 120
-   bar lengths in all states, the minimum non-bonded distance over all periodic images (5 x 5 x 5 shifts) in all states, step sizes, a
+   bar lengths in all states, the minimum non-bonded distance over all periodic images in all states (the image-shift block is derived from each state's lattice and dots, as in the locked checker's `_image_cloud`, not fixed), step sizes, a
    10-sub-state interpolation between every pair of states, and the density, contacts and common-neighbour analysis of the end state. On the hcp path
    it reproduces the numbers of the original `chk.py` (same maximum bar error 8.1e-14 relative, same minimum interpolated distance 0.999994 * 2R).
+   Both this file and the path generator `make_fcc_path.py` are sha256-pinned in `checkers.sha256`; `make verify-fold-cp` checks the pins (and the locked checker's) before it runs, so weakening either file and rerunning `make certificates` fails `make verify` and CI. A deliberate change to either file means re-pinning by hand (`shasum -a 256 chk_independent.py make_fcc_path.py > checkers.sha256`) in the same commit.
 
 ## Results (all in `certificate.json`)
 

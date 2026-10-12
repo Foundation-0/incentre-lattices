@@ -67,6 +67,7 @@ a jam. Grid adjacency is not a continuous path.
 | A 793-state sequence from the open cab state to hcp (density pi/sqrt18, 12 contacts, CNA 288 (4,2,1) + 288 (4,2,2)) keeping every bar and with no overlap | VERIFIED (finite) | locked `autoresearch-fold/verify.py` and independent `chk_independent.py` (a parametrised copy of `autoresearch-fold/independent/chk.py`) |
 | A 1193-state extension by two layer slides to pure fcc (576 (4,2,1)) | NEW-COMPUTATION, VERIFIED by the same two checkers | `make_fcc_path.py` generates it; both checkers accept it |
 | The checker itself | 16 unit tests including must-fail cases; hash lock | `autoresearch-fold/test_verify.py`, `verify.sha256` |
+| The second checker and the fcc path generator are part of the lock | sha256 pins, checked by `make verify-fold-cp` (so by `make verify` and CI) | `results/fold-close-packing/checkers.sha256` pins `chk_independent.py` and `make_fcc_path.py`; the second checker derives its image-shift block from the lattice of each state |
 | Controls | must be rejected | displaced dot; lattice scaled in one state; a half-way blend of two states |
 
 Known limits (the important ones):
