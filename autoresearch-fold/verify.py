@@ -264,7 +264,8 @@ def verify_arrays(m, Ls, Xs, want_rigidity=True):
         try:
             res.update(end_state_report(m, Ls[-1], Xs[-1], I, J, S, want_rigidity))
         except Exception as e:
-            res["end_state_error"] = str(e)
+            # Fail closed: an end-state analysis that throws must not report a valid path.
+            fail("end-state analysis failed: %s" % e)
     return res
 
 

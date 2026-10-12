@@ -13,8 +13,8 @@ What is replayed (all finite checks, for n = 2..8):
   * elastic constants with full internal relaxation: C11, C12, vanishing shear, nu_100 = 1/(n^2-n-1),
     for the incentre c = 2 - sqrt2 and for c = 0.3, 0.75;
   * the three steps of the written proof, symbolically (proof_steps.py).
-Must-fail controls: the n >= 3 counts fail at n = 2; a wrong Poisson formula is rejected; removing
-one bar changes the zero-mode count; a wrong stress-basis dimension is rejected.
+Must-fail controls: the n >= 3 counts fail at n = 2; a wrong Poisson formula and a wrong C11/C12 ratio
+are rejected; removing one bar changes the zero-mode count; a wrong stress-basis dimension is rejected.
 Writes certificate.json.  Usage: python verify.py
 """
 import contextlib
