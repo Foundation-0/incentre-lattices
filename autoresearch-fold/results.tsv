@@ -1,0 +1,6 @@
+timestamp	search_hash	valid	final_density	max_density	end_contacts	flex_count	m	exit	desc
+2026-10-12T07:56:10	e270829	true	0.468585	0.468585	6.00(min6,max6)	18	m=2	exit=0	baseline: analytic cubic [111] checkerboard fold to 60 deg, m=2, no continuation
+2026-10-12T07:56:30	d8144dc	true	0.710861	0.710861	11.50(min11,max12)	0	m=2	exit=0	iter1: baseline fold to 60 deg then LP-guided free-lattice continuation (m=2, tie-break l1, kicks)
+2026-10-12T07:59:03	876afa7	true	0.572893	0.572893	6.08(min5,max8)	1	m=2	exit=0	iter2: skip fold, free-lattice LP continuation straight from canonical state via kicks (m=2, seed 1)
+2026-10-12T08:03:36	6e9ead9	false	0.540015	0.540015	5.03(min5,max6)	189	m=4	exit=0	iter3: iter1 pipeline (fold to 60 deg + free continuation) on m=4 supercell
+2026-10-12T08:06:56	cae3bdb	true	0.740480	0.740480	12.00(min12,max12)	0	m=2	exit=0	iter4: stage-A step scaled by 1/m (fixes iter3 continuity bug); fold only to 30 deg then free continuation, m=2

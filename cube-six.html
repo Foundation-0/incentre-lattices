@@ -1,0 +1,185 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cube in six pyramids</title>
+<style>
+  html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
+  canvas{display:block;width:100vw;height:100vh;cursor:grab}
+  canvas:active{cursor:grabbing}
+  .panel{position:fixed;background:#fffdf8ee;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px}
+  #ui{top:16px;left:16px;width:270px;max-height:calc(100vh - 60px);overflow:auto}
+  #notes{bottom:16px;right:16px;width:330px;max-height:calc(100vh - 60px);overflow:auto}
+  h1{font-size:15px;margin:0 0 6px}
+  h2{font-size:12px;margin:12px 0 4px;text-transform:uppercase;letter-spacing:.06em;color:#8a7f6a}
+  p{margin:0 0 8px;color:#5b6573;font-size:12.5px}
+  #caption{color:#1d2b3a}
+  ol{margin:0;padding-left:18px;color:#5b6573;font-size:12.5px}
+  li{margin-bottom:6px}
+  label{display:flex;align-items:center;gap:8px;margin:5px 0;user-select:none}
+  input[type=range]{flex:1}
+  .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  button{font:inherit;font-size:13px;padding:4px 10px;border:1px solid #cfc8b8;border-radius:6px;background:#fff;cursor:pointer}
+  button:hover{background:#f3efe6}
+  #tetLabel{font-size:12.5px;color:#5b6573}
+  .head{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;user-select:none}
+  .head h1{margin:0}
+  .min-btn{border:none;background:none;font-size:18px;line-height:1;padding:0 2px;color:#8a7f6a}
+  .body{margin-top:6px}
+  .panel.min{width:auto;padding:8px 12px}
+  .panel.min .body{display:none}
+  .hint{position:fixed;bottom:10px;left:16px;font-size:11.5px;color:#a39a87}
+#ui,#notes{margin-top:30px}
+</style></head><body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
+
+<canvas id="c"></canvas>
+<div id="ui" class="panel">
+  <div class="head"><h1>The drawing, in 3D</h1><button class="min-btn" title="Minimise">–</button></div><div class="body">
+  <p>Cut from the centre, the cube splits into six pyramids, one on each face. Each dot is the same distance from all five faces of its pyramid. Red lines run from it to the pyramid's five corners. Drag to turn it.</p>
+  <label>Pull apart <input id="ex" type="range" min="0" max="1.6" step="0.01" value="0.45"></label>
+  <label><input id="faces" type="checkbox" checked> Tinted faces</label>
+  <label><input id="spheres" type="checkbox"> Touching spheres</label>
+  <label><input id="spin" type="checkbox" checked> Slow spin</label>
+  <label><input id="ortho" type="checkbox"> Flat projection (no perspective)</label>
+
+  <h2>Look along</h2>
+  <div class="row">
+    <button data-view="face">A face</button>
+    <button data-view="edge">An edge</button>
+    <button data-view="corner">A corner</button>
+  </div>
+
+  <h2>The 24 tetrahedra</h2>
+  <label><input id="tets" type="checkbox"> Highlight them</label>
+  <div class="row">
+    <button id="prev">◀</button><button id="play">Play</button><button id="next">▶</button>
+    <span id="tetLabel"></span>
+  </div>
+  <label><input id="halves" type="checkbox"> Split each into mirror halves (48)</label>
+</div></div>
+<div class="hint">Press H to hide or show both panels</div>
+
+<div id="notes" class="panel">
+  <div class="head"><h1>What the shape is doing</h1><button class="min-btn" title="Minimise">–</button></div><div class="body">
+  <p id="caption">Use the “Look along” buttons to close the cube and view it down each of its three kinds of symmetry axis.</p>
+  <h2>Facts hiding in it</h2>
+  <ol>
+    <li><b>24 pieces, 24 turns.</b> Each dot plus one triangle face of its pyramid makes a small tetrahedron. There are 6 × 4 = 24, all identical, and the cube can be turned exactly 24 ways onto itself. Turning the cube carries any one tetrahedron onto any other. This 24-to-24 match is special to 3D (<a href="deeper.html#higher" style="color:#c0392b">see the subpage</a>).</li>
+    <li><b>48 with mirrors.</b> Each tetrahedron has a mirror plane through it. Split along it and you get 48 halves, one for each of the cube's 48 symmetries when reflections count. The flat drawing does the same with 8 triangles for the square's 8 symmetries.</li>
+    <li><b>The number is tan 22.5°.</b> With a cube of side 2, each dot is √2 − 1 ≈ 0.414 from every face of its pyramid. That is tan 22.5°, half of 45°, and 1 / (1 + √2), the reciprocal of the “silver ratio” that governs the regular octagon.</li>
+    <li><b>The six spheres kiss.</b> Neighbouring dots are 2(√2 − 1) apart, exactly two radii. So each ball touches its four neighbours, on the shared wall between them, and touches the centre of its own cube face. The four circles in the flat drawing touch the same way, on the X.</li>
+    <li><b>The dots make an octahedron.</b> The six dots sit on the three axes, at the corners of a regular octahedron, the cube's dual shape. The 12 kissing points are the octahedron's edge midpoints, one for each of the cube's 12 edges.</li>
+    <li><b>A small hole in the middle.</b> The six balls leave a gap at the centre. Its radius is 3 − 2√2 = (√2 − 1)² ≈ 0.17, the same number squared.</li>
+  </ol>
+  <p style="margin:12px 0 0"><a href="deeper.html" style="display:block;padding:8px 10px;border:1px solid #c0392b;border-radius:8px;color:#c0392b;font-weight:600;text-decoration:none;font-size:13px">Atoms, crystals and higher dimensions →</a></p>
+</div></div>
+
+<script>
+const cv=document.getElementById('c'),g=cv.getContext('2d');
+let W,H,dpr;function rs(){dpr=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',rs);rs();
+const $=id=>document.getElementById(id);
+
+// Cube [-1,1]^3. Each pyramid has a cube face as its base and the cube's centre as its apex.
+const R=Math.SQRT2-1;            // insphere radius: same number as the flat drawing
+const k=1-R;                     // distance of each dot from the centre
+const tints=['#3b7dd8','#3b7dd8','#2e9e6a','#2e9e6a','#d08a1e','#d08a1e'];
+const pyrs=[];
+for(let ax=0;ax<3;ax++)for(const sg of [1,-1]){
+  const o=[0,1,2].filter(i=>i!==ax),dir=[0,0,0];dir[ax]=sg;
+  const base=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>{const v=[0,0,0];v[ax]=sg;v[o[0]]=a;v[o[1]]=b;return v});
+  pyrs.push({verts:[...base,[0,0,0]],c:dir.map(v=>v*k),dir,tint:tints[pyrs.length]});
+}
+// faces by vertex index: square base, four triangles to the apex (index 4)
+const FACES=[[0,1,2,3],[0,1,4],[1,2,4],[2,3,4],[3,0,4]];
+const EDGES=[[0,1],[1,2],[2,3],[3,0],[0,4],[1,4],[2,4],[3,4]];
+
+// View presets: the cube's three kinds of rotation axis, plus captions.
+const VIEWS={
+  face:{yaw:0,pitch:0,text:'<b>Down a face: four-fold.</b> This is the original flat drawing: the X, four dots, red lines to the corners. The dots of the near and far pyramids sit in the middle. A quarter turn leaves it unchanged.'},
+  edge:{yaw:Math.PI/4,pitch:0,text:'<b>Through two opposite edges: two-fold.</b> The outline becomes a rectangle √2 times as wide as it is tall. Only a half turn leaves it unchanged. The six dots land on four spots: the left and right ones are pairs, one hidden behind the other.'},
+  corner:{yaw:Math.PI/4,pitch:Math.atan(1/Math.SQRT2),text:'<b>Down the long diagonal, corner to corner: three-fold.</b> The square outline turns into a regular hexagon, and the six dots make a smaller hexagon inside it. That is the octahedron seen down its own three-fold axis. A third of a turn leaves it unchanged. Turn on the spheres to see a ring of six balls, each touching the next.'}
+};
+
+let yaw=-0.6,pitch=0.45,drag=null,anim=null;
+cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];anim=null;cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.008;pitch+=(e.clientY-drag[1])*0.008;pitch=Math.max(-1.5708,Math.min(1.5708,pitch));drag=[e.clientX,e.clientY]});
+cv.addEventListener('pointerup',()=>drag=null);
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{
+  const v=VIEWS[b.dataset.view];
+  $('spin').checked=false;$('ortho').checked=true;
+  const tw=2*Math.PI,ty=v.yaw+tw*Math.round((yaw-v.yaw)/tw); // nearest equivalent angle, no long spin
+  anim={yaw:ty,pitch:v.pitch,ex:0};
+  $('caption').innerHTML=v.text;
+});
+
+// The 24 tetrahedra: dot, apex (centre), two neighbouring base corners.
+let tetIdx=0,playing=null;
+function showTet(){$('tetLabel').textContent=$('tets').checked?`${tetIdx+1} of 24`:''}
+$('tets').onchange=showTet;
+$('next').onclick=()=>{$('tets').checked=true;tetIdx=(tetIdx+1)%24;showTet()};
+$('prev').onclick=()=>{$('tets').checked=true;tetIdx=(tetIdx+23)%24;showTet()};
+$('play').onclick=()=>{
+  if(playing){clearInterval(playing);playing=null;$('play').textContent='Play';return}
+  $('tets').checked=true;showTet();$('play').textContent='Pause';
+  playing=setInterval(()=>{tetIdx=(tetIdx+1)%24;showTet()},650);
+};
+
+function proj(p){
+  let [x,y,z]=p;
+  let cx=Math.cos(yaw),sx=Math.sin(yaw);[x,z]=[x*cx-z*sx,x*sx+z*cx];
+  let cp=Math.cos(pitch),sp=Math.sin(pitch);[y,z]=[y*cp-z*sp,y*sp+z*cp];
+  const L=W>700&&!$('ui').classList.contains('min')?300:0,Rt=W>700&&!$('notes').classList.contains('min')?360:0,free=W-L-Rt;
+  const base=Math.min(H,free)*0.27,D=9,s=$('ortho').checked?base:base*D/(D+z);
+  return {x:L+free/2+x*s,y:H/2-y*s,z,s};
+}
+const add=(a,b,t=1)=>a.map((v,i)=>v+b[i]*t);
+const mid=(a,b)=>a.map((v,i)=>(v+b[i])/2);
+const avg=ps=>ps.reduce((s,p)=>s+p.z,0)/ps.length;
+const ease=(a,b)=>a+(b-a)*0.09;
+
+function frame(){
+  if(anim){
+    yaw=ease(yaw,anim.yaw);pitch=ease(pitch,anim.pitch);$('ex').value=ease(+$('ex').value,anim.ex);
+    if(Math.abs(anim.yaw-yaw)+Math.abs(anim.pitch-pitch)+Math.abs(anim.ex-$('ex').value)<1e-3){yaw=anim.yaw;pitch=anim.pitch;$('ex').value=anim.ex;anim=null}
+  } else if($('spin').checked&&!drag)yaw+=0.003;
+  g.clearRect(0,0,W,H);
+  const ex=+$('ex').value,items=[],hl=$('tets').checked;
+  pyrs.forEach((w,pi)=>{
+    const off=v=>add(v,w.dir,ex);
+    const V=w.verts.map(v=>proj(off(v))),C=proj(off(w.c));
+    if($('faces').checked)for(const f of FACES){const ps=f.map(i=>V[i]);items.push({z:avg(ps),f:()=>poly(ps,w.tint,hl?.05:.10)})}
+    for(const [i,j] of EDGES)items.push({z:(V[i].z+V[j].z)/2-0.05,f:()=>seg(V[i],V[j],'#1d2b3a',1.8)});
+    for(const v of V)items.push({z:(C.z+v.z)/2-0.04,f:()=>seg(C,v,'#c0392b',1.4)});
+    if(hl&&Math.floor(tetIdx/4)===pi){
+      const j=tetIdx%4,a=w.verts[j],b=w.verts[(j+1)%4];
+      if($('halves').checked){
+        const m=mid(a,b);
+        tetra([w.c,[0,0,0],m,a].map(v=>proj(off(v))),'#e4572e',items);
+        tetra([w.c,[0,0,0],m,b].map(v=>proj(off(v))),'#7b3fb5',items);
+      } else tetra([w.c,[0,0,0],a,b].map(v=>proj(off(v))),'#e4572e',items);
+    }
+    if($('spheres').checked)items.push({z:C.z+0.01,f:()=>sphere(C,R*C.s,w.tint)});
+    items.push({z:C.z-0.1,f:()=>dot(C)});
+  });
+  items.sort((a,b)=>b.z-a.z).forEach(i=>i.f());
+  requestAnimationFrame(frame);
+}
+function tetra(P,col,items){
+  for(const f of [[0,1,2],[0,1,3],[0,2,3],[1,2,3]]){const ps=f.map(i=>P[i]);items.push({z:avg(ps)-0.02,f:()=>{poly(ps,col,.32);outline(ps,col)}})}
+}
+function poly(ps,col,a){g.beginPath();ps.forEach((p,i)=>i?g.lineTo(p.x,p.y):g.moveTo(p.x,p.y));g.closePath();g.globalAlpha=a;g.fillStyle=col;g.fill();g.globalAlpha=1}
+function outline(ps,col){g.beginPath();ps.forEach((p,i)=>i?g.lineTo(p.x,p.y):g.moveTo(p.x,p.y));g.closePath();g.strokeStyle=col;g.lineWidth=1.2;g.stroke()}
+function seg(a,b,col,w){g.beginPath();g.moveTo(a.x,a.y);g.lineTo(b.x,b.y);g.strokeStyle=col;g.lineWidth=w;g.lineCap='round';g.stroke()}
+function dot(p){const r=5.5*p.s/80;const gr=g.createRadialGradient(p.x-r/3,p.y-r/3,r/5,p.x,p.y,r);gr.addColorStop(0,'#5a6b80');gr.addColorStop(1,'#111a24');g.beginPath();g.arc(p.x,p.y,r,0,7);g.fillStyle=gr;g.fill()}
+function sphere(p,r,col){const gr=g.createRadialGradient(p.x-r*.35,p.y-r*.35,r*.1,p.x,p.y,r);gr.addColorStop(0,'#ffffff');gr.addColorStop(1,col);g.globalAlpha=.28;g.beginPath();g.arc(p.x,p.y,r,0,7);g.fillStyle=gr;g.fill();g.globalAlpha=1}
+
+// URL hooks for screenshots: ?view=corner&spheres=1&tet=5&halves=1
+function setMin(p,m){p.classList.toggle('min',m);p.querySelector('.min-btn').textContent=m?'+':'–'}
+document.querySelectorAll('.panel').forEach(p=>p.querySelector('.head').onclick=()=>setMin(p,!p.classList.contains('min')));
+addEventListener('keydown',e=>{if(e.key==='h'||e.key==='H'){const ps=[...document.querySelectorAll('.panel')],m=!ps.every(p=>p.classList.contains('min'));ps.forEach(p=>setMin(p,m))}});
+if(innerWidth<900)setMin($('notes'),true);
+const q=new URLSearchParams(location.search);
+for(const id of ['spheres','halves'])if(q.get(id))$(id).checked=true;
+if(q.get('faces')==='0')$('faces').checked=false;
+if(q.get('tet')){$('tets').checked=true;tetIdx=+q.get('tet');showTet()}
+if(q.get('view')){const v=VIEWS[q.get('view')];yaw=v.yaw;pitch=v.pitch;$('ex').value=0;$('spin').checked=false;$('ortho').checked=true;$('caption').innerHTML=v.text}
+frame();
+</script></body></html>

@@ -1,0 +1,9 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+paper/
+Going deeper_*.html
+autoresearch-fold/out/
+drift.html

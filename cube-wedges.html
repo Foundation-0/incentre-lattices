@@ -1,0 +1,80 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cube in four wedges</title>
+<style>
+  html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
+  canvas{display:block;width:100vw;height:100vh;cursor:grab}
+  canvas:active{cursor:grabbing}
+  #ui{position:fixed;top:16px;left:16px;background:#fffdf8e6;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px;max-width:270px}
+  #ui h1{font-size:15px;margin:0 0 6px}
+  #ui p{margin:0 0 10px;color:#5b6573;font-size:12.5px}
+  label{display:flex;align-items:center;gap:8px;margin:5px 0;user-select:none}
+  input[type=range]{flex:1}
+  button{margin-top:6px;font:inherit;padding:4px 10px;border:1px solid #cfc8b8;border-radius:6px;background:#fff;cursor:pointer}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="ui">
+  <h1>The drawing, in 3D</h1>
+  <p>The X becomes two diagonal walls that cut the cube into four wedges. Each dot sits at the middle height of its wedge and is the same distance from the wedge's three upright walls. Red lines run from the dot to the wedge's six corners. Drag to turn it.</p>
+  <label>Pull apart <input id="ex" type="range" min="0" max="1.6" step="0.01" value="0.45"></label>
+  <label><input id="faces" type="checkbox" checked> Tinted faces</label>
+  <label><input id="spheres" type="checkbox"> Show the touching spheres</label>
+  <label><input id="spin" type="checkbox" checked> Slow spin</label>
+  <button id="top">Look from above</button>
+</div>
+<script>
+const cv=document.getElementById('c'),g=cv.getContext('2d');
+let W,H,dpr;function rs(){dpr=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',rs);rs();
+const $=id=>document.getElementById(id);
+
+// Cube [-1,1]^3, y is up. The walls x=z and x=-z cut it into four wedges around the vertical axis.
+const k=2-Math.SQRT2;            // distance of each dot from the cube's centre axis
+const R=Math.SQRT2-1;            // distance from the dot to each of the three upright walls
+const tints=['#3b7dd8','#2e9e6a','#d08a1e','#9b59b6'];
+const sides=[[0,1],[1,0],[0,-1],[-1,0]]; // outward direction of each wedge in (x,z)
+const wedges=sides.map(([dx,dz],i)=>{
+  const a=[dx-dz,dz+dx],b=[dx+dz,dz-dx];   // the two outer corners of the triangle, in (x,z)
+  const lo=([x,z])=>[x,-1,z],hi=([x,z])=>[x,1,z];
+  return {verts:[lo(a),lo(b),[0,-1,0],hi(a),hi(b),[0,1,0]],c:[dx*k,0,dz*k],dir:[dx,0,dz],tint:tints[i]};
+});
+// faces by vertex index: bottom, top, outer square, two diagonal walls
+const FACES=[[0,1,2],[3,4,5],[0,1,4,3],[1,2,5,4],[2,0,3,5]];
+const EDGES=[[0,1],[1,2],[2,0],[3,4],[4,5],[5,3],[0,3],[1,4],[2,5]];
+
+let yaw=-0.6,pitch=0.45,drag=null,anim=null;
+cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];anim=null;cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.008;pitch+=(e.clientY-drag[1])*0.008;pitch=Math.max(-1.5708,Math.min(1.5708,pitch));drag=[e.clientX,e.clientY]});
+cv.addEventListener('pointerup',()=>drag=null);
+$('top').onclick=()=>{$('spin').checked=false;$('faces').checked=false;anim={yaw:Math.round(yaw/(Math.PI/2))*(Math.PI/2),pitch:1.5708}};
+
+function proj(p){
+  let [x,y,z]=p;
+  let cx=Math.cos(yaw),sx=Math.sin(yaw);[x,z]=[x*cx-z*sx,x*sx+z*cx];
+  let cp=Math.cos(pitch),sp=Math.sin(pitch);[y,z]=[y*cp-z*sp,y*sp+z*cp];
+  const D=9,s=Math.min(W,H)*0.16*D/(D+z);
+  return {x:(W>800?W/2+120:W/2)+x*s,y:H/2-y*s,z,s};
+}
+const add=(a,b,t=1)=>a.map((v,i)=>v+b[i]*t);
+const avg=ps=>ps.reduce((s,p)=>s+p.z,0)/ps.length;
+
+function frame(){
+  if(anim){yaw+=(anim.yaw-yaw)*0.08;pitch+=(anim.pitch-pitch)*0.08;if(Math.abs(anim.pitch-pitch)<1e-3)anim=null}
+  else if($('spin').checked&&!drag)yaw+=0.003;
+  g.clearRect(0,0,W,H);
+  const ex=+$('ex').value,items=[];
+  for(const w of wedges){
+    const V=w.verts.map(v=>proj(add(v,w.dir,ex))),C=proj(add(w.c,w.dir,ex));
+    if($('faces').checked)for(const f of FACES){const ps=f.map(i=>V[i]);items.push({z:avg(ps),f:()=>poly(ps,w.tint,.10)})}
+    for(const [i,j] of EDGES)items.push({z:(V[i].z+V[j].z)/2-0.05,f:()=>seg(V[i],V[j],'#1d2b3a',1.8)});
+    for(const v of V)items.push({z:(C.z+v.z)/2-0.04,f:()=>seg(C,v,'#c0392b',1.4)});
+    if($('spheres').checked)items.push({z:C.z+0.01,f:()=>sphere(C,R*C.s,w.tint)});
+    items.push({z:C.z-0.1,f:()=>dot(C)});
+  }
+  items.sort((a,b)=>b.z-a.z).forEach(i=>i.f());
+  requestAnimationFrame(frame);
+}
+function poly(ps,col,a){g.beginPath();ps.forEach((p,i)=>i?g.lineTo(p.x,p.y):g.moveTo(p.x,p.y));g.closePath();g.globalAlpha=a;g.fillStyle=col;g.fill();g.globalAlpha=1}
+function seg(a,b,col,w){g.beginPath();g.moveTo(a.x,a.y);g.lineTo(b.x,b.y);g.strokeStyle=col;g.lineWidth=w;g.lineCap='round';g.stroke()}
+function dot(p){const r=5.5*p.s/80;const gr=g.createRadialGradient(p.x-r/3,p.y-r/3,r/5,p.x,p.y,r);gr.addColorStop(0,'#5a6b80');gr.addColorStop(1,'#111a24');g.beginPath();g.arc(p.x,p.y,r,0,7);g.fillStyle=gr;g.fill()}
+function sphere(p,r,col){const gr=g.createRadialGradient(p.x-r*.35,p.y-r*.35,r*.1,p.x,p.y,r);gr.addColorStop(0,'#ffffff');gr.addColorStop(1,col);g.globalAlpha=.28;g.beginPath();g.arc(p.x,p.y,r,0,7);g.fillStyle=gr;g.fill();g.globalAlpha=1}
+frame();
+</script></body></html>

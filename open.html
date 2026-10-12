@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LEDGER // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+<style>
+.lg{width:100%}
+#tb td.cl{min-width:300px;max-width:420px}
+#tb tr.dim{opacity:.18}
+#tb td.pg{color:var(--dim);white-space:nowrap}
+.nv{display:inline-block;font:10.5px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--ink2)}
+.nv.new{color:#ff9a8f}.nv.view{color:var(--a)}.nv.elem{color:var(--c)}.nv.kn{color:#b6c4ff}
+#tb td{font-size:12.5px}
+</style>
+</head><body>
+<main>
+<div class="kick">06 // LEDGER</div>
+<h1>Ledger</h1>
+<p class="lede">This page lists every claim made across the site, with the strength of its evidence and whether it is likely new. The short version: the drawing is a rediscovery of known structures by a new route, plus a handful of results that were not found in the literature after web searches. Nothing here has been through peer review, and no search was a full literature review.</p>
+
+<h2 id="how"><span class="n">1</span>How to read the labels</h2>
+<ul class="cl">
+<li><span class="tg proven">PROVEN</span> an argument is given, or a symbolic computation checks it exactly.</li>
+<li><span class="tg verified">VERIFIED NUMERICALLY</span> computed in code to a stated tolerance, with no proof.</li>
+<li><span class="tg conj">CONJECTURE</span> proposed, tested only in part or not at all. Guesses and speculation go here too.</li>
+<li><span class="tg known">KNOWN</span> in the literature, with a citation. Several are cited from abstracts and summaries only.</li>
+</ul>
+<p>The second label on each row says whether the claim is likely new. <span class="nv kn">ESTABLISHED</span> means it is known. <span class="nv elem">ELEMENTARY</span> means it is easy to derive and probably folklore. <span class="nv new">NO REFERENCE FOUND</span> means that web searches found no prior statement, which is weaker than &ldquo;nobody has done this&rdquo;. <span class="nv view">OUR ROUTE</span> means the facts are known and only the path or the framing is ours.</p>
+
+<div class="wide" id="fig12">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv12"></canvas><div class="corner">CLAIMS BY EVIDENCE AND BY NOVELTY // CLICK A BAR TO FILTER</div><div class="corner r">FIG 12 // LEDGER</div></div>
+ <section class="panel fp hud" id="p-fig12">
+  <header><span class="tabtitle">CTRL // FILTER</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body"><div class="grp"><div class="row"><button id="b12clear">SHOW ALL</button></div><div class="hint">Click a bar again to clear it.</div></div><div class="grp kvg"><div class="kv" id="kv12"></div></div></div>
+ </section>
+</figure>
+</div>
+
+<h2 id="ledger"><span class="n">2</span>Every claim</h2>
+<div class="wide"><div class="tscroll"><table class="tb lg" id="tb"><thead><tr><th>page</th><th>claim</th><th>evidence</th><th>novelty</th><th>source or note</th></tr></thead><tbody></tbody></table></div></div>
+
+<h2 id="thesis"><span class="n">3</span>Candidate thesis questions</h2>
+<ol class="cl">
+<li><b>The configuration space of the dot frameworks.</b> Map the full configuration space of the ball and bar contact framework, as a real algebraic variety, for every Wythoff orbit. Which tilt paths are finite, where do they end, and is the incentre always the unique point whose folds end in a uniform packing? (Motion page.)</li>
+<li><b>The 3D end states.</b> Identify the rigidity and symmetry of the [111] end state, a six-contact packing of density 0.4686, and settle whether &nu;<sub>100</sub>&nbsp;=&nbsp;1/(n&sup2;&nbsp;&minus;&nbsp;n&nbsp;&minus;&nbsp;1) holds for every n.</li>
+<li><b>Voronoi-cell Wythoff points as a generator of boron-rich frameworks.</b> The cube gives CaB<sub>6</sub> and the rhombic dodecahedron gives UB<sub>12</sub>. List the augmented nets of every face-transitive mirror-walled cell, treat &alpha;-boron as the frustrated dodecahedral case, and test with density functional theory whether the 0.92 to 0.98 bond ratio follows electron count. (Matter page.)</li>
+<li><b>Where the radius-ratio rule can and cannot go.</b> Test whether the shapes the rule cannot reach (7, 9 and dodecahedral 8 neighbours) are over-represented among oxide environments that violate Pauling&rsquo;s first rule.</li>
+<li><b>The perceived centre of a triangle.</b> Run the tap experiment with the incentre as a candidate, in adults and children, with tall and lopsided triangles. (Perception page.)</li>
+<li><b>A 3D contact rule for ornament.</b> Apply a Hankin-style rule to the truncated cubic honeycomb, and teach the route from the drawing to Wythoff points as a workshop.</li>
+</ol>
+
+<h2 id="plain"><span class="n">4</span>The plain statement</h2>
+<p>This is a rediscovery of known structures by a new route. A drawing of a square, its diagonals and a dot in each triangle leads, by one rule about points equidistant from mirror walls, to the 4.8.8 tiling, the truncated cubic honeycomb, chemistry&rsquo;s three radius-ratio limits and the calcium hexaboride structure Pauling described in 1934. Each of those is known. A few results were not found in the literature after web searches: the exact fold of 4.8.8 into the square packing and its 3D analogue, the mode and self-stress counts and the Poisson-ratio formula in n dimensions, the census of 159 frameworks, the dodecaboride from the same rule, and the closed form of the packing peak. They may be folklore, they are mostly elementary, and none has been checked by a specialist. The search method was web search only.</p>
+<div class="note">The ledger was assembled from the evidence labels in the research reports. Where a report said &ldquo;no reference found&rdquo; it stays that and is not upgraded here.</div>
+</main>
+
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,$=id=>document.getElementById(id);
+const P='proven',V='verified',J='conj',K='known';
+const KN='kn',EL='elem',NW='new',VW='view';
+const ROWS=[
+['origin','The three angle bisectors of a triangle meet at one point, the incentre.',[K],KN,'Classical geometry.'],
+['origin','tan 22.5° = √2 − 1, so the dot is at height √2 − 1 in a square of side 2.',[P],EL,'Algebra, three independent checks.'],
+['origin','The three lines from the dot to the triangle’s corners are its medial axis.',[K],KN,'Standard fact; checked in research/culture.'],
+['origin','The dots of the tiled drawing form a regular 4.8.8: every interior dot has three neighbours at 2R.',[V],KN,'research/culture/gen.py. The tiling is classical.'],
+['origin','In n dimensions the ball radius is √2 − 1 at distance 2 − √2, independent of n; the centre hole is R².',[P],EL,'Equating two distances.'],
+['origin','Each ball touches 2n − 1 others.',[P],EL,'Counting.'],
+['origin','Stacked cubes give the vertices of the uniform truncated n-cubic honeycomb.',[V],KN,'Checked for n = 2 and 3 only.'],
+['mirrors','Reflection construction of uniform tilings (Wythoff construction).',[K],KN,'Wythoff 1918; Coxeter.'],
+['mirrors','A point on one wall and equidistant from the others gives equal edges, because an edge is twice a wall distance.',[P],EL,'One-line reflection argument.'],
+['mirrors','The incentre of the whole chamber gives a second, smaller regular 4.8.8 with edges 2 − √2.',[V],EL,'Angles 90, 135, 135 and point density computed for this site.'],
+['mirrors','Counts 4n(n − 1) pieces, 2^n n! and 2^(n−1) n! symmetries; 24 = 24 holds only for n = 3, and pieces equal all symmetries only for n = 2.',[P],EL,'Counting; table checked in code.'],
+['mirrors','The three radius-ratio limits 0.2247, 0.4142, 0.7321 all come from one dot rule.',[P],VW,'Each limit is known; the unified view was not searched for.'],
+['matter','Radius-ratio limits 0.225, 0.414, 0.732 and the radius-ratio rule.',[K],KN,'Pauling, 1920s and 30s.'],
+['matter','Perovskite ABO3 counting, and the classic cubic structures from the same cube.',[K],KN,'Standard crystallography.'],
+['matter','Dot pairs across each face look like the split dumbbell of copper-type metals.',[J],EL,'A resemblance only; no claim that they match.'],
+['matter','Octahedra joined by linear bridges (Prussian-blue topology) have a large density of rigid unit modes.',[K],KN,'Goodwin, Phys. Rev. B 74, 134302 (2006).'],
+['matter','The tiled drawing is the CaB6 structure; equal boron–boron bonds force x = (√2 − 1)/2 = 0.2071.',[P,V],VW,'Structure known: Pauling and Weinbaum 1934; RCSR net cab. The link to the drawing is our framing.'],
+['matter','In modern refinements the bond between octahedra is about 5% short of the ideal (mean ratio 0.947, range 0.920 to 0.977).',[V],NW,'45 Crystallography Open Database entries; deviation read as bonding asymmetry.'],
+['matter','The same rule on the fcc Voronoi cell gives UB12 with x = 1/6; metal cage hole-to-ball ratio 2.1623.',[V],NW,'UB12 is known (AFLOW; arXiv 2010.16239). One rule for both boride families: no reference found. RCSR not checked.'],
+['matter','CaB6-type hard-sphere packing peaks at gamma = √2 − 1 with phi = (π/6)(30√2 − 41) = 0.7469.',[V],NW,'Above fcc 0.7405, below NaCl 0.793. Closed form not found stated; peak probably plotted in Shevchenko 2006 SI.'],
+['matter','Hole/ball always equals the radius-ratio limit of the dual equal-edged polytope; only mirror-generated shapes are reachable.',[P],NW,'May appear in a textbook; elementary.'],
+['matter','Square antiprism is reachable only by tuning; CN7, tricapped prism, dodecahedral CN8 and capped octahedron are unreachable.',[P],NW,'As above.'],
+['matter','The dot geometry gives no sharper perovskite predictor than Bartel’s tau (0.835 against 0.915 accuracy).',[V],KN,'Negative result. Data: Bartel et al., Sci. Adv. 5, eaav0693 (2019).'],
+['matter','Pauling’s first rule holds for about 66% of ~5000 oxide environments.',[K],KN,'George et al., Angew. Chem. 59, 7569 (2020).'],
+['matter','Unreachable shapes are over-represented among oxide environments that violate the first rule.',[J],EL,'Not tested.'],
+['matter','MB12 forms with smaller metals and MB6 with larger ones, and the cage sizes agree.',[J],KN,'Trend known in boride literature; no classifier built.'],
+['motion','Counter-rotating clusters fold the lattice with a(θ) = 2 − 2t(1 − cos θ) and Poisson ratio −1, exactly.',[P],EL,'Bar error < 1e-15 in code.'],
+['motion','The 2D fold locks at exactly 45°: strain −(√2−1)², density from 0.539 to π/4, 4 contacts per ball.',[P],EL,'The linkage is known (Flores, hinged tilings, after Stuart 1963); ν = −1 by symmetry (Mitschke et al. 2013). Ball numbers are direct corollaries'],NW,'Sympy and numerics. Related: Grima and Evans 2000 (rotating squares); may be folklore.'],
+['motion','Only the incentre gives a fold that ends in the regular square lattice.',[P],EL,'Corollary of the known hinged tiling; not printed anywhere found.'],
+['motion','Rotating-squares auxetics have Poisson ratio −1; tilt limits in perovskites; NTE by rotation.',[K],KN,'Grima and Evans 2000; Glazer 1972; O’Keeffe and Hyde 1977 (not retrieved); Goodwin 2006.'],
+['motion','3D folds end at 45° [001], 54.7356° [011], 60° [111] with the listed contacts and densities.',[V],NW,'Cubic-lattice path only: a trigonal branch keeps folding past 60°, so these are not jams. [111] spacing 8t/3 proven; others numerical.'],
+['motion','Floppy modes n(n−1)/2 and self-stresses n(n−3)/2 per cell at a generic wavevector.',[P,V],NW,'Proven for n >= 3; verified n = 2 to 6. The 3D case is known (Goodwin 2006).'],
+['motion','First-order strains: n(n−1)/2 pure shears in n >= 3; bulk-only (2D pentamode) in 2D.',[V],NW,'strain_modes.py.'],
+['motion','nu_100 = 1/(n² − n − 1) for unit springs.',[P,J],NW,'Exact for n = 2 to 7; conjecture for all n.'],
+['motion','Same-material bars: nu(t) rises from 0.035 to 0.32; the incentre is not an extremum.',[V],NW,'elastic.py.'],
+['motion','Across 159 Wythoff frameworks the incentre-type point has the same mode counts as a random point on the same face.',[V],NW,'No census of uniform honeycomb rigidity found.'],
+['motion','z = n + 1 frameworks are pentamodes; omnitruncated stress is proportional to facet area (Minkowski).',[P,V],NW,'Principle known (Milton and Cherkaev 1995; Kadic et al. 2012); systematic census not found.'],
+['motion','Flat-band Maxwell cases among the census sit on the Maxwell line like pyrochlore and kagome.',[K],KN,'Stated in the survey.'],
+['motion','The full drawing and the pyramid skeleton are rigid and over-braced in 2D, 3D, 4D.',[V],EL,'full_drawing.py.'],
+['motion','A printed version should be extremely anisotropic, buckle into the fold under compression, and lock at −17.2% linear strain in 2D.',[J],EL,'Predictions, untested.'],
+['mind','Tap locations and contrast enhancement follow the medial axis.',[K],KN,'Kovacs and Julesz 1994, 1998; Firestone and Scholl 2014; Ayzenberg et al. 2019 (details unverified).'],
+['mind','Incentre-to-centroid gap: 0, 1.7, 1.8, 2.8, 5.1, 6.0, 8.1, 8.2 percent of perimeter for the listed triangles.',[V],EL,'centres.py and recomputation.'],
+['mind','Prior perceived-centre studies did not offer the incentre as a candidate; the proposed tap experiment looks untried.',[J],NW,'Based on abstracts and web search only.'],
+['mind','The drawing is not a known traditional (Hankin or other) construction.',[J],NW,'Absence of evidence only; key paper unreadable; no frame matched to a named pattern.'],
+['mind','Square plus X is the tetrakis tiling; the drawing is it with its dual on top; a local 8-fold rosette appears at octagon centres.',[V],VW,'Dual relation is standard; the framing is ours.'],
+['mind','A 3D Hankin-style rule on the truncated cubic honeycomb is an untried route to space-filling star lattices.',[J],NW,'Not searched exhaustively.'],
+['mind','A teaching path from the drawing to Wythoff points and crystals.',[J],NW,'No such curriculum found.']
+];
+const LAB={proven:'PROVEN',verified:'VERIFIED NUMERICALLY',conj:'CONJECTURE',known:'KNOWN'};
+const NOV={kn:'ESTABLISHED',elem:'ELEMENTARY',new:'NO REFERENCE FOUND',view:'OUR ROUTE'};
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const tb=document.querySelector('#tb tbody');
+ROWS.forEach((r,i)=>{const tr=document.createElement('tr');tr.dataset.l=r[2].join(' ');tr.dataset.n=r[3];
+  tr.innerHTML='<td class="pg">'+r[0]+'</td><td class="cl">'+esc(r[1])+'</td><td>'+r[2].map(l=>'<span class="tg '+(l==='conj'?'conj':l)+'">'+LAB[l]+'</span>').join('')+'</td><td><span class="nv '+r[3]+'">'+NOV[r[3]]+'</span></td><td>'+esc(r[4])+'</td>';
+  tb.appendChild(tr)});
+const cnt={};ROWS.forEach(r=>{r[2].forEach(l=>cnt['l'+l]=(cnt['l'+l]||0)+1);cnt['n'+r[3]]=(cnt['n'+r[3]]||0)+1});
+const BARS=[['l'+P,'PROVEN',C.g],['l'+V,'VERIFIED',C.c],['l'+J,'CONJECTURE',C.a],['l'+K,'KNOWN','#9aa8ff'],['n'+NW,'NO REF FOUND',C.r],['n'+VW,'OUR ROUTE',C.a],['n'+EL,'ELEMENTARY',C.c],['n'+KN,'ESTABLISHED','#9aa8ff']];
+let filt=CX.Q.get('f')||null,hit=[];
+function apply(){document.querySelectorAll('#tb tbody tr').forEach(tr=>{let ok=true;
+  if(filt){ok=filt[0]==='l'?tr.dataset.l.split(' ').includes(filt.slice(1)):tr.dataset.n===filt.slice(1)}tr.classList.toggle('dim',!ok)});
+  const n=filt?(cnt[filt]||0):ROWS.length;CX.kv($('kv12'),[['claims shown',n+' of '+ROWS.length],['filter',filt?BARS.find(b=>b[0]===filt)[1]:'none']])}
+const fig=CX.canvas($('cv12'),function(ctx,W,H,t){
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);hit=[];
+  const n=BARS.length,gap=W<600?6:14,bw=(W-40-gap*(n-1))/n,base=H-44,mx=Math.max(...Object.values(cnt));
+  BARS.forEach((b,i)=>{const x=20+i*(bw+gap),v=cnt[b[0]]||0,k=CX.ease(Math.min(1,t*3-i*0.15)),h=(base-40)*v/mx*k,on=!filt||filt===b[0];
+    ctx.globalAlpha=on?1:.3;ctx.fillStyle=b[2]+'33';ctx.strokeStyle=b[2];ctx.shadowColor=b[2];ctx.shadowBlur=on?8:0;ctx.lineWidth=1.4;
+    ctx.fillRect(x,base-h,bw,h);ctx.strokeRect(x,base-h,bw,h);ctx.shadowBlur=0;
+    CX.text(ctx,String(v),x+bw/2,base-h-6,'#eafff4',13,'center');
+    CX.text(ctx,b[1],x+bw/2,base+16,b[2],W<600?8.5:10.5,'center');ctx.globalAlpha=1;hit.push([x,x+bw,b[0]])});
+  ctx.strokeStyle='rgba(55,255,154,.3)';ctx.beginPath();ctx.moveTo(14,base);ctx.lineTo(W-14,base);ctx.stroke();
+  CX.text(ctx,'evidence',20,base+34,C.dim,10.5);CX.text(ctx,'novelty',20+4*(bw+gap),base+34,C.dim,10.5);
+},{aspect:w=>w<600?0.7:0.36,always:true});
+CX.pointer($('cv12'),{down:(x)=>{const h=hit.find(b=>x>=b[0]&&x<=b[1]);if(h){filt=filt===h[2]?null:h[2];apply()}}});
+$('b12clear').onclick=()=>{filt=null;apply()};
+apply();
+});
+</script>
+</body></html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOTION // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+</head><body>
+<main>
+<div class="kick">04 // MOTION</div>
+<h1>Motion</h1>
+<p class="lede">The dots&rsquo; touching balls form a framework that can move. Rotate the squares of 4.8.8 balls alternately clockwise and anticlockwise and the whole pattern contracts in both directions at once, a negative Poisson ratio, until at exactly 45&deg; every ball touches four neighbours and the pattern has become the square packing. That happens only if the dots are at the incentre. The same idea in 3D, with the lattice held cubic, reaches a six-contact state at 60&deg;. This page derives the numbers, shows the fold moving, and then counts how many other motions the framework has.</p>
+
+<h2 id="frame"><span class="n">1</span>The framework</h2>
+<p>Treat each ball as a joint, and each touching pair as a rigid bar of length 2R&nbsp;=&nbsp;2&radic;2&nbsp;&minus;&nbsp;2 joining their centres. The bars can swivel freely at the joints, as the pieces of a model made from rods and pins can. This is a <b>pin-jointed framework</b>. In the plane, the four dots of one square are joined by four bars, and neighbouring squares are joined by one bar through the shared edge, along an axis. In 3D, the six dots of one cube form an octahedron of twelve bars, and neighbouring octahedra are joined by one bar through the shared face.</p>
+<p>A motion that keeps every bar its length is a <b>mechanism</b>. The structure is not rigid if it has one. A square of four bars is not rigid (it can shear into a diamond), but an octahedron with all its triangular faces is. A group of dots that moves as one stiff body is called a <b>cluster</b>: the 4-dot square in 2D, the 6-dot octahedron in 3D.</p>
+
+<h2 id="fold2"><span class="n">2</span>The 2D fold</h2>
+<p>Rotate the clusters in a checkerboard pattern: each cluster by +&theta; if it is on an even square of the board, and by &minus;&theta; if on an odd one. Take a cluster at the origin with its dots at distance t from its centre along the axes, and the cross bar from its +x dot to the &minus;x dot of the neighbour whose centre is at (a,&nbsp;0). The +x dot of the first, rotated by &theta;, is at (t&nbsp;cos&nbsp;&theta;,&nbsp;t&nbsp;sin&nbsp;&theta;). The &minus;x dot of the second, rotated by &minus;&theta;, is at (a&nbsp;&minus;&nbsp;t&nbsp;cos&nbsp;&theta;,&nbsp;+t&nbsp;sin&nbsp;&theta;). The two heights are equal, so the bar stays horizontal: it stays on the axis. Its length is a&nbsp;&minus;&nbsp;2t&nbsp;cos&nbsp;&theta;. The bar must keep its original length L&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;2t, so the spacing between clusters must be</p>
+<span class="eq">a(&theta;) = L + 2t cos &theta; = 2 &minus; 2t (1 &minus; cos &theta;)</span>
+<p>Every bar length is preserved exactly. This is a finite motion of the whole framework, not only an infinitesimal one: in the code the bar-length error stays below 10<sup>&minus;15</sup> along the path. The spacing shrinks equally in x and y, so the strain is isotropic, &epsilon;<sub>xx</sub>&nbsp;=&nbsp;&epsilon;<sub>yy</sub>&nbsp;=&nbsp;a/2&nbsp;&minus;&nbsp;1, and the Poisson ratio, which is minus the ratio of the sideways strain to the pulling strain, is &minus;1 along the whole path.<span class="tg proven">PROVEN</span> For small &theta; the spacing is a&nbsp;&asymp;&nbsp;2&nbsp;&minus;&nbsp;t&theta;&sup2;: the contraction starts at second order, so to first order the straight lattice still resists being squeezed, and the fold exists as a finite mechanism.</p>
+
+<div class="wide" id="fig7">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv7"></canvas><div class="corner">2D FOLD // EXACT // BALLS DRAWN AT THEIR TRUE RADIUS</div><div class="corner r">FIG 7 // THE FOLD</div></div>
+ <section class="panel fp hud" id="p-fig7">
+  <header><span class="tabtitle">CTRL // FOLD 2D</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">ROTATION &theta; (degrees)</div>
+    <div class="sl"><input id="s7" type="range" min="0" max="45" step="0.01" value="0"><b id="s7v">0.00</b></div>
+    <div class="row"><button id="b7play">PLAY</button><button id="b7end">LOCK 45&deg;</button><button id="b7zero">0&deg;</button></div>
+    <div class="lab">DOT POSITION t (incentre: 0.5858)</div>
+    <div class="sl"><input id="t7" type="range" min="0.45" max="0.75" step="0.0005" value="0.5857864"><b id="t7v">0.5858</b></div>
+    <div class="row"><button id="b7inc">t = 2&minus;&radic;2</button></div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv7"></div></div>
+  </div>
+ </section>
+ <figcaption>Cyan and green squares are the two kinds of cluster, turning in opposite directions. The grey dots are where the dots started. The dashed squares mark one cell now (amber) and at the start (grey). Green marks are contacts between balls. Move t away from the incentre to see that the ending is no longer a regular lattice.</figcaption>
+</figure>
+</div>
+
+<h2 id="lock"><span class="n">3</span>Where it locks, and why only at the incentre</h2>
+<p>The balls have radius R&nbsp;=&nbsp;&radic;2&nbsp;&minus;&nbsp;1 when t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2. As the fold proceeds, balls from different clusters approach. The first new touching happens at exactly &theta;&nbsp;=&nbsp;45&deg;. Put t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2 in the formula for the spacing:</p>
+<span class="eq">a(45&deg;) = 2 &minus; 2(2 &minus; &radic;2)(1 &minus; &radic;2/2) = 2 &minus; 2(3 &minus; 2&radic;2) = 4&radic;2 &minus; 4 = 4R</span>
+<p>Rotated by 45&deg;, each dot sits at (&plusmn;t/&radic;2,&nbsp;&plusmn;t/&radic;2)&nbsp;=&nbsp;(&plusmn;R,&nbsp;&plusmn;R) from its cluster&rsquo;s centre. Clusters are 4R apart, so the dots form a square lattice of spacing 2R. Every ball touches 4 others (it touched 3 before). The consequences, all exact:<span class="tg proven">PROVEN</span> (symbolic check in <span class="m">research/mechanics/exact_checks.py</span>; numerics in <span class="m">mechanism.py</span>)</p>
+<ul class="cl">
+<li>The linear shrink factor is a/2 = 2R = 2(&radic;2&nbsp;&minus;&nbsp;1) = 0.8284.</li>
+<li>The strain in each direction is a/2&nbsp;&minus;&nbsp;1 = &minus;(&radic;2&nbsp;&minus;&nbsp;1)&sup2; = &minus;R&sup2; = &minus;0.1716.</li>
+<li>The area of a cell shrinks by the factor 4R&sup2; = 12&nbsp;&minus;&nbsp;8&radic;2 = 0.6863.</li>
+<li>The packing density, the fraction of the plane the balls cover, rises from &pi;(&radic;2&nbsp;&minus;&nbsp;1)&sup2; = 0.5390 to &pi;/4 = 0.7854, the density of the square packing.</li>
+</ul>
+<p>Now move the dot to another position t on the axis. The same fold still works, since the argument above never used t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2. But at 45&deg; the framework has two bar lengths, &radic;2&thinsp;t inside a cluster and 2&nbsp;&minus;&nbsp;2t across, and they are equal only when &radic;2&thinsp;t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;2t, which is t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2. So the incentre is the unique dot position whose fold ends in the regular square lattice: the &ldquo;uniform&rdquo; start state folds onto the &ldquo;uniform&rdquo; end state.<span class="tg proven">PROVEN</span> The readout in Figure 7 shows the two lengths as you drag t.</p>
+<p><b>Is it known?</b> Yes, the motion itself is. A later, deeper search found it: squares joined by rods equal to their side, turned alternately, carry a square tiling into 4.8.8. This is the &ldquo;hinged tiling&rdquo; in Flores, <i>North American GeoGebra Journal</i> 6(1), &sect;2.9, who credits D. Stuart (1963).<span class="tg known">KNOWN</span> The Poisson ratio of &minus;1 follows from symmetry alone: Mitschke et al., EPL 102, 66005 (2013), prove it for mechanisms that keep a 3-, 4- or 6-fold axis.<span class="tg known">KNOWN</span> The interval of motion is a &ldquo;flexibility window&rdquo; in the sense of Sartbaeva et al., <i>Nature Materials</i> (2006). What we did not find printed is the ball version: that the window ends at 45&deg; in the square packing (density 0.539 to &pi;/4, strain &minus;R&sup2;) and that only the incentre ends in a regular lattice. These follow directly from the known linkage, so treat them as corollaries, not discoveries.<span class="tg verified">ELEMENTARY</span> Related: rotating-squares auxetics (Grima and Evans, 2000); twisted kagome (Sun et al., PNAS 2012), whose disk version at 30&deg; gives the triangular packing.</p>
+
+<h2 id="fold3"><span class="n">4</span>The 3D fold</h2>
+<p>In three dimensions the clusters are octahedra, coloured in a 3D checkerboard. Even octahedra are rotated by R and odd ones by its inverse, about an axis of your choice. The cross bars again stay on the axes, and the lattice spacing along each axis is chosen so that every bar keeps its length. Three axes give three different endings. The figure computes the exact positions from the same equations as the 2D case.</p>
+<div class="tscroll"><table class="tb"><thead><tr><th>tilt axis</th><th class="n">first new contact</th><th>strain at end</th><th class="n">volume change</th><th>contacts per ball</th><th class="n">density</th></tr></thead><tbody>
+<tr><td>[001] (stacked 2D fold)</td><td class="n">45&deg;</td><td>(&minus;R&sup2;, &minus;R&sup2;, 0)</td><td class="n">&minus;0.3137</td><td>6, 6, 6, 6, 5, 5</td><td class="n">0.3253</td></tr>
+<tr class="hi"><td>[111]</td><td class="n">60.000&deg;</td><td>isotropic, &minus;0.21895</td><td class="n">&minus;0.5235</td><td>6 for every ball</td><td class="n">0.4686</td></tr>
+<tr><td>[011]</td><td class="n">54.7356&deg; = arccos(1/&radic;3)</td><td>(&minus;0.2476, &minus;0.1427, &minus;0.1427)</td><td class="n">&minus;0.4470</td><td>5, 5, 6, 6, 6, 6</td><td class="n">0.4038</td></tr></tbody></table></div>
+<p><b>Caveat from independent re-derivation.</b> The 60&deg; end state is the first new contact <i>on a path where the lattice stays cubic</i>. If the lattice is allowed to shear into a trigonal shape, every bar keeps its length past 60&deg; and the packing keeps densifying (to at least 0.65 in a coarse scan). So the 3D state is a waypoint, not a jam. The 2D fold is likewise one of three flexes of the rigid-square model (the others include a shear); what is special is that its end state is the square packing.<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+<p>These numbers come from the checkerboard-tilt mechanism and ball-collision search in <span class="m">mechanism.py</span> and <span class="m">final_states.py</span>, and the figure below reproduces them.<span class="tg verified">VERIFIED NUMERICALLY</span> The [111] tilt is the analogue of the a<sup>&minus;</sup>a<sup>&minus;</sup>a<sup>&minus;</sup> tilt of perovskites, and it is isotropic. Its end state has six contacts per ball, the number 2n that a framework needs to be exactly balanced between too few and too many bars (the Maxwell isostatic count).</p>
+<p>For [111] the end spacing is exactly 8t/3 with t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2.<span class="tg proven">PROVEN</span> The spacing along each axis is 4t/3&nbsp;+&nbsp;&radic;(L&sup2;&nbsp;&minus;&nbsp;2t&sup2;/9), and it equals 8t/3 exactly when 4t/3&nbsp;=&nbsp;&radic;(L&sup2;&nbsp;&minus;&nbsp;2t&sup2;/9). Squaring gives 16t&sup2;/9&nbsp;=&nbsp;L&sup2;&nbsp;&minus;&nbsp;2t&sup2;/9, that is L&sup2;&nbsp;=&nbsp;2t&sup2;, that is &radic;2&thinsp;t&nbsp;=&nbsp;L. This is again the incentre condition. So the 3D fold also closes neatly only at the dots&rsquo; true position.</p>
+
+<div class="wide" id="fig8">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv8" class="grab"></canvas><div class="corner" id="c8t">3D FOLD // AXIS [111]</div><div class="corner r">FIG 8 // THE 3D FOLD // DRAG TO TURN</div></div>
+ <section class="panel fp hud" id="p-fig8">
+  <header><span class="tabtitle">CTRL // FOLD 3D</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">TILT AXIS</div>
+    <div class="row"><button data-ax="001">[001]</button><button data-ax="011">[011]</button><button data-ax="111" class="on">[111]</button></div>
+    <div class="lab">ROTATION &theta; (degrees)</div>
+    <div class="sl"><input id="s8" type="range" min="0" max="60" step="0.01" value="0"><b id="s8v">0.00</b></div>
+    <div class="row"><button id="b8play">PLAY</button><button id="b8end">LOCK</button><button id="b8zero">0&deg;</button></div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv8"></div></div>
+  </div>
+ </section>
+ <figcaption>A 3&times;3&times;3 block of octahedra. Cyan and green balls belong to even and odd octahedra. Faint lines are the octahedron edges, amber lines the cross bars. The block is drawn at a fixed scale, so you see it shrink.</figcaption>
+</figure>
+</div>
+
+<h2 id="modes"><span class="n">5</span>How many other motions are there? Counting floppy modes</h2>
+<p>The fold is one finite motion. To find all the small motions, count. Each of the 2n dots in a cell can move in n directions, giving 2n&sup2; freedoms per cell. Each bar takes one away. Per cell there are 2n(n&nbsp;&minus;&nbsp;1) bars inside the cluster (every pair of dots except antipodes) plus n cross bars, 2n&sup2;&nbsp;&minus;&nbsp;n in all. So the freedoms exceed the bars by n per cell. This is the counting of Maxwell and Calladine: floppy modes minus self-stresses equals freedoms minus bars, here n per cell.<span class="tg proven">PROVEN</span> (arithmetic) A <b>floppy mode</b> is a way to move the dots that keeps every bar length unchanged (to first order). A <b>state of self-stress</b> is a way to put tension and compression on the bars so that every dot is in force balance with nothing pushing from outside. The split between the two counts needs its own proof, given below.</p>
+<p>The result for a generic wavevector (that is, for a wavelike motion that repeats from cell to cell with a generic phase) is that there are exactly <b>n(n&minus;1)/2 floppy modes per cell</b> and <b>n(n&minus;3)/2 states of self-stress</b>, which is 0 in 3D, 2 in 4D, 5 in 5D and 9 in 6D. The floppy modes are the small rotations of the cross-polytopes (the octahedra in 3D), and they cost no energy at any wavelength: their frequencies form flat bands.<span class="tg proven">PROVEN</span> for n&nbsp;&ge;&nbsp;3, <span class="tg verified">VERIFIED NUMERICALLY</span> for n&nbsp;=&nbsp;2 to 6 (singular-value rank, tolerance 10<sup>&minus;8</sup>, several random wavevectors).</p>
+<p>The proof, for n&nbsp;&ge;&nbsp;3: the skeleton of a cross-polytope is infinitesimally rigid, because it is a simplicial polytope (Cauchy, Dehn, Alexandrov, Whiteley). So in a zero mode each cluster moves as a stiff body: a translation plus a rotation. The cross bar along axis i lies on the line joining the two cluster centres, so the rotation drops out of its length change, and the bar condition reduces to a condition on the translations alone. In wave form it reads (e<sup>2iq<sub>i</sub></sup>&nbsp;&minus;&nbsp;1)v<sub>i</sub>&nbsp;=&nbsp;0, which forces the translation to vanish at a generic wavevector. Only the n(n&minus;1)/2 rotations are left. In 2D the argument fails because a 4-bar square is not rigid: there are 2 zero modes per cell and no self-stress. On each plane q<sub>i</sub>&nbsp;=&nbsp;0 there is one extra mode (rigid sliding of rows along axis i).</p>
+<p>The counts do not depend on where the dot sits on the axis, for any t between 0 and 1. The incentre does not change the mode count.<span class="tg proven">PROVEN</span></p>
+<p>In 3D this is the Prussian-blue topology of the previous page, and Goodwin&rsquo;s 2006 paper reports its density of rigid unit modes.<span class="tg known">KNOWN</span> The formula for every n and the self-stress count n(n&minus;3)/2: no prior reference found.<span class="tg noref">NO REFERENCE FOUND</span> (web searches only)</p>
+<p>Which strains does the lattice allow at first order? In n&nbsp;&ge;&nbsp;3 the mechanisms produce exactly the n(n&minus;1)/2 pure shears and every normal strain is blocked. In 2D they produce the two-dimensional space of shape-changing strains without area change, so only the bulk modulus is non-zero: a fluid-like, 2D pentamode material.<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+
+<h2 id="elastic"><span class="n">6</span>How stiff is it? The Poisson ratio</h2>
+<p>Put a unit spring on every bar and stretch the lattice along axis 1. The Poisson ratio &nu;<sub>100</sub> is minus the sideways strain divided by the stretching strain. Using the symmetric relaxation in which vertices move only along their own axes, the elastic constants per unit volume are</p>
+<span class="eq">C<sub>11</sub> = 4(n &minus; 1)&sup2; / (n&sup2; 2<sup>n</sup>)    C<sub>12</sub> = 4 / (n&sup2; 2<sup>n</sup>)    C<sub>44</sub> = 0</span>
+<p>which gives &nu;<sub>100</sub> = C<sub>12</sub>/(C<sub>11</sub> + (n&minus;2)C<sub>12</sub>) = <b>1/(n&sup2;&nbsp;&minus;&nbsp;n&nbsp;&minus;&nbsp;1)</b>. The general-n step is a linear solve with s<sub>i</sub>&nbsp;=&nbsp;(2&epsilon;<sub>i</sub>&nbsp;&minus;&nbsp;&Sigma;&epsilon;/n)/n. The values for n&nbsp;=&nbsp;2 to 7 were obtained by exact symbolic minimisation and the numerics agree.<span class="tg proven">PROVEN</span> (n&nbsp;=&nbsp;2 to 7) <span class="tg conj">CONJECTURE</span> (all n) In 3D, &nu;&nbsp;=&nbsp;1/5 exactly, and it does not depend on t for unit springs. For bars of the same material (stiffness proportional to 1/L), &nu;(t) rises monotonically from 0.035 to 0.32, and its value at the incentre equals 1/5 only because all bars there have equal length: the incentre is not an extremum.<span class="tg verified">VERIFIED NUMERICALLY</span> No prior reference found for these closed forms.<span class="tg noref">NO REFERENCE FOUND</span> (web searches only)</p>
+<div class="wide" id="fig9">
+<figure class="fig">
+ <div class="cvbox" style="padding:14px 16px">
+  <div class="tscroll"><table class="tb" id="tb9"><thead><tr><th class="n">n</th><th class="n">floppy modes n(n&minus;1)/2</th><th class="n">self-stresses n(n&minus;3)/2</th><th class="n">modes &minus; stresses</th><th class="n">&nu;<sub>100</sub> = 1/(n&sup2;&minus;n&minus;1)</th><th class="n">&nu;</th><th>status of &nu;</th></tr></thead><tbody></tbody></table></div>
+ </div>
+ <section class="panel fp hud" id="p-fig9">
+  <header><span class="tabtitle">CTRL // COUNTS</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body"><div class="grp"><div class="lab">DIMENSION n</div><div class="sl"><input id="s9" type="range" min="2" max="9" step="1" value="3"><b id="s9v">3</b></div></div>
+  <div class="grp kvg"><div class="kv" id="kv9"></div></div></div>
+ </section>
+ <figcaption>FIG 9. The n = 2 row is the exception: 2 floppy modes and no self-stress. Rows above n = 7 are the formula, not a proof.</figcaption>
+</figure>
+</div>
+
+<h2 id="census"><span class="n">7</span>A census of 159 frameworks, and pentamodes</h2>
+<p>The dot is one case of a general recipe, the Wythoff construction of the mirrors page, applied to the mirror groups of tilings and honeycombs: the nine affine Coxeter groups C&#771;<sub>2</sub>, G&#771;<sub>2</sub>, &Atilde;<sub>2</sub>, C&#771;<sub>3</sub>, B&#771;<sub>3</sub>, &Atilde;<sub>3</sub>, C&#771;<sub>4</sub>, B&#771;<sub>4</sub> and D&#771;<sub>4</sub>, with every choice of which mirrors the generating point lies on. That is 159 frameworks. For each, the survey compared the uniform point (the incentre-type point, equidistant from the mirrors it is not on) with a random point on the same face of the chamber. The mode and self-stress counts were identical in every case: at generic wavevectors, at q&nbsp;=&nbsp;0, and in the dimension of the lattice strains the framework can reach.<span class="tg verified">VERIFIED NUMERICALLY</span> Moving the dot off the incentre, without changing which mirrors it lies on, never changes the linear mechanics. The incentre extremises packing quantities, not mode counts. It is mechanically ordinary, apart from the fold ending described above.</p>
+<p>Two patterns appear in the census.</p>
+<ul class="cl">
+<li><b>Pentamodes.</b> Every framework whose vertices have z&nbsp;=&nbsp;n&nbsp;+&nbsp;1 neighbours (all 2D truncated and omnitruncated tilings; in 3D the omnitruncated honeycombs and C&#771;<sub>3</sub> rings (1,2) and (1,2,3); in 4D the z&nbsp;=&nbsp;5 cases) has no self-stress at a generic wavevector and exactly one at q&nbsp;=&nbsp;0. The strains it can reach form a space of dimension n(n&nbsp;+&nbsp;1)/2&nbsp;&minus;&nbsp;1: only dilation is blocked. That is a <b>pentamode</b> material in 3D (five soft modes and one stiff), and a bulk-only material in 2D. For the omnitruncated frameworks the single stress is exact: tension proportional to the area of the facet of the chamber that each bar crosses is in equilibrium at every vertex, by Minkowski&rsquo;s relation &Sigma;|F<sub>i</sub>|n<sub>i</sub>&nbsp;=&nbsp;0.<span class="tg proven">PROVEN</span> (uniqueness of the stress: <span class="tg verified">VERIFIED NUMERICALLY</span>) The pentamode principle itself, junctions of z&nbsp;=&nbsp;n&nbsp;+&nbsp;1 bars with one stress, is known (Milton and Cherkaev 1995; Kadic and others 2012).<span class="tg known">KNOWN</span> Its systematic appearance across all Wythoff omnitruncations: no census found.<span class="tg noref">NO REFERENCE FOUND</span> (web searches only)</li>
+<li><b>Flat-band Maxwell cases.</b> The cantellated cubic C&#771;<sub>3</sub> ring (0,2), C&#771;<sub>4</sub> (1,3), C&#771;<sub>4</sub> (0,2,4), B&#771;<sub>4</sub> (1,3,4) and D&#771;<sub>4</sub> (0,1,3,4) have z&nbsp;=&nbsp;2n, but equal numbers of zero modes and self-stresses at every wavevector. They behave like the pyrochlore and kagome cases (&Atilde;<sub>3</sub> (0,2), G&#771;<sub>2</sub> (1)), which are known to sit on the Maxwell line.<span class="tg known">KNOWN</span></li>
+</ul>
+<p>No compact formula in n covers the whole census beyond the contact family above and the z&nbsp;=&nbsp;n&nbsp;+&nbsp;1 family, where the number of generic zero modes per cell is nV&nbsp;&minus;&nbsp;E&nbsp;=&nbsp;(n&nbsp;&minus;&nbsp;1)|W/T|/2 for omnitruncations. No census of the rigidity of uniform honeycombs was found. Related known work: flexibility of periodic tilings by regular polygons (Grasegger and Legerský, arXiv 2305.01570); symmetry-adapted counts for periodic frameworks (Power, arXiv 1103.1914; Ross; Borcea and Streinu).<span class="tg known">KNOWN</span></p>
+<p>The other frameworks one might build from the drawing are rigid and over-braced. The whole drawing (contacts, red lines, cube edges and pyramid edges) has no generic zero modes in 2D, 3D or 4D, and 12, 32 and 80 self-stresses per cell. The pyramid skeleton alone is rigid even without face diagonals (2, 5 and 12 self-stresses per cell). Octahedra as rigid units joined by cross bars is exactly the 3D contact framework above.<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+
+<h2 id="print"><span class="n">8</span>Predictions for a printed version</h2>
+<p>Suppose balls are printed fused at small necks, so that the necks act as flexible hinges. These predictions follow from the above and have not been tested.<span class="tg conj">CONJECTURE</span></p>
+<ul class="cl">
+<li><b>Extreme cubic anisotropy.</b> C<sub>44</sub> comes only from neck bending while C<sub>11</sub> and C<sub>12</sub> come from neck stretching, so C<sub>44</sub>/C<sub>11</sub> should scale like (neck radius / ball radius)&sup2;. The Zener ratio 2C<sub>44</sub>/(C<sub>11</sub>&nbsp;&minus;&nbsp;C<sub>12</sub>) should be much less than 1.</li>
+<li><b>Tension and compression differ.</b> The axes are straight chains of bars, stiff in tension. Under compression the fold mode has zero first-order cost, so the lattice should buckle into the counter-rotated pattern and switch to &nu;&nbsp;&approx;&nbsp;&minus;1, the 3D analogue of the buckled holey sheet of Bertoldi and co-workers.</li>
+<li><b>In 2D</b> the printed 4.8.8 sheet should start with &nu; near +1 (bulk-only), then after buckling lock into the square packing at a linear strain of &minus;17.2% (&minus;R&sup2;).</li>
+</ul>
+
+<h2 id="limits"><span class="n">9</span>What this does not show</h2>
+<p>All the 3D tilt results use a 2&times;2&times;2 checkerboard with the lattice vectors kept on the axes. Other, sheared branches of the mechanism exist and were not explored. The ball-collision test checks the nearest non-bonded neighbours of one cluster in a block of five cells per side. That is enough for the end states found, but it is not a proof of global non-overlap along the whole path. For 2D the 45&deg; end is proven analytically. The prior-art searches were web searches only, not a full literature review, and the 2D fold in particular may exist as folklore in the rotating-units or kirigami literature.</p>
+<div class="note">Most promising open question: map the full configuration space of the ball and bar framework, as a real algebraic variety, for every Wythoff orbit. Which tilt paths are finite? Where do they end in new contact states? Is the incentre always the unique point whose folds end in a uniform packing? The ledger page collects this with the other open questions.</div>
+</main>
+
+<script src="codex.js"></script>
+<script src="fold-core.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,TAU=CX.TAU,S2=Math.SQRT2,R=S2-1,TS=2-S2,D2R=Math.PI/180,F=FOLD;
+const $=id=>document.getElementById(id);
+/* ---------- fig 7: 2D fold ---------- */
+const cv7=$('cv7');
+const st7={deg:+(CX.Q.get('deg')||0),t:+(CX.Q.get('t')||TS),play:CX.Q.get('play')==='1',dir:1,cache:null,key:'',ghost:null};
+function state7(){
+  const key=st7.deg+'|'+st7.t;if(st7.key!==key){st7.key=key;
+    const stt=F.build(2,F.rot2(st7.deg*D2R),st7.t,4);st7.cache={st:stt,an:F.analyse(stt,1e-9)};
+    // contact pairs
+    const b=stt.balls,pairs=[];for(let i=0;i<b.length;i++)for(let j=i+1;j<b.length;j++){if(Math.abs(F.dist(b[i].p,b[j].p)-2*stt.rho)<1e-9)pairs.push([i,j])}
+    st7.cache.pairs=pairs}
+  return st7.cache;
+}
+const fig7=CX.canvas(cv7,function(ctx,W,H,t,dt){
+  if(st7.play){st7.deg+=st7.dir*dt*7;if(st7.deg>=45){st7.deg=45;st7.dir=-1}if(st7.deg<=0){st7.deg=0;st7.dir=1}$('s7').value=st7.deg}
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  const {st,an,pairs}=state7();
+  if(!st7.ghost||st7.ghost.t!==st7.t)st7.ghost={t:st7.t,st:F.build(2,F.rot2(0),st7.t,4)};
+  const s=H/6.2,cx=W/2,cy=H/2,X=x=>cx+x*s,Y=y=>cy-y*s;
+  // ghost start
+  st7.ghost.st.balls.forEach(b=>{ctx.fillStyle='rgba(180,200,190,.25)';ctx.fillRect(X(b.p[0])-1,Y(b.p[1])-1,2,2)});
+  // cluster squares
+  st.clusters.forEach(c=>{const col=c.par?'rgba(55,255,154,':'rgba(53,230,255,';
+    const pts=[[1,0],[0,1],[-1,0],[0,-1]].map(d=>{const ii=st.idx[c.c.join(',')+'|'+(d[0]!==0?0:1)+'|'+(d[0]!==0?d[0]:d[1])];return st.balls[ii].p});
+    ctx.fillStyle=col+'.08)';ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1])));ctx.closePath();ctx.fill()});
+  // bonds
+  st.bonds.forEach(([a,b,k])=>{const p=st.balls[a].p,q=st.balls[b].p;
+    const x0=X(p[0]),y0=Y(p[1]),x1=X(q[0]),y1=Y(q[1]);if(x0<-30&&x1<-30||x0>W+30&&x1>W+30)return;
+    ctx.strokeStyle=k==='x'?C.a:(st.balls[a].par?'rgba(55,255,154,.7)':'rgba(53,230,255,.7)');ctx.lineWidth=k==='x'?2:1.2;ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.stroke()});
+  // balls
+  st.balls.forEach(b=>{const x=X(b.p[0]),y=Y(b.p[1]);if(x<-s||x>W+s)return;
+    ctx.fillStyle=b.par?'rgba(55,255,154,.10)':'rgba(53,230,255,.10)';ctx.strokeStyle=b.par?'rgba(55,255,154,.85)':'rgba(53,230,255,.85)';ctx.lineWidth=1.1;
+    ctx.beginPath();ctx.arc(x,y,st.rho*s,0,TAU);ctx.fill();ctx.stroke()});
+  // contacts
+  pairs.forEach(([i,j])=>{const p=st.balls[i].p,q=st.balls[j].p,x=X((p[0]+q[0])/2),y=Y((p[1]+q[1])/2);if(x<0||x>W)return;CX.dot(ctx,x,y,2.6,C.g,6)});
+  // unit cells
+  const a=st.al[0];
+  ctx.setLineDash([5,4]);ctx.lineWidth=1.3;ctx.strokeStyle='rgba(180,200,190,.5)';ctx.strokeRect(X(-1),Y(1),2*s,2*s);
+  ctx.strokeStyle=C.a;ctx.strokeRect(X(-a/2),Y(a/2),a*s,a*s);ctx.setLineDash([]);
+  CX.text(ctx,'cell '+a.toFixed(4),X(a/2)+6,Y(-a/2)+14,C.a,11);
+  const lock=Math.abs(st7.deg-45)<1e-6&&Math.abs(st7.t-TS)<1e-4;
+  if(lock)CX.text(ctx,'LOCKED: square packing, every ball touches 4',12,H-14,C.g,12);
+  upd7(an,lock);
+},{aspect:w=>w<600?0.9:0.6});
+function upd7(an,lock){
+  const st=st7.cache.st,t=st7.t,L=2-2*t,a=st.al[0],eps=a/2-1;
+  const cm=an.counts,cmin=Math.min(...cm),cmax=Math.max(...cm);
+  const nu=Math.abs(eps)<1e-12?'\u22121 (limit)':'\u22121 (\u03b5xx = \u03b5yy)';
+  const atInc=Math.abs(t-TS)<2e-4;
+  CX.kv($('kv7'),[['θ',st7.deg.toFixed(2)+'°'],['cell spacing a',a.toFixed(5)],['linear factor a/2',(a/2).toFixed(5)],['strain εxx = εyy',eps.toFixed(5)],['Poisson ratio',nu],
+    ['area factor (a/2)²',(a*a/4).toFixed(5)],['density',an.density.toFixed(5)+(lock?'  = π/4':'')],
+    ['contacts per ball',cmin===cmax?cmin:cmin+' to '+cmax,lock?'ok':''],['bar error',an.maxErr.toExponential(1)],
+    ['bar in cluster √2 t',(S2*t).toFixed(4)],['bar across 2−2t',L.toFixed(4)],['equal at end?',atInc?'yes: t is the incentre':'no, two lengths',atInc?'ok':'warn']]);
+  $('s7v').textContent=st7.deg.toFixed(2);$('t7v').textContent=t.toFixed(4);$('b7play').classList.toggle('on',st7.play);
+}
+$('s7').oninput=e=>{st7.deg=+e.target.value;st7.play=false};
+$('t7').oninput=e=>{st7.t=+e.target.value;st7.play=false};
+$('b7play').onclick=()=>{st7.play=!st7.play};
+$('b7end').onclick=()=>{st7.deg=45;st7.play=false;$('s7').value=45};
+$('b7zero').onclick=()=>{st7.deg=0;st7.play=false;$('s7').value=0};
+$('b7inc').onclick=()=>{st7.t=TS;$('t7').value=TS};
+$('s7').value=st7.deg;$('t7').value=st7.t;
+
+/* ---------- fig 8: 3D fold ---------- */
+const cv8=$('cv8'),cam=CX.cam3();cam.yaw=0.6;cam.pitch=0.4;
+if(CX.Q.has('yaw'))cam.yaw=+CX.Q.get('yaw');
+const AX={'001':{v:[0,0,1],max:45},'011':{v:[0,1,1],max:Math.acos(1/Math.sqrt(3))/D2R},'111':{v:[1,1,1],max:60}};
+const st8={ax:CX.Q.get('ax')||'111',deg:+(CX.Q.get('deg3')||0),play:CX.Q.get('play3')==='1',dir:1,sp:CX.Q.get('spin')!=='0',key:'',cache:null};
+function state8(){
+  const key=st8.ax+'|'+st8.deg;if(st8.key!==key){st8.key=key;
+    const stt=F.build(3,F.rodrigues(AX[st8.ax].v,st8.deg*D2R),TS,1);
+    // contacts/density from a larger block (central cluster neighbours within 2 cells)
+    const big=F.build(3,F.rodrigues(AX[st8.ax].v,st8.deg*D2R),TS,2);
+    st8.cache={st:stt,an:F.analyse(big,1e-9)}}
+  return st8.cache;
+}
+const fig8=CX.canvas(cv8,function(ctx,W,H,t,dt){
+  const mx=AX[st8.ax].max;
+  if(st8.play){st8.deg+=st8.dir*dt*mx/6.5;if(st8.deg>=mx){st8.deg=mx;st8.dir=-1}if(st8.deg<=0){st8.deg=0;st8.dir=1}$('s8').value=st8.deg}
+  if(st8.sp)cam.yaw+=dt*.25;
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  const {st,an}=state8();
+  const s=H*.105,cx=W/2,cy=H/2,P=p=>cam.proj(p[0],p[1],p[2],cx,cy,s);
+  // bonds
+  st.bonds.forEach(([a,b,k])=>{const p=P(st.balls[a].p),q=P(st.balls[b].p);ctx.globalAlpha=k==='x'?.9:.35;
+    CX.glowLine(ctx,p[0],p[1],q[0],q[1],k==='x'?C.a:'rgba(207,238,224,1)',k==='x'?1.6:.9,0);ctx.globalAlpha=1});
+  const items=st.balls.map(b=>({q:P(b.p),par:b.par})).sort((a,b)=>a.q[2]-b.q[2]);
+  items.forEach(o=>{const [x,y,z,w]=o.q;CX.shade(ctx,x,y,st.rho*s*cam.zoom*w,o.par?'rgba(80,255,150,X)':'rgba(53,230,255,X)',.55)});
+  const lock=Math.abs(st8.deg-mx)<1e-6;
+  if(lock)CX.text(ctx,'FIRST NEW CONTACT (cubic path)',12,H-14,C.g,12);
+  upd8(an,lock);
+},{aspect:w=>w<600?0.95:0.6});
+function upd8(an,lock){
+  const d=st8.deg,cm=an.counts,mx=AX[st8.ax].max;
+  const al=state8().st.al;
+  CX.kv($('kv8'),[['axis','['+st8.ax+']'],['θ',d.toFixed(2)+'°  (max '+mx.toFixed(4)+'°)'],['spacing x,y,z',al.map(v=>v.toFixed(4)).join(', ')],['strain x,y,z',an.strain.map(v=>v.toFixed(4)).join(', ')],
+   ['volume change',(an.volRatio-1).toFixed(4)],['density',an.density.toFixed(4)],['contacts per ball',cm.join(', '),lock?'ok':''],['bar error',an.maxErr.toExponential(1)]]);
+  $('s8v').textContent=d.toFixed(2);$('b8play').classList.toggle('on',st8.play);$('c8t').textContent='3D FOLD // AXIS ['+st8.ax+']';
+  document.querySelectorAll('#p-fig8 button[data-ax]').forEach(b=>b.classList.toggle('on',b.dataset.ax===st8.ax));
+}
+function setAx(a){st8.ax=a;const mx=AX[a].max;$('s8').max=mx;st8.deg=Math.min(st8.deg,mx);$('s8').value=st8.deg}
+document.querySelectorAll('#p-fig8 button[data-ax]').forEach(b=>b.onclick=()=>{setAx(b.dataset.ax)});
+$('s8').oninput=e=>{st8.deg=Math.min(+e.target.value,AX[st8.ax].max);st8.play=false};
+$('b8play').onclick=()=>{st8.play=!st8.play};
+$('b8end').onclick=()=>{st8.deg=AX[st8.ax].max;st8.play=false;$('s8').value=st8.deg};
+$('b8zero').onclick=()=>{st8.deg=0;st8.play=false;$('s8').value=0};
+CX.drag3(cv8,cam);cv8.addEventListener('pointerdown',()=>{st8.sp=false});
+setAx(st8.ax);if(CX.Q.has('deg3'))st8.deg=Math.min(+CX.Q.get('deg3'),AX[st8.ax].max),$('s8').value=st8.deg;
+
+/* ---------- table ---------- */
+const tb=document.querySelector('#tb9 tbody');
+for(let n=2;n<=9;n++){
+  const modes=n===2?2:n*(n-1)/2,stress=n===2?0:n*(n-3)/2,den=n*n-n-1;
+  const tr=document.createElement('tr');tr.id='q'+n;
+  tr.innerHTML='<td class="n">'+n+'</td><td class="n">'+modes+(n===2?' *':'')+'</td><td class="n">'+stress+(n===2?' *':'')+'</td><td class="n">'+(modes-stress)+'</td><td class="n">1/'+den+'</td><td class="n">'+(1/den).toFixed(4)+'</td><td>'+(n<=7?'proven (exact)':'conjecture')+'</td>';
+  tb.appendChild(tr);
+}
+function s9(){const n=+$('s9').value;$('s9v').textContent=n;for(let k=2;k<=9;k++)$('q'+k).classList.toggle('hi',k===n);
+  const den=n*n-n-1,c11=4*(n-1)*(n-1)/(n*n*Math.pow(2,n)),c12=4/(n*n*Math.pow(2,n));
+  CX.kv($('kv9'),[['C11',c11.toPrecision(5)],['C12',c12.toPrecision(5)],['C12/(C11+(n−2)C12)',(c12/(c11+(n-2)*c12)).toFixed(5)],['1/(n²−n−1)',(1/den).toFixed(5)],['bars per cell 2n²−n',2*n*n-n],['freedoms per cell 2n²',2*n*n]]);}
+$('s9').oninput=s9;if(CX.Q.has('n9'))$('s9').value=CX.Q.get('n9');s9();
+});
+</script>
+</body></html>

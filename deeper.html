@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Going deeper: atoms, tilings and higher dimensions</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;background:#fbf8f1;font:16px/1.6 -apple-system,system-ui,sans-serif;color:#1d2b3a}
+  .wrap{max-width:1000px;margin:0 auto;padding:18px 20px 80px}
+  .t{max-width:760px}
+  a{color:#c0392b}
+  .back{display:inline-block;margin:6px 0 18px;font-size:14px;text-decoration:none;border:1px solid #cfc8b8;border-radius:8px;padding:4px 12px;background:#fff;color:#1d2b3a}
+  .back:hover{background:#f3efe6}
+  h1{font-size:32px;line-height:1.2;margin:0 0 10px}
+  h2{font-size:24px;margin:56px 0 4px;padding-top:10px;border-top:1px solid #e3ddd0}
+  h3{font-size:17px;margin:30px 0 4px}
+  h3 .n{display:inline-block;min-width:22px;height:22px;line-height:22px;text-align:center;border-radius:11px;background:#c0392b;color:#fff;font-size:12px;margin-right:6px;vertical-align:2px}
+  p{margin:0 0 12px}
+  .lead{font-size:18px;color:#3a4756}
+  .small{font-size:13.5px;color:#5b6573}
+  .def{color:#5b6573}
+  code,.m{font-family:ui-monospace,Menlo,monospace;font-size:.92em;background:#f3efe6;padding:0 4px;border-radius:4px}
+  .fig{background:#fffdf8;border:1px solid #e3ddd0;border-radius:12px;padding:10px 12px 12px;margin:14px 0 22px}
+  .fig canvas{display:block;width:100%;touch-action:none;cursor:grab;border-radius:8px}
+  .fig canvas:active{cursor:grabbing}
+  .ctl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:8px 0 2px;font-size:14px}
+  .ctl label{display:flex;align-items:center;gap:6px;user-select:none}
+  .ctl input[type=range]{width:220px}
+  button{font:inherit;font-size:14px;padding:5px 12px;border:1px solid #cfc8b8;border-radius:8px;background:#fff;cursor:pointer;color:#1d2b3a}
+  button:hover{background:#f3efe6}
+  button.on{background:#1d2b3a;color:#fbf8f1;border-color:#1d2b3a}
+  .read{font-size:14px;margin:6px 0 0;min-height:22px}
+  .legend{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13.5px;margin:6px 0 0;color:#3a4756}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:6px;margin-right:6px;vertical-align:-1px}
+  .box{background:#fff;border:1px solid #e3ddd0;border-radius:10px;padding:10px 14px;margin:0 0 14px}
+  table{border-collapse:collapse;font-size:14.5px;margin:6px 0 14px;background:#fff;border:1px solid #e3ddd0;border-radius:10px;overflow:hidden}
+  th,td{padding:6px 12px;text-align:right;border-bottom:1px solid #eee8da}
+  th{background:#f3efe6;font-weight:600}
+  tr.hl td{background:#fbeceb}
+  td.yes{color:#2e9e6a;font-weight:600}
+  .tint-b{color:#3b7dd8}.tint-g{color:#2e9e6a}.tint-a{color:#d08a1e}
+  .hint{font-size:12.5px;color:#a39a87;margin:4px 2px 0}
+body{padding-top:36px}
+</style></head><body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
+<div class="wrap">
+
+<a class="back" href="cube-six.html">← back to the cube</a>
+
+<div class="t">
+<h1>Going deeper: atoms, tilings and higher dimensions</h1>
+<p class="lead">The cube page starts from a simple drawing: a square with its X, and a dot in each of the four triangles, the same distance from all the lines around it. This page follows that one number, <span class="m">√2 − 1 ≈ 0.414</span>, into chemistry, into tilings, and into every dimension.</p>
+
+<p><b>Quick recap.</b> Take a cube of side 2 with its centre at the origin. Cut it from the centre into 6 square pyramids, one on each face. In each pyramid, put a ball inside that touches all five of its faces. That is the biggest ball that fits, called the <i>insphere</i>. Its radius is <span class="m">R = √2 − 1 ≈ 0.414</span> and its centre, the dot, is <span class="m">k = 2 − √2 ≈ 0.586</span> from the cube's centre.</p>
+<p class="small">Jump to: <a href="#atoms">1. Atoms and crystals</a> · <a href="#lattice">2. The lattice and the tilings</a> · <a href="#higher">3. Higher dimensions</a> · <a href="#mirror">4. The kaleidoscope behind it</a> · <a href="#new">5. Is any of this new?</a></p>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<h2 id="atoms">1. Atoms and crystals</h2>
+<div class="t">
+<p>A <i>crystal</i> is atoms stacked in a repeating pattern. The smallest block that repeats is the <i>unit cell</i>, and for many crystals it is a cube. So a cube with special points inside it is a natural way to describe one.</p>
+
+<h3><span class="n">1</span>The radius-ratio rule</h3>
+<p>Put six equal balls around a centre, one on each of the three axes, in both directions, so each ball touches its four neighbours. They leave a small hole in the middle. How big is that hole, compared with a ball? Exactly <span class="m">√2 − 1</span>. (With balls of radius √2 − 1, as in the cube, the hole has radius 3 − 2√2.)</p>
+<p>Chemists met this number in the 1920s and 30s. In a salt-like crystal the atoms are really <i>ions</i>, atoms that have gained or lost electrons and so carry a charge. A small ion sits among big ions of the opposite charge. <i>Pauling's radius-ratio rule</i> says: if the small ion is at least 0.414 times the size of the big ones, it can be surrounded by six of them. This is <i>octahedral coordination</i>, meaning "six neighbours at the corners of an octahedron" (an eight-faced shape, like two pyramids glued at the base). Rock salt is the classic case. If the small ion is smaller than 0.414, it rattles in the hole, and the crystal usually picks 4 neighbours instead (<i>tetrahedral</i> coordination).</p>
+<p>Try it. The big balls touch each other. Slide the small ball's size.</p>
+</div>
+<div class="fig">
+  <canvas id="f1" style="height:400px"></canvas>
+  <div class="ctl">
+    <label>Small ball size (compared with a big ball) <input id="s1" type="range" min="0.15" max="0.8" step="0.001" value="0.3"></label>
+    <span id="s1v" class="m"></span>
+    <button id="s1snap">Snap to 0.414</button>
+  </div>
+  <div class="read" id="s1txt"></div>
+  <div class="hint">Drag to rotate. The dashed circle marks the hole: the biggest ball that fits when the six big ones touch.</div>
+</div>
+
+<div class="t">
+<h3><span class="n">2</span>The octahedral shape</h3>
+<p>One centre, six neighbours straight along the axes. That is exactly the six dots of your cube, and it shows up all over chemistry: the gas SF₆ (sulfur with six fluorines), many metal complexes (a metal ion with six attached groups), and the TiO₆ unit in oxide crystals (a titanium atom with six oxygens).</p>
+
+<h3><span class="n">3</span>Perovskite</h3>
+<p>Put a titanium atom (B) at the cube's centre, an oxygen atom (O) at the middle of each of the 6 faces, and a calcium or strontium atom (A) at each of the 8 corners. An atom on a face is shared by 2 cubes, so each cube owns half of each: 6 ÷ 2 = 3 oxygens. A corner is shared by 8 cubes, so 8 ÷ 8 = 1 A atom. Count them up: A, B and three O, written <b>ABO₃</b>. This is the <i>perovskite</i> structure: CaTiO₃ (the mineral itself), SrTiO₃, and the materials in the new perovskite solar cells.</p>
+<p>In your cube, each pyramid is one Ti→O direction, with 4 A atoms around its base.</p>
+
+<h3><span class="n">4</span>The classic cubic crystals come from the same points</h3>
+<p><b>Corners plus the centre</b> is <i>body-centred cubic</i>: iron at room temperature. If the centre atom differs from the corner atoms it is caesium chloride. The pyramid edges, from the centre to the corners, are the nearest-neighbour bonds. <b>Corners plus the 6 face centres</b> is <i>face-centred cubic</i>: copper, aluminium and gold. Notice that the X on each face is the original drawing again. <b>All corners, centres, face centres and edge midpoints</b>, with two kinds of atom alternating, is <b>rock salt</b> (NaCl, table salt).</p>
+
+<h3><span class="n">5</span>The 48 symmetries</h3>
+<p>A <i>symmetry</i> is a turn or a mirror flip that leaves the shape looking unchanged. The cube has 48 (24 turns, 24 more when mirror flips count). All the crystals above share this full set, called <b>O<sub>h</sub></b>. The 48 mirror halves from the cube page are the smallest repeating piece under it, and a general point in such a crystal has 48 copies.</p>
+
+<h3><span class="n">6</span>Dot pairs in the lattice (a resemblance, not a match)</h3>
+<p>Stack cubes face to face. Across each shared face the two dots touch, exactly <span class="m">2R</span> apart. They form a pair centred on the face centre and pointing straight through the face. That looks like the <i>split dumbbell</i> in copper-type metals: a spot where two atoms share one site, pushed apart along a cube axis (written ⟨100⟩). But here only the face-centre sites split, so this is only a resemblance, not the same thing.</p>
+<p>Use the viewer to see all of this. Choose a crystal, drag to rotate.</p>
+</div>
+<div class="fig">
+  <canvas id="f2" style="height:540px"></canvas>
+  <div class="ctl" id="f2btns">
+    <button data-m="dots" class="on">Your dots</button>
+    <button data-m="perov">Perovskite</button>
+    <button data-m="bcc">Body-centred</button>
+    <button data-m="fcc">Face-centred</button>
+    <button data-m="salt">Rock salt</button>
+  </div>
+  <div class="ctl" id="f2opts">
+    <label><input id="o_ball" type="checkbox"> Show touching balls</label>
+    <label><input id="o_ghost" type="checkbox"> Show the dot across each face (dot pairs)</label>
+  </div>
+  <div class="legend" id="f2leg"></div>
+  <div class="read" id="f2txt"></div>
+  <div class="hint">Faint lines: the cube cut into six pyramids.</div>
+</div>
+
+<!-- ============ SECTION 2 ============ -->
+<h2 id="lattice">2. The lattice and the tilings</h2>
+<div class="t">
+<h3><span class="n">7</span>In 2D, the drawing tiles into a famous pattern</h3>
+<p>Repeat the square drawing in a grid. Now look at a spot where four squares meet. The eight nearby dots (two from each square) are all the same distance, 1.0824, from that corner, and they are joined by edges all the same length, 0.8284 (that is 2R). So they form a <b>regular octagon</b>: eight equal sides and eight equal angles.</p>
+<p>Inside each square, the four dots make a small square. Squares and regular octagons together, every edge equal, is the <i>truncated square tiling</i>. Its name in the catalogue of <i>Archimedean tilings</i> (tilings by regular shapes where every corner looks the same) is <b>4.8.8</b>: at each corner you meet one square and two octagons.</p>
+<p>This is no accident. It works exactly because <span class="m">√2 − 1 = tan 22.5°</span>, and 22.5° is half of 45°, the angle between neighbouring corners of a regular octagon seen from its centre. Circles of radius R at the dots touch 3 neighbours each and cover about 53.9% of the plane.</p>
+</div>
+<div class="fig">
+  <canvas id="f3"></canvas>
+  <div class="ctl">
+    <label>Squares per side <input id="n3" type="range" min="2" max="6" step="1" value="3"></label><span id="n3v" class="m">3</span>
+    <label><input id="c3" type="checkbox" checked> show dots' contact lines</label>
+    <label><input id="o3" type="checkbox" checked> fill octagons</label>
+    <label><input id="r3" type="checkbox"> show circles</label>
+  </div>
+  <div class="read" id="f3txt"></div>
+</div>
+
+<div class="t">
+<h3><span class="n">8</span>In 3D: the truncated cubic honeycomb</h3>
+<p>Now stack cubes in all three directions. Inside each cell the 6 dots make an octahedron. Around every cube corner, the 24 dots from the 8 cells meeting there form a <b>truncated cube</b>: a cube with its 8 corners sliced off. It has 24 corners and 36 equal edges, 3 at each corner. Measured from the corner, the 24 points are all the ways of writing <span class="m">(±(√2−1), ±1, ±1)</span> with the numbers in any order. That is the standard recipe for a truncated cube.</p>
+<p>Octahedra and truncated cubes fill space with no gaps. This is a <i>uniform honeycomb</i> (a space-filling stack of regular-faced shapes), called the <b>truncated cubic honeycomb</b>, and every edge has length 2R. Each ball touches 5 others: 4 inside its own cube and 1 through the face. The balls fill about 22.3% of space. The biggest ball that fits in the cavity at a cube corner has radius about 2.56 R.</p>
+</div>
+<div class="fig">
+  <canvas id="f4" style="height:560px"></canvas>
+  <div class="ctl">
+    <label><input id="d4" type="checkbox" checked> dots</label>
+    <label><input id="e4" type="checkbox" checked> edges</label>
+    <label><input id="c4" type="checkbox"> cell outlines</label>
+    <label><input id="t4" type="checkbox"> highlight one truncated cube</label>
+    <label><input id="x4" type="checkbox"> highlight octahedra</label>
+  </div>
+  <div class="read small">A 2 × 2 × 2 block of cells: 8 cells, 48 dots. The truncated cube is the one around the middle corner, where all 8 cells meet.</div>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<h2 id="higher">3. Higher dimensions</h2>
+<div class="t">
+<h3><span class="n">9</span>The same number in every dimension</h3>
+<p>We can do the same cut in 4, 5 or any number of dimensions. An <i>n</i>-dimensional cube cut from its centre gives 2<i>n</i> pyramids. Take a ball inside one pyramid, with its centre at distance <i>c</i> from the cube's centre along the axis. The pyramid's base is at distance 1 − <i>c</i> from it. Its slanted faces are at distance <i>c</i>/√2. The ball touches all of them when these are equal, which gives <i>c</i> = 2 − √2.</p>
+<p>That does not depend on <i>n</i>. So in every dimension the ball has radius √2 − 1, sits at distance 2 − √2 from the centre, and neighbouring balls touch. The hole in the middle keeps the ratio √2 − 1. Stacked cubes give the vertices of the uniform <i>truncated n-cubic honeycomb</i> (I checked the 2D and 3D coordinates directly, and they match the standard form in every dimension). Each ball touches 2<i>n</i> − 1 others: 3 in 2D, 5 in 3D, 7 in 4D.</p>
+
+<h3><span class="n">10</span>The 24-to-24 match is a 3D coincidence</h3>
+<p>On the cube page, 24 small pieces matched the cube's 24 rotations. Is that deep, or luck? Count in <i>n</i> dimensions. A piece is a dot plus one slanted face. There are 2<i>n</i> pyramids with 2(<i>n</i> − 1) slanted faces each, so <b>4<i>n</i>(<i>n</i> − 1)</b> pieces. The cube has <b>2<sup><i>n</i></sup>·<i>n</i>!</b> symmetries with mirrors, and half of those, <b>2<sup><i>n</i>−1</sup>·<i>n</i>!</b>, are turns.</p>
+</div>
+<div class="fig">
+  <table>
+    <tr><th>dimension n</th><th>pieces</th><th>all symmetries</th><th>rotations only</th><th>balls touched</th></tr>
+    <tr id="r2"><td>2</td><td>8</td><td>8</td><td>4</td><td>3</td></tr>
+    <tr id="r3" class="hl"><td>3</td><td>24</td><td>48</td><td>24</td><td>5</td></tr>
+    <tr id="r4"><td>4</td><td>48</td><td>384</td><td>192</td><td>7</td></tr>
+    <tr id="r5"><td>5</td><td>80</td><td>3840</td><td>1920</td><td>9</td></tr>
+  </table>
+  <div class="ctl"><label>Try any dimension <input id="n10" type="range" min="2" max="12" step="1" value="3"></label><span id="n10v" class="m">3</span></div>
+  <div class="read" id="n10txt"></div>
+</div>
+<div class="t">
+<p>Only in 2D do the pieces match all the symmetries (8 and 8). Only in 3D do they match the rotations (24 and 24). From 4D on, the pieces fall short of both. In general each piece splits into 2<sup><i>n</i>−2</sup>·(<i>n</i> − 2)! equal smallest pieces: 1 in 2D, and 2 in 3D, which are the mirror halves. So the 3D match is a happy accident of small numbers. The number √2 − 1 is not an accident, but the 24 = 24 is.</p>
+</div>
+
+<!-- ============ SECTION 4 ============ -->
+<h2 id="mirror">4. The kaleidoscope behind it</h2>
+<div class="t">
+<p><b>Why one number keeps appearing.</b> Every face of your pyramids lies on a mirror of the cube pattern: the cube faces themselves, and the diagonal planes like the X. Your dot is the point the same distance from all of those mirrors. Reflect it in any one mirror and the copy lands exactly 2 × (√2 − 1) away. So every edge of the pattern comes out the same length. That is what makes the octagons regular and the honeycomb uniform. Distance to a mirror doesn't depend on the dimension, so the number never changes.</p>
+<p><b>This is a known method.</b> It is the <i>Wythoff construction</i>, published by the Dutch mathematician Willem Wythoff in 1918 and developed by H. S. M. Coxeter. It builds every uniform tiling and honeycomb the same way: treat the symmetry planes as a kaleidoscope, and place one point at equal distance from the chosen mirrors. Your dot is that point, and your pyramid is one chamber of the kaleidoscope.</p>
+<p><b>The same rule gives chemistry's whole table, not just 0.414.</b> Cut each of three regular solids from its centre into pyramids, one per face, and put a dot equidistant from every face of each pyramid. Neighbouring balls always touch, because neighbouring dots are mirror images across the shared wall. The hole left in the middle comes out exactly at chemistry's size limit for that arrangement:</p>
+</div>
+<table>
+  <tr><th style="text-align:left">Shape cut from its centre</th><th style="text-align:left">Dots form</th><th>Hole ÷ ball</th><th style="text-align:left">Chemistry's limit</th></tr>
+  <tr><td style="text-align:left">Tetrahedron (4 pieces)</td><td style="text-align:left">4 balls, a tetrahedron</td><td>0.2247</td><td style="text-align:left">0.225: four neighbours (zinc blende)</td></tr>
+  <tr><td style="text-align:left">Cube (6 pieces)</td><td style="text-align:left">6 balls, an octahedron</td><td>0.4142</td><td style="text-align:left">0.414: six neighbours (rock salt)</td></tr>
+  <tr><td style="text-align:left">Octahedron (8 pieces)</td><td style="text-align:left">8 balls, a cube</td><td>0.7321</td><td style="text-align:left">0.732: eight neighbours (caesium chloride)</td></tr>
+</table>
+<div class="t">
+<p>The limits are defined as "the hole left when the surrounding balls just touch", and the dot rule produces exactly that touching arrangement every time. So the thresholds are facts about symmetry, not about chemistry. Chemistry decides which arrangement real ions prefer; the kaleidoscope decides where the cut-offs fall. This explains the numbers, but it doesn't make the rule predict better: real ions aren't hard balls, and many crystals break the rule.</p>
+</div>
+
+<!-- ============ SECTION 5 ============ -->
+<h2 id="new">5. Is any of this new?</h2>
+<div class="t">
+<p>No. Every individual fact here is known. The radius-ratio rule dates from the 1920s and 30s. The 4.8.8 tiling and the truncated cubic honeycomb are classical uniform tilings. Perovskite is a standard crystal. Section 3 is easy to derive, and anyone who studies these shapes would find it.</p>
+<p>What is nice is the route. One rule, "put the dot the same distance from all the edges", lands exactly on the regular octagon pattern, on the truncated cube pattern, and on chemistry's 0.414 limit, in every dimension, and for one shared reason: <b>tan 22.5° = √2 − 1</b>.</p>
+<p>The method behind the route is Wythoff's 1918 construction (section 4). It is textbook that each size limit equals the coordination shape's centre-to-corner distance over half its edge, minus one. Getting all three limits, and the uniform tilings, from one rule about dots equidistant from mirror walls is a tidy way to see it that we haven't seen written down. A later literature search is summarised on the ledger page of the main site; it is a new view of known results, not a new result.</p>
+<p>It is a rediscovery of known structures by a short route.</p>
+<p>See it all at once in the <a href="lattice.html">lattice page</a>.</p>
+<p><a href="cube-six.html">← back to the cube</a></p>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const INK='#1d2b3a',RED='#c0392b',BLUE='#3b7dd8',GREEN='#2e9e6a',AMB='#d08a1e';
+const R=Math.SQRT2-1,K=2-Math.SQRT2;
+const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
+
+// ---------- drawing helpers ----------
+function poly(g,ps,col,a,stroke,lw){g.beginPath();ps.forEach((p,i)=>i?g.lineTo(p.x,p.y):g.moveTo(p.x,p.y));g.closePath();if(col){g.globalAlpha=a;g.fillStyle=col;g.fill();g.globalAlpha=1}if(stroke){g.strokeStyle=stroke;g.lineWidth=lw||1;g.stroke()}}
+function seg(g,a,b,col,w,al){g.globalAlpha=al==null?1:al;g.beginPath();g.moveTo(a.x,a.y);g.lineTo(b.x,b.y);g.strokeStyle=col;g.lineWidth=w;g.lineCap='round';g.stroke();g.globalAlpha=1}
+function sphere(g,p,r,col,al){const gr=g.createRadialGradient(p.x-r*.35,p.y-r*.35,r*.08,p.x,p.y,r);gr.addColorStop(0,'#ffffff');gr.addColorStop(1,col);g.globalAlpha=al==null?1:al;g.beginPath();g.arc(p.x,p.y,Math.max(r,0.5),0,7);g.fillStyle=gr;g.fill();g.globalAlpha=Math.min(1,(al==null?1:al)+.25);g.strokeStyle=col;g.lineWidth=1;g.stroke();g.globalAlpha=1}
+function ring(g,p,r,col,w,dash){g.beginPath();g.arc(p.x,p.y,r,0,7);g.setLineDash(dash||[]);g.strokeStyle=col;g.lineWidth=w;g.stroke();g.setLineDash([])}
+
+// ---------- generic rotating 3D view (yaw/pitch, drag, painter's sort) ----------
+const views=[];
+function View(id,h,extent,draw){
+  const cv=$(id),g=cv.getContext('2d'),v={yaw:-0.6,pitch:0.4,spin:true,W:0,H:h,g,ext:extent};
+  const rs=()=>{const d=devicePixelRatio||1;v.W=cv.clientWidth;cv.width=v.W*d;cv.height=h*d;g.setTransform(d,0,0,d,0,0)};
+  addEventListener('resize',rs);rs();
+  let drag=null;
+  cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];v.spin=false;cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener('pointermove',e=>{if(!drag)return;v.yaw+=(e.clientX-drag[0])*0.008;v.pitch+=(e.clientY-drag[1])*0.008;v.pitch=Math.max(-1.5708,Math.min(1.5708,v.pitch));drag=[e.clientX,e.clientY]});
+  cv.addEventListener('pointerup',()=>drag=null);
+  v.proj=p=>{let[x,y,z]=p;
+    let cx=Math.cos(v.yaw),sx=Math.sin(v.yaw);[x,z]=[x*cx-z*sx,x*sx+z*cx];
+    let cp=Math.cos(v.pitch),sp=Math.sin(v.pitch);[y,z]=[y*cp-z*sp,y*sp+z*cp];
+    const base=Math.min(h,v.W)*0.46/v.ext,D=v.ext*5,s=base*D/(D+z);
+    return{x:v.W/2+x*s,y:h/2-y*s,z,s}};
+  v.render=()=>{if(v.spin&&!drag)v.yaw+=0.004;g.clearRect(0,0,v.W,h);const items=[];draw(v,items);items.sort((a,b)=>b.z-a.z).forEach(i=>i.f())};
+  views.push(v);return v;
+}
+const avgz=ps=>ps.reduce((s,p)=>s+p.z,0)/ps.length;
+function line(v,it,a,b,col,w,al){const A=v.proj(a),B=v.proj(b);it.push({z:(A.z+B.z)/2-0.02,f:()=>seg(v.g,A,B,col,w,al)})}
+
+// ================= Figure 1: radius ratio =================
+View('f1',400,2.7,(v,it)=>{
+  const s=+$('s1').value,d=Math.max(Math.SQRT2,1+s);
+  $('s1v').textContent=s.toFixed(3);
+  for(let a=0;a<3;a++)for(const sg of[1,-1]){const p=[0,0,0];p[a]=sg*d;const P=v.proj(p);it.push({z:P.z,f:()=>sphere(v.g,P,P.s,[BLUE,GREEN,AMB][a],.4)})}
+  const C=v.proj([0,0,0]);
+  it.push({z:C.z,f:()=>sphere(v.g,C,s*C.s,RED,.9)});
+  it.push({z:-50,f:()=>ring(v.g,C,R*C.s,INK,1.4,[4,3])});
+  const diff=s-R;let t;
+  if(Math.abs(diff)<0.004)t='<b>Just touching.</b> The small ball fits the hole exactly, at ratio √2 − 1 = 0.414. This is the limit for six neighbours.';
+  else if(diff<0)t='<b>Rattles.</b> The small ball is smaller than the hole, so it has room to move about. Crystals like this usually pick 4 neighbours instead.';
+  else t='<b>Too big.</b> It no longer fits among six touching balls, so it pushes them apart, and they stop touching each other.';
+  $('s1txt').innerHTML=t;
+});
+$('s1snap').onclick=()=>{$('s1').value=R};
+
+// ================= Figure 2: unit-cell viewer =================
+const CORN=[],FACEC=[];
+for(const x of[-1,1])for(const y of[-1,1])for(const z of[-1,1])CORN.push([x,y,z]);
+for(let a=0;a<3;a++)for(const sg of[1,-1]){const p=[0,0,0];p[a]=sg;FACEC.push(p)}
+const CUBE_EDGES=[];for(let i=0;i<8;i++)for(let j=i+1;j<8;j++)if(Math.abs(dist(CORN[i],CORN[j])-2)<1e-9)CUBE_EDGES.push([CORN[i],CORN[j]]);
+const AXC=[BLUE,BLUE,GREEN,GREEN,AMB,AMB];
+const MODES={};
+(function(){
+  // your dots
+  const at=[],bo=[];
+  FACEC.forEach((f,i)=>{const c=f.map(x=>x*K);at.push({p:c,col:AXC[i],r:0.07,dot:true});
+    const a=f.findIndex(x=>x!==0),o=[0,1,2].filter(q=>q!==a);
+    for(const[s,t]of[[-1,-1],[1,-1],[1,1],[-1,1]]){const q=[0,0,0];q[a]=f[a];q[o[0]]=s;q[o[1]]=t;bo.push([c,q,RED,1.4,.85])}
+    bo.push([c,[0,0,0],RED,1.4,.85])});
+  MODES.dots={atoms:at,bonds:bo,leg:[[INK,'dot at the centre of a pyramid’s insphere'],[RED,'red lines: dot to the pyramid’s five corners']],
+    txt:'Your six dots sit on the axes at distance 2 − √2 from the centre. Tick “show touching balls” to see them kiss. Tick “show the dot across each face” to see the neighbouring cube’s dots (hollow rings): each pair, joined by the red bar, is 2R apart and centred on the face centre. That pair looks like the split dumbbell of copper-type metals, but only the face-centre sites split here, so it is a resemblance only.'};
+  // perovskite
+  const pa=[{p:[0,0,0],col:BLUE,r:.3}],pb=[];
+  FACEC.forEach(f=>{pa.push({p:f,col:RED,r:.2});pb.push([[0,0,0],f,BLUE,2.6,.8])});
+  CORN.forEach(c=>pa.push({p:c,col:GREEN,r:.14}));
+  MODES.perov={atoms:pa,bonds:pb,leg:[[BLUE,'Ti (B): 1 at the centre'],[RED,'O: 6 face centres, each shared by 2 cubes = 3'],[GREEN,'Ca or Sr (A): 8 corners, each shared by 8 = 1']],
+    txt:'Perovskite ABO₃, for example CaTiO₃ or SrTiO₃. Each Ti→O direction is one pyramid, with 4 A atoms around its base.'};
+  // bcc
+  const ba=[{p:[0,0,0],col:AMB,r:.26}],bb=[];
+  CORN.forEach(c=>{ba.push({p:c,col:AMB,r:.2});bb.push([[0,0,0],c,RED,2.2,.9])});
+  MODES.bcc={atoms:ba,bonds:bb,leg:[[AMB,'iron: corners (8 × 1/8 = 1) plus the centre = 2 atoms per cell'],[RED,'pyramid edges = nearest-neighbour bonds']],
+    txt:'Body-centred cubic. If the centre atom differs from the corner atoms, it is caesium chloride.'};
+  // fcc
+  const fa=[],fb=[];
+  CORN.forEach(c=>fa.push({p:c,col:GREEN,r:.17}));
+  FACEC.forEach(f=>{fa.push({p:f,col:GREEN,r:.17});const a=f.findIndex(x=>x!==0);CORN.forEach(c=>{if(c[a]===f[a])fb.push([f,c,GREEN,1.6,.55])})});
+  MODES.fcc={atoms:fa,bonds:fb,leg:[[GREEN,'copper, aluminium, gold: corners (1) plus 6 face centres ÷ 2 (3) = 4 atoms per cell'],[INK,'the X on each face is your original drawing']],
+    txt:'Face-centred cubic. Look at any face: it is the original square with its X.'};
+  // rock salt
+  const sa=[],sb=[],S=[];
+  for(const x of[-1,0,1])for(const y of[-1,0,1])for(const z of[-1,0,1]){const odd=Math.abs(x+y+z)%2===1;S.push([x,y,z]);sa.push({p:[x,y,z],col:odd?AMB:BLUE,r:odd?.2:.14})}
+  for(let i=0;i<S.length;i++)for(let j=i+1;j<S.length;j++)if(Math.abs(dist(S[i],S[j])-1)<1e-9)sb.push([S[i],S[j],INK,1,.3]);
+  MODES.salt={atoms:sa,bonds:sb,leg:[[AMB,'one kind of ion (corners and face centres)'],[BLUE,'the other kind (edge midpoints and the centre)']],
+    txt:'Rock salt (NaCl). Corners, face centres, edge midpoints and the centre, with the two kinds alternating, so every atom is surrounded by six of the other kind. Six neighbours is the octahedral shape again.'};
+})();
+let mode='dots';
+function setMode(m){mode=m;document.querySelectorAll('#f2btns button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+  $('f2leg').innerHTML=MODES[m].leg.map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('');
+  $('f2txt').textContent=MODES[m].txt;
+  $('f2opts').style.display=m==='dots'?'flex':'none'}
+document.querySelectorAll('#f2btns button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+setMode('dots');
+View('f2',540,1.95,(v,it)=>{
+  const M=MODES[mode];
+  for(const[a,b]of CUBE_EDGES)line(v,it,a,b,INK,1.2,.3);
+  for(const c of CORN)line(v,it,[0,0,0],c,RED,1,.28);
+  for(const[a,b,col,w,al]of M.bonds)line(v,it,a,b,col,w,al);
+  const ghost=mode==='dots'&&$('o_ghost').checked,balls=mode==='dots'&&$('o_ball').checked;
+  for(const a of M.atoms){const P=v.proj(a.p);
+    if(a.dot){it.push({z:P.z-0.05,f:()=>{sphere(v.g,P,a.r*P.s,'#1d2b3a',1)}});
+      if(balls)it.push({z:P.z,f:()=>sphere(v.g,P,R*P.s,a.col,.28)})}
+    else it.push({z:P.z,f:()=>sphere(v.g,P,a.r*P.s,a.col,.95)})}
+  if(ghost)FACEC.forEach((f,i)=>{const gp=f.map(x=>x*(2-K)),mp=f.map(x=>x*K);
+    const G=v.proj(gp),Fc=v.proj(f);
+    line(v,it,mp,gp,RED,4,.9);
+    it.push({z:G.z-0.05,f:()=>{ring(v.g,G,0.075*G.s,AXC[i],2)}});
+    it.push({z:Fc.z-0.06,f:()=>{v.g.beginPath();v.g.arc(Fc.x,Fc.y,2.5,0,7);v.g.fillStyle=RED;v.g.fill()}});
+    if(balls)it.push({z:G.z,f:()=>{ring(v.g,G,R*G.s,AXC[i],1.2,[4,3])}})});
+});
+
+// ================= Figure 3: 2D tiling =================
+const c3=$('f3'),g3=c3.getContext('2d');
+function draw3(){
+  const n=+$('n3').value;$('n3v').textContent=n;
+  const W=c3.clientWidth,Hh=Math.min(W,640),d=devicePixelRatio||1;
+  c3.style.height=Hh+'px';c3.width=W*d;c3.height=Hh*d;g3.setTransform(d,0,0,d,0,0);g3.clearRect(0,0,W,Hh);
+  const u=(Math.min(W,Hh)-20)/(2*n),ox=(W-2*n*u)/2,oy=(Hh-2*n*u)/2;
+  const P=(x,y)=>({x:ox+x*u,y:oy+y*u});
+  const dots=[],cells=[];
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){const cx=2*i+1,cy=2*j+1;
+    const ds=[[cx+K,cy],[cx,cy+K],[cx-K,cy],[cx,cy-K]];cells.push({cx,cy,ds});ds.forEach(p=>dots.push(p))}
+  const fill=$('o3').checked,con=$('c3').checked,circ=$('r3').checked;
+  let rep=null;
+  if(fill){
+    for(const c of cells)poly(g3,c.ds.map(p=>P(...p)),AMB,.32,AMB,1);
+    for(let a=1;a<n;a++)for(let b=1;b<n;b++){
+      const vx=2*a,vy=2*b,near=dots.filter(p=>Math.hypot(p[0]-vx,p[1]-vy)<1.1).sort((p,q)=>Math.atan2(p[1]-vy,p[0]-vx)-Math.atan2(q[1]-vy,q[0]-vx));
+      if(near.length===8){poly(g3,near.map(p=>P(...p)),BLUE,.3,BLUE,1.5);if(!rep)rep=[vx,vy,near]}}
+  }
+  if(!rep&&n>=2){const vx=2,vy=2;rep=[vx,vy,dots.filter(p=>Math.hypot(p[0]-vx,p[1]-vy)<1.1)]}
+  // the drawing itself
+  for(const c of cells){
+    const p0=P(c.cx-1,c.cy-1),p1=P(c.cx+1,c.cy+1);
+    g3.strokeStyle=INK;g3.globalAlpha=.3;g3.lineWidth=1.3;g3.strokeRect(p0.x,p0.y,p1.x-p0.x,p1.y-p0.y);
+    for(const[a,b]of[[[-1,-1],[1,1]],[[-1,1],[1,-1]]]){const A=P(c.cx+a[0],c.cy+a[1]),B=P(c.cx+b[0],c.cy+b[1]);g3.beginPath();g3.moveTo(A.x,A.y);g3.lineTo(B.x,B.y);g3.lineWidth=1.2;g3.stroke()}
+    g3.globalAlpha=1;
+    const C=P(c.cx,c.cy);
+    c.ds.forEach(p=>{const dx=Math.sign(p[0]-c.cx),dy=Math.sign(p[1]-c.cy);
+      const cs=dx?[[dx,-1],[dx,1]]:[[-1,dy],[1,dy]];
+      const D=P(...p);for(const q of cs){const Q=P(c.cx+q[0],c.cy+q[1]);seg(g3,D,Q,RED,1,.3)}seg(g3,D,C,RED,1,.3)});
+  }
+  if(circ)for(const p of dots){const Q=P(...p);g3.beginPath();g3.arc(Q.x,Q.y,R*u,0,7);g3.fillStyle=BLUE;g3.globalAlpha=.14;g3.fill();g3.globalAlpha=1;g3.strokeStyle=BLUE;g3.lineWidth=1;g3.stroke()}
+  if(con)for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++)if(Math.abs(Math.hypot(dots[i][0]-dots[j][0],dots[i][1]-dots[j][1])-2*R)<1e-6)seg(g3,P(...dots[i]),P(...dots[j]),INK,2.6);
+  for(const p of dots){const Q=P(...p);g3.beginPath();g3.arc(Q.x,Q.y,3.6,0,7);g3.fillStyle=INK;g3.fill()}
+  if(rep){const ds=rep[2].map(p=>Math.hypot(p[0]-rep[0],p[1]-rep[1]));
+    const edges=rep[2].map((p,i)=>{const q=rep[2][(i+1)%rep[2].length];return Math.hypot(p[0]-q[0],p[1]-q[1])});
+    $('f3txt').innerHTML=`Octagon at the middle corner: all ${ds.length} dots are ${Math.min(...ds).toFixed(4)} to ${Math.max(...ds).toFixed(4)} from the corner, and all edges are ${Math.min(...edges).toFixed(4)} to ${Math.max(...edges).toFixed(4)} long (2R = ${(2*R).toFixed(4)}). That is a regular octagon.`}
+}
+['n3','c3','o3','r3'].forEach(i=>$(i).addEventListener('input',draw3));
+addEventListener('resize',draw3);draw3();
+
+// ================= Figure 4: 2x2x2 lattice =================
+const cells4=[];for(const x of[-1,1])for(const y of[-1,1])for(const z of[-1,1])cells4.push([x,y,z]);
+const dots4=[];cells4.forEach((c,ci)=>{for(let a=0;a<3;a++)for(const sg of[1,-1]){const p=[...c];p[a]+=sg*K;dots4.push({p,ci,a,sg})}});
+const edges4=[];for(let i=0;i<dots4.length;i++)for(let j=i+1;j<dots4.length;j++)if(Math.abs(dist(dots4[i].p,dots4[j].p)-2*R)<1e-6)edges4.push([i,j]);
+const inTC=dots4.map(d=>Math.hypot(...d.p)<1.6);
+// octahedra faces
+const octF=[];cells4.forEach((c,ci)=>{const get=(a,sg)=>dots4.find(d=>d.ci===ci&&d.a===a&&d.sg===sg).p;
+  for(const s of[1,-1])for(const t of[1,-1])for(const w of[1,-1])octF.push([get(0,s),get(1,t),get(2,w)])});
+// truncated cube faces around the origin: 6 octagons and 8 triangles
+const tcF=[];
+for(let a=0;a<3;a++)for(const s of[1,-1]){const o=[0,1,2].filter(q=>q!==a);
+  const pts=dots4.filter((d,i)=>inTC[i]&&Math.abs(d.p[a]-s)<1e-9).map(d=>d.p).sort((p,q)=>Math.atan2(p[o[1]],p[o[0]])-Math.atan2(q[o[1]],q[o[0]]));
+  tcF.push({pts,col:BLUE})}
+for(const x of[1,-1])for(const y of[1,-1])for(const z of[1,-1])tcF.push({pts:[[x*R,y,z],[x,y*R,z],[x,y,z*R]],col:AMB});
+View('f4',560,2.5,(v,it)=>{
+  if($('c4').checked)for(const c of cells4)for(const[a,b]of CUBE_EDGES)line(v,it,a.map((q,i)=>c[i]+q),b.map((q,i)=>c[i]+q),INK,1,.22);
+  if($('x4').checked)for(const f of octF){const P=f.map(v.proj);it.push({z:avgz(P)+0.03,f:()=>poly(v.g,P,GREEN,.2,GREEN,.8)})}
+  const hl=$('t4').checked;
+  if(hl)for(const f of tcF){const P=f.pts.map(v.proj);it.push({z:avgz(P)+0.02,f:()=>poly(v.g,P,f.col,.2,f.col,1)})}
+  if($('e4').checked)for(const[i,j]of edges4){const both=inTC[i]&&inTC[j];
+    line(v,it,dots4[i].p,dots4[j].p,hl&&both?AMB:INK,hl&&both?3:1.6,hl&&!both?.35:.9)}
+  if($('d4').checked)for(let i=0;i<dots4.length;i++){const P=v.proj(dots4[i].p),h=hl&&inTC[i];
+    it.push({z:P.z-0.03,f:()=>{v.g.globalAlpha=hl&&!h?.5:1;sphere(v.g,P,0.085*P.s,h?AMB:INK,1);v.g.globalAlpha=1}})}
+});
+
+// ================= Section 3 table =================
+function fact(n){let r=1n;for(let i=2n;i<=BigInt(n);i++)r*=i;return r}
+function upd10(){const n=+$('n10').value;$('n10v').textContent=n;
+  const N=BigInt(n),pieces=4n*N*(N-1n),all=(1n<<N)*fact(n),rot=all/2n,part=(1n<<(N-2n))*fact(n-2);
+  for(let i=2;i<=5;i++)$('r'+i).classList.toggle('hl',i===n);
+  let m=pieces===all?'pieces = all symmetries':pieces===rot?'pieces = rotations':'pieces fall short of both';
+  $('n10txt').innerHTML=`<b>n = ${n}:</b> ${pieces} pieces, ${all} symmetries, ${rot} rotations, ${2*n-1} balls touched. Each piece splits into ${part} equal smallest pieces (${pieces} × ${part} = ${pieces*part}). <b>${m}.</b>`}
+$('n10').addEventListener('input',upd10);upd10();
+
+// ================= main loop =================
+(function loop(){for(const v of views)v.render();requestAnimationFrame(loop)})();
+{const qq=new URLSearchParams(location.search);for(const id of['t4','x4','o_ball','o_ghost'])if(qq.get(id))$(id).checked=true;if(qq.get('mode'))setMode(qq.get('mode'));if(qq.get('r3')){$('r3').checked=true;draw3()}if(qq.get('n3')){$('n3').value=qq.get('n3');draw3()}}
+{const sc=new URLSearchParams(location.search).get('scroll');if(sc)setTimeout(()=>{$(sc).scrollIntoView()},50)}
+window.__ok=true;
+</script></div></body></html>

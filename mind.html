@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PERCEPTION // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+</head><body>
+<main>
+<div class="kick">05 // PERCEPTION</div>
+<h1>Perception</h1>
+<p class="lede">In a triangle, the point the drawing marks is the incentre, where the three lines of the triangle&rsquo;s skeleton meet. The centre of mass of a triangle, its centroid, is a different point, and for tall or lopsided triangles the two are far enough apart to tell by eye. Psychologists have studied where people place the &ldquo;centre&rdquo; of shapes and have found that attention and taps follow the skeleton, but in the studies found here the incentre was never offered as a candidate. This page sets out what is known, lets you try the task on yourself, and proposes the experiment. It then looks at the other cultural neighbour of the drawing, Islamic geometric pattern, and gives an honest verdict.</p>
+
+<h2 id="known"><span class="n">1</span>What is known</h2>
+<p>The <b>medial axis</b>, or skeleton, of a shape is the set of points with more than one nearest point on the boundary. For a triangle it is the three angle bisectors, meeting at the incentre (see the first page). The incentre is also the centre of the largest circle that fits inside, the point the cartographic literature calls the pole of inaccessibility, and the &ldquo;visual centre&rdquo; used in some map and interface code.<span class="tg known">KNOWN</span></p>
+<ul class="cl">
+<li>Kov&aacute;cs and Julesz found contrast enhancement at medial points of shapes (<i>Nature</i> 1994; <i>Vision Research</i> 1998).<span class="tg known">KNOWN</span></li>
+<li>Firestone and Scholl (2014) and Ayzenberg and others (2019) report that where people tap on a shape clusters on its skeleton.<span class="tg known">KNOWN</span> These two are cited from abstracts and summaries: the full pages could not be opened, so the details are unverified.</li>
+<li>Dehaene, Izard, Pica and Spelke (<i>Science</i> 311:381, 2006) found that Munduruku adults and children from age 6 show core geometric intuitions, with a mean of 66.8% on odd-one-out geometry items. Untrained geometric intuition is therefore expected. Nobody is known to have tested incentres there.<span class="tg known">KNOWN</span></li>
+<li>On perceived centres of polygons, studies find the perceived centre nearer the area barycentre than other classical centres (the Sofia and Vicario line of work; Yakimoff and others for quadrangles). Proffitt (1982) found the boundary contour dominates. Gatti (1924) reported an upward displacement for equilateral triangles, known here only second-hand. These tested a few isosceles triangles and, as far as the abstracts show, never included the incentre as a candidate.<span class="tg known">KNOWN</span> (abstract-level reading)</li>
+</ul>
+<p>The structural link of the drawing is simple. The three lines drawn from the dot to the corners of its triangle are literally its medial axis.<span class="tg known">KNOWN</span> (standard fact; checked in <span class="m">research/culture</span>) Whether people who draw them are tracing the skeleton the visual system already computes is a guess.<span class="tg conj">CONJECTURE</span></p>
+
+<h2 id="gap"><span class="n">2</span>How far apart are the incentre and the centroid?</h2>
+<p>That depends on the triangle. Measured as the distance between the two points as a percentage of the perimeter:<span class="tg verified">VERIFIED NUMERICALLY</span> (<span class="m">research/culture/centres.py</span>; the last three rows were recomputed for this page)</p>
+<div class="tscroll"><table class="tb"><thead><tr><th>triangle</th><th class="n">gap, % of perimeter</th></tr></thead><tbody>
+<tr><td>equilateral</td><td class="n">0</td></tr>
+<tr><td>right isosceles (the drawing&rsquo;s own triangle)</td><td class="n">1.7</td></tr>
+<tr><td>120&deg; isosceles</td><td class="n">1.8</td></tr>
+<tr><td>3-4-5 right triangle</td><td class="n">2.8</td></tr>
+<tr><td>wide flat triangle, base 3, apex at (1, 0.5)</td><td class="n">5.1</td></tr>
+<tr><td>lopsided tall triangle</td><td class="n">6.0</td></tr>
+<tr class="hi"><td>tall isosceles, base 1 and height 3</td><td class="n">8.1</td></tr>
+<tr><td>thin obtuse triangle</td><td class="n">8.2</td></tr></tbody></table></div>
+<p>The drawing&rsquo;s own right isosceles triangle separates the two points by only 1.7%, which makes it a poor test. An experiment needs tall or lopsided triangles.</p>
+
+<h2 id="demo"><span class="n">3</span>Try it</h2>
+<p>You will see five triangles one at a time. Tap where you feel the middle of each is. You can tap again to move your mark, and press Next when you are satisfied. After the fifth, the page shows the incentre, the centroid and the skeleton for each, together with your taps. This is a demonstration on one person, with no controls, so it shows nothing about people in general. <b>Nothing leaves this page: it makes no network requests and keeps your taps in this tab&rsquo;s memory only.</b></p>
+
+<div class="wide" id="fig10">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv10"></canvas><div class="corner" id="c10t">TRIANGLE 1 / 5 // TAP THE MIDDLE</div><div class="corner r">FIG 10 // TAP TEST // LOCAL ONLY</div></div>
+ <section class="panel fp hud" id="p-fig10">
+  <header><span class="tabtitle">CTRL // TAP TEST</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="row"><button id="b10next">NEXT</button><button id="b10reset">RESTART</button></div>
+    <div class="hint">No data leaves the page. Taps stay in memory.</div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv10"></div></div>
+  </div>
+ </section>
+ <figcaption>After the fifth triangle: red is the incentre (with the skeleton as dashed lines), blue is the centroid, amber is your tap.</figcaption>
+</figure>
+</div>
+
+<h2 id="exp"><span class="n">4</span>The proposed experiment</h2>
+<p>Participants click &ldquo;the middle&rdquo; of triangles. The candidate points are the centroid, the incentre, the circumcentre, the orthocentre and the centre of the bounding box. The stimuli must be triangles where the candidates separate, such as the tall and lopsided ones above. Compare two tasks, tapping anywhere (as in Firestone and Scholl) and clicking &ldquo;the centre&rdquo;. Compare children aged 5 to 10 with adults, and a non-verbal framing in the style of the Munduruku work (&ldquo;where would you hide a coin so that it is equally far from all sides?&rdquo; against &ldquo;where is the balance point?&rdquo;). About 60 participants per cell, online, would be cheap.</p>
+<p>Predictions: the centre-click tracks the centroid in adults for solid shapes (as in prior work); tap-anywhere shifts toward the incentre and the skeleton; a physical balance instruction moves responses to the centroid.<span class="tg conj">CONJECTURE</span> No study of this form was found in the search.<span class="tg noref">NO REFERENCE FOUND</span> (web searches only) A positive incentre finding would be new.</p>
+
+<h2 id="hankin"><span class="n">5</span>Islamic geometric pattern</h2>
+<p>Islamic star patterns are often built by a method whose modern form is due to Hankin (&ldquo;polygons in contact&rdquo;, 1925) and was formalised by Kaplan (2005): from the midpoint of each edge of a tiling, two rays leave at a chosen contact angle into the two neighbouring polygons, and each ray is cut where it meets the ray from the adjacent edge.<span class="tg known">KNOWN</span> The figure below applies this rule live to the 4.8.8 tiling the drawing makes, and to the tiling of 45&deg; triangles (the square with its X) that sits under the drawing.</p>
+
+<div class="wide" id="fig11">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv11"></canvas><div class="corner">HANKIN RAYS // CONTACT ANGLE</div><div class="corner r">FIG 11 // PATTERN</div></div>
+ <section class="panel fp hud" id="p-fig11">
+  <header><span class="tabtitle">CTRL // PATTERN</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">CONTACT ANGLE (degrees)</div>
+    <div class="sl"><input id="s11" type="range" min="10" max="85" step="0.5" value="45"><b id="s11v">45</b></div>
+    <div class="row"><button data-a="22.5">22.5</button><button data-a="30">30</button><button data-a="45" class="on">45</button><button data-a="60">60</button><button data-a="67.5">67.5</button><button id="b11sweep">SWEEP</button></div>
+    <div class="lab">BASE TILING</div>
+    <div class="row"><button data-k="488" class="on">4.8.8</button><button data-k="tet">SQUARE + X</button><button id="b11poly" class="on">SHOW TILES</button></div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv11"></div></div>
+  </div>
+ </section>
+ <figcaption>Regenerated live from the rule, as in <span class="m">research/culture/gen.py</span>. The patterns were not matched against any named historical design.</figcaption>
+</figure>
+</div>
+
+<p>Observations from the sweep: on 4.8.8 near 45&deg; the rays give cross-shaped motifs around the squares with the octagons left as voids; from about 67.5&deg; to 78&deg; an 8-point star-shaped void appears in each octagon with four-petal motifs in the squares. On the 45&deg; triangles, a contact angle of 67.5&deg; gives isolated regular octagons, probably an artefact of the simple adjacent-ray cut used.</p>
+<p><b>The verdict.</b> The drawing is not a Hankin construction. Hankin rays start at edge midpoints and are set by an angle; the drawing&rsquo;s lines start at the incentre and go to the corners, as bisectors. It is a centre-to-vertex subdivision of a tiling, nearer a triangulation or mirror-line drawing than a star pattern. As far as the search found, it is not a known traditional construction. That is absence of evidence only: the searches were limited and a key paper (Kaplan 2005) could not be parsed.<span class="tg noref">NO REFERENCE FOUND</span> I could not confirm that any frame of the sweep is a specific named historical pattern (girih, Mamluk, jali or kumiko). Matching them properly would need Kaplan&rsquo;s gallery or Sakkal&rsquo;s corpus.</p>
+<p>Three structural observations about the drawing, by construction rather than from history.<span class="tg verified">VERIFIED NUMERICALLY</span> First, the square with its X alone is the <b>tetrakis square tiling</b>, the dual (the shape-swapped partner) of 4.8.8. So the drawing is the tetrakis tiling with its own dual laid over it, the dual&rsquo;s vertices at the triangle incentres. The dual is a standard fact; the incentre is the choice that makes 4.8.8 regular. Second, the octagon&rsquo;s inradius is 1, half the side of the square, so the octagons are the tangent unit circles at the square&rsquo;s corners. Circle-packing-driven star rosettes exist (Brewer, Zha, Neno and Bridges, 2022), the closest neighbour in the literature.<span class="tg known">KNOWN</span> Third, at the centre of each octagon you see 16 rays: the 8 axes and the 8 vertex spokes, the full set of mirrors of a regular octagon, though the tiling&rsquo;s own symmetry group has only 4 mirror directions. The drawing carries a local 8-fold rosette that the lattice does not. The framing is mine.</p>
+<p>In 3D, Islamic ornament is the muqarnas, and lifting 2D tessellations to muqarnas by algorithm is still open (Bridges 2025).<span class="tg known">KNOWN</span> No literature was found on space-filling 3D star lattices from Wythoff points. A 3D contact rule on the truncated cubic honeycomb looks untried, but it was not searched exhaustively.<span class="tg spec">SPECULATIVE</span></p>
+
+<h2 id="edu"><span class="n">6</span>As a path for teaching</h2>
+<p>Kaleidoscope and Wythoff teaching exists (Palmer, Bridges 2011; the Bridges 2015 kaleidoscope workshop; Freire&rsquo;s vZome Wythoff page).<span class="tg known">KNOWN</span> No curriculum was found that starts from &ldquo;put a dot at the incentre of each triangle of a square&rdquo; and ends at Wythoff points and crystal structures. A possible path: draw the figure; find 4.8.8 in it; ask why the dot is tan&nbsp;22.5&deg; up; meet mirror lines and symmetry groups; repeat in 3D and meet the radius ratios 0.225, 0.414 and 0.732; finish with Hankin rays as the art side.<span class="tg spec">SPECULATIVE</span> A workshop paper at Bridges would fit.</p>
+<div class="note">A related unresearched thread: &radic;2&nbsp;&minus;&nbsp;1 has the continued fraction [0; 2, 2, 2, &hellip;], the shortest-period case after the golden ratio, and the 4.8.8 timeline (edge ratio 1&nbsp;:&nbsp;1&nbsp;+&nbsp;&radic;2) could serve as a polyrhythm. This was not researched.</div>
+</main>
+
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,TAU=CX.TAU,S2=Math.SQRT2,Tn=S2-1;
+const $=id=>document.getElementById(id);
+/* ---------- tap test ---------- */
+const TRIS=[[[0,0],[1,0],[.5,3]],[[0,0],[1.2,0],[.1,2.6]],[[0,0],[3,0],[2.4,.6]],[[0,0],[3,0],[1,.5]],[[0,0],[4,0],[0,3]]];
+function centres(t){const [A,B,Cc]=t,a=Math.hypot(B[0]-Cc[0],B[1]-Cc[1]),b=Math.hypot(A[0]-Cc[0],A[1]-Cc[1]),c=Math.hypot(A[0]-B[0],A[1]-B[1]),p=a+b+c;
+  return {inc:[(a*A[0]+b*B[0]+c*Cc[0])/p,(a*A[1]+b*B[1]+c*Cc[1])/p],cen:[(A[0]+B[0]+Cc[0])/3,(A[1]+B[1]+Cc[1])/3],per:p}}
+const st={i:+(CX.Q.get('tri')||0),taps:[],done:CX.Q.get('done')==='1'};
+if(st.done)for(let k=0;k<5;k++){const c=centres(TRIS[k]);st.taps[k]=[c.inc[0]*.4+c.cen[0]*.6+.02,c.inc[1]*.4+c.cen[1]*.6]}
+if(CX.Q.get('tap')==='1'&&!st.done){const c=centres(TRIS[st.i]);st.taps[st.i]=[c.cen[0],c.cen[1]]}
+const cv=$('cv10');
+function box(t,x,y,w,h){const xs=t.map(p=>p[0]),ys=t.map(p=>p[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  const s=Math.min(w/(x1-x0),h/(y1-y0))*0.88,ox=x+w/2-s*(x0+x1)/2,oy=y+h/2+s*(y0+y1)/2;return {s,X:u=>ox+u*s,Y:v=>oy-v*s,inv:(px,py)=>[(px-ox)/s,(oy-py)/s]}}
+let cur=null;
+const fig=CX.canvas(cv,function(ctx,W,H,t){
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  if(!st.done){
+    const tr=TRIS[st.i],b=box(tr,0,20,W,H-30);cur=b;
+    ctx.fillStyle='rgba(55,255,154,.08)';ctx.strokeStyle=C.g;ctx.lineWidth=1.6;ctx.shadowColor=C.g;ctx.shadowBlur=6;
+    ctx.beginPath();tr.forEach((p,i)=>i?ctx.lineTo(b.X(p[0]),b.Y(p[1])):ctx.moveTo(b.X(p[0]),b.Y(p[1])));ctx.closePath();ctx.fill();ctx.stroke();ctx.shadowBlur=0;
+    const tp=st.taps[st.i];if(tp){CX.dot(ctx,b.X(tp[0]),b.Y(tp[1]),6,C.a,14);ctx.strokeStyle=C.a;ctx.beginPath();ctx.arc(b.X(tp[0]),b.Y(tp[1]),12,0,TAU);ctx.stroke()}
+    $('c10t').textContent='TRIANGLE '+(st.i+1)+' / 5 // TAP THE MIDDLE';
+  }else{
+    cur=null;const cols=W<600?2:3,rows=Math.ceil(5/cols),cw=W/cols,ch=(H-10)/rows;
+    for(let k=0;k<5;k++){
+      const tr=TRIS[k],x=(k%cols)*cw,y=(k/cols|0)*ch,b=box(tr,x,y+10,cw,ch-26),cc=centres(tr);
+      ctx.fillStyle='rgba(55,255,154,.07)';ctx.strokeStyle=C.g;ctx.lineWidth=1.3;
+      ctx.beginPath();tr.forEach((p,i)=>i?ctx.lineTo(b.X(p[0]),b.Y(p[1])):ctx.moveTo(b.X(p[0]),b.Y(p[1])));ctx.closePath();ctx.fill();ctx.stroke();
+      ctx.setLineDash([3,3]);tr.forEach(p=>CX.glowLine(ctx,b.X(p[0]),b.Y(p[1]),b.X(cc.inc[0]),b.Y(cc.inc[1]),'rgba(255,74,61,.6)',1,0));ctx.setLineDash([]);
+      CX.dot(ctx,b.X(cc.inc[0]),b.Y(cc.inc[1]),5,C.r,10);CX.dot(ctx,b.X(cc.cen[0]),b.Y(cc.cen[1]),5,C.c,10);
+      const tp=st.taps[k];if(tp){CX.dot(ctx,b.X(tp[0]),b.Y(tp[1]),4,C.a,10)}
+      const gap=Math.hypot(cc.inc[0]-cc.cen[0],cc.inc[1]-cc.cen[1])/cc.per*100;
+      CX.text(ctx,'gap '+gap.toFixed(1)+'%',x+8,y+ch-8,C.dim,11);
+    }
+    $('c10t').textContent='RESULT // RED INCENTRE // BLUE CENTROID // AMBER YOU';
+  }
+  upd();
+},{aspect:w=>w<600?1.0:0.62});
+CX.pointer(cv,{down:(x,y)=>{if(st.done||!cur)return;const p=cur.inv(x,y);st.taps[st.i]=p;upd()}});
+function upd(){
+  if(!st.done){CX.kv($('kv10'),[['triangle',(st.i+1)+' of 5'],['your tap',st.taps[st.i]?'placed':'not yet placed',st.taps[st.i]?'ok':'']]);$('b10next').textContent=st.i<4?'NEXT':'SHOW RESULT';return}
+  let ni=0,nc=0;const rows=[];
+  TRIS.forEach((tr,k)=>{const cc=centres(tr),tp=st.taps[k];if(!tp)return;
+    const di=Math.hypot(tp[0]-cc.inc[0],tp[1]-cc.inc[1])/cc.per*100,dc=Math.hypot(tp[0]-cc.cen[0],tp[1]-cc.cen[1])/cc.per*100;
+    if(di<dc)ni++;else nc++;rows.push(['#'+(k+1)+' to incentre / centroid',di.toFixed(1)+'% / '+dc.toFixed(1)+'%']);});
+  rows.push(['closer to incentre',ni+' of '+(ni+nc),ni>nc?'ok':'']);rows.push(['closer to centroid',nc+' of '+(ni+nc)]);
+  CX.kv($('kv10'),rows);$('b10next').textContent='RESULT SHOWN';
+}
+$('b10next').onclick=()=>{if(st.done)return;if(!st.taps[st.i])return;if(st.i<4)st.i++;else st.done=true};
+$('b10reset').onclick=()=>{st.i=0;st.taps=[];st.done=false};
+
+/* ---------- Hankin rays ---------- */
+const cv11=$('cv11'),h={a:+(CX.Q.get('ang')||45),k:CX.Q.get('k')||'488',poly:CX.Q.get('tiles')!=='0',sweep:false};
+function regular(n,cx,cy,r,rot){const o=[];for(let k=0;k<n;k++)o.push([cx+r*Math.cos(rot+TAU*k/n),cy+r*Math.sin(rot+TAU*k/n)]);return o}
+function tiling488(nx,ny){const ro=1/Math.cos(Math.PI/8),P=[];
+  for(let i=0;i<=nx;i++)for(let j=0;j<=ny;j++)P.push(regular(8,2*i,2*j,ro,Math.PI/8));
+  for(let i=0;i<nx;i++)for(let j=0;j<ny;j++)P.push(regular(4,2*i+1,2*j+1,1-Tn,0));return P}
+function tetrakis(nx,ny){const P=[];for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){const x=2*i,y=2*j,c=[x+1,y+1],cs=[[x,y],[x+2,y],[x+2,y+2],[x,y+2]];for(let k=0;k<4;k++)P.push([cs[k],cs[(k+1)%4],c])}return P}
+const NX=4,NY=3,T488=tiling488(NX,NY),TTET=tetrakis(NX,NY);
+function rayint(p,u,q,v){const det=u[0]*(-v[1])-u[1]*(-v[0]);if(Math.abs(det)<1e-12)return null;const dx=q[0]-p[0],dy=q[1]-p[1];return [(dx*(-v[1])-dy*(-v[0]))/det,(u[0]*dy-u[1]*dx)/det]}
+function pic(P,theta){const n=P.length,cx=P.reduce((a,p)=>a+p[0],0)/n,cy=P.reduce((a,p)=>a+p[1],0)/n,th=(theta+0.001)*Math.PI/180,rays=[],segs=[];
+  for(let k=0;k<n;k++){const A=P[k],B=P[(k+1)%n],m=[(A[0]+B[0])/2,(A[1]+B[1])/2];let e=[B[0]-A[0],B[1]-A[1]];const l=Math.hypot(e[0],e[1]);e=[e[0]/l,e[1]/l];
+    let nr=[-e[1],e[0]];if(nr[0]*(cx-m[0])+nr[1]*(cy-m[1])<0)nr=[-nr[0],-nr[1]];
+    rays.push([m,[e[0]*Math.cos(th)+nr[0]*Math.sin(th),e[1]*Math.cos(th)+nr[1]*Math.sin(th)],[-e[0]*Math.cos(th)+nr[0]*Math.sin(th),-e[1]*Math.cos(th)+nr[1]*Math.sin(th)]])}
+  for(let k=0;k<n;k++){const [m1,f1]=rays[k],[m2,,b2]=rays[(k+1)%n],r=rayint(m1,f1,m2,b2);
+    if(r&&r[0]>0&&r[1]>0){const q=[m1[0]+f1[0]*r[0],m1[1]+f1[1]*r[0]];segs.push([m1,q],[m2,q])}}
+  return segs}
+const fig11=CX.canvas(cv11,function(ctx,W,H,t,dt){
+  if(h.sweep){h.a=10+75*(Math.sin(t*.5-1.57)+1)/2;$('s11').value=h.a}
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  const P=h.k==='488'?T488:TTET,s=Math.min(W/(2*NX),H/(2*NY)),ox=(W-2*NX*s)/2,oy=(H-2*NY*s)/2+2*NY*s;
+  const X=x=>ox+x*s,Y=y=>oy-y*s;
+  ctx.save();ctx.beginPath();ctx.rect(X(0),Y(2*NY),2*NX*s,2*NY*s);ctx.clip();
+  if(h.poly){ctx.strokeStyle='rgba(55,255,154,.25)';ctx.lineWidth=1;P.forEach(p=>{ctx.fillStyle=p.length===8?'rgba(55,255,154,.04)':p.length===4?'rgba(53,230,255,.06)':'rgba(55,255,154,.02)';ctx.beginPath();p.forEach((q,i)=>i?ctx.lineTo(X(q[0]),Y(q[1])):ctx.moveTo(X(q[0]),Y(q[1])));ctx.closePath();ctx.fill();ctx.stroke()})}
+  const seen=new Set();ctx.strokeStyle=C.r;ctx.shadowColor=C.r;ctx.shadowBlur=5;ctx.lineWidth=1.7;
+  let n=0;P.forEach(p=>pic(p,h.a).forEach(([a,b])=>{const f=v=>Math.round(v*1e4),A=f(a[0])+','+f(a[1]),B=f(b[0])+','+f(b[1]),k=A<B?A+B:B+A;if(seen.has(k))return;seen.add(k);n++;
+    ctx.beginPath();ctx.moveTo(X(a[0]),Y(a[1]));ctx.lineTo(X(b[0]),Y(b[1]));ctx.stroke()}));
+  ctx.shadowBlur=0;ctx.restore();
+  ctx.strokeStyle='rgba(55,255,154,.4)';ctx.strokeRect(X(0),Y(2*NY),2*NX*s,2*NY*s);
+  CX.kv($('kv11'),[['contact angle',h.a.toFixed(1)+'°'],['base tiling',h.k==='488'?'4.8.8':'square + X (tetrakis)'],['ray segments drawn',n]]);
+  $('s11v').textContent=h.a.toFixed(1);
+},{aspect:w=>w<600?0.8:0.6});
+$('s11').oninput=e=>{h.a=+e.target.value;h.sweep=false;sy()};
+function sy(){document.querySelectorAll('#p-fig11 button[data-k]').forEach(b=>b.classList.toggle('on',b.dataset.k===h.k));$('b11poly').classList.toggle('on',h.poly);$('b11sweep').classList.toggle('on',h.sweep)}
+document.querySelectorAll('#p-fig11 button[data-a]').forEach(b=>b.onclick=()=>{h.a=+b.dataset.a;h.sweep=false;$('s11').value=h.a;sy()});
+document.querySelectorAll('#p-fig11 button[data-k]').forEach(b=>b.onclick=()=>{h.k=b.dataset.k;sy()});
+$('b11poly').onclick=()=>{h.poly=!h.poly;sy()};$('b11sweep').onclick=()=>{h.sweep=!h.sweep;sy()};
+$('s11').value=h.a;if(CX.Q.get('sweep')==='1')h.sweep=true;sy();
+});
+</script>
+</body></html>

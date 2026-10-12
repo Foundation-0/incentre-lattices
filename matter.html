@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MATTER // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+</head><body>
+<main>
+<div class="kick">03 // MATTER</div>
+<h1>Matter</h1>
+<p class="lede">A crystal is a repeating arrangement of atoms, and the smallest block that repeats is often a cube. The cube cut into six pyramids fits that block naturally: its six dots are the six neighbours of an atom at the centre, and &radic;2&nbsp;&minus;&nbsp;1 is the size limit chemists found for an atom to be surrounded by six. This page follows the number into six-fold coordination, perovskites and the classic cubic crystals, and then into a framework from materials chemistry that has the same topology as the dots&rsquo; contact graph.</p>
+
+<h2 id="cell"><span class="n">1</span>Atoms, ions and the unit cell</h2>
+<p>The smallest block that repeats under translation is the <b>unit cell</b>. For many crystals it is a cube, so a cube with special points in it is a natural description. In a salt-like crystal the atoms are really <b>ions</b>: atoms that have gained or lost electrons and so carry a charge. A small ion of one charge sits among big ions of the opposite charge, and the question of how many big ones can touch the small one is mostly a question of geometry.</p>
+
+<h2 id="ratio"><span class="n">2</span>The radius-ratio rule</h2>
+<p>Put six equal balls around a centre, one on each of the three axes in both directions, so that each ball touches its four neighbours. They leave a small hole in the middle. A slice through the centre shows it: four balls of radius 1 with centres at (&plusmn;&radic;2,&nbsp;0) and (0,&nbsp;&plusmn;&radic;2), each pair of neighbours 2 apart. The centre is &radic;2 from each ball centre, so the hole has radius &radic;2&nbsp;&minus;&nbsp;1. A small ion fits touching all six only if its radius is at least &radic;2&nbsp;&minus;&nbsp;1 = 0.4142 times the big one&rsquo;s.<span class="tg proven">PROVEN</span></p>
+<p>Chemists met this number in the 1920s and 30s. Pauling&rsquo;s radius-ratio rule says that if the small ion is at least 0.414 times the size of the big ones, it can be surrounded by six of them, which is <b>octahedral coordination</b>: six neighbours at the corners of an octahedron (an eight-faced shape, like two pyramids glued at the base). If the small ion is smaller than that, it rattles in the hole and the crystal usually picks four neighbours instead (tetrahedral coordination).<span class="tg known">KNOWN</span> Slide the small ball below.</p>
+
+<div class="wide" id="fig5">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv5"></canvas><div class="corner">SLICE THROUGH SIX NEIGHBOURS</div><div class="corner r">FIG 5 // RADIUS RATIO</div></div>
+ <section class="panel fp hud" id="p-fig5">
+  <header><span class="tabtitle">CTRL // RATIO</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">SMALL BALL / BIG BALL</div>
+    <div class="sl"><input id="s5" type="range" min="0.05" max="0.9" step="0.0005" value="0.30"><b id="s5v">0.300</b></div>
+    <div class="row"><button id="b5a">0.2247</button><button id="b5b">0.4142</button><button id="b5c">0.7321</button></div>
+    <div class="hint">Drag the slider or press a threshold.</div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv5"></div></div>
+  </div>
+ </section>
+ <figcaption>Below 0.4142 the small ball rattles and the big balls touch each other. Above it, the small ball holds the big ones apart. The ruler marks the three limits of the table below.</figcaption>
+</figure>
+</div>
+
+<h2 id="three"><span class="n">3</span>Three limits from three solids</h2>
+<p>The kaleidoscope page shows how one rule produces three limits. Cut a regular solid from its centre into pyramids, one per face, and put a dot equidistant from every face of each pyramid. Neighbouring dots are mirror images across the shared wall, so neighbouring balls touch, and the hole left among them is exactly the radius-ratio limit for that arrangement:</p>
+<div class="tscroll"><table class="tb"><thead><tr><th>solid cut from its centre</th><th>dots form</th><th class="n">hole / ball</th><th>chemistry&rsquo;s limit</th></tr></thead><tbody>
+<tr><td>tetrahedron (4 pieces)</td><td>tetrahedron</td><td class="n">0.2247</td><td>0.225: four neighbours (zinc blende)</td></tr>
+<tr class="hi"><td>cube (6 pieces)</td><td>octahedron</td><td class="n">0.4142</td><td>0.414: six neighbours (rock salt)</td></tr>
+<tr><td>octahedron (8 pieces)</td><td>cube</td><td class="n">0.7321</td><td>0.732: eight neighbours (caesium chloride)</td></tr></tbody></table></div>
+<p>The thresholds are defined as the hole left when the surrounding balls touch, and the dot rule produces that touching arrangement every time, so the thresholds are facts about symmetry. Chemistry decides which arrangement real ions prefer; the geometry decides where the cut-offs fall. This explains the numbers. It does not make the rule predict better: real ions are not hard balls, and many crystals break the rule.<span class="tg known">KNOWN</span> (the rule and its thresholds); <span class="tg proven">PROVEN</span> (that the numbers are &radic;6/2&nbsp;&minus;&nbsp;1, &radic;2&nbsp;&minus;&nbsp;1, &radic;3&nbsp;&minus;&nbsp;1, recomputed for this page)</p>
+
+<h2 id="octa"><span class="n">4</span>Octahedral coordination</h2>
+<p>One centre, six neighbours straight along the axes: that is exactly the six dots of the cube, and it appears all over chemistry. The gas SF<sub>6</sub> has a sulfur atom with six fluorines. Many metal complexes are a metal ion with six attached groups. The TiO<sub>6</sub> unit in oxide crystals is a titanium atom with six oxygens.</p>
+
+<h2 id="perov"><span class="n">5</span>Perovskite, and the classic cubic crystals</h2>
+<p>Put a titanium atom (B) at the cube&rsquo;s centre, an oxygen atom (O) at the middle of each of the 6 faces, and a calcium or strontium atom (A) at each of the 8 corners. An atom on a face is shared by 2 cubes, so each cube owns half of each: 6&nbsp;&divide;&nbsp;2&nbsp;=&nbsp;3 oxygens. A corner is shared by 8 cubes, so 8&nbsp;&divide;&nbsp;8&nbsp;=&nbsp;1 A atom. Count them up: one A, one B and three O, written ABO<sub>3</sub>. This is the <b>perovskite</b> structure: CaTiO<sub>3</sub> (the mineral itself), SrTiO<sub>3</sub>, and the materials in the newer perovskite solar cells. In the drawing, each pyramid is one Ti&ndash;O direction with four A atoms around its base.<span class="tg known">KNOWN</span></p>
+<p>The same cube describes the classic cubic crystals by changing which sites are filled. Corners plus the centre is <b>body-centred cubic</b> (iron at room temperature); if the centre atom differs from the corner atoms, it is caesium chloride. Corners plus the 6 face centres is <b>face-centred cubic</b> (copper, aluminium, gold). Notice that the X on each face is the original drawing again. Corners, centre, face centres and edge midpoints, with two kinds of atom alternating, is <b>rock salt</b> (NaCl, table salt). Pick a structure below. The counter weights each site by the share of it the cell owns: a corner 1/8, an edge 1/4, a face 1/2, the centre 1.<span class="tg known">KNOWN</span></p>
+
+<div class="wide" id="fig6">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv6" class="grab"></canvas><div class="corner" id="c6t">PEROVSKITE ABO3</div><div class="corner r">FIG 6 // UNIT CELL // DRAG TO TURN</div></div>
+ <section class="panel fp hud" id="p-fig6">
+  <header><span class="tabtitle">CTRL // UNIT CELL</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">STRUCTURE</div>
+    <div class="row"><button data-s="perov" class="on">PEROVSKITE</button><button data-s="bcc">BODY-CENTRED</button><button data-s="cscl">CsCl</button><button data-s="fcc">FACE-CENTRED</button><button data-s="salt">ROCK SALT</button><button data-s="cab6">CaB6</button></div>
+    <div class="lab">OVERLAY</div>
+    <div class="row"><button id="b6bond" class="on">BONDS</button><button id="b6dots">THE SIX DOTS</button><button id="b6pair">DOT PAIRS</button><button id="b6sp" class="on">SPIN</button></div>
+    <div class="hint">Atom sizes are for legibility, not to scale. Pick CaB6, then THE SIX DOTS: the white points land on the boron atoms.</div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv6"></div></div>
+  </div>
+ </section>
+ <figcaption>One cube of side 2. Amber, cyan, red and green balls are the different atom types. White points are the drawing&rsquo;s six dots. With DOT PAIRS on, each dot has its partner across the face, and the pair straddles the face centre.</figcaption>
+</figure>
+</div>
+
+<h2 id="pairs"><span class="n">6</span>Dot pairs: a resemblance, not a match</h2>
+<p>Stack cubes face to face. Across each shared face the two dots touch, exactly 2R apart. They form a pair centred on the face centre and pointing straight through the face. That looks like the split dumbbell in copper-type metals, a spot where two atoms share one site, pushed apart along a cube axis (written &lang;100&rang;). But here only the face-centre sites split, so this is only a resemblance, not the same thing.<span class="tg spec">RESEMBLANCE ONLY</span> Nothing here claims the dumbbell structure follows from the dots.</p>
+
+<h2 id="pb"><span class="n">7</span>A known framework with the dots&rsquo; topology</h2>
+<p>Treat the dots as a mechanism. Each cube&rsquo;s six dots form an octahedron whose edges all have length 2R. An octahedron with its triangulated faces is rigid: it cannot change shape without stretching an edge. Neighbouring cubes are joined by one straight bar through the shared face, from a dot to its partner. So the structure is a stack of rigid octahedra joined corner to corner by straight bridges, which is the topology of Prussian blue (octahedra joined by linear bridges). Goodwin (<i>Physical Review B</i> 74, 134302, 2006) found that frameworks of this kind have an unusually large number of rigid unit modes, motions where the octahedra tilt without being distorted, a number that grows in proportion to the volume (an O(V) density), which is the signature of flat bands.<span class="tg known">KNOWN</span></p>
+<p>In the counts of the mechanics report, the same structure has exactly 3 zero modes per cell in 3D at a generic wavevector, one for each independent rotation of an octahedron, and no state of self-stress.<span class="tg proven">PROVEN</span> (n&nbsp;&ge;&nbsp;3) <span class="tg verified">VERIFIED NUMERICALLY</span> (n&nbsp;=&nbsp;2 to 6) The next page uses those rotations to fold the whole lattice.</p>
+
+<h2 id="more"><span class="n">8</span>Further chemistry: what the rule does in real crystals</h2>
+<p>Everything above uses the rule on one cube. A separate survey (<span class="m">research/2-chemistry.md</span>, code in <span class="m">research/chemistry/</span>) tiled the rule across space, tried it on other solids, and compared it with crystal data. Labels are as before.</p>
+<section id="chem-research">
+<h3>8.1 Tiled, the drawing is calcium hexaboride</h3>
+<p>Put the cube&rsquo;s corners on a cubic lattice and apply the rule in every cube. The dots are the boron atoms of <b>CaB<sub>6</sub></b> and the corners are the calcium atoms. Take the cell edge as a and put calcium at the origin. Boron is at (x,&nbsp;&frac12;,&nbsp;&frac12;) in the cell. The distance from a boron atom to the centre of its octahedron is &frac12;&nbsp;&minus;&nbsp;x, so the six borons of one octahedron are &radic;2(&frac12;&nbsp;&minus;&nbsp;x)a from each other, while the two borons facing each other across a cell face are 2xa apart. These are equal exactly when</p>
+<span class="eq">x = (&radic;2 &minus; 1)/2 = 0.20711</span>
+<p>which is the position the rule gives (the dot is (2&nbsp;&minus;&nbsp;&radic;2)/2 = 0.2929a from the centre). &ldquo;Neighbouring balls touch&rdquo; here means &ldquo;all five boron&ndash;boron bonds are equal&rdquo;.<span class="tg proven">PROVEN</span> <span class="tg verified">VERIFIED NUMERICALLY</span> The cell edge is then a&nbsp;=&nbsp;(1&nbsp;+&nbsp;&radic;2) times the boron&ndash;boron distance d. In real MB<sub>6</sub> crystals the mean of a/d is 2.399, against 2.414 for the ideal. Each metal atom sits in a cage of 24 borons shaped like a truncated cube, at a distance 1.7788d from each (1.765d in real crystals), and the cage&rsquo;s hole-to-ball ratio is 2.5576, the radius ratio of the truncated cube.<span class="tg verified">VERIFIED NUMERICALLY</span> (45 crystal structures from the Crystallography Open Database)</p>
+<p><b>This is Pauling&rsquo;s own model.</b> Pauling and Weinbaum (<i>Zeitschrift f&uuml;r Kristallographie</i> 87, 181, 1934) put boron at 0.293(1) from the octahedron centre, which is x&nbsp;=&nbsp;0.207. In a 1955 letter Pauling wrote that the boron&ndash;boron distances between octahedra are identical, to within 0.01&nbsp;&Aring;, to those inside an octahedron (Oregon State University Pauling archive). The vertex net of the truncated cubic honeycomb is the RCSR net <i>cab</i>, named for the CaB<sub>6</sub> boron net.<span class="tg known">KNOWN</span> The link to the drawing is our framing, not a discovery. Try it in the viewer above: choose CaB<sub>6</sub> and turn on the six dots.</p>
+<p>What do real crystals do? Of 45 database entries, 14 of the 31 MB<sub>6</sub> entries carry x&nbsp;=&nbsp;0.207 exactly (Ba, Ca, Ce, Er, Gd, Nd, Pr, Pu, Sr, Th, Y, Yb). They date from 1934 to 1954 or are handbook re-entries, so they are the equal-bond assumption copied forward, not measurements. The 17 modern refinements (Ca, Ce, Eu, La, Sm, Th) give x&nbsp;=&nbsp;0.197 to 0.204, and the ratio of the bond between octahedra to the bond inside one averages <b>0.947</b>, with a range of 0.920 to 0.977. The bond between octahedra is about 5% shorter than the touching ideal.<span class="tg verified">VERIFIED NUMERICALLY</span> That fits the known bonding picture, in which each boron has one two-centre bond outward and shares multicentre bonds inside the cage (Longuet-Higgins and Roberts, 1954).<span class="tg known">KNOWN</span> The ideal is a geometric zero, and the deviation from it measures the asymmetry of the bonding.</p>
+<p>The perovskite reading is a framing. The calcium is at the A site and the empty octahedron centre is at the B site. The touching pair that straddles each face centre is the boron&ndash;boron bond between octahedra, whose midpoint lies exactly on the perovskite O site. No source was found that says this in words.<span class="tg spec">FRAMING, NOT A RESULT</span> A negative result: real perovskite oxygens move sideways (Glazer tilts), and the breathing distortions of RNiO<sub>3</sub> and BaBiO<sub>3</sub> move oxygen along the B&ndash;O&ndash;B axis as a whole without splitting it into a touching pair. No oxide in this check realised the split-oxygen picture. Hexaborides do.</p>
+
+<h3>8.2 The same rule on the fcc cell gives UB<sub>12</sub></h3>
+<p>Replace the cube by the Voronoi cell of the face-centred cubic lattice, the rhombic dodecahedron: the region closer to one lattice point than to any other. Every face is equivalent and every wall is a mirror, and it has 12 rhombic pyramids. The dots form a cuboctahedron of 12 borons in each cell, and each dot touches 4&nbsp;+&nbsp;1&nbsp;=&nbsp;5 others, as in CaB<sub>6</sub>. Boron is at (&frac12;,&nbsp;x,&nbsp;x) with <b>x&nbsp;=&nbsp;1/6</b> and a&nbsp;=&nbsp;3&radic;2&thinsp;d. This is the dodecaboride UB<sub>12</sub> structure (space group Fm-3m, 52 atoms per cell). The metal sits in a cage of 24 borons shaped like a truncated octahedron, at &radic;(5/2)d&nbsp;=&nbsp;1.5811d, with hole-to-ball ratio 2.1623, the truncated octahedron&rsquo;s radius ratio. Real crystals (Sc, Y, Yb, Zr) give 1.567, and a bond ratio of 0.949 on average (0.931 to 0.967), the same 5% shortening as in the hexaborides.<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+<p>The body-centred cell (a truncated octahedron) fails: it has two kinds of pyramid, with radii 0.500 and 0.634, and no contacts across its square and hexagon walls.<span class="tg verified">VERIFIED NUMERICALLY</span> The UB<sub>12</sub> structure itself is known (AFLOW prototype A12B_cF52_225_h_b; a dodecaboride review, arXiv 2010.16239).<span class="tg known">KNOWN</span> That the equal-bond x is 1/6, and that both boride families come from one rule (&ldquo;insphere of each pyramid of a Voronoi cell&rdquo;), was not found in the literature after searches for augmented nets with borides and for Voronoi or insphere constructions. RCSR could not be reached, so its unit-edge embeddings were not checked and may contain x&nbsp;=&nbsp;1/6 implicitly.<span class="tg noref">NO REFERENCE FOUND</span> (web searches only)</p>
+<p>That MB<sub>12</sub> forms with smaller metals (Zr, Lu, Y, U) and MB<sub>6</sub> with larger ones (Ca, Sr, Ba, La, Eu) is a known trend, and the cage sizes point the same way (M&ndash;B about 3.07&nbsp;&Aring; for MB<sub>6</sub> and 2.79&nbsp;&Aring; for MB<sub>12</sub>). As a predictor this is qualitative only: no classifier was built.<span class="tg conj">CONJECTURE</span></p>
+
+<h3>8.3 Hard-sphere packing peaks at the dots&rsquo; geometry</h3>
+<p>Treat calcium as a large sphere and boron as small ones, and maximise the packing fraction over the position x and the cell size for each size ratio &gamma; (small radius over large radius). The CaB<sub>6</sub> arrangement peaks at &gamma;&nbsp;=&nbsp;0.4142, x&nbsp;=&nbsp;0.2071. There the large spheres form a touching simple cubic array and every small sphere touches five others, so every constraint binds at once. The fraction is</p>
+<span class="eq">&phi; = (4&pi;/3)[1/8 + 6((&radic;2&minus;1)/2)&sup3;] = (&pi;/6)(30&radic;2 &minus; 41) = 0.7469</span>
+<p>(recomputed for this page). That is above fcc (0.7405) and below rock salt at the same &gamma; (0.793), so hard spheres alone do not favour it.<span class="tg verified">VERIFIED NUMERICALLY</span> (closed form checked) This fits the description of CaB<sub>6</sub>-type nanocrystal superlattices as low-density phases held by kinetics or ligand shells (Shevchenko and others, <i>Nature</i> 439, 55, 2006).<span class="tg known">KNOWN</span> The suggestion that observed superlattices cluster near an effective &gamma; of 0.41 is a guess.<span class="tg conj">CONJECTURE</span> The UB<sub>12</sub> optimum is not at its dot point (&gamma;&nbsp;=&nbsp;0.4625 gives &phi;&nbsp;=&nbsp;0.606), so the coincidence is special to the cube.<span class="tg verified">VERIFIED NUMERICALLY</span> Packing curves for these superlattices exist in the literature and the peak is probably plotted there. No explicit statement of the closed form, or of its identity with the octahedral limit &radic;2&nbsp;&minus;&nbsp;1, was found.<span class="tg noref">NO REFERENCE FOUND</span></p>
+
+<h3>8.4 Which radius-ratio limits the rule can reach</h3>
+<p><b>Claim.</b> Cut a solid P from its centre into pyramids, one per facet, and put each dot at the point equidistant from the walls of its pyramid, with radius R equal to that distance. Suppose P is facet-transitive (all facets alike) and every wall (the plane through the centre and a ridge) is a mirror of P. Then (i) all dots are equivalent, at one distance t; (ii) a ball and its mirror image touch at the wall, so every pair of dots on adjacent pyramids is 2R apart, and the dots form an equal-edged polytope Q whose vertices are all alike, dual to P; (iii) the hole-to-ball ratio is (t&nbsp;&minus;&nbsp;R)/R&nbsp;=&nbsp;t/(e/2)&nbsp;&minus;&nbsp;1 with e the edge of Q, which is the classical radius-ratio limit of Q; (iv) equivalently it is 1/sin&nbsp;&theta;&nbsp;&minus;&nbsp;1, where 2&theta; is the angle between adjacent facet normals. The base facet never enters the ratio. It sets the scale, and it gives the contacts across faces when cubes are tiled. In the language of the mirrors page, the dot is a Wythoff point, and the walls being mirrors is what makes the balls touch.<span class="tg proven">PROVEN</span></p>
+<p>Checked by linear-programming insphere and brute-force contact counts:<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+<div class="tscroll"><table class="tb"><thead><tr><th>P, cut into pyramids</th><th class="n">hole / ball</th><th>coordination shape, classical limit</th></tr></thead><tbody>
+<tr><td>triangle (2D)</td><td class="n">0.1547</td><td>triangle, 3 neighbours: 0.155</td></tr>
+<tr><td>square (2D)</td><td class="n">0.4142</td><td>square, 4: 0.414</td></tr>
+<tr><td>tetrahedron</td><td class="n">0.2247</td><td>tetrahedron, 4</td></tr>
+<tr class="hi"><td>cube</td><td class="n">0.4142</td><td>octahedron, 6</td></tr>
+<tr><td>octahedron</td><td class="n">0.7321</td><td>cube, 8</td></tr>
+<tr><td>triangular bipyramid, any height</td><td class="n">0.5275</td><td>trigonal prism, 6 (self-tuning)</td></tr>
+<tr><td>dodecahedron</td><td class="n">0.9021</td><td>icosahedron, 12</td></tr>
+<tr><td>rhombic dodecahedron</td><td class="n">1.0000</td><td>cuboctahedron, 12 (the 3D kissing arrangement)</td></tr>
+<tr><td>tesseract (4D)</td><td class="n">0.4142</td><td>16-cell</td></tr>
+<tr><td>24-cell (4D)</td><td class="n">1.0000</td><td>24-cell (the 4D kissing arrangement)</td></tr></tbody></table></div>
+<p>The survey also lists the n-gonal bipyramids, the icosahedron, the Catalan solids and the 4D simplex and cross-polytope; see the report for those rows. A bipyramid of any height gives the uniform prism, because mirror walls force all edges to 2R: the rule finds the equal-edge shape without being told. It fails, with unequal radii, on solids that are not facet-transitive, such as the cuboctahedron, the truncated octahedron and prisms.</p>
+<p>Where it cannot reach: the square antiprism (8 neighbours, 0.645) is snub-type, its walls are not mirrors, and touching occurs only for one exact shape; half the contacts open otherwise.<span class="tg proven">PROVEN</span> The anion shapes for 7 neighbours, the tricapped trigonal prism (9, 0.732), the dodecahedral 8-neighbour shape (0.668) and the capped octahedron (0.592) are not vertex-transitive, and the rule&rsquo;s dots always form one orbit, so it cannot produce them.<span class="tg proven">PROVEN</span> The radius ratios themselves are known (Pauling 1929).<span class="tg known">KNOWN</span> The statement that the limits reachable this way are exactly those of the mirror-generated equal-edge polytopes is one for which no prior reference was found after searching radius ratio with Wythoff, kaleidoscope and uniform polyhedra. It is elementary and may well appear in a textbook.<span class="tg noref">NO REFERENCE FOUND</span> (web searches only)</p>
+
+<h3>8.5 Perovskites: a negative result</h3>
+<p>The survey used the 576 ABX<sub>3</sub> compounds (313 perovskites) of Bartel and others (<i>Science Advances</i> 5, eaav0693, 2019). The octahedral cut &mu;&nbsp;=&nbsp;r<sub>B</sub>/r<sub>X</sub>&nbsp;&ge;&nbsp;&radic;2&nbsp;&minus;&nbsp;1 alone classifies 0.752 of them correctly. The best fitted single cut is 0.426 (0.769), within 3% of &radic;2&nbsp;&minus;&nbsp;1. The Goldschmidt tolerance window alone gives 0.736, and the two together 0.835. Bartel&rsquo;s own factor &tau; gives 0.915.<span class="tg verified">VERIFIED NUMERICALLY</span> Oxides tolerate &mu; down to 0.29, whereas no halide perovskite is found below 0.43, matching an empirical halide bound near 0.44 (Li and others, <i>Acta Crystallographica B</i> 64, 702, 2008).<span class="tg known">KNOWN</span> In the ideal cubic perovskite (tolerance factor 1), &mu;&nbsp;=&nbsp;&radic;2&nbsp;&minus;&nbsp;1 holds exactly when r<sub>A</sub>&nbsp;=&nbsp;r<sub>X</sub>: the B-site octahedral limit and the A-site cuboctahedral limit (ratio 1) coincide only there. That is the geometric content of Goldschmidt&rsquo;s &radic;2 and a restatement, not a new predictor.<span class="tg proven">PROVEN</span> The dot geometry derives the 0.414 bound but does not beat &tau;, and nothing more is claimed.</p>
+<p>More broadly, George and others (<i>Angewandte Chemie</i> 59, 7569, 2020) found that Pauling&rsquo;s first rule holds for about 66% of some 5000 oxide environments, and only 13% satisfy rules 2 to 5 together.<span class="tg known">KNOWN</span> The kaleidoscope view explains one structural reason for failure: limits exist only for equal-edged, vertex-transitive shapes, while real environments are distorted. It does not explain the softness and size failures, which dominate. That the unreachable shapes are over-represented among the violations was not tested.<span class="tg conj">CONJECTURE</span></p>
+
+<h3>8.6 What was not done, and the open question</h3>
+<p>RCSR could not be reached, so net symbols come from OEIS A299266 and notes from the Yaghi group. No density functional calculation was run: the 5% shortening comes from literature data only. Glazer tilts as rigid unit modes were not explored.</p>
+<p>The open question: is &ldquo;Wythoff points in Voronoi cells give equal-bond cluster frameworks&rdquo; a generating rule for boron-rich and other cluster solids? The cube gives CaB<sub>6</sub> and the rhombic dodecahedron gives UB<sub>12</sub>, both about 5% off the ideal in the same direction. Next steps would be to list the augmented nets from every face-transitive, mirror-walled cell as candidate frameworks; to explain the dodecahedron case, where the icosahedral B<sub>12</sub> of &alpha;-boron would be the frustrated version that cannot tile; and to test with density functional theory whether the measured bond ratio (0.92 to 0.98) follows the metal&rsquo;s electron count.</p>
+</section>
+
+<div class="note">Apart from the items marked as new or unsearched in section 8, everything above is known chemistry or arithmetic. The dots do not predict which crystal forms. What they give is a short route from one drawing to the numbers chemists already use, and to the hexaboride structure Pauling described in 1934.</div>
+</main>
+
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,TAU=CX.TAU,S2=Math.SQRT2,R=S2-1,K=2-S2;
+const $=id=>document.getElementById(id);
+/* ---------- fig 5: radius ratio ---------- */
+const cv5=$('cv5'),st5={r:+(CX.Q.get('ratio')||0.30)};
+$('s5').value=st5.r;
+const fig5=CX.canvas(cv5,function(ctx,W,H){
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  const r=st5.r,cx=W/2,cy=H*0.42,s=Math.min(W*.2,H*.15); // big radius = s px
+  const fit=r<=R;
+  const dist=fit?S2:(1+r);           // big-ball centre distance from centre (in big radii)
+  const dirs=[[1,0],[-1,0],[0,1],[0,-1]];
+  // hole circle (dashed) when fits
+  ctx.setLineDash([4,4]);ctx.strokeStyle='rgba(255,178,58,.9)';ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(cx,cy,R*s,0,TAU);ctx.stroke();ctx.setLineDash([]);
+  dirs.forEach(d=>{const x=cx+d[0]*dist*s,y=cy+d[1]*dist*s;
+    const g=ctx.createRadialGradient(x-s*.3,y-s*.3,s*.1,x,y,s);g.addColorStop(0,'rgba(53,230,255,.30)');g.addColorStop(1,'rgba(53,230,255,.06)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,s,0,TAU);ctx.fill();ctx.strokeStyle=C.c;ctx.lineWidth=1.4;ctx.shadowColor=C.c;ctx.shadowBlur=5;ctx.stroke();ctx.shadowBlur=0});
+  // touching marks
+  if(fit){[[1,1],[1,-1],[-1,1],[-1,-1]].forEach(d=>CX.dot(ctx,cx+d[0]*s*S2/2,cy+d[1]*s*S2/2,3,C.g,8))}
+  else dirs.forEach(d=>CX.dot(ctx,cx+d[0]*r*s+0*d[1],cy+d[1]*r*s,3,C.g,8));
+  // small ball
+  const col=fit?'rgba(255,74,61,X)':'rgba(55,255,154,X)';
+  CX.shade(ctx,cx,cy,Math.max(2,r*s),col,.85);
+  // ruler
+  const rx0=W*.08,rx1=W*.92,ry=H-40,sx=v=>rx0+(rx1-rx0)*(v-0)/(0.9-0);
+  ctx.strokeStyle='rgba(55,255,154,.5)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(rx0,ry);ctx.lineTo(rx1,ry);ctx.stroke();
+  [[0.2247,'4'],[0.4142,'6'],[0.7321,'8']].forEach(t=>{ctx.strokeStyle=C.a;ctx.beginPath();ctx.moveTo(sx(t[0]),ry-7);ctx.lineTo(sx(t[0]),ry+7);ctx.stroke();CX.text(ctx,t[0].toFixed(4),sx(t[0]),ry+22,C.a,10.5,'center')});
+  CX.text(ctx,'tetra',(sx(0.05)+sx(0.2247))/2,ry-12,C.dim,10.5,'center');
+  CX.text(ctx,'6 fit',sx(0.57),ry-12,C.dim,10.5,'center');
+  CX.dot(ctx,sx(r),ry,5,'#fff',10);
+  upd5();
+},{aspect:w=>w<600?0.95:0.56});
+function upd5(){
+  const r=st5.r,fit=r<=R;
+  $('s5v').textContent=r.toFixed(3);
+  CX.kv($('kv5'),[['small / big radius',r.toFixed(4)],['limit for six',R.toFixed(4)],['six neighbours',fit?'small ball rattles: yes, fits loosely':'small ball is touching all six',fit?'warn':'ok'],
+    ['big balls touch each other',fit?'yes (2 apart)':'no, held apart '+(S2*(1+r)).toFixed(3)+' vs 2'],['gap, hole minus ball',fit?(R-r).toFixed(4):'0 (pushes out)']]);
+}
+$('s5').oninput=e=>{st5.r=+e.target.value;fig5.redraw()};
+[['b5a',0.2247],['b5b',R],['b5c',0.7321]].forEach(b=>$(b[0]).onclick=()=>{st5.r=b[1];$('s5').value=b[1]});
+
+/* ---------- fig 6: unit cell ---------- */
+const cv6=$('cv6'),cam=CX.cam3();
+if(CX.Q.has('yaw'))cam.yaw=+CX.Q.get('yaw');
+const CORN=[],FACE=[],EDGE=[];
+for(const a of [-1,1])for(const b of [-1,1])for(const c of [-1,1])CORN.push([a,b,c]);
+for(let ax=0;ax<3;ax++)for(const sg of [-1,1]){const v=[0,0,0];v[ax]=sg;FACE.push(v)}
+for(let ax=0;ax<3;ax++)for(const a of [-1,1])for(const b of [-1,1]){const v=[0,0,0],o=[0,1,2].filter(i=>i!==ax);v[o[0]]=a;v[o[1]]=b;EDGE.push(v)}
+const SIX=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]].map(d=>d.map(v=>v*K));
+const CLS={c:CORN,f:FACE,e:EDGE,'0':[[0,0,0]],a:SIX},WT={c:1/8,e:1/4,f:1/2,'0':1,a:1};
+const STR={
+ perov:{name:'PEROVSKITE ABO3',t:{A:{col:'rgba(255,178,58,X)',r:.27,at:'c',lab:'A (corner)'},B:{col:'rgba(53,230,255,X)',r:.22,at:'0',lab:'B (centre)'},O:{col:'rgba(255,74,61,X)',r:.2,at:'f',lab:'O (face)'}},bonds:[['B','O',1]],note:'Ti-O bonds along the axes: the six dots\' directions'},
+ bcc:{name:'BODY-CENTRED CUBIC',t:{X:{col:'rgba(80,255,150,X)',r:.26,at:'c0',lab:'atom'}},bonds:[["X","X",Math.sqrt(3)]],note:'nearest neighbours: centre to corner'},
+ cscl:{name:'CAESIUM CHLORIDE',t:{Cs:{col:'rgba(80,255,150,X)',r:.27,at:'c',lab:'Cs (corner)'},Cl:{col:'rgba(53,230,255,X)',r:.24,at:'0',lab:'Cl (centre)'}},bonds:[['Cs','Cl',Math.sqrt(3)]],note:'centre to corner: eight neighbours'},
+ fcc:{name:'FACE-CENTRED CUBIC',t:{X:{col:'rgba(80,255,150,X)',r:.24,at:'cf',lab:'atom'}},bonds:[['X','X',S2]],note:'nearest neighbours across each face'},
+ cab6:{name:'CALCIUM HEXABORIDE CaB6',t:{Ca:{col:'rgba(255,178,58,X)',r:.3,at:'c',lab:'Ca (corner)'},B:{col:'rgba(53,230,255,X)',r:.17,at:'a',lab:'B (the six dots)'}},bonds:[['B','B',2*R]],note:'the boron atoms sit exactly on the drawing\'s six dots'},
+ salt:{name:'ROCK SALT NaCl',t:{Na:{col:'rgba(53,230,255,X)',r:.2,at:'cf',lab:'Na (corner, face)'},Cl:{col:'rgba(255,178,58,X)',r:.27,at:'e0',lab:'Cl (edge, centre)'}},bonds:[['Na','Cl',1]],note:'each ion has six neighbours of the other kind'}
+};
+STR.bcc.bonds=[['X','X',Math.sqrt(3)]];
+const st6={s:CX.Q.get('s')||'perov',bond:true,dots:CX.Q.get('dots')==='1',pair:CX.Q.get('pair')==='1',sp:CX.Q.get('spin')!=='0'};
+function atoms(sk){const S=STR[sk],out=[];for(const k in S.t){for(const cl of S.t[k].at)for(const p of CLS[cl])out.push({t:k,p,cl,w:WT[cl]})}return out}
+const fig6=CX.canvas(cv6,function(ctx,W,H,t,dt){
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  if(st6.sp)cam.yaw+=dt*.3;
+  const S=STR[st6.s],A=atoms(st6.s),s=H*.2,cx=W/2,cy=H/2;
+  const P=(p)=>cam.proj(p[0],p[1],p[2],cx,cy,s);
+  const L=(a,b,col,w,al)=>{const p=P(a),q=P(b);ctx.globalAlpha=al;CX.glowLine(ctx,p[0],p[1],q[0],q[1],col,w,3);ctx.globalAlpha=1};
+  for(let i=0;i<8;i++)for(let b=0;b<3;b++){const j=i^(1<<b);if(j>i)L(CORN_I(i),CORN_I(j),C.g,1,.5)}
+  function CORN_I(i){return [i&1?1:-1,i&2?1:-1,i&4?1:-1]}
+  if(st6.bond)for(const [ta,tb,d] of S.bonds)for(let i=0;i<A.length;i++)for(let j=i+1;j<A.length;j++){
+    if(!((A[i].t===ta&&A[j].t===tb)||(A[i].t===tb&&A[j].t===ta)))continue;
+    const dd=Math.hypot(A[i].p[0]-A[j].p[0],A[i].p[1]-A[j].p[1],A[i].p[2]-A[j].p[2]);
+    if(Math.abs(dd-d)<1e-6)L(A[i].p,A[j].p,'rgba(207,238,224,1)',1.1,.5)}
+  const items=[];
+  A.forEach(a=>{const q=P(a.p);items.push({q,a})});
+  const DIRS=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+  if(st6.dots||st6.pair){DIRS.forEach(d=>{
+    if(st6.dots)items.push({q:P([d[0]*K,d[1]*K,d[2]*K]),dot:1});
+    if(st6.pair){const o=[d[0]*(1+R),d[1]*(1+R),d[2]*(1+R)],i=[d[0]*K,d[1]*K,d[2]*K];
+      L(i,o,C.a,2,.9);items.push({q:P(o),dot:2});
+      if(!st6.dots)items.push({q:P(i),dot:2})}})}
+  items.sort((a,b)=>a.q[2]-b.q[2]);
+  items.forEach(o=>{const [x,y,z,w]=o.q;
+    if(o.dot){CX.dot(ctx,x,y,o.dot===1?3.2:3.2,o.dot===1?'#ffffff':C.a,8);return}
+    CX.shade(ctx,x,y,S.t[o.a.t].r*s*w*cam.zoom,S.t[o.a.t].col,.7)});
+  // legend + counts
+  let ly=H-12-14*Object.keys(S.t).length;
+  Object.keys(S.t).forEach(k=>{const col=S.t[k].col.replace('X','1');CX.dot(ctx,16,ly-3,4,col,5);CX.text(ctx,S.t[k].lab,28,ly,C.ink,11);ly+=14});
+},{aspect:w=>w<600?0.95:0.6});
+function sync6(){
+  const S=STR[st6.s],A=atoms(st6.s),cnt={};
+  A.forEach(a=>cnt[a.t]=(cnt[a.t]||0)+a.w);
+  $('c6t').textContent=S.name;
+  const rows=[];
+  for(const k in cnt){const parts=[];['c','e','f','0'].forEach(c=>{const n=A.filter(a=>a.t===k&&a.cl===c).length;if(n)parts.push(n+'×'+({c:'1/8',e:'1/4',f:'1/2','0':'1'})[c])});
+    rows.push(['owned '+k,(Math.round(cnt[k]*1000)/1000)+'  ('+parts.join(' + ')+')'])}
+  rows.push(['atoms in the cell',Object.values(cnt).reduce((a,b)=>a+b,0)]);
+  rows.push(['note',S.note]);
+  CX.kv($('kv6'),rows);
+  document.querySelectorAll('#p-fig6 button[data-s]').forEach(b=>b.classList.toggle('on',b.dataset.s===st6.s));
+  $('b6bond').classList.toggle('on',st6.bond);$('b6dots').classList.toggle('on',st6.dots);$('b6pair').classList.toggle('on',st6.pair);$('b6sp').classList.toggle('on',st6.sp);
+}
+document.querySelectorAll('#p-fig6 button[data-s]').forEach(b=>b.onclick=()=>{st6.s=b.dataset.s;sync6()});
+$('b6bond').onclick=()=>{st6.bond=!st6.bond;sync6()};$('b6dots').onclick=()=>{st6.dots=!st6.dots;sync6()};
+$('b6pair').onclick=()=>{st6.pair=!st6.pair;sync6()};$('b6sp').onclick=()=>{st6.sp=!st6.sp;sync6()};
+CX.drag3(cv6,cam);cv6.addEventListener('pointerdown',()=>{st6.sp=false;sync6()});
+sync6();
+});
+</script>
+</body></html>

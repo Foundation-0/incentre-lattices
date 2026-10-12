@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE DRAWING // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+</head><body>
+<main>
+<div class="kick">01 // ORIGIN</div>
+<h1>The drawing</h1>
+<p class="lede">Draw a square and its two diagonals. They cut it into four triangles. In each triangle, mark the one point that is the same distance from all three of its sides. That point sits at a height of exactly &radic;2&nbsp;&minus;&nbsp;1 above the base of a square of side 2, and the same argument works for a cube and for a hypercube in any number of dimensions. This page builds the drawing one line at a time and then explains why every step must come out the way it does.</p>
+
+<h2 id="build"><span class="n">1</span>Building it, step by step</h2>
+<p>The figure below draws the whole construction. Use the arrows, the slider or Play. Each step is drawn in motion, and you can run it backwards. When you reach the point, turn on the probe and drag your own point around the triangle: you will see why the construction picks the place it does.</p>
+
+<div class="wide" id="fig1">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv1"></canvas><div class="corner" id="c1t">STEP 0 / 6</div><div class="corner r">FIG 1 // CONSTRUCTION</div></div>
+ <section class="panel fp hud" id="p-fig1">
+  <header><span class="tabtitle">CTRL // CONSTRUCTION</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">STEP</div>
+    <div class="row"><button id="b1p">&larr;</button><button id="b1n">&rarr;</button><button id="b1play">PLAY</button><button id="b1probe">PROBE</button></div>
+    <div class="sl"><input id="s1" type="range" min="0" max="6" step="1" value="0"><b id="s1v">0</b></div>
+    <div class="hint">Probe: drag a point inside the bottom triangle.</div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv1"></div><div id="note1" style="margin-top:5px;color:#cfeee0;font-size:12px;line-height:1.45;font-family:ui-sans-serif,-apple-system,Segoe UI,Helvetica,Arial,sans-serif"></div></div>
+  </div>
+ </section>
+ <figcaption>Red lines run from a dot to the two square corners of its triangle. The amber line runs to the centre of the square. Together they are the three bisectors of that triangle.</figcaption>
+</figure>
+</div>
+
+<h2 id="why"><span class="n">2</span>Why a point equidistant from three sides exists</h2>
+<p>The distance from a point to a line is the length of the shortest segment between them. That segment is perpendicular to the line. Take two lines that meet at a corner, and ask for all the points that are the same distance from both. Drop the two perpendiculars from such a point. You get two right triangles that share a hypotenuse (the segment from the corner to the point) and have one equal leg each. Two right triangles with a shared hypotenuse and one equal leg are congruent, so the angles at the corner are equal. The point therefore lies on the <b>angle bisector</b>, the line that splits the corner in two equal angles. Every point on the bisector works, and no other point does.</p>
+<p>A triangle has three corners and so three bisectors. Take two of them. They cross at one point, because two lines that are not parallel cross once. That point is equally far from sides 1 and 2 (it is on the bisector of their corner) and equally far from sides 2 and 3 (it is on the other bisector). So it is equally far from all three sides, which means it also sits on the third bisector. The three bisectors meet at one point. This is the <b>incentre</b>. It is classical geometry.<span class="tg known">KNOWN</span></p>
+<p>The circle centred at the incentre that touches all three sides is the <b>incircle</b>. Its radius is the common distance. It is also the biggest circle that fits inside the triangle: move the centre anywhere else and one of the three distances gets smaller, so the circle must shrink before it stops crossing a side. The probe in Figure 1 shows exactly this. It draws the largest circle that fits around your point, and its radius is the smallest of the three distances.</p>
+
+<h2 id="skeleton"><span class="n">3</span>The three lines are the triangle&rsquo;s skeleton</h2>
+<p>Imagine the triangle is a dry field and you set fire to all three sides at once. The fire burns inward at the same speed everywhere. The front is a smaller copy of the triangle, and it shrinks. Where fronts coming from different sides meet, they stop. Those meeting points trace the <b>medial axis</b>, also called the skeleton of the shape: the set of points that have more than one nearest point on the boundary. For a triangle, the fire meets along the three angle bisectors, and the last spot to burn is the incentre, the centre of the largest circle. Step 5 of Figure 1 plays this out.</p>
+<p>So the three lines you draw from the dot to the three corners of its triangle are not an arbitrary decoration. They are the medial axis of that triangle. This is a standard fact about triangles, and it was also checked in code for this project.<span class="tg known">KNOWN</span> The perception page asks whether people already see this skeleton when they look at a triangle.</p>
+
+<h2 id="tan"><span class="n">4</span>Where the dot sits: tan 22.5&deg; = &radic;2 &minus; 1</h2>
+<p>Put the square on the coordinates (0,0) to (2,2). Take the bottom triangle, with corners A&nbsp;=&nbsp;(0,0), B&nbsp;=&nbsp;(2,0) and C&nbsp;=&nbsp;(1,1), the centre of the square. It has a right angle at C and two angles of 45&deg; at A and B. It is symmetric about the vertical line x&nbsp;=&nbsp;1, so the incentre is on that line. It is also on the bisector of the corner at A. That corner is 45&deg;, so the bisector leaves A at 22.5&deg; above the base.</p>
+<p>Follow that bisector to x&nbsp;=&nbsp;1. It has risen by a height of one unit times the tangent of 22.5&deg;. The half-angle formula for the tangent is tan(&theta;/2)&nbsp;=&nbsp;(1&nbsp;&minus;&nbsp;cos&nbsp;&theta;)&nbsp;/&nbsp;sin&nbsp;&theta;. With &theta;&nbsp;=&nbsp;45&deg;, both cos and sin are &radic;2/2:</p>
+<span class="eq">tan 22.5&deg; = (1 &minus; &radic;2/2) / (&radic;2/2) = &radic;2 &minus; 1 = 0.41421&hellip;</span>
+<p>Two independent checks agree. First, the inradius of any triangle is its area divided by its semiperimeter (half the sum of the sides). Here the area is 1 and the sides are 2, &radic;2, &radic;2, so the semiperimeter is 1&nbsp;+&nbsp;&radic;2 and the inradius is 1/(1&nbsp;+&nbsp;&radic;2)&nbsp;=&nbsp;&radic;2&nbsp;&minus;&nbsp;1. Second, the dot is at (1,&nbsp;R) with R&nbsp;=&nbsp;&radic;2&nbsp;&minus;&nbsp;1, and its distance to the diagonal y&nbsp;=&nbsp;x is (1&nbsp;&minus;&nbsp;R)/&radic;2&nbsp;=&nbsp;(2&nbsp;&minus;&nbsp;&radic;2)/&radic;2&nbsp;=&nbsp;&radic;2&nbsp;&minus;&nbsp;1, equal to R again.<span class="tg proven">PROVEN</span> (algebra)</p>
+<p>The number 1/(&radic;2&nbsp;&minus;&nbsp;1)&nbsp;=&nbsp;1&nbsp;+&nbsp;&radic;2&nbsp;=&nbsp;2.4142&hellip; is called the silver ratio. It governs the regular octagon, which is the next thing the drawing builds.</p>
+
+<h2 id="octagon"><span class="n">5</span>What the dots make</h2>
+<p>Repeat the drawing in a grid. At a point where four squares meet, eight dots surround it, two from each square. Measure from that corner: a dot at (1,&nbsp;R) is &radic;(1&nbsp;+&nbsp;R&sup2;)&nbsp;=&nbsp;1.0824 away, and the other seven are the same distance by symmetry. Neighbouring dots are 2R&nbsp;=&nbsp;0.8284 apart. Two dots in the same square are (1,&nbsp;R) and (R,&nbsp;1), a distance &radic;2(1&nbsp;&minus;&nbsp;R)&nbsp;=&nbsp;&radic;2(2&nbsp;&minus;&nbsp;&radic;2)&nbsp;=&nbsp;2&radic;2&nbsp;&minus;&nbsp;2&nbsp;=&nbsp;2R. Two dots on either side of a shared wall are (1,&nbsp;R) and (1,&nbsp;&minus;R), a distance 2R again. Eight points on a circle with all neighbouring chords equal form a regular octagon.</p>
+<p>The four dots inside each square form a smaller square with the same side 2R. Squares and regular octagons, all edges equal, with one square and two octagons at every corner: this is the <b>truncated square tiling</b>, called 4.8.8 in the catalogue of regular-faced tilings.<span class="tg verified">VERIFIED NUMERICALLY</span> (every interior dot has exactly three neighbours at distance 2R, checked in <span class="m">research/culture/gen.py</span>)</p>
+
+<h2 id="lift"><span class="n">6</span>Lifting it to three dimensions</h2>
+<p>Take a cube of side 2 centred at the origin. Cut it from the centre into six square pyramids, one on each face. The square drawing was the cross-section of this, and the pyramid&rsquo;s role is the triangle&rsquo;s. Place a ball inside the pyramid on the +z face, with its centre on the z axis at height c above the cube&rsquo;s centre. Two distances matter.</p>
+<ul class="cl">
+<li>The base of the pyramid is the cube&rsquo;s top face, z&nbsp;=&nbsp;1. The distance from the centre of the ball to it is 1&nbsp;&minus;&nbsp;c.</li>
+<li>A slanted face of the pyramid lies in a plane such as x&nbsp;=&nbsp;z. The distance from the point (0,&nbsp;0,&nbsp;c) to that plane is c/&radic;2.</li>
+</ul>
+<p>The ball touches all five faces when these are equal: 1&nbsp;&minus;&nbsp;c&nbsp;=&nbsp;c/&radic;2. Solving gives c&nbsp;=&nbsp;&radic;2/(&radic;2&nbsp;+&nbsp;1)&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2&nbsp;=&nbsp;0.5858, and the radius is 1&nbsp;&minus;&nbsp;c&nbsp;=&nbsp;&radic;2&nbsp;&minus;&nbsp;1. It is the same number as in the plane.<span class="tg proven">PROVEN</span> (algebra)</p>
+
+<div class="wide" id="fig2">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv2" class="grab"></canvas><div class="corner">CUBE // 6 PYRAMIDS // DRAG TO TURN</div><div class="corner r">FIG 2 // THE LIFT</div></div>
+ <section class="panel fp hud" id="p-fig2">
+  <header><span class="tabtitle">CTRL // LIFT</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">LAYERS</div>
+    <div class="row"><button id="b2py" class="on">PYRAMIDS</button><button id="b2bl" class="on">BALLS</button><button id="b2rd" class="on">RED LINES</button><button id="b2one">ONE PYRAMID</button><button id="b2sp" class="on">SPIN</button></div>
+    <div class="lab">DIMENSION n (the picture shows n = 3)</div>
+    <div class="sl"><input id="s2" type="range" min="2" max="8" step="1" value="3"><b id="s2v">3</b></div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv2"></div></div>
+  </div>
+ </section>
+ <figcaption>Each dot is the same distance, &radic;2&nbsp;&minus;&nbsp;1, from the five faces of its pyramid. Neighbouring balls touch on the wall between their pyramids.</figcaption>
+</figure>
+</div>
+
+<p>The six dots sit on the three axes at the corners of an octahedron, the cube&rsquo;s dual. Two neighbouring dots, such as (k,&nbsp;0,&nbsp;0) and (0,&nbsp;k,&nbsp;0) with k&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2, are k&radic;2&nbsp;=&nbsp;2&radic;2&nbsp;&minus;&nbsp;2&nbsp;=&nbsp;2R apart. So the balls of radius R touch. The ball also reaches the face of the cube: its centre is R below the face centre, so it meets the neighbouring cube&rsquo;s ball exactly at the face centre when cubes are stacked.</p>
+
+<h2 id="anyn"><span class="n">7</span>Lifting it to any dimension</h2>
+<p>Look again at the two distances. The first, 1&nbsp;&minus;&nbsp;c, is the distance to the top face. The second, c/&radic;2, is the distance to a slanted face, which lies in a hyperplane such as x<sub>i</sub>&nbsp;=&nbsp;x<sub>n</sub>. A point on the n-th axis at height c sees that hyperplane at distance c/&radic;2 in any dimension, because only two coordinates are involved. Neither distance depends on n. So in every dimension the ball has radius &radic;2&nbsp;&minus;&nbsp;1, its centre is 2&nbsp;&minus;&nbsp;&radic;2 from the centre of the cube, and neighbouring balls touch. The hole left in the middle among the 2n balls has radius k&nbsp;&minus;&nbsp;R&nbsp;=&nbsp;3&nbsp;&minus;&nbsp;2&radic;2&nbsp;=&nbsp;R&sup2;, which is R times the ball radius.<span class="tg proven">PROVEN</span> (algebra)</p>
+<p>What changes with n is only the count. An n-dimensional cube has 2n faces and so 2n pyramids and 2n dots. Each ball touches 2n&nbsp;&minus;&nbsp;2 others inside its own cube (all other dots except its antipode) and one more through the face, so 2n&nbsp;&minus;&nbsp;1 in all: 3 in the plane, 5 in space, 7 in four dimensions.<span class="tg proven">PROVEN</span> (counting) That the stacked cubes then give the vertices of the uniform truncated n-cubic honeycomb was checked directly in the coordinates for n&nbsp;=&nbsp;2 and 3; for all n it follows from the mirror argument on the next page.<span class="tg verified">VERIFIED NUMERICALLY</span> (n&nbsp;=&nbsp;2, 3)</p>
+
+<div class="note">Everything on this page is known mathematics. The route is the point: one rule about a dot equidistant from walls fixes the height &radic;2&nbsp;&minus;&nbsp;1 in every dimension. The next page explains why the rule works, and which known construction it is.</div>
+</main>
+
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,TAU=CX.TAU,S2=Math.SQRT2,R=S2-1;
+const $=id=>document.getElementById(id);
+const STEPS=[
+ ['a square of side 2','Start with a square. Side 2, corners at (0,0) and (2,2).'],
+ ['draw both diagonals','The diagonals cross at the centre (1,1) and cut the square into four right isosceles triangles.'],
+ ['take one triangle','Corners A=(0,0), B=(2,0), C=(1,1). Angles 45, 45, 90 degrees. Sides 2, &radic;2, &radic;2.'],
+ ['bisect each corner','Every point on a bisector is equally far from the two sides of that corner. The bisector at A leaves at 22.5 degrees.'],
+ ['the dot: the incentre','The bisectors meet at one point, (1, &radic;2&minus;1). The circle through it that touches all three sides has radius R = tan 22.5 degrees.'],
+ ['burn it from the sides','Shrink the triangle at equal speed from all three sides. The fronts die along the three bisectors: the medial axis.'],
+ ['do it in all four triangles','Red: dot to the two square corners. Amber: dot to the centre. Four dots, four circles, 12 lines.']
+];
+/* ---------- figure 1 ---------- */
+const cv1=$('cv1');
+const st1={cur:+(CX.Q.get('step')||0),p:0,play:false,probe:CX.Q.get('probe')==='1',pr:[1.05,0.22],hold:0};
+st1.p=CX.Q.has('step')?st1.cur:-0.99;
+const A=[0,0],B=[2,0],Cc=[1,1],I=[1,R];
+function foot(p,a,b){const dx=b[0]-a[0],dy=b[1]-a[1],t=((p[0]-a[0])*dx+(p[1]-a[1])*dy)/(dx*dx+dy*dy);return [a[0]+t*dx,a[1]+t*dy]}
+function dists(p){return [p[1],(p[0]-p[1])/S2,(2-p[0]-p[1])/S2]}
+const fig1=CX.canvas(cv1,function(ctx,W,H,t,dt){
+  const s=Math.min(W*0.23,H*0.40),ox=W/2-s,oy=H/2+s;           // square occupies 2s
+  const X=x=>ox+x*s,Y=y=>oy-y*s;
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  // faint grid
+  ctx.strokeStyle='rgba(55,255,154,.05)';ctx.lineWidth=1;
+  for(let i=-4;i<=6;i++){ctx.beginPath();ctx.moveTo(X(i*.5),0);ctx.lineTo(X(i*.5),H);ctx.stroke();ctx.beginPath();ctx.moveTo(0,Y(i*.5));ctx.lineTo(W,Y(i*.5));ctx.stroke()}
+  // animate p toward cur
+  if(st1.play){st1.hold+=dt;if(st1.hold>2.6){st1.hold=0;st1.cur=(st1.cur+1)%7;sync()}}
+  const sp=dt*1.1;if(st1.p<st1.cur)st1.p=Math.min(st1.cur,st1.p+sp);else if(st1.p>st1.cur)st1.p=Math.max(st1.cur,st1.p-sp*1.6);
+  const P=st1.p,f=i=>CX.ease(P-i+1);
+  const glow=(a,b,col,w,fr,bl)=>{if(fr<=0)return;CX.glowLine(ctx,X(a[0]),Y(a[1]),X(a[0]+(b[0]-a[0])*fr),Y(a[1]+(b[1]-a[1])*fr),col,w,bl)};
+  // step 2: fill
+  if(f(2)>0){ctx.fillStyle='rgba(55,255,154,'+(0.10*f(2))+')';ctx.beginPath();ctx.moveTo(X(0),Y(0));ctx.lineTo(X(2),Y(0));ctx.lineTo(X(1),Y(1));ctx.fill()}
+  // step 0: square
+  {const c=[[0,0],[2,0],[2,2],[0,2],[0,0]],fr=f(0)*4;for(let i=0;i<4;i++)glow(c[i],c[i+1],C.g,1.6,Math.min(1,Math.max(0,fr-i)),7)}
+  // step 1: diagonals
+  glow([0,0],[2,2],C.g,1.3,f(1),6);glow([2,0],[0,2],C.g,1.3,f(1),6);
+  if(f(1)>0.95)CX.dot(ctx,X(1),Y(1),3,C.g,6);
+  // step 3 bisectors (to incentre)
+  const bis=[[A,I],[B,I],[Cc,I]];
+  const lines3=P>=5.99?1:0;
+  if(f(3)>0){const col=P>5?C.a:C.c;bis.forEach(b=>glow(b[0],b[1],col,1.8,f(3),9))}
+  if(f(3)>0){ // angle labels
+    const fa=f(3);ctx.globalAlpha=fa;
+    ctx.strokeStyle=C.c;ctx.lineWidth=1;ctx.beginPath();ctx.arc(X(0),Y(0),s*.42,0,-Math.PI/8,true);ctx.stroke();
+    ctx.beginPath();ctx.arc(X(0),Y(0),s*.52,-Math.PI/8,-Math.PI/4,true);ctx.stroke();
+    CX.text(ctx,'22.5°',X(0)+s*.5,Y(0)-s*.07,C.c,11);CX.text(ctx,'22.5°',X(0)+s*.42,Y(0)-s*.30,C.c,11);
+    CX.text(ctx,'22.5°',X(2)-s*.5,Y(0)-s*.07,C.c,11,'right');
+    ctx.globalAlpha=1;
+  }
+  // step 4: dot, circle, feet
+  if(f(4)>0){
+    const fr=f(4);
+    ctx.strokeStyle=C.a;ctx.lineWidth=1.4;ctx.shadowColor=C.a;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(X(I[0]),Y(I[1]),R*s,0,TAU*fr);ctx.stroke();ctx.shadowBlur=0;
+    const feet=[foot(I,A,B),foot(I,A,Cc),foot(I,B,Cc)];
+    ctx.setLineDash([3,3]);feet.forEach(q=>glow(I,q,'rgba(255,178,58,.8)',1,fr,0));ctx.setLineDash([]);
+    feet.forEach(q=>{if(fr>.9)CX.dot(ctx,X(q[0]),Y(q[1]),2.5,C.a,6)});
+    CX.dot(ctx,X(I[0]),Y(I[1]),4+1.2*Math.sin(t*4)*(P>=4?1:0),'#eafff4',12);
+    ctx.globalAlpha=fr;CX.text(ctx,'R = tan 22.5° = √2 − 1',X(1+R)+10,Y(R)+4,C.a,11);ctx.globalAlpha=1;
+  }
+  // step 5: grass fire in bottom triangle
+  if(f(5)>0&&P<6){
+    const fr=f(5),fa=1-Math.min(1,Math.max(0,P-5));ctx.globalAlpha=fa;
+    const tri=sc=>[[I[0]+(A[0]-I[0])*sc,I[1]+(A[1]-I[1])*sc],[I[0]+(B[0]-I[0])*sc,I[1]+(B[1]-I[1])*sc],[I[0]+(Cc[0]-I[0])*sc,I[1]+(Cc[1]-I[1])*sc]];
+    const drawTri=(sc,col,al,w)=>{const q=tri(sc);ctx.strokeStyle=col;ctx.globalAlpha=al;ctx.lineWidth=w;ctx.beginPath();q.forEach((p,i)=>i?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1])));ctx.closePath();ctx.stroke();ctx.globalAlpha=1};
+    for(let j=1;j<=5;j++){const sc=1-j*.18;if(sc>1-fr&&sc>0)drawTri(sc,C.a,.35,1)}
+    ctx.shadowColor=C.a;ctx.shadowBlur=10;drawTri(Math.max(0.0001,1-fr),'#fff0d0',1,1.6);ctx.shadowBlur=0;ctx.globalAlpha=1;
+  }
+  // step 6: all four triangles
+  if(f(6)>0){
+    const fr=f(6),cn=[[0,0],[2,0],[2,2],[0,2]],cen=[1,1];
+    for(let k=0;k<4;k++){
+      const a=cn[k],b=cn[(k+1)%4];
+      const ab=Math.hypot(b[0]-a[0],b[1]-a[1]),bc=Math.hypot(cen[0]-b[0],cen[1]-b[1]),ca=Math.hypot(a[0]-cen[0],a[1]-cen[1]),pr=ab+bc+ca;
+      const ic=[(bc*a[0]+ca*b[0]+ab*cen[0])/pr,(bc*a[1]+ca*b[1]+ab*cen[1])/pr];
+      if(k>0){ctx.strokeStyle='rgba(255,178,58,'+(0.8*fr)+')';ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(X(ic[0]),Y(ic[1]),R*s,0,TAU);ctx.stroke()}
+      glow(ic,a,C.r,1.5,fr,8);glow(ic,b,C.r,1.5,fr,8);glow(ic,cen,C.a,1.5,fr,8);
+      CX.dot(ctx,X(ic[0]),Y(ic[1]),4,'#eafff4',10);
+    }
+  }
+  // probe
+  if(st1.probe){
+    const p=st1.pr,d=dists(p),m=Math.min(d[0],d[1],d[2]);
+    ctx.strokeStyle=m>R-0.004?C.g:'rgba(255,255,255,.9)';ctx.lineWidth=1.2;ctx.setLineDash([4,3]);ctx.beginPath();ctx.arc(X(p[0]),Y(p[1]),m*s,0,TAU);ctx.stroke();ctx.setLineDash([]);
+    [[A,B],[A,Cc],[B,Cc]].forEach((e,i)=>{const q=foot(p,e[0],e[1]);CX.glowLine(ctx,X(p[0]),Y(p[1]),X(q[0]),Y(q[1]),[C.c,C.a,C.r][i],1.4,4);
+      CX.text(ctx,d[i].toFixed(3),X((p[0]+q[0])/2)+5,Y((p[1]+q[1])/2)-3,[C.c,C.a,C.r][i],10.5)});
+    CX.dot(ctx,X(p[0]),Y(p[1]),5,'#ffffff',10);
+  }
+  $('c1t').textContent='STEP '+Math.round(st1.cur)+' / 6 // '+STEPS[st1.cur][0].toUpperCase();
+  fig1.s=s;fig1.ox=ox;fig1.oy=oy;
+},{aspect:0.56});
+function sync(){
+  $('s1').value=st1.cur;$('s1v').textContent=st1.cur;$('b1play').classList.toggle('on',st1.play);$('b1probe').classList.toggle('on',st1.probe);
+  $('kv1').innerHTML='<span>step</span><span>'+st1.cur+' of 6</span><span>action</span><span>'+STEPS[st1.cur][0]+'</span>'+
+   (st1.probe?'<span>probe radius</span><span id="pr1">&ndash;</span><span>incentre radius R</span><span>'+R.toFixed(4)+'</span>':'');
+  $('note1').innerHTML=STEPS[st1.cur][1];
+  if(st1.probe)updPr();
+}
+function updPr(){const d=dists(st1.pr),m=Math.min(d[0],d[1],d[2]);const e=$('pr1');if(e){e.textContent=m.toFixed(4)+(m>R-0.004?'  MAX':'');e.className=m>R-0.004?'ok':''}}
+$('b1p').onclick=()=>{st1.cur=Math.max(0,st1.cur-1);st1.play=false;sync()};
+$('b1n').onclick=()=>{st1.cur=Math.min(6,st1.cur+1);st1.play=false;sync()};
+$('b1play').onclick=()=>{st1.play=!st1.play;st1.hold=0;sync()};
+$('b1probe').onclick=()=>{st1.probe=!st1.probe;sync()};
+$('s1').oninput=e=>{st1.cur=+e.target.value;st1.play=false;sync()};
+CX.pointer(cv1,{down:mv,drag:mv});
+function mv(x,y){if(!st1.probe)return;let p=[(x-fig1.ox)/fig1.s,(fig1.oy-y)/fig1.s];
+  p[1]=Math.max(0.005,p[1]);
+  // clamp inside triangle: y<=x, x+y<=2
+  if(p[1]>p[0])p=[ (p[0]+p[1])/2,(p[0]+p[1])/2 ];
+  if(p[0]+p[1]>2){const m=(p[0]+p[1]-2)/2;p=[p[0]-m,p[1]-m]}
+  p[1]=Math.max(0.005,p[1]);
+  // snap to incentre when close
+  if(Math.hypot(p[0]-I[0],p[1]-I[1])<0.035)p=[I[0],I[1]];
+  st1.pr=p;updPr()}
+if(CX.Q.get('play')==='1')st1.play=true;
+sync();
+
+/* ---------- figure 2: the lift ---------- */
+const cv2=$('cv2'),cam=CX.cam3(),k=2-S2;
+const st2={py:true,bl:true,rd:true,one:false,sp:CX.Q.get('spin')!=='0',n:3,sel:0};
+if(CX.Q.has('yaw'))cam.yaw=+CX.Q.get('yaw');if(CX.Q.has('pitch'))cam.pitch=+CX.Q.get('pitch');
+const DIRS=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+function baseV(d){const ax=d.findIndex(v=>v!==0),o=[0,1,2].filter(i=>i!==ax);return [[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>{const v=[0,0,0];v[ax]=d[ax];v[o[0]]=a;v[o[1]]=b;return v})}
+const fig2=CX.canvas(cv2,function(ctx,W,H,t,dt){
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  if(st2.sp)cam.yaw+=dt*.35;
+  const s=H*.235,cx=W/2,cy=H/2;
+  const P=(x,y,z)=>cam.proj(x,y,z,cx,cy,s);
+  const L=(a,b,col,w,al)=>{const p=P(a[0],a[1],a[2]),q=P(b[0],b[1],b[2]);ctx.globalAlpha=al==null?1:al;CX.glowLine(ctx,p[0],p[1],q[0],q[1],col,w,3);ctx.globalAlpha=1};
+  const cr=[];for(let i=0;i<8;i++)cr.push([i&1?1:-1,i&2?1:-1,i&4?1:-1]);
+  for(let i=0;i<8;i++)for(let b=0;b<3;b++){const j=i^(1<<b);if(j>i)L(cr[i],cr[j],C.g,1.1,.45)}
+  const sel=st2.one?[st2.sel]:[0,1,2,3,4,5];
+  sel.forEach(pi=>{const d=DIRS[pi],bv=baseV(d),dot=[d[0]*k,d[1]*k,d[2]*k];
+    if(st2.py)bv.forEach(v=>{L([0,0,0],v,C.c,1,.4)});
+    if(st2.rd){bv.forEach(v=>L(dot,v,C.r,1.3,.85));L(dot,[0,0,0],C.a,1.3,.9)}
+    if(st2.py&&st2.one){for(let a=0;a<4;a++)L(bv[a],bv[(a+1)&3],C.c,1.2,.7)}
+  });
+  // dots + balls, depth sorted
+  const items=DIRS.map((d,i)=>{const q=P(d[0]*k,d[1]*k,d[2]*k);return {i,q,d}}).sort((a,b)=>a.q[2]-b.q[2]);
+  items.forEach(o=>{const [x,y,z,w]=o.q;const on=!st2.one||o.i===st2.sel;
+    const ax=o.d.findIndex(v=>v!==0),cols=['rgba(80,255,150,X)','rgba(60,200,255,X)','rgba(150,180,255,X)'];
+    if(st2.bl&&on)CX.shade(ctx,x,y,R*s*cam.zoom*w,cols[ax],.55);
+    CX.dot(ctx,x,y,3.2,'#eafff4',8)});
+  const oc=P(0,0,0);CX.dot(ctx,oc[0],oc[1],2.5,C.a,6);
+  CX.text(ctx,'dot: k = 2−√2 from centre, radius R = √2−1',12,H-12,C.dim,11);
+});
+['py','bl','rd','sp'].forEach(kk=>{$('b2'+kk).onclick=()=>{st2[kk]=!st2[kk];s2sync()}});
+$('b2one').onclick=()=>{if(!st2.one)st2.one=true;else{st2.sel=(st2.sel+1)%6;if(st2.sel===0)st2.one=false}s2sync()};
+CX.drag3(cv2,cam);cv2.addEventListener('pointerdown',()=>{st2.sp=false;s2sync()});
+$('s2').oninput=e=>{st2.n=+e.target.value;s2sync()};
+function s2sync(){
+  for(const kk of ['py','bl','rd','sp'])$('b2'+kk).classList.toggle('on',st2[kk]);
+  $('b2one').classList.toggle('on',st2.one);$('b2one').textContent=st2.one?'PYRAMID '+(st2.sel+1)+'/6 (NEXT)':'ONE PYRAMID';
+  const n=st2.n;$('s2v').textContent=n;
+  CX.kv($('kv2'),[['dimension n',n],['pyramids = dots',2*n],['dot from centre k',k.toFixed(4)],['ball radius R',R.toFixed(4)],['centre hole R²',(R*R).toFixed(4)],['contacts per ball 2n−1',2*n-1,n===3?'ok':'']]);
+}
+if(CX.Q.get('one')==='1'){st2.one=true;st2.sel=+(CX.Q.get('sel')||0)}
+s2sync();
+});
+</script>
+</body></html>

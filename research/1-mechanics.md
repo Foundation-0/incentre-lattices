@@ -1,0 +1,96 @@
+# 1 · Mechanics and rigidity of the "dot" frameworks
+
+Code: `research/mechanics/` (plain numpy/scipy/sympy, no venv needed).
+
+| file | what it does |
+|---|---|
+| `pframe.py` | periodic rigidity matrix R(q) in n dimensions, Calladine counts, flexible-lattice (Guest–Hutchinson / Borcea–Streinu) analysis, supercells |
+| `contact_nd.py` | contact framework of the truncated n-cubic honeycomb; mode counts for n = 2…6; t-scan |
+| `strain_modes.py` | which macroscopic strains the pin-jointed contact framework allows at first order |
+| `elastic.py` | effective elastic tensor of the spring network, including non-affine relaxation |
+| `exact_checks.py` | sympy proofs of the elastic constants (n ≤ 7) and of the end states of the fold |
+| `mechanism.py`, `final_states.py` | finite counter-rotation ("tilt") mechanisms, ball-collision limits, end-state contact numbers and densities |
+| `wythoff.py`, `census.txt`, `census_summary.txt` | rigidity census of every Wythoff framework of the affine Coxeter groups C̃2, G̃2, Ã2, C̃3, B̃3, Ã3, C̃4, B̃4, D̃4 (159 frameworks) |
+| `full_drawing.py` | frameworks (b) and (c): the whole drawing with the red lines, cube edges and pyramid edges |
+
+Setup: cube side 2 centred at 0, lattice 2ℤⁿ. The dots sit at ±t eᵢ with t* = 2 − √2. **Contact framework** = bars between dots whose balls touch. These are the edges of the cross-polytope (octahedron in 3D) formed by the 2n dots of one cube, plus one "cross-face" bar per face. Every bar has length 2R = 2√2 − 2. Labels: **PROVEN**, **VERIFIED NUMERICALLY** (SVD rank, tolerance 1e-8, several random q), **CONJECTURE**, **KNOWN**.
+
+---
+
+## Ranked findings
+
+### 1. The drawing folds into the square ball packing: 4.8.8 → 4.4.4.4 at exactly 45° (2D), and a [111] fold in 3D that ends at 60° with every ball six-coordinated
+
+Treat the contact graph as a pin-jointed mechanism (balls glued at their contact points but free to pivot). Each square of 4 dots is a cluster. Rotate the clusters alternately by +θ and −θ in a checkerboard. The cross-face bars stay on the axes, and the lattice spacing becomes a(θ) = 2 − 2t(1 − cos θ). Every bar length is preserved exactly: this is a finite motion, not just an infinitesimal one (bar-length error < 1e-15 along the whole path). The macroscopic strain is isotropic, εxx = εyy, so Poisson's ratio is −1 along the whole path.
+
+* **PROVEN** (sympy, `exact_checks.py`; numerics, `mechanism.py`): the first new ball contact appears at **θ = 45° exactly**. There, a = 4√2 − 4 = 4R and the strain is **−(√2−1)² = −R²**. At that moment every ball touches 4 others (it had 3), and the dots form a perfect **square lattice of spacing 2R**. The packing density rises from π(√2−1)² ≈ 0.539 to **π/4**, and the area shrinks by the factor 4R² = 12 − 8√2 ≈ 0.686.
+* **PROVEN**: for any other dot position t on the axis the same 45° end state has two different edge lengths (√2·t and 2 − 2t). The incentre t* is the **unique** dot position whose fold ends in the regular square lattice. So in this sense the Wythoff point *is* mechanically singled out: the "uniform" start state folds onto the "uniform" end state.
+* **VERIFIED NUMERICALLY** (3D, octahedral clusters, checkerboard tilts R / Rᵀ, `mechanism.py`, `final_states.py`):
+
+| tilt axis | first new contact at | strain at end | volume change | contacts per ball at end | density at end |
+|---|---|---|---|---|---|
+| [001] (stacked 2D fold) | 45° | (−R², −R², 0) | −0.3137 | 6,6,6,6,5,5 | 0.3253 |
+| **[111]** | **60.000°** | isotropic, −0.21895 each axis | −0.5235 | **6 for every ball** | **0.4686** |
+| [011] | 54.7356° = arccos(1/√3) | (−0.2476, −0.1427, −0.1427) | −0.4470 | 5,5,6,6,6,6 | 0.4038 |
+
+  For the [111] tilt the end lattice spacing is exactly **8t*/3** (PROVEN). The identity behind it, 4t/3 = √(L² − 2t²/9), is equivalent to √2·t = L, which is exactly the incentre condition. So the 3D fold also closes neatly only at the Wythoff point. The [111] fold is the analogue of the perovskite a⁻a⁻a⁻ tilt, and it is isotropic (ν = −1, cubic). Its end state has z = 6 = 2n, the Maxwell isostatic count.
+* Novelty search: "truncated square tiling mechanism", "rotating squares bars/struts/ligaments fully closed", "square lattice of disks to truncated square tiling packing", "a⁻a⁻a⁻ maximal tilt". **No prior reference found** for the 4.8.8 → square-packing fold, its exact 45° / −R² / π/4 numbers, or the 3D [111] fold with its 60° end. Closely related **KNOWN** ideas: rotating-squares auxetics (Grima & Evans 2000, ν = −1); octahedral tilting with limits set by anion–anion contact in perovskites (Glazer 1972; O'Keeffe & Hyde 1977, whom I did not retrieve); contraction by rotation as a negative-thermal-expansion mechanism in linearly bridged frameworks (Goodwin 2006). The fold is very much "rotating units with split hinges", so a specialist may know it as folklore.
+
+### 2. Exact n-dimensional mode count and exact elastic constants of the contact framework
+
+**Mode count (PROVEN for n ≥ 3; VERIFIED NUMERICALLY for n = 2…6):**
+* At a generic wavevector there are exactly **n(n−1)/2 zero modes per cell**, and they are the infinitesimal rotations of the 2n-dot cross-polytopes. They form **flat bands**. There are **n(n−3)/2 states of self-stress** per cell (0 in 3D, 2 in 4D, 5 in 5D, 9 in 6D), all living inside the cross-polytopes.
+* On each plane qᵢ = 0 there is one extra mode (rigid sliding of rows along axis i). At q = 0 there are n(n+1)/2 zero modes (the Euclidean motions of the clusters) and n(n−1)/2 self-stresses.
+* Proof: for n ≥ 3 the cross-polytope skeleton is infinitesimally rigid (it is a simplicial polytope; Cauchy–Dehn–Alexandrov–Whiteley). So in a zero mode each cluster moves rigidly, as a translation v_c plus a rotation ω_c. The cross bar along eᵢ lies on the line joining the two cluster centres, so ω drops out (eᵢ·ω eᵢ = 0). The bar condition becomes eᵢ·(v_{c+2eᵢ} − v_c) = 0, which in Bloch form is (e^{2iqᵢ} − 1)vᵢ = 0. The self-stress count then follows from Calladine. n = 2 is the exception because the 4-bar square is not rigid: there are 2 zero modes per cell and no self-stress.
+* The counts do not depend on where the dot sits on the axis (t ∈ (0, 1)). **The incentre does not change the mode count.**
+* **KNOWN in 3D**: this is the Prussian-blue topology (octahedra joined by linear bridges). Goodwin, *PRB* 74, 134302 (2006), found an O(V) density of rigid unit modes, i.e. flat bands. The n-dimensional formula and the self-stress count n(n−3)/2: **no prior reference found**.
+
+**Strains (VERIFIED NUMERICALLY, `strain_modes.py`):** let the lattice deform. In n ≥ 3 the first-order mechanisms produce exactly the n(n−1)/2 pure shears, and every normal strain is blocked. In 2D they produce the 2-dimensional deviatoric space, so only the bulk modulus is non-zero: a fluid-like, "2D pentamode" material.
+
+**Elastic constants (PROVEN by exact symbolic minimisation for n = 2…7, numerics agree; CONJECTURE for all n):** take unit springs on every bar and the symmetric relaxation in which vertices move only along their own axes. Then
+
+  C₁₁ = 4(n−1)²/(n²2ⁿ), C₁₂ = 4/(n²2ⁿ), C₄₄ = 0, so **ν₁₀₀ = 1/(n² − n − 1)**: 1, 1/5, 1/11, 1/19, 1/29, 1/41.
+
+In 3D, **ν = 1/5 exactly**, and it does not depend on t for unit springs. For same-material bars (stiffness proportional to 1/L), ν(t) rises monotonically from 0.035 to 0.32. The value at the incentre equals the unit-spring value 1/5 only because all bars there have equal length; it is not an extremum. The general-n step is a linear solve: s_i = (2εᵢ − Σε/n)/n. **No prior reference found** for these closed forms.
+
+### 3. Wythoff census: the incentre is mechanically ordinary, and simplicial vertex figures give pentamodes (`wythoff.py`)
+
+For all 9 affine Coxeter groups and every ringing (159 frameworks), I compared the uniform (incentre-type) point with a random point on the same face of the fundamental simplex. **The counts were identical in every case**: generic-q zero modes and self-stresses, q = 0 counts, and flexible-lattice strain dimension (VERIFIED NUMERICALLY). Moving the dot off the incentre without changing which mirrors it lies on never changes the linear mechanics. The incentre extremises packing quantities, not mode counts.
+
+Patterns:
+* Every framework with **z = n+1** (all 2D truncated and omnitruncated tilings; in 3D the omnitruncated honeycombs and C̃3 rings (1,2) and (1,2,3); in 4D the z = 5 cases) has 0 self-stress at generic q and **exactly 1 at q = 0**. Its achievable strain space has dimension n(n+1)/2 − 1: only dilation is blocked, i.e. a pentamode (3D) or bulk-only (2D) material.
+  * PROVEN for the omnitruncated frameworks: the stress with tension proportional to the area of the facet of the fundamental simplex that each bar crosses is in equilibrium at every vertex, by Minkowski's relation Σ|Fᵢ|nᵢ = 0. Uniqueness is VERIFIED NUMERICALLY.
+  * The pentamode principle itself (z = n+1 junctions, one stress) is **KNOWN**: Milton & Cherkaev 1995; Kadic et al. 2012. Its systematic appearance across all Wythoff omnitruncations: no census found.
+* Unusual flat-band Maxwell cases: C̃3 ring (0,2) (cantellated cubic), C̃4 (1,3), C̃4 (0,2,4), B̃4 (1,3,4) and D̃4 (0,1,3,4) have z = 2n, but N₀ = S > 0 at *every* q. They are "Maxwell lattices with flat zero-mode/self-stress bands", like the pyrochlore and kagome cases (Ã3 (0,2), G̃2 (1)), which are KNOWN to sit on the Maxwell line.
+* No compact formula in n emerged for the whole census beyond the contact family above and the z = n+1 family, where generic zero modes per cell = nV − E = (n−1)|W/T|/2 for omnitruncations.
+
+Novelty search ("rigidity Coxeter/kaleidoscope/uniform honeycomb census", "Archimedean lattices Maxwell 4.8.8 3.12.12"): no census of uniform honeycomb rigidity found. Related KNOWN work: flexibility of periodic tilings by regular polygons (Grasegger & Legerský, arXiv 2305.01570); symmetry-adapted periodic counts (Power, arXiv 1103.1914; Ross; Borcea & Streinu).
+
+### 4. The other frameworks you asked about are rigid and over-braced (`full_drawing.py`; VERIFIED NUMERICALLY)
+
+* (b) The full drawing (contacts + red lines + cube edges + pyramid edges) is rigid with 0 generic zero modes in 2D, 3D and 4D. Generic self-stresses per cell: 12 in 2D, 32 in 3D, 80 in 4D. With a deformable lattice there are no mechanisms at all.
+* (c) The pyramid / triangle skeleton is rigid even without face diagonals. Generic self-stresses per cell: 2 in 2D, 5 in 3D, 12 in 4D.
+* (d) The dot octahedra as rigid units joined by cross-face bars is exactly the 3D contact framework of finding 2, because a triangulated octahedron is rigid.
+
+### 5. Predictions for a 3D-printed version (CONJECTURE, from the above)
+
+Suppose balls are fused at small necks, so the necks act as flexural hinges.
+* **Extreme cubic anisotropy**: C₄₄ comes only from neck bending, while C₁₁ and C₁₂ come from neck stretching, so C₄₄/C₁₁ ~ (neck radius / ball radius)². The Zener ratio A = 2C₄₄/(C₁₁ − C₁₂) should be ≪ 1.
+* **Tension/compression asymmetry**: the axes are straight bar chains, stiff in tension. Under compression the fold mode has zero first-order cost, so the lattice should buckle into the counter-rotated pattern and switch to ν ≈ −1, the 3D analogue of Bertoldi's buckled holey sheet.
+* In 2D the printed 4.8.8 sheet should start with ν near +1 (bulk-only) and then, after buckling, lock into the square packing at a −17.2% (= −R²) linear strain.
+
+---
+
+## Most promising open question (PhD-sized)
+
+**Map the full configuration space of the ball/bar contact framework, as a real algebraic variety, for every Wythoff orbit.** Questions:
+* Which tilt paths, in Glazer-like notation for split-hinge frameworks, are finite?
+* Where do they end in new contact states? In 2D the end state is the square packing; in 3D the [111] fold gives a z = 6 packing of density 0.4686 whose rigidity and symmetry are not yet identified.
+* Is the incentre always the unique point whose folds end in a uniform (single edge length) packing?
+
+The 2D theorem ("4.8.8 folds isometrically onto the square packing at 45°, only at the incentre") suggests a general principle: Wythoff orbits and the contact graphs they create are linked by finite mechanisms. That would connect the radius-ratio and packing side of this project to rigid-unit-mode crystallography and to transformable metamaterials.
+
+## Honesty notes
+* All 3D tilt results use a 2×2×2 checkerboard with lattice vectors kept on the axes. Other (sheared) branches of the mechanism exist and were not explored.
+* The ball-collision test checks the nearest non-bonded neighbours of one cluster in a 5ⁿ block. That block is enough for the end states found, but it is not a proof of global non-overlap along the path. For 2D the 45° end is proven analytically.
+* Prior-art searches were web searches only, not a full literature review. The 2D fold in particular may exist as folklore in the rotating-units or kirigami literature.

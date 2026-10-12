@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIRRORS // LATTICE</title>
+<link rel="stylesheet" href="codex.css">
+</head><body>
+<main>
+<div class="kick">02 // MIRRORS</div>
+<h1>Mirrors</h1>
+<p class="lede">A mirror puts a copy of a point on the far side of the wall, at the same distance as the original. Put a point in a room whose walls are mirrors and the copies fill the plane with a pattern. If the point is the same distance from the walls it does not touch, the copies come out exactly one edge-length apart in every direction, so every edge of the pattern is equal. That is the reason the drawing&rsquo;s dots form a regular octagon pattern, why the 3D version is a space-filling stack of truncated cubes and octahedra, and why one number, &radic;2&nbsp;&minus;&nbsp;1, keeps returning.</p>
+
+<h2 id="reflect"><span class="n">1</span>A point and its mirror image</h2>
+<p>Take a wall (a line in the plane, a plane in space) and a point P at distance d from it. Its mirror image P&prime; lies on the line through P perpendicular to the wall, on the other side, also at distance d. So the segment PP&prime; has length exactly 2d, and the wall cuts it at its midpoint. This one fact does all the work on this page. The distance between a point and its image in a mirror is twice the distance from the point to that mirror.</p>
+<p>If P is on the wall, d is zero and P&prime; is P itself. The segment collapses to nothing. If P is off the wall, it is a real edge of length 2d.</p>
+
+<h2 id="room"><span class="n">2</span>The room of mirrors</h2>
+<p>Look at the drawing again: a square of side 2 with its two diagonals. Now treat these lines as mirrors, together with the lines through the middle of each square, parallel to its sides, and the edges of the squares. A mirror sends the whole picture onto itself. The pattern has eight symmetries per square (four turns and four flips), and the mirrors cut each square into 8 identical right isosceles triangles, each half of one of the four triangles of the drawing. Call such a triangle a <b>chamber</b>. With corners O&nbsp;=&nbsp;(0,0), M&nbsp;=&nbsp;(1,0) and C&nbsp;=&nbsp;(1,1), its three walls are the lines y&nbsp;=&nbsp;0 (OM), y&nbsp;=&nbsp;x (OC) and x&nbsp;=&nbsp;1 (MC). Reflecting the chamber across its own walls, again and again, tiles the whole plane. Every composition of those reflections is one of the pattern&rsquo;s symmetries.</p>
+<p>Now choose a generating point P inside the chamber. Its copies, one per chamber, are the images of P under all the symmetries. Join each copy to the copies one reflection away. Each edge crosses exactly one wall, so its length is twice P&rsquo;s distance to that wall. There are three kinds of edge, one per wall, of lengths 2d<sub>1</sub>, 2d<sub>2</sub>, 2d<sub>3</sub>.</p>
+
+<div class="wide" id="fig3">
+<figure class="fig">
+ <div class="cvbox"><canvas id="cv3"></canvas><div class="corner">KALEIDOSCOPE // DRAG THE POINT P</div><div class="corner r">FIG 3 // MIRRORS</div></div>
+ <section class="panel fp hud" id="p-fig3">
+  <header><span class="tabtitle">CTRL // KALEIDOSCOPE</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body">
+   <div class="grp">
+    <div class="lab">POINT P</div>
+    <div class="row"><button id="b3lock" class="on">ON WALL x=1</button><button id="b3inc">SNAP: R = &radic;2&minus;1</button><button id="b3all">SNAP: ALL 3 EQUAL</button><button id="b3sweep">SWEEP</button></div>
+    <div class="lab">SHOW</div>
+    <div class="row"><button id="b3mir" class="on">MIRRORS</button><button id="b3bal">BALLS</button></div>
+    <div class="hint">Green edges cross the wall y=0, cyan the diagonal y=x, amber the wall x=1.</div>
+   </div>
+   <div class="grp kvg"><div class="lab">READOUT</div><div class="kv" id="kv3"></div></div>
+  </div>
+ </section>
+ <figcaption>With P on the wall x&nbsp;=&nbsp;1 the amber edges vanish (P is its own image). The two remaining edge lengths, 2d<sub>1</sub> and 2d<sub>2</sub>, are equal exactly when P is at height &radic;2&nbsp;&minus;&nbsp;1. Turn on BALLS to see the circles touch.</figcaption>
+</figure>
+</div>
+
+<h2 id="equal"><span class="n">3</span>Why the dot sits where it sits</h2>
+<p>Put P on the wall x&nbsp;=&nbsp;1, as the drawing&rsquo;s dot is. Then d<sub>3</sub>&nbsp;=&nbsp;0 and only two kinds of edge remain: 2d<sub>1</sub> across the base and 2d<sub>2</sub> across the diagonal. Make them equal: d<sub>1</sub>&nbsp;=&nbsp;d<sub>2</sub>. That is the statement &ldquo;P is the same distance from the two walls it is not on&rdquo;, which puts P on the bisector of the corner where those two walls meet. This corner is O, with an angle of 45&deg;. The bisector rises at 22.5&deg;, so P&nbsp;=&nbsp;(1,&nbsp;tan&nbsp;22.5&deg;)&nbsp;=&nbsp;(1,&nbsp;&radic;2&nbsp;&minus;&nbsp;1). It is the incentre of the drawing&rsquo;s triangle, now seen as a point of the chamber&rsquo;s wall. All the edges have length 2R&nbsp;=&nbsp;2&radic;2&nbsp;&minus;&nbsp;2&nbsp;=&nbsp;0.8284.<span class="tg proven">PROVEN</span></p>
+<p>Every vertex of the resulting graph has three neighbours at that distance. Around each corner of the original squares they form a regular octagon, and inside each square a smaller square. This is the 4.8.8 pattern from the previous page. The figure lets you break the equality and watch the pattern fall apart into octagons and squares with two different edge lengths.</p>
+<p>The incentre of the whole chamber also works. Drag P off the wall to the point (0.7071,&nbsp;0.2929), at distance 1&nbsp;&minus;&nbsp;&radic;2/2&nbsp;=&nbsp;0.2929 from all three walls. All three edge kinds are then equal, with length 2&nbsp;&minus;&nbsp;&radic;2&nbsp;=&nbsp;0.5858. Each vertex has three neighbours with angles of 90&deg;, 135&deg; and 135&deg; between them, the corner of a 4.8.8, and the density of points matches a 4.8.8 of that edge length. The edges of that pattern are in different places and at a different scale, so it is a second regular 4.8.8, not the one the drawing makes.<span class="tg verified">VERIFIED NUMERICALLY</span> (angles and density computed for this page)</p>
+
+<h2 id="credit"><span class="n">4</span>Whose idea this is</h2>
+<p>None of this is new. The rule &ldquo;choose a point, place it on some of the chamber&rsquo;s walls, make it equidistant from the rest, and reflect it&rdquo; is the <b>Wythoff construction</b>, published by the Dutch mathematician Willem Wythoff in 1918 and developed by H.&nbsp;S.&nbsp;M. Coxeter, who used it to list the uniform tilings, honeycombs and their analogues in higher dimensions.<span class="tg known">KNOWN</span> The point you mark is called the generating point. Our dot is the Wythoff point of the square&rsquo;s mirror pattern for the choice &ldquo;on one wall, equidistant from the other two&rdquo;. The reflection argument of section 1 is why the construction gives equal edges.</p>
+
+<h2 id="d3"><span class="n">5</span>The same argument in three dimensions</h2>
+<p>The cube [&minus;1,&nbsp;1]&sup3; has 9 mirror planes (3 through the middles of its faces and 6 diagonal ones). They cut it into 48 chambers. One chamber, in the pyramid on the +z face, is the tetrahedron 0&nbsp;&le;&nbsp;y&nbsp;&le;&nbsp;x&nbsp;&le;&nbsp;z&nbsp;&le;&nbsp;1, with four walls: y&nbsp;=&nbsp;0, x&nbsp;=&nbsp;y, x&nbsp;=&nbsp;z and z&nbsp;=&nbsp;1. Its volume is 1/6, and 8 octants at 6 chambers each make 48.</p>
+<p>The dot is (0,&nbsp;0,&nbsp;c). It lies on the first two walls (y&nbsp;=&nbsp;0 and x&nbsp;=&nbsp;y both contain the z axis). Its distances to the other two are c/&radic;2 (to x&nbsp;=&nbsp;z) and 1&nbsp;&minus;&nbsp;c (to z&nbsp;=&nbsp;1). Equal distances mean equal edges, which is the equation of the previous page: c&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2. Reflecting it across all the walls gives the 24 points of a truncated cube around every cube corner, and stacking cubes gives the <b>truncated cubic honeycomb</b>, a space-filling arrangement of truncated cubes and octahedra in which every edge has length 2R.<span class="tg known">KNOWN</span> (classical uniform honeycomb) For a cube of side 2, the 24 points around a corner have coordinates of the form (&plusmn;(&radic;2&minus;1), &plusmn;1, &plusmn;1) in any order, measured from the corner.<span class="tg verified">VERIFIED NUMERICALLY</span></p>
+<p>The step from two dimensions to any number n is the same as before: the chamber 0&nbsp;&le;&nbsp;x<sub>1</sub>&nbsp;&le;&nbsp;&hellip;&nbsp;&le;&nbsp;x<sub>n</sub>&nbsp;&le;&nbsp;1 has n&nbsp;+&nbsp;1 walls, the dot is on n&nbsp;&minus;&nbsp;1 of them (those containing its axis), and it is equidistant from the last two, at distances c/&radic;2 and 1&nbsp;&minus;&nbsp;c.</p>
+
+<h2 id="count"><span class="n">6</span>24 pieces, 48 halves, and why 24 = 24 is an accident</h2>
+<p>On the cube page, each dot together with one triangular face of its pyramid forms a small tetrahedron. A pyramid has 4 such faces and there are 6 pyramids, so there are 24 of them, all identical. The cube has 24 rotations, and a rotation carries any one of the tetrahedra onto any other. That looks like a deep match. It is not. Each tetrahedron has a mirror plane through it (through the dot, the cube&rsquo;s centre and the base-edge midpoint), which halves it. That gives 48 halves, one per symmetry of the cube once reflections count. The 48 halves are exactly the chambers of section 5.</p>
+<p>Now count in n dimensions. A piece is a dot plus one slanted face of its pyramid. There are 2n pyramids, each with 2(n&nbsp;&minus;&nbsp;1) slanted faces, so 4n(n&nbsp;&minus;&nbsp;1) pieces. The cube has 2<sup>n</sup>&middot;n! symmetries with mirrors and half of that, 2<sup>n&minus;1</sup>&middot;n!, without. Each piece splits into 2<sup>n&minus;2</sup>&middot;(n&nbsp;&minus;&nbsp;2)! equal chambers, since 4n(n&nbsp;&minus;&nbsp;1)&middot;2<sup>n&minus;2</sup>&middot;(n&nbsp;&minus;&nbsp;2)! = 2<sup>n</sup>&middot;n!. That is 1 chamber per piece in 2D, 2 in 3D (the mirror halves), and 8 in 4D.<span class="tg proven">PROVEN</span> (counting; the table was checked in code)</p>
+<p>The pieces match all the symmetries only when 2<sup>n&minus;2</sup>&middot;(n&nbsp;&minus;&nbsp;2)!&nbsp;=&nbsp;1, which is n&nbsp;=&nbsp;2. They match the rotations only when that number is 2, which is n&nbsp;=&nbsp;3. For n&nbsp;&ge;&nbsp;4 the number only grows. The match of 24 and 24 in three dimensions is a coincidence of small numbers. The number &radic;2&nbsp;&minus;&nbsp;1 is not a coincidence, but 24&nbsp;=&nbsp;24 is.</p>
+
+<div class="wide" id="fig4">
+<figure class="fig">
+ <div class="cvbox" style="padding:14px 16px">
+  <div class="tscroll"><table class="tb" id="tb4"><thead><tr><th class="n">n</th><th class="n">pieces 4n(n&minus;1)</th><th class="n">all symmetries 2<sup>n</sup>n!</th><th class="n">rotations 2<sup>n&minus;1</sup>n!</th><th class="n">chambers per piece</th><th class="n">balls touched 2n&minus;1</th><th>pieces match</th></tr></thead><tbody></tbody></table></div>
+ </div>
+ <section class="panel fp hud" id="p-fig4">
+  <header><span class="tabtitle">CTRL // COUNTS</span><button class="mb" title="minimise">&ndash;</button></header>
+  <div class="body"><div class="grp"><div class="lab">DIMENSION n</div><div class="sl"><input id="s4" type="range" min="2" max="8" step="1" value="3"><b id="s4v">3</b></div></div>
+  <div class="grp kvg"><div class="kv" id="kv4"></div></div></div>
+ </section>
+ <figcaption>FIG 4. The row for n&nbsp;=&nbsp;3 is the only one where the pieces equal the rotations. Row n&nbsp;=&nbsp;2 is the only one where they equal all symmetries.</figcaption>
+</figure>
+</div>
+
+<h2 id="ratios"><span class="n">7</span>Three numbers from the same rule</h2>
+<p>Cut each of three regular solids from its centre into pyramids, one per face. Put a dot in each pyramid equidistant from all its faces. Two neighbouring pyramids share a wall, and their dots are mirror images across it. The dots are therefore twice their distance to that wall apart, which is twice the ball radius, so neighbouring balls touch. The balls leave a hole in the middle. The ratio of the hole to a ball is:</p>
+<div class="tscroll"><table class="tb"><thead><tr><th>solid cut</th><th>dots form</th><th class="n">hole / ball</th><th>chemistry&rsquo;s limit</th></tr></thead><tbody>
+<tr><td>tetrahedron (4 pieces)</td><td>tetrahedron</td><td class="n">0.2247</td><td>0.225: four neighbours</td></tr>
+<tr class="hi"><td>cube (6 pieces)</td><td>octahedron</td><td class="n">0.4142</td><td>0.414: six neighbours</td></tr>
+<tr><td>octahedron (8 pieces)</td><td>cube</td><td class="n">0.7321</td><td>0.732: eight neighbours</td></tr></tbody></table></div>
+<p>The three values are &radic;6/2&nbsp;&minus;&nbsp;1, &radic;2&nbsp;&minus;&nbsp;1 and &radic;3&nbsp;&minus;&nbsp;1: the distance from the centre of the arrangement to a ball centre, divided by the ball radius, minus 1. They were recomputed from the pyramids directly for this page.<span class="tg proven">PROVEN</span> (algebra) The thresholds are the radius-ratio rule of chemistry, which you meet on the next page.<span class="tg known">KNOWN</span> That all three, together with the uniform tilings, fall out of one rule about dots equidistant from mirror walls is a tidy way to see them. I did not find it written this way, but I did not search the literature for it, so this is a possibly new view of known results, not a new result.</p>
+
+<div class="note">The cube page and &ldquo;going deeper&rdquo; are the earlier notes this page builds on. Where those pages and this one differ in wording, the numbers are the same.</div>
+</main>
+
+<script src="codex.js"></script>
+<script>
+CX.start(function(){
+const C=CX.C,TAU=CX.TAU,S2=Math.SQRT2,R=S2-1;
+const $=id=>document.getElementById(id);
+/* ---------- kaleidoscope ---------- */
+const cv=$('cv3');
+const st={P:[1,CX.Q.has('py')?+CX.Q.get('py'):0.2],lock:CX.Q.get('lock')!=='0',mir:true,bal:CX.Q.get('balls')==='1',sweep:false,drag:false};
+if(CX.Q.get('snap')==='inc')st.P=[1,R];
+if(CX.Q.get('snap')==='all'){st.lock=false;st.P=[S2/2,1-S2/2]}
+const D4=[];[[1,0,0,1],[-1,0,0,1],[1,0,0,-1],[-1,0,0,-1],[0,1,1,0],[0,-1,1,0],[0,1,-1,0],[0,-1,-1,0]].forEach(m=>D4.push(m));
+const gens=[p=>[p[0],-p[1]],p=>[p[1],p[0]],p=>[2-p[0],p[1]]];
+const COL=[C.g,C.c,C.a];
+function dists(p){return [p[1],(p[0]-p[1])/S2,1-p[0]]}
+const view={s:1,cx:0,cy:0};
+const fig=CX.canvas(cv,function(ctx,W,H,t,dt){
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  if(st.sweep){const u=(Math.sin(t*0.7)+1)/2;st.P=st.lock?[1,0.04+0.92*u]:st.P;if(!st.lock)st.sweep=false;sync()}
+  const s=H/3.0,X=x=>W/2+(x-1)*s,Y=y=>H/2-(y-0.9)*s;view.s=s;view.W=W;view.H=H;
+  const xmin=1-W/2/s-0.1,xmax=1+W/2/s+0.1,ymin=0.9-H/2/s-.1,ymax=0.9+H/2/s+.1;
+  // fundamental chamber
+  ctx.fillStyle='rgba(55,255,154,.10)';ctx.beginPath();ctx.moveTo(X(0),Y(0));ctx.lineTo(X(1),Y(0));ctx.lineTo(X(1),Y(1));ctx.closePath();ctx.fill();
+  if(st.mir){ctx.strokeStyle='rgba(55,255,154,.16)';ctx.lineWidth=1;
+    for(let k=Math.floor(xmin);k<=xmax;k++){ctx.beginPath();ctx.moveTo(X(k),0);ctx.lineTo(X(k),H);ctx.stroke()}
+    for(let k=Math.floor(ymin);k<=ymax;k++){ctx.beginPath();ctx.moveTo(0,Y(k));ctx.lineTo(W,Y(k));ctx.stroke()}
+    for(let m=-6;m<=8;m+=2){ // x-y=m and x+y=m
+      ctx.beginPath();ctx.moveTo(X(xmin),Y(xmin-m));ctx.lineTo(X(xmax),Y(xmax-m));ctx.stroke();
+      ctx.beginPath();ctx.moveTo(X(xmin),Y(m-xmin));ctx.lineTo(X(xmax),Y(m-xmax));ctx.stroke()}
+    // the chamber's own walls brighter
+    ctx.lineWidth=1.4;[[[0,0],[1,0],C.g],[[0,0],[1,1],C.c],[[1,0],[1,1],C.a]].forEach(w=>{ctx.strokeStyle=w[2];ctx.globalAlpha=.55;ctx.beginPath();ctx.moveTo(X(w[0][0]),Y(w[0][1]));ctx.lineTo(X(w[1][0]),Y(w[1][1]));ctx.stroke();ctx.globalAlpha=1});
+  }
+  const P=st.P,d=dists(P),e=[2*d[0],2*d[1],2*d[2]];
+  const nz=e.filter(v=>v>1e-6),emin=Math.min(...nz);
+  // orbit edges
+  const seen=new Set(),pts=new Map();
+  const key=(a,b)=>{const f=v=>Math.round(v*1e4);const A=f(a[0])+','+f(a[1]),B=f(b[0])+','+f(b[1]);return A<B?A+'|'+B:B+'|'+A};
+  ctx.lineWidth=1.5;
+  const imgs=[];
+  for(const m of D4)for(let a=-3;a<=3;a++)for(let b=-3;b<=3;b++){
+    const ap=q=>[m[0]*q[0]+m[1]*q[1]+2*a,m[2]*q[0]+m[3]*q[1]+2*b];
+    const A=ap(P);
+    if(A[0]<xmin-1||A[0]>xmax+1||A[1]<ymin-1||A[1]>ymax+1)continue;
+    const kk=Math.round(A[0]*1e4)+','+Math.round(A[1]*1e4);if(!pts.has(kk)){pts.set(kk,A)}
+    for(let i=0;i<3;i++){
+      if(e[i]<1e-6)continue;
+      const B=ap(gens[i](P)),ky=key(A,B)+i;if(seen.has(ky))continue;seen.add(ky);
+      ctx.strokeStyle=COL[i];ctx.shadowColor=COL[i];ctx.shadowBlur=4;ctx.beginPath();ctx.moveTo(X(A[0]),Y(A[1]));ctx.lineTo(X(B[0]),Y(B[1]));ctx.stroke();
+    }
+  }
+  ctx.shadowBlur=0;
+  if(st.bal){ctx.strokeStyle='rgba(255,255,255,.35)';ctx.lineWidth=1;pts.forEach(A=>{ctx.beginPath();ctx.arc(X(A[0]),Y(A[1]),emin/2*s,0,TAU);ctx.stroke()})}
+  pts.forEach(A=>{CX.dot(ctx,X(A[0]),Y(A[1]),2.4,'#d8fff0',4)});
+  // distances from P to the three walls
+  const feet=[[P[0],0],[(P[0]+P[1])/2,(P[0]+P[1])/2],[1,P[1]]];
+  feet.forEach((q,i)=>{if(d[i]>1e-6){ctx.setLineDash([3,3]);CX.glowLine(ctx,X(P[0]),Y(P[1]),X(q[0]),Y(q[1]),COL[i],1.2,0);ctx.setLineDash([])}});
+  const eq=nz.length&&Math.max(...nz)-emin<2e-3;
+  CX.dot(ctx,X(P[0]),Y(P[1]),6+(st.drag?1.5:0),eq?C.g:'#ffffff',14);
+  ctx.strokeStyle=eq?C.g:'rgba(255,255,255,.5)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(X(P[0]),Y(P[1]),12+2*Math.sin(t*3),0,TAU);ctx.stroke();
+  if(eq)CX.text(ctx,'ALL EDGES EQUAL',X(P[0])+18,Y(P[1])-14,C.g,11);
+  fig.upd=[P,d,e,eq];
+  upd();
+},{aspect:w=>w<600?0.9:0.62});
+function upd(){
+  const [P,d,e,eq]=fig.upd||[st.P,dists(st.P),dists(st.P).map(v=>2*v),false];
+  CX.kv($('kv3'),[['P','('+P[0].toFixed(4)+', '+P[1].toFixed(4)+')'],
+   ['d1 to y=0 (green)',d[0].toFixed(4)],['d2 to y=x (cyan)',d[1].toFixed(4)],['d3 to x=1 (amber)',d[2]<1e-6?'0 (on wall)':d[2].toFixed(4)],
+   ['edge 2d1',e[0].toFixed(4)],['edge 2d2',e[1].toFixed(4)],['edge 2d3',e[2]<1e-6?'none':e[2].toFixed(4)],
+   ['verdict',eq?'EQUAL: regular':'unequal edges',eq?'ok':'warn']]);
+}
+function sync(){$('b3lock').classList.toggle('on',st.lock);$('b3mir').classList.toggle('on',st.mir);$('b3bal').classList.toggle('on',st.bal);$('b3sweep').classList.toggle('on',st.sweep)}
+$('b3lock').onclick=()=>{st.lock=!st.lock;if(st.lock)st.P=[1,Math.min(st.P[1],1)];sync()};
+$('b3mir').onclick=()=>{st.mir=!st.mir;sync()};
+$('b3bal').onclick=()=>{st.bal=!st.bal;sync()};
+$('b3inc').onclick=()=>{st.P=[1,R];st.sweep=false;sync()};
+$('b3all').onclick=()=>{st.lock=false;st.sweep=false;st.P=[S2/2,1-S2/2];sync()};
+$('b3sweep').onclick=()=>{st.sweep=!st.sweep;if(st.sweep)st.lock=true;sync()};
+function mv(x,y){const s=view.s;let p=[1+(x-view.W/2)/s,0.9-(y-view.H/2)/s];st.sweep=false;
+  if(st.lock)p=[1,Math.max(0.0,Math.min(1,p[1]))];
+  else{p[1]=Math.max(0,p[1]);p[0]=Math.min(1,Math.max(0,p[0]));if(p[1]>p[0])p[1]=p[0]}
+  if(Math.abs(p[1]-R)<0.012&&p[0]>0.98)p=[1,R];
+  if(Math.hypot(p[0]-S2/2,p[1]-(1-S2/2))<0.015)p=[S2/2,1-S2/2];
+  st.P=p;sync()}
+CX.pointer(cv,{down:(x,y)=>{st.drag=true;mv(x,y)},drag:mv,up:()=>{st.drag=false}});
+sync();
+
+/* ---------- table ---------- */
+const fact=n=>n<=1?1:n*fact(n-1);
+const tb=document.querySelector('#tb4 tbody');
+for(let n=2;n<=8;n++){
+  const pc=4*n*(n-1),all=Math.pow(2,n)*fact(n),rot=all/2,ch=Math.pow(2,n-2)*fact(n-2);
+  const m=pc===all?'all symmetries':pc===rot?'rotations':'neither (short)';
+  const tr=document.createElement('tr');tr.id='r'+n;
+  tr.innerHTML='<td class="n">'+n+'</td><td class="n">'+pc+'</td><td class="n">'+all+'</td><td class="n">'+rot+'</td><td class="n">'+ch+'</td><td class="n">'+(2*n-1)+'</td><td>'+m+'</td>';
+  tb.appendChild(tr);
+}
+function s4(){const n=+$('s4').value;$('s4v').textContent=n;for(let k=2;k<=8;k++)$('r'+k).classList.toggle('hi',k===n);
+  const pc=4*n*(n-1),all=Math.pow(2,n)*fact(n);
+  CX.kv($('kv4'),[['pieces',pc],['all symmetries',all],['rotations',all/2],['chambers per piece',Math.pow(2,n-2)*fact(n-2)],['pieces / rotations',(pc/(all/2)).toFixed(4),pc===all/2?'ok':'']]);}
+$('s4').oninput=s4;if(CX.Q.has('n'))$('s4').value=CX.Q.get('n');s4();
+});
+</script>
+</body></html>
