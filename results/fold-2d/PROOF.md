@@ -52,6 +52,11 @@ from D. Wells, Penguin Dictionary of Curious and Interesting Geometry (1991). Ro
 and K. E. Evans, J. Mater. Sci. Lett. 19, 1563 (2000). The equi-auxetic criterion: Mitschke et al., EPL 102, 66005 (2013) (this predicts
 nu = -1 along the symmetric path). The flexibility-window notion: Sartbaeva, Wells, Treacy and Thorpe, Nature Mater. 5, 962 (2006); the
 kagome analogue (triangles twisted into the triangular packing) is of the same type (Donev et al. 2004; Sun et al. 2012).
+**Related work (different linkage).** T. Tarnai, P. W. Fowler, S. D. Guest and F. Kovacs, "Equiauxetic Hinged Archimedean Tilings", Symmetry 14, 232 (2022),
+doi:10.3390/sym14020232 (abstract read): hinged body-bar frameworks on Archimedean tilings, where each tile is a rigid body. They find that single-link
+{3.12^2}, {4.6.12} and {4.8^2} frameworks are equiauxetic, with a unique, totally symmetric, finite mode. Here the octagons are rigid as well, and
+the links are hinges between tiles, so it is a different linkage from the squares-and-rods model above; it is cited as context for the nu = -1 statement,
+not as a source of our numbers.
 **PARTIALLY KNOWN (ball-packing numbers): trivial corollaries. NOT FOUND: the uniqueness of the incentre as an elementary statement.**
 
 ## Open obligations

@@ -69,6 +69,14 @@ the equal-bond value is h = 1 - sqrt2/2 = 0.2929 (at h = 0.2071 the intra- and i
 
 ## Prior art
 
+**Travesset 2017, not retrieved.** A. Travesset, "Soft Skyrmions, Spontaneous Valence and Selection Rules in Nanoparticle Superlattices", ACS Nano 11, 5375
+(2017), doi:10.1021/acsnano.7b02219, is paywalled and I could not read it; the abstract (PubMed) has no CaB6 numbers. It is cited by S. Ren et al.,
+arXiv:2006.01860, for superlattices sitting at the peak of the packing fraction and for the MgZn2 (sqrt(2/3)) and CsCl (sqrt3 - 1) peaks, but their
+text quotes no CaB6 peak, and their Table 5 gives CaB6 only as ranges (experiment 0.43 to 0.47, binary LJ 0.3 to 0.5). So the **location of the maximum,
+gamma = sqrt2 - 1, may already be known from Travesset 2017 (and, as below, can be read off Horst and Travesset 2016, Fig. 3); I could not confirm it.** The
+closed form (pi/6)(30 sqrt2 - 41) is not confirmed as new either: it was not found in the sources that I could read. A library copy of Travesset 2017 is
+the one check that would settle both.
+
 **PARTIALLY KNOWN.** The curve phi_max(gamma) was plotted for this and 23 other lattices by N. Horst and A. Travesset, "Prediction of binary
 nanoparticle superlattices from soft potentials", J. Chem. Phys. 144, 014502 (2016) (Fig. 3); the peak position can be read from
 their figure, and the closed forms were not found in text. CaB6 is absent from the densest binary packings of A. B. Hopkins, F. H.
