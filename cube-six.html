@@ -1,59 +1,80 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cube in six pyramids</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The cube, hands-on | Incentre lattice</title>
 <style>
-  html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
-  canvas{display:block;width:100vw;height:100vh;cursor:grab}
-  canvas:active{cursor:grabbing}
-  .panel{position:fixed;background:#fffdf8ee;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px}
-  #ui{top:16px;left:16px;width:270px;max-height:calc(100vh - 60px);overflow:auto}
-  #notes{bottom:16px;right:16px;width:330px;max-height:calc(100vh - 60px);overflow:auto}
-  h1{font-size:15px;margin:0 0 6px}
-  h2{font-size:12px;margin:12px 0 4px;text-transform:uppercase;letter-spacing:.06em;color:#8a7f6a}
-  p{margin:0 0 8px;color:#5b6573;font-size:12.5px}
-  #caption{color:#1d2b3a}
-  ol{margin:0;padding-left:18px;color:#5b6573;font-size:12.5px}
-  li{margin-bottom:6px}
-  label{display:flex;align-items:center;gap:8px;margin:5px 0;user-select:none}
-  input[type=range]{flex:1}
-  .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-  button{font:inherit;font-size:13px;padding:4px 10px;border:1px solid #cfc8b8;border-radius:6px;background:#fff;cursor:pointer}
-  button:hover{background:#f3efe6}
-  #tetLabel{font-size:12.5px;color:#5b6573}
-  .head{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;user-select:none}
-  .head h1{margin:0}
-  .min-btn{border:none;background:none;font-size:18px;line-height:1;padding:0 2px;color:#8a7f6a}
-  .body{margin-top:6px}
-  .panel.min{width:auto;padding:8px 12px}
-  .panel.min .body{display:none}
-  .hint{position:fixed;bottom:10px;left:16px;font-size:11.5px;color:#a39a87}
-#ui,#notes{margin-top:30px}
-#sign{position:fixed;z-index:60;white-space:nowrap;font:12px/1.45 -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;color:#5b6573;background:#fffdf8ee;
-  border:1px solid #e3ddd0;border-radius:8px;padding:6px 10px;text-decoration:none;box-shadow:0 1px 3px rgba(29,43,58,.06)}
-#sign a{color:#1d2b3a;text-decoration:none;border-bottom:1px solid #cfc8b8}
-#sign a:hover{color:#c0392b;border-bottom-color:#c0392b}
-@media (max-width:600px){#sign{font-size:10.5px;padding:4px 7px;white-space:normal;max-width:calc(100vw - 24px)}}
-#sign{left:50%;bottom:10px;transform:translateX(-50%)}
-@media (max-width:999px) and (min-width:601px){#sign{left:auto;right:12px;top:44px;bottom:auto;transform:none}}
-@media (max-width:600px){#sign{bottom:4px}}
-@media (max-width:700px){
+:root{
+  --bg:#fbf8f1;--panel:#fffdf8;--line:#e3ddd0;--line2:#cfc8b8;--ink:#1d2b3a;--ink2:#46525f;--mute:#7b705c;--accent:#c0392b;--bar:#1d2b3a;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:Charter,"Bitstream Charter","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Noto Serif",serif;
+  --t-xs:12px;--t-sm:13.5px;--t-base:15px;--t-lg:17px;--t-xl:21px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:var(--t-base)/1.55 var(--serif)}
+body{overflow:hidden;height:100vh;height:100dvh}
+a{color:var(--accent)}
+#stage{position:fixed;inset:0}
+canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+canvas:active{cursor:grabbing}
+.cbar{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bar);color:var(--bg);font:var(--t-sm)/1.4 var(--sans);padding:8px 14px;display:flex;gap:6px 16px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cbar b{letter-spacing:.08em;font-size:var(--t-xs)}
+.cbar span{opacity:.7}
+.cbar a{color:var(--bg);text-decoration:none;border-bottom:1px solid transparent}
+.cbar a:hover{border-bottom-color:currentColor}
+.cbar a[aria-current]{border-bottom-color:currentColor;font-weight:600}
+.cbar a.out{color:#7fe0b0;margin-left:auto}
+.panel{position:fixed;top:56px;background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:12px;padding:12px 16px;z-index:5;overflow:auto;overscroll-behavior:contain}
+#ui{left:16px;width:272px;max-height:calc(100vh - 150px)}
+#notes{right:16px;width:332px;max-height:calc(100vh - 150px)}
+.head{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;user-select:none}
+h1{font:600 var(--t-lg)/1.25 var(--sans);margin:0}
+h2{font:600 var(--t-xs)/1.3 var(--sans);text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin:16px 0 6px}
+p{margin:0 0 10px;color:var(--ink2);font-size:var(--t-sm)}
+.min-btn{border:0;background:none;font:var(--t-xl)/1 var(--sans);padding:0 4px;color:var(--mute);cursor:pointer;border-radius:6px}
+.min-btn:hover{color:var(--ink);background:#f3efe6}
+.body{margin-top:8px}
+.panel.min{padding:8px 14px;overflow:hidden}
+.panel.min .body{display:none}
+.panel.min .head{margin:0}
+.lead{color:var(--ink);font-size:var(--t-base)}
+label{display:flex;align-items:center;gap:8px;margin:6px 0;font:var(--t-sm)/1.35 var(--sans);color:var(--ink);user-select:none}
+input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+button.btn{font:500 var(--t-sm)/1 var(--sans);padding:8px 12px;min-height:34px;border:1px solid var(--line2);border-radius:8px;background:#fff;color:var(--ink);cursor:pointer}
+button.btn:hover{background:#f3efe6}
+button.btn.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+#tetLabel{font:var(--t-xs)/1.3 var(--sans);color:var(--mute);min-width:5.5em}
+#caption{color:var(--ink);padding:8px 10px;background:#f6f1e4;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin:10px 0 0}
+ol{margin:0;padding-left:20px;color:var(--ink2);font-size:var(--t-sm)}
+li{margin-bottom:8px}
+li b{color:var(--ink)}
+.go{display:block;padding:10px 12px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);font:600 var(--t-sm)/1.3 var(--sans);text-decoration:none;margin-top:12px}
+.go:hover{background:#fbeceb}
+.hint{position:fixed;bottom:14px;left:16px;font:var(--t-xs)/1.3 var(--sans);color:var(--mute)}
+#sign{position:fixed;z-index:60;left:50%;bottom:10px;transform:translateX(-50%);white-space:nowrap;text-align:center;font:var(--t-xs)/1.45 var(--sans);color:var(--ink2);background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:8px;padding:5px 10px;box-shadow:0 1px 3px rgba(29,43,58,.06)}
+#sign a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line2)}
+#sign a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+@media (max-width:900px){
+  body{overflow:auto;height:auto}
+  #stage{position:relative;inset:auto;height:clamp(300px,56vh,520px);border-bottom:1px solid var(--line)}
+  .cbar{position:static;font-size:var(--t-xs);padding:7px 10px;gap:4px 12px}
   .cbar span{display:none}
-  .cbar{font-size:12px!important;gap:3px 12px!important;padding:6px 10px!important}
-  #ui,#notes{position:fixed;left:8px;right:8px;width:auto;max-width:none;margin-top:0}
-  #ui{top:58px;max-height:34vh;max-height:34dvh}
-  #notes{top:auto;bottom:34px;max-height:26vh;max-height:26dvh}
+  .cbar a.out{margin-left:0}
+  .panel{position:static;width:auto!important;max-height:none!important;margin:12px 12px 0;overflow:visible}
   .hint{display:none}
-  #sign{font-size:9.5px;white-space:nowrap;padding:3px 7px;bottom:6px}
-  #sign br{display:none}
-  #sign a:first-of-type{margin-right:.45em}
-  .panel.min{padding:8px 12px}
+  #sign{position:static;transform:none;width:max-content;max-width:calc(100% - 24px);margin:18px auto 20px;font-size:11px}
 }
 </style></head><body>
-<div class="cbar" style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
+<div class="cbar"><b>CLASSIC</b><span>Plain light pages</span><a href="cube-six.html" aria-current="page">The cube, hands-on</a><a href="deeper.html">Atoms, tilings and dimensions</a><a class="out" href="lattice.html">Interactive site &rarr;</a></div>
 
-<canvas id="c"></canvas>
-<div id="ui" class="panel">
-  <div class="head"><h1>The drawing, in 3D</h1><button class="min-btn" title="Minimise">–</button></div><div class="body">
-  <p>Cut from the centre, the cube splits into six pyramids, one on each face. Each dot is the same distance from all five faces of its pyramid. Red lines run from it to the pyramid's five corners. Drag to turn it.</p>
+<div id="stage"><canvas id="c" aria-label="Interactive 3D cube cut into six pyramids. Drag to turn it."></canvas></div>
+
+<section id="ui" class="panel" aria-label="Controls">
+  <div class="head"><h1>The drawing, in 3D</h1><button class="min-btn" title="Minimise" aria-label="Minimise this panel" aria-expanded="true">&ndash;</button></div>
+  <div class="body">
+  <p class="lead">Ahraz Arifuddin used to draw a square cut by its diagonals, with the incentre of each triangle marked, on the backs of tests and on napkins, because the geometry was satisfying. This page lifts that drawing into a cube.</p>
+  <p>Cut from the centre, the cube splits into six pyramids, one on each face. Each dot is the incentre of its pyramid: the centre of the largest ball that fits inside, equally far from all five faces. Red lines run from it to the pyramid&rsquo;s five corners. Drag to turn it.</p>
+
+  <h2>Shape</h2>
   <label>Pull apart <input id="ex" type="range" min="0" max="1.6" step="0.01" value="0.45"></label>
   <label><input id="faces" type="checkbox" checked> Tinted faces</label>
   <label><input id="spheres" type="checkbox"> Touching spheres</label>
@@ -62,39 +83,43 @@
 
   <h2>Look along</h2>
   <div class="row">
-    <button data-view="face">A face</button>
-    <button data-view="edge">An edge</button>
-    <button data-view="corner">A corner</button>
+    <button class="btn" data-view="face">A face</button>
+    <button class="btn" data-view="edge">An edge</button>
+    <button class="btn" data-view="corner">A corner</button>
   </div>
 
   <h2>The 24 tetrahedra</h2>
   <label><input id="tets" type="checkbox"> Highlight them</label>
   <div class="row">
-    <button id="prev">◀</button><button id="play">Play</button><button id="next">▶</button>
+    <button class="btn" id="prev" aria-label="Previous piece">&#9664;</button><button class="btn" id="play">Play</button><button class="btn" id="next" aria-label="Next piece">&#9654;</button>
     <span id="tetLabel"></span>
   </div>
   <label><input id="halves" type="checkbox"> Split each into mirror halves (48)</label>
-</div></div>
+  </div>
+</section>
 <div class="hint">Press H to hide or show both panels</div>
 
-<div id="notes" class="panel">
-  <div class="head"><h1>What the shape is doing</h1><button class="min-btn" title="Minimise">–</button></div><div class="body">
-  <p id="caption">Use the “Look along” buttons to close the cube and view it down each of its three kinds of symmetry axis.</p>
+<section id="notes" class="panel" aria-label="What the shape is doing">
+  <div class="head"><h1>What the shape is doing</h1><button class="min-btn" title="Minimise" aria-label="Minimise this panel" aria-expanded="true">&ndash;</button></div>
+  <div class="body">
+  <p id="caption">Use the &ldquo;Look along&rdquo; buttons to close the cube and view it down each of its three kinds of symmetry axis.</p>
   <h2>Facts hiding in it</h2>
   <ol>
-    <li><b>24 pieces, 24 turns.</b> Each dot plus one triangle face of its pyramid makes a small tetrahedron. There are 6 × 4 = 24, all identical, and the cube can be turned exactly 24 ways onto itself. Turning the cube carries any one tetrahedron onto any other. This 24-to-24 match is special to 3D (<a href="deeper.html#higher" style="color:#c0392b">see the subpage</a>).</li>
-    <li><b>48 with mirrors.</b> Each tetrahedron has a mirror plane through it. Split along it and you get 48 halves, one for each of the cube's 48 symmetries when reflections count. The flat drawing does the same with 8 triangles for the square's 8 symmetries.</li>
-    <li><b>The number is tan 22.5°.</b> With a cube of side 2, each dot is √2 − 1 ≈ 0.414 from every face of its pyramid. That is tan 22.5°, half of 45°, and 1 / (1 + √2), the reciprocal of the “silver ratio” that governs the regular octagon.</li>
-    <li><b>The six spheres kiss.</b> Neighbouring dots are 2(√2 − 1) apart, exactly two radii. So each ball touches its four neighbours, on the shared wall between them, and touches the centre of its own cube face. The four circles in the flat drawing touch the same way, on the X.</li>
-    <li><b>The dots make an octahedron.</b> The six dots sit on the three axes, at the corners of a regular octahedron, the cube's dual shape. The 12 kissing points are the octahedron's edge midpoints, one for each of the cube's 12 edges.</li>
-    <li><b>A small hole in the middle.</b> The six balls leave a gap at the centre. Its radius is 3 − 2√2 = (√2 − 1)² ≈ 0.17, the same number squared.</li>
+    <li><b>24 pieces, 24 turns.</b> Each dot plus one triangle face of its pyramid makes a small tetrahedron. There are 6 &times; 4 = 24, all identical, and the cube can be turned exactly 24 ways onto itself. Turning the cube carries any one tetrahedron onto any other. This 24-to-24 match is special to 3D (<a href="deeper.html#higher">see the long read</a>).</li>
+    <li><b>48 with mirrors.</b> Each tetrahedron has a mirror plane through it. Split along it and you get 48 halves, one for each of the cube&rsquo;s 48 symmetries when reflections count. The flat drawing does the same with 8 triangles for the square&rsquo;s 8 symmetries.</li>
+    <li><b>The number is tan 22.5&deg;.</b> With a cube of side 2, each dot is &radic;2 &minus; 1 &asymp; 0.414 from every face of its pyramid. That is tan 22.5&deg;, half of 45&deg;, and 1 / (1 + &radic;2), the reciprocal of the &ldquo;silver ratio&rdquo; that governs the regular octagon.</li>
+    <li><b>The six spheres kiss.</b> Neighbouring dots are 2(&radic;2 &minus; 1) apart, exactly two radii. So each ball touches its four neighbours, on the shared wall between them, and touches the centre of its own cube face. The four circles in the flat drawing touch the same way, on the diagonals.</li>
+    <li><b>The dots make an octahedron.</b> The six dots sit on the three axes, at the corners of a regular octahedron, the cube&rsquo;s dual shape. The 12 kissing points are the octahedron&rsquo;s edge midpoints, one for each of the cube&rsquo;s 12 edges.</li>
+    <li><b>A small hole in the middle.</b> The six balls leave a gap at the centre. Its radius is 3 &minus; 2&radic;2 = (&radic;2 &minus; 1)&sup2; &asymp; 0.17, the same number squared.</li>
   </ol>
-  <p style="margin:12px 0 0"><a href="deeper.html" style="display:block;padding:8px 10px;border:1px solid #c0392b;border-radius:8px;color:#c0392b;font-weight:600;text-decoration:none;font-size:13px">Atoms, crystals and higher dimensions →</a></p>
-</div></div>
+  <a class="go" href="deeper.html">Atoms, tilings and dimensions: the illustrated long read &rarr;</a>
+  </div>
+</section>
 
 <script>
 const cv=document.getElementById('c'),g=cv.getContext('2d');
-let W,H,dpr;function rs(){dpr=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',rs);rs();
+let W,H,dpr;const wide=()=>innerWidth>900;
+function rs(){dpr=Math.min(devicePixelRatio||1,2);const r=cv.getBoundingClientRect();W=Math.max(1,r.width);H=Math.max(1,r.height);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);g.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',rs);rs();
 const $=id=>document.getElementById(id);
 
 // Cube [-1,1]^3. Each pyramid has a cube face as its base and the cube's centre as its apex.
@@ -113,7 +138,7 @@ const EDGES=[[0,1],[1,2],[2,3],[3,0],[0,4],[1,4],[2,4],[3,4]];
 
 // View presets: the cube's three kinds of rotation axis, plus captions.
 const VIEWS={
-  face:{yaw:0,pitch:0,text:'<b>Down a face: four-fold.</b> This is the original flat drawing: the X, four dots, red lines to the corners. The dots of the near and far pyramids sit in the middle. A quarter turn leaves it unchanged.'},
+  face:{yaw:0,pitch:0,text:'<b>Down a face: four-fold.</b> This is the original flat drawing: the diagonals, four dots, red lines to the corners. The dots of the near and far pyramids sit in the middle. A quarter turn leaves it unchanged.'},
   edge:{yaw:Math.PI/4,pitch:0,text:'<b>Through two opposite edges: two-fold.</b> The outline becomes a rectangle √2 times as wide as it is tall. Only a half turn leaves it unchanged. The six dots land on four spots: the left and right ones are pairs, one hidden behind the other.'},
   corner:{yaw:Math.PI/4,pitch:Math.atan(1/Math.SQRT2),text:'<b>Down the long diagonal, corner to corner: three-fold.</b> The square outline turns into a regular hexagon, and the six dots make a smaller hexagon inside it. That is the octahedron seen down its own three-fold axis. A third of a turn leaves it unchanged. Turn on the spheres to see a ring of six balls, each touching the next.'}
 };
@@ -121,7 +146,7 @@ const VIEWS={
 let yaw=-0.6,pitch=0.45,drag=null,anim=null;
 cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];anim=null;cv.setPointerCapture(e.pointerId)});
 cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.008;pitch+=(e.clientY-drag[1])*0.008;pitch=Math.max(-1.5708,Math.min(1.5708,pitch));drag=[e.clientX,e.clientY]});
-cv.addEventListener('pointerup',()=>drag=null);
+cv.addEventListener('pointerup',()=>drag=null);cv.addEventListener('pointercancel',()=>drag=null);
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{
   const v=VIEWS[b.dataset.view];
   $('spin').checked=false;$('ortho').checked=true;
@@ -146,8 +171,8 @@ function proj(p){
   let [x,y,z]=p;
   let cx=Math.cos(yaw),sx=Math.sin(yaw);[x,z]=[x*cx-z*sx,x*sx+z*cx];
   let cp=Math.cos(pitch),sp=Math.sin(pitch);[y,z]=[y*cp-z*sp,y*sp+z*cp];
-  const L=W>700&&!$('ui').classList.contains('min')?300:0,Rt=W>700&&!$('notes').classList.contains('min')?360:0,free=W-L-Rt;
-  const base=Math.min(H,free)*0.27,D=9,s=$('ortho').checked?base:base*D/(D+z);
+  const L=wide()&&!$('ui').classList.contains('min')?290:0,Rt=wide()&&!$('notes').classList.contains('min')?350:0,free=W-L-Rt;
+  const base=wide()?Math.min(H,free)*0.27:Math.min(H*0.3,free*0.2),D=9,s=$('ortho').checked?base:base*D/(D+z);
   return {x:L+free/2+x*s,y:H/2-y*s,z,s};
 }
 const add=(a,b,t=1)=>a.map((v,i)=>v+b[i]*t);
@@ -192,15 +217,16 @@ function dot(p){const r=5.5*p.s/80;const gr=g.createRadialGradient(p.x-r/3,p.y-r
 function sphere(p,r,col){const gr=g.createRadialGradient(p.x-r*.35,p.y-r*.35,r*.1,p.x,p.y,r);gr.addColorStop(0,'#ffffff');gr.addColorStop(1,col);g.globalAlpha=.28;g.beginPath();g.arc(p.x,p.y,r,0,7);g.fillStyle=gr;g.fill();g.globalAlpha=1}
 
 // URL hooks for screenshots: ?view=corner&spheres=1&tet=5&halves=1
-function setMin(p,m){p.classList.toggle('min',m);p.querySelector('.min-btn').textContent=m?'+':'–'}
+function setMin(p,m){p.classList.toggle('min',m);p.querySelector('.min-btn').textContent=m?'+':'\u2013';p.querySelector('.min-btn').setAttribute('aria-expanded',!m)}
 document.querySelectorAll('.panel').forEach(p=>p.querySelector('.head').onclick=()=>setMin(p,!p.classList.contains('min')));
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('on',x===b))}));
 addEventListener('keydown',e=>{if(e.key==='h'||e.key==='H'){const ps=[...document.querySelectorAll('.panel')],m=!ps.every(p=>p.classList.contains('min'));ps.forEach(p=>setMin(p,m))}});
-if(innerWidth<900)setMin($('notes'),true);
+if(innerWidth>900&&innerWidth<1150)setMin($('notes'),true);
 const q=new URLSearchParams(location.search);
 for(const id of ['spheres','halves'])if(q.get(id))$(id).checked=true;
 if(q.get('faces')==='0')$('faces').checked=false;
 if(q.get('tet')){$('tets').checked=true;tetIdx=+q.get('tet');showTet()}
 if(q.get('view')){const v=VIEWS[q.get('view')];yaw=v.yaw;pitch=v.pitch;$('ex').value=0;$('spin').checked=false;$('ortho').checked=true;$('caption').innerHTML=v.text}
 frame();
-</script><div id="sign">by <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br>with <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5 from Anthropic, PBC</a></div>
+</script><div id="sign">Ahraz Arifuddin from <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5</a> from Anthropic</div>
 </body></html>

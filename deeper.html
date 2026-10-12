@@ -1,73 +1,113 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>Going deeper: atoms, tilings and higher dimensions</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atoms, tilings and dimensions | Incentre lattice</title>
 <style>
-  html,body{margin:0;background:#fbf8f1;font:16px/1.6 -apple-system,system-ui,sans-serif;color:#1d2b3a}
-  .wrap{max-width:1000px;margin:0 auto;padding:18px 20px 80px}
-  .t{max-width:760px}
-  a{color:#c0392b}
-  .back{display:inline-block;margin:6px 0 18px;font-size:14px;text-decoration:none;border:1px solid #cfc8b8;border-radius:8px;padding:4px 12px;background:#fff;color:#1d2b3a}
-  .back:hover{background:#f3efe6}
-  h1{font-size:32px;line-height:1.2;margin:0 0 10px}
-  h2{font-size:24px;margin:56px 0 4px;padding-top:10px;border-top:1px solid #e3ddd0}
-  h3{font-size:17px;margin:30px 0 4px}
-  h3 .n{display:inline-block;min-width:22px;height:22px;line-height:22px;text-align:center;border-radius:11px;background:#c0392b;color:#fff;font-size:12px;margin-right:6px;vertical-align:2px}
-  p{margin:0 0 12px}
-  .lead{font-size:18px;color:#3a4756}
-  .small{font-size:13.5px;color:#5b6573}
-  .def{color:#5b6573}
-  code,.m{font-family:ui-monospace,Menlo,monospace;font-size:.92em;background:#f3efe6;padding:0 4px;border-radius:4px}
-  .fig{background:#fffdf8;border:1px solid #e3ddd0;border-radius:12px;padding:10px 12px 12px;margin:14px 0 22px}
-  .fig canvas{display:block;width:100%;touch-action:none;cursor:grab;border-radius:8px}
-  .fig canvas:active{cursor:grabbing}
-  .ctl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:8px 0 2px;font-size:14px}
-  .ctl label{display:flex;align-items:center;gap:6px;user-select:none}
-  .ctl input[type=range]{width:220px}
-  button{font:inherit;font-size:14px;padding:5px 12px;border:1px solid #cfc8b8;border-radius:8px;background:#fff;cursor:pointer;color:#1d2b3a}
-  button:hover{background:#f3efe6}
-  button.on{background:#1d2b3a;color:#fbf8f1;border-color:#1d2b3a}
-  .read{font-size:14px;margin:6px 0 0;min-height:22px}
-  .legend{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13.5px;margin:6px 0 0;color:#3a4756}
-  .legend i{display:inline-block;width:11px;height:11px;border-radius:6px;margin-right:6px;vertical-align:-1px}
-  .box{background:#fff;border:1px solid #e3ddd0;border-radius:10px;padding:10px 14px;margin:0 0 14px}
-  table{border-collapse:collapse;font-size:14.5px;margin:6px 0 14px;background:#fff;border:1px solid #e3ddd0;border-radius:10px;overflow:hidden}
-  th,td{padding:6px 12px;text-align:right;border-bottom:1px solid #eee8da}
-  th{background:#f3efe6;font-weight:600}
-  tr.hl td{background:#fbeceb}
-  td.yes{color:#2e9e6a;font-weight:600}
-  .tint-b{color:#3b7dd8}.tint-g{color:#2e9e6a}.tint-a{color:#d08a1e}
-  .hint{font-size:12.5px;color:#a39a87;margin:4px 2px 0}
-body{padding-top:36px}
-#sign{position:fixed;z-index:60;white-space:nowrap;font:12px/1.45 -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;color:#5b6573;background:#fffdf8ee;
-  border:1px solid #e3ddd0;border-radius:8px;padding:6px 10px;text-decoration:none;box-shadow:0 1px 3px rgba(29,43,58,.06)}
-#sign a{color:#1d2b3a;text-decoration:none;border-bottom:1px solid #cfc8b8}
-#sign a:hover{color:#c0392b;border-bottom-color:#c0392b}
-@media (max-width:600px){#sign{font-size:10.5px;padding:4px 7px;white-space:normal;max-width:calc(100vw - 24px)}}
-#sign{right:16px;bottom:16px}
-@media (max-width:1519px){#sign{position:static;max-width:calc(100% - 24px);display:block;width:max-content;margin:0 auto 30px}}
+:root{
+  --bg:#fbf8f1;--panel:#fffdf8;--card:#fff;--line:#e3ddd0;--line2:#cfc8b8;--soft:#f3efe6;--ink:#1d2b3a;--ink2:#3a4756;--mute:#6a6250;--accent:#c0392b;--accent-bg:#fbeceb;--bar:#1d2b3a;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:Charter,"Bitstream Charter","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Noto Serif",serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --t-xs:12.5px;--t-sm:14.5px;--t-base:17px;--t-lg:19px;--t-h3:19px;--t-h2:27px;--t-h1:38px;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:20px}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:var(--t-base)/1.65 var(--serif);-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+.wrap{max-width:1000px;margin:0 auto;padding:22px 24px 40px}
+.t{max-width:68ch}
+a{color:var(--accent)}
+.cbar{background:var(--bar);color:var(--bg);font:var(--t-sm)/1.4 var(--sans);padding:8px 14px;display:flex;gap:6px 16px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cbar b{letter-spacing:.08em;font-size:var(--t-xs)}
+.cbar span{opacity:.7}
+.cbar a{color:var(--bg);text-decoration:none;border-bottom:1px solid transparent}
+.cbar a:hover{border-bottom-color:currentColor}
+.cbar a[aria-current]{border-bottom-color:currentColor;font-weight:600}
+.cbar a.out{color:#7fe0b0}
+.back{display:inline-block;margin:6px 0 20px;font:var(--t-sm)/1.2 var(--sans);text-decoration:none;border:1px solid var(--line2);border-radius:8px;padding:7px 12px;background:var(--card);color:var(--ink)}
+.back:hover{background:var(--soft)}
+h1,h2,h3{font-family:var(--sans);color:var(--ink);text-wrap:balance}
+h1{font-size:var(--t-h1);line-height:1.12;margin:0 0 14px;letter-spacing:-.01em}
+h2{font-size:var(--t-h2);line-height:1.2;margin:64px 0 10px;padding-top:14px;border-top:1px solid var(--line)}
+h3{font-size:var(--t-h3);line-height:1.3;margin:34px 0 6px}
+h3 .n{display:inline-block;min-width:24px;height:24px;line-height:24px;text-align:center;border-radius:12px;background:var(--accent);color:#fff;font-size:var(--t-xs);margin-right:8px;vertical-align:2px}
+p{margin:0 0 14px}
+.lead{font-size:var(--t-lg);line-height:1.6;color:var(--ink2)}
+.small{font:var(--t-sm)/1.5 var(--sans);color:var(--mute)}
+code,.m{font-family:var(--mono);font-size:.88em;background:var(--soft);padding:1px 5px;border-radius:4px;white-space:nowrap}
+.toc{max-width:68ch;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px;margin:18px 0 20px;font-family:var(--sans)}
+.toc b{display:block;font-size:var(--t-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.toc ol{margin:0;padding-left:22px;font-size:var(--t-sm);line-height:1.8}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+.since{max-width:68ch;background:var(--accent-bg);border:1px solid #e9c3bf;border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px 6px;margin:18px 0 6px}
+.since h2{font:600 var(--t-lg)/1.3 var(--sans);margin:0 0 8px;padding:0;border:0}
+.since p,.since li{font-size:var(--t-sm);line-height:1.6}
+.since ul{padding-left:20px;margin:0 0 10px}
+.since li{margin-bottom:8px}
+.fig{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px 14px;margin:18px 0 26px}
+.fig canvas{display:block;width:100%;touch-action:pan-y;cursor:grab;border-radius:8px}
+.fig canvas:active{cursor:grabbing}
+.cap{font:var(--t-sm)/1.5 var(--sans);color:var(--ink2);margin:10px 2px 6px}
+.cap b{color:var(--ink)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:8px 0 2px;font:var(--t-sm)/1.4 var(--sans)}
+.ctl label{display:flex;align-items:center;gap:6px;user-select:none}
+.ctl input[type=range]{width:220px;max-width:100%;accent-color:var(--accent)}
+.ctl input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
+button{font:500 var(--t-sm)/1 var(--sans);padding:9px 13px;min-height:36px;border:1px solid var(--line2);border-radius:8px;background:var(--card);cursor:pointer;color:var(--ink)}
+button:hover{background:var(--soft)}
+button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.read{font:var(--t-sm)/1.5 var(--sans);margin:8px 0 0;min-height:22px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 18px;font:var(--t-xs)/1.5 var(--sans);margin:8px 0 0;color:var(--ink2)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:6px;margin-right:6px;vertical-align:-1px}
+.hint{font:var(--t-xs)/1.4 var(--sans);color:var(--mute);margin:6px 2px 0}
+table{border-collapse:collapse;font:var(--t-sm)/1.45 var(--sans);margin:6px 0 14px;background:var(--card);border:1px solid var(--line);width:100%;max-width:760px}
+th,td{padding:7px 12px;text-align:right;border-bottom:1px solid var(--soft)}
+th{background:var(--soft);font-weight:600}
+tr.hl td{background:var(--accent-bg)}
+.tw{overflow-x:auto;max-width:100%;margin:14px 0 22px}
+.tw .cap{margin-top:0}
+#sign{width:max-content;max-width:calc(100% - 24px);margin:10px auto 30px;text-align:center;font:var(--t-xs)/1.5 var(--sans);color:var(--ink2);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;box-shadow:0 1px 3px rgba(29,43,58,.06)}
+#sign a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line2)}
+#sign a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 @media (max-width:700px){
+  :root{--t-base:16.5px;--t-h1:29px;--t-h2:23px;--t-h3:18px}
   .cbar span{display:none}
-  .cbar{font-size:12px!important;gap:3px 12px!important;padding:6px 10px!important}
-  body{padding-top:58px}
-  .wrap{padding:12px 14px 60px}
-  h1{font-size:26px}h2{font-size:21px}
-  table{display:block;max-width:100%;overflow-x:auto}
-  .ctl input[type=range]{width:100%;max-width:240px}
-  .m,code{overflow-wrap:anywhere}
+  .cbar{font-size:var(--t-xs);padding:7px 10px;gap:4px 12px}
+  .wrap{padding:14px 15px 30px}
+  h2{margin-top:48px}
+  .fig{padding:10px 10px 12px;margin-left:-5px;margin-right:-5px}
+  .ctl input[type=range]{width:100%}
+  .m,code{white-space:normal;overflow-wrap:anywhere}
 }
 </style></head><body>
-<div class="cbar" style="position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:7px 14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap"><b style="letter-spacing:.06em">CLASSIC VIEW</b><span style="opacity:.75">A simple, clean version.</span><a href="cube-six.html" style="color:#fbf8f1">The cube</a><a href="deeper.html" style="color:#fbf8f1">The full story</a><a href="lattice.html" style="color:#7fe0b0">Interactive site &rarr;</a></div>
+<div class="cbar"><b>CLASSIC</b><span>Plain light pages</span><a href="cube-six.html">The cube, hands-on</a><a href="deeper.html" aria-current="page">Atoms, tilings and dimensions</a><a class="out" href="lattice.html">Interactive site &rarr;</a></div>
 <div class="wrap">
 
-<a class="back" href="cube-six.html">← back to the cube</a>
+<a class="back" href="cube-six.html">&larr; The cube, hands-on</a>
 
 <div class="t">
-<h1>Going deeper: atoms, tilings and higher dimensions</h1>
-<p class="lead">The cube page starts from a simple drawing: a square with its X, and a dot in each of the four triangles, the same distance from all the lines around it. This page follows that one number, <span class="m">√2 − 1 ≈ 0.414</span>, into chemistry, into tilings, and into every dimension.</p>
+<h1>Atoms, tilings and dimensions</h1>
+<p class="lead">Ahraz Arifuddin used to draw a square cut by its diagonals, with the incentre of each of the four triangles marked, on the backs of tests and on napkins, because the geometry was satisfying, and he got hooked on it. The incentre is the centre of the inscribed circle, equally far from all three sides. This long read follows its one number, <span class="m">&radic;2 &minus; 1 &asymp; 0.414</span>, into chemistry, into tilings, and into every dimension.</p>
 
-<p><b>Quick recap.</b> Take a cube of side 2 with its centre at the origin. Cut it from the centre into 6 square pyramids, one on each face. In each pyramid, put a ball inside that touches all five of its faces. That is the biggest ball that fits, called the <i>insphere</i>. Its radius is <span class="m">R = √2 − 1 ≈ 0.414</span> and its centre, the dot, is <span class="m">k = 2 − √2 ≈ 0.586</span> from the cube's centre.</p>
-<p class="small">Jump to: <a href="#atoms">1. Atoms and crystals</a> · <a href="#lattice">2. The lattice and the tilings</a> · <a href="#higher">3. Higher dimensions</a> · <a href="#mirror">4. The kaleidoscope behind it</a> · <a href="#new">5. Is any of this new?</a></p>
+<p><b>Quick recap.</b> Take a cube of side 2 with its centre at the origin. Cut it from the centre into 6 square pyramids, one on each face. In each pyramid, put a ball inside that touches all five of its faces. That is the biggest ball that fits, called the <i>insphere</i>. Its radius is <span class="m">R = &radic;2 &minus; 1 &asymp; 0.414</span> and its centre, the dot, is <span class="m">k = 2 &minus; &radic;2 &asymp; 0.586</span> from the cube&rsquo;s centre. The <a href="cube-six.html">hands-on cube</a> shows this in 3D.</p>
 </div>
+
+<nav class="toc" aria-label="Contents"><b>Contents</b>
+<ol>
+<li><a href="#atoms">Atoms and crystals</a></li>
+<li><a href="#lattice">The lattice and the tilings</a></li>
+<li><a href="#higher">Higher dimensions</a></li>
+<li><a href="#mirror">The kaleidoscope behind it</a></li>
+<li><a href="#new">Is any of this new?</a></li>
+</ol></nav>
+
+<aside class="since" id="since" aria-labelledby="since-h"><h2 id="since-h">Since this page was written</h2>
+<p>This page covers the classical core. The project has moved on. Three results, none of them peer reviewed, are summarised here. Each has an evidence label on the <a href="open.html">Ledger</a>.</p>
+<ul>
+<li><b>The fold.</b> Touching balls joined by rigid bars can fold without any bar changing length. In 2D the fold locks at exactly 45&deg;. That linkage is <b>known</b> (Flores, hinged tilings, after Stuart 1963). In 3D the simplest fold, with the lattice kept cubic, ends at 60&deg; along [111] at density 0.4686. That is a waypoint, not a jam, because a trigonal branch keeps folding past it. A machine search then found a continuous, bar-preserving, overlap-free fold from density 0.2233 to hexagonal close packing, 0.74048. See <a href="motion.html#fold2">Motion</a> and <a href="seek.html#case">Search</a>.</li>
+<li><b>Rigidity in n dimensions.</b> Per cell, the framework has n(n&minus;1)/2 floppy modes and n(n&minus;3)/2 self-stresses at a generic wavevector. This is proven for n&nbsp;&ge;&nbsp;3, and the 3D case is known from Goodwin (2006). See <a href="motion.html#modes">Motion, floppy modes</a>.</li>
+<li><b>The size-limit identity.</b> Section 4 below shows hole/ball matching chemistry&rsquo;s limits. It is proven when every wall of the cut solid is a mirror, or when the insphere exists and all dihedral angles are equal. Without one of those conditions it can fail. See the <a href="open.html#ledger">Ledger</a>.</li>
+</ul></aside>
 
 <!-- ============ SECTION 1 ============ -->
 <h2 id="atoms">1. Atoms and crystals</h2>
@@ -80,7 +120,8 @@ body{padding-top:36px}
 <p>Try it. The big balls touch each other. Slide the small ball's size.</p>
 </div>
 <div class="fig">
-  <canvas id="f1" style="height:400px"></canvas>
+  <canvas id="f1" style="height:400px" aria-label="Six equal balls on the three axes with a small ball in the hole between them"></canvas>
+  <p class="cap"><b>Figure 1.</b> Six equal balls on the three axes, touching. The small red ball sits in the hole between them. The dashed ring marks the biggest ball that fits.</p>
   <div class="ctl">
     <label>Small ball size (compared with a big ball) <input id="s1" type="range" min="0.15" max="0.8" step="0.001" value="0.3"></label>
     <span id="s1v" class="m"></span>
@@ -99,7 +140,7 @@ body{padding-top:36px}
 <p>In your cube, each pyramid is one Ti→O direction, with 4 A atoms around its base.</p>
 
 <h3><span class="n">4</span>The classic cubic crystals come from the same points</h3>
-<p><b>Corners plus the centre</b> is <i>body-centred cubic</i>: iron at room temperature. If the centre atom differs from the corner atoms it is caesium chloride. The pyramid edges, from the centre to the corners, are the nearest-neighbour bonds. <b>Corners plus the 6 face centres</b> is <i>face-centred cubic</i>: copper, aluminium and gold. Notice that the X on each face is the original drawing again. <b>All corners, centres, face centres and edge midpoints</b>, with two kinds of atom alternating, is <b>rock salt</b> (NaCl, table salt).</p>
+<p><b>Corners plus the centre</b> is <i>body-centred cubic</i>: iron at room temperature. If the centre atom differs from the corner atoms it is caesium chloride. The pyramid edges, from the centre to the corners, are the nearest-neighbour bonds. <b>Corners plus the 6 face centres</b> is <i>face-centred cubic</i>: copper, aluminium and gold. Notice that each face, with its diagonals, is the original drawing again. <b>All corners, centres, face centres and edge midpoints</b>, with two kinds of atom alternating, is <b>rock salt</b> (NaCl, table salt).</p>
 
 <h3><span class="n">5</span>The 48 symmetries</h3>
 <p>A <i>symmetry</i> is a turn or a mirror flip that leaves the shape looking unchanged. The cube has 48 (24 turns, 24 more when mirror flips count). All the crystals above share this full set, called <b>O<sub>h</sub></b>. The 48 mirror halves from the cube page are the smallest repeating piece under it, and a general point in such a crystal has 48 copies.</p>
@@ -109,7 +150,8 @@ body{padding-top:36px}
 <p>Use the viewer to see all of this. Choose a crystal, drag to rotate.</p>
 </div>
 <div class="fig">
-  <canvas id="f2" style="height:540px"></canvas>
+  <canvas id="f2" style="height:540px" aria-label="One cube cell showing a chosen crystal structure"></canvas>
+  <p class="cap"><b>Figure 2.</b> One cube cell, shown as your dots or as four classic crystals. The faint lines are the cube cut into six pyramids.</p>
   <div class="ctl" id="f2btns">
     <button data-m="dots" class="on">Your dots</button>
     <button data-m="perov">Perovskite</button>
@@ -123,8 +165,7 @@ body{padding-top:36px}
   </div>
   <div class="legend" id="f2leg"></div>
   <div class="read" id="f2txt"></div>
-  <div class="hint">Faint lines: the cube cut into six pyramids.</div>
-</div>
+  </div>
 
 <!-- ============ SECTION 2 ============ -->
 <h2 id="lattice">2. The lattice and the tilings</h2>
@@ -135,7 +176,8 @@ body{padding-top:36px}
 <p>This is no accident. It works exactly because <span class="m">√2 − 1 = tan 22.5°</span>, and 22.5° is half of 45°, the angle between neighbouring corners of a regular octagon seen from its centre. Circles of radius R at the dots touch 3 neighbours each and cover about 53.9% of the plane.</p>
 </div>
 <div class="fig">
-  <canvas id="f3"></canvas>
+  <canvas id="f3" aria-label="The square drawing repeated in a grid"></canvas>
+  <p class="cap"><b>Figure 3.</b> The drawing repeated in a grid. The dots of four squares form a regular octagon around each shared corner, and the four dots of one square form a small square.</p>
   <div class="ctl">
     <label>Squares per side <input id="n3" type="range" min="2" max="6" step="1" value="3"></label><span id="n3v" class="m">3</span>
     <label><input id="c3" type="checkbox" checked> show dots' contact lines</label>
@@ -151,7 +193,8 @@ body{padding-top:36px}
 <p>Octahedra and truncated cubes fill space with no gaps. This is a <i>uniform honeycomb</i> (a space-filling stack of regular-faced shapes), called the <b>truncated cubic honeycomb</b>, and every edge has length 2R. Each ball touches 5 others: 4 inside its own cube and 1 through the face. The balls fill about 22.3% of space. The biggest ball that fits in the cavity at a cube corner has radius about 2.56 R.</p>
 </div>
 <div class="fig">
-  <canvas id="f4" style="height:560px"></canvas>
+  <canvas id="f4" style="height:560px" aria-label="A block of eight cells with the dots joined by touching bars"></canvas>
+  <p class="cap"><b>Figure 4.</b> A block of 2 &times; 2 &times; 2 cells. The six dots of each cell make an octahedron. The 24 dots around the middle corner make a truncated cube.</p>
   <div class="ctl">
     <label><input id="d4" type="checkbox" checked> dots</label>
     <label><input id="e4" type="checkbox" checked> edges</label>
@@ -159,7 +202,7 @@ body{padding-top:36px}
     <label><input id="t4" type="checkbox"> highlight one truncated cube</label>
     <label><input id="x4" type="checkbox"> highlight octahedra</label>
   </div>
-  <div class="read small">A 2 × 2 × 2 block of cells: 8 cells, 48 dots. The truncated cube is the one around the middle corner, where all 8 cells meet.</div>
+  <div class="read small">8 cells, 48 dots. The truncated cube is the one around the middle corner, where all 8 cells meet.</div>
 </div>
 
 <!-- ============ SECTION 3 ============ -->
@@ -167,19 +210,20 @@ body{padding-top:36px}
 <div class="t">
 <h3><span class="n">9</span>The same number in every dimension</h3>
 <p>We can do the same cut in 4, 5 or any number of dimensions. An <i>n</i>-dimensional cube cut from its centre gives 2<i>n</i> pyramids. Take a ball inside one pyramid, with its centre at distance <i>c</i> from the cube's centre along the axis. The pyramid's base is at distance 1 − <i>c</i> from it. Its slanted faces are at distance <i>c</i>/√2. The ball touches all of them when these are equal, which gives <i>c</i> = 2 − √2.</p>
-<p>That does not depend on <i>n</i>. So in every dimension the ball has radius √2 − 1, sits at distance 2 − √2 from the centre, and neighbouring balls touch. The hole in the middle keeps the ratio √2 − 1. Stacked cubes give the vertices of the uniform <i>truncated n-cubic honeycomb</i> (I checked the 2D and 3D coordinates directly, and they match the standard form in every dimension). Each ball touches 2<i>n</i> − 1 others: 3 in 2D, 5 in 3D, 7 in 4D.</p>
+<p>That does not depend on <i>n</i>. So in every dimension the ball has radius √2 − 1, sits at distance 2 − √2 from the centre, and neighbouring balls touch. The hole in the middle keeps the ratio √2 − 1. Stacked cubes give the vertices of the uniform <i>truncated n-cubic honeycomb</i> (the 2D and 3D coordinates were checked directly; the general-<i>n</i> form is the standard one, not checked here). Each ball touches 2<i>n</i> − 1 others: 3 in 2D, 5 in 3D, 7 in 4D.</p>
 
 <h3><span class="n">10</span>The 24-to-24 match is a 3D coincidence</h3>
 <p>On the cube page, 24 small pieces matched the cube's 24 rotations. Is that deep, or luck? Count in <i>n</i> dimensions. A piece is a dot plus one slanted face. There are 2<i>n</i> pyramids with 2(<i>n</i> − 1) slanted faces each, so <b>4<i>n</i>(<i>n</i> − 1)</b> pieces. The cube has <b>2<sup><i>n</i></sup>·<i>n</i>!</b> symmetries with mirrors, and half of those, <b>2<sup><i>n</i>−1</sup>·<i>n</i>!</b>, are turns.</p>
 </div>
 <div class="fig">
-  <table>
+  <p class="cap"><b>Table 1.</b> Pieces against symmetries, by dimension. Try other dimensions with the slider.</p>
+  <div class="tw"><table>
     <tr><th>dimension n</th><th>pieces</th><th>all symmetries</th><th>rotations only</th><th>balls touched</th></tr>
     <tr id="r2"><td>2</td><td>8</td><td>8</td><td>4</td><td>3</td></tr>
     <tr id="r3" class="hl"><td>3</td><td>24</td><td>48</td><td>24</td><td>5</td></tr>
     <tr id="r4"><td>4</td><td>48</td><td>384</td><td>192</td><td>7</td></tr>
     <tr id="r5"><td>5</td><td>80</td><td>3840</td><td>1920</td><td>9</td></tr>
-  </table>
+  </table></div>
   <div class="ctl"><label>Try any dimension <input id="n10" type="range" min="2" max="12" step="1" value="3"></label><span id="n10v" class="m">3</span></div>
   <div class="read" id="n10txt"></div>
 </div>
@@ -190,29 +234,29 @@ body{padding-top:36px}
 <!-- ============ SECTION 4 ============ -->
 <h2 id="mirror">4. The kaleidoscope behind it</h2>
 <div class="t">
-<p><b>Why one number keeps appearing.</b> Every face of your pyramids lies on a mirror of the cube pattern: the cube faces themselves, and the diagonal planes like the X. Your dot is the point the same distance from all of those mirrors. Reflect it in any one mirror and the copy lands exactly 2 × (√2 − 1) away. So every edge of the pattern comes out the same length. That is what makes the octagons regular and the honeycomb uniform. Distance to a mirror doesn't depend on the dimension, so the number never changes.</p>
+<p><b>Why one number keeps appearing.</b> Every face of your pyramids lies on a mirror of the cube pattern: the cube faces themselves, and the diagonal planes, which are the diagonals of the flat drawing carried into 3D. Your dot is the point the same distance from all of those mirrors. Reflect it in any one mirror and the copy lands exactly 2 × (√2 − 1) away. So every edge of the pattern comes out the same length. That is what makes the octagons regular and the honeycomb uniform. Distance to a mirror doesn't depend on the dimension, so the number never changes.</p>
 <p><b>This is a known method.</b> It is the <i>Wythoff construction</i>, published by the Dutch mathematician Willem Wythoff in 1918 and developed by H. S. M. Coxeter. It builds every uniform tiling and honeycomb the same way: treat the symmetry planes as a kaleidoscope, and place one point at equal distance from the chosen mirrors. Your dot is that point, and your pyramid is one chamber of the kaleidoscope.</p>
-<p><b>The same rule gives chemistry's whole table, not just 0.414.</b> Cut each of three regular solids from its centre into pyramids, one per face, and put a dot equidistant from every face of each pyramid. Neighbouring balls always touch, because neighbouring dots are mirror images across the shared wall. The hole left in the middle comes out exactly at chemistry's size limit for that arrangement:</p>
+<p><b>The same rule gives chemistry's whole table, not just 0.414.</b> Cut each of three regular solids from its centre into pyramids, one per face, and put a dot equidistant from every face of each pyramid. These three solids work because every pyramid wall is a mirror of the solid. In general the identity needs mirror walls, or else an insphere plus equal dihedral angles. Without that it can fail. Neighbouring balls always touch, because neighbouring dots are mirror images across the shared wall. The hole left in the middle comes out exactly at chemistry's size limit for that arrangement:</p>
 </div>
-<table>
+<div class="tw"><p class="cap"><b>Table 2.</b> The same rule on three solids. Each hole-to-ball ratio is the classical radius-ratio limit for that neighbour shape.</p><table>
   <tr><th style="text-align:left">Shape cut from its centre</th><th style="text-align:left">Dots form</th><th>Hole ÷ ball</th><th style="text-align:left">Chemistry's limit</th></tr>
   <tr><td style="text-align:left">Tetrahedron (4 pieces)</td><td style="text-align:left">4 balls, a tetrahedron</td><td>0.2247</td><td style="text-align:left">0.225: four neighbours (zinc blende)</td></tr>
   <tr><td style="text-align:left">Cube (6 pieces)</td><td style="text-align:left">6 balls, an octahedron</td><td>0.4142</td><td style="text-align:left">0.414: six neighbours (rock salt)</td></tr>
   <tr><td style="text-align:left">Octahedron (8 pieces)</td><td style="text-align:left">8 balls, a cube</td><td>0.7321</td><td style="text-align:left">0.732: eight neighbours (caesium chloride)</td></tr>
-</table>
+</table></div>
 <div class="t">
-<p>The limits are defined as "the hole left when the surrounding balls just touch", and the dot rule produces exactly that touching arrangement every time. So the thresholds are facts about symmetry, not about chemistry. Chemistry decides which arrangement real ions prefer; the kaleidoscope decides where the cut-offs fall. This explains the numbers, but it doesn't make the rule predict better: real ions aren't hard balls, and many crystals break the rule.</p>
+<p>The limits are defined as &ldquo;the hole left when the surrounding balls just touch&rdquo;, and under those conditions the dot rule produces exactly that touching arrangement. So the thresholds are facts about symmetry, not about chemistry. Chemistry decides which arrangement real ions prefer; the kaleidoscope decides where the cut-offs fall. This explains the numbers, but it doesn't make the rule predict better: real ions aren't hard balls, and many crystals break the rule.</p>
 </div>
 
 <!-- ============ SECTION 5 ============ -->
 <h2 id="new">5. Is any of this new?</h2>
 <div class="t">
-<p>No. Every individual fact here is known. The radius-ratio rule dates from the 1920s and 30s. The 4.8.8 tiling and the truncated cubic honeycomb are classical uniform tilings. Perovskite is a standard crystal. Section 3 is easy to derive, and anyone who studies these shapes would find it.</p>
-<p>What is nice is the route. One rule, "put the dot the same distance from all the edges", lands exactly on the regular octagon pattern, on the truncated cube pattern, and on chemistry's 0.414 limit, in every dimension, and for one shared reason: <b>tan 22.5° = √2 − 1</b>.</p>
-<p>The method behind the route is Wythoff's 1918 construction (section 4). It is textbook that each size limit equals the coordination shape's centre-to-corner distance over half its edge, minus one. Getting all three limits, and the uniform tilings, from one rule about dots equidistant from mirror walls is a tidy way to see it that we haven't seen written down. A later literature search is summarised on the ledger page of the main site; it is a new view of known results, not a new result.</p>
-<p>It is a rediscovery of known structures by a short route.</p>
-<p>See it all at once in the <a href="lattice.html">lattice page</a>.</p>
-<p><a href="cube-six.html">← back to the cube</a></p>
+<p>Mostly no. Every individual fact in sections 1 to 4 is known. The radius-ratio rule dates from the 1920s and 30s. The 4.8.8 tiling and the truncated cubic honeycomb are classical uniform tilings. Perovskite is a standard crystal. Section 3 is easy to derive, and anyone who studies these shapes would find it.</p>
+<p>What is nice is the route. One rule, &ldquo;put the dot the same distance from all the edges&rdquo;, lands exactly on the regular octagon pattern, on the truncated cube pattern, and on chemistry&rsquo;s 0.414 limit, in every dimension, and for one shared reason: <b>tan 22.5&deg; = &radic;2 &minus; 1</b>.</p>
+<p>The method behind the route is Wythoff&rsquo;s 1918 construction (section 4). It is textbook that each size limit equals the coordination shape&rsquo;s centre-to-corner distance over half its edge, minus one. Getting all three limits, and the uniform tilings, from one rule about dots equidistant from mirror walls is a tidy way to see it that we have not seen written down. Searches for prior work are summarised on the <a href="open.html">Ledger</a>. This is a new view of known results, not a new result.</p>
+<p>The results listed in the box near the top are different. They are not classical, and no prior description of them was found by web search. They are also not peer reviewed, so the Ledger labels how strong each one is.</p>
+<p>See it all at once on the <a href="lattice.html">lattice page</a>.</p>
+<p><a href="cube-six.html">&larr; The cube, hands-on</a></p>
 </div>
 
 <script>
@@ -236,7 +280,7 @@ function View(id,h,extent,draw){
   let drag=null;
   cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];v.spin=false;cv.setPointerCapture(e.pointerId)});
   cv.addEventListener('pointermove',e=>{if(!drag)return;v.yaw+=(e.clientX-drag[0])*0.008;v.pitch+=(e.clientY-drag[1])*0.008;v.pitch=Math.max(-1.5708,Math.min(1.5708,v.pitch));drag=[e.clientX,e.clientY]});
-  cv.addEventListener('pointerup',()=>drag=null);
+  cv.addEventListener('pointerup',()=>drag=null);cv.addEventListener('pointercancel',()=>drag=null);
   v.proj=p=>{let[x,y,z]=p;
     let cx=Math.cos(v.yaw),sx=Math.sin(v.yaw);[x,z]=[x*cx-z*sx,x*sx+z*cx];
     let cp=Math.cos(v.pitch),sp=Math.sin(v.pitch);[y,z]=[y*cp-z*sp,y*sp+z*cp];
@@ -295,8 +339,8 @@ const MODES={};
   const fa=[],fb=[];
   CORN.forEach(c=>fa.push({p:c,col:GREEN,r:.17}));
   FACEC.forEach(f=>{fa.push({p:f,col:GREEN,r:.17});const a=f.findIndex(x=>x!==0);CORN.forEach(c=>{if(c[a]===f[a])fb.push([f,c,GREEN,1.6,.55])})});
-  MODES.fcc={atoms:fa,bonds:fb,leg:[[GREEN,'copper, aluminium, gold: corners (1) plus 6 face centres ÷ 2 (3) = 4 atoms per cell'],[INK,'the X on each face is your original drawing']],
-    txt:'Face-centred cubic. Look at any face: it is the original square with its X.'};
+  MODES.fcc={atoms:fa,bonds:fb,leg:[[GREEN,'copper, aluminium, gold: corners (1) plus 6 face centres ÷ 2 (3) = 4 atoms per cell'],[INK,'the diagonals on each face are your original drawing']],
+    txt:'Face-centred cubic. Look at any face: it is the original square with its diagonals.'};
   // rock salt
   const sa=[],sb=[],S=[];
   for(const x of[-1,0,1])for(const y of[-1,0,1])for(const z of[-1,0,1]){const odd=Math.abs(x+y+z)%2===1;S.push([x,y,z]);sa.push({p:[x,y,z],col:odd?AMB:BLUE,r:odd?.2:.14})}
@@ -409,5 +453,5 @@ $('n10').addEventListener('input',upd10);upd10();
 {const qq=new URLSearchParams(location.search);for(const id of['t4','x4','o_ball','o_ghost'])if(qq.get(id))$(id).checked=true;if(qq.get('mode'))setMode(qq.get('mode'));if(qq.get('r3')){$('r3').checked=true;draw3()}if(qq.get('n3')){$('n3').value=qq.get('n3');draw3()}}
 {const sc=new URLSearchParams(location.search).get('scroll');if(sc)setTimeout(()=>{$(sc).scrollIntoView()},50)}
 window.__ok=true;
-</script></div><div id="sign">by <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br>with <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5 from Anthropic, PBC</a></div>
+</script></div><div id="sign">Ahraz Arifuddin from <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5</a> from Anthropic</div>
 </body></html>
