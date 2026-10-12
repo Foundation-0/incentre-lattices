@@ -28,11 +28,11 @@
     },
     {
       "certificate": "results/radius-ratio/certificate.json",
-      "certificate_sha256": "df7bd294d91a26d12a8fe6ffb1ae833ea56f5519bb45afa00c6d6803af89bead",
+      "certificate_sha256": "4fa21df5995cb36c5d7fb0a09661d60b269b997d11a7d7e254d673de8286ff4f",
       "evidence_label": "PROVEN under H1 or H2 (written proof); VERIFIED (finite check) on 20 polytopes plus 4 counterexample controls",
       "id": "radius-ratio",
       "input_hashes": {
-        "results/radius-ratio/radius_ratio.py": "985bb1f5d14bc015afd0ecee86ea770e54e0a75a553d7f3a682debb44f643450"
+        "results/radius-ratio/radius_ratio.py": "b4a653148892560ed5924277f7848e108435d1f39c8e958fa3d2c15190438e38"
       },
       "prior_art": "NOT FOUND as a statement; the ingredients (Wythoff construction, classical radius-ratio rule, polar duality) are KNOWN and the proof is elementary.",
       "statement": "For a convex polytope P (origin inside) whose pyramids over the facets each have an inscribed ball (the dots), if every wall is a mirror of P (H1), or P has an insphere centred at the origin and all dihedral angles are equal (H2), then all dots have equal radius and equal distance D from the origin, adjacent balls touch, and hole/ball = (D-r)/r equals the classical radius-ratio limit of the dot polytope.",
@@ -101,14 +101,14 @@
     },
     {
       "certificate": "results/fold-close-packing/certificate.json",
-      "certificate_sha256": "5aa43b7cb09ed695f41e44561f0f05ab646a2f8db636bc88c500bdbbd5ca6c6c",
+      "certificate_sha256": "95af3421b8ec7d4ead484df0fb09d8e6eaf7fb1a6da75ea6b915bfe7937c7214",
       "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
       "id": "fold-close-packing",
       "input_hashes": {
         "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
-        "autoresearch-fold/verify.py": "5062e649aafe62ad2d08c8faf5255049865cf474c6d14840c24e3166d788f00b",
-        "results/fold-close-packing/chk_independent.py": "0e4b3883983dcd82892a09903e33ede05ffc117d0de67469345d1fa4d6cc0567",
-        "results/fold-close-packing/make_fcc_path.py": "7e1dd724a8f88cbb045e6adbd00a727837175ca05f89c169b0827fe6341f3644",
+        "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
+        "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
+        "results/fold-close-packing/make_fcc_path.py": "59f2a6249dc9b76f1a9cad4af0f4bc6fcb0b586403cd656897b7b79233b92138",
         "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1"
       },
       "prior_art": "NOT FOUND as a statement. Closest: ReO3 to VF3 a-a-a- tilt towards hcp anions (O'Keeffe and Hyde 1977; Glazer 1972); sequential-LP packing methods (Torquato and Jiao 2010). See autoresearch-fold/PRIOR-ART-FOLD.md.",

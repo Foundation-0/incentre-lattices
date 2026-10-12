@@ -29,7 +29,8 @@ the model is ideal central-force springs, so shear moduli of exactly zero say no
 |---|---|---|
 | Under H1 (mirror walls) or H2 (insphere plus equal dihedral angles) all dots equal, adjacent balls touch, hole/ball = classical ratio, and 1/sin(phi/2) - 1 under H2 | PROVEN (`PROOF.md`) | the written proof |
 | 20 polytopes (Platonic, Catalan, bipyramids, 4D regular, snub-cube dual, uniform trapezohedron) | VERIFIED | `radius_ratio.py`: inscribed balls by `linprog`, tolerances 1e-6 |
-| The corrected hypotheses: facet-transitivity plus an insphere is not enough | VERIFIED (counterexamples) | trapezohedra at 0.7x and 1.3x: contacts open to 1.017 and 1.006 times 2r; prism and cuboctahedron outside the hypotheses |
+| H1 (every wall is a mirror) on the 18 cases claimed under H1 | VERIFIED | `verify.py` reflects the vertex set in every wall and requires it to map onto itself (1e-9); the H2-only cases and the counterexamples are asserted not to have mirror walls |
+| The corrected hypotheses: facet-transitivity plus an insphere is not enough | VERIFIED (counterexamples) | trapezohedra at 0.7x and 1.3x: contacts open to 1.017 and 1.006 times 2r; prism and cuboctahedron outside the hypotheses; the premises (an inscribed ball in every pyramid) and the quoted numbers (prism inradii, contact ranges, deltahedra orbit radii) are asserted |
 | CN7, CN9 and dodecahedral CN8 shapes are not inscribed | VERIFIED for J13, J51, J84; classification of deltahedra is cited, not replayed | `radius_ratio.py` |
 
 Known limits: floating-point LP at 1e-6; the families satisfying H1 or H2 are not classified; the capped CN7 shapes under H2 were not examined.
@@ -49,8 +50,8 @@ Known limits: the all-pairs non-overlap at the optimum is checked, not argued; t
 | Claim | Label | Checked by |
 |---|---|---|
 | The linkage and the fold | KNOWN (Flores; Stuart) | citation only |
-| gap(theta) = 2 sqrt2 c cos(theta + pi/4); first contact at pi/4; L = 4R; strain -(sqrt2-1)^2; density 0.5390 to pi/4 | PROVEN exactly | sympy |
-| No closer non-bonded pair before pi/4; the incentre is the only c with a single-distance square lattice | VERIFIED on a scan (six values of c, 0.01-degree grid) | `fold2d.py` |
+| gap(theta) = 2 sqrt2 c cos(theta + pi/4), which vanishes at pi/4; L = 4R; strain -(sqrt2-1)^2; density 0.5390 to pi/4 | PROVEN exactly | sympy |
+| That pi/4 is the first new contact (no closer non-bonded pair before pi/4); among the six c scanned, the incentre is the only one with a single-distance square lattice; for c < 2 - sqrt2 the fold locks elsewhere (66.37, 56.96, 49.51 degrees) | VERIFIED on a scan (six values of c, 0.01-degree grid), not proved | `fold2d.py` |
 
 Known limits: the symmetric path only (the framework has other flexes, including shear); the uniqueness of the incentre is a scan, not a proof.
 
@@ -67,6 +68,7 @@ a jam. Grid adjacency is not a continuous path.
 | A 793-state sequence from the open cab state to hcp (density pi/sqrt18, 12 contacts, CNA 288 (4,2,1) + 288 (4,2,2)) keeping every bar and with no overlap | VERIFIED (finite) | locked `autoresearch-fold/verify.py` and independent `chk_independent.py` (a parametrised copy of `autoresearch-fold/independent/chk.py`) |
 | A 1193-state extension by two layer slides to pure fcc (576 (4,2,1)) | NEW-COMPUTATION, VERIFIED by the same two checkers | `make_fcc_path.py` generates it; both checkers accept it |
 | The checker itself | 16 unit tests including must-fail cases; hash lock | `autoresearch-fold/test_verify.py`, `verify.sha256` |
+| The second checker and the fcc path generator are part of the lock | sha256 pins, checked by `make verify-fold-cp` (so by `make verify` and CI) | `results/fold-close-packing/checkers.sha256` pins `chk_independent.py` and `make_fcc_path.py`; the second checker derives its image-shift block from the lattice of each state |
 | Controls | must be rejected | displaced dot; lattice scaled in one state; a half-way blend of two states |
 
 Known limits (the important ones):

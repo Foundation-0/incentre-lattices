@@ -11,7 +11,8 @@ Certificate: `certificate.json`. Stored paths: `autoresearch-fold/best/path.npz`
 Model. Cube cells of side 2 each hold six dots at the cell centre +- (2 - sqrt2) e_i; balls have radius R = sqrt2 - 1; bars of length
 2R join the 12 octahedron edges of each cell and each +e_i dot to the -e_i dot of the neighbouring cell (the CaB6 / RCSR `cab`,
 sphere-packing type 5/3/c3 contact framework, density pi R^3 = 0.2233). The lattice may shear. Work in a 2 x 2 x 2 periodic supercell:
-48 balls, 120 bars, 27 first-order degrees of freedom (48*3 + 9 - 120 - 3 - 3).
+48 balls, 120 bars. The generic Maxwell count is 27 (flexes minus self-stresses: 48*3 + 9 - 120 - 3 - 3). At the hcp and fcc end states the locked checker's
+replay finds 29 first-order flexes of the bars alone (`flex_bars_only` in `certificate.json`, both end states), hence 2 self-stresses (120 bars minus rank 118).
 
 **Finding (hcp, found by the autoresearch search in `autoresearch-fold/`).** There is a sequence of 793 states from the canonical
 open cubic state, keeping every bar length to 1e-9 (relative) and with no two balls overlapping, ending in a hexagonal close packing:
@@ -46,9 +47,10 @@ adds no independent confirmation of the certificate.
    the end-state contacts and first-order rigidity.
 2. **Independent checker** `chk_independent.py`, a re-implementation (numpy only, no import of `verify.py`) of
    `autoresearch-fold/independent/chk.py`, taking the path as an argument. It rebuilds the bar graph with fixed integer lattice shifts, checks all 120
-   bar lengths in all states, the minimum non-bonded distance over all periodic images (5 x 5 x 5 shifts) in all states, step sizes, a
+   bar lengths in all states, the minimum non-bonded distance over all periodic images in all states (the image-shift block is derived from each state's lattice and dots, as in the locked checker's `_image_cloud`, not fixed), step sizes, a
    10-sub-state interpolation between every pair of states, and the density, contacts and common-neighbour analysis of the end state. On the hcp path
    it reproduces the numbers of the original `chk.py` (same maximum bar error 8.1e-14 relative, same minimum interpolated distance 0.999994 * 2R).
+   Both this file and the path generator `make_fcc_path.py` are sha256-pinned in `checkers.sha256`; `make verify-fold-cp` checks the pins (and the locked checker's) before it runs, so weakening either file and rerunning `make certificates` fails `make verify` and CI. A deliberate change to either file means re-pinning by hand (`shasum -a 256 chk_independent.py make_fcc_path.py > checkers.sha256`) in the same commit.
 
 ## Results (all in `certificate.json`)
 

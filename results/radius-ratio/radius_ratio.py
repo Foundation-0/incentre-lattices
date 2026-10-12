@@ -46,6 +46,7 @@ def analyse(V, name, Qclassical=None):
     fac = facets_of(V)
     dots, rad, touches_all = [], [], []
     adj = []
+    walls = []   # unit normals of the walls (planes through O and a ridge), one per ridge
     for a, (na, ha, Sa) in enumerate(fac):
         A = [na]; b = [ha]
         cen = V[list(Sa)].mean(0)
@@ -66,6 +67,7 @@ def analyse(V, name, Qclassical=None):
             A.append(w); b.append(0.0)
             if a < g:
                 adj.append((a, g))
+                walls.append(w / np.linalg.norm(w))
         A = np.array(A); b = np.array(b)
         norms = np.linalg.norm(A, axis=1)
         res = linprog(np.r_[np.zeros(n), -1], A_ub=np.c_[A, norms], b_ub=b,
@@ -89,7 +91,13 @@ def analyse(V, name, Qclassical=None):
     print(line)
     phis = np.array([np.arccos(np.clip(fac[a][0] @ fac[g][0], -1, 1)) for a, g in adj])  # angle between normals
     offs = np.array([f[1] for f in fac])
-    info = dict(name=name, normal_angle_spread=float(np.ptp(phis)), facet_offset_spread=float(np.ptp(offs)),
+    # H1: reflect the vertex set in every wall; each wall is a mirror of P iff the image is the vertex set again
+    h1_err = 0.0
+    for w in walls:
+        Vr = V - 2 * np.outer(V @ w, w)
+        h1_err = max(h1_err, float(np.linalg.norm(Vr[:, None] - V[None], axis=2).min(axis=1).max()))
+    info = dict(name=name, h1_max_mirror_error=h1_err, h1_walls_checked=len(walls),
+                r_min=float(rad.min()), r_max=float(rad.max()), normal_angle_spread=float(np.ptp(phis)), facet_offset_spread=float(np.ptp(offs)),
                 equal_dihedral_formula=float(1 / np.sin(phis.mean() / 2) - 1), dim=n, facets=len(fac), insphere_in_every_pyramid=all(touches_all),
                 r_spread=float(np.ptp(rad)), D_spread=float(np.ptp(D)),
                 adjacent_min_over_2r=float(adjd.min() / (2 * r)), adjacent_max_over_2r=float(adjd.max() / (2 * r)),

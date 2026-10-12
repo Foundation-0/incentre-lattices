@@ -1,6 +1,6 @@
 # Status: the current best per track
 
-As of 2026-10-12. Labels as in `docs/audit.md`. No paper has been published; a preprint is pending.
+As of 2026-10-12. Labels as in `docs/audit.md`. Preprint published 2026-10-12 (DOI 10.5281/zenodo.23322079); not peer reviewed.
 
 | Track | Current best | Label | Replay |
 |---|---|---|---|
@@ -37,5 +37,5 @@ As of 2026-10-12. Labels as in `docs/audit.md`. No paper has been published; a p
 
 ## Housekeeping
 
-* Not yet public: the paper sources (`paper/`, ignored by git). Not published: the commitment in `commitment/`.
+* Not public: the working paper sources (`paper/`, ignored by git). The commitment in `commitment/` was posted 2026-10-12 ([gist](https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706)).
 * The site is separate from these checked results and is not covered by `make verify`.
