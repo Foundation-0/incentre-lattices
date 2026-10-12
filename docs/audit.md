@@ -81,6 +81,16 @@ Known limits (the important ones):
 * The search is deterministic; "several seeds" gave one path.
 * A geometry and rigidity result, not a prediction for real CaB6 or Prussian-blue materials.
 
+### results/fold-end-exact: exact closed forms of the close-packed end states (m = 2)
+
+| Claim | Label | Checked by |
+|---|---|---|
+| The hcp and fcc closed forms in `PROOF.md` have every bar exactly 2R, no pair closer than 2R, 12 contacts per ball, density exactly pi/sqrt18, and CNA hcp / fcc | PROVEN (exact integer arithmetic) | `exact_end.py` (own bar graph; does not import either fold checker) |
+| The final states of `autoresearch-fold/best/path.npz` and `results/fold-close-packing/path_fcc.npz` are these closed forms | VERIFIED (1e-7, after a rigid motion) | `exact_end.exactify` |
+| Controls | must be rejected | one dot moved by K/3; axis permutation dropped; wrong lattice row; hcp labelled fcc |
+
+Known limits: the end states only, not the path; the image-shift box for the overlap check is computed in floating point with one spare lattice step; one implementation, internal review only.
+
 ## What is not covered at all
 
 The interactive site (`*.html`), the research notes under `research/` (some of which print numbers by scripts not replayed here), the perception question
