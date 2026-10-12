@@ -3,9 +3,9 @@
   "fcc_regeneration_matches_stored_file_to_1e-9": true,
   "inputs": {
     "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
-    "autoresearch-fold/verify.py": "5062e649aafe62ad2d08c8faf5255049865cf474c6d14840c24e3166d788f00b",
+    "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
     "results/fold-close-packing/chk_independent.py": "0e4b3883983dcd82892a09903e33ede05ffc117d0de67469345d1fa4d6cc0567",
-    "results/fold-close-packing/make_fcc_path.py": "7e1dd724a8f88cbb045e6adbd00a727837175ca05f89c169b0827fe6341f3644",
+    "results/fold-close-packing/make_fcc_path.py": "59f2a6249dc9b76f1a9cad4af0f4bc6fcb0b586403cd656897b7b79233b92138",
     "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1"
   },
   "model": "m = 2 (48 balls, 120 bars)",
@@ -14,7 +14,8 @@
     "independent checker: one dot displaced by 0.05 (bar lengths broken)",
     "locked checker: lattice scaled by 0.97 in one state (overlaps and bar lengths broken)",
     "independent checker: lattice scaled by 0.97 in one state (overlaps and bar lengths broken)",
-    "locked checker: state replaced by a half-way blend (bars not preserved)"
+    "locked checker: state replaced by a half-way blend (bars not preserved)",
+    "independent checker: state replaced by a half-way blend (bars not preserved)"
   ],
   "paths": {
     "fcc": {
@@ -50,6 +51,11 @@
         "contact_pairs": 288,
         "contacts_per_ball_max": 12,
         "contacts_per_ball_min": 12,
+        "end_lattice_cos_angles": [
+          0.087038828,
+          0.087038828,
+          -0.5
+        ],
         "final_density": 0.7404804897,
         "first_order_jammed": true,
         "flex_bars_only": 29,
@@ -92,6 +98,11 @@
         "contact_pairs": 288,
         "contacts_per_ball_max": 12,
         "contacts_per_ball_min": 12,
+        "end_lattice_cos_angles": [
+          0.0,
+          0.0,
+          -0.5
+        ],
         "final_density": 0.7404804897,
         "first_order_jammed": true,
         "flex_bars_only": 29,

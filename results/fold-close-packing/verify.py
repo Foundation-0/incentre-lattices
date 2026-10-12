@@ -27,6 +27,18 @@ import chk_independent as chk  # noqa: E402
 import make_fcc_path  # noqa: E402
 locked = make_fcc_path.verify  # autoresearch-fold/verify.py (hash-locked), loaded by path
 
+
+def _check_locked_checker_pin():
+    """The locked checker is loaded by path; refuse to run unless it matches its pin."""
+    import hashlib
+    recorded = (FOLD / "verify.sha256").read_text().split()[0]
+    actual = hashlib.sha256((FOLD / "verify.py").read_bytes()).hexdigest()
+    if actual != recorded:
+        raise SystemExit("REFUSING TO RUN: autoresearch-fold/verify.py does not match verify.sha256")
+
+
+_check_locked_checker_pin()
+
 HCP = FOLD / "best" / "path.npz"
 FCC = HERE / "path_fcc.npz"
 N_HCP_STATES = 793
@@ -39,6 +51,8 @@ def locked_summary(rep):
     out["reasons"] = list(rep["reasons"])
     out["final_density"] = certlib.sig(rep["final_density"], 10)
     out["contact_degree_histogram"] = rep["contact_degree_histogram"]
+    if "end_lattice_cos_angles" in rep:
+        out["end_lattice_cos_angles"] = [round(float(v), 9) + 0.0 for v in rep["end_lattice_cos_angles"]]  # absolute rounding: cos = 0 is roundoff noise that differs by platform
     return out
 
 
@@ -121,6 +135,12 @@ def main():
     Xs2[t] = Xs2[N_HCP_STATES - 1] + (Xs2[t] - Xs2[N_HCP_STATES - 1]) * 0.5
     bad = locked.verify_arrays(int(f["m"]), Ls2, Xs2, want_rigidity=False)
     certlib.must_fail("locked checker: state replaced by a half-way blend (bars not preserved)", bad["valid"], log)
+    with tempfile.TemporaryDirectory() as td:
+        p = pathlib.Path(td) / "bad.npz"
+        np.savez(p, m=int(f["m"]), Ls=Ls2, Xs=Xs2)
+        rep = chk.check(p, interp=False)
+    certlib.must_fail("independent checker: state replaced by a half-way blend (bars not preserved)",
+                      chk.accepts(rep, interp=False), log)
     cert["must_fail_controls_rejected"] = log
 
     cert["inputs"] = certlib.inputs(HCP, FCC, FOLD / "verify.py", HERE / "chk_independent.py", HERE / "make_fcc_path.py")
