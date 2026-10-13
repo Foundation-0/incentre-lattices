@@ -37,7 +37,7 @@ A matching hash shows that the files are the ones committed to. It does not show
 
 An earlier commitment was posted 2026-10-12 as a public gist: https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706
 
-The expanded root in this repository does not retroactively timestamp the added certificates and m = 1 paths. To determine what the earlier timestamp binds, compare with the posted root and manifest at the commit being audited.
+The root posted in that gist, `213275970171a80d301fb7e54e262d82cd18611b3ffa21754e7b370b327444bf`, is the `commitment/ROOT` at commit `e84a128`. Later roots, including the expanded root introduced by registering every result certificate and stored path, are not separately timestamped; they do not retroactively timestamp the added certificates and m = 1 paths. To determine what the earlier timestamp binds, check out `e84a128` and compare its `commitment/ROOT` and `SHA256SUMS` with the posted root.
 
 The gist also records the sha256 of the then-unpublished preprint PDF: `9d6dbf351d62c91f17a4b0da10e5e8ef3fe0185374f31586fcf074565068e48a`.
 

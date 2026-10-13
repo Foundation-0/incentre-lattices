@@ -16,6 +16,10 @@ and other Claude models by Anthropic, PBC.** Their roles, in general terms:
 | Claude Sonnet | builds and checks: verifiers, replay scripts, tests, certificates, continuous integration, documentation |
 | Claude Haiku | operations: running known scripts, searching and retrieval, file moves and repository housekeeping |
 
+The October 2026 site update was prepared with **GPT-6** (research synthesis, interactive fcc illustration and content),
+**GPT-6.1 Sol** (shared site controls, claim ledger, accessibility fixes and code review), and **GPT-6 Luna** (link checks and repository publication).
+The research update separately identifies AI contributions to the open result and paper drafts. Publishing their summaries on the site does not constitute acceptance or outside mathematical review.
+
 No AI model is an author in the legal or scholarly sense, and none can vouch for a result. The labels PROVEN, VERIFIED and KNOWN in
 `docs/audit.md` say what was actually done; a person has not independently re-derived every proof. Internal reviews so far were performed
 by AI models under direction (see `docs/review-ledger.md`); that is "internal pre-publication review" and not outside review.
@@ -31,6 +35,7 @@ Credit for the ideas below belongs to the cited people; where we reuse a constru
 
 * The hinged-squares linkage: Antonio Flores ("Hinged tilings"), crediting Donald Stuart (1963); Daniel Wells for the term "hinged tessellations".
 * Rigid unit modes of linearly bridged frameworks and the rigid-unit-mode spectrum: Andrew L. Goodwin; Stephen C. Power.
+* Periodic tilings and auxetic deployments, including bridged cross-polytopes in arbitrary dimensions: Ciprian S. Borcea and Ileana Streinu.
 * Maxwell-Calladine counting: James Clerk Maxwell; C. R. Calladine.
 * Sphere packing nets and catalogues: the Reticular Chemistry Structure Resource (RCSR); Fischer, Koch and Sowa on homogeneous sphere packings.
 * Packing of the CaB6 type and binary packings: Horst and Travesset; Hopkins, Stillinger and Torquato; Murray and Sanders; Pauling and Weinbaum.
