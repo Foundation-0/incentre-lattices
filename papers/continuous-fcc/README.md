@@ -21,7 +21,7 @@ mv source.pdf continuous-fcc.pdf
 
 No bibliography tool or figure-generation step is required. The PDF is a review artifact, not a new public release,
 DOI deposit, or journal submission. The draft names the existing framework and endpoint precedents and preserves
-the sampled-continuity labels of older numerical paths. See research assessment issue #26 and literature PR #27.
+the sampled-continuity labels of older numerical paths. See the [research assessment issue #26](https://github.com/aska-digital/incentre-lattice/issues/26) and [literature PR #27](https://github.com/aska-digital/incentre-lattice/pull/27).
 
 Suggested review order:
 
