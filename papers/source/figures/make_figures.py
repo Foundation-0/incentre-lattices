@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Polygon
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "proofs"))
+sys.path.insert(0, os.path.join(HERE, "..", "..", "..", "results", "rigidity-nd"))
 
 BLUE, ORANGE, INK, MUTED = "#2a78d6", "#eb6834", "#222222", "#8a8a8a"
 plt.rcParams.update({"font.size": 9, "font.family": "serif", "mathtext.fontset": "cm",

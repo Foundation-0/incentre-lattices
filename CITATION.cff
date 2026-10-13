@@ -28,7 +28,7 @@ keywords:
   - reproducible research
 preferred-citation:
   type: article
-  title: "The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB6 packing maximum"
+  title: "The bridged cross-polytope framework: unit-spring elastic constants in every dimension and an exact motion from the CaB6 boron net to face-centred cubic packing"
   authors:
     - family-names: "Arifuddin"
       given-names: "Ahraz"
@@ -37,4 +37,4 @@ preferred-citation:
   doi: "10.5281/zenodo.23322079"
   status: preprint
   url: "https://aska-digital.github.io/incentre-lattice/papers/incentre-lattice.pdf"
-  notes: "Preprint, not peer reviewed. Source in papers/source."
+  notes: "Preprint version 2 (v2 release pending), not peer reviewed; supersedes v1 (doi:10.5281/zenodo.23322080, kept as papers/incentre-lattice-v1.pdf). Source in papers/source."

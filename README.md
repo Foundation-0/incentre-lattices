@@ -45,7 +45,11 @@ Nothing here has been peer reviewed.
 
 ## Paper
 
-Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079) (all versions; v1.0.0 is [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080)). Its SHA-256 hash is recorded in the public commitment (see below).
+Preprint, version 2 (not peer reviewed): **The bridged cross-polytope framework: unit-spring elastic constants in every dimension and an exact motion from the CaB<sub>6</sub> boron net to face-centred cubic packing**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI: v2 pending release (all versions: [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079)).
+
+The headline results are the unit-spring elastic constants in every dimension n >= 3 (all shear moduli zero, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the exact cab-to-fcc motion of [`results/fold-continuous-fcc`](results/fold-continuous-fcc/PROOF.md), now with a written symmetry-reduced non-overlap proof ([HAND-PROOF.md](results/fold-continuous-fcc/HAND-PROOF.md)). The zero-mode and self-stress counts are lemmas: the same periodic graph is in Borcea and Streinu (2021), Section 7.
+
+Version 1, **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, is kept unchanged as [papers/incentre-lattice-v1.pdf](papers/incentre-lattice-v1.pdf), DOI [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080). Its novelty claims for the rigidity counts are corrected in v2. The v1 PDF's SHA-256 hash is recorded in the public commitment (see below).
 
 ## Results
 
