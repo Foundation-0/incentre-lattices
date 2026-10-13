@@ -15,7 +15,7 @@ Draw a square and its two diagonals. In each of the four triangles, mark the poi
 
 This repository is an open, agent-assisted research project around that construction. It holds:
 
-- **An interactive site** (`lattice.html` is the hub; live at the GitHub Pages link in the sidebar). Six subpages explain the drawing, the mirror geometry, the chemistry, the folding mechanics, the perception question, and a ledger of every claim with its evidence label.
+- **An interactive site** ([live on GitHub Pages](https://aska-digital.github.io/incentre-lattice/)). Explore the drawing, mirror geometry, chemistry, folding mechanics, perception, and a ledger of claims with evidence labels. The [research update](https://aska-digital.github.io/incentre-lattice/research.html) presents the explicit continuous fcc motion, literature correction, assessment and open review work.
 - **Research notes** in `research/`, with the code behind every number.
 - **Open tracks** in `tracks/`: questions with a fixed, trusted checker and a single score, so that people and AI agents can attack them in parallel. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -40,6 +40,8 @@ How the pieces connect. Teal boxes are classical or the construction itself; amb
 Most of the geometry is classical. The dot is the Wythoff point of the cube's reflection group (Wythoff 1918, Coxeter), its orbit is the truncated square tiling in 2D and the truncated cubic honeycomb in 3D, the 3D arrangement is Pauling and Weinbaum's CaB6 boron net (RCSR `cab`), and the 2D fold is a known hinged tiling (Flores, after Stuart 1963). The results we have not found in print, after web searches only, are: the rigidity counts and Poisson ratio of the contact framework in every dimension, a single radius-ratio identity, and the closed form of the CaB6 hard-sphere packing maximum (its location, gamma = sqrt2 - 1, may already be known from Travesset 2017, which could not be read). The fold of the 3D framework to close packing (0.2233 to π/√18 in hcp, 2×2×2 family, two checkers) is the other result; no prior description was found (searches listed in `autoresearch-fold/`). The corner-sharing version is textbook: in ReO3, rotating the octahedra alone reaches hcp at 30 degrees about <111> (Johnsson & Lemmens 2006; Shan et al., under pressure; O'Keeffe & Hyde 1977). In the cab framework, where octahedra are joined by bars, the cubic tilt stalls at density 0.4686 (0.2637 at 30 degrees), and reaching close packing needs a symmetry-breaking continuation with lattice shear. Only that cab result is "not found". The closest physical study of the cab framework's flexibility is Li, Refson & Dove 2023 (CaB6 rigid unit modes). Two rigid layer slides then reach fcc (accepted by two independent checkers). This is a geometry result, not a predicted phase transition in real CaB6 or Prussian-blue materials. The ledger page (`open.html`) labels every claim as PROVEN, VERIFIED NUMERICALLY, CONJECTURE or KNOWN.
 
 Nothing here has been peer reviewed.
+
+**October 2026 update:** the site now distinguishes the established results on `main` from the proposals in [PR #23](https://github.com/aska-digital/incentre-lattice/pull/23), [#25](https://github.com/aska-digital/incentre-lattice/pull/25), [#27](https://github.com/aska-digital/incentre-lattice/pull/27), [#28](https://github.com/aska-digital/incentre-lattice/pull/28) and [#29](https://github.com/aska-digital/incentre-lattice/pull/29). These include an explicit all-parameter fcc motion and a focused paper. Bridged cross-polytopes in arbitrary dimensions are a known framework family; historical priority of the specific formulas and motion remains unresolved. See the [research update](https://aska-digital.github.io/incentre-lattice/research.html) for the evidence and source-access limits.
 
 ## Paper
 
@@ -67,7 +69,7 @@ Every number drawn below is read from the committed certificates and path files 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/cab6-packing-dark.png">
-  <img src="docs/img/cab6-packing-light.png" alt="Maximum hard-sphere packing fraction of the CaB6 structure type against the size ratio gamma. The curve peaks at 0.7469 at gamma equal to root 2 minus 1, above the fcc line at 0.7405. An inset shows the narrow window, gamma from 0.4102 to 0.4159, where it beats fcc.">
+  <img src="docs/img/cab6-packing-light.png" alt="Maximum hard-sphere packing fraction of the CaB6 structure type against the size ratio gamma. The curve peaks at 0.746865 at gamma equal to root 2 minus 1, above the fcc line at 0.7405. An inset shows the narrow window, gamma from 0.41023 to 0.41591, where it beats fcc.">
 </picture>
 
 <picture>
@@ -92,8 +94,9 @@ Every number drawn below is read from the committed certificates and path files 
 | [Fold to close packing](results/fold-close-packing/PROOF.md) | pi/sqrt18 = 0.74048: sampled bar-preserving, overlap-free path in the 2x2x2 supercell to hcp (793 states) and fcc (1193 states) | VERIFIED (sampled continuity, step <= 0.01; two checkers); fcc extension is new work | `make verify-fold-cp` | cab result not found; corner-sharing ReO3 to hcp by rotation alone is KNOWN (Johnsson and Lemmens 2006; Shan et al.; O'Keeffe and Hyde 1977) |
 | [Exact fold end states](results/fold-end-exact/PROOF.md) | the hcp and fcc end states of the m = 2 paths in closed form: every coordinate an integer multiple of (2 - sqrt2)/3 | PROVEN (integer arithmetic); match to the stored paths VERIFIED to 1e-7 | `make verify-fold-exact` | not searched separately (see the fold row) |
 | [Fold at m = 1](results/fold-m1/PROOF.md) | one octahedron per cell (6 balls) folds to hcp (free descent, 333 states) and to fcc (268 states, density rising at every sample) | VERIFIED (sampled continuity; two checkers); end states PROVEN exact; new work | `make verify-fold-m1` | not searched separately (see the fold row) |
+| [Continuous fold to fcc](results/fold-continuous-fcc/PROOF.md) | explicit smooth m = 1 motion; every bar and all-pairs non-overlap; density strictly increases to pi/sqrt18 | PROVEN (written argument and exact Bernstein certificate); internal review, human review pending | `make verify-fold-continuous` | related frameworks known; exact-motion priority unresolved |
 
-The smallest cell (m = 1, one octahedron) also reaches close packing, to hcp and to fcc (`results/fold-m1`). The fold is a geometry and rigidity result, not a predicted phase transition of real CaB6 or Prussian-blue materials.
+The smallest cell (m = 1, one octahedron) also reaches close packing, to hcp and to fcc (`results/fold-m1`). A separate [explicit fcc motion](results/fold-continuous-fcc/PROOF.md) now has an exact all-parameter certificate; the stored numerical paths retain their sampled-continuity labels. The fold is a geometry and rigidity result, not a predicted phase transition of real CaB6 or Prussian-blue materials.
 
 ## Reproduce
 

@@ -11,6 +11,24 @@ Evidence labels used everywhere in this repository:
 
 ## Per result
 
+### results/fold-continuous-fcc: explicit continuous motion
+
+**PROVEN (written argument and exact finite certificate), internal AI review only.** The motif is fixed and the
+lattice follows the rational curve in `PROOF.md`. Bar preservation is an exact identity. A bound on the symmetric
+part of the lattice excludes all integer shifts of squared norm at least 12. Every remaining squared-distance
+inequality is a quartic with nonnegative Bernstein coefficients on the entire interval: 3248 polynomials and
+16240 coefficients in Q(sqrt(2)), without floating arithmetic. `curve.py` constructs the exact certificate;
+`independent.py` separately forms the polynomials by convolution and reverses the Bernstein expansion.
+The fcc endpoint follows from an integer parity/index argument. A written derivative bound proves strictly
+increasing density. These analytic reductions still require mathematical review; the code is not a proof assistant.
+
+`make verify-fold-continuous` replays both arithmetic implementations, the endpoint, and must-fail controls.
+All proof and replay sources are bound by the result certificate. A separate 501-state sample was accepted by both
+existing, unchanged numerical fold checkers: zero overlap violations, 12 endpoint contacts per ball, fcc CNA
+72 (4,2,1), and endpoint density pi/sqrt18. The sampled straight-line interpolants are not the exact analytic motion.
+The older sampled paths and hcp result retain their previous evidence labels. Priority and outside human review
+remain open; no physical transition or material stability is claimed.
+
 ### results/rigidity-nd: counts and nu_100 for n = 2..8
 
 | Claim | Label | Checked by |

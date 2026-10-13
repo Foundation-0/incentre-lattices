@@ -15,7 +15,7 @@ PY ?= python3
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 
-FAST = verify-certificates-tests verify-rigidity verify-radius-ratio verify-cab6 verify-fold2d verify-fold-tests
+FAST = verify-certificates-tests verify-rigidity verify-radius-ratio verify-cab6 verify-fold2d verify-fold-tests verify-fold-continuous
 SLOW = verify-fold3d verify-fold-cp verify-fold-exact verify-fold-m1   # fold3d about 1 minute; fold-cp about 3 minutes (independent checker interpolates 10 sub-states per step); fold-exact about 30 seconds; fold-m1 about 10 seconds
 
 .PHONY: verify verify-fast certificates check-hashes clean help $(FAST) $(SLOW)
@@ -67,6 +67,9 @@ verify-fold-exact:  # exact (integer) closed forms of the hcp and fcc end states
 
 verify-fold-m1:  # m = 1 paths to hcp and fcc (both checkers, exact end states, monotone fcc path)
 	$(PY) results/fold-m1/verify.py
+
+verify-fold-continuous:  # exact all-parameter certificate; standard library only
+	$(PY) results/fold-continuous-fcc/verify.py
 
 verify-fold-tests:  # the locked checker's own unit tests, and its hash lock
 	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold
