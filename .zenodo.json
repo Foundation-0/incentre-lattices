@@ -1,10 +1,24 @@
 {
-  "title": "The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB6 packing maximum",
+  "title": "The bridged cross-polytope framework: unit-spring elastic constants in every dimension and an exact motion from the CaB6 boron net to face-centred cubic packing",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "description": "Cut an n-cube into the 2n pyramids that join its centre to its facets and place a ball at the incentre of each pyramid. The centres are the Wythoff points of the [4,3^(n-2),4] kaleidoscope. We prove that at a generic wavevector the contact framework has exactly n(n-1)/2 zero modes and n(n-3)/2 states of self-stress per cell, and that with unit springs every shear modulus vanishes and the Poisson ratio is 1/(n^2-n-1). We also record a radius-ratio identity, the closed form (pi/6)(30 sqrt2 - 41) for the maximal packing fraction of the CaB6 structure type, and a verified bar-preserving, overlap-free fold of the three-dimensional framework to hexagonal and face-centred cubic close packing. The archive contains the preprint, the interactive site, replayable verifiers and certificates. Not peer reviewed.",
-  "creators": [{"name": "Arifuddin, Ahraz", "affiliation": "Aska Digital"}],
-  "keywords": ["rigidity theory", "contact frameworks", "sphere packing", "radius ratio", "hexaboride", "Wythoff construction", "reproducible research"],
+  "description": "Version 2, superseding v1 (doi:10.5281/zenodo.23322080), whose novelty claims for the rigidity counts are corrected. For the periodic framework of regular cross-polytopes joined by bars (the same periodic graph as Borcea and Streinu 2021, Section 7), we prove that with unit springs every shear modulus vanishes, C11/C12 = (n-1)^2 and the Poisson ratio is 1/(n^2-n-1), for every dimension n >= 3; the zero-mode and self-stress counts are lemmas following from existing periodic-rigidity machinery. In three dimensions we give an exact continuous motion, rational in one parameter over Q(sqrt2), that keeps every bar length, holds the octahedra in fixed orientation while the lattice deforms, raises the packing density strictly from 0.2233 to pi/sqrt18 and ends at face-centred cubic packing, with non-overlap proven. Secondary results: a radius-ratio identity and the exact CaB6-type packing maximum. The archive contains the preprint, the interactive site, replayable verifiers and certificates. Not peer reviewed.",
+  "creators": [
+    {
+      "name": "Arifuddin, Ahraz",
+      "affiliation": "Aska Digital"
+    }
+  ],
+  "keywords": [
+    "rigidity theory",
+    "contact frameworks",
+    "sphere packing",
+    "radius ratio",
+    "hexaboride",
+    "Wythoff construction",
+    "reproducible research"
+  ],
   "license": "cc-by-4.0",
-  "notes": "Computation, proofs, checking and writing were carried out with AI assistance (Claude Opus 5.5 and other Claude models from Anthropic) under the author's direction; see CONTRIBUTORS.md."
+  "notes": "Computation, proofs, checking and writing were carried out with AI assistance (Claude Opus 5.5 and other Claude models from Anthropic) under the author's direction; see CONTRIBUTORS.md.",
+  "version": "2.0.0"
 }
