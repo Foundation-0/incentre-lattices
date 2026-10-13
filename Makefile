@@ -15,7 +15,7 @@ PY ?= python3
 export OPENBLAS_NUM_THREADS = 1
 export OMP_NUM_THREADS = 1
 
-FAST = verify-rigidity verify-radius-ratio verify-cab6 verify-fold2d verify-fold-tests
+FAST = verify-certificates-tests verify-rigidity verify-radius-ratio verify-cab6 verify-fold2d verify-fold-tests
 SLOW = verify-fold3d verify-fold-cp verify-fold-exact verify-fold-m1   # fold3d about 1 minute; fold-cp about 3 minutes (independent checker interpolates 10 sub-states per step); fold-exact about 30 seconds; fold-m1 about 10 seconds
 
 .PHONY: verify verify-fast certificates check-hashes clean help $(FAST) $(SLOW)
@@ -34,10 +34,13 @@ certificates: $(FAST) $(SLOW)
 	$(PY) tools/build_certificates.py --write
 	$(PY) tools/sha256check.py certificates/SHA256SUMS
 
-check-hashes:
+check-hashes: verify-certificates-tests
 	$(PY) tools/build_certificates.py --check
 	$(PY) tools/sha256check.py certificates/SHA256SUMS
 	$(PY) tools/sha256check.py commitment/SHA256SUMS
+
+verify-certificates-tests:  # standard-library regression tests; in-memory filesystem only
+	$(PY) -B tools/test_build_certificates.py
 
 verify-rigidity:
 	$(PY) results/rigidity-nd/verify.py
