@@ -1,11 +1,11 @@
 # Commitment
 
 `SHA256SUMS` lists the sha256 of every file that carries a result: each `results/*/certificate.json`, everything in `certificates/` (the index of selected results and its own checksum list),
-and the two path files (`autoresearch-fold/best/path.npz`, the hcp path, and `results/fold-close-packing/path_fcc.npz`, the fcc extension). `ROOT` is the sha256 of the `SHA256SUMS` file itself,
+and all four stored path files: `autoresearch-fold/best/path.npz` and `results/fold-close-packing/path_fcc.npz` (m = 2 hcp / fcc),
+and `results/fold-m1/path_hcp_m1.npz` and `results/fold-m1/path_fcc_m1.npz` (m = 1 hcp / fcc). `ROOT` is the sha256 of the `SHA256SUMS` file itself,
 so one 64-character string commits to all of it.
 
-Purpose: a public record that these exact artefacts existed in this form at a given time, to be posted before any paper that relies on them. **It has not been posted anywhere.** Where and when
-to post it (a gist, a signed tag, a timestamp service) is for the maintainers to decide; this repository does not publish it for you.
+Purpose: a public record of the exact artefacts bound by a root at a given time. A public timestamp binds only the root and files in the posted copy; regenerating this folder does not timestamp the new root.
 
 ## Verify
 
@@ -35,7 +35,9 @@ A matching hash shows that the files are the ones committed to. It does not show
 
 ## Public timestamp
 
-Posted 2026-10-12 as a public gist: https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706
+An earlier commitment was posted 2026-10-12 as a public gist: https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706
+
+The root posted in that gist, `213275970171a80d301fb7e54e262d82cd18611b3ffa21754e7b370b327444bf`, is the `commitment/ROOT` at commit `e84a128`. Later roots, including the expanded root introduced by registering every result certificate and stored path, are not separately timestamped; they do not retroactively timestamp the added certificates and m = 1 paths. To determine what the earlier timestamp binds, check out `e84a128` and compare its `commitment/ROOT` and `SHA256SUMS` with the posted root.
 
 The gist also records the sha256 of the then-unpublished preprint PDF: `9d6dbf351d62c91f17a4b0da10e5e8ef3fe0185374f31586fcf074565068e48a`.
 
