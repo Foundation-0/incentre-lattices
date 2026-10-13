@@ -69,7 +69,7 @@ Every number drawn below is read from the committed certificates and path files 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/cab6-packing-dark.png">
-  <img src="docs/img/cab6-packing-light.png" alt="Maximum hard-sphere packing fraction of the CaB6 structure type against the size ratio gamma. The curve peaks at 0.7469 at gamma equal to root 2 minus 1, above the fcc line at 0.7405. An inset shows the narrow window, gamma from 0.4102 to 0.4159, where it beats fcc.">
+  <img src="docs/img/cab6-packing-light.png" alt="Maximum hard-sphere packing fraction of the CaB6 structure type against the size ratio gamma. The curve peaks at 0.746865 at gamma equal to root 2 minus 1, above the fcc line at 0.7405. An inset shows the narrow window, gamma from 0.41023 to 0.41591, where it beats fcc.">
 </picture>
 
 <picture>
