@@ -166,7 +166,7 @@ The source comparison, reading depths, elementary deductions and independent-rev
   the general symbol/phase-periodic machinery (Sections 2, 4, 5 read), not proof of priority for these exact formulas.
 * **The bridged cross-polytope family is prior art**: C. S. Borcea and I. Streinu, "Periodic tilings and auxetic deployments",
   Math. Mech. Solids 26(2), 199–216 (2021), doi:10.1177/1081286520948116, Section 7. Its periodicity and spring-model
-  comparison with this realization is detailed in LITERATURE.md; exact graph equivalence has not been established.
+  comparison with this realization is detailed in LITERATURE.md: the same periodic graph at a different bar length (t = sqrt2 - 1 versus 2 - sqrt2); the counts here hold for any 0 < t < 1 and so cover it.
 * **Closest physical study of the cab framework, KNOWN**: L. Li, K. Refson and M. T. Dove, "The contribution of phonons to the thermal expansion of some
   simple cubic hexaboride structures: SmB6, CaB6, SrB6 and BaB6", Phys. Chem. Chem. Phys. 25, 10749 (2023), doi:10.1039/d3cp01306e (abstract read, full
   text not). DFT lattice dynamics focused on rigid unit modes involving rotations of the B6 octahedra, as in Zn(CN)2, Prussian blue and Si(NCN)2; it reports

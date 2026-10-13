@@ -53,11 +53,10 @@ Mathematics and Mechanics of Solids **26**(2), 199–216 (2021; online 2020),
 [Smith institutional record](https://scholarworks.smith.edu/csc_facpubs/261/).
 
 **Read:** Section 7, *A glimpse into higher dimensions*, in publisher-indexed article text, plus abstract and metadata.
-Direct opening was intermittent; no PDF was obtained. Section 7 describes bridged cross-polytopes in arbitrary
+Open PDF: <https://scholarworks.smith.edu/csc_facpubs/313> (Wayback copy of `viewcontent.cgi?article=1262&context=csc_facpubs`), read by a referee. Section 7 describes bridged cross-polytopes in arbitrary
 dimension, two body orbits, 2d bridges, nine deformation freedoms in 3D, and folding at bridge/edge ratio 2.
 
-**Assessment:** family-level novelty is withdrawn. Our contact realization has length ratio 1; orbit counts depend on
-the translation group. Exact correspondence and priority of the elastic formulas remain open.
+**Assessment:** family-level novelty is withdrawn. It is the same graph: two orbits of regular cross-polytopes, 2d bars per body, any d. Their bars are twice the cross-polytope edge, that is dots at t = sqrt2 - 1; ours are at 2 - sqrt2. Our counts hold for any 0 < t < 1, so they cover it. Section 7 gives only the 3D count (nine degrees of freedom, citing Borcea, Streinu and Tanigawa) and a 3D folding sketch to a folded state, not a packing. It has no n-dependent flex counts, self-stresses, elastic constants or Poisson ratio. The n-dimensional counts are likely routine with existing machinery (priority unresolved). The unit-spring results C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate: not found in Section 7 or in Goodwin's abstract.
 
 ### Li, Refson and Dove (2023): physical hexaborides
 
@@ -136,8 +135,7 @@ Focused questions:
 
 1. Is the internal-rigidity/block proof complete for every n >= 3, including the explicit stress basis and the phase
    intersections where exactly k coordinates satisfy `z_i = 1`?
-2. What periodicity, geometry and bridge-length changes identify or distinguish the Section 7 construction from this
-   one-body contact realization? Do Goodwin's full text or cited periodic body-and-bar results already state these counts?
+2. The Section 7 graph is the same and only t differs, so our counts cover it. Do Goodwin's full text, Borcea–Streinu–Tanigawa or other periodic body-and-bar results already state the n-dimensional counts or the unit-spring C11/C12 and nu_100?
 3. Is the homogeneous-strain relaxation and normalization correct for finite unit spring stiffness on **all** bars?
    Are the zero shear moduli and axial Poisson formula stated with sufficient hypotheses?
 4. Are these dimensional formulas already published, or routine consequences best presented as a worked example?
@@ -159,4 +157,4 @@ and review; there is no guarantee that any candidate formula is new.
 
 This is a bounded comparison of four sources, not a systematic literature review. Indexed article text was used where
 direct opening failed; full Goodwin and Li papers, source equation images, and Borcea–Streinu's cited higher-dimensional
-rigidity literature remain to be reviewed. Search absence is not evidence of novelty.
+rigidity literature remain to be reviewed. Borcea–Streinu Section 7 was subsequently read in the open PDF. Search absence is not evidence of novelty.
