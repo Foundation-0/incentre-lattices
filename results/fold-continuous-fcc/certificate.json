@@ -1,0 +1,69 @@
+{
+  "arithmetic": "rational pairs a+b*sqrt(2); no floating arithmetic in this replay",
+  "bar_lengths_exact": true,
+  "density_strictly_increasing": "written derivative argument, PROOF.md",
+  "end_density": "pi/sqrt(18)",
+  "endpoint": {
+    "contacts_per_ball": [
+      12,
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "determinant": 12,
+    "distinct_cosets": true,
+    "lattice_rows": [
+      [
+        2,
+        -1,
+        -1
+      ],
+      [
+        1,
+        2,
+        -1
+      ],
+      [
+        1,
+        -1,
+        2
+      ]
+    ],
+    "lattice_rows_have_even_sum": true,
+    "motif_points_have_odd_sum": true
+  },
+  "evidence_label": "PROVEN by explicit curve and exact finite Bernstein certificate; internal review only",
+  "exact_nonoverlap": {
+    "all_coefficients_nonnegative_exactly": true,
+    "bernstein_coefficients": 16240,
+    "distance_polynomials": 3248,
+    "identically_zero_polynomials": 18,
+    "integer_shifts": 171,
+    "motif_differences": 19,
+    "subdivisions": 0,
+    "zero_coefficients": 114
+  },
+  "independent_exact_check": {
+    "distance_polynomials": 3248,
+    "distinct_endpoint_cosets": 6,
+    "identically_zero_polynomials": 18,
+    "positive_coefficients": 16126,
+    "zero_coefficients": 114
+  },
+  "infinite_image_bound": "written symmetric-part bound: |n|^2 >= 12 strictly safe",
+  "inputs": {
+    "results/fold-continuous-fcc/PROOF.md": "45d1021cc3a7fcac11276a4c09b4367903731d041190f9e65685d0d8411d158e",
+    "results/fold-continuous-fcc/curve.py": "9b3c4e19c5ec3f1b9bd7fd653d5fa68036126121d8ac3c805c032b34ff1a38f3",
+    "results/fold-continuous-fcc/independent.py": "358a81b9eebd29222eb975b40a84b2cd2931fd6c423132685df07e9f7eed92b6",
+    "results/fold-continuous-fcc/verify.py": "8263e7452d77e7b89369b164d073eb1bbda84f949abfde75411c7a9d1788dba1",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
+  },
+  "must_fail_controls_rejected": [
+    "sign-changed motion with overlapping endpoint",
+    "positive endpoints with a negative interior",
+    "negative exact coefficient rounded toward zero"
+  ],
+  "result": "fold-continuous-fcc"
+}

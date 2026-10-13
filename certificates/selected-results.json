@@ -184,6 +184,29 @@
         "hcp_states": 333
       },
       "verify_command": "make verify-fold-m1"
+    },
+    {
+      "certificate": "results/fold-continuous-fcc/certificate.json",
+      "certificate_sha256": "5d1ab5eb9bedb1371c2ce05ada33ce95b1deec13f9d3848cbc7d072e8429dc42",
+      "evidence_label": "PROVEN (written explicit construction, analytic image bound and monotonicity, exact rational Bernstein certificate); internal AI review only, independent human review pending",
+      "id": "fold-continuous-fcc",
+      "input_hashes": {
+        "results/fold-continuous-fcc/PROOF.md": "45d1021cc3a7fcac11276a4c09b4367903731d041190f9e65685d0d8411d158e",
+        "results/fold-continuous-fcc/curve.py": "9b3c4e19c5ec3f1b9bd7fd653d5fa68036126121d8ac3c805c032b34ff1a38f3",
+        "results/fold-continuous-fcc/independent.py": "358a81b9eebd29222eb975b40a84b2cd2931fd6c423132685df07e9f7eed92b6",
+        "results/fold-continuous-fcc/verify.py": "8263e7452d77e7b89369b164d073eb1bbda84f949abfde75411c7a9d1788dba1",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
+      },
+      "prior_art": "Bridged-unit flexibility and cross-polytope deployments are known (Goodwin 2006; Borcea and Streinu 2021). The endpoint is the project's existing m = 1 fcc endpoint. Priority of this explicit equal-bar, non-overlapping motion is unresolved; no novelty claim.",
+      "statement": "An explicit smooth m = 1 motion preserves all 15 bars of the cab contact framework, keeps all spheres non-overlapping for every parameter value and periodic image, and increases density strictly from the open cubic state to fcc at pi/sqrt18. The construction lifts to every integer supercell size.",
+      "value": {
+        "balls": 6,
+        "bars": 15,
+        "distance_polynomials": 3248,
+        "end_density": "pi/sqrt(18)",
+        "nonnegative_bernstein_coefficients": 16240
+      },
+      "verify_command": "make verify-fold-continuous"
     }
   ]
 }

@@ -92,6 +92,16 @@ RESULTS = [
     },
 ]
 
+RESULTS.append({
+    "id": "fold-continuous-fcc",
+    "statement": "An explicit smooth m = 1 motion preserves all 15 bars of the cab contact framework, keeps all spheres non-overlapping for every parameter value and periodic image, and increases density strictly from the open cubic state to fcc at pi/sqrt18. The construction lifts to every integer supercell size.",
+    "value": {"balls": 6, "bars": 15, "end_density": "pi/sqrt(18)",
+              "distance_polynomials": 3248, "nonnegative_bernstein_coefficients": 16240},
+    "evidence_label": "PROVEN (written explicit construction, analytic image bound and monotonicity, exact rational Bernstein certificate); internal AI review only, independent human review pending",
+    "verify_command": "make verify-fold-continuous",
+    "prior_art": "Bridged-unit flexibility and cross-polytope deployments are known (Goodwin 2006; Borcea and Streinu 2021). The endpoint is the project's existing m = 1 fcc endpoint. Priority of this explicit equal-bar, non-overlapping motion is unresolved; no novelty claim.",
+})
+
 SUM_FILES = ["autoresearch-fold/best/path.npz", "results/fold-close-packing/path_fcc.npz",
              "results/fold-m1/path_hcp_m1.npz", "results/fold-m1/path_fcc_m1.npz"]
 
