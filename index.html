@@ -13,6 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="One abstract drawing. A hunch followed. A thread unravelled."><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. An infographic abstract with proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta name="description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. An infographic abstract with proofs and verified results.">
+<link rel="canonical" href="https://aska-digital.github.io/incentre-lattice/">
 <link rel="stylesheet" href="codex.css">
 <style>
 main.land{max-width:760px;padding:22px 20px 40px}
@@ -150,6 +151,12 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 }
 .auth .pdf{margin-left:10px;font-size:.92em;letter-spacing:.08em;color:var(--g,#37ff9a);border:1px solid rgba(55,255,154,.45);padding:2px 8px;white-space:nowrap}
 .auth .pdf:hover{background:rgba(55,255,154,.12);box-shadow:0 0 12px rgba(55,255,154,.3)}
+.research-callout{display:block;margin-top:28px;padding:22px 24px;border:1px solid rgba(53,230,255,.4);background:linear-gradient(120deg,rgba(53,230,255,.08),rgba(55,255,154,.02));color:var(--ink)}
+.research-callout span{display:block;font:11px/1.6 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--c)}
+.research-callout strong{display:block;margin:8px 0;font-size:clamp(20px,3vw,28px);font-weight:500;line-height:1.4;color:#eafff4}
+.research-callout strong b{color:var(--c);font-weight:400}.research-callout small{display:block;color:var(--ink2);font-size:14px;line-height:1.6}
+.research-callout:hover{background:rgba(53,230,255,.1)}
+@media(max-width:500px){.research-callout{padding:18px}.auth .pdf{display:inline-block;margin:10px 0 0;white-space:normal}}
 </style>
 <script>document.documentElement.className+=' js'</script>
 </head><body>
@@ -160,8 +167,9 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
  <div class="lbl"><span>00 // INFOGRAPHIC ABSTRACT</span><span class="tg conj">NOT PEER REVIEWED</span></div>
  <h1>One abstract drawing<br>a hunch followed<br>a thread unravelled</h1>
  <p class="hook">A pattern of incentres in a square, extended to every dimension, and the places it meets crystal chemistry, sphere packing and rigidity theory.</p>
- <div class="auth">Ahraz Arifuddin, Aska Digital &nbsp;<a class="pdf" href="papers/incentre-lattice.pdf" target="_blank" rel="noopener">[ READ THE PAPER · PDF ]</a></div>
- <p class="abs">Draw a square and its two diagonals, then mark, in each of the four triangles, the incentre: the one point equally far from all three sides, the centre of the inscribed circle. Carried into a cube and into higher dimensions, the drawing lands on known structures: a tiling by squares and octagons, a honeycomb of truncated cubes, the radius-ratio limits of crystal chemistry and the boron framework of calcium hexaboride, all classical (Wythoff, Coxeter, Pauling) and credited as such. What we could not find in print is exact: how rigid the framework of touching balls is in every dimension, one identity behind the radius-ratio limits, a closed form for the densest packing of the boron structure, and a bar-preserving, overlap-free fold of the 3D framework from density 0.2233 to close packing. These come from a web search and two independent checkers, not from peer review, and every claim carries an evidence label.</p>
+ <div class="auth">Ahraz Arifuddin, Aska Digital &nbsp;<a class="pdf" href="papers/incentre-lattice.pdf" target="_blank" rel="noopener">[ BROAD PREPRINT · PDF ]</a></div>
+ <p class="abs">Draw a square and its two diagonals, then mark the incentre of each triangle: the point equally far from all three sides. Repeated in a cube and higher dimensions, the rule meets classical tilings, crystal structures and radius-ratio limits. The research asks what follows for rigidity, packing and finite motion. It now includes an explicit six-ball route to face-centred cubic packing with a written all-parameter proof and exact certificate. The framework family is known; priority of the specific formulas and motion remains unresolved.</p>
+ <a class="research-callout" href="research.html"><span>RESEARCH UPDATE · INTERNAL REVIEW</span><strong>A continuous route to close packing <b>→</b></strong><small>Explore the exact motion, the corrected prior art, the five-page paper and the work still open.</small></a>
 </section>
 <div class="chain"><i></i></div>
 
@@ -242,18 +250,18 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 5 WHAT'S NEW -->
 <section class="ip" id="s5">
- <div class="lbl"><b>04 // WHAT&rsquo;S NEW, AS FAR AS SEARCHED</b><span>web search only</span></div>
+ <div class="lbl"><b>04 // RESEARCH RESULTS</b><span>evidence, scope, review</span></div>
  <div class="cards">
   <div class="card">
-   <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">NO REFERENCE FOUND</span></div>
+   <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">PRIORITY OPEN</span></div>
    <div class="stat">n(n&minus;1)/2 zero modes<br>n(n&minus;3)/2 self-stresses</div>
    <h3>Rigidity in every dimension</h3>
    <table class="tb"><thead><tr><th>n</th><th class="n">zero modes</th><th class="n">self-stresses</th><th class="n">&nu;<sub>100</sub></th></tr></thead><tbody>
     <tr><td>3</td><td class="n">3</td><td class="n">0</td><td class="n">1/5</td></tr><tr><td>4</td><td class="n">6</td><td class="n">2</td><td class="n">1/11</td></tr><tr><td>5</td><td class="n">10</td><td class="n">5</td><td class="n">1/19</td></tr><tr><td>6</td><td class="n">15</td><td class="n">9</td><td class="n">1/29</td></tr></tbody></table>
-   <p>&nu;<sub>100</sub> = 1/(n&sup2;&minus;n&minus;1) with unit springs. Proven for all n &ge; 3. The 3D counts agree with Goodwin (2006); the n-dimensional closed forms were not found in print.</p>
+   <p>&nu;<sub>100</sub> = 1/(n&sup2;&minus;n&minus;1) with unit springs. Proven for all n &ge; 3. Goodwin (2006) establishes the 3D bridged-unit flexibility phenomenon; its exact multiplicities were not compared from the full text in this audit. Bridged cross-polytopes in arbitrary dimensions are also known (Borcea and Streinu, 2021). <a href="research.html#prior-art">The precise formula comparison remains open.</a></p>
   </div>
   <div class="card">
-   <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">NO REFERENCE FOUND</span></div>
+   <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">PRIORITY OPEN</span></div>
    <div class="stat">(D&minus;r)/r = 1/sin(&phi;/2) &minus; 1</div>
    <h3>The radius-ratio identity</h3>
    <p>The hole-to-ball ratio of the construction equals the classical radius-ratio limit of the polytope the dots form. For the cube, &phi; = 90&deg; gives &radic;2 &minus; 1.</p>
@@ -263,18 +271,18 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
    <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg verified">VERIFIED</span><span class="tg known">PARTIALLY KNOWN</span></div>
    <div class="stat a">(&pi;/6)(30&radic;2 &minus; 41)<br>&asymp; 0.746865</div>
    <h3>CaB<sub>6</sub> packing maximum</h3>
-   <p>The densest packing of the CaB<sub>6</sub> structure type, as a closed form. The curve itself was plotted by Horst and Travesset (2016), and the location of the peak may already be tabulated in Travesset (2017), which could not be read. The closed form was not found in print. The upper bound is proved; that it is attained, with no other pair overlapping, is a finite check.</p>
+   <p>The densest packing of the CaB<sub>6</sub> structure type, as a closed form. The curve itself was plotted by Horst and Travesset (2016), and the location of the peak may already be tabulated in Travesset (2017), which could not be read. The closed form was not found in print. The upper bound has a written proof. Attainment was checked numerically; <a href="https://github.com/aska-digital/incentre-lattice/pull/23">an exact all-pairs attainment proof is now submitted for review</a>.</p>
   </div>
   <div class="card">
-   <div class="tgs"><span class="tg verified">VERIFIED NUMERICALLY</span><span class="tg noref">NO PRIOR DESCRIPTION FOUND</span></div>
+   <div class="tgs"><span class="tg verified">VERIFIED NUMERICALLY</span><span class="tg noref">PRIORITY OPEN</span></div>
    <div class="stat a">0.2233 &rarr; &pi;/&radic;18</div>
    <h3>The fold, to hexagonal close packing</h3>
-   <p>Every bar length kept, no overlaps, 2&times;2&times;2 family, two independent checkers. The end states are easy to verify; the content is the path. Two layer slides then reach fcc (confirmed by two independent checkers).</p>
-   <p class="sm">The animation below plays the real path.</p>
+   <p>The stored hcp path and two-slide fcc extension pass two numerical checkers for bar lengths, overlaps, bounded steps and sampled interpolation. Smallest-cell paths and exact endpoints are also available. These are finite checks, with stated tolerances.</p>
+   <p class="sm">The animation below interpolates the stored hcp samples. A separate <a href="research.html#continuous">explicit fcc motion</a> now has an all-parameter proof.</p>
   </div>
   <div class="card span2" style="padding:12px 12px 14px">
-   <div class="vis"><canvas id="cv-fold" aria-label="Animation of the 48-ball framework folding while its packing density climbs from 0.2233 to 0.7405"></canvas><div class="corner">THE FOLD // REAL DATA</div><div class="corner r">LOOP</div></div>
-   <p class="cap">The framework (48 balls, 120 bars, one 2&times;2&times;2 block with periodic boundaries) deforms continuously through 793 states exported from <span class="m">autoresearch-fold/best/path.npz</span>. Density at each state is exact, from the cell volume. The dashed line at 0.4686 is where the cubic tilt alone stalls; the rest needs the lattice to shear. A geometry result, not a predicted phase transition in real CaB<sub>6</sub> or Prussian-blue materials. Prior art: in corner-sharing ReO<sub>3</sub>, rotation alone reaches hcp at 30&deg; (textbook: Johnsson and Lemmens 2006; Shan et al.). In the cab framework the cubic tilt stalls at 0.4686 and the lattice must shear; only that cab result was not found in print.</p>
+   <div class="vis"><canvas id="cv-fold" aria-label="Animation of the 48-ball framework folding while its packing density climbs from 0.2233 to 0.7405"></canvas><div class="corner">EARLIER HCP SEARCH // SAMPLED PATH</div><div class="corner r">LOOP</div></div>
+   <p class="cap">The earlier search: 48 balls and 120 bar orbits in a 2&times;2&times;2 periodic block. This display interpolates 793 stored hcp states. The path passes finite checks with a maximum step of 0.01 and sampled interpolation; these checks do not certify every intermediate configuration. The dashed density 0.4686 marks the cubic-path limit, beyond which lattice shear matters. See <a href="seek.html#case">the search history</a> and <a href="research.html#continuous">the separate continuous fcc construction</a>. This geometry does not predict a phase transition in a real material.</p>
   </div>
  </div>
 </section>
@@ -284,11 +292,11 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 <section class="ip" id="s6">
  <div class="lbl"><b>05 // HONEST STATUS</b><span class="tg conj">NOT PEER REVIEWED</span></div>
  <div class="status">
-  <div class="st k"><h3>KNOWN</h3><ul><li>Wythoff construction, 4.8.8 and the truncated cubic honeycomb</li><li>CaB<sub>6</sub> boron net</li><li>radius-ratio limits</li><li>hinged-squares fold in 2D</li><li>ReO<sub>3</sub> to VF<sub>3</sub> tilt, reaching hcp by rotation alone</li></ul></div>
-  <div class="st n"><h3>NEW, AS FAR AS SEARCHED</h3><ul><li>rigidity counts in every dimension</li><li>the radius-ratio identity</li><li>closed-form CaB<sub>6</sub> packing maximum</li><li>an overlap-free path to hcp in the cab framework (the corner-sharing ReO<sub>3</sub> analogue is textbook)</li></ul></div>
-  <div class="st o"><h3>OPEN</h3><ul><li>closed-form end state</li><li>certified path</li><li>smallest supercell (m = 1, odd m)</li><li>monotone density</li></ul></div>
+  <div class="st k"><h3>KNOWN</h3><ul><li>Wythoff construction, 4.8.8 and the truncated cubic honeycomb</li><li>CaB<sub>6</sub> boron net</li><li>radius-ratio limits</li><li>hinged-squares fold in 2D</li><li>bridged cross-polytopes in arbitrary dimensions</li><li>ReO<sub>3</sub> to VF<sub>3</sub> tilt, reaching hcp by rotation alone</li></ul></div>
+  <div class="st n"><h3>RESULTS TO REVIEW</h3><ul><li>all-n rigidity and elasticity formulas</li><li>radius-ratio identity under stated hypotheses</li><li>exact CaB<sub>6</sub> attainment proof</li><li>continuous six-ball fcc motion, exact non-overlap certificate, strictly increasing density</li></ul></div>
+  <div class="st o"><h3>STILL OPEN</h3><ul><li>independent specialist review</li><li>priority of the exact formulas and motion</li><li>an all-parameter proof for an hcp path</li><li>other branches and physical realizations</li></ul></div>
  </div>
- <div class="banner">NOT PEER REVIEWED. Searches were web searches only. <a href="open.html">Every claim and its evidence label is in the ledger.</a></div>
+ <div class="banner">NOT PEER REVIEWED. Written proof, numerical replay and historical novelty are separate questions. <a href="open.html">Every claim and its evidence label is in the ledger.</a></div>
 </section>
 <div class="chain"><i></i></div>
 
@@ -313,6 +321,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
   <a class="door" href="mind.html"><span class="n">05</span><span class="t">PERCEPTION</span><span class="d">Incentre or centroid: which centre do eyes find?</span></a>
   <a class="door" href="drift.html"><span class="n">06</span><span class="t">DRIFT</span><span class="d">How a wandering mind can land on structure.</span></a>
   <a class="door" href="seek.html"><span class="n">07</span><span class="t">SEARCH</span><span class="d">Drift chooses where to look, a checker decides.</span></a>
+  <a class="door" href="research.html"><span class="n">09</span><span class="t">RESEARCH UPDATE</span><span class="d">The continuous fcc motion, exact certificate, literature correction and review priorities.</span></a>
   <a class="door" href="open.html"><span class="n">08</span><span class="t">LEDGER</span><span class="d">Every claim and its evidence label.</span></a>
  </div>
  <div class="sub">CLASSIC // plain light pages</div>
@@ -325,6 +334,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
  <div class="sub">PROJECT</div>
  <div class="doors two">
   <a class="door" href="https://github.com/aska-digital/incentre-lattice" target="_blank" rel="noopener"><span class="n">GITHUB</span><span class="t">Contribute to an open track</span><span class="d">Open questions with a fixed checker and one score. Code, notes and tracks: aska-digital/incentre-lattice.</span></a>
+  <a class="door" href="https://github.com/aska-digital/incentre-lattice/pull/29"><span class="n">FOCUSED DRAFT</span><span class="t">The continuous fcc paper</span><span class="d">Five pages: the explicit motion, exact certificate and remaining review obligations.</span></a>
   <a class="door" href="papers/incentre-lattice.pdf" target="_blank" rel="noopener"><span class="n">PAPER</span><span class="t">Read the preprint (PDF)</span><span class="d">12 pages: rigidity in every dimension, the radius-ratio identity, the CaB6 packing maximum. DOI 10.5281/zenodo.23322079. Not peer reviewed.</span></a>
  </div>
 </section>
@@ -361,11 +371,13 @@ function anim(cv,draw,aspect){
   function paint(dt){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);ctx.clearRect(0,0,o.W,o.H);try{draw(ctx,o.W,o.H,o.t,dt)}catch(e){CX.fail(e)}}
   let last=0;
   function loop(now){o.raf=requestAnimationFrame(loop);const dt=Math.min(.05,(now-last)/1000)||.016;last=now;o.t+=dt;paint(dt)}
-  function start(){if(o.run||REDUCE)return;o.run=true;last=performance.now();o.raf=requestAnimationFrame(loop)}
+  function start(){if(o.run||REDUCE||document.hidden||!o.visible)return;o.run=true;last=performance.now();o.raf=requestAnimationFrame(loop)}
   function stop(){o.run=false;cancelAnimationFrame(o.raf)}
   size();paint(0);
   addEventListener('resize',()=>{size();paint(0)});
-  if('IntersectionObserver' in window)new IntersectionObserver(es=>{es[0].isIntersecting?start():stop()},{rootMargin:'60px'}).observe(cv);else start();
+  o.visible=true;
+  document.addEventListener('visibilitychange',()=>{document.hidden?stop():start()});
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{o.visible=es[0].isIntersecting;o.visible?start():stop()},{rootMargin:'60px'}).observe(cv);else start();
   return o;
 }
 

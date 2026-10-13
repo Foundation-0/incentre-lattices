@@ -1,0 +1,61 @@
+.research{max-width:920px;padding-top:38px}
+.research section{scroll-margin-top:26px;margin:76px 0 0}
+.research-hero h1{font-size:clamp(32px,5.5vw,58px);letter-spacing:-.035em;line-height:1.12;max-width:800px;margin:18px 0 24px}
+.research-hero .lede{max-width:740px;font-size:clamp(18px,2vw,22px)}
+.research-hero>p,.research section>p{max-width:730px}
+.research .kick{color:#93bfa9;letter-spacing:.13em}
+.research-status{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+.research-status .tg{margin:0;padding:7px 8px;line-height:1.3;white-space:normal}
+.research-links{display:flex;flex-wrap:wrap;gap:14px 26px;margin:26px 0;font-size:14px}
+.research-links a{padding:6px 0}
+.research-toc{display:flex;flex-wrap:wrap;gap:8px 24px;padding:20px 0;border-block:1px solid #23513f;margin-top:38px;font:12px/1.6 ui-monospace,Menlo,monospace}
+.research-toc a{padding:5px 0}
+.research h2{margin:10px 0 22px;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em}
+.research h3{letter-spacing:0;line-height:1.5}
+.fcc-demo{margin:28px 0}
+.fcc-view{position:relative;background:radial-gradient(ellipse at 45% 40%,#0b231e,#02090c 75%);border:1px solid #28543f;overflow:hidden}
+#fcc-canvas{display:block;width:100%;aspect-ratio:1.7;cursor:grab;touch-action:pan-y}
+#fcc-canvas:active{cursor:grabbing}
+.fcc-view-label{position:absolute;top:13px;left:16px;right:16px;font:10px/1.5 ui-monospace,Menlo,monospace;color:#9fbfad;letter-spacing:.1em;pointer-events:none}
+.fcc-controls{padding:20px;background:#07140f;border:1px solid #28543f;border-top:0}
+.fcc-slider{display:grid;grid-template-columns:1fr auto;gap:8px;font:13px/1.5 ui-monospace,Menlo,monospace;margin-bottom:16px}
+.fcc-slider output{font-variant-numeric:tabular-nums;color:var(--g)}
+.fcc-slider input{grid-column:1/-1;width:100%;accent-color:var(--g);height:28px;margin:0}
+.fcc-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0}
+.fcc-actions button{min-height:40px;padding:8px 12px;font-size:12px}
+.fcc-actions label{font-size:13px;min-height:40px}
+.fcc-controls .hint{margin:14px 0 0;line-height:1.6;color:#93bfa9;letter-spacing:0}
+.fcc-measures{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px;border-bottom:1px solid #28543f;padding:24px 0}
+.fcc-measures span,.fcc-measures small{display:block;color:#9fc9b8;font-size:12px;line-height:1.5}
+.fcc-measures strong,.fcc-measures output{display:block;font:clamp(20px,3vw,30px)/1.5 ui-monospace,Menlo,monospace;color:var(--g);font-variant-numeric:tabular-nums}
+.fcc-chart{padding-top:18px}
+.fcc-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.fcc-chart text{fill:#a8cbbc;font:12px ui-monospace,Menlo,monospace}
+.plot-grid{stroke:#29503e;fill:none;stroke-width:1}
+.plot-curve{stroke:#35e6ff;fill:none;stroke-width:2.5}
+.plot-marker{stroke:#ffb23a;stroke-dasharray:3 4;stroke-width:1}
+#fcc-marker{fill:#ffb23a;stroke:#06150e;stroke-width:2}
+.fcc-demo figcaption{max-width:none;margin:12px 0 0}
+.curve-formula{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:25px;margin:28px 0;border:1px solid #28543f;background:#07140f;font:16px/1.9 ui-monospace,Menlo,monospace;color:#e5f9ef}
+.curve-formula p{margin:10px 0 0}
+.curve-formula pre{font:inherit;margin:18px 0 0;white-space:pre}
+.formula-label{font-size:10px;letter-spacing:.14em;color:#91b6a5}
+.proof-steps{list-style:none;counter-reset:proof;padding:0;margin:28px 0}
+.proof-steps li{position:relative;padding:0 0 18px 55px;border-left:1px solid #28543f;margin-left:14px;counter-increment:proof}
+.proof-steps li:before{content:counter(proof);position:absolute;left:-15px;top:0;width:29px;height:29px;text-align:center;background:#081910;border:1px solid #3a7658;color:var(--g);font:14px/28px ui-monospace,Menlo,monospace}
+.proof-steps h3{margin:0 0 9px;padding-top:2px}
+.proof-steps p{font-size:15px;max-width:660px}
+.research table{width:100%;min-width:520px;line-height:1.65}
+.research table caption{text-align:left;padding:0 0 14px;color:#a9cdbb;font:12px/1.6 ui-monospace,Menlo,monospace}
+.research tbody th{text-align:left;color:#dcefe4;font-weight:400;min-width:180px}
+.work-list article{display:grid;grid-template-columns:125px 1fr;column-gap:22px;padding:24px 0;border-top:1px solid #28543f}
+.work-ref{grid-row:1/3;font:13px/1.6 ui-monospace,Menlo,monospace}
+.work-ref span{display:block;color:#a6bdaf;font-size:11px;margin-top:9px}
+.work-list h3{margin:0 0 8px;color:#e4f8ed}
+.work-list p{font-size:15px;margin:0;max-width:640px}
+.research-credit{border-block:1px solid #28543f;padding:18px 0;font-size:14px;margin:32px 0}
+.research-credit summary{color:#a6d5bd;cursor:pointer;padding:6px 0}
+.research-credit p{margin:18px 0 0;max-width:730px}
+@media(min-width:1220px) and (max-width:1400px){.research{max-width:calc(100% - 300px);margin-left:255px;margin-right:35px}}
+@media(max-width:700px){.research{padding-top:24px}.research section{margin-top:52px}.research-toc{gap:8px 18px}.fcc-controls{padding:15px}.fcc-view-label{font-size:9px;letter-spacing:.02em}#fcc-canvas{aspect-ratio:1.15}.fcc-measures{gap:10px}.fcc-measures span,.fcc-measures small{font-size:10px}.fcc-measures strong,.fcc-measures output{font-size:18px}.curve-formula{grid-template-columns:1fr;padding:18px;gap:20px;font-size:14px}.proof-steps li{padding-left:32px}.work-list article{grid-template-columns:1fr}.work-ref{grid-row:auto;display:flex;gap:16px;align-items:center;margin-bottom:10px}.work-ref span{margin:0}.research-links{gap:8px 20px}.research-hero h1 br{display:none}}
+@media(prefers-reduced-motion:reduce){.research *{scroll-behavior:auto}}
