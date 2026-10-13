@@ -20,6 +20,11 @@ No AI model is an author in the legal or scholarly sense, and none can vouch for
 `docs/audit.md` say what was actually done; a person has not independently re-derived every proof. Internal reviews so far were performed
 by AI models under direction (see `docs/review-ledger.md`); that is "internal pre-publication review" and not outside review.
 
+For the explicit continuous fcc motion (`results/fold-continuous-fcc`), GPT-6 (Codex) derived the curve, written proof
+and first exact arithmetic implementation. GPT-6.1 Sol independently checked the analytic reductions and supplied
+a separate polynomial-convolution replay. GPT-6 Luna handled repository publishing. These are internal AI
+contributions under the user's direction; independent human review and historical priority remain open.
+
 ## Prior work this repository builds on
 
 Credit for the ideas below belongs to the cited people; where we reuse a construction we say so in the `PROOF.md` of the result.

@@ -11,6 +11,10 @@ As of 2026-10-12. Labels as in `docs/audit.md`. Preprint published 2026-10-12 (D
 | 3D fold, cubic-restricted [111] | density 27 pi sqrt2/256 = 0.4686 at 60 degrees, six contacts; a lock of the cubic path, not a jam | VERIFIED | `make verify-fold3d` |
 | **Fold density** (`autoresearch-fold`) | **pi/sqrt18 = 0.74048 (Kepler bound)**: sampled bar-preserving, overlap-free path in the 2x2x2 supercell to hcp (793 states) and, by two layer slides, to pure fcc (1193 states); both checkers accept both paths | VERIFIED (sampled continuity, step <= 0.01); fcc is NEW-COMPUTATION | `make verify-fold-cp`, `make verify-fold-tests` |
 
+The [continuous fcc construction](../results/fold-continuous-fcc/PROOF.md) adds an exact motion with all-parameter
+non-overlap and strictly increasing density: **PROVEN by written argument and exact finite certificate, internal
+review only**. Replay: `make verify-fold-continuous`. This is distinct from the sampled results above.
+
 ## Prior-art framing (updated 2026-10-12)
 
 * Corner-sharing ReO3 reaches hcp by octahedral rotation alone, at 30 degrees about <111>: KNOWN (Johnsson and Lemmens 2006, textbook; Shan et al., under pressure). Only the cab result is "not found": with octahedra joined by bars, the cubic tilt stalls at 0.4686 (0.2637 at 30 degrees, against 0.7405 for hcp), and close packing needs a symmetry-breaking continuation with lattice shear.
@@ -20,10 +24,10 @@ As of 2026-10-12. Labels as in `docs/audit.md`. Preprint published 2026-10-12 (D
 
 ## Open problems (fold)
 
-* A certified path: interval arithmetic or an analytic piecewise path in place of sampled continuity.
+* A certified path: an [explicit smooth fcc motion](../results/fold-continuous-fcc/PROOF.md) now has a written proof and exact Bernstein certificate (`make verify-fold-continuous`), with internal AI review only. Independent human review and a certified hcp path remain open. This new witness does not change the evidence for previously stored interpolants.
 * ~~A closed-form end state~~: exact integer closed forms for the hcp and fcc end states of the m = 2 paths, PROVEN (`results/fold-end-exact`, `make verify-fold-exact`). Still open: space group, Wyckoff sites and an orbit description of the hole pattern.
 * ~~The smallest supercell~~: m = 1 reaches hcp (free descent) and fcc (steered), both checkers accept, end states exact (`results/fold-m1`, `make verify-fold-m1`, VERIFIED, NEW-COMPUTATION). An m = 1 motion is an m-periodic motion for every m, so odd m is covered in principle; the lift to larger cells needs subdivided paths (the locked checker rejects the unsubdivided lifts, and only on the continuity step limit).
-* ~~A monotone-density path~~: the m = 1 fcc path has det L strictly decreasing at all 267 steps (sampled; `results/fold-m1`). Still open: a monotone path to hcp, monotonicity between samples, and the minimum density dip.
+* A monotone-density path: the separate explicit fcc motion has a written strict-monotonicity proof for the whole parameter interval (`results/fold-continuous-fcc`), pending outside review. The old 268-state fcc path retains its sampled claim. A monotone path to hcp remains open.
 * The set of close-packed end states and their connectivity; comparison nets (diamond, sodalite, ReO3 with bars).
 * An outside review of both checkers, or a third independent implementation.
 
