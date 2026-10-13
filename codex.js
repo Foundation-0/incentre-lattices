@@ -13,12 +13,13 @@ const PAGES=[
  ['mind.html','PERCEPTION','mind'],
  ['drift.html','DRIFT','wandering mind'],
  ['seek.html','SEARCH','drift + check'],
+ ['research.html','RESEARCH','updates'],
  ['open.html','LEDGER','claims']
 ];
 const EXTRA=[['cube-six.html','The cube, hands-on'],['deeper.html','Atoms, tilings and dimensions']];
 const Q=new URLSearchParams(location.search);
 const here=(location.pathname.split('/').pop()||'index.html');
-const C={g:'#37ff9a',c:'#35e6ff',a:'#ffb23a',r:'#ff4a3d',dim:'#2f8f68',bg:'#02090c',ink:'#eafff4'};
+const C={g:'#37ff9a',c:'#35e6ff',a:'#ffb23a',r:'#ff4a3d',dim:'#68aa8e',bg:'#02090c',ink:'#eafff4'};
 const TAU=Math.PI*2;
 const CX=window.CX={C,TAU,Q};
 
@@ -27,15 +28,15 @@ function el(tag,attrs,html){const e=document.createElement(tag);if(attrs)for(con
 /* ---- decorative layers ---- */
 function decor(){
   const R=Math.SQRT2-1;
-  const s=el('div',{id:'sig'});
+  const s=el('div',{id:'sig','aria-hidden':'true'});
   const pt=(r,i)=>[(r*Math.cos(i*TAU/8-Math.PI/8)).toFixed(1),(r*Math.sin(i*TAU/8-Math.PI/8)).toFixed(1)];
   let h='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-500 -500 1000 1000" width="100%" height="100%"><g class="rot" fill="none" stroke="#37ff9a" stroke-width="1">';
   [460,460*R,460*R*R,460*R*R*R].forEach((r,i)=>{h+='<circle r="'+r.toFixed(1)+'" opacity="'+[.35,.3,.25,.2][i]+'"/>'});
   let o='',s8='';for(let i=0;i<8;i++){o+=(i?'L':'M')+pt(460,i).join(' ');s8+=(i?'L':'M')+pt(460,(i*3)%8).join(' ')}
   h+='<path d="'+o+'Z" opacity=".3"/><path d="'+s8+'Z" stroke="#35e6ff" opacity=".18"/></g></svg>';
   s.innerHTML=h;document.body.appendChild(s);
-  document.body.appendChild(el('div',{id:'scan'}));
-  const g=el('div',{id:'grain'}),cc=document.createElement('canvas');cc.width=cc.height=128;
+  document.body.appendChild(el('div',{id:'scan','aria-hidden':'true'}));
+  const g=el('div',{id:'grain','aria-hidden':'true'}),cc=document.createElement('canvas');cc.width=cc.height=128;
   const c=cc.getContext('2d'),im=c.createImageData(128,128);
   for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255|0;im.data[i]=v*.4;im.data[i+1]=v;im.data[i+2]=v*.7;im.data[i+3]=255}
   c.putImageData(im,0,0);g.style.backgroundImage='url('+cc.toDataURL()+')';document.body.appendChild(g);
@@ -43,33 +44,53 @@ function decor(){
 
 /* ---- index panel ---- */
 function nav(){
-  const p=el('nav',{'class':'panel hud',id:'p-nav'});
+  const p=el('nav',{'class':'panel hud',id:'p-nav','aria-label':'Site index'});
   let b='';
-  for(const [u,n,d] of PAGES)b+='<a href="'+u+'"'+(u===here?' class="cur"':'')+'>'+(u===here?'&gt; ':'')+n+'<span>'+d+'</span></a>';
+  for(const [u,n,d] of PAGES)b+='<a href="'+u+'"'+(u===here?' class="cur" aria-current="page"':'')+'>'+(u===here?'&gt; ':'')+n+'<span>'+d+'</span></a>';
   b+='<hr><div class="foot">CLASSIC // plain light pages</div>';
-  for(const [u,n] of EXTRA)b+='<a href="'+u+'"'+(u===here?' class="cur"':'')+'>'+n+'<span>classic</span></a>';
+  for(const [u,n] of EXTRA)b+='<a href="'+u+'"'+(u===here?' class="cur" aria-current="page"':'')+'>'+n+'<span>classic</span></a>';
   b+='<div class="foot">[H] hide HUD</div>';
   p.innerHTML='<button class="burger" aria-expanded="false" aria-controls="p-nav-body">&equiv; INDEX<span>R=&radic;2&minus;1</span></button><header><span class="tabtitle">INDEX // R=&radic;2&minus;1</span><button class="mb" title="minimise">&ndash;</button></header><div class="body" id="p-nav-body">'+b+'</div>';
   document.body.insertBefore(p,document.body.firstChild);
   const bg=p.querySelector('.burger');
-  bg.onclick=()=>{const o=p.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+  bg.onclick=()=>{p.classList.toggle('open');p._syncPanel&&p._syncPanel()};
   if(!matchMedia('(max-width:700px)').matches&&((Q.get('min')||'').split(',').includes('index')||Q.get('min')==='all'))p.classList.add('min');
 }
 
 function panels(){
   const mins=(Q.get('min')||'').split(',');
-  for(const p of document.querySelectorAll('.panel')){
+  for(const [i,p] of [...document.querySelectorAll('.panel')].entries()){
     const btn=p.querySelector('.mb');if(!btn||btn._w)continue;btn._w=1;
-    const sync=()=>{btn.innerHTML=p.classList.contains('min')?'+':'&ndash;'};
+    const body=p.querySelector('.body'),name=p.querySelector('.tabtitle')?.textContent.trim()||'controls';
+    if(body&&!body.id)body.id=(p.id||'panel-'+i)+'-body';
+    btn.type='button';if(body)btn.setAttribute('aria-controls',body.id);
+    const sync=()=>{
+      const mobile=p.id==='p-nav'&&matchMedia('(max-width:700px)').matches;
+      const collapsed=mobile?!p.classList.contains('open'):p.classList.contains('min');
+      btn.innerHTML=collapsed?'+':'&ndash;';
+      btn.setAttribute('aria-expanded',String(!collapsed));
+      btn.setAttribute('aria-label',(collapsed?'Expand ':'Collapse ')+name+' panel');
+      btn.title=(collapsed?'Expand ':'Collapse ')+name+' panel';
+      if(body)body.hidden=collapsed;
+      const burger=p.querySelector('.burger');
+      if(burger){burger.setAttribute('aria-expanded',String(!collapsed));burger.setAttribute('aria-label',(collapsed?'Open':'Close')+' site index')}
+    };
     if(Q.get('min')==='all'||(p.id&&mins.includes(p.id.replace(/^p-/,''))))p.classList.add('min');
-    sync();btn.onclick=()=>{p.classList.toggle('min');sync()};
+    p._syncPanel=sync;sync();btn.onclick=()=>{p.classList.toggle('min');sync()};
+    if(p.id==='p-nav')addEventListener('resize',sync);
+  }
+  for(const [i,input] of [...document.querySelectorAll('input[type="range"]')].entries()){
+    if(input.labels?.length||input.hasAttribute('aria-label')||input.hasAttribute('aria-labelledby'))continue;
+    let label=input.closest('.sl')?.previousElementSibling;
+    if(!label?.classList.contains('lab'))label=input.closest('.grp')?.querySelector('.lab');
+    if(label){if(!label.id)label.id=(input.id||'range-'+i)+'-label';input.setAttribute('aria-labelledby',label.id)}
   }
 }
 CX.panels=panels;
 
 addEventListener('keydown',e=>{
   if(e.ctrlKey||e.metaKey||e.altKey)return;
-  const t=e.target&&e.target.tagName;if(t==='INPUT'&&e.target.type==='text')return;
+  const target=e.target;if(target?.isContentEditable||target?.closest('input,select,textarea'))return;
   if(e.key==='h'||e.key==='H')document.body.classList.toggle('hud-off');
 });
 
@@ -84,18 +105,27 @@ CX.canvas=function(canvas,draw,opt){
     o.dpr=Math.min(window.devicePixelRatio||1,2);o.W=w;o.H=h;
     canvas.style.height=h+'px';canvas.width=Math.round(w*o.dpr);canvas.height=Math.round(h*o.dpr);
   }
-  size();addEventListener('resize',()=>{size();o.redraw()});
-  let last=performance.now();
-  o.redraw=function(){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);draw(ctx,o.W,o.H,o.t,0)};
-  if('IntersectionObserver' in window){new IntersectionObserver(es=>{o.visible=es[0].isIntersecting}).observe(canvas)}
-  function frame(now){
-    requestAnimationFrame(frame);
-    let dt=Math.min(.05,(now-last)/1000);last=now;if(dt<=0)dt=1/60;
-    if(!o.visible&&!opt.always)return;
-    o.t+=dt;ctx.setTransform(o.dpr,0,0,o.dpr,0,0);
-    try{draw(ctx,o.W,o.H,o.t,dt)}catch(err){CX.fail(err)}
+  let last=performance.now(),raf=0;
+  const active=()=>!document.hidden&&o.visible&&canvas.isConnected!==false;
+  function paint(dt){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);try{draw(ctx,o.W,o.H,o.t,dt)}catch(err){CX.fail(err)}}
+  o.redraw=function(){if(active())paint(0)};
+  function schedule(){
+    if(!active()){if(raf)cancelAnimationFrame(raf);raf=0;return}
+    if(opt.animate===false){o.redraw();return}
+    if(!raf){last=performance.now();raf=requestAnimationFrame(frame)}
   }
-  requestAnimationFrame(frame);
+  function frame(now){
+    raf=0;if(!active())return;
+    let dt=Math.min(.05,(now-last)/1000);last=now;if(dt<=0)dt=1/60;
+    o.t+=dt;paint(dt);raf=requestAnimationFrame(frame);
+  }
+  function viewport(){const r=canvas.getBoundingClientRect();o.visible=r.bottom>0&&r.right>0&&r.top<innerHeight&&r.left<innerWidth}
+  size();viewport();
+  addEventListener('resize',()=>{size();viewport();o.redraw();schedule()});
+  document.addEventListener('visibilitychange',schedule);
+  if('IntersectionObserver' in window){new IntersectionObserver(es=>{o.visible=es[0].isIntersecting;schedule()}).observe(canvas)}
+  else addEventListener('scroll',()=>{viewport();schedule()},{passive:true});
+  schedule();
   return o;
 };
 CX.fail=function(e){console.error(e);let d=document.getElementById('err');
@@ -159,6 +189,7 @@ function ready(){
   // footer prev/next
   const i=PAGES.findIndex(p=>p[0]===here);
   const m=document.querySelector('main');
+  if(m){if(!m.id)m.id='main-content';m.tabIndex=-1;document.body.insertBefore(el('a',{'class':'skip-link',href:'#'+m.id},'Skip to main content'),document.body.firstChild)}
   if(m&&i>=0&&!m.querySelector('.pn')){
     const prev=PAGES[i-1],next=PAGES[i+1];
     m.appendChild(el('div',{'class':'pn hud'},(prev?'<a href="'+prev[0]+'">&larr; '+prev[1]+'</a>':'<span></span>')+(next?'<a href="'+next[0]+'">'+next[1]+' &rarr;</a>':'<a href="lattice.html">LATTICE &rarr;</a>')));

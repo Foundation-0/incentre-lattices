@@ -17,45 +17,60 @@
 <style>
 .lg{width:100%}
 #tb td.cl{min-width:300px;max-width:420px}
-#tb tr.dim{opacity:.18}
 #tb td.pg{color:var(--dim);white-space:nowrap}
 .nv{display:inline-block;font:10.5px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--ink2)}
 .nv.new{color:#ff9a8f}.nv.view{color:var(--a)}.nv.elem{color:var(--c)}.nv.kn{color:#b6c4ff}
 #tb td{font-size:12.5px}
+.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:18px 0}
+.filters label{display:flex;flex:1 1 200px;flex-direction:column;gap:5px;font-size:13px;color:var(--ink2)}
+.filters select{width:100%}
+#matching{color:var(--ink);font-size:14px;margin:10px 0}
+#tb td:last-child a{display:inline-block;margin:5px 8px 0 0}
+.nv.new{color:#ffb7af}
 </style>
 </head><body>
 <main>
 <div class="kick">08 // LEDGER</div>
 <h1>Ledger</h1>
-<p class="lede">This page lists every claim made across the site, with the strength of its evidence and whether it is likely new. The short version: the drawing is a rediscovery of known structures by a new route, plus a handful of results that were not found in the literature after web searches. Nothing here has been through peer review, and no search was a full literature review. The proven results are written up in the <a href="papers/incentre-lattice.pdf" target="_blank" rel="noopener">preprint (PDF)</a>.</p>
+<p class="lede">Follow each claim to its evidence and its limits. The drawing connects established geometry with calculations and proposed proofs. The <a href="research.html#continuous">new continuous fcc motion</a> has a written argument and exact computational certificate in an open draft; the older searched trajectories remain numerical evidence. Historical priority and independent specialist review are unresolved.</p>
+<div class="note">Research status checked 13 October 2026: <a href="https://github.com/aska-digital/incentre-lattice/pull/23">PR 23</a>, <a href="https://github.com/aska-digital/incentre-lattice/pull/25">25</a>, <a href="https://github.com/aska-digital/incentre-lattice/pull/27">27</a>, <a href="https://github.com/aska-digital/incentre-lattice/pull/28">28</a> and <a href="https://github.com/aska-digital/incentre-lattice/pull/29">29</a> are all open. PRs 23, 28 and 29 are drafts. Their results are proposals, with internal AI review; no outside human mathematical review is recorded. The <a href="papers/incentre-lattice.pdf">earlier preprint</a> predates these updates.</div>
 
 <h2 id="how"><span class="n">1</span>How to read the labels</h2>
 <ul class="cl">
-<li><span class="tg proven">PROVEN</span> an argument is given, or a symbolic computation checks it exactly.</li>
+<li><span class="tg proven">PROVEN</span> a written argument establishes the stated hypotheses. An exact finite certificate can be part of that argument; the label alone does not imply outside review.</li>
 <li><span class="tg verified">VERIFIED NUMERICALLY</span> computed in code to a stated tolerance, with no proof.</li>
+<li><span class="tg draft">DRAFT / OPEN</span> a proposed proof, manuscript or repository change in an open pull request; read its review status and scope.</li>
 <li><span class="tg conj">CONJECTURE</span> proposed, tested only in part or not at all. Guesses and speculation go here too.</li>
 <li><span class="tg known">KNOWN</span> in the literature, with a citation. Several are cited from abstracts and summaries only.</li>
 <li><span class="tg pos">POSITION</span> a philosophical or interpretive stance, argued for but not testable as stated (Drift and Search pages).</li>
 </ul>
-<p>The second label on each row says whether the claim is likely new. <span class="nv kn">ESTABLISHED</span> means it is known. <span class="nv elem">ELEMENTARY</span> means it is easy to derive and probably folklore. <span class="nv new">NO REFERENCE FOUND</span> means that web searches found no prior statement, which is weaker than &ldquo;nobody has done this&rdquo;. <span class="nv view">OUR ROUTE</span> means the facts are known and only the path or the framing is ours.</p>
+<p>The second label records the priority assessment. <span class="nv kn">ESTABLISHED</span> means prior work is identified. <span class="nv elem">ELEMENTARY</span> means a direct derivation, with no novelty claimed. <span class="nv new">PRIORITY UNRESOLVED</span> means the comparison remains incomplete; an unsuccessful search is not evidence of novelty. <span class="nv view">OUR ROUTE</span> records the project's presentation or route through known facts. See the <a href="research.html#prior-art">source comparison</a>.</p>
+
+<div class="filters" role="group" aria-label="Filter the claims ledger">
+ <label for="evidence-filter">Evidence<select id="evidence-filter"><option value="">All evidence</option></select></label>
+ <label for="novelty-filter">Priority assessment<select id="novelty-filter"><option value="">All assessments</option></select></label>
+ <button type="button" id="b12clear">SHOW ALL</button>
+</div>
+<p id="matching" role="status" aria-live="polite" aria-atomic="true"></p>
 
 <div class="wide" id="fig12">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv12"></canvas><div class="corner">CLAIMS BY EVIDENCE AND BY NOVELTY // CLICK A BAR TO FILTER</div><div class="corner r">FIG 12 // LEDGER</div></div>
+ <div class="cvbox"><canvas id="cv12" role="img" aria-label="Counts of all claims by evidence and priority assessment. Use the labeled filters above for keyboard access."></canvas><div class="corner">ALL CLAIMS // CLICK A BAR OR USE THE FILTERS</div><div class="corner r">FIG 12 // LEDGER</div></div>
  <section class="panel fp hud" id="p-fig12">
   <header><span class="tabtitle">CTRL // FILTER</span><button class="mb" title="minimise">&ndash;</button></header>
-  <div class="body"><div class="grp"><div class="row"><button id="b12clear">SHOW ALL</button></div><div class="hint">Click a bar again to clear it.</div></div><div class="grp kvg"><div class="kv" id="kv12"></div></div></div>
+  <div class="body"><div class="grp"><div class="hint">Bar counts cover all claims. The two filters combine; click a selected bar again to clear that filter.</div></div><div class="grp kvg"><div class="kv" id="kv12"></div></div></div>
  </section>
 </figure>
 </div>
 
 <h2 id="ledger"><span class="n">2</span>Every claim</h2>
-<div class="wide"><div class="tscroll"><table class="tb lg" id="tb"><thead><tr><th>page</th><th>claim</th><th>evidence</th><th>novelty</th><th>source or note</th></tr></thead><tbody></tbody></table></div></div>
+<div class="wide"><div class="tscroll"><table class="tb lg" id="tb"><thead><tr><th scope="col">page</th><th scope="col">claim</th><th scope="col">evidence</th><th scope="col">priority</th><th scope="col">source or note</th></tr></thead><tbody></tbody></table></div></div>
 
 <h2 id="thesis"><span class="n">3</span>Candidate thesis questions</h2>
 <ol class="cl">
 <li><b>The configuration space of the dot frameworks.</b> Map the full configuration space of the ball and bar contact framework, as a real algebraic variety, for every Wythoff orbit. Which tilt paths are finite, where do they end, and is the incentre always the unique point whose folds end in a uniform packing? (Motion page.)</li>
-<li><b>The 3D fold beyond the cubic path.</b> The cubic [111] fold stalls at density 0.4686, a waypoint; with shear the search reaches close packing on a 2&times;2&times;2 block. Test larger blocks and other stackings, replace the sampled continuity of the path by a proof that it is overlap-free, and map the other branches.</li>
+<li><b>A continuous path to hcp and other branches.</b> A proposed smooth one-cell curve now reaches fcc with exact non-overlap over the whole interval. A comparable continuous proof to hcp remains open; the sampled hcp trajectories do not supply it. Map the other branches and constraints. <a href="research.html#work">Open work</a>.</li>
+<li><b>Independent specialist review and priority.</b> Review the exact geometric reduction and both arithmetic implementations, compare the equal-bar motion with earlier deployments, and audit the separate spring-elasticity formulas. <a href="research.html#review">Review packet</a>.</li>
 <li><b>Voronoi-cell Wythoff points as a generator of boron-rich frameworks.</b> The cube gives CaB<sub>6</sub> and the rhombic dodecahedron gives UB<sub>12</sub>. List the augmented nets of every face-transitive mirror-walled cell, treat &alpha;-boron as the frustrated dodecahedral case, and test with density functional theory whether the bond ratio (0.92 to 1.01 across the hexaborides and dodecaborides) follows electron count. (Matter page.)</li>
 <li><b>Where the radius-ratio rule can and cannot go.</b> Test whether the shapes the rule cannot reach (7, 9 and dodecahedral 8 neighbours) are over-represented among oxide environments that violate Pauling&rsquo;s first rule.</li>
 <li><b>The perceived centre of a triangle.</b> Run the tap experiment with the incentre as a candidate, in adults and children, with tall and lopsided triangles. (Perception page.)</li>
@@ -63,15 +78,15 @@
 </ol>
 
 <h2 id="plain"><span class="n">4</span>The plain statement</h2>
-<p>This is a rediscovery of known structures by a new route. A drawing of a square, its diagonals and a dot in each triangle leads, by one rule about points equidistant from mirror walls, to the 4.8.8 tiling, the truncated cubic honeycomb, chemistry&rsquo;s three radius-ratio limits and the calcium hexaboride structure Pauling described in 1934. Each of those is known. A few results were not found in the literature after web searches: the exact fold of 4.8.8 into the square packing and its 3D analogue, the mode and self-stress counts and the Poisson-ratio formula in n dimensions, the census of 159 frameworks (70 non-trivial after deduplication), the dodecaboride from the same rule, and the closed form of the packing peak. They may be folklore, they are mostly elementary, and none has been checked by a specialist. The search method was web search only.</p>
-<div class="note">The ledger was assembled from the evidence labels in the research reports. Where a report said &ldquo;no reference found&rdquo; it stays that and is not upgraded here.</div>
+<p>The value here is a connected route through established geometry, and results that can be inspected and replayed. Periodic bridged cross-polytopes already appear in Borcea and Streinu's 2021 paper (Section 7): the same graph at a different bar length, so our counts cover it. The dimensional counts are likely routine with existing machinery (priority unresolved); the unit-spring results C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate. The newest geometric proposal gives an explicit smooth route from the open cab packing to fcc, with an exact all-parameter non-overlap certificate. It is an open draft, with internal AI checks and independent human review still pending.</p>
+<div class="note">A proof, a numerical trajectory and a literature search answer different questions. The <a href="research.html">research page</a> brings their sources and current review status together. The proposed commitment-coverage fix is still open; the older manifest must not be treated as covering every later result.</div>
 </main>
 
 <script src="codex.js"></script>
 <script>
 CX.start(function(){
 const C=CX.C,$=id=>document.getElementById(id);
-const P='proven',V='verified',J='conj',K='known';
+const P='proven',V='verified',J='conj',K='known',D='draft';
 const KN='kn',EL='elem',NW='new',VW='view';
 const ROWS=[
 ['origin','The three angle bisectors of a triangle meet at one point, the incentre.',[K],KN,'Classical geometry.'],
@@ -89,11 +104,11 @@ const ROWS=[
 ['matter','Radius-ratio limits 0.225, 0.414, 0.732 and the radius-ratio rule.',[K],KN,'Pauling, 1920s and 30s.'],
 ['matter','Perovskite ABO3 counting, and the classic cubic structures from the same cube.',[K],KN,'Standard crystallography.'],
 ['matter','Dot pairs across each face look like the split dumbbell of copper-type metals.',[J],EL,'A resemblance only; no claim that they match.'],
-['matter','Octahedra joined by linear bridges (Prussian-blue topology) have a large density of rigid unit modes.',[K],KN,'Goodwin, Phys. Rev. B 74, 134302 (2006).'],
+['matter','Octahedra joined by linear bridges (Prussian-blue topology) have a large density of rigid unit modes.',[K],KN,'Goodwin, Phys. Rev. B 74, 134302 (2006): studied the same topology\u2019s rigid unit modes (abstract only read).'],
 ['matter','The tiled drawing is the CaB6 structure; equal boron–boron bonds force x = (√2 − 1)/2 = 0.2071.',[P,V],VW,'Structure known: Pauling and Weinbaum 1934; RCSR net cab. The link to the drawing is our framing.'],
 ['matter','In modern MB6 refinements the bond between octahedra is about 5% short of the ideal (mean ratio 0.947 over the 17 entries with x not 0.207, range 0.920 to 0.977). MB12 averages 0.956 (14 entries, range 0.931 to 1.012); uranium is a lengthening.',[V],NW,'45 Crystallography Open Database entries; borides_real.py prints 0.9704 over all 31 MB6 entries and 0.9559 for MB12. Deviation read as bonding asymmetry.'],
 ['matter','The same rule on the fcc Voronoi cell gives UB12 with x = 1/6; metal cage hole-to-ball ratio 2.1623.',[V],NW,'UB12 is known (AFLOW; arXiv 2010.16239). One rule for both boride families: no reference found. RCSR raw data (3dall.txt) lists the ubt and cab equal-edge geometries.'],
-['matter','CaB6-type hard-sphere packing peaks at gamma = √2 − 1 with phi = (π/6)(30√2 − 41) = 0.746865. Ca and B do not touch there (gap 0.0297a); Ca is held by Ca-Ca contact.',[P,V],VW,'Upper bound proved; attainment is a finite check. Above fcc 0.7405, below NaCl 0.793. Partially known: the curve was plotted by Horst and Travesset 2016 (Shevchenko 2006 is cited for observed superlattices only), and Travesset 2017 (ACS Nano 11, 5375; not read) may give the location. The closed form was not found stated; it is not confirmed new.'],
+['matter','CaB6-type hard-sphere packing peaks at gamma = √2 − 1 with phi = (π/6)(30√2 − 41) = 0.746865. Ca and B do not touch there (gap 0.0297a); Ca is held by Ca-Ca contact.',[P,V],VW,'Upper bound proved; attainment proved (ATTAINMENT.md, exact all-pairs classification; internal referee review), corroborated by a finite check. Above fcc 0.7405, below NaCl 0.793. Partially known: the curve was plotted by Horst and Travesset 2016 (Shevchenko 2006 is cited for observed superlattices only), and Travesset 2017 (ACS Nano 11, 5375; not read) may give the location. The closed form was not found stated; it is not confirmed new.'],
 ['matter','Under mirror walls (H1) or an insphere with equal dihedral angles (H2), hole/ball equals the radius-ratio limit of the dual equal-edged polytope; the form 1/sin(theta) − 1 holds under H2 only (the triangular bipyramid, with mirror walls, is the counterexample). Only mirror-generated shapes are reachable.',[P],NW,'May appear in a textbook; elementary.'],
 ['matter','Square antiprism is reachable only by tuning; CN7, tricapped prism, dodecahedral CN8 and capped octahedron are unreachable.',[P],NW,'As above.'],
 ['matter','The dot geometry gives no sharper perovskite predictor than Bartel’s tau (0.835 against 0.915 accuracy).',[V],KN,'Negative result. Data: Bartel et al., Sci. Adv. 5, eaav0693 (2019).'],
@@ -105,9 +120,9 @@ const ROWS=[
 ['motion','Among the dot positions scanned, only the incentre gives a fold that ends in the regular square lattice. For t below 2 − √2 the fold locks elsewhere (66.37°, 56.96°, 49.51° at c = 0.45, 0.5, 0.55).',[V],EL,'Scan of six values of c (results/fold-2d); not proved for every t. Corollary of the known hinged tiling; not printed anywhere found.'],
 ['motion','Rotating-squares auxetics have Poisson ratio −1; tilt limits in perovskites; NTE by rotation.',[K],KN,'Grima and Evans 2000; Glazer 1972; O’Keeffe and Hyde 1977 (not retrieved); Goodwin 2006.'],
 ['motion','3D folds end at 45° [001], 54.7356° [011], 60° [111] with the listed contacts and densities.',[V],NW,'Cubic-lattice path only: 60° is a waypoint, not a jam. A trigonal grid scan reaches 0.6477 and the free continuation reaches pi/sqrt18 (hcp; fcc via slides; see the search rows). [111] spacing 8t/3 proven; others numerical.'],
-['motion','Floppy modes n(n−1)/2 and self-stresses n(n−3)/2 per cell at a generic wavevector.',[P,V],NW,'Proven for n >= 3; verified n = 2 to 8. The 3D case is known (Goodwin 2006).'],
+['motion','Floppy modes n(n−1)/2 and self-stresses n(n−3)/2 per cell at a generic wavevector.',[P,V],EL,'Written proof for n >= 3; finite checks n = 2..8 include the separate 2D case. Counts follow from internal rigidity and transverse bridge velocities. The bridged cross-polytope family is known; exact-formula priority unresolved (PR 27).'],
 ['motion','First-order strains: n(n−1)/2 pure shears in n >= 3; bulk-only (2D pentamode) in 2D.',[V],NW,'strain_modes.py.'],
-['motion','nu_100 = 1/(n² − n − 1) for unit springs.',[P],NW,'Proven for n >= 3 (results/rigidity-nd); verified n = 2 to 8.'],
+['motion','nu_100 = 1/(n² − n − 1) for unit springs.',[P],NW,'Finite unit central-force springs on all internal and linking bars, relaxed homogeneous strain, zero shear moduli. Written derivation; finite checks n = 2..8. Not an isotropic or measured material Poisson ratio; formula priority unresolved.'],
 ['motion','Same-material bars: nu(t) rises from 0.035 to 0.32; the incentre is not an extremum.',[V],NW,'elastic.py.'],
 ['motion','Across the 159 Wythoff frameworks (every nonempty ringing of nine diagrams) the incentre-type point has the same mode counts as a random point on the same face.',[V],NW,'Automatic for the 36 single-ringed cases; symmetric ringings are counted separately. The non-trivial comparison is the 123 multi-ringed cases (70 after removing symmetric duplicates). No census of uniform honeycomb rigidity found.'],
 ['motion','z = n + 1 frameworks are pentamodes; omnitruncated stress is proportional to facet area (Minkowski).',[P,V],NW,'Principle known (Milton and Cherkaev 1995; Kadic et al. 2012); systematic census not found.'],
@@ -129,38 +144,98 @@ const ROWS=[
 ['drift','Incubation helps on average; that mind-wandering drives it is mixed.',[K],KN,'Sio and Ormerod 2009; Baird et al. 2012; failed replication Murray et al. 2024.'],
 ['drift','Pattern-finding trades hits against false alarms; apophenia and aberrant salience describe the far end; schizotypy and creativity correlate weakly (r = 0.07 overall).',[K],KN,'Green and Swets 1966; Conrad 1958; Kapur 2003; Acar and Sen 2013; Abraham 2014.'],
 ['drift','Platonist, constraint and mathematical-universe readings of why minds and crystals agree; no drawing experiment distinguishes them.',['pos'],VW,'Wigner 1960; Penrose 2004; Tegmark 2008.'],
-['search','Drift chose the starting framework; a keep-or-discard machine search against a locked checker found a continuous fold from density 0.2233 to π/√18 = 0.74048 (hcp, 12 contacts per ball, 2×2×2 supercell).',[V],NW,'autoresearch-fold; two independent checkers; first-order rigid only. No prior description found (searches in the repo). Corner-sharing ReO3 reaches hcp by rotation alone at 30° (textbook: Johnsson and Lemmens 2006; Shan et al.; O’Keeffe and Hyde 1977), so that analogue is KNOWN. In the cab framework the cubic tilt stalls at 0.4686 (0.2637 at 30°); close packing needs a symmetry-breaking continuation with lattice shear. Only the cab result is not found. Closest physical study: Li, Refson and Dove 2023. Geometry result, not a predicted phase transition in real CaB6 or Prussian-blue materials.'],
-['search','From the hcp end state, two rigid layer slides keep every bar, never overlap, and reach fcc (2×2×2 family).',[V],NW,'Accepted by the locked checker (verify.py) and the independent checker (chk_independent.py). The end states are easy to verify; the content is the overlap-free path.'],['search','A greedy climber stalls on a broad foothill; drift with occasional long jumps finds narrow peaks more often.',[V],EL,'Toy landscape on seek.html; a generic property of search, not a claim about brains.'],
+['search','Drift chose the starting framework; a search against a locked checker found a sampled trajectory from density 0.2233 to π/√18 = 0.74048 (hcp, 12 contacts per ball, 2×2×2 supercell).',[V],NW,'Two internally written project checkers; states and 10 interpolated sub-states per segment, step limit 0.01. Finite bar/distance tolerances, not an exact continuous proof. The cab cubic tilt stalls at 0.4686; this searched continuation allows lattice shear. Geometry model, not a predicted transition in real CaB6.'],
+['search','Sampled layer-slide trajectories from the hcp endpoint reach fcc (2×2×2 family).',[V],NW,'Accepted by both project checkers at their step, bar and overlap tolerances. Checked states and interpolated sub-states do not establish an exact continuous motion. The endpoint has a separate exact check.'],['search','A greedy climber stalls on a broad foothill; drift with occasional long jumps finds narrow peaks more often.',[V],EL,'Toy landscape on seek.html; a generic property of search, not a claim about brains.'],
 ['search','Mind-wandering works as an exploration policy.',[J],EL,'Framed with Daw et al. 2006 (explore/exploit) and the disputed Lévy-flight foraging literature.'],
 ['search','Beauty, read as compressibility, is a good guide to where to look and a poor judge of what is true.',['pos'],VW,'Schmidhuber 2009; Dirac 1963 and Weyl (via Dyson 1956) as testimony; Kepler 1596, Thomson 1867 and Hossenfelder 2018 as counterweights.'],
-['search','The faculty that finds patterns is the same in discovery and delusion; the separating filter is external and social.',['pos'],VW,'Links the perception and drift pages.']
+['search','The faculty that finds patterns is the same in discovery and delusion; the separating filter is external and social.',['pos'],VW,'Links the perception and drift pages.'],
+['search','The one-cell searched hcp and fcc trajectories reach close packing; the fcc samples have increasing density.',[V],NW,'m = 1: hcp 333 states, fcc 268. Maximum dot/lattice step 0.00421/0.00482; linear interpolation can change bar lengths by 1.9e−5 relative. The sampled monotonicity and continuity limits remain.'],
+['research','Exact hcp and fcc endpoint arrangements are recorded for a six-ball, one-cell motif.',[P,V],EL,'Integer-arithmetic endpoint checks and exact density π/√18. These endpoint results alone do not establish a path.'],
+['research','An exact all-pairs CaB6 attainment proof upgrades attainment from a finite check to PROVEN (PR 23).',[P],NW,'Referee-checked: an exact all-pairs check in Q(√2) agreed. Internal review only; independent human review pending.'],
+['research','The older commitment manifest does not cover every later result certificate and stored path; PR 25 proposes complete coverage.',[D],VW,'Open repository change. Do not treat the old manifest as complete. Its checks bind particular recorded files; they do not supply a mathematical proof.'],
+['research','Periodic regular cross-polytopes joined by bars occur in arbitrary dimension in Borcea and Streinu (2021), Section 7.',[K],KN,'Family-level novelty withdrawn in PR 27. Same periodic graph as ours (two body orbits, 2d bars per body) with bars at t = √2 − 1 rather than 2 − √2; our counts hold for any 0 < t < 1. Section 7 gives only the 3D count and a folding sketch. n-D counts likely routine (priority unresolved); the unit-spring C11/C12 and nu_100 are the strongest remaining candidate.'],
+['research','A proposed explicit smooth one-cell cab-to-fcc curve preserves all bars, avoids overlap at every parameter value, and strictly increases density from 0.223266 to π/√18.',[D],NW,'PR 28, open draft: analytic infinite-image bound and exact Bernstein check of 3248 distance polynomials, 16,240 coefficients, with two separately written arithmetic implementations. Internal AI review only; no outside specialist review or historical novelty established.'],
+['research','A focused five-page paper presents the explicit continuous curve and exact non-overlap certificate.',[D],NW,'PR 29, open draft manuscript. Evidence is a written argument with an exact computational component. Human review and priority search remain pending.']
 ];
-const LAB={proven:'PROVEN',verified:'VERIFIED NUMERICALLY',conj:'CONJECTURE',known:'KNOWN',pos:'POSITION'};
-const NOV={kn:'ESTABLISHED',elem:'ELEMENTARY',new:'NO REFERENCE FOUND',view:'OUR ROUTE'};
-const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const LAB={proven:'PROVEN',verified:'VERIFIED NUMERICALLY',draft:'DRAFT / OPEN',conj:'CONJECTURE',known:'KNOWN',pos:'POSITION'};
+const NOV={kn:'ESTABLISHED',elem:'ELEMENTARY',new:'PRIORITY UNRESOLVED',view:'OUR ROUTE'};
+const REPO='https://github.com/aska-digital/incentre-lattice';
+const source=(revision,path,label)=>[REPO+'/blob/'+revision+'/'+path,label];
+const pr=(number)=>[REPO+'/pull/'+number,'PR '+number+' (open)'];
+const links=[
+ ['Floppy modes',[source('ebd42dbeb3bab980229ff737bf30e93ed12d74dd','results/rigidity-nd/PROOF.md','Written proof'),pr(27)]],
+ ['nu_100',[source('ebd42dbeb3bab980229ff737bf30e93ed12d74dd','results/rigidity-nd/LITERATURE.md','Literature and hypotheses'),pr(27)]],
+ ['CaB6-type hard-sphere',[source('main','results/cab6-packing/PROOF.md','Existing proof and finite check'),pr(23)]],
+ ['Drift chose',[source('main','results/fold-close-packing/PROOF.md','Sampled path and limits')]],
+ ['Sampled layer-slide',[source('main','results/fold-close-packing/PROOF.md','Sampled path and limits')]],
+ ['The one-cell searched',[source('main','results/fold-m1/PROOF.md','One-cell paths and limits')]],
+ ['Exact hcp and fcc',[source('main','results/fold-end-exact/PROOF.md','Exact endpoint proof')]],
+ ['An exact all-pairs',[source('8fe316ba50296eb3577ec00a73f929e9ec139d9c','results/cab6-packing/ATTAINMENT.md','Attainment proof'),pr(23)]],
+ ['The older commitment',[pr(25)]],
+ ['Periodic regular',[source('ebd42dbeb3bab980229ff737bf30e93ed12d74dd','results/rigidity-nd/LITERATURE.md','Primary-source comparison'),['https://doi.org/10.1177/1081286520948116','Borcea–Streinu'],pr(27)]],
+ ['A proposed explicit',[source('548c468720dcc550bee2fe61030e3b623e1eb855','results/fold-continuous-fcc/PROOF.md','Draft continuous proof'),['research.html#continuous','Research overview'],pr(28)]],
+ ['A focused five-page',[source('94d4e2ffc26614ef66d68d92fc805013afc13e7b','papers/continuous-fcc/continuous-fcc.pdf','Draft paper (PDF)'),pr(29)]]
+];
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
 const tb=document.querySelector('#tb tbody');
-ROWS.forEach((r,i)=>{const tr=document.createElement('tr');tr.dataset.l=r[2].join(' ');tr.dataset.n=r[3];
-  tr.innerHTML='<td class="pg">'+r[0]+'</td><td class="cl">'+esc(r[1])+'</td><td>'+r[2].map(l=>'<span class="tg '+(l==='conj'?'conj':l)+'">'+LAB[l]+'</span>').join('')+'</td><td><span class="nv '+r[3]+'">'+NOV[r[3]]+'</span></td><td>'+esc(r[4])+'</td>';
-  tb.appendChild(tr)});
+ROWS.forEach(r=>{
+  const tr=document.createElement('tr');tr.dataset.l=r[2].join(' ');tr.dataset.n=r[3];
+  const page=r[0]==='search'?'seek.html':r[0]+'.html';
+  const sources=links.find(([prefix])=>r[1].startsWith(prefix))?.[1]||[];
+  tr.innerHTML='<td class="pg"><a href="'+page+'">'+r[0]+'</a></td><td class="cl">'+esc(r[1])+'</td><td>'+r[2].map(l=>'<span class="tg '+l+'">'+LAB[l]+'</span>').join('')+'</td><td><span class="nv '+r[3]+'">'+NOV[r[3]]+'</span></td><td>'+esc(r[4])+sources.map(([url,label])=>'<br><a href="'+esc(url)+'">'+esc(label)+'</a>').join('')+'</td>';
+  tb.appendChild(tr);
+});
 const cnt={};ROWS.forEach(r=>{r[2].forEach(l=>cnt['l'+l]=(cnt['l'+l]||0)+1);cnt['n'+r[3]]=(cnt['n'+r[3]]||0)+1});
-const BARS=[['l'+P,'PROVEN',C.g],['l'+V,'VERIFIED',C.c],['l'+J,'CONJECTURE',C.a],['l'+K,'KNOWN','#9aa8ff'],['lpos','POSITION','#e08cc4'],['n'+NW,'NO REF FOUND',C.r],['n'+VW,'OUR ROUTE',C.a],['n'+EL,'ELEMENTARY',C.c],['n'+KN,'ESTABLISHED','#9aa8ff']];
-let filt=CX.Q.get('f')||null,hit=[];
-function apply(){document.querySelectorAll('#tb tbody tr').forEach(tr=>{let ok=true;
-  if(filt){ok=filt[0]==='l'?tr.dataset.l.split(' ').includes(filt.slice(1)):tr.dataset.n===filt.slice(1)}tr.classList.toggle('dim',!ok)});
-  const n=filt?(cnt[filt]||0):ROWS.length;CX.kv($('kv12'),[['claims shown',n+' of '+ROWS.length],['filter',filt?BARS.find(b=>b[0]===filt)[1]:'none']])}
-const fig=CX.canvas($('cv12'),function(ctx,W,H,t){
+const BARS=[['l'+P,'PROVEN',C.g],['l'+V,'CHECKED',C.c],['l'+D,'DRAFT',C.a],['l'+J,'GUESS',C.a],['l'+K,'KNOWN','#9aa8ff'],['lpos','VIEW','#e08cc4'],['n'+NW,'UNRESOLVED',C.r],['n'+VW,'OUR ROUTE',C.a],['n'+EL,'ELEMENTARY',C.c],['n'+KN,'ESTABLISHED','#9aa8ff']];
+const evidence=$('evidence-filter'),novelty=$('novelty-filter');
+for(const [select,labels] of [[evidence,LAB],[novelty,NOV]]){
+  for(const [value,label] of Object.entries(labels)){const option=document.createElement('option');option.value=value;option.textContent=label;select.appendChild(option)}
+}
+const valid=(value,labels)=>Object.keys(labels).includes(value)?value:'';
+const legacy=BARS.find(b=>b[0]===CX.Q.get('f'))?.[0]||'';
+evidence.value=valid(CX.Q.get('evidence'),LAB)||(!CX.Q.has('evidence')&&legacy.startsWith('l')?legacy.slice(1):'');
+novelty.value=valid(CX.Q.get('novelty'),NOV)||(!CX.Q.has('novelty')&&legacy.startsWith('n')?legacy.slice(1):'');
+let hit=[];
+function apply(){
+  evidence.value=valid(evidence.value,LAB);novelty.value=valid(novelty.value,NOV);
+  let matching=0;
+  for(const tr of tb.querySelectorAll('tr')){
+    const matches=(!evidence.value||tr.dataset.l.split(' ').includes(evidence.value))&&(!novelty.value||tr.dataset.n===novelty.value);
+    tr.hidden=!matches;if(matches)matching++;
+  }
+  $('matching').textContent=matching+' of '+ROWS.length+' claims match'+(matching===0?'. Choose another filter or show all.':'.');
+  CX.kv($('kv12'),[['matching claims',matching+' of '+ROWS.length],['evidence',LAB[evidence.value]||'all'],['priority',NOV[novelty.value]||'all']]);
+  const url=new URL(location.href);url.searchParams.delete('f');
+  for(const [key,value] of [['evidence',evidence.value],['novelty',novelty.value]]){if(value)url.searchParams.set(key,value);else url.searchParams.delete(key)}
+  history.replaceState(null,'',url.pathname+url.search+url.hash);
+  fig.redraw();
+}
+const fig=CX.canvas($('cv12'),function(ctx,W,H){
   ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);hit=[];
-  const n=BARS.length,gap=W<600?6:14,bw=(W-40-gap*(n-1))/n,base=H-44,mx=Math.max(...Object.values(cnt));
-  BARS.forEach((b,i)=>{const x=20+i*(bw+gap),v=cnt[b[0]]||0,k=CX.ease(Math.min(1,t*3-i*0.15)),h=(base-40)*v/mx*k,on=!filt||filt===b[0];
-    ctx.globalAlpha=on?1:.3;ctx.fillStyle=b[2]+'33';ctx.strokeStyle=b[2];ctx.shadowColor=b[2];ctx.shadowBlur=on?8:0;ctx.lineWidth=1.4;
-    ctx.fillRect(x,base-h,bw,h);ctx.strokeRect(x,base-h,bw,h);ctx.shadowBlur=0;
-    CX.text(ctx,String(v),x+bw/2,base-h-6,'#eafff4',13,'center');
-    CX.text(ctx,b[1],x+bw/2,base+16,b[2],W<600?8.5:10.5,'center');ctx.globalAlpha=1;hit.push([x,x+bw,b[0]])});
-  ctx.strokeStyle='rgba(55,255,154,.3)';ctx.beginPath();ctx.moveTo(14,base);ctx.lineTo(W-14,base);ctx.stroke();
-  CX.text(ctx,'evidence',20,base+34,C.dim,10.5);CX.text(ctx,'novelty',20+5*(bw+gap),base+34,C.dim,10.5);
-},{aspect:w=>w<600?0.7:0.36,always:true});
-CX.pointer($('cv12'),{down:(x)=>{const h=hit.find(b=>x>=b[0]&&x<=b[1]);if(h){filt=filt===h[2]?null:h[2];apply()}}});
-$('b12clear').onclick=()=>{filt=null;apply()};
+  const groups=W<600?[BARS.slice(0,6),BARS.slice(6)]:[BARS];
+  const mx=Math.max(...Object.values(cnt));
+  groups.forEach((bars,group)=>{
+    const top=group*H/groups.length,base=(group+1)*H/groups.length-38;
+    const gap=W<600?8:14,bw=(W-40-gap*(bars.length-1))/bars.length;
+    bars.forEach((b,i)=>{
+      const x=20+i*(bw+gap),v=cnt[b[0]]||0,h=(base-top-30)*v/mx;
+      const selected=b[0][0]==='l'?evidence.value:novelty.value,on=!selected||selected===b[0].slice(1);
+      ctx.globalAlpha=on?1:.35;ctx.fillStyle=b[2]+'33';ctx.strokeStyle=b[2];ctx.lineWidth=1.4;
+      ctx.fillRect(x,base-h,bw,h);ctx.strokeRect(x,base-h,bw,h);
+      CX.text(ctx,String(v),x+bw/2,base-h-6,'#eafff4',13,'center');
+      CX.text(ctx,b[1],x+bw/2,base+16,b[2],W<600?8:9,'center');ctx.globalAlpha=1;
+      hit.push([x,x+bw,top,base+24,b[0]]);
+    });
+    ctx.strokeStyle='rgba(55,255,154,.3)';ctx.beginPath();ctx.moveTo(14,base);ctx.lineTo(W-14,base);ctx.stroke();
+    CX.text(ctx,groups.length===1?'evidence / priority':group===0?'evidence':'priority',20,base+33,C.dim,10);
+  });
+},{aspect:w=>w<600?0.8:0.36,animate:false});
+CX.pointer($('cv12'),{down:(x,y)=>{
+  const bar=hit.find(b=>x>=b[0]&&x<=b[1]&&y>=b[2]&&y<=b[3]);
+  if(bar){const select=bar[4][0]==='l'?evidence:novelty;select.value=select.value===bar[4].slice(1)?'':bar[4].slice(1);apply()}
+}});
+evidence.onchange=apply;novelty.onchange=apply;
+$('b12clear').onclick=()=>{evidence.value='';novelty.value='';apply()};
 apply();
 });
 </script>

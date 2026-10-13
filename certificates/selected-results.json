@@ -10,7 +10,7 @@
         "results/rigidity-nd/proof_steps.py": "4f7bed89024d02133291542327b09e5ce8f410a41daf4bb783f6a396190604e0",
         "results/rigidity-nd/rigidity_nd.py": "4a113d40e26c871441e4a8d5bf086950af1810d43962beb67e25d8ac028dccb2"
       },
-      "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The n-dimensional closed forms were NOT FOUND in the literature (absence of evidence only).",
+      "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The framework is the same periodic graph as Borcea and Streinu 2021 Section 7 at a different bar length; the counts hold for any 0 < t < 1. The n-dimensional counts are likely routine (priority unresolved); the unit-spring C11/C12 = (n-1)^2 and nu_100 are the strongest remaining candidate (not found in Borcea and Streinu Section 7 or Goodwin's abstract).",
       "statement": "The contact framework of the truncated n-cubic honeycomb (2n balls per cell, 2n^2-n bars of one length, dots at the pyramid incentres) has, at a generic wavevector, exactly n(n-1)/2 zero modes (the cluster rotations) and n(n-3)/2 self-stresses per cell, its cross-polytope cell is infinitesimally rigid for n >= 3, and with unit springs and full internal relaxation C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), all shear moduli vanish, nu_100 = 1/(n^2-n-1).",
       "value": {
         "generic_self_stresses_per_cell": "n(n-3)/2",
@@ -49,7 +49,7 @@
     {
       "certificate": "results/cab6-packing/certificate.json",
       "certificate_sha256": "966c50c15ae70d5033bbc9359551dfcd6657c3fffcbe0afba0d40db4bf2e3e02",
-      "evidence_label": "PROVEN (elementary upper-bound argument, PROOF.md); attainment and all-pairs non-overlap VERIFIED (finite check, 5x5x5 block, 15 size ratios)",
+      "evidence_label": "PROVEN (elementary upper-bound argument, PROOF.md); attainment and all-pairs non-overlap PROVEN (results/cab6-packing/ATTAINMENT.md; internal referee review, human review pending), corroborated by the finite check (5x5x5 block, 15 size ratios)",
       "id": "cab6-packing",
       "input_hashes": {
         "results/cab6-packing/cab6_packing.py": "be1b3e8e1b4ad856a8f6491f451dd7bcdea3ca990e5afcfaa37ac6b52adb86f4"
@@ -123,6 +123,90 @@
         "hcp_states": 793
       },
       "verify_command": "make verify-fold-cp (and make verify-fold-tests for the checker's own tests)"
+    },
+    {
+      "certificate": "results/fold-end-exact/certificate.json",
+      "certificate_sha256": "545346ce98bf2efe67ad984e78f2b320cecbc8f54f85a3c4ddf61a7235ff2ddf",
+      "evidence_label": "PROVEN (exact integer arithmetic) for the closed forms; VERIFIED (finite check, 1e-7) for agreement with stored endpoints; no proof of continuous paths",
+      "id": "fold-end-exact",
+      "input_hashes": {
+        "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
+        "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1",
+        "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b"
+      },
+      "prior_art": "Exact forms of the endpoints from results/fold-close-packing; no separate prior-art search. See autoresearch-fold/PRIOR-ART-FOLD.md. One internal implementation, no outside review.",
+      "statement": "The m = 2 hcp and fcc closed forms have all 120 bars exactly 2R, no overlap, 12 contacts per ball and density pi/sqrt18, with the hcp and fcc common-neighbour signatures. The final states of the stored paths agree with these forms to 1e-7 after a rigid motion.",
+      "value": {
+        "balls": 48,
+        "bars": 120,
+        "end_contacts_per_ball": 12,
+        "end_density": "pi/sqrt(18)",
+        "fcc_cna": {
+          "(4,2,1)": 576
+        },
+        "hcp_cna": {
+          "(4,2,1)": 288,
+          "(4,2,2)": 288
+        }
+      },
+      "verify_command": "make verify-fold-exact"
+    },
+    {
+      "certificate": "results/fold-m1/certificate.json",
+      "certificate_sha256": "1a52f356e302f15aec73be9cab3b95a541bd77eb83f2859d8ecf0f5622e6bcff",
+      "evidence_label": "VERIFIED (finite check, sampled continuity), NEW-COMPUTATION; monotonicity at the fcc samples only; endpoints PROVEN (integer arithmetic); interpolation is not exactly bar-preserving",
+      "id": "fold-m1",
+      "input_hashes": {
+        "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
+        "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
+        "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b",
+        "results/fold-m1/path_fcc_m1.npz": "79067d0479d905b8cfc9268ca01af9fb544c195ac96930710ff8198dd1033479",
+        "results/fold-m1/path_hcp_m1.npz": "5f54326a2bdb8e386ce93589b993c20210946c3e68aa6f535110ee2083b7ab26",
+        "results/fold-m1/search_fcc_m1.py": "8af1e289ee7d0d57a9ab9cf3ff4a628e120ea0dfa9aaeafe69c46595d8ce6b94",
+        "results/fold-m1/search_hcp_m1.py": "f2476ba65a70e862cf8a2f7b3169f7388fead095e2186a881c1bf4dbb15406a9"
+      },
+      "prior_art": "No separate search for m = 1; see autoresearch-fold/PRIOR-ART-FOLD.md for the fold search. Checkers and endpoint implementation are internal, with no outside review.",
+      "statement": "In the m = 1 cell (6 balls, 15 bars, free lattice), a 333-state sampled path reaches hcp and a 268-state sampled path reaches fcc from the open cab state. Both pass the locked and independent checkers. The fcc density rises at every sample; both closed-form endpoints have exact bars, no overlap, 12 contacts per ball and density pi/sqrt18.",
+      "value": {
+        "balls": 6,
+        "bars": 15,
+        "end_contacts_per_ball": 12,
+        "end_density": "pi/sqrt(18)",
+        "fcc_cna": {
+          "(4,2,1)": 72
+        },
+        "fcc_density_increasing_at_all_sampled_steps": 267,
+        "fcc_states": 268,
+        "hcp_cna": {
+          "(4,2,1)": 36,
+          "(4,2,2)": 36
+        },
+        "hcp_states": 333
+      },
+      "verify_command": "make verify-fold-m1"
+    },
+    {
+      "certificate": "results/fold-continuous-fcc/certificate.json",
+      "certificate_sha256": "5d1ab5eb9bedb1371c2ce05ada33ce95b1deec13f9d3848cbc7d072e8429dc42",
+      "evidence_label": "PROVEN (written explicit construction, analytic image bound and monotonicity, exact rational Bernstein certificate); internal AI review only, independent human review pending",
+      "id": "fold-continuous-fcc",
+      "input_hashes": {
+        "results/fold-continuous-fcc/PROOF.md": "45d1021cc3a7fcac11276a4c09b4367903731d041190f9e65685d0d8411d158e",
+        "results/fold-continuous-fcc/curve.py": "9b3c4e19c5ec3f1b9bd7fd653d5fa68036126121d8ac3c805c032b34ff1a38f3",
+        "results/fold-continuous-fcc/independent.py": "358a81b9eebd29222eb975b40a84b2cd2931fd6c423132685df07e9f7eed92b6",
+        "results/fold-continuous-fcc/verify.py": "8263e7452d77e7b89369b164d073eb1bbda84f949abfde75411c7a9d1788dba1",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
+      },
+      "prior_art": "Bridged-unit flexibility and cross-polytope deployments are known (Goodwin 2006; Borcea and Streinu 2021). The endpoint is the project's existing m = 1 fcc endpoint. Priority of this explicit equal-bar, non-overlapping motion is unresolved; no novelty claim.",
+      "statement": "An explicit smooth m = 1 motion preserves all 15 bars of the cab contact framework, keeps all spheres non-overlapping for every parameter value and periodic image, and increases density strictly from the open cubic state to fcc at pi/sqrt18. The construction lifts to every integer supercell size.",
+      "value": {
+        "balls": 6,
+        "bars": 15,
+        "distance_polynomials": 3248,
+        "end_density": "pi/sqrt(18)",
+        "nonnegative_bernstein_coefficients": 16240
+      },
+      "verify_command": "make verify-fold-continuous"
     }
   ]
 }

@@ -26,7 +26,7 @@ RESULTS = [
                   "generic_zero_modes_per_cell": "n(n-1)/2", "generic_self_stresses_per_cell": "n(n-3)/2"},
         "evidence_label": "PROVEN for all n >= 3 (written proof, results/rigidity-nd/PROOF.md); VERIFIED (finite check) for n = 2..8",
         "verify_command": "make verify-rigidity",
-        "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The n-dimensional closed forms were NOT FOUND in the literature (absence of evidence only).",
+        "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The framework is the same periodic graph as Borcea and Streinu 2021 Section 7 at a different bar length; the counts hold for any 0 < t < 1. The n-dimensional counts are likely routine (priority unresolved); the unit-spring C11/C12 = (n-1)^2 and nu_100 are the strongest remaining candidate (not found in Borcea and Streinu Section 7 or Goodwin's abstract).",
     },
     {
         "id": "radius-ratio",
@@ -41,7 +41,7 @@ RESULTS = [
         "id": "cab6-packing",
         "statement": "The maximal hard-sphere packing fraction of the CaB6 structure type at size ratio gamma = rS/rL is (pi/6)(1+6 gamma^3) for gamma <= sqrt2-1 and (pi/6)(sqrt2-1)^3 (6+gamma^-3) for gamma >= sqrt2-1; the global maximum (pi/6)(30 sqrt2 - 41) = 0.746865 is attained at gamma = sqrt2-1, where Ca is held by Ca-Ca contact and Ca-B do not touch; the packing beats fcc exactly for 0.41023 < gamma < 0.41591.",
         "value": {"phi_max": "(pi/6)(30*sqrt(2) - 41)", "phi_max_decimal": 0.746864891262, "window": [0.410227, 0.415911]},
-        "evidence_label": "PROVEN (elementary upper-bound argument, PROOF.md); attainment and all-pairs non-overlap VERIFIED (finite check, 5x5x5 block, 15 size ratios)",
+        "evidence_label": "PROVEN (elementary upper-bound argument, PROOF.md); attainment and all-pairs non-overlap PROVEN (results/cab6-packing/ATTAINMENT.md; internal referee review, human review pending), corroborated by the finite check (5x5x5 block, 15 size ratios)",
         "verify_command": "make verify-cab6",
         "prior_art": "PARTIALLY KNOWN: the curve is plotted for this and 23 other lattices by Horst and Travesset (2016); the closed form was not found in text. CaB6 is absent from the densest binary packings of Hopkins, Stillinger and Torquato (2012).",
     },
@@ -70,27 +70,78 @@ RESULTS = [
         "verify_command": "make verify-fold-cp (and make verify-fold-tests for the checker's own tests)",
         "prior_art": "NOT FOUND as a statement. Closest: ReO3 to VF3 a-a-a- tilt towards hcp anions (O'Keeffe and Hyde 1977; Glazer 1972); sequential-LP packing methods (Torquato and Jiao 2010). See autoresearch-fold/PRIOR-ART-FOLD.md.",
     },
+    {
+        "id": "fold-end-exact",
+        "statement": "The m = 2 hcp and fcc closed forms have all 120 bars exactly 2R, no overlap, 12 contacts per ball and density pi/sqrt18, with the hcp and fcc common-neighbour signatures. The final states of the stored paths agree with these forms to 1e-7 after a rigid motion.",
+        "value": {"balls": 48, "bars": 120, "end_density": "pi/sqrt(18)", "end_contacts_per_ball": 12,
+                  "hcp_cna": {"(4,2,1)": 288, "(4,2,2)": 288}, "fcc_cna": {"(4,2,1)": 576}},
+        "evidence_label": "PROVEN (exact integer arithmetic) for the closed forms; VERIFIED (finite check, 1e-7) for agreement with stored endpoints; no proof of continuous paths",
+        "verify_command": "make verify-fold-exact",
+        "prior_art": "Exact forms of the endpoints from results/fold-close-packing; no separate prior-art search. See autoresearch-fold/PRIOR-ART-FOLD.md. One internal implementation, no outside review.",
+    },
+    {
+        "id": "fold-m1",
+        "statement": "In the m = 1 cell (6 balls, 15 bars, free lattice), a 333-state sampled path reaches hcp and a 268-state sampled path reaches fcc from the open cab state. Both pass the locked and independent checkers. The fcc density rises at every sample; both closed-form endpoints have exact bars, no overlap, 12 contacts per ball and density pi/sqrt18.",
+        "value": {"balls": 6, "bars": 15, "hcp_states": 333, "fcc_states": 268,
+                  "fcc_density_increasing_at_all_sampled_steps": 267, "end_density": "pi/sqrt(18)",
+                  "end_contacts_per_ball": 12, "hcp_cna": {"(4,2,1)": 36, "(4,2,2)": 36},
+                  "fcc_cna": {"(4,2,1)": 72}},
+        "evidence_label": "VERIFIED (finite check, sampled continuity), NEW-COMPUTATION; monotonicity at the fcc samples only; endpoints PROVEN (integer arithmetic); interpolation is not exactly bar-preserving",
+        "verify_command": "make verify-fold-m1",
+        "prior_art": "No separate search for m = 1; see autoresearch-fold/PRIOR-ART-FOLD.md for the fold search. Checkers and endpoint implementation are internal, with no outside review.",
+    },
 ]
 
-SUM_FILES = ["autoresearch-fold/best/path.npz", "results/fold-close-packing/path_fcc.npz"]
+RESULTS.append({
+    "id": "fold-continuous-fcc",
+    "statement": "An explicit smooth m = 1 motion preserves all 15 bars of the cab contact framework, keeps all spheres non-overlapping for every parameter value and periodic image, and increases density strictly from the open cubic state to fcc at pi/sqrt18. The construction lifts to every integer supercell size.",
+    "value": {"balls": 6, "bars": 15, "end_density": "pi/sqrt(18)",
+              "distance_polynomials": 3248, "nonnegative_bernstein_coefficients": 16240},
+    "evidence_label": "PROVEN (written explicit construction, analytic image bound and monotonicity, exact rational Bernstein certificate); internal AI review only, independent human review pending",
+    "verify_command": "make verify-fold-continuous",
+    "prior_art": "Bridged-unit flexibility and cross-polytope deployments are known (Goodwin 2006; Borcea and Streinu 2021). The endpoint is the project's existing m = 1 fcc endpoint. Priority of this explicit equal-bar, non-overlapping motion is unresolved; no novelty claim.",
+})
+
+SUM_FILES = ["autoresearch-fold/best/path.npz", "results/fold-close-packing/path_fcc.npz",
+             "results/fold-m1/path_hcp_m1.npz", "results/fold-m1/path_fcc_m1.npz"]
 
 
 def cert_path(rid):
     return f"results/{rid}/certificate.json"
 
 
+def validate_registry():
+    """Every result certificate needs exactly one reviewed metadata record."""
+    ids = [r["id"] for r in RESULTS]
+    duplicates = sorted({rid for rid in ids if ids.count(rid) > 1})
+    discovered = {p.parent.name for p in (ROOT / "results").glob("*/certificate.json")}
+    unregistered = sorted(discovered - set(ids))
+    missing = sorted(set(ids) - discovered)
+    if duplicates or unregistered or missing:
+        raise SystemExit(
+            f"result registry mismatch: duplicate IDs={duplicates}; "
+            f"unregistered certificates={unregistered}; missing certificates={missing}"
+        )
+
+
 def build_selected():
+    validate_registry()
     recs = []
+    path_inputs = set()
     for r in RESULTS:
         cp = ROOT / cert_path(r["id"])
         if not cp.exists():
             raise SystemExit(f"missing {cp}; run the verifier first")
         cert = json.loads(cp.read_text())
+        path_inputs.update(p for p in cert["inputs"] if p.endswith(".npz"))
         rec = dict(r)
         rec["certificate"] = cert_path(r["id"])
         rec["certificate_sha256"] = certlib.sha256_file(cp)
         rec["input_hashes"] = cert["inputs"]
         recs.append(rec)
+    unregistered_paths = sorted(path_inputs - set(SUM_FILES))
+    if unregistered_paths:
+        raise SystemExit(f"unregistered path inputs: {unregistered_paths}; add to SUM_FILES")
     return {"note": "Generated by tools/build_certificates.py from results/*/certificate.json. Labels: PROVEN = written proof; VERIFIED = finite computation, not a proof.",
             "results": recs}
 

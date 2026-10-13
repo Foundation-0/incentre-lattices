@@ -1,8 +1,7 @@
 # Exact all-pairs distances and attainment for the CaB6 packing bound
 
-Status: **proposed written proof, submitted for review**. This note closes the all-pairs obligation identified in
-[PROOF.md](PROOF.md) by minimizing over the entire integer lattice. The existing result labels and numerical certificates
-remain unchanged pending review. This is an elementary completion of the project's argument, with no claim of literature novelty.
+Status: **PROVEN** (written proof; internal referee review, with an exact all-pairs check in Q(sqrt2) in agreement; independent human review pending). This note closes the all-pairs obligation identified in
+[PROOF.md](PROOF.md) by minimizing over the entire integer lattice. The numerical certificate is unchanged and now corroborates the proof. This is an elementary completion of the project's argument, with no claim of literature novelty.
 
 ## Model and exact distance lemma
 

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A continuous route to close packing // Incentre lattice</title>
+<meta name="description" content="An explicit six-ball cab-to-fcc motion, an exact non-overlap certificate, corrected prior art, and the research still open for review.">
+<link rel="canonical" href="https://aska-digital.github.io/incentre-lattice/research.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Incentre lattice">
+<meta property="og:title" content="A continuous route to close packing">
+<meta property="og:description" content="Explore the explicit cab-to-fcc motion and its exact certificate. Written proof; independent human review and historical priority remain open.">
+<meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/research.html">
+<meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The incentre lattice, a repeating framework of touching spheres.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="A continuous route to close packing">
+<meta name="twitter:description" content="An explicit cab-to-fcc motion, exact non-overlap certificate, and the questions still open for review.">
+<meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
+<link rel="stylesheet" href="codex.css"><link rel="stylesheet" href="research.css">
+</head><body>
+<main class="research">
+<header class="research-hero">
+ <div class="kick">09 // RESEARCH IN REVIEW · OCTOBER 2026</div>
+ <h1>A continuous route<br>to close packing.</h1>
+ <p class="lede">Six balls per cell. Every original bar preserved. A lattice that shears from the open <i>cab</i> framework into face-centred cubic packing, while its density increases throughout the motion.</p>
+ <div class="research-status"><span class="tg proven">WRITTEN PROOF + EXACT CERTIFICATE</span><span class="tg conj">DRAFT · INTERNAL REVIEW</span></div>
+ <p>The new construction covers every parameter value and every periodic image. Two separately written arithmetic implementations replay its finite certificate. Independent human review and historical priority remain open.</p>
+ <div class="research-links"><a href="#continuous">Explore the motion ↓</a><a href="https://github.com/aska-digital/incentre-lattice/pull/29">Read the five-page paper →</a><a href="https://github.com/aska-digital/incentre-lattice/issues/26">Read the assessment →</a></div>
+</header>
+
+<nav class="research-toc" aria-label="On this page"><a href="#continuous">The motion</a><a href="#proof">Why it works</a><a href="#prior-art">What is known</a><a href="#work">The work</a><a href="#review">Next questions</a></nav>
+
+<section id="continuous" aria-labelledby="continuous-title">
+ <div class="kick">01 // FROM AN ENDPOINT TO A WHOLE JOURNEY</div>
+ <h2 id="continuous-title">Move the lattice. Keep the bars.</h2>
+ <p>A valid dense endpoint does not tell us how to get there. The construction below supplies the journey: the octahedron inside each cell stays fixed, while the vectors that repeat it through space change. The connecting bars swivel, keeping exactly the same length.</p>
+ <figure class="fcc-demo" aria-labelledby="fcc-caption">
+  <div class="fcc-view"><canvas id="fcc-canvas" role="img" aria-label="A finite view of the repeating six-ball framework. Use the motion slider below to shear it into face-centred cubic packing.">The framework has six balls per cell and fifteen bar orbits. Its density increases from 22.3266% to 74.0480% as the parameter s goes from 0 to 1.</canvas><div class="fcc-view-label">EXPLICIT MOTION · FINITE VIEW OF A PERIODIC PACKING</div></div>
+  <div class="fcc-controls">
+   <div class="fcc-slider"><label for="fcc-s">Motion parameter <i>s</i></label><output id="fcc-s-value" for="fcc-s">0.000</output><input id="fcc-s" type="range" min="0" max="1" step="0.001" value="0" aria-describedby="fcc-instruction"></div>
+   <div class="fcc-actions"><button id="fcc-play" type="button" aria-pressed="false">Play motion</button><button id="fcc-start" type="button">Open framework</button><button id="fcc-end" type="button">Close packing</button></div>
+   <div class="fcc-actions"><label class="ck"><input id="fcc-spheres" type="checkbox" checked> Show ball surfaces</label><button id="fcc-turn" type="button">Turn view</button><button id="fcc-view-reset" type="button">Reset view</button></div>
+   <p id="fcc-instruction" class="hint">Drag to turn the view, or use the view buttons. The slider also works with arrow keys. Playback starts only when you press Play.</p>
+  </div>
+  <div class="fcc-measures">
+   <div><span>Packing density</span><output id="fcc-density">22.3266%</output><small>fraction of space occupied by balls</small></div>
+   <div><span>Original bars</span><strong>15 / cell</strong><small>all retain their length</small></div>
+   <div><span>Periodic motif</span><strong>6 balls</strong><small>one rigid octahedron</small></div>
+  </div>
+  <div class="fcc-chart"><svg id="fcc-plot" viewBox="0 0 640 170" role="img" aria-labelledby="fcc-plot-title fcc-plot-desc"><title id="fcc-plot-title">Density increases along the explicit motion</title><desc id="fcc-plot-desc">The packing density rises from 0.223266 at s equals zero to pi over the square root of 18, approximately 0.740480, at s equals one.</desc><path class="plot-grid" d="M46 20V138H610 M46 24H610"></path><path id="fcc-curve" class="plot-curve"></path><line id="fcc-marker-line" class="plot-marker" x1="46" y1="24" x2="46" y2="138"></line><circle id="fcc-marker" r="5" cx="46" cy="138"></circle><text x="46" y="159">s = 0 · open</text><text x="610" y="159" text-anchor="end">s = 1 · fcc</text><text x="610" y="15" text-anchor="end">π / √18 ≈ 0.74048</text></svg></div>
+  <figcaption id="fcc-caption">A floating-point illustration of the explicit formula, with ball radii drawn to scale and a finite group of repeated cells. Screen projections can overlap; the exact certificate concerns distances in three dimensions. The display is an explanation of the proof, not its verifier.</figcaption>
+ </figure>
+ <noscript><p class="note">The interactive view needs JavaScript. The statement, formulas, proof outline and source links below remain readable without it.</p></noscript>
+ <p class="note">The older searches found sampled paths to both hcp and fcc, including one-octahedron cells. Their evidence remains <b>VERIFIED NUMERICALLY</b>. This is a separate fcc witness with an all-parameter argument. A certified continuous hcp path is still an open question.</p>
+</section>
+
+<section id="proof" aria-labelledby="proof-title">
+ <div class="kick">02 // THE ARGUMENT</div><h2 id="proof-title">One curve. An infinite packing.</h2>
+ <p>Use units in which the six centres are <span class="m">P = {±e₁, ±e₂, ±e₃}</span>, each ball has radius <span class="m">1/√2</span>, and each bar has length <span class="m">√2</span>. The infinite packing consists of <span class="m">p + nL(s)</span>, for <span class="m">p ∈ P</span> and integer row vectors <span class="m">n ∈ ℤ³</span>.</p>
+ <div class="curve-formula"><div><span class="formula-label">THE LATTICE</span><p>L(s) = (2 + a)I + tC</p><p>t = 2s / (1 + s²)<br>a = √2(1 − s²) / (1 + s²)<br>0 ≤ s ≤ 1</p></div><div><span class="formula-label">THE SHEAR MATRIX</span><pre aria-label="C has rows zero, minus one, minus one; one, zero, minus one; one, minus one, zero.">    ⎡ 0 −1 −1 ⎤
+C = ⎢ 1  0 −1 ⎥
+    ⎣ 1 −1  0 ⎦</pre></div></div>
+ <ol class="proof-steps">
+  <li><h3>Preserve the bars exactly.</h3><p>The twelve octahedron edges do not move. Each of the three connecting bars has squared length <span class="m">a² + 2t² = 2</span>. This identity holds throughout the interval.</p></li>
+  <li><h3>Bound all distant images at once.</h3><p>The symmetric part of L has eigenvalues <span class="m">d, d + t, d − t</span>, where <span class="m">d = 2 + a</span> and <span class="m">d − t ≥ 1</span>. Thus <span class="m">|nL| ≥ |n|</span>. Every translation with <span class="m">|n|² ≥ 12</span> is safely too far away to overlap, even after allowing for the motif offsets.</p></li>
+  <li><h3>Certify the remaining inequalities.</h3><p>171 translations and 19 distinct motif differences leave <b>3,248</b> non-self distance conditions. Clearing the positive denominator makes each a quartic. All <b>16,240 Bernstein coefficients</b> are nonnegative in exact arithmetic over <span class="m">ℚ(√2)</span>. Since the Bernstein basis is nonnegative on [0, 1], every remaining distance is safe for the entire motion.</p></li>
+  <li><h3>Identify the endpoint and the density.</h3><p>The endpoint has determinant 12; the six motif cosets fill a translate of the even-parity lattice D₃, which is fcc. A derivative argument shows the determinant decreases strictly along the motion. The ball volume stays constant, so the packing fraction increases strictly to <span class="m">π/√18</span>.</p></li>
+ </ol>
+ <div class="research-links"><a href="https://github.com/aska-digital/incentre-lattice/blob/53e9de8/results/fold-continuous-fcc/PROOF.md">Full proof →</a><a href="https://github.com/aska-digital/incentre-lattice/tree/53e9de8/results/fold-continuous-fcc">Both exact implementations →</a><a href="https://github.com/aska-digital/incentre-lattice/blob/94d4e2ffc26614ef66d68d92fc805013afc13e7b/papers/continuous-fcc/continuous-fcc.pdf">Focused paper · PDF →</a></div>
+ <p class="note">Here <b>PROVEN</b> means a written argument with an exact finite computational component. It does not mean peer reviewed or formalized in a proof assistant. A reviewer still needs to inspect the analytic reduction and the arithmetic implementations.</p>
+</section>
+
+<section id="prior-art" aria-labelledby="prior-title">
+ <div class="kick">03 // A CORRECTION THAT MATTERS</div><h2 id="prior-title">The framework family is known.</h2>
+ <p>The literature audit found a clear precedent: <a href="https://doi.org/10.1177/1081286520948116">Borcea and Streinu, <i>Periodic tilings and auxetic deployments</i> (2021), Section 7</a>, discuss regular cross-polytopes connected by bars in arbitrary dimensions. The earlier suggestion that this family had not been found in the literature has been withdrawn.</p>
+ <p>Their deployment example and this equal-bar packing problem use different proportions and periodic descriptions. A useful comparison must separate fixed-lattice Bloch modes, variable-lattice motions, rigid-body kinematics and finite-stiffness spring elasticity. They are different questions, even when a diagram looks similar.</p>
+ <div class="tscroll"><table class="tb"><caption>What the present evidence supports</caption><thead><tr><th scope="col">Ingredient or result</th><th scope="col">Current position</th></tr></thead><tbody>
+ <tr><th scope="row">Tilings, cab net, bridged cross-polytopes</th><td>Established structures, credited to earlier work.</td></tr>
+ <tr><th scope="row">Mode and stress counts; unit-spring elasticity</th><td>Written all-n arguments for n ≥ 3, numerical replay through n = 8. Priority of the exact formulas is unresolved.</td></tr>
+ <tr><th scope="row">The explicit equal-bar fcc motion</th><td>Written proof and exact certificate submitted for review. Historical priority unresolved.</td></tr>
+ <tr><th scope="row">Physical hexaborides or devices</th><td>No material transition or working device demonstrated by this ideal geometric model.</td></tr>
+ </tbody></table></div>
+ <p><a href="https://doi.org/10.1103/PhysRevB.74.134302">Goodwin (2006)</a> is a close precedent for linearly bridged rigid-unit frameworks. <a href="https://doi.org/10.1039/D3CP01306E">Li, Refson and Dove (2023)</a> investigate actual hexaborides. The <a href="https://github.com/aska-digital/incentre-lattice/blob/ebd42dbeb3bab980229ff737bf30e93ed12d74dd/results/rigidity-nd/LITERATURE.md">comparison note</a> records which sources were read in full, by section, or only through abstracts. Search non-discovery does not establish novelty.</p>
+</section>
+
+<section id="work" aria-labelledby="work-title">
+ <div class="kick">04 // OPEN WORK, TRACEABLE SOURCES</div><h2 id="work-title">What changed in this research pass.</h2>
+ <p>The <a href="https://github.com/aska-digital/incentre-lattice/issues/26">assessment and priorities</a> led to the literature comparison, the continuous-motion construction and a focused paper. The same audit also proposed a stronger attainment proof and proposed a repair for gaps in certificate coverage. These submissions are linked below; the research drafts have not been accepted by an outside reviewer.</p>
+ <div class="work-list">
+  <article><div class="work-ref"><a href="https://github.com/aska-digital/incentre-lattice/pull/23">PR #23</a><span>Proof</span></div><h3>Exact CaB₆ packing attainment</h3><p>An all-pairs argument for the proposed optimum, replacing the earlier finite attainment check. This is the two-size CaB₆ packing family, distinct from the equal-ball fcc motion.</p></article>
+  <article><div class="work-ref"><a href="https://github.com/aska-digital/incentre-lattice/pull/25">PR #25</a><span>Tooling correction</span></div><h3>Complete the certificate coverage</h3><p>The previous commitment registry omitted existing results and paths. The fix covers all eight baseline result certificates and four stored folding paths, with eleven regression tests. Hashes establish which artifacts were checked; they do not prove mathematical claims.</p></article>
+  <article><div class="work-ref"><a href="https://github.com/aska-digital/incentre-lattice/pull/27">PR #27</a><span>Literature correction</span></div><h3>Compare the dimensional formulas</h3><p>Corrected the family-level prior-art claim, compared model assumptions and prepared precise questions for a periodic-rigidity specialist.</p></article>
+  <article><div class="work-ref"><a href="https://github.com/aska-digital/incentre-lattice/pull/28">PR #28</a><span>Result draft</span></div><h3>Certify a continuous fcc motion</h3><p>Added the explicit curve, written reductions, two exact implementations and three rejection controls. Full local verification passed across all nine results on this branch. A separate 501-state sample also passed both existing numerical fold checkers.</p></article>
+  <article><div class="work-ref"><a href="https://github.com/aska-digital/incentre-lattice/pull/29">PR #29</a><span>Paper draft</span></div><h3>Make the strongest result reviewable</h3><p>A five-page paper concentrates on the motion, its certificate and its limits. It includes the model, proof, reproduction instructions, precedents and disclosed AI assistance.</p></article>
+ </div>
+ <p class="hint">All five PRs remain open at this October 2026 site update; follow each PR for its current review state. The proof branch depends on the proposed commitment fix, and the paper depends on the proof branch.</p>
+</section>
+
+<section id="review" aria-labelledby="review-title">
+ <div class="kick">05 // WHAT WOULD STRENGTHEN THE WORK</div><h2 id="review-title">The next contribution is scrutiny.</h2>
+ <p>This is meaningful, reproducible mathematical exploration. Its value lies in a construction others can inspect and reuse, explicit statements that can be challenged, and explanations that connect geometry to rigidity. The present record does not establish a major breakthrough, historical priority or a practical material application.</p>
+ <ol class="cl"><li><b>Specialist comparison.</b> Check the precise formulas and equal-bar motion against periodic rigidity, auxetic deployment and crystallographic deformation literature.</li><li><b>Independent proof review.</b> Review the infinite-image bound, enumeration coverage, exact arithmetic, endpoint cosets and density argument. The two implementations are internal AI checks, not independent human review.</li><li><b>Extend the geometry.</b> Seek an all-parameter hcp witness, map other motion branches and determine what additional constraints prevent folding.</li><li><b>Test physical relevance separately.</b> A realizable structure needs forces, bending stiffness, stability and fabrication tolerances beyond the ideal bar-and-ball model.</li></ol>
+ <div class="research-links"><a href="https://github.com/aska-digital/incentre-lattice/blob/main/CONTRIBUTING.md">How to contribute →</a><a href="https://github.com/aska-digital/incentre-lattice/issues/26">Assessment and open priorities →</a><a href="open.html">Explore the claim ledger →</a></div>
+ <details class="research-credit"><summary>Credits, review scope and reproduction</summary><p>Ahraz Arifuddin from Aska Digital leads the project. Earlier exploration and endpoint data were developed with Claude Opus 5.5 from Anthropic. GPT-6 derived the continuous construction, wrote its proof and first exact implementation; GPT-6.1 Sol wrote a separate arithmetic replay and reviewed the reductions; GPT-6 Luna handled repository publication. These are internal AI contributions. No independent human mathematical review is claimed.</p><p>On the result branch, run <code>make verify-fold-continuous PY=python3</code> for the standard-library exact replay. The <a href="https://github.com/aska-digital/incentre-lattice/blob/53e9de8/results/fold-continuous-fcc/certificate.json">certificate</a> binds its proof and code by SHA-256. For the established broader project, see the <a href="papers/incentre-lattice.pdf">original preprint</a> and <a href="https://github.com/aska-digital/incentre-lattice">repository</a>.</p></details>
+</section>
+</main>
+<script src="codex.js"></script><script src="fold-continuous.js"></script>
+</body></html>

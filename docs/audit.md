@@ -11,6 +11,24 @@ Evidence labels used everywhere in this repository:
 
 ## Per result
 
+### results/fold-continuous-fcc: explicit continuous motion
+
+**PROVEN (written argument and exact finite certificate), internal AI review only.** The motif is fixed and the
+lattice follows the rational curve in `PROOF.md`. Bar preservation is an exact identity. A bound on the symmetric
+part of the lattice excludes all integer shifts of squared norm at least 12. Every remaining squared-distance
+inequality is a quartic with nonnegative Bernstein coefficients on the entire interval: 3248 polynomials and
+16240 coefficients in Q(sqrt(2)), without floating arithmetic. `curve.py` constructs the exact certificate;
+`independent.py` separately forms the polynomials by convolution and reverses the Bernstein expansion.
+The fcc endpoint follows from an integer parity/index argument. A written derivative bound proves strictly
+increasing density. These analytic reductions still require mathematical review; the code is not a proof assistant.
+
+`make verify-fold-continuous` replays both arithmetic implementations, the endpoint, and must-fail controls.
+All proof and replay sources are bound by the result certificate. A separate 501-state sample was accepted by both
+existing, unchanged numerical fold checkers: zero overlap violations, 12 endpoint contacts per ball, fcc CNA
+72 (4,2,1), and endpoint density pi/sqrt18. The sampled straight-line interpolants are not the exact analytic motion.
+The older sampled paths and hcp result retain their previous evidence labels. Priority and outside human review
+remain open; no physical transition or material stability is claimed.
+
 ### results/rigidity-nd: counts and nu_100 for n = 2..8
 
 | Claim | Label | Checked by |
@@ -40,10 +58,10 @@ Known limits: floating-point LP at 1e-6; the families satisfying H1 or H2 are no
 | Claim | Label | Checked by |
 |---|---|---|
 | phi_max(gamma) as a two-branch closed form; maximum (pi/6)(30 sqrt2 - 41) at gamma = sqrt2 - 1; Ca held by Ca-Ca, Ca-B not touching; window 0.41023 < gamma < 0.41591 | PROVEN upper bound (`PROOF.md`); exact values VERIFIED symbolically | sympy |
-| Attainment and no other overlap | VERIFIED (finite) | `cab6_packing.py`: all pairs in a 5 x 5 x 5 block, 15 size ratios, agreement with the closed form to 1e-9 |
+| Attainment and no other overlap | PROVEN (`ATTAINMENT.md`, exact all-pairs classification) | corroborated by `cab6_packing.py`: all pairs in a 5 x 5 x 5 block, 15 size ratios, agreement with the closed form to 1e-9 |
 | Controls | must be rejected | wrong constant, wrong branch, gamma = 0.40 and 0.42 beating fcc, "Ca touches B", wrong Wyckoff reading of x |
 
-Known limits: the all-pairs non-overlap at the optimum is checked, not argued; the model has one free coordinate and the cubic lattice only.
+Known limits: the model has one free coordinate and the cubic lattice only.
 
 ### results/fold-2d: hinged squares as a ball framework
 

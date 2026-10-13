@@ -156,23 +156,30 @@ These are finite checks. They corroborate the proof for n <= 8; they do not repl
 
 ## Prior art
 
-* The 3D case (n = 3, the Prussian-blue topology) is **KNOWN in substance**: the flat bands of rotations of octahedra joined
-  by linear bridges are the rigid unit modes of A. L. Goodwin, "Rigid unit modes and intrinsic flexibility in linearly
-  bridged framework structures", Phys. Rev. B 74, 134302 (2006). The q = 0 and plane-wise extra modes are standard
-  rigid-unit-mode spectrum material: S. C. Power, "Polynomials for crystal frameworks and the rigid unit mode spectrum",
-  Phil. Trans. R. Soc. A 372, 20120030 (2014).
+The source comparison, reading depths, elementary deductions and independent-review questions are recorded in
+[LITERATURE.md](LITERATURE.md). The earlier family-level **NOT FOUND** claim is withdrawn.
+
+* The 3D bridged-unit flexibility phenomenon is **KNOWN in substance**: A. L. Goodwin, "Rigid unit modes and intrinsic
+  flexibility in linearly bridged framework structures", Phys. Rev. B 74, 134302 (2006), doi:10.1103/PhysRevB.74.134302.
+  Abstract read; exact multiplicities not checked against the full paper. S. C. Power, "Polynomials for crystal frameworks
+  and the rigid unit mode spectrum", Phil. Trans. R. Soc. A 372, 20120030 (2014), doi:10.1098/rsta.2012.0030, supplies
+  the general symbol/phase-periodic machinery (Sections 2, 4, 5 read), not proof of priority for these exact formulas.
+* **The bridged cross-polytope family is prior art**: C. S. Borcea and I. Streinu, "Periodic tilings and auxetic deployments",
+  Math. Mech. Solids 26(2), 199–216 (2021), doi:10.1177/1081286520948116, Section 7. Its periodicity and spring-model
+  comparison with this realization is detailed in LITERATURE.md: the same periodic graph at a different bar length (t = sqrt2 - 1 versus 2 - sqrt2); the counts here hold for any 0 < t < 1 and so cover it.
 * **Closest physical study of the cab framework, KNOWN**: L. Li, K. Refson and M. T. Dove, "The contribution of phonons to the thermal expansion of some
   simple cubic hexaboride structures: SmB6, CaB6, SrB6 and BaB6", Phys. Chem. Chem. Phys. 25, 10749 (2023), doi:10.1039/d3cp01306e (abstract read, full
   text not). DFT lattice dynamics focused on rigid unit modes involving rotations of the B6 octahedra, as in Zn(CN)2, Prussian blue and Si(NCN)2; it reports
-  very low flexibility of the connected octahedra. This is a study of one real compound, not a count of modes for the ideal bar framework in n
-  dimensions, so the NOT FOUND below is not affected. I have not checked whether it counts the flat bands the way this result does.
+  very low flexibility of the connected octahedra. This studies four real compounds; its abstract does not establish the mode counts or elastic
+  formulas for the ideal bar framework in n dimensions. I have not checked whether its full text counts the flat bands the way this result does.
 * The periodic Maxwell-Calladine count: J. C. Maxwell, Phil. Mag. 27, 294 (1864); C. R. Calladine, Int. J. Solids Struct.
   14, 161 (1978).
-* **NOT FOUND**: the closed forms in n (n(n-1)/2 and n(n-3)/2 per cell, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the
-  cross-polytope family. Searches covered the full texts of the RUM-spectrum papers above and their sequels for
-  cross-polytope, octahedral and higher-dimensional bridged examples. This is absence of evidence only.
-* The ingredients are classical (rigidity of simplicial polytopes, Calladine counting), so this is a short lemma, not a hard
-  theorem. A referee may call it routine.
+* **Priority unresolved** for the exact closed forms in n (n(n-1)/2 and n(n-3)/2 per cell, C11/C12 = (n-1)^2,
+  nu_100 = 1/(n^2-n-1)). The counts are elementary consequences of internal rigidity, transverse rotational bridge
+  velocities and rank-nullity. The elastic formulas additionally require the stated finite spring stiffness on all bars.
+  This bounded audit is not an exhaustive full-text search, and no novelty is claimed.
+* The ingredients are classical; an independent specialist may judge the result routine. External human review remains
+  pending, and no review request has been sent.
 
 ## Open obligations
 
