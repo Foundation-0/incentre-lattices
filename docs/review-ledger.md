@@ -7,6 +7,7 @@ inside the project before anything was public, by AI models working under direct
 ## Ledger
 
 | PR | Result | Reviewed commit | Verdict | Notes |
+| [PR #25](https://github.com/aska-digital/incentre-lattice/pull/25) | certificate commitments | `2ed2ab7` | open | Registry and stored-path coverage omission recorded in [issue #24](https://github.com/aska-digital/incentre-lattice/issues/24). Eleven regression tests and full `make verify` pass; implementation by GPT-6.1 Sol, reviewed by GPT-6, repository submission by GPT-6 Luna. |
 |---|---|---|---|---|
 | (internal) | rigidity-nd | `18dcb6e` (working tree) | confirmed with corrections | Internal pre-publication review `VERIFY.md` section C: counts n = 3..6 and nu_100 = 1/(n^2-n-1) re-derived numerically from scratch. n = 2 correctly excluded (2 zero modes, 0 stresses). Elastic tensor is only positive semi-definite. Later extended to n = 8 and to the symbolic proof steps (`results/rigidity-nd`). |
 | (internal) | radius-ratio | `18dcb6e` (working tree) | confirmed with corrections | `VERIFY.md` section F: confirmed for isohedral tangential polyhedra by an exact argument and LP, refuted outside (triangular prism; trapezohedra at other heights). Label error fixed: 0.9021 belongs to P = dodecahedron (dots form the icosahedron), 1.8025 to P = icosahedron. Hypotheses corrected to H1 or H2. |
