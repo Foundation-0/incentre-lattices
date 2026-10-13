@@ -16,6 +16,8 @@ and other Claude models by Anthropic, PBC.** Their roles, in general terms:
 | Claude Sonnet | builds and checks: verifiers, replay scripts, tests, certificates, continuous integration, documentation |
 | Claude Haiku | operations: running known scripts, searching and retrieval, file moves and repository housekeeping |
 
+OpenAI Codex (GPT-6) prepared the proposed exact CaB6 attainment proof in `results/cab6-packing/ATTAINMENT.md`; GPT-6 Luna handled its repository submission. No independent human review is claimed for this contribution.
+
 No AI model is an author in the legal or scholarly sense, and none can vouch for a result. The labels PROVEN, VERIFIED and KNOWN in
 `docs/audit.md` say what was actually done; a person has not independently re-derived every proof. Internal reviews so far were performed
 by AI models under direction (see `docs/review-ledger.md`); that is "internal pre-publication review" and not outside review.

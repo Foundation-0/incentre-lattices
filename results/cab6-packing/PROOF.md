@@ -49,6 +49,8 @@ sqrt(x*^2 + 1/2) = 0.73681 and rL + rS <= 0.70711, so Ca-B is not even touching 
 checked here by exhaustive enumeration of all pairs in a 5 x 5 x 5 block of cells, not by a written argument.** It is a finite
 check of an elementary geometric fact, and a short written argument would close it (open obligation below).
 
+A proposed exact replacement for this finite-only step is given in [ATTAINMENT.md](ATTAINMENT.md), awaiting review.
+
 *Value and window.* (4 pi/3)(1/8 + 6 rS^3) with rS = (sqrt2 - 1)/2 equals (pi/6)(30 sqrt2 - 41) exactly (sympy). The left window
 end solves (pi/6)(1 + 6 gamma^3) = pi/(3 sqrt2), i.e. gamma^3 = (sqrt2 - 1)/6. At the right end, with gamma^-3 = 4 + 7 sqrt2,
 (sqrt2 - 1)^3 = 5 sqrt2 - 7 and (5 sqrt2 - 7)(10 + 7 sqrt2) = sqrt2, so (pi/6) sqrt2 = pi/(3 sqrt2). Both verified symbolically. QED
@@ -87,5 +89,5 @@ and title not verified).
 
 ## Open obligations
 
-* A written argument for the all-pairs non-overlap at the optimum (currently a finite check).
+* Review the proposed exact all-pairs argument in [ATTAINMENT.md](ATTAINMENT.md). The existing evidence label remains unchanged pending review.
 * Independent human review (internal pre-publication review only so far).
