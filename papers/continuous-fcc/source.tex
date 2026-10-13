@@ -1,0 +1,192 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\e}{\mathbf e}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\title[An explicit cab-to-fcc motion]{An explicit density-increasing motion of the cab contact framework to face-centred cubic packing}
+\author{Ahraz Arifuddin}
+\address{Aska Digital}
+\date{12 October 2026. Research draft; internal review only.}
+\begin{document}
+\begin{abstract}
+We give an explicit smooth motion of a periodic framework of regular octahedra joined by bars, with a ball at each vertex and every bar equal to a ball diameter. A six-ball motif remains fixed while the lattice shears from the open cubic cab contact configuration to face-centred cubic packing. Every bar is preserved exactly and the packing fraction increases strictly to $\pi/\sqrt{18}$. A uniform lattice bound reduces non-overlap over all periodic images to 3248 quartic inequalities. Their 16,240 Bernstein coefficients are nonnegative in exact arithmetic over $\Q(\sqrt2)$, certifying the whole parameter interval. Two separately written implementations replay this finite certificate. Historical priority and independent specialist review remain open.
+\end{abstract}
+\maketitle
+
+\section{Question, scope and prior work}
+
+An infinitesimal flex describes a direction in which a framework can start moving. It does not by itself show that the framework can reach a specified distant configuration while preserving its bars and avoiding overlap. This note addresses that reachability question for the equal-bar cab contact framework, using a single octahedron per periodic cell and a variable lattice.
+
+The underlying geometry is established. Rigid-unit flexibility in linearly bridged structures was studied by Goodwin~\cite{Goodwin}; periodic cross-polytope deployments appear in Borcea and Streinu~\cite[Section~7]{BorceaStreinu}. The present claim concerns the particular equal-bar motion and all-parameter non-overlap proof given below. We do not claim discovery of the framework family, nor do we certify historical priority of this motion.
+
+The project previously computed paths to hcp and fcc and recorded the exact fcc endpoint used here~\cite{Repository}. Their interpolated continuity was checked at samples. The construction below supplies a different witness with a proof over a continuous parameter interval. Those earlier numerical trajectories retain their original evidence labels. This is an ideal geometry model: it prescribes bar lengths and sphere exclusion, without an energy functional, bending stiffness, or a prediction about a transition in real CaB$_6$.
+
+\section{The model and the explicit motion}
+
+Let $\e_1,\e_2,\e_3$ be the standard coordinate vectors, and take the motif
+\[
+ P=\{\e_1,-\e_1,\e_2,-\e_2,\e_3,-\e_3\}.
+\]
+Each centre carries a ball of radius $1/\sqrt2$. The motif has twelve bars joining vertices on different axes. Three further bar orbits join $\e_i$ to $-\e_i+L_i$, where $L_i$ is row $i$ of the lattice matrix $L$. All bars have length $\sqrt2$. The infinite set of centres is
+\[
+ \mathcal P(L)=\{p+nL:p\in P,\ n\in\Z^3\},
+\]
+using row-vector conventions. Multiplication by $K=2-\sqrt2$ and translation by $(1,1,1)$ recover the repository's ball radius $\sqrt2-1$ and canonical motif.
+
+Define
+\begin{equation}\label{eq:curve}
+ C=\begin{pmatrix}0&-1&-1\\1&0&-1\\1&-1&0\end{pmatrix},\qquad
+ t(s)=\frac{2s}{1+s^2},\quad
+ a(s)=\frac{\sqrt2(1-s^2)}{1+s^2},\quad
+ L(s)=(2+a(s))I+t(s)C,
+\end{equation}
+for $0\le s\le1$. Put $d=2+a$. Then $a\ge0$, $0\le t\le1$, and $a^2+2t^2=2$. The endpoints are
+\begin{equation}\label{eq:endpoints}
+ L(0)=(2+\sqrt2)I,\qquad
+ L(1)=\begin{pmatrix}2&-1&-1\\1&2&-1\\1&-1&2\end{pmatrix}.
+\end{equation}
+In repository units, $K L(0)=2I$.
+
+\begin{theorem}\label{thm:main}
+The curve~\eqref{eq:curve} is a smooth periodic motion of the cab contact framework. Throughout $0\le s\le1$ its lattice is nonsingular, every original bar has length $\sqrt2$, and every pair of distinct sphere centres is separated by at least $\sqrt2$. Its packing fraction increases strictly from
+\[
+ \frac{2\sqrt2\pi}{(2+\sqrt2)^3}\simeq0.223266
+ \quad\text{to}\quad\frac{\pi}{\sqrt{18}}.
+\]
+The endpoint centre set is a translate of the face-centred cubic lattice.
+\end{theorem}
+
+The proof comprises an elementary bar identity, an analytic bound for distant images, an exhaustive exact finite certificate, and an endpoint and determinant calculation. The finite certificate is a computational component of the proof, not a floating-point parameter scan.
+
+\section{Bar lengths and all periodic images}
+
+The motif stays fixed, so its internal edges retain length $\sqrt2$. The $i$th bridge vector is
+\[
+ L_i-2\e_i=a\e_i+tC_i.
+\]
+Since $C_{ii}=0$ and $\norm{C_i}^2=2$, its squared length is $a^2+2t^2=2$. This proves exact preservation of all fifteen bars.
+
+\begin{lemma}\label{lem:tail}
+For every real row vector $w$ and every parameter value, $\norm{wL(s)}\ge\norm w$. Consequently, all centre differences $nL(s)+v$, with $v\in P-P$ and $\norm n^2\ge12$, have length strictly greater than $\sqrt2$.
+\end{lemma}
+\begin{proof}
+The symmetric part of the lattice is
+\[
+ \frac{L+L^T}{2}=\begin{pmatrix}d&0&0\\0&d&-t\\0&-t&d\end{pmatrix}.
+\]
+Its eigenvalues are $d,d+t,d-t$, with $d-t\ge1$. Hence Cauchy--Schwarz implies
+\[
+ \norm{wL}\norm w\ge wLw^T\ge\norm w^2.
+\]
+This also proves nonsingularity. Every $v\in P-P$ has $\norm v\le2$. Thus
+\[
+ \norm{nL+v}\ge\norm n-2\ge\sqrt{12}-2>\sqrt2
+\]
+when $\norm n^2\ge12$; the strict inequality is equivalent to $12>6+4\sqrt2$.
+\end{proof}
+
+Only the 171 integer vectors with $\norm n^2\le11$ remain. All lie in $[-3,3]^3$. There are nineteen distinct motif differences: zero, the six vectors $\pm2\e_i$, and the twelve vectors $\pm\e_i\pm\e_j$ with $i<j$. Omitting only $(n,v)=(0,0)$ leaves $171\cdot19-1=3248$ conditions.
+
+\section{A finite certificate for every parameter value}
+
+For each remaining pair $(n,v)$ set
+\[
+ A_0=(2+\sqrt2)n+v,\qquad A_1=2nC,\qquad A_2=(2-\sqrt2)n+v.
+\]
+After clearing a positive denominator, the required squared-distance inequality becomes
+\begin{align}
+ f_{n,v}(s)&=(1+s^2)^2\bigl(\norm{nL(s)+v}^2-2\bigr)\label{eq:quartic}\\
+ &=\norm{A_0+A_1s+A_2s^2}^2-2(1+s^2)^2\ge0.\nonumber
+\end{align}
+The power coefficients $f(s)=\sum_{j=0}^4c_js^j$ are
+\begin{align*}
+ c_0&=\norm{A_0}^2-2,&c_1&=2A_0\cdot A_1,\\
+ c_2&=\norm{A_1}^2+2A_0\cdot A_2-4,&c_3&=2A_1\cdot A_2,\\
+ c_4&=\norm{A_2}^2-2.
+\end{align*}
+All coefficients belong to $\Q(\sqrt2)$.
+
+\begin{lemma}\label{lem:certificate}
+For every one of the 3248 pairs, the degree-four Bernstein coefficients
+\begin{equation}\label{eq:bernstein}
+ b_k=\sum_{j=0}^k c_j\frac{\binom{k}{j}}{\binom{4}{j}},\qquad 0\le k\le4,
+\end{equation}
+are nonnegative.
+\end{lemma}
+\begin{proof}[Exact finite verification]
+The programs \texttt{curve.py} and \texttt{independent.py} supplied with the result~\cite{Certificate} enumerate every pair. Both use rational pairs representing $u+v\sqrt2$, with integer or rational comparisons only. Opposing signs are resolved by comparing $u^2$ and $2v^2$ after isolating the signs; no floating approximation of $\sqrt2$ is used. Their exhaustive totals agree:
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Quantity & Count\\\midrule
+Integer translations &171\\
+Distinct motif differences &19\\
+Non-self distance polynomials &3248\\
+Positive Bernstein coefficients &16126\\
+Zero Bernstein coefficients &114\\
+Negative Bernstein coefficients &0\\
+Identically zero distance polynomials &18\\\bottomrule
+\end{tabular}
+\end{center}
+The second implementation constructs each quartic by polynomial convolution and independently expands the Bernstein representation back into the power basis for every case. It imports neither the first implementation nor its verifier. No subdivision of the interval is required.
+\end{proof}
+
+For completeness, the conversion follows by expressing each monomial $s^j$ in the degree-four Bernstein basis. Consequently,
+\[
+ f(s)=\sum_{k=0}^4 b_k\binom4k s^k(1-s)^{4-k}.
+\]
+Every basis function is nonnegative on $[0,1]$, so Lemma~\ref{lem:certificate} proves all remaining distance inequalities on the entire interval. Together with Lemma~\ref{lem:tail}, this establishes non-overlap for every periodic image. A reviewer must inspect both the mathematical reduction and the exact arithmetic implementation; the certificate is not a proof-assistant formalization.
+
+\section{Endpoint and strict increase of density}
+
+Let $\Gamma=\Z^3L(1)$. Its lattice rows have even coordinate sums and determinant 12. Therefore
+\[
+ \Gamma\subset D_3=\{z\in\Z^3:z_1+z_2+z_3\text{ is even}\},
+\]
+where $D_3$ has covolume 2, and $[D_3:\Gamma]=6$. The six motif points have odd coordinate sums and belong to distinct $\Gamma$-cosets: any coincidence would violate the minimum separation already proved. They therefore fill all six cosets of the odd-parity translate of $D_3$. This is fcc, with shortest separation $\sqrt2$ and packing fraction
+\[
+ \frac{6(4\pi/3)(1/\sqrt2)^3}{12}=\frac{\pi}{\sqrt{18}}.
+\]
+The exact endpoint replay additionally checks twelve contacts at each motif point.
+
+For monotonicity, use $t\in(0,1)$ and $a=\sqrt{2-2t^2}$. Direct expansion yields
+\[
+ D(t)=\det L=d^3+dt^2+2t^3.
+\]
+Differentiating and substituting $a^2+2t^2=2$ gives
+\[
+ D'(t)=\frac{2t}{a}\bigl(-16-10a+3t^2+3at\bigr)<0,
+\]
+because the bracket is at most $-13-7a$. Continuity extends strict decrease to any two distinct points of the closed interval. Also $t(s)$ is strictly increasing. Sphere volume is constant, so density increases strictly. Smoothness is asserted in $s$, whose rational formula has no denominator zero; the derivative singularity of the alternative $t$-parameter at its endpoint is irrelevant. This completes the proof of Theorem~\ref{thm:main}.
+
+Repeating the motif lifts this motion to any positive integer supercell size. This is a statement of geometric existence. A fixed discretization need not satisfy the numerical checker's lattice-step limit after enlargement.
+
+\section{Reproduction and review status}
+
+The exact replay is the standard-library command
+\begin{center}\texttt{make verify-fold-continuous PY=python3}.\end{center}
+It checks both arithmetic implementations, bridge identities, endpoint data and rejection controls, and regenerates a certificate binding the proof and code by SHA-256. The written image bound and derivative argument remain explicit mathematical obligations for review.
+
+A separate 501-state numerical sample passes both existing project fold checkers without modifying them: zero overlap violations, twelve endpoint contacts per ball and the fcc common-neighbour signature. This provides an implementation cross-check. Straight-line interpolation of these samples differs from~\eqref{eq:curve} and is not claimed to preserve bars exactly.
+
+Independent human review and a fuller priority search remain outstanding. The dimension-dependent elasticity formulas are a separate question; this note does not rely on their novelty. A certified continuous path to hcp, and the behaviour of physical realizations with bending forces, also remain open.
+
+\clearpage
+\section*{Acknowledgments and AI assistance}
+This note belongs to the incentre-lattice project of Ahraz Arifuddin from Aska Digital. The earlier numerical exploration and endpoint data were developed with Claude Opus 5.5 from Anthropic. GPT-6 (Codex) derived the explicit curve and written proof and implemented the first exact replay. GPT-6.1 Sol supplied a separately written arithmetic check and reviewed the analytic reductions. GPT-6 Luna handled repository publication. These are internal AI contributions; no independent human mathematical review or scholarly authorship by an AI model is claimed.
+
+\begin{thebibliography}{9}
+\bibitem{Goodwin} A. L. Goodwin, \emph{Rigid unit modes and intrinsic flexibility in linearly bridged framework structures}, Physical Review B \textbf{74} (2006), 134302. \href{https://doi.org/10.1103/PhysRevB.74.134302}{doi:10.1103/PhysRevB.74.134302}.
+\bibitem{BorceaStreinu} C. S. Borcea and I. Streinu, \emph{Periodic tilings and auxetic deployments}, Mathematics and Mechanics of Solids \textbf{26} (2021), no.~2, 199--216. \href{https://doi.org/10.1177/1081286520948116}{doi:10.1177/1081286520948116}.
+\bibitem{Repository} A. Arifuddin, \emph{Incentre-lattice: smallest-cell numerical paths and exact endpoints}, repository revision \texttt{2ed2ab7} (2026). \href{https://github.com/aska-digital/incentre-lattice/blob/2ed2ab729b2de9e352964f6486bd00dae11a8268/results/fold-m1/PROOF.md}{results/fold-m1/PROOF.md}.
+\bibitem{Certificate} A. Arifuddin, \emph{An explicit continuous motion from the cab contact framework to fcc}, proof and exact replay, repository revision \texttt{53e9de8} (2026). \href{https://github.com/aska-digital/incentre-lattice/tree/53e9de8/results/fold-continuous-fcc}{results/fold-continuous-fcc}.
+\end{thebibliography}
+\end{document}

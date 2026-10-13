@@ -45,6 +45,8 @@ Nothing here has been peer reviewed.
 
 Preprint (not peer reviewed): **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079) (all versions; v1.0.0 is [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080)). Its SHA-256 hash is recorded in the public commitment (see below).
 
+Focused research draft (internal review only): **An explicit density-increasing motion of the cab contact framework to face-centred cubic packing**. [PDF](papers/continuous-fcc/continuous-fcc.pdf) · [Source and review guide](papers/continuous-fcc/). This separate note presents the continuous motion and its exact non-overlap certificate; independent human review and historical priority remain open.
+
 ## Results
 
 Every result below has a folder in `results/` with a `PROOF.md` (statement, scope, evidence label, proof, prior art, open obligations), a deterministic `verify.py`, and a
