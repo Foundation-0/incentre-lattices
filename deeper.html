@@ -115,8 +115,8 @@ tr.hl td{background:var(--accent-bg)}
 <aside class="since" id="since" aria-labelledby="since-h"><h2 id="since-h">Since this page was written</h2>
 <p>This page covers the classical core. The project has moved on. Three results, none of them peer reviewed, are summarised here. Each has an evidence label on the <a href="open.html">Ledger</a>.</p>
 <ul>
-<li><b>The fold.</b> Touching balls joined by rigid bars can fold without any bar changing length. In 2D, with the dots at the incentre, the fold locks at 45&deg;. That linkage is <b>known</b> (Flores, hinged tilings, after Stuart 1963). In 3D the simplest fold, with the lattice kept cubic, ends at 60&deg; along [111] at density 0.4686. That is a waypoint, not a jam, because a trigonal branch keeps folding past it. A machine search then found a continuous, bar-preserving, overlap-free fold from density 0.2233 to hexagonal close packing, 0.74048. See <a href="motion.html#fold2">Motion</a> and <a href="seek.html#case">Search</a>.</li>
-<li><b>Rigidity in n dimensions.</b> Per cell, the framework has n(n&minus;1)/2 floppy modes and n(n&minus;3)/2 self-stresses at a generic wavevector. This is proven for n&nbsp;&ge;&nbsp;3, and the 3D case is known from Goodwin (2006). See <a href="motion.html#modes">Motion, floppy modes</a>.</li>
+<li><b>The fold.</b> Touching balls joined by rigid bars can fold without any bar changing length. In 2D, with the dots at the incentre, the fold locks at 45&deg;. That linkage is <b>known</b> (Flores, hinged tilings, after Stuart 1963). In 3D the simplest fold, with the lattice kept cubic, ends at 60&deg; along [111] at density 0.4686. That is a waypoint, not a jam, because a trigonal branch keeps folding past it. A machine search then found a sampled path from density 0.2233 to hexagonal close packing, 0.74048, accepted by two numerical checkers. A separate explicit six-ball fcc motion now has a written continuous proof and exact non-overlap certificate; <a href="research.html">the research update</a> explains it, with human review and historical priority still open. See <a href="motion.html#fold2">Motion</a> and <a href="seek.html#case">Search</a>.</li>
+<li><b>Rigidity in n dimensions.</b> Per cell, the framework has n(n&minus;1)/2 floppy modes and n(n&minus;3)/2 self-stresses at a generic wavevector. This is proven for n&nbsp;&ge;&nbsp;3, while 3D bridged-unit flexibility is known from Goodwin (2006). The audit has not compared the exact multiplicities against his full text. See <a href="motion.html#modes">Motion, floppy modes</a>.</li>
 <li><b>The size-limit identity.</b> Section 4 below shows hole/ball matching chemistry&rsquo;s limits. It is proven when every wall of the cut solid is a mirror, or when the insphere exists and all dihedral angles are equal. Without one of those conditions it can fail. See the <a href="open.html#ledger">Ledger</a>.</li>
 </ul></aside>
 
@@ -231,7 +231,7 @@ tr.hl td{background:var(--accent-bg)}
   <div class="tw"><table>
     <tr><th>dimension n</th><th>pieces</th><th>all symmetries</th><th>rotations only</th><th>balls touched</th></tr>
     <tr id="r2"><td>2</td><td>8</td><td>8</td><td>4</td><td>3</td></tr>
-    <tr id="r3" class="hl"><td>3</td><td>24</td><td>48</td><td>24</td><td>5</td></tr>
+    <tr id="dimension-row-3" class="hl"><td>3</td><td>24</td><td>48</td><td>24</td><td>5</td></tr>
     <tr id="r4"><td>4</td><td>48</td><td>384</td><td>192</td><td>7</td></tr>
     <tr id="r5"><td>5</td><td>80</td><td>3840</td><td>1920</td><td>9</td></tr>
   </table></div>
@@ -454,7 +454,7 @@ View('f4',560,2.5,(v,it)=>{
 function fact(n){let r=1n;for(let i=2n;i<=BigInt(n);i++)r*=i;return r}
 function upd10(){const n=+$('n10').value;$('n10v').textContent=n;
   const N=BigInt(n),pieces=4n*N*(N-1n),all=(1n<<N)*fact(n),rot=all/2n,part=(1n<<(N-2n))*fact(n-2);
-  for(let i=2;i<=5;i++)$('r'+i).classList.toggle('hl',i===n);
+  for(let i=2;i<=5;i++)$(i===3?'dimension-row-3':'r'+i).classList.toggle('hl',i===n);
   let m=pieces===all?'pieces = all symmetries':pieces===rot?'pieces = rotations':'pieces fall short of both';
   $('n10txt').innerHTML=`<b>n = ${n}:</b> ${pieces} pieces, ${all} symmetries, ${rot} rotations, ${2*n-1} balls touched. Each piece splits into ${part} equal smallest pieces (${pieces} × ${part} = ${pieces*part}). <b>${m}.</b>`}
 $('n10').addEventListener('input',upd10);upd10();
