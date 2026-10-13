@@ -20,6 +20,8 @@ The October 2026 site update was prepared with **GPT-6** (research synthesis, in
 **GPT-6.1 Sol** (shared site controls, claim ledger, accessibility fixes and code review), and **GPT-6 Luna** (link checks and repository publication).
 The research update separately identifies AI contributions to the open result and paper drafts. Publishing their summaries on the site does not constitute acceptance or outside mathematical review.
 
+OpenAI Codex (GPT-6) prepared the exact CaB6 attainment proof in `results/cab6-packing/ATTAINMENT.md`; GPT-6 Luna handled its repository submission. No independent human review is claimed for this contribution.
+
 No AI model is an author in the legal or scholarly sense, and none can vouch for a result. The labels PROVEN, VERIFIED and KNOWN in
 `docs/audit.md` say what was actually done; a person has not independently re-derived every proof. Internal reviews so far were performed
 by AI models under direction (see `docs/review-ledger.md`); that is "internal pre-publication review" and not outside review.

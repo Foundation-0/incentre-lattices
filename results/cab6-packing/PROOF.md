@@ -1,7 +1,6 @@
 # Maximal hard-sphere packing fraction of the CaB6 structure type
 
-Evidence label: **PROVEN (elementary upper-bound argument below); attainment and non-overlap VERIFIED (finite check: all pairs in a
-5 x 5 x 5 block of cells, 15 size ratios).** Replay: `make verify-cab6` (a few seconds; numpy, scipy, sympy). Certificate:
+Evidence label: **PROVEN (elementary upper-bound argument below); attainment and all-pairs non-overlap PROVEN (exact classification of every pair over the whole lattice, [ATTAINMENT.md](ATTAINMENT.md); referee-checked, an exact all-pairs check in Q(sqrt2) agreed); the finite replay (all pairs in a 5 x 5 x 5 block, 15 size ratios) corroborates it.** Replay: `make verify-cab6` (a few seconds; numpy, scipy, sympy). Certificate:
 `certificate.json`.
 
 ## Statement
@@ -46,8 +45,9 @@ The first bound is smaller for gamma <= sqrt2 - 1, the second for gamma >= sqrt2
 take rS = m*, rL = m*/gamma <= 1/2. What remains is that no other pair of spheres overlaps. Here the Ca-B distance is
 sqrt(x*^2 + 1/2) = 0.73681 and rL + rS <= 0.70711, so Ca-B is not even touching at the optimum, and Ca is held by Ca-Ca contact.
 **This remaining step (every other pair in the infinite structure is at least as far apart as the listed constraints demand) is
-checked here by exhaustive enumeration of all pairs in a 5 x 5 x 5 block of cells, not by a written argument.** It is a finite
-check of an elementary geometric fact, and a short written argument would close it (open obligation below).
+proved in [ATTAINMENT.md](ATTAINMENT.md)** by classifying every pair and every integer translation (exact minimum distances
+d_CaCa = 1, d_CaB = sqrt((1/2 - h)^2 + 1/2), d_BB = min(sqrt2 h, 1 - 2h)). The exhaustive enumeration of all pairs in a 5 x 5 x 5
+block of cells, run by `make verify-cab6`, remains as a finite corroboration.
 
 *Value and window.* (4 pi/3)(1/8 + 6 rS^3) with rS = (sqrt2 - 1)/2 equals (pi/6)(30 sqrt2 - 41) exactly (sympy). The left window
 end solves (pi/6)(1 + 6 gamma^3) = pi/(3 sqrt2), i.e. gamma^3 = (sqrt2 - 1)/6. At the right end, with gamma^-3 = 4 + 7 sqrt2,
@@ -87,5 +87,4 @@ and title not verified).
 
 ## Open obligations
 
-* A written argument for the all-pairs non-overlap at the optimum (currently a finite check).
 * Independent human review (internal pre-publication review only so far).
