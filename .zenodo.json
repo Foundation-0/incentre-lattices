@@ -19,6 +19,6 @@
     "reproducible research"
   ],
   "license": "cc-by-4.0",
-  "notes": "Computation, proofs, checking and writing were carried out with AI assistance (Claude Opus 5.5 and other Claude models from Anthropic) under the author's direction; see CONTRIBUTORS.md.",
+  "notes": "Computation, proofs, checking and writing were carried out with AI assistance under the author's direction: Claude Opus 5.5 and other Claude models (Anthropic); GPT-6 (Codex), GPT-6.1 Sol and GPT-6 Luna (OpenAI) for the continuous fcc motion, the CaB6 attainment proof, the certificate registry, the literature audit, the research assessment and the October 2026 site update. See CONTRIBUTORS.md for which model did what.",
   "version": "2.0.0"
 }

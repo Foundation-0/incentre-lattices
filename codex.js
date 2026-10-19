@@ -181,7 +181,7 @@ CX.ease=t=>t<0?0:t>1?1:t*t*(3-2*t);
 function sign(){
   if(document.getElementById('sign'))return;
   const L=(u,t)=>'<a href="'+u+'" target="_blank" rel="noopener">'+t+'</a>';
-  document.body.appendChild(el('div',{id:'sign'},'Ahraz Arifuddin from '+L('https://digital.askaconsult.com','Aska Digital')+'<br>'+L('https://www.anthropic.com/claude','Claude Opus 5.5')+' from Anthropic'));
+  document.body.appendChild(el('div',{id:'sign'},'Ahraz Arifuddin from '+L('https://digital.askaconsult.com','Aska Digital')+'<br>with '+L('https://www.anthropic.com/claude','Claude')+' and '+L('https://openai.com/','GPT-6')+' &middot; '+L('https://github.com/Foundation-0/incentre-lattices/blob/main/CONTRIBUTORS.md','credits')));
 }
 
 function ready(){
