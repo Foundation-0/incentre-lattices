@@ -112,7 +112,7 @@
         "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1"
       },
       "prior_art": "NOT FOUND as a statement. Closest: ReO3 to VF3 a-a-a- tilt towards hcp anions (O'Keeffe and Hyde 1977; Glazer 1972); sequential-LP packing methods (Torquato and Jiao 2010). See autoresearch-fold/PRIOR-ART-FOLD.md.",
-      "statement": "In the 2x2x2 supercell (48 balls, 120 bars of length 2R, free lattice) there is a sampled path of 793 states from the open cab state, keeping every bar length and with no overlap, to an hcp packing of density pi/sqrt18; two further rigid layer slides (400 states) reach pure fcc. Both paths are accepted by two independent checkers.",
+      "statement": "In the 2x2x2 supercell (48 balls, 120 bars of length 2R, free lattice) there is a sampled path of 793 states from the open cab state, keeping every bar length and with no overlap, to an hcp packing of density pi/sqrt18; two further rigid layer slides (400 states) reach pure fcc. Both paths are accepted by two checkers written within the project (the locked checker and a separately written checker that does not import it).",
       "value": {
         "end_contacts_per_ball": 12,
         "end_density": "pi/sqrt(18)",

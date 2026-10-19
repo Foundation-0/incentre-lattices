@@ -88,7 +88,7 @@ Full notes in `autoresearch-fold/PRIOR-ART-FOLD.md` (opus novelty judgment, 2026
   its open cubic state to a close packing. Not the same as proven new. This label covers only the cab result. The corner-sharing version is KNOWN
   and textbook (next bullets).
 * **KNOWN, corner-sharing analogue**: in ReO3, rotating the octahedra alone reaches hcp of the anions (RhF3 type), at a rotation of 30 degrees
-  about <111>. Johnsson and Lemmens, "Crystallography and Chemistry of Perovskites", Handbook of Magnetism and Advanced Magnetic Materials (Wiley 2006),
+  about <111>. Johnsson and Lemmens, "Crystallography and Chemistry of Perovskites", Handbook of Magnetism and Advanced Magnetic Materials (Wiley 2007),
   doi:10.1002/9780470022184.hmm411, arXiv:cond-mat/0506606 (full text read): "The ReO3 structure type can be converted to a more dense packing by
   rotating the octahedra until a hexagonal close packing is obtained of the RhF3 type." Observed under pressure: Shan et al., arXiv:2304.09011,
   Natl. Sci. Rev. (2026), doi:10.1093/nsr/nwag425 (arXiv full text read): ReO3 reaches "a hexagonal close-packed arrangement at a rotation angle of 30
@@ -110,6 +110,10 @@ Full notes in `autoresearch-fold/PRIOR-ART-FOLD.md` (opus novelty judgment, 2026
 
 ## Open obligations
 
-* A certified (interval or analytic) path; a closed-form end state (space group, Wyckoff sites, hole pattern).
-* The minimal supercell (m = 1, 3), a monotone path, comparison nets (dia, sodalite, ReO3 with bars), connectivity of the set of close-packed end states.
+* A certified (interval or analytic) path for the stored m = 2 samples, and a certified path to hcp. An exact continuous motion to fcc now
+  exists at m = 1 and lifts to every m (`results/fold-continuous-fcc`, PROVEN, internal review only). The closed-form end states are done
+  (`results/fold-end-exact`); their space group, Wyckoff sites and hole pattern remain open.
+* m = 1 is done (`results/fold-m1`; every m in principle by the lift; no stored m = 3 path has been made). A monotone path to fcc exists
+  (sampled in `results/fold-m1`, proven in `results/fold-continuous-fcc`); a monotone path to hcp is open. Comparison nets (dia, sodalite,
+  ReO3 with bars); connectivity of the set of close-packed end states.
 * Review by someone outside the project; a third implementation of the checks.
