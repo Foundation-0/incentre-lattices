@@ -1,12 +1,13 @@
 # Maximal hard-sphere packing fraction of the CaB6 structure type
 
-Evidence label: **PROVEN (elementary upper-bound argument below); attainment and all-pairs non-overlap PROVEN (exact classification of every pair over the whole lattice, [ATTAINMENT.md](ATTAINMENT.md); referee-checked, an exact all-pairs check in Q(sqrt2) agreed); the finite replay (all pairs in a 5 x 5 x 5 block, 15 size ratios) corroborates it.** Replay: `make verify-cab6` (a few seconds; numpy, scipy, sympy). Certificate:
+Evidence label: **PROVEN (elementary upper-bound argument below); attainment and all-pairs non-overlap PROVEN (exact classification of every pair over the whole lattice, [ATTAINMENT.md](ATTAINMENT.md); referee-checked, an exact all-pairs check in Q(sqrt2) agreed); the finite replay (distances from one cell's B sites to all sites in a 5 x 5 x 5 block, 15 size ratios) corroborates it.** Replay: `make verify-cab6` (a few seconds; numpy, scipy, sympy). Certificate:
 `certificate.json`.
 
 ## Statement
 
 CaB6 has Ca on the 1a site (0,0,0) and B on the 6f sites (x, 1/2, 1/2) and permutations (space group Pm-3m). Put the lattice
-parameter a = 1. Hard spheres of radius rL sit on Ca and of radius rS on B; x and a are free; gamma = rS/rL. The packing fraction is
+parameter a = 1. Hard spheres of radius rL sit on Ca and of radius rS on B; x (taken in 0 < x < 1/2: x, -x and 1 - x give the
+same six sites, and x = 0, 1/2 make sites coincide) and a are free; gamma = rS/rL. The packing fraction is
 phi = (4 pi/3)(rL^3 + 6 rS^3).
 
 **Theorem.** The maximal packing fraction of the CaB6 type at size ratio gamma is
@@ -15,9 +16,9 @@ phi = (4 pi/3)(rL^3 + 6 rS^3).
     phi_max(gamma) = (pi/6)(sqrt2 - 1)^3 (6 + gamma^-3)     for gamma >= sqrt2 - 1.
 
 The global maximum is **phi* = (pi/6)(30 sqrt2 - 41) = 0.746865**, attained only at gamma = sqrt2 - 1, x = (sqrt2 - 1)/2 (equivalently
-the B offset h = 1 - sqrt2/2 = 0.2929 from the octahedron centre), a = 2 rL. There the Ca spheres touch each other and each B sphere
-touches five B spheres, but Ca and B do **not** touch: d(Ca,B) = 0.73681 a > rL + rS = 0.70711 a (gap 0.0297 a). Moreover
-phi_max(gamma) beats fcc, pi/(3 sqrt2) = 0.740480, exactly when
+the B offset h = 1 - sqrt2/2 = 0.2929 from the octahedron centre), a = 2 rL, unique up to x -> 1 - x and the cubic lattice
+symmetries. There the Ca spheres touch each other and each B sphere touches five B spheres, but Ca and B do **not** touch:
+d(Ca,B) = 0.73681 a > rL + rS = 0.70711 a (gap 0.0297 a). Moreover phi_max(gamma) beats fcc, pi/(3 sqrt2) = 0.740480, exactly when
 
     ((sqrt2 - 1)/6)^(1/3) = 0.41023 < gamma < (4 + 7 sqrt2)^(-1/3) = 0.41591,
 
@@ -46,24 +47,29 @@ take rS = m*, rL = m*/gamma <= 1/2. What remains is that no other pair of sphere
 sqrt(x*^2 + 1/2) = 0.73681 and rL + rS <= 0.70711, so Ca-B is not even touching at the optimum, and Ca is held by Ca-Ca contact.
 **This remaining step (every other pair in the infinite structure is at least as far apart as the listed constraints demand) is
 proved in [ATTAINMENT.md](ATTAINMENT.md)** by classifying every pair and every integer translation (exact minimum distances
-d_CaCa = 1, d_CaB = sqrt((1/2 - h)^2 + 1/2), d_BB = min(sqrt2 h, 1 - 2h)). The exhaustive enumeration of all pairs in a 5 x 5 x 5
-block of cells, run by `make verify-cab6`, remains as a finite corroboration.
+d_CaCa = 1, d_CaB = sqrt((1/2 - h)^2 + 1/2), d_BB = min(sqrt2 h, 1 - 2h)). The enumeration of the distances from the six B sites
+of one cell to every Ca and B site in a 5 x 5 x 5 block of cells, run by `make verify-cab6`, remains as a finite corroboration.
 
 *Value and window.* (4 pi/3)(1/8 + 6 rS^3) with rS = (sqrt2 - 1)/2 equals (pi/6)(30 sqrt2 - 41) exactly (sympy). The left window
 end solves (pi/6)(1 + 6 gamma^3) = pi/(3 sqrt2), i.e. gamma^3 = (sqrt2 - 1)/6. At the right end, with gamma^-3 = 4 + 7 sqrt2,
 (sqrt2 - 1)^3 = 5 sqrt2 - 7 and (5 sqrt2 - 7)(10 + 7 sqrt2) = sqrt2, so (pi/6) sqrt2 = pi/(3 sqrt2). Both verified symbolically. QED
 
 **Corrections recorded during internal review** (they are the reason the statement above reads as it does): in the Wyckoff
-convention B at (x, 1/2, 1/2), x = (sqrt2 - 1)/2 = 0.2071 is the distance from the Ca corner. As an offset h from the octahedron centre
-the equal-bond value is h = 1 - sqrt2/2 = 0.2929 (at h = 0.2071 the intra- and inter-octahedron B-B distances are 0.293 and
-0.586). And "Ca touches B" is false (above). Replay control 6 and control 5 reject these two misstatements.
+convention B at (x, 1/2, 1/2), x = (sqrt2 - 1)/2 = 0.2071 is the coordinate of B along its axis, with the origin at the Ca corner (its
+distance from the cell face through that corner, half the B-B bond between octahedra; the Ca-B distance itself is
+sqrt(x^2 + 1/2) = 0.7368). As an offset h from the octahedron centre the equal-bond value is h = 1 - sqrt2/2 = 0.2929 (at
+h = 0.2071 the intra- and inter-octahedron B-B distances are 0.293 and 0.586). And "Ca touches B" is false (above). Replay
+control 6 and control 5 reject these two misstatements.
 
 ## What the replay adds (VERIFIED)
 
 * Exact (sympy): the closed form, the optimum, the gap, both window ends, the NaCl value.
 * Brute force (numpy, scipy): for each gamma in a grid of 15 ratios (0.1 to 1.5, including sqrt2 - 1 and both sides of the window), maximise
-  phi over h (bounded scalar minimisation on ten sub-intervals plus the exact optimum) with rL set by ALL pair distances in the
-  5 x 5 x 5 block. The maximum difference from the closed form is below 1e-9.
+  phi over h (bounded scalar minimisation on ten sub-intervals plus the exact optimum) with rL set by the distances from the six B
+  sites of one cell to every Ca and B site in a 5 x 5 x 5 block (Ca-Ca taken as 1). The maximum difference from the closed form is
+  below 1e-9. Over h, the bounded search alone agrees with the closed form to 1e-5; the value at the claimed optimum h* agrees to
+  1e-9 (internal audit rerun of the search without h*; the replay does not print the two separately). So the 1e-9 agreement
+  corroborates the value at h*; that no other h does better is corroborated only to about 1e-5.
 * Must-fail controls: a wrong constant, the wrong branch, gamma = 0.40 and 0.42 claimed to beat fcc, "Ca touches B", and the wrong
   Wyckoff reading of x.
 

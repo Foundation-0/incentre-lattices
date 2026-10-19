@@ -58,7 +58,7 @@ Known limits: floating-point LP at 1e-6; the families satisfying H1 or H2 are no
 | Claim | Label | Checked by |
 |---|---|---|
 | phi_max(gamma) as a two-branch closed form; maximum (pi/6)(30 sqrt2 - 41) at gamma = sqrt2 - 1; Ca held by Ca-Ca, Ca-B not touching; window 0.41023 < gamma < 0.41591 | PROVEN upper bound (`PROOF.md`); exact values VERIFIED symbolically | sympy |
-| Attainment and no other overlap | PROVEN (`ATTAINMENT.md`, exact all-pairs classification) | corroborated by `cab6_packing.py`: all pairs in a 5 x 5 x 5 block, 15 size ratios, agreement with the closed form to 1e-9 |
+| Attainment and no other overlap | PROVEN (`ATTAINMENT.md`, exact all-pairs classification) | corroborated by `cab6_packing.py`: distances from one cell's B sites to all sites in a 5 x 5 x 5 block, 15 size ratios; value at h* equal to the closed form to 1e-9, bounded search over h within 1e-5 |
 | Controls | must be rejected | wrong constant, wrong branch, gamma = 0.40 and 0.42 beating fcc, "Ca touches B", wrong Wyckoff reading of x |
 
 Known limits: the model has one free coordinate and the cubic lattice only.
