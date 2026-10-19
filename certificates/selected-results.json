@@ -3,12 +3,14 @@
   "results": [
     {
       "certificate": "results/rigidity-nd/certificate.json",
-      "certificate_sha256": "feb189ba2f81eb2ee4a9a8cf057752ae9c3a6c3f74986f7f5c99d030fd36f844",
+      "certificate_sha256": "92e5c971f6cce9a5ee98508382704a23f5a288c814988d6f7897bc74c3a9bf26",
       "evidence_label": "PROVEN for all n >= 3 (written proof, results/rigidity-nd/PROOF.md); VERIFIED (finite check) for n = 2..8",
       "id": "rigidity-nd",
       "input_hashes": {
         "results/rigidity-nd/proof_steps.py": "4f7bed89024d02133291542327b09e5ce8f410a41daf4bb783f6a396190604e0",
-        "results/rigidity-nd/rigidity_nd.py": "4a113d40e26c871441e4a8d5bf086950af1810d43962beb67e25d8ac028dccb2"
+        "results/rigidity-nd/rigidity_nd.py": "aa2fdd817e420be26b4764be2da7bcab6d6ab54ed77c9da1bb03f7d376e779f1",
+        "results/rigidity-nd/verify.py": "d8caa93c1284fd778a14d9f7f880c337601e153131effda7c1377dd778a8ecc1",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
       },
       "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The framework is the same periodic graph as Borcea and Streinu 2021 Section 7 at a different bar length; the counts hold for any 0 < t < 1. The n-dimensional counts are likely routine (priority unresolved); the unit-spring C11/C12 = (n-1)^2 and nu_100 are the strongest remaining candidate (not found in Borcea and Streinu Section 7 or Goodwin's abstract).",
       "statement": "The contact framework of the truncated n-cubic honeycomb (2n balls per cell, 2n^2-n bars of one length, dots at the pyramid incentres) has, at a generic wavevector, exactly n(n-1)/2 zero modes (the cluster rotations) and n(n-3)/2 self-stresses per cell, its cross-polytope cell is infinitesimally rigid for n >= 3, and with unit springs and full internal relaxation C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), all shear moduli vanish, nu_100 = 1/(n^2-n-1).",

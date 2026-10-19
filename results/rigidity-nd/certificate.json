@@ -7,7 +7,8 @@
     "generic_q_zero_modes_per_cell": "n(n-1)/2",
     "nu100": "1/(n^2-n-1)",
     "q0_self_stresses": "n(n-1)/2",
-    "q0_zero_modes": "n(n+1)/2"
+    "q0_zero_modes": "n(n+1)/2",
+    "scope": "n >= 3; n = 2 values in counts_by_n and elastic_by_n"
   },
   "counts_by_n": [
     {
@@ -516,18 +517,20 @@
   ],
   "evidence": {
     "proven": "all n >= 3 (written proof, PROOF.md)",
-    "verified": "n = 2..8 (finite numerical rank checks)"
+    "verified": "counts n = 3..8; n = 2 counts separately; elastic n = 2..8 (finite numerical checks)"
   },
   "inputs": {
     "results/rigidity-nd/proof_steps.py": "4f7bed89024d02133291542327b09e5ce8f410a41daf4bb783f6a396190604e0",
-    "results/rigidity-nd/rigidity_nd.py": "4a113d40e26c871441e4a8d5bf086950af1810d43962beb67e25d8ac028dccb2"
+    "results/rigidity-nd/rigidity_nd.py": "aa2fdd817e420be26b4764be2da7bcab6d6ab54ed77c9da1bb03f7d376e779f1",
+    "results/rigidity-nd/verify.py": "d8caa93c1284fd778a14d9f7f880c337601e153131effda7c1377dd778a8ecc1",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
   },
   "must_fail_controls_rejected": [
-    "n >= 3 generic counts claimed at n = 2",
-    "wrong Poisson formula 1/(n^2 - n) at n = 4",
-    "wrong C11/C12 ratio n^2 at n = 4",
-    "generic zero-mode count unchanged after deleting a cross bar (n = 5; cross bars carry no generic-q stress)",
-    "wrong stress-basis dimension n(n-3)/2 + 1 at n = 5"
+    "n >= 3 generic zero-mode count n(n-1)/2 = 1 claimed at n = 2",
+    "C11 = 4(n-1)^2/(n^2 2^n) without internal relaxation (P = I) at n = 4",
+    "q = 0 counts unchanged after moving dot p(1,+) by 0.05 along e_2 (n = 4)",
+    "plane q_1 = 0 counts unchanged after moving dot p(1,+) by 0.05 along e_2 (n = 4)",
+    "generic zero-mode count unchanged after deleting a cross bar (n = 5; cross bars carry no generic-q stress)"
   ],
   "numerical_tolerances": {
     "elastic": 1e-12,
