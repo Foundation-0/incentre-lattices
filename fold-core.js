@@ -14,8 +14,7 @@ function T(M){return M[0].map((_,j)=>M.map(r=>r[j]))}
 function mv(M,v){return M.map(r=>r.reduce((a,x,i)=>a+x*v[i],0))}
 /* steps: lattice spacing along each axis. returns null if the mechanism cannot close at this angle */
 function steps(n,Rm,t){
-  const L=2-2*t,Rt=T(Rm),S=[];
-  for(let j=0;j<n;j++)S.push(Rm.map((r,i)=>t*(r[j]+Rt[i][j])));   // S[j][i]=t(R+R^T)[i][j]... store as columns
+  const L=2-2*t;
   // column i of t(R+R^T): s_i[k]=t*(R[k][i]+R[i][k])
   const al=[];
   for(let i=0;i<n;i++){
@@ -49,7 +48,8 @@ function build(n,Rm,t,half){
     for(let a=0;a<ids.length;a++)for(let b=a+1;b<ids.length;b++)if(ids[a][0]!==ids[b][0])bonds.push([ids[a][1],ids[b][1],'in']);
     for(let i=0;i<n;i++){const c2=c.slice();c2[i]+=1;const k2=c2.join(',')+'|'+i+'|-1';if(k2 in idx)bonds.push([idx[c.join(',')+'|'+i+'|1'],idx[k2],'x'])}
   }
-  return {n,al,t,L,rho:L/2,balls,clusters,bonds,idx,half};
+  // ball radius: half the shorter bar, sqrt2 t inside a cluster or L across (as lock2 in results/fold-2d/fold2d.py)
+  return {n,al,t,L,rho:Math.min(S2*t,L)/2,balls,clusters,bonds,idx,half};
 }
 function dist(a,b){let s=0;for(let k=0;k<a.length;k++)s+=(a[k]-b[k])*(a[k]-b[k]);return Math.sqrt(s)}
 /* contacts of the central cluster's balls (ball-ball distance equals 2*rho within tol), and the density */

@@ -154,7 +154,11 @@ const C=CX.C,TAU=CX.TAU,S2=Math.SQRT2,R=S2-1,TS=2-S2,D2R=Math.PI/180,F=FOLD;
 const $=id=>document.getElementById(id);
 /* ---------- fig 7: 2D fold ---------- */
 const cv7=$('cv7');
-const st7={deg:+(CX.Q.get('deg')||0),t:+(CX.Q.get('t')||TS),play:CX.Q.get('play')==='1',dir:1,cache:null,key:'',ghost:null};
+// end of the fold: 45 deg for t >= 2-sqrt2; below it the +x balls of vertically adjacent squares, a - 2t sin(theta) apart,
+// reach the contact distance sqrt2 t later (as lock2 in results/fold-2d/fold2d.py)
+const max7=t=>t<TS?Math.acos((S2*t-(2-2*t))/(2*S2*t))/D2R-45:45;
+const snap7=t=>Math.abs(t-TS)<1e-4?TS:t;   // a truncated URL value of 2-sqrt2 means the incentre
+const st7={deg:+(CX.Q.get('deg')||0),t:snap7(+(CX.Q.get('t')||TS)),play:CX.Q.get('play')==='1',dir:1,cache:null,key:'',ghost:null};
 function state7(){
   const key=st7.deg+'|'+st7.t;if(st7.key!==key){st7.key=key;
     const stt=F.build(2,F.rot2(st7.deg*D2R),st7.t,4);st7.cache={st:stt,an:F.analyse(stt,1e-9)};
@@ -164,7 +168,7 @@ function state7(){
   return st7.cache;
 }
 const fig7=CX.canvas(cv7,function(ctx,W,H,t,dt){
-  if(st7.play){st7.deg+=st7.dir*dt*7;if(st7.deg>=45){st7.deg=45;st7.dir=-1}if(st7.deg<=0){st7.deg=0;st7.dir=1}$('s7').value=st7.deg}
+  if(st7.play){const mx=max7(st7.t);st7.deg+=st7.dir*dt*7;if(st7.deg>=mx){st7.deg=mx;st7.dir=-1}if(st7.deg<=0){st7.deg=0;st7.dir=1}$('s7').value=st7.deg}
   ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
   const {st,an,pairs}=state7();
   if(!st7.ghost||st7.ghost.t!==st7.t)st7.ghost={t:st7.t,st:F.build(2,F.rot2(0),st7.t,4)};
@@ -205,13 +209,14 @@ function upd7(an,lock){
     ['bar in cluster √2 t',(S2*t).toFixed(4)],['bar across 2−2t',L.toFixed(4)],['equal at end?',atInc?'yes: t is the incentre':'no, two lengths',atInc?'ok':'warn']]);
   $('s7v').textContent=st7.deg.toFixed(2);$('t7v').textContent=t.toFixed(4);$('b7play').classList.toggle('on',st7.play);
 }
+function lim7(){const mx=max7(st7.t);$('s7').max=mx;st7.deg=Math.min(st7.deg,mx);$('s7').value=st7.deg;$('b7end').textContent='LOCK '+(mx===45?'45':mx.toFixed(2))+'°'}
 $('s7').oninput=e=>{st7.deg=+e.target.value;st7.play=false};
-$('t7').oninput=e=>{st7.t=+e.target.value;st7.play=false};
+$('t7').oninput=e=>{st7.t=+e.target.value;st7.play=false;lim7()};
 $('b7play').onclick=()=>{st7.play=!st7.play};
-$('b7end').onclick=()=>{st7.deg=45;st7.play=false;$('s7').value=45};
+$('b7end').onclick=()=>{st7.deg=max7(st7.t);st7.play=false;$('s7').value=st7.deg};
 $('b7zero').onclick=()=>{st7.deg=0;st7.play=false;$('s7').value=0};
-$('b7inc').onclick=()=>{st7.t=TS;$('t7').value=TS};
-$('s7').value=st7.deg;$('t7').value=st7.t;
+$('b7inc').onclick=()=>{st7.t=TS;$('t7').value=TS;lim7()};
+$('t7').value=st7.t;lim7();
 
 /* ---------- fig 8: 3D fold ---------- */
 const cv8=$('cv8'),cam=CX.cam3();cam.yaw=0.6;cam.pitch=0.4;
