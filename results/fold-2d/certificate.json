@@ -10,13 +10,17 @@
     "linear_strain_at_pi_over_4": "-(sqrt(2)-1)^2"
   },
   "inputs": {
-    "results/fold-2d/fold2d.py": "52d508dea82c9dc05ecc0d7c88d47baa4ae48430c3adc5ad8b8071de6f582200"
+    "results/fold-2d/fold2d.py": "2cc380fda79206cc1380020eb70632e367447af602a805cfae8c78fe55fbad43",
+    "results/fold-2d/verify.py": "030946dae70fab50df6c613aa5aa687067748bedbb3ee1a56f5d35a82ad01cb6",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
   },
   "model": "squares of 4 dots at +-c e_i in cells of side 2; cross bars along the axes; balls radius R = sqrt2 - 1 (c = 2 - sqrt2)",
   "must_fail_controls_rejected": [
     "wrong gap formula cos(theta - pi/4)",
     "lock at 45 degrees claimed for c = 0.5",
+    "c = 0.5 claimed to lock at 56.95 degrees on the 0.01-degree grid",
     "c = 0.62 claimed to end in a single-distance square lattice",
+    "c = 0.62 claimed to end with three contacts at 2r",
     "final density claimed to be pi/3 instead of pi/4"
   ],
   "result": "fold-2d",
@@ -25,6 +29,7 @@
       "c": 0.45,
       "four_contacts_at_2r": false,
       "lock_angle_deg_0.01_grid": 66.37,
+      "lock_angle_deg_closed_form": 66.3609,
       "nearest_over_2r": [
         0.9997,
         1.0,
@@ -37,6 +42,7 @@
       "c": 0.5,
       "four_contacts_at_2r": false,
       "lock_angle_deg_0.01_grid": 56.96,
+      "lock_angle_deg_closed_form": 56.9529,
       "nearest_over_2r": [
         0.9998,
         1.0,
@@ -49,6 +55,7 @@
       "c": 0.55,
       "four_contacts_at_2r": false,
       "lock_angle_deg_0.01_grid": 49.51,
+      "lock_angle_deg_closed_form": 49.5048,
       "nearest_over_2r": [
         0.9998,
         1.0,

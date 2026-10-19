@@ -68,11 +68,13 @@
     },
     {
       "certificate": "results/fold-2d/certificate.json",
-      "certificate_sha256": "d39ea9a2b0908402745bc2f58b9f72515ac2416d5d82bcd0ef2f18d272c4050e",
+      "certificate_sha256": "a9f54da05c6d35e2f6835689858c558f3dca956af3016924f1cd96dca4b77d8c",
       "evidence_label": "KNOWN linkage; corollary numbers PROVEN (exact, sympy); uniqueness of the incentre among c VERIFIED on a scan only",
       "id": "fold-2d",
       "input_hashes": {
-        "results/fold-2d/fold2d.py": "52d508dea82c9dc05ecc0d7c88d47baa4ae48430c3adc5ad8b8071de6f582200"
+        "results/fold-2d/fold2d.py": "2cc380fda79206cc1380020eb70632e367447af602a805cfae8c78fe55fbad43",
+        "results/fold-2d/verify.py": "030946dae70fab50df6c613aa5aa687067748bedbb3ee1a56f5d35a82ad01cb6",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
       },
       "prior_art": "KNOWN: Flores (Hinged tilings) crediting Stuart (1963); rotating squares, Grima and Evans (2000). The ball-packing numbers are trivial corollaries.",
       "statement": "The 4.8.8 hinged-squares linkage read as a ball framework: along the symmetric fold the period is L = 2R + 2c cos(theta), the first new contact is at theta = pi/4 for the incentre c = 2-sqrt2, where L = 4R, the linear strain is -(sqrt2-1)^2 and the density rises from pi(sqrt2-1)^2 = 0.5390 to pi/4.",

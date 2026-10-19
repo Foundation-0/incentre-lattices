@@ -4,9 +4,12 @@
 Exact (sympy): gap(theta) = 2 sqrt2 c cos(theta + pi/4), first contact at pi/4, L(pi/4) = 4R,
 strain -R^2, density pi(sqrt2-1)^2 -> pi/4.  Numerical (numpy): lock angle and nearest
 distances for dots placed at +-c e_i for several c; only c = 2 - sqrt2 ends in a square lattice
-with a single contact distance (checked on a scan, not proved for all c).
-Must-fail controls: wrong gap formula, wrong lock angle, wrong end density, and a non-incentre c claimed to end in a
-single-distance square lattice are all rejected.  Writes certificate.json.  Usage: python verify.py
+with a single contact distance (checked on a scan, not proved for all c).  For c < 2 - sqrt2 the lock
+must be the first 0.01-degree grid point at or above the closed-form first contact of the closing pair,
+with three contacts at 2r; for c > 2 - sqrt2 it must be 45 degrees.
+Must-fail controls: wrong gap formula, wrong lock angle (45 degrees, and 56.95 degrees on the grid, for c = 0.5), wrong end
+density, a non-incentre c claimed to end in a single-distance square lattice, and c = 0.62 claimed to end with three
+contacts are all rejected.  Writes certificate.json.  Usage: python verify.py
 """
 import pathlib
 import sys
@@ -28,6 +31,23 @@ def single_distance_square(nn):
     return bool(np.all(np.abs(nn[:4] - 1) < 1e-3))
 
 
+def three_contacts(nn):
+    """Three nearest neighbours at 2r and the fourth clearly farther (the lock for c < 2 - sqrt2)."""
+    return bool(np.all(np.abs(nn[:3] - 1) < 1e-3) and nn[3] > 1.1)
+
+
+def first_contact_deg(cc):
+    """Closed-form first contact (degrees) for c < 2 - sqrt2, where 2r = sqrt2 c: the +c e_1 dots of vertically
+    adjacent squares are 2 - 2c + 2 sqrt2 c cos(theta + pi/4) apart (internal audit derivation, pending review)."""
+    s = np.sqrt(2) * cc
+    return float(np.degrees(np.arccos((s - (2 - 2 * cc)) / (2 * s)) - np.pi / 4))
+
+
+def at_angle(t, deg):
+    """The lock angle t (degrees, unrounded) is the grid point deg."""
+    return abs(t - deg) < 1e-9
+
+
 def main():
     f = eng.exact_facts()
     claim = 2 * sp.sqrt(2) * eng.c_ * sp.cos(eng.th + sp.pi / 4)
@@ -38,9 +58,18 @@ def main():
     scan = []
     for cc in SCAN:
         t, nn = eng.lock2(cc)
-        scan.append({"c": certlib.sig(cc, 6), "lock_angle_deg_0.01_grid": round(t, 2),
-                     "nearest_over_2r": [certlib.sig(x, 4) for x in nn],
-                     "four_contacts_at_2r": single_distance_square(nn)})
+        row = {"c": certlib.sig(cc, 6), "lock_angle_deg_0.01_grid": round(t, 2),
+               "nearest_over_2r": [certlib.sig(x, 4) for x in nn],
+               "four_contacts_at_2r": single_distance_square(nn)}
+        if cc < eng.c - 1e-5:
+            tc = first_contact_deg(cc)
+            certlib.require(at_angle(t, np.ceil(tc * 100) / 100),
+                            f"c = {cc}: lock {t} is not the first 0.01-degree grid point at or above {tc}")
+            certlib.require(three_contacts(nn), f"c = {cc}: three contacts at 2r at the lock")
+            row["lock_angle_deg_closed_form"] = certlib.sig(tc, 6)
+        elif cc > eng.c + 1e-5:
+            certlib.require(at_angle(t, 45.0), f"c = {cc}: lock at 45 degrees")
+        scan.append(row)
     inc = [s for s in scan if abs(s["c"] - eng.c) < 1e-5][0]
     certlib.require(inc["lock_angle_deg_0.01_grid"] == 45.0 and inc["four_contacts_at_2r"], "incentre lock")
     certlib.require(all(not s["four_contacts_at_2r"] for s in scan if s is not inc), "other c must not be a single-distance square lattice")
@@ -50,8 +79,10 @@ def main():
     certlib.must_fail("wrong gap formula cos(theta - pi/4)", sp.simplify(f["gap"] - wrong) == 0, log)
     t05, _ = eng.lock2(0.5)
     certlib.must_fail("lock at 45 degrees claimed for c = 0.5", abs(t05 - 45.0) < 0.05, log)
+    certlib.must_fail("c = 0.5 claimed to lock at 56.95 degrees on the 0.01-degree grid", at_angle(t05, 56.95), log)
     _, nn62 = eng.lock2(0.62)
     certlib.must_fail("c = 0.62 claimed to end in a single-distance square lattice", single_distance_square(nn62), log)
+    certlib.must_fail("c = 0.62 claimed to end with three contacts at 2r", three_contacts(nn62), log)
     certlib.must_fail("final density claimed to be pi/3 instead of pi/4", sp.simplify(f["density_end"] - sp.pi / 3) == 0, log)
 
     cert = {
@@ -69,7 +100,7 @@ def main():
         },
         "scan_over_c": scan,
         "must_fail_controls_rejected": log,
-        "inputs": certlib.inputs(HERE / "fold2d.py"),
+        "inputs": certlib.inputs(HERE / "fold2d.py", HERE / "verify.py", HERE.parents[1] / "tools" / "certlib.py"),
     }
     certlib.write_json(HERE / "certificate.json", cert)
     print(f"fold-2d: OK ({len(scan)} values of c scanned; {len(log)} controls rejected)")
