@@ -1,6 +1,7 @@
 # Rigidity and elasticity of the n-dimensional contact framework
 
-Evidence label: **PROVEN for every n >= 3 (written proof below); VERIFIED (finite check) for n = 2, ..., 8.**
+Evidence label: **PROVEN for every n >= 3 (written proof below); VERIFIED (finite check) for n = 3, ..., 8, and for the
+elastic constants also at n = 2 (the n = 2 counts are different and are recorded separately).**
 Replay: `make verify-rigidity` (a few seconds; numpy and sympy). Certificate: `certificate.json`.
 
 ## Statement
@@ -31,14 +32,16 @@ cross-polytope) and n *cross* bars X_i joining neighbouring cells. Each ball tou
   tension tau_i = sqrt2 (sum over j of w_ij) on X_i.
 * (c) Give every bar unit spring constant and relax all joints under a homogeneous strain eps. The energy per unit volume is
   W(eps) = 2^-n [ (2(n-1)^2/n^2) sum_i eps_ii^2 + (2/n^2) sum_{i != j} eps_ii eps_jj ], independent of the off-diagonal
-  strains. So C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), every shear modulus is 0, C11/C12 = (n-1)^2, and the Poisson
-  ratio for uniaxial stress along a cube axis is **nu_100 = 1/(n^2 - n - 1)**: 1/5, 1/11, 1/19, 1/29, 1/41, 1/55 for n = 3..8.
+  strains. So C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), C44 = 0 (every stiffness component involving an
+  off-diagonal strain eps_ij, i != j, vanishes), C11/C12 = (n-1)^2, and the Poisson ratio for uniaxial stress along a
+  cube axis is **nu_100 = 1/(n^2 - n - 1)**: 1/5, 1/11, 1/19, 1/29, 1/41, 1/55 for n = 3..8. The other cubic shear
+  modulus is not zero: (C11 - C12)/2 = 2((n-1)^2 - 1)/(n^2 2^n) = 2(n-2)/(n 2^n) > 0 for n >= 3.
 
 Scope. Bars are ideal central-force springs, the framework is the infinite periodic one with one-cell periodic strain, and
 "zero mode" means a first-order (infinitesimal) flex. Nothing here is a statement about finite motions or real materials.
-The counting statements use only bar directions, so they hold for dots at +-t e_i for any 0 < t < 1. The elastic
-formula with "identical bars" needs t = c (otherwise cross bars have length 2 - 2t and c + R = 1 is replaced by
-t + (1 - t) = 1; the formula stays the same).
+The counting statements use only bar directions, so they hold for dots at +-t e_i for any 0 < t < 1. With unit springs
+the elastic formula holds for every 0 < t < 1 (cross bars then have length 2 - 2t, and c + R = 1 is replaced by
+t + (1 - t) = 1). Only at t = c do all bars have the same length, so that unit springs mean identical bars.
 
 By rank-nullity, (zero modes) - (self-stresses) = 2n^2 - (2n^2 - n) = n at every q. This is the periodic Maxwell-Calladine
 count, so each number below determines the other.
@@ -119,8 +122,9 @@ zero. So it is enough to relax over one-cell-periodic displacements. By Lemma 1 
     E = sum over i<j of [ (c(eps_ii + eps_jj) + kappa_ij)^2 + alpha_ij^2 + beta_ij^2 + (2c eps_ij + sigma_ij)^2 ] + 2 sum_i (R eps_ii - b_i^i)^2.
 
 The a-variables appear only in alpha, beta; choose a = 0. The off-diagonal b_i^j appear only in sigma_ij, and each sigma_ij
-can be chosen freely: take sigma_ij = -2c eps_ij. This removes every off-diagonal strain from the energy, so all shear
-moduli vanish. (The relaxed motion keeps each cross-polytope undeformed; shear is taken up by first-order rotations.)
+can be chosen freely: take sigma_ij = -2c eps_ij. This removes every off-diagonal strain from the energy, so C44 = 0 and
+every stiffness component involving an off-diagonal strain vanishes. (The relaxed motion keeps each cross-polytope
+undeformed; shear is taken up by first-order rotations.)
 
 Put e_i = eps_ii, x_i = b_i^i and y_i = x_i + c e_i. Using c + R = 1 the remaining energy is
 
@@ -135,20 +139,22 @@ Divide by the cell volume 2^n to get W. For uniaxial stress along e_1 the condit
 C12 e_1 + (C11 + (n-2) C12) e_perp = 0, so nu_100 = C12/(C11 + (n-2) C12). With C11 + (n-2) C12 = (4/(n^2 2^n)) ((n-1)^2 + n - 2)
 this is 1/(n^2 - n - 1). QED (c)
 
-**The case n = 2.** The proof of (c) does not use n >= 3, so W holds for n = 2: C11 = C12 = 1/4, all shear moduli vanish,
-only the bulk modulus is non-zero, and nu_100 = 1 formally. The counts in (a) and (b) change: the kappa-block of K_2 is the
-single condition b_1^1 + b_2^2 = 0, so the four-bar square has one internal flex, which couples to the translations through
-the cross bars at generic q. Result: 2 zero modes and 0 self-stresses at generic q, 3 and 1 at q = 0. The replay confirms
-exactly these numbers.
+**The case n = 2.** The proof of (c) does not use n >= 3, so W holds for n = 2: C11 = C12 = 1/4 and C44 = 0, so
+both cubic shear moduli C44 and (C11 - C12)/2 vanish, only the bulk modulus is non-zero, and nu_100 = 1 formally. The
+counts in (a) and (b) change: the kappa-block of K_2 is the single condition b_1^1 + b_2^2 = 0, so the four-bar square
+has one internal flex, which couples to the translations through the cross bars at generic q. Result: 2 zero modes and
+0 self-stresses at generic q, 3 and 1 at q = 0. The replay confirms exactly these numbers.
 
 ## What the replay adds (VERIFIED, n = 2..8)
 
 `rigidity_nd.py` builds the Bloch rigidity matrix and the spring-network elastic tensor directly from coordinates, without
-using the block decomposition. For each n = 2..8 (fixed seed) it checks: the counts at three random generic q, at q = 0 and
+using the block decomposition (fixed seed). For each n = 3..8 it checks: the counts at three random generic q, at q = 0 and
 on the planes q_1 = ... = q_k = 0; that the cross-polytope is rigid with n(n-3)/2 stresses; that the explicit stress basis
-spans the generic stresses; the explicit q = 0 stresses; that the generic zero modes span the cluster rotations; and the
-elastic constants (C11, C12 to 1e-12, shear and normal-shear coupling below 1e-12, nu_100 to 1e-10) for c = 2 - sqrt2 and
-c = 0.3, 0.75. `proof_steps.py` verifies Lemma 1, equation (*) and the minimisation symbolically (sympy) for n = 2..8.
+spans the generic stresses; the explicit q = 0 stresses; and that the generic zero modes span the cluster rotations. For
+n = 2 it checks only the generic counts (2, 0) at the three random q and the q = 0 counts (3, 1); the n = 2 plane and
+cross-polytope counts are recorded in the certificate but not asserted. For each n = 2..8 it checks the elastic constants
+(C11, C12 to 1e-12, shear and normal-shear coupling below 1e-12, nu_100 to 1e-10) for c = 2 - sqrt2 and c = 0.3, 0.75.
+`proof_steps.py` verifies Lemma 1, equation (*) and the minimisation symbolically (sympy) for n = 2..8.
 Must-fail controls: the n >= 3 counts at n = 2, a wrong Poisson formula, a wrong C11/C12 ratio, deleting a cross bar
 (which must add a zero mode), and a wrong stress-basis dimension are all rejected.
 
@@ -166,7 +172,11 @@ The source comparison, reading depths, elementary deductions and independent-rev
   the general symbol/phase-periodic machinery (Sections 2, 4, 5 read), not proof of priority for these exact formulas.
 * **The bridged cross-polytope family is prior art**: C. S. Borcea and I. Streinu, "Periodic tilings and auxetic deployments",
   Math. Mech. Solids 26(2), 199–216 (2021), doi:10.1177/1081286520948116, Section 7. Its periodicity and spring-model
-  comparison with this realization is detailed in LITERATURE.md: the same periodic graph at a different bar length (t = sqrt2 - 1 versus 2 - sqrt2); the counts here hold for any 0 < t < 1 and so cover it.
+  comparison with this realization is detailed in LITERATURE.md: the same infinite framework at a different bar length
+  (their dots at t = sqrt2 - 1, ours at 2 - sqrt2). They describe it with a periodicity lattice of two body orbits; the
+  per-cell counts here are for the finer lattice 2 Z^n (they hold for any 0 < t < 1). For an index-2 lattice the
+  generic-phase counts per cell double (n(n-1) zero modes, n(n-3) self-stresses), and the phase-0 count depends on the
+  sublattice (internal audit deduction in LITERATURE.md, pending review).
 * **Closest physical study of the cab framework, KNOWN**: L. Li, K. Refson and M. T. Dove, "The contribution of phonons to the thermal expansion of some
   simple cubic hexaboride structures: SmB6, CaB6, SrB6 and BaB6", Phys. Chem. Chem. Phys. 25, 10749 (2023), doi:10.1039/d3cp01306e (abstract read, full
   text not). DFT lattice dynamics focused on rigid unit modes involving rotations of the B6 octahedra, as in Zn(CN)2, Prussian blue and Si(NCN)2; it reports
@@ -185,5 +195,5 @@ The source comparison, reading depths, elementary deductions and independent-rev
 
 * Independent human review of the written proof (internal pre-publication review only so far; see `docs/review-ledger.md`).
 * A formal (Lean 4) check of the block identities for general n is an open track (`docs/formalization.md`).
-* Physical meaning: the elastic tensor is only positive semi-definite (zero shear moduli); real materials add angular
+* Physical meaning: the elastic tensor is only positive semi-definite (C44 = 0); real materials add angular
   stiffness.

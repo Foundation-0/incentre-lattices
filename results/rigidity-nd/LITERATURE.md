@@ -56,7 +56,7 @@ Mathematics and Mechanics of Solids **26**(2), 199–216 (2021; online 2020),
 Open PDF: <https://scholarworks.smith.edu/csc_facpubs/313> (Wayback copy of `viewcontent.cgi?article=1262&context=csc_facpubs`), read by a referee. Section 7 describes bridged cross-polytopes in arbitrary
 dimension, two body orbits, 2d bridges, nine deformation freedoms in 3D, and folding at bridge/edge ratio 2.
 
-**Assessment:** family-level novelty is withdrawn. It is the same graph: two orbits of regular cross-polytopes, 2d bars per body, any d. Their bars are twice the cross-polytope edge, that is dots at t = sqrt2 - 1; ours are at 2 - sqrt2. Our counts hold for any 0 < t < 1, so they cover it. Section 7 gives only the 3D count (nine degrees of freedom, citing Borcea, Streinu and Tanigawa) and a 3D folding sketch to a folded state, not a packing. It has no n-dependent flex counts, self-stresses, elastic constants or Poisson ratio. The n-dimensional counts are likely routine with existing machinery (priority unresolved). The unit-spring results C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate: not found in Section 7 or in Goodwin's abstract.
+**Assessment:** family-level novelty is withdrawn. It is the same infinite framework at a different bar length: regular cross-polytopes, 2d bars per body, any d. Their bars are twice the cross-polytope edge, that is dots at t = sqrt2 - 1; ours are at 2 - sqrt2. They describe it with a periodicity lattice of two body orbits; our per-cell counts are for the finer lattice 2 Z^n, with one body per cell, and hold for any 0 < t < 1. Per-cell counts depend on the periodicity lattice: for an index-2 lattice the generic-phase counts per cell double (n(n-1) zero modes, n(n-3) self-stresses), and the phase-0 count depends on the sublattice (see [below](#fixed-lattice-modes-versus-flexible-lattice-deformation); which sublattice Section 7 uses was not checked here). Section 7 gives only the 3D count (nine degrees of freedom, citing Borcea, Streinu and Tanigawa) and a 3D folding sketch to a folded state, not a packing. It has no n-dependent flex counts, self-stresses, elastic constants or Poisson ratio. The n-dimensional counts are likely routine with existing machinery (priority unresolved). The unit-spring results C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate: not found in Section 7 or in Goodwin's abstract.
 
 ### Li, Refson and Dove (2023): physical hexaborides
 
@@ -100,10 +100,10 @@ The elastic calculation requires finite stiffness of the internal edges as well 
 PROOF.md obtains, with `e_i = eps_ii`,
 
     E_min = 2(n-2)/n sum_i e_i^2 + 2/n^2 (sum_i e_i)^2,
-    C11 = 4(n-1)^2/(n^2 2^n),    C12 = 4/(n^2 2^n),    C_shear = 0.
+    C11 = 4(n-1)^2/(n^2 2^n),    C12 = 4/(n^2 2^n),    C44 = 0.
 
 These values follow from minimizing spring energy. Rigid-body kinematics alone does not supply finite `C11` or `C12`:
-it eliminates the internal distortions that carry some of that energy. With zero shear moduli the tensor is only
+it eliminates the internal distortions that carry some of that energy. With C44 = 0 the tensor is only
 positive semi-definite; `nu_100` describes normal strains under stress along a cube axis, not an isotropic material
 Poisson ratio or a measured property of a real compound.
 
@@ -112,6 +112,19 @@ Poisson ratio or a measured property of a real compound.
 A Bloch nullity with fixed period vectors is a different quantity from a periodic configuration-space dimension with
 variable lattice. The repository's [m = 1 fold](../fold-m1/PROOF.md) allows a flexible lattice and gives the three-dimensional
 first-order count 6. Borcea and Streinu's stated 9 must not be compared with the generic fixed-lattice Bloch count 3.
+
+Fixed-lattice counts per cell also depend on the periodicity lattice. A description with two body orbits uses an index-2
+sublattice of `2 Z^n`, and every such sublattice is `L' = {2m : eps . m even}` for a non-zero `eps` in `{0,1}^n`. A Bloch
+phase of `L'` lifts to two phases of `2 Z^n`, the second with `z_i` multiplied by `(-1)^(eps_i)`, and after a unitary
+change of basis of the displacements and of the bar stretches the rigidity matrix of one `L'`-cell (two bodies, `4n^2`
+coordinates, `4n^2 - 2n` bars) is the direct sum of the two `2 Z^n` matrices; this is the supercell counting by phase
+nullities noted above for Power's Section 5(b). For n >= 3, part (b) of PROOF.md then gives per `L'`-cell `n(n-1)` zero
+modes and `n(n-3)` self-stresses at a generic phase, and `n^2 + n - |eps|` zero modes and `n^2 - n - |eps|` self-stresses
+at phase 0, where `|eps|` is the number of ones in `eps`. For the checkerboard sublattice `eps = (1, ..., 1)` (fcc in 3D)
+this is `n^2` and `n(n-2)`. Which sublattice Section 7 uses was not checked against its text, so no phase-0 number is
+attributed to it here. This is an internal audit deduction (Claude, Anthropic, via Claude Code), pending review. A
+scratch computation from coordinates, outside the replay, agreed for n = 3, 4, 5, three sublattices and t = 2 - sqrt2,
+sqrt2 - 1 and 0.3.
 
 Here is conditional Maxwell bookkeeping for a body model with b body orbits and `nb` bridge orbits. Each body has
 `n(n+1)/2` infinitesimal rigid-motion variables; a variable lattice adds `n^2`. After removing overall translations and
@@ -135,9 +148,10 @@ Focused questions:
 
 1. Is the internal-rigidity/block proof complete for every n >= 3, including the explicit stress basis and the phase
    intersections where exactly k coordinates satisfy `z_i = 1`?
-2. The Section 7 graph is the same and only t differs, so our counts cover it. Do Goodwin's full text, Borcea–Streinu–Tanigawa or other periodic body-and-bar results already state the n-dimensional counts or the unit-spring C11/C12 and nu_100?
+2. Section 7 treats the same infinite framework with a different t, described with two body orbits per period; our
+   per-cell counts are for `2 Z^n`. Do Goodwin's full text, Borcea–Streinu–Tanigawa or other periodic body-and-bar results already state the n-dimensional counts or the unit-spring C11/C12 and nu_100?
 3. Is the homogeneous-strain relaxation and normalization correct for finite unit spring stiffness on **all** bars?
-   Are the zero shear moduli and axial Poisson formula stated with sufficient hypotheses?
+   Are C44 = 0 and the axial Poisson formula stated with sufficient hypotheses?
 4. Are these dimensional formulas already published, or routine consequences best presented as a worked example?
    Which exact citations should replace any remaining candidate-priority wording?
 
