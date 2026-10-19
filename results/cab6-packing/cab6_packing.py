@@ -1,4 +1,4 @@
-"""Theorem 3: maximal hard-sphere packing fraction of the CaB6 structure type.
+"""Theorem 4 (v2; Theorem 3 in v1): maximal hard-sphere packing fraction of the CaB6 structure type.
 
 Model (a = 1): Ca (radius rL) at the cube corners, B (radius rS) at (1/2,1/2,1/2) +- h e_i.
 Wyckoff: B at (x,1/2,1/2) with x = 1/2 - h.  gamma = rS/rL.
@@ -9,7 +9,8 @@ Claims checked:
                    = (pi/6)(sqrt2-1)^3 (6 + gamma^-3)  for gamma >= sqrt2 - 1 (checked up to gamma = 1.5);
   * phi > pi/(3 sqrt2) (fcc) iff ((sqrt2-1)/6)^(1/3) < gamma < (4 + 7 sqrt2)^(-1/3);
   * NaCl at the same gamma: pi(5 - 3 sqrt2)/3 = 0.7931 (so CaB6 is not the densest binary packing there).
-Independent check: brute-force maximisation over (h, scale) with ALL pair distances in a 5^3 block.
+Independent check: brute-force maximisation over (h, scale), with the distances from the six B sites of one
+cell to every Ca and B site in a 5^3 block (Ca-Ca taken as 1).
 Run: python cab6_packing.py
 """
 import itertools
@@ -36,8 +37,9 @@ print("check window ends: phi_left(lo) - fcc =", sp.N(sp.pi / 6 * (1 + 6 * lo **
 print("NaCl at gamma=sqrt2-1:", sp.nsimplify(sp.simplify(sp.pi / (3 * s2) * (1 + (s2 - 1) ** 3))), "=",
       sp.N(sp.pi / (3 * s2) * (1 + (s2 - 1) ** 3), 6), "; fcc", sp.N(sp.pi / (3 * s2), 6))
 
-# ---------------- brute force with every pair in a block ----------------
+# ---------------- brute force: one cell's B sites against every site in a block ----------------
 shifts = np.array(list(itertools.product(range(-2, 3), repeat=3)), float)
+I0 = int(np.flatnonzero((shifts == 0).all(axis=1))[0])   # index of the zero shift
 
 
 def sites(hh):
@@ -49,14 +51,16 @@ def sites(hh):
 
 
 def rL_max(hh, g):
-    """largest rL (a = 1) with rS = g rL and no overlaps, over all pairs in a 5^3 block."""
+    """largest rL (a = 1) with rS = g rL and no overlaps: Ca-Ca at distance 1, and the six B sites of one cell
+    against every Ca and B site in a 5^3 block."""
     B = sites(hh)
     allB = (B[None] + shifts[:, None]).reshape(-1, 3)
     Ca = shifts
     lim = [0.5]  # Ca-Ca, nearest distance 1
     dCB = np.linalg.norm(B[:, None] - Ca[None], axis=2).min()
     lim.append(dCB / (1 + g))
-    D = np.linalg.norm(B[:, None] - allB[None], axis=2); D[D < 1e-12] = np.inf
+    D = np.linalg.norm(B[:, None] - allB[None], axis=2)
+    D[np.arange(6), I0 * 6 + np.arange(6)] = np.inf   # drop only each site's distance to itself; coincident sites count
     lim.append(D.min() / (2 * g))
     return min(lim)
 
