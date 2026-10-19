@@ -27,7 +27,7 @@ To compare against a posted copy, check that its root equals `commitment/ROOT` a
 ## What it does not show
 
 A matching hash shows that the files are the ones committed to. It does not show that the claims in them are correct (see `docs/audit.md`), and it does not bind anything outside the listed files
-(the verifier sources are bound only through the input hashes recorded inside each certificate). The paper manuscript is not part of this commitment.
+(a verifier source is bound only if its hash is among the `inputs` recorded inside a certificate; each certificate's `inputs` lists what it binds). The paper manuscript is not part of this commitment.
 
 ## Regenerate (after a deliberate change)
 
@@ -43,4 +43,6 @@ The gist also records the sha256 of the then-unpublished preprint PDF: `9d6dbf35
 
 ## Published preprint
 
-The preprint was published on 2026-10-12 as `papers/incentre-lattice.pdf`, sha256 `64a59f3c6fdd15419f0819ee897091dcb02ebff1bfc1b7b2a42c1b156404ee26`. It differs from the hash timestamped earlier the same day only by bibliography corrections and the placement of the origin note. Both hashes are recorded in the gist.
+Preprint v1 was published on 2026-10-12 as `papers/incentre-lattice.pdf` (commit `4d8488e`, DOI 10.5281/zenodo.23322080). Since v2 that file is kept unchanged as `papers/incentre-lattice-v1.pdf`, sha256 `64a59f3c6fdd15419f0819ee897091dcb02ebff1bfc1b7b2a42c1b156404ee26`. It differs from the PDF whose hash was timestamped earlier the same day only by bibliography corrections and the placement of the origin note. Both hashes are recorded in the gist.
+
+`papers/incentre-lattice.pdf` now holds v2 (commit `38bbf45`, sha256 `632d7debf3dc06a55e18de70dfaee90da3b664cea9b5be31de8a02599f72a003`, DOI 10.5281/zenodo.23340326); v2 is not covered by the public timestamp.

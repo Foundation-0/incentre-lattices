@@ -41,5 +41,5 @@ review only**. Replay: `make verify-fold-continuous`. This is distinct from the 
 
 ## Housekeeping
 
-* Not public: the working paper sources (`paper/`, ignored by git). The commitment in `commitment/` was posted 2026-10-12 ([gist](https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706)).
+* Not public: the working paper sources (`paper/`, ignored by git). An earlier commitment (root `213275970171...`, commit `e84a128`) was posted publicly on 2026-10-12 ([gist](https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706)). The current root in `commitment/` covers more files, some files bound by the earlier root have changed since, and it is not separately timestamped (see `commitment/README.md`).
 * The site is separate from these checked results and is not covered by `make verify`.
