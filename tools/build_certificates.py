@@ -5,6 +5,10 @@ Standard library only.
   python tools/build_certificates.py --write    regenerate the three outputs from results/*/certificate.json
   python tools/build_certificates.py --check    fail if any output differs from what would be generated,
                                                 or if a hash in SHA256SUMS or the commitment does not match
+Both modes stop before writing if RESULTS and results/*/certificate.json disagree, if a results/ folder
+has a verify.py but no certificate.json, if a file listed in a certificate's "inputs" is missing or no
+longer has the recorded hash (rerun that verifier), or if a stored data input (any input except .py and
+.md files) is not in SUM_FILES.
 selected-results.json has one record per result: statement, value, evidence label, verifier command,
 input hashes (copied from the certificate), the certificate hash and the prior-art status.
 Evidence labels: PROVEN (written proof, in PROOF.md), VERIFIED (finite computation, not a proof),
@@ -111,17 +115,28 @@ def cert_path(rid):
 
 
 def validate_registry():
-    """Every result certificate needs exactly one reviewed metadata record."""
+    """Every result certificate needs exactly one reviewed metadata record,
+    and every results/ folder with a verifier needs a certificate."""
     ids = [r["id"] for r in RESULTS]
     duplicates = sorted({rid for rid in ids if ids.count(rid) > 1})
     discovered = {p.parent.name for p in (ROOT / "results").glob("*/certificate.json")}
+    verifiers = {p.parent.name for p in (ROOT / "results").glob("*/verify.py")}
     unregistered = sorted(discovered - set(ids))
     missing = sorted(set(ids) - discovered)
-    if duplicates or unregistered or missing:
+    uncertified = sorted(verifiers - discovered)
+    if duplicates or unregistered or missing or uncertified:
         raise SystemExit(
             f"result registry mismatch: duplicate IDs={duplicates}; "
-            f"unregistered certificates={unregistered}; missing certificates={missing}"
+            f"unregistered certificates={unregistered}; missing certificates={missing}; "
+            f"verifiers without a certificate={uncertified}"
         )
+
+
+def read_or_exit(p):
+    try:
+        return p.read_text()
+    except FileNotFoundError:
+        raise SystemExit(f"missing {p.relative_to(ROOT).as_posix()} (run make certificates)") from None
 
 
 def build_selected():
@@ -133,7 +148,15 @@ def build_selected():
         if not cp.exists():
             raise SystemExit(f"missing {cp}; run the verifier first")
         cert = json.loads(cp.read_text())
-        path_inputs.update(p for p in cert["inputs"] if p.endswith(".npz"))
+        # The certificate binds its inputs only if they still have the recorded hashes.
+        for rel, digest in cert["inputs"].items():
+            path = ROOT / rel
+            if not path.is_file():
+                raise SystemExit(f"missing {rel}, an input of {cert_path(r['id'])}")
+            if certlib.sha256_file(path) != digest:
+                raise SystemExit(f"stale certificate {cert_path(r['id'])}: input {rel} changed since it was written; "
+                                 "rerun its verifier")
+        path_inputs.update(p for p in cert["inputs"] if not p.endswith((".py", ".md")))
         rec = dict(r)
         rec["certificate"] = cert_path(r["id"])
         rec["certificate_sha256"] = certlib.sha256_file(cp)
@@ -147,22 +170,23 @@ def build_selected():
 
 
 def sums_text(paths):
+    missing = [p for p in paths if not (ROOT / p).is_file()]
+    if missing:
+        raise SystemExit(f"missing files: {missing}")
     return "".join(f"{certlib.sha256_file(ROOT / p)}  {p}\n" for p in paths)
 
 
 def outputs():
-    sel = json.dumps(build_selected(), indent=2, sort_keys=True) + "\n"
-    (ROOT / "certificates").mkdir(exist_ok=True)
-    return sel
+    return json.dumps(build_selected(), indent=2, sort_keys=True) + "\n"
 
 
 def main(mode):
     sel_text = outputs()
     sel_path = ROOT / "certificates" / "selected-results.json"
-    plan = {sel_path: sel_text}
     if mode == "--write":
+        sel_path.parent.mkdir(exist_ok=True)
         sel_path.write_text(sel_text)
-    elif sel_path.read_text() != sel_text:
+    elif read_or_exit(sel_path) != sel_text:
         raise SystemExit("certificates/selected-results.json is out of date (run make certificates)")
     cert_files = [cert_path(r["id"]) for r in RESULTS]
     sums_files = cert_files + ["certificates/selected-results.json"] + SUM_FILES
@@ -171,18 +195,18 @@ def main(mode):
     sums_path = ROOT / "certificates" / "SHA256SUMS"
     if mode == "--write":
         sums_path.write_text(sums)
-    elif sums_path.read_text() != sums:
+    elif read_or_exit(sums_path) != sums:
         raise SystemExit("certificates/SHA256SUMS does not match the files")
     manifest_files = cert_files + ["certificates/SHA256SUMS", "certificates/selected-results.json"] + SUM_FILES
     manifest = sums_text(sorted(manifest_files))
     root = certlib.hashlib.sha256(manifest.encode()).hexdigest()
     cm = ROOT / "commitment"
-    cm.mkdir(exist_ok=True)
     if mode == "--write":
+        cm.mkdir(exist_ok=True)
         (cm / "SHA256SUMS").write_text(manifest)
         (cm / "ROOT").write_text(root + "\n")
     else:
-        if (cm / "SHA256SUMS").read_text() != manifest or (cm / "ROOT").read_text().strip() != root:
+        if read_or_exit(cm / "SHA256SUMS") != manifest or read_or_exit(cm / "ROOT").strip() != root:
             raise SystemExit("commitment/ does not match the files (run make certificates)")
     print(("wrote" if mode == "--write" else "checked") + f" selected-results.json, certificates/SHA256SUMS, commitment (ROOT {root})")
 
