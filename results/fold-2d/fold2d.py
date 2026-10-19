@@ -18,7 +18,7 @@ c = float(c_)
 def exact_facts():
     """sympy: gap(theta), gap(pi/4), L(pi/4) - 4R, strain + R^2, densities."""
     L = 2 * R_ + 2 * c_ * sp.cos(th)
-    gap = sp.simplify(L - 2 * c_ * sp.sin(th) - 2 * R_)      # nearest non-bonded pair, along y
+    gap = sp.simplify(L - 2 * c_ * sp.sin(th) - 2 * R_)      # gap of the pair that closes (+c e_1 dots of vertically adjacent squares)
     return {
         "L": L,
         "gap": gap,

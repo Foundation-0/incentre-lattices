@@ -39,9 +39,13 @@ is numerical.
 ## What the replay adds
 
 Exact simplification of the gap and the values at pi/4; a scan over c in {0.45, 0.5, 0.55, 2 - sqrt2, 0.62, 0.7} giving the lock
-angle (66.37, 56.96, 49.51, 45.00, 45.00, 45.00 degrees) and the nearest-neighbour distances at the lock; must-fail controls (wrong
-gap formula, 45 degrees claimed for c = 0.5, a non-incentre c claimed to end in a single-distance square lattice, a wrong end
-density).
+angle (66.37, 56.96, 49.51, 45.00, 45.00, 45.00 degrees) and the nearest-neighbour distances at the lock. For c < 2 - sqrt2, where
+2r = sqrt2 c and the +c e_1 dots of vertically adjacent squares are 2 - 2c + 2 sqrt2 c cos(theta + pi/4) apart, the replay asserts that
+the lock is the first 0.01-degree grid point at or above theta_c = arccos((sqrt2 c - (2 - 2c))/(2 sqrt2 c)) - pi/4 (66.3609, 56.9529,
+49.5048 degrees) and that the central ball then has three contacts at 2r; for c = 0.62 and 0.7 it asserts 45 degrees. This closed form
+is internal audit work, pending review; that this pair closes first is checked only on the grid. Must-fail controls: wrong gap
+formula, 45 degrees claimed for c = 0.5, 56.95 degrees claimed for c = 0.5, a non-incentre c claimed to end in a single-distance
+square lattice, three contacts claimed for c = 0.62, a wrong end density.
 
 ## Prior art
 
