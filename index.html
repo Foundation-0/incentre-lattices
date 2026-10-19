@@ -193,16 +193,17 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
    <line x1="20" y1="140" x2="262" y2="140" stroke="#37ff9a" stroke-width="2.4"/>
    <line x1="20" y1="140" x2="150" y2="10" stroke="#37ff9a" stroke-width="2.4"/>
    <g stroke="#37ff9a" opacity=".35"><line x1="262" y1="140" x2="262" y2="146"/><line x1="20" y1="140" x2="12" y2="148"/><line x1="40" y1="140" x2="32" y2="148"/><line x1="60" y1="140" x2="52" y2="148"/><line x1="80" y1="140" x2="72" y2="148"/><line x1="100" y1="140" x2="92" y2="148"/><line x1="120" y1="140" x2="112" y2="148"/><line x1="140" y1="140" x2="132" y2="148"/><line x1="160" y1="140" x2="152" y2="148"/><line x1="180" y1="140" x2="172" y2="148"/><line x1="200" y1="140" x2="192" y2="148"/><line x1="220" y1="140" x2="212" y2="148"/><line x1="240" y1="140" x2="232" y2="148"/></g>
-   <line x1="20" y1="140" x2="235" y2="58" stroke="#35e6ff" stroke-dasharray="4 4" opacity=".8"/>
+   <line x1="20" y1="140" x2="235" y2="50.9" stroke="#35e6ff" stroke-dasharray="4 4" opacity=".8"/>
    <circle class="pulse" cx="170" cy="78" r="62.1" fill="rgba(53,230,255,.06)" stroke="#35e6ff" stroke-width="1.2"/>
    <line x1="170" y1="78" x2="170" y2="140" stroke="#ffb23a" stroke-width="1.4"/>
-   <line x1="170" y1="78" x2="125.9" y2="121.9" stroke="#ffb23a" stroke-width="1.4"/>
+   <line x1="170" y1="78" x2="126" y2="34" stroke="#ffb23a" stroke-width="1.4"/>
    <path d="M170 134 h-6 v6" fill="none" stroke="#ffb23a" opacity=".7"/>
+   <path d="M130.2 38.2 L126 42.5 L121.8 38.2" fill="none" stroke="#ffb23a" opacity=".7"/>
    <circle cx="170" cy="78" r="5" fill="#ffb23a"/>
    <line x1="20" y1="154" x2="170" y2="154" stroke="#9fc9b8" opacity=".6"/><line x1="20" y1="151" x2="20" y2="157" stroke="#9fc9b8" opacity=".6"/><line x1="170" y1="151" x2="170" y2="157" stroke="#9fc9b8" opacity=".6"/>
    <text x="88" y="166" text-anchor="middle">1</text>
    <text x="176" y="112" fill="#ffb23a" style="fill:#ffb23a">d</text>
-   <text x="136" y="96" style="fill:#ffb23a">d</text>
+   <text x="153" y="52" style="fill:#ffb23a">d</text>
    <text x="62" y="128" style="fill:#35e6ff">22.5&deg;</text>
    <text x="88" y="52" style="fill:#37ff9a" transform="rotate(-45 88 52)">mirror</text>
    <text x="214" y="132" style="fill:#37ff9a">mirror</text>
@@ -282,7 +283,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
   </div>
   <div class="card span2" style="padding:12px 12px 14px">
    <div class="vis"><canvas id="cv-fold" aria-label="Animation of the 48-ball framework folding while its packing density climbs from 0.2233 to 0.7405"></canvas><div class="corner">EARLIER HCP SEARCH // SAMPLED PATH</div><div class="corner r">LOOP</div></div>
-   <p class="cap">The earlier search: 48 balls and 120 bar orbits in a 2&times;2&times;2 periodic block. This display interpolates 793 stored hcp states. The path passes finite checks with a maximum step of 0.01 and sampled interpolation; these checks do not certify every intermediate configuration. The dashed density 0.4686 marks the cubic-path limit, beyond which lattice shear matters. See <a href="seek.html#case">the search history</a> and <a href="research.html#continuous">the separate continuous fcc construction</a>. This geometry does not predict a phase transition in a real material.</p>
+   <p class="cap">The earlier search: 48 balls and 120 bar orbits in a 2&times;2&times;2 periodic block. This display interpolates between 40 of the 793 stored hcp states; the density curve and readout use the stored densities. The path passes finite checks with a maximum step of 0.01 and sampled interpolation; these checks do not certify every intermediate configuration. The dashed density 0.4686 marks the cubic-path limit, beyond which lattice shear matters. See <a href="seek.html#case">the search history</a> and <a href="research.html#continuous">the separate continuous fcc construction</a>. This geometry does not predict a phase transition in a real material.</p>
   </div>
  </div>
 </section>
@@ -562,7 +563,7 @@ function foldCard(c,W,H,t){
   CX.text(c,'STATE '+(di+1)+' / '+FP.n,rx,ry,C.dim,fs+1);
   CX.text(c,'DENSITY '+d.toFixed(4),rx,ry+15,'#eafff4',fs+3);
   if(u>=9)CX.text(c,wide?'end state: hcp, 12 contacts per ball':'end: hcp, 12 contacts per ball',wide?W*.56:W*.5,wide?H*.9:H*.96,C.c,fs+.5,wide?'left':'center');
-  else CX.text(c,'every bar length kept, no overlaps',wide?W*.56:W*.5,wide?H*.9:H*.96,C.dim,fs+.5,wide?'left':'center');
+  else CX.text(c,'interpolated between 40 stored states',wide?W*.56:W*.5,wide?H*.9:H*.96,C.dim,fs+.5,wide?'left':'center');
 }
 anim($('cv-fold'),foldCard,w=>w>=560?.46:1.3);
 
