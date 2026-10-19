@@ -7,6 +7,8 @@ authors:
     given-names: "Ahraz"
     affiliation: "Aska Digital"
 doi: "10.5281/zenodo.23322079"
+version: "2.0.0"
+date-released: 2026-10-13
 repository-code: "https://github.com/aska-digital/incentre-lattice"
 url: "https://github.com/aska-digital/incentre-lattice"
 license:
@@ -14,10 +16,16 @@ license:
   - CC-BY-4.0
 abstract: >-
   Incentre lattice: a construction (incentres of the pyramids of a polytope, joined into a contact framework) with interactive
-  explanations and replayable checks. The checked results are the n-dimensional rigidity counts and Poisson ratio of the
-  contact framework of the truncated n-cubic honeycomb, a radius-ratio identity, the maximal packing fraction of the CaB6
-  structure type, and a sampled bar-preserving path from the cab contact framework to hcp and fcc close packing in a 2x2x2
-  supercell. Claims are labelled PROVEN (written proof), VERIFIED (finite check, not a proof) or KNOWN (cited).
+  explanations and replayable checks. The main results concern the bridged cross-polytope framework (the contact framework of
+  the truncated n-cubic honeycomb): with unit springs on all bars, C11/C12 = (n-1)^2 and the Poisson ratio along a cube axis
+  is nu_100 = 1/(n^2-n-1) for every n >= 3; and in three dimensions an exact continuous motion from the cab contact framework
+  to face-centred cubic packing that keeps every bar length, with non-overlap and strictly increasing density (0.2233 to
+  pi/sqrt18) over the whole parameter interval. Both are PROVEN (the motion by written argument and an exact finite
+  certificate), with internal review only. Supporting results: sampled bar-preserving paths to hcp and fcc close packing in
+  the 2x2x2 and 1x1x1 cells (VERIFIED) with exact end states (PROVEN). Secondary results: the n-dimensional zero-mode and
+  self-stress counts (recorded as lemmas), a radius-ratio identity and the maximal packing fraction of the CaB6 structure
+  type. Claims are labelled PROVEN (written proof), VERIFIED (finite check, not a proof), KNOWN (cited), NEW-COMPUTATION
+  (own computation, not independently reproduced) or CONJECTURE (proposed, not established).
   Code is MIT licensed; text and figures are CC BY 4.0. Parts were produced with AI assistance; see CONTRIBUTORS.md.
 keywords:
   - rigidity theory
@@ -34,7 +42,7 @@ preferred-citation:
       given-names: "Ahraz"
       affiliation: "Aska Digital"
   year: 2026
-  doi: "10.5281/zenodo.23322079"
+  doi: "10.5281/zenodo.23340326"
   status: preprint
   url: "https://aska-digital.github.io/incentre-lattice/papers/incentre-lattice.pdf"
-  notes: "Preprint version 2 (v2 release pending), not peer reviewed; supersedes v1 (doi:10.5281/zenodo.23322080, kept as papers/incentre-lattice-v1.pdf). Source in papers/source."
+  notes: "Preprint version 2, not peer reviewed; supersedes v1 (doi:10.5281/zenodo.23322080, kept as papers/incentre-lattice-v1.pdf). Source in papers/source."

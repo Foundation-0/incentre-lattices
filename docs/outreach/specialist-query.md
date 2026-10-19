@@ -16,7 +16,7 @@ I am writing with two specific questions about a periodic bar framework: regular
 A pointer to a reference, or a short "this is routine", would help us a great deal. We make no claim of priority.
 
 - Repository: https://github.com/aska-digital/incentre-lattice
-- Preprint, version 2: https://github.com/aska-digital/incentre-lattice/blob/main/papers/incentre-lattice.pdf
+- Preprint, version 2: https://doi.org/10.5281/zenodo.23340326
 - Motion: https://github.com/aska-digital/incentre-lattice/tree/main/results/fold-continuous-fcc
 - Elasticity: https://github.com/aska-digital/incentre-lattice/tree/main/results/rigidity-nd
 
