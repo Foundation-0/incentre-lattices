@@ -3,9 +3,15 @@
 Evidence: **PROVEN (written argument), internal review only.** This is a second proof of the non-overlap step
 (Section 3) of [PROOF.md](PROOF.md). It does not replace PROOF.md, whose exact Bernstein certificate
 (`make verify-fold-continuous`) remains the certified replay. The label of the result is unchanged.
-Identity check: `python results/fold-continuous-fcc/hand_proof_check.py` (sympy; not part of `make verify`,
-not hashed into `certificate.json`). It checks every identity below symbolically and compares the reduced
-conditions with the direct minimum over all motif differences on a grid.
+Identity check: `make verify-fold-continuous-hand`, which runs `results/fold-continuous-fcc/hand_proof_check.py`
+(sympy; replayed by `make verify`, but not hashed into `certificate.json`). It checks the 48-case centraliser of
+Section 1 exactly, and symbolically the equalities of Sections 3 and 4: the formula for `G`, `d^2`, `alpha`, `gamma`,
+`|nL|^2` for `n = 2e_i`, and every `w`, `|w|^2` and slack in the table. It also checks `35/3 > 6 + 4 sqrt2` and that the
+nine classes cover the 26 vectors with `1 <= |n|^2 <= 3`. On a grid of 201 values of s it compares the reduced
+conditions with the direct minimum over all motif differences, and checks that the actual `4 m1 - 2` and `2(m1 + m2)`
+never exceed the largest candidate listed in the table. The block form of `G` in the rotated basis (with
+`beta^2 = 2t^4`), the other inequalities of Section 3, the nonnegativity of the table entries and the contact counts
+of Section 5 are checked by inspection only.
 
 Notation as in PROOF.md: motif `P = {+-e_i}`, balls of radius `1/sqrt(2)`, row-vector lattice
 `L(s) = d I + t C`, `d = 2 + a`, `a^2 + 2t^2 = 2`, `0 <= t <= 1`, `a >= 0`. So `d^2 = 6 + 4a - 2t^2`.
@@ -15,7 +21,12 @@ Notation as in PROOF.md: motif `P = {+-e_i}`, balls of radius `1/sqrt(2)`, row-v
 For `0 < s <= 1` the framework (balls and bars) has point group `{I, -I, m, -m}` of order 4, where `m` swaps the
 second and third coordinates. Indeed `m` commutes with `L(s)` (it fixes `L_1`, swaps `L_2` and `L_3`), maps the motif
 to itself, and maps bridge vectors to bridge vectors: `b_1 m = b_1`, `b_2 m = b_3`, where `b_i = L_i - 2e_i = a e_i + t C_i`.
-No other signed permutation preserves the lattice (checked numerically at several s). The space group is `C2/m`
+Conversely, let `x -> x g + lambda` be a symmetry. Octahedron edges lie in triangles of bars and bridges in none (a
+common neighbour of `e_i` and `L_i - e_i` would need `|L_i|^2 <= 4`, but `|L_i|^2 = 6 + 4a`), so it maps octahedra to
+octahedra and bridges to bridges; hence `lambda` is in `Z^3 L(s)` and `g` is a signed permutation,
+`e_i g = eps_i e_pi(i)`. The bridge at a ball `eps e_j + nL` has vector `eps b_j`, so `b_i g = eps_i b_pi(i)`, i.e.
+`B g = g B` with `B = a I + t C`; for `t > 0` this gives `C g = g C`, and of the 48 signed permutations only `+-I` and
+`+-m` commute with `C` (checked exactly in `hand_proof_check.py`). The space group is `C2/m`
 (No. 12); balls occupy two orbits, `{+-e_1}` on the mirror and `{+-e_2, +-e_3}` in general position. At `s = 0`
 the group is `Pm-3m`. At `s = 1` the sphere packing is fcc, while the framework keeps the order-4 symmetry.
 
@@ -79,3 +90,6 @@ polynomials, beyond the 18 identically zero ones, that give the 114 zero Bernste
 
 Written by Claude Opus 5.5 (Claude Code) for the v2 preprint, from the curve and proof of PROOF.md (GPT-6 Codex,
 checked by GPT-6.1 Sol). Internal work only; no person has checked it yet.
+The converse step of Section 1 (only `+-I` and `+-m`), which replaces an unrecorded numerical check at several s,
+and the centraliser and candidate checks in `hand_proof_check.py` were added in an internal audit by Claude
+(Anthropic), via Claude Code. They are pending review; no person has checked them either.

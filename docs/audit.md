@@ -23,11 +23,24 @@ The fcc endpoint follows from an integer parity/index argument. A written deriva
 increasing density. These analytic reductions still require mathematical review; the code is not a proof assistant.
 
 `make verify-fold-continuous` replays both arithmetic implementations, the endpoint, and must-fail controls.
-All proof and replay sources are bound by the result certificate. A separate 501-state sample was accepted by both
+`PROOF.md`, both exact-arithmetic implementations and `verify.py` are bound by the result certificate. The second
+written proof `HAND-PROOF.md` and its sympy identity check `hand_proof_check.py` are replayed by `make verify`
+(`make verify-fold-continuous-hand`) but not hashed. A separate 501-state sample was accepted by both
 existing, unchanged numerical fold checkers: zero overlap violations, 12 endpoint contacts per ball, fcc CNA
 72 (4,2,1), and endpoint density pi/sqrt18. The sampled straight-line interpolants are not the exact analytic motion.
 The older sampled paths and hcp result retain their previous evidence labels. Priority and outside human review
 remain open; no physical transition or material stability is claimed.
+
+`HAND-PROOF.md` proves non-overlap a second way, by a symmetry reduction to nine classes of nearby octahedra, and
+proves that the framework has point group `{I, -I, m, -m}` for `0 < s <= 1`. `hand_proof_check.py` checks
+symbolically, modulo `a^2 + 2t^2 = 2`, the formula for `L L^T` and every `w`, `|w|^2` and slack identity of its table,
+and exactly that only `+-I` and `+-m` among the 48 signed permutations commute with `C`. On 201 values of s (floating
+point, a finite check) it compares the reduced conditions with the direct minimum over all 19 motif differences,
+checks that the actual `4 m1 - 2` and `2(m1 + m2)` never exceed the largest candidate listed in the table, and
+requires a positive clearance of all non-bar pairs for s < 1. By inspection only: the block form of `L L^T` and the
+eigenvalue bound, the choice of candidates for all s, and the nonnegativity of the table entries. Both files are
+internal AI work with no human review; the converse step of the point-group argument was added in an internal audit
+and is pending review.
 
 ### results/rigidity-nd: counts and nu_100 for n = 2..8
 
@@ -126,3 +139,6 @@ Known limits: sampled continuity as for m = 2; the lift to larger m is an argume
 
 The interactive site (`*.html`), the research notes under `research/` (some of which print numbers by scripts not replayed here), the perception question
 about triangle centres (an open experiment, not a result), and the UB12 and perovskite-tolerance computations in `research/chemistry`.
+Not hash-bound: `results/fold-continuous-fcc/HAND-PROOF.md` and `hand_proof_check.py`. `make verify` replays the identity check, but
+neither file is an input of the result certificate, so editing either changes no certificate; binding them needs a change to that
+result's `verify.py`, which is reviewed on its own.
