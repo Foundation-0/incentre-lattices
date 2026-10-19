@@ -15,6 +15,7 @@ Third-party material and what it is licensed under. Nothing below is relicensed 
      from which the data were obtained."  This is an attribution condition for scientific use, not a public-domain or CC0
      dedication. These files must not be assumed to be CC0, and redistribution outside scientific use is not covered by
      that wording. The journal article of each entry is named in the file (_journal_name_full, _publ_author_name, _journal_year).
+     The articles behind these 25 files are listed, with DOIs, in the "Data sources" table of research/2-chemistry.md.
    Keep every file's header intact. If the repository is meant to be freely reusable, replace the 25 IUCr-provided files with
    download instructions (the fetch script already does this) or check the terms with IUCr and the COD.
    This notice is based on the file headers only; the current terms on the COD website were not re-read.
