@@ -101,15 +101,18 @@
     },
     {
       "certificate": "results/fold-close-packing/certificate.json",
-      "certificate_sha256": "95af3421b8ec7d4ead484df0fb09d8e6eaf7fb1a6da75ea6b915bfe7937c7214",
+      "certificate_sha256": "ed3419c4832cc449f882c37de6426a15bef6177c8b9be9a1dadfcf6fea23cc49",
       "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
       "id": "fold-close-packing",
       "input_hashes": {
         "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
+        "autoresearch-fold/test_verify.py": "ebc7b38d36eb7696351a3ba4bd4b5d2a2b666bdd5929f38f9fa8be29769a844a",
         "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
         "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
         "results/fold-close-packing/make_fcc_path.py": "59f2a6249dc9b76f1a9cad4af0f4bc6fcb0b586403cd656897b7b79233b92138",
-        "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1"
+        "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1",
+        "results/fold-close-packing/verify.py": "8b8f6c1ff5848ab43232d1474ffdaf635832c6403ee132b302fdf0ff568e03ee",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
       },
       "prior_art": "NOT FOUND as a statement. Closest: ReO3 to VF3 a-a-a- tilt towards hcp anions (O'Keeffe and Hyde 1977; Glazer 1972); sequential-LP packing methods (Torquato and Jiao 2010). See autoresearch-fold/PRIOR-ART-FOLD.md.",
       "statement": "In the 2x2x2 supercell (48 balls, 120 bars of length 2R, free lattice) there is a sampled path of 793 states from the open cab state, keeping every bar length and with no overlap, to an hcp packing of density pi/sqrt18; two further rigid layer slides (400 states) reach pure fcc. Both paths are accepted by two independent checkers.",
