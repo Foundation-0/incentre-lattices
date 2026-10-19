@@ -98,15 +98,18 @@ size ratio γ = r_S/r_L (`bnsl.py`):
   peak is probably plotted there. We found no explicit statement of the closed form or of its identity with
   the √2−1 octahedral limit.
 
-## Finding 4. The general rule reproduces exactly the radius-ratio limits of equal-edged, vertex-transitive coordination polyhedra, and nothing else
+## Finding 4. The general rule reproduces exactly the radius-ratio limits of inscribed equal-edged coordination polyhedra, and nothing else
 
 **Theorem (PROVEN under H1 or H2; clause (iv) under H2 only).** Take a polytope P and put the dot of each
 facet-pyramid at the point equidistant from its walls, with radius R = that distance. H1: every wall (the plane
 through the centre and a ridge) is a mirror of P. H2: P has an insphere centred at the centre and the dihedral
 angle is the same at every ridge. Under H1 or H2:
-(i) all dots are equivalent, at distance t;
+(i) all dots have the same radius R and distance t, and under H1 they are all equivalent;
 (ii) a ball and its mirror image touch at the wall, so every pair of ridge-adjacent dots is at 2R: the
-dots form an equal-edged, vertex-transitive polytope Q combinatorially dual to P;
+dots form an equal-edged polytope Q combinatorially dual to P, vertex-transitive under H1. Under H2, Q is the
+scaled polar dual of P, inscribed with all edges 2R, and need not be vertex-transitive: for P the polar of the
+triangular orthobicupola J27 (inscribed, all edges equal), the dots form J27 itself, the anticuboctahedron, whose
+vertices are of two kinds;
 (iii) hole/ball = (t−R)/R = t/(e/2) − 1, which is the classical radius-ratio limit of Q;
 (iv) under H2 only, hole/ball = 1/sin θ − 1 with 2θ the angle between adjacent facet normals. Mirror walls alone do
 not give (iv): the triangular bipyramid satisfies H1 at every height and its true ratio is 0.5275 throughout, but
@@ -135,23 +138,32 @@ Results (VERIFIED NUMERICALLY, LP insphere plus brute-force contacts):
 | 5-cell / tesseract / 16-cell / 24-cell (4D) | 5/8/16/24 | all | 0.2649 / 0.4142 / 1.0000 / 1.0000 | 4D: 24-cell = 4D kissing |
 | cuboctahedron, truncated octahedron, prisms (not facet-transitive) | n/a | **no** (unequal R) | n/a | fails |
 
-Why it fails where it does (PROVEN):
-- **Antiprisms** (square antiprism CN8, 0.645) are snub-type and not Wythoffian. The trapezohedron's walls are
-  not mirrors, so touching is not forced. It occurs only on a one-parameter coincidence (the exact dual of the
-  uniform antiprism). Off that shape, half the contacts open up (ratio 0.6489–0.6490 at stretch 0.8 and 1.3).
+Why it fails where it does (PROVEN unless marked otherwise):
+- **Antiprisms** (square antiprism CN8, 0.645) are snub-type and not Wythoffian. Not all of the trapezohedron's
+  walls are mirrors (the 8 base-edge walls are), so touching across the other 8 walls is not forced. It occurs
+  only on a one-parameter coincidence (the exact dual of the uniform antiprism). Off that shape, half the contacts
+  open up (ratio 0.6489–0.6490 at stretch 0.8 and 1.3). Written argument: `results/radius-ratio/PROOF.md`, "The
+  trapezohedron claim" (internal audit work, pending review).
 - **CN7, CN9 (tricapped trigonal prism 0.732), dodecahedral CN8 (0.668), capped octahedron (0.592)**: these
-  anion polyhedra are not vertex-transitive. The rule's dots are always one orbit, so it cannot produce them.
+  anion polyhedra are not vertex-transitive, so under H1, whose dots are always one orbit, the rule cannot produce
+  them. Under H2 the dots need not be one orbit, but Q must be inscribed with equal edges. The pentagonal
+  bipyramid (CN7), the snub disphenoid (dodecahedral CN8) and the tricapped trigonal prism would then have
+  equilateral faces, and the only convex deltahedra with their combinatorics, J13, J84 and J51, are not inscribed
+  (VERIFIED NUMERICALLY: orbit radii in `results/radius-ratio`; the classification of deltahedra is cited, not
+  replayed). The capped CN7 shapes, such as the capped octahedron, were not examined under H2: open
+  (`results/radius-ratio/PROOF.md`, "Unreachable shapes").
 - **bcc cell / non-isohedral P**: there are several pyramid types with different R and no contacts.
 - **Self-tuning (VERIFIED NUMERICALLY, and a corollary of the theorem):** a bipyramid of any height gives the
   *uniform* prism, because mirror walls force all edges to 2R. The rule finds the equal-edge geometry without
   being told.
 
 Novelty: the radius ratios themselves are KNOWN (Pauling 1929; Wikipedia's "Pauling's rules" table lists
-0.155–1.00). The vertex/facet duality is trivial. The statement "the limits reachable this way are exactly the
-Wythoffian (mirror-generated) equal-edge polytopes; antiprisms are reachable only by fine-tuning; CN7, CN9 and
-dodecahedral CN8 are unreachable" is one we found **no prior reference** for, after searching radius ratio +
-Wythoff / kaleidoscope / uniform polyhedra. It is mathematically elementary, so it may well appear in some
-textbook.
+0.155–1.00). The vertex/facet duality is trivial. The statement "the shapes reachable this way are, under H1,
+vertex-transitive (mirror-generated) equal-edge polytopes and, under H2, exactly the inscribed equal-edged
+polytopes with centre inside, including snub and antiprism shapes and some Johnson solids; antiprisms are
+reachable only by fine-tuning; the pentagonal bipyramid CN7, CN9 and dodecahedral CN8 are unreachable" is one we
+found **no prior reference** for, after searching radius ratio + Wythoff / kaleidoscope / uniform polyhedra. It
+is mathematically elementary, so it may well appear in some textbook.
 
 ## Finding 5. Perovskites: √2−1 is the near-optimal octahedral-factor cut, but the geometry gives no sharper predictor
 
@@ -173,10 +185,11 @@ Data: Bartel et al., *Sci. Adv.* 5, eaav0693 (2019), Table S1 (576 ABX3, 313 per
 Verified: J. George, D. Waroquiers, …, G. Hautier, "The Limited Predictive Power of the Pauling Rules",
 *Angew. Chem. Int. Ed.* 59, 7569 (2020), doi:10.1002/anie.202000829 (PMC7217010). Pauling's first rule holds
 for ~66% of ~5000 oxide environments, and only 13% satisfy rules 2–5 together. The kaleidoscope view explains
-one structural reason for failure (Finding 4): limits exist only for equal-edged vertex-transitive polyhedra,
-while real environments are distorted and include the non-uniform CN7–CN9 shapes, which have no "touching"
-limit of this kind. It does not explain the softness and size failures, which dominate. (CONJECTURE that the
-unreachable shapes are over-represented among violations; not tested.)
+one structural reason for failure (Finding 4): limits exist only for inscribed equal-edged polyhedra
+(vertex-transitive under H1), while real environments are distorted and include the non-uniform CN7–CN9 shapes,
+which have no "touching" limit of this kind (the capped CN7 shapes under H2 were not examined). It does not
+explain the softness and size failures, which dominate. (CONJECTURE that the unreachable shapes are
+over-represented among violations; not tested.)
 
 ## What was not done
 

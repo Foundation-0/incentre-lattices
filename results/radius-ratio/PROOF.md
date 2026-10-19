@@ -30,7 +30,8 @@ Conversely, every convex inscribed polytope with equal edges and its circumcentr
 **Why the hypotheses are what they are.** Facet-transitivity plus an insphere is NOT enough. For tetragonal trapezohedra polar to
 square antiprisms of height 0.7 and 1.3 times the uniform height, every pyramid has an inscribed ball, yet the distances between
 adjacent dots range over [1, 1.017] * 2r and [1, 1.006] * 2r, so some contacts open. (Replay controls 1 and 2.) The theorem
-holds for the trapezohedron only at the single shape dual to the uniform antiprism, and only under H2. A triangular prism with
+holds for the trapezohedron only at the single shape dual to the uniform antiprism, and only under H2; at every other height
+exactly 8 of its 16 contacts open (proof below, "The trapezohedron claim"). A triangular prism with
 square sides is not facet-transitive: its pyramids have different inradii (0.1667 and 0.1340 for unit edge) and the theorem does not apply
 (control 3). The cuboctahedron is not facet-transitive either (control 4).
 
@@ -70,6 +71,29 @@ J13, J84, J51. None is inscribed: for unit edge their vertex orbits lie at dista
 0.996 from the centre. So these limits are unreachable by either route. The capped CN7 shapes under H2 were not examined. (The
 replay recomputes these orbit radii; the classification of deltahedra is cited, not replayed.)
 
+**The trapezohedron claim.** (Internal audit work, written by Claude (Anthropic), via Claude Code, and checked with sympy;
+pending maintainer review.) Let q_m = (cos(m pi/4), sin(m pi/4), (-1)^m z), m = 0, ..., 7, be the vertices of the square
+antiprism of half-height z > 0, as in `radius_ratio.py`, and let P be its polar, with facet F_m in the plane x . q_m = 1. Since
+|q_m| is the same for all m, P has an insphere centred at O, and the wall of the ridge dual to an antiprism edge qq' is the plane
+x . (q - q') = 0, the perpendicular bisector of qq'. The rotation by pi/4 about the z-axis followed by z -> -z maps q_m to
+q_{m+1}, so it permutes the pyramids cyclically and acts transitively on the 8 base edges q_m q_{m+2} and on the 8 lateral edges
+q_m q_{m+1}. (i) Every pyramid has an inscribed ball. Let L = |q_0 - q_1| = sqrt(2 - sqrt2 + 4z^2),
+r = 1/(sqrt(1 + z^2) + (L + sqrt2 + 1)/2) and d_0 = r (sqrt2, 0, (L - sqrt2 + 1)/(2z)). Then d_0 lies at signed distance r
+inside each of the five facet planes of Pi_0 (the plane of F_0 and the walls x . (q_0 - q_j) = 0, j = 1, 2, 6, 7), so by the
+Lemma it is the dot of F_0, with radius r. (ii) The wall x . (q_0 - q_2) = 0 of a base edge is the mirror of the antiprism
+through q_1, which maps q_k to q_{2-k}; it is a symmetry of P, and as in the H1 proof the balls of F_0 and F_2 touch on it. So
+the 8 base-edge contacts close for every z. (iii) For the lateral edge q_0 q_1, the half-turn about the line through O and the
+edge midpoint maps q_k to q_{1-k}, hence Pi_0 to Pi_1 and, by the Lemma, d_0 to d_1. The two balls are tangent to the wall W
+from opposite sides, so |d_0 - d_1| >= 2r, with equality iff d_1 is the reflection of d_0 in W. The axis of the half-turn lies
+in W, so the half-turn followed by the reflection in W is the reflection in the plane spanned by the axis and the normal of W,
+which is span(q_0, q_1). So this contact closes iff d_0 lies in span(q_0, q_1), that is iff d_0 . (q_0 x q_1) = 0, which
+reduces to L - sqrt2 + 1 = 2 sqrt2 z^2. Squaring and writing u = z^2 gives 8u^2 + (4 - 4 sqrt2)u + 1 - sqrt2 = 0, whose roots
+are sqrt2/4 and sqrt2/4 - 1/2 < 0. The positive root also solves the unsquared equation (both sides equal 1), so the
+lateral contacts close only at z = 2^(1/4)/2, where L = sqrt2 = |q_0 - q_2| and the antiprism is uniform. Hence at every other
+height exactly 8 of the 16 contacts are closed and the 8 lateral ones are open. QED. (The same sympy check gives
+|d_0 - d_1| / 2r = 1.0168 and 1.0059 at 0.7 and 1.3 times the uniform half-height, the replay's contact ranges. The replay
+itself does not count closed contacts.)
+
 ## What the replay adds (VERIFIED)
 
 `radius_ratio.py` finds each inscribed ball by linear programming (largest ball in the pyramid, scipy `linprog`) and reports
@@ -95,6 +119,7 @@ evidence only.
 
 ## Open obligations
 
-* Independent human review of the H1 and H2 proofs (internal pre-publication review only so far).
+* Independent human review of the H1 and H2 proofs (internal pre-publication review only so far) and of the trapezohedron
+  argument (internal AI audit only).
 * Which polytopes satisfy H1 or H2 is not classified here beyond the listed families.
 * The capped CN7 shapes under H2.
