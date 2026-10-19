@@ -48,11 +48,13 @@
     },
     {
       "certificate": "results/cab6-packing/certificate.json",
-      "certificate_sha256": "966c50c15ae70d5033bbc9359551dfcd6657c3fffcbe0afba0d40db4bf2e3e02",
+      "certificate_sha256": "235833e6f6e1a054d5885971d9be0ed71353eb12e81e363d02cea810a9da7f0b",
       "evidence_label": "PROVEN (elementary upper-bound argument, PROOF.md); attainment and all-pairs non-overlap PROVEN (results/cab6-packing/ATTAINMENT.md; internal referee review, human review pending), corroborated by the finite check (5x5x5 block, 15 size ratios)",
       "id": "cab6-packing",
       "input_hashes": {
-        "results/cab6-packing/cab6_packing.py": "be1b3e8e1b4ad856a8f6491f451dd7bcdea3ca990e5afcfaa37ac6b52adb86f4"
+        "results/cab6-packing/cab6_packing.py": "84e1289c4f4d256bd5815b938fbcc30ccbffcc5754b753d99b1785d4f5eed5ae",
+        "results/cab6-packing/verify.py": "df5370edee6d3732d3f6f46c76bb9f989c77616f00122cf11ddee52e8bfc4a21",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
       },
       "prior_art": "PARTIALLY KNOWN: the curve is plotted for this and 23 other lattices by Horst and Travesset (2016); the closed form was not found in text. CaB6 is absent from the densest binary packings of Hopkins, Stillinger and Torquato (2012).",
       "statement": "The maximal hard-sphere packing fraction of the CaB6 structure type at size ratio gamma = rS/rL is (pi/6)(1+6 gamma^3) for gamma <= sqrt2-1 and (pi/6)(sqrt2-1)^3 (6+gamma^-3) for gamma >= sqrt2-1; the global maximum (pi/6)(30 sqrt2 - 41) = 0.746865 is attained at gamma = sqrt2-1, where Ca is held by Ca-Ca contact and Ca-B do not touch; the packing beats fcc exactly for 0.41023 < gamma < 0.41591.",

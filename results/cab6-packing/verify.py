@@ -2,8 +2,9 @@
 """Replay for results/cab6-packing (maximal hard-sphere packing fraction of the CaB6 type).
 
 Exact part (sympy): closed form, optimum position, Ca-B gap, fcc window endpoints.
-Numerical part (numpy + scipy): brute-force maximisation over (h, scale) with every pair of
-spheres in a 5x5x5 block of cells, compared with the closed form on a grid of size ratios.
+Numerical part (numpy + scipy): brute-force maximisation over (h, scale), with the six B sites of one
+cell checked against every Ca and B site in a 5x5x5 block of cells (Ca-Ca taken as 1), compared with
+the closed form on a grid of size ratios.
 Must-fail controls: wrong closed forms, "Ca touches B", a size ratio outside the window,
 and the wrong Wyckoff convention for x are all rejected.
 Writes certificate.json. Usage: python verify.py
@@ -90,7 +91,8 @@ def main():
     certlib.must_fail("gamma = 0.40 claimed to beat fcc", eng.phi_closed(0.40) > fcc, log)
     certlib.must_fail("gamma = 0.42 claimed to beat fcc", eng.phi_closed(0.42) > fcc, log)
     rS = (G0) / 2
-    dCaB = ((0.5 - (G0 / 2)) ** 2 + 0.5) ** 0.5
+    # nearest Ca-B distance at h* = 1 - sqrt2/2, measured in the 5^3 block: sqrt(x*^2 + 1/2) with x* = (sqrt2 - 1)/2
+    dCaB = float(np.linalg.norm(eng.sites(1 - 2 ** 0.5 / 2)[:, None] - eng.shifts[None], axis=2).min())
     certlib.must_fail("Ca-B claimed to touch (distance equals rCa + rB)", abs(dCaB - (0.5 + rS)) < 1e-6, log)
     x_wrong = (2 ** 0.5 - 1) / 2   # used as the offset h from the octahedron centre instead of as Wyckoff x
     certlib.must_fail("x = (sqrt2-1)/2 read as the offset from the centre: intra and inter B-B distances differ",
@@ -100,10 +102,10 @@ def main():
         "result": "cab6-packing",
         "model": "Ca radius rL on 1a (0,0,0); B radius rS on 6f (x,1/2,1/2) and permutations; x and lattice parameter a free; gamma = rS/rL",
         "exact": exact,
-        "brute_force_vs_closed_form": {"cell_block": "5x5x5, all pairs", "gamma_grid": rows,
-                                       "max_abs_difference_below_1e-9": True},
+        "brute_force_vs_closed_form": {"cell_block": "5x5x5; the six B sites of one cell against every Ca and B site in the block; Ca-Ca taken as 1",
+                                       "gamma_grid": rows, "max_abs_difference_below_1e-9": True},
         "must_fail_controls_rejected": log,
-        "inputs": certlib.inputs(HERE / "cab6_packing.py"),
+        "inputs": certlib.inputs(HERE / "cab6_packing.py", HERE / "verify.py", HERE.parents[1] / "tools" / "certlib.py"),
     }
     certlib.write_json(HERE / "certificate.json", cert)
     print(f"cab6-packing: OK (max |brute - closed| < 1e-9 on {len(GRID)} ratios; {len(log)} controls rejected)")

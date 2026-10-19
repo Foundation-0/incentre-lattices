@@ -1,6 +1,6 @@
 {
   "brute_force_vs_closed_form": {
-    "cell_block": "5x5x5, all pairs",
+    "cell_block": "5x5x5; the six B sites of one cell against every Ca and B site in the block; Ca-Ca taken as 1",
     "gamma_grid": [
       {
         "beats_fcc": false,
@@ -101,7 +101,9 @@
     "wyckoff_x_in_(x,1/2,1/2)_convention": "(sqrt(2) - 1)/2"
   },
   "inputs": {
-    "results/cab6-packing/cab6_packing.py": "be1b3e8e1b4ad856a8f6491f451dd7bcdea3ca990e5afcfaa37ac6b52adb86f4"
+    "results/cab6-packing/cab6_packing.py": "84e1289c4f4d256bd5815b938fbcc30ccbffcc5754b753d99b1785d4f5eed5ae",
+    "results/cab6-packing/verify.py": "df5370edee6d3732d3f6f46c76bb9f989c77616f00122cf11ddee52e8bfc4a21",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
   },
   "model": "Ca radius rL on 1a (0,0,0); B radius rS on 6f (x,1/2,1/2) and permutations; x and lattice parameter a free; gamma = rS/rL",
   "must_fail_controls_rejected": [
