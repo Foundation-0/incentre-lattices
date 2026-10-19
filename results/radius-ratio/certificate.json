@@ -226,23 +226,34 @@
       "adjacent_max_over_2r": 1.0168,
       "adjacent_min_over_2r": 1.0,
       "all_pyramids_have_inscribed_ball": true,
+      "contacts_closed": 8,
+      "facet_transitive_under_D4d_generators": true,
       "h1_walls_are_mirrors": false,
+      "h2_holds": false,
+      "insphere_centred_at_O": true,
       "name": "trapezohedron (dual of stretched x0.7 antiprism)",
-      "r_spread_above_1e-3": false
+      "r_spread_above_1e-3": false,
+      "ridges": 16
     },
     {
       "adjacent_max_over_2r": 1.0059,
       "adjacent_min_over_2r": 1.0,
       "all_pyramids_have_inscribed_ball": true,
+      "contacts_closed": 8,
+      "facet_transitive_under_D4d_generators": true,
       "h1_walls_are_mirrors": false,
+      "h2_holds": false,
+      "insphere_centred_at_O": true,
       "name": "trapezohedron (dual of stretched x1.3 antiprism)",
-      "r_spread_above_1e-3": false
+      "r_spread_above_1e-3": false,
+      "ridges": 16
     },
     {
       "adjacent_max_over_2r": 1.2495,
       "adjacent_min_over_2r": 0.91107,
       "all_pyramids_have_inscribed_ball": true,
       "h1_walls_are_mirrors": false,
+      "h2_holds": false,
       "name": "triangular prism (square sides)",
       "pyramid_inradii_unit_edge": [
         0.134,
@@ -255,6 +266,7 @@
       "adjacent_min_over_2r": 1.1181,
       "all_pyramids_have_inscribed_ball": true,
       "h1_walls_are_mirrors": false,
+      "h2_holds": false,
       "name": "cuboctahedron (not facet-transitive)",
       "r_spread_above_1e-3": true
     }
@@ -280,13 +292,20 @@
     "H2": "P has an insphere centred at O and all dihedral angles are equal"
   },
   "inputs": {
-    "results/radius-ratio/radius_ratio.py": "b4a653148892560ed5924277f7848e108435d1f39c8e958fa3d2c15190438e38"
+    "results/radius-ratio/radius_ratio.py": "9bf2f980d423500c8ed1c9f6c31f6d27faff4c154d8a0a08a8c9737a9d19f82e",
+    "results/radius-ratio/verify.py": "5a636536648489c856a0a9c36a5903a7d668d814caebdaac2994b05fe09bf169",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
+  },
+  "inscribed_ball_test_control": {
+    "all_pyramids_have_inscribed_ball": false,
+    "name": "cuboid 2x4x6 (no inscribed ball)"
   },
   "must_fail_controls_rejected": [
     "counterexample: trapezohedron (dual of stretched x0.7 antiprism)",
     "counterexample: trapezohedron (dual of stretched x1.3 antiprism)",
     "counterexample: triangular prism (square sides)",
-    "counterexample: cuboctahedron (not facet-transitive)"
+    "counterexample: cuboctahedron (not facet-transitive)",
+    "inscribed-ball test: cuboid 2x4x6 (no inscribed ball)"
   ],
   "result": "radius-ratio",
   "tolerance": 1e-06

@@ -78,12 +78,17 @@ and the hole/ball ratio. `verify.py` requires, for all 20 cases that satisfy H1 
 two Catalan solids, bipyramids of six heights over k = 3, 4, 6, the pentagonal icositetrahedron, the uniform trapezohedron and
 four regular 4-polytopes), that every pyramid has an inscribed ball, r and D are constant to 1e-6, all adjacent dots are at
 2r, no pair is closer, and hole/ball equals the classical value (and 1/sin(phi/2) - 1 for the H2 cases). The 4 counterexamples
-above must violate that conclusion, and the replay also asserts their premises (an inscribed ball in every pyramid; facet-transitivity for the two
-trapezohedra, its failure for the prism and the cuboctahedron) and the numbers quoted above (prism inradii, trapezohedron contact ranges, deltahedra
-orbit radii, each to 6e-4, the rounding of the quoted digits). Hypothesis H1 is checked numerically: for each of the 18 cases claimed under H1, the
-vertex set of P is reflected in every wall (plane through O and a ridge) and must map onto itself (distance below 1e-9; the reflections are exact to about
-1e-15). The two H2-only cases and the four counterexamples are asserted NOT to have mirror walls. H2 is checked by the equal normal angles and facet
-offsets (below 1e-6). These are finite checks at floating-point precision; they do not prove the theorem.
+above must violate that conclusion, and the replay also asserts their premises: an inscribed ball in every pyramid; for the two trapezohedra,
+facet-transitivity (checked directly: the S8 rotoreflection and a sigma_d mirror of D4d map the vertex set onto itself to 1e-12, and the group they
+generate is transitive on the 8 kites) and an insphere centred at O (all facets at one distance from O, to 1e-6); for the prism and the cuboctahedron,
+the failure of facet-transitivity (pyramid inradii differ by more than 1e-3). It also asserts that exactly 8 of the 16 contacts of each of the two
+trapezohedra stay closed, and the numbers quoted above (prism inradii, trapezohedron contact ranges, deltahedra orbit radii, each to 6e-4, the rounding of the
+quoted digits). Hypothesis H1 is checked numerically: for each of the 18 cases claimed under H1, the vertex set of P is reflected in every wall (plane
+through O and a ridge) and must map onto itself (distance below 1e-9; the reflections are exact to about 1e-15). The two H2-only cases and the four
+counterexamples are asserted NOT to have mirror walls (some reflected vertex lands more than 1e-3 off the set). H2 is checked by the equal normal
+angles and facet offsets (below 1e-6), and each of the four counterexamples is asserted to fail H2 (normal angles or facet offsets spread by more
+than 1e-3). A fifth must-fail control tests the inscribed-ball test itself: it must report that a 2x4x6 cuboid, none of whose pyramids has an
+inscribed ball, fails the premise. These are finite checks at floating-point precision; they do not prove the theorem.
 
 ## Prior art
 

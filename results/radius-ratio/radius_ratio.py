@@ -102,7 +102,8 @@ def analyse(V, name, Qclassical=None):
                 r_spread=float(np.ptp(rad)), D_spread=float(np.ptp(D)),
                 adjacent_min_over_2r=float(adjd.min() / (2 * r)), adjacent_max_over_2r=float(adjd.max() / (2 * r)),
                 min_pair_over_2r=float(allD.min() / (2 * r)), hole_over_ball=float(ratio),
-                classical=None if Qclassical is None else float(Qclassical))
+                classical=None if Qclassical is None else float(Qclassical),
+                adjacent_over_2r=adjd / (2 * r), vertices=V)   # per-ridge adjacent-dot distance over 2r, and the vertex set (read by verify.py)
     RESULTS.append(info)
     return ratio, dots, r
 
@@ -192,6 +193,8 @@ def run_cases():
     prism = np.array([(np.cos(2 * np.pi * m / 3), np.sin(2 * np.pi * m / 3), z) for m in range(3) for z in (np.sin(np.pi / 3), -np.sin(np.pi / 3))])
     analyse(prism, "triangular prism (square sides)")
     analyse(cubocta, "cuboctahedron (not facet-transitive)")
+    # control for the inscribed-ball test itself: every pyramid of this cuboid stands on a non-square rectangle and has no inscribed ball
+    analyse(np.array(list(itertools.product((1, -1), (2, -2), (3, -3))), float), "cuboid 2x4x6 (no inscribed ball)")
     print("\n== 4D, regular polytopes (H1) ==")
     tess = np.array(list(itertools.product((1, -1), repeat=4)), float)
     c16 = np.vstack([np.eye(4), -np.eye(4)])
