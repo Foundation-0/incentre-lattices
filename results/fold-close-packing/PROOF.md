@@ -41,8 +41,11 @@ adds no independent confirmation of the certificate.
 
 ## Two checkers
 
-1. **Locked checker** `autoresearch-fold/verify.py` (sha256 pinned in `autoresearch-fold/verify.sha256`; `make verify-fold-tests` checks the pin and runs its 16
-   unit tests, including must-fail cases: overlap, stretched bar, jump, wrong initial state, NaN, negative determinant, altered topology).
+1. **Locked checker** `autoresearch-fold/verify.py` (sha256 pinned in `autoresearch-fold/verify.sha256`; `make verify-fold-tests` checks the pin and runs its 24
+   unit tests, including must-fail cases: overlap, stretched bar, jump, wrong initial state, NaN, negative determinant, altered topology; cases that
+   break one property only: the lattice step, the dot step, the midpoint determinant and the midpoint overlap (these two with the step limits lifted),
+   and a simulated failure of the end-state analysis, which must make the path invalid; and a brute-force check of the overlap search's image range on
+   a sheared lattice).
    It builds the bar graph itself, checks bar lengths, overlaps (with a midpoint check), step size at most 0.01, the initial state, and
    the end-state contacts and first-order rigidity.
 2. **Independent checker** `chk_independent.py`, a re-implementation (numpy only, no import of `verify.py`) of
