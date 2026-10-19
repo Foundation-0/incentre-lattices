@@ -57,7 +57,7 @@ RESULTS = [
         "id": "fold-3d-cubic",
         "statement": "In the 3D framework, rotating the octahedra alternately by +-theta about [111] with the lattice kept cubic reaches a=8c/3 at theta = 60 degrees with six contacts per ball and density 27 pi sqrt2/256 = 0.4686; this is not a jam, because trigonal lattices keep every bar and reach density 0.6477 on a grid scan.",
         "value": {"density_at_60_degrees": 0.468585, "trigonal_grid_best_density": 0.6477},
-        "evidence_label": "VERIFIED (finite check; exact algebra at 60 degrees, grid scan elsewhere); not a proof of any path",
+        "evidence_label": "exact values at 60 degrees PROVEN (sympy identity); first contact at 60 degrees, coordination sequence and trigonal grid scan VERIFIED (finite check); not a proof of any path",
         "verify_command": "make verify-fold3d",
         "prior_art": "PARTIALLY KNOWN: Prussian-blue topology and a-a-a- tilts known; the 60-degree end net matches RCSR sms in its first 10 coordination-sequence terms (not an isomorphism proof).",
     },

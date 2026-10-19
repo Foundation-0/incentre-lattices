@@ -75,7 +75,7 @@ Known limits: the symmetric path only (the framework has other flexes, including
 
 ### results/fold-3d-cubic: the cubic-restricted [111] fold
 
-VERIFIED only. Exact algebra at 60 degrees (a = 8c/3, six contacts, density 27 pi sqrt2/256 = 0.4686) by sympy; the first non-bonded contact on a 3000-point grid;
+PROVEN (sympy identity): the exact values at 60 degrees (a = 8c/3, six contacts at exactly 2R, density 27 pi sqrt2/256 = 0.4686). VERIFIED (finite check): the first non-bonded contact at 60 degrees on a 3000-point grid;
 the coordination sequence (ten terms, equal to RCSR `sms`, not an isomorphism); a grid scan of trigonal lattices (density up to 0.6477) that shows the cubic lock is not
 a jam. Grid adjacency is not a continuous path.
 

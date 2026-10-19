@@ -1,12 +1,13 @@
 # The cubic-restricted [111] fold of the 3D contact framework
 
-Evidence label: **VERIFIED (finite check): exact algebra at 60 degrees, grid scans elsewhere. Not a proof of any path.** Replay:
-`make verify-fold3d` (slow, about 1 minute; numpy, scipy, sympy). Certificate: `certificate.json`. This folder is an addition
-to the five requested results because the numbers belong to the same fold remarks as `fold-2d`.
+Evidence label: **Exact values at 60 degrees PROVEN (sympy identity); first contact at 60 degrees, coordination sequence and
+trigonal scan VERIFIED (finite check). Not a proof of any path.** Replay: `make verify-fold3d` (slow, about 1 minute; numpy,
+scipy, sympy). Certificate: `certificate.json`. This folder is an addition because the numbers belong to the same fold remarks
+as `fold-2d`.
 
 ## Statement
 
-Take the 3D contact framework (octahedra of six dots at c e_i, c = 2 - sqrt2, in cells of side 2, joined by bars of length
+Take the 3D contact framework (octahedra of six dots at +-c e_i, c = 2 - sqrt2, in cells of side 2, joined by bars of length
 2R, R = sqrt2 - 1). Rotate the octahedra alternately by +-theta about [111] (the analogue of the a-a-a- tilt) and **keep the lattice
 cubic**. The bars then fix the lattice parameter
 
@@ -30,7 +31,9 @@ contacts, for c < 2 - sqrt2 the lock comes past 60 degrees with five contacts (i
 
 At theta = pi/3 the lattice parameter simplifies to a = 8c/3 (sympy: a(60) - 8c/3 = 0 exactly). Each of the six dots of a cell has
 six contacts whose squared distance simplifies exactly to 4R^2 (sympy, sqrtdenest). The density is 6 (4 pi R^3/3)/a^3, which
-simplifies to 27 pi sqrt2/256 (difference below 1e-25 at 30 digits).
+simplifies to 27 pi sqrt2/256 (difference below 1e-25 at 30 digits). Exactly: at a = 8c/3 the density is 27 pi R^3/(64 c^3), and
+R/c = 1/sqrt2, which gives 27 pi sqrt2/256 (this one-line reduction was added in an internal audit, pending review; the replay
+checks the density numerically, as above).
 
 ## What the replay adds
 
