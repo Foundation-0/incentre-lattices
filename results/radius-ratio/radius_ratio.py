@@ -1,4 +1,5 @@
-"""Check of Theorem 2 (hole/ball ratio of the pyramid-incentre ("dot") construction).
+"""Check of the radius-ratio theorem (Theorem 3 of preprint v2; Theorem 2 of v1): the hole/ball
+ratio of the pyramid-incentre ("dot") construction.
 
 For a convex polytope P containing O, cut P into the pyramids conv(O, F) over its facets F and
 find, by linear programming, the largest ball in each pyramid. We report:
@@ -10,7 +11,9 @@ find, by linear programming, the largest ball in each pyramid. We report:
 Cases: Platonic solids, rhombic dodecahedron, two Catalan solids, bipyramids of several heights
 (mirror walls, hypothesis H1), the pentagonal icositetrahedron (dual of the snub cube) and the
 tetragonal trapezohedron (equal dihedral angles, hypothesis H2, only at one shape), the
-triangular prism (not isohedral), and the regular 4-polytopes.
+triangular prism and the cuboctahedron (not facet-transitive) and the tetragonal trapezohedra
+dual to square antiprisms of 0.7 and 1.3 times the uniform height (the four counterexample
+controls), and the regular 4-polytopes.
 Also: inscribability tests for the equilateral CN7/CN8/CN9 deltahedra.
 Run: python radius_ratio.py
 """
@@ -143,7 +146,8 @@ def polar(Q):
 
 
 def run_cases():
-    """Re-run every case of Theorem 2; fills RESULTS and returns the deltahedra data."""
+    """Re-run every case of the radius-ratio theorem (Theorem 3 of preprint v2; Theorem 2 of v1);
+    fills RESULTS and returns the deltahedra data."""
     print("== H1: every wall is a mirror (Wythoff case) ==")
     analyse(tet, "tetrahedron -> Q tetrahedron (CN4)", classical(tet))
     analyse(cube, "cube -> Q octahedron (CN6)", classical(octa))
@@ -152,8 +156,8 @@ def run_cases():
     analyse(ico, "icosahedron -> Q dodecahedron (CN20)", classical(dod))
     analyse(rhd, "rhombic dodecahedron -> Q cuboctahedron", classical(cubocta))
     analyse(polar(trunc_oct), "tetrakis hexahedron -> Q trunc. octahedron", classical(trunc_oct))
-    analyse(polar(perms_signs((1, 1, 1 + 2 ** 0.5))), "triakis octahedron -> Q truncated cube",
-            classical(perms_signs((1, 1, 1 + 2 ** 0.5))))
+    analyse(polar(perms_signs((2 ** 0.5 - 1, 1, 1))), "triakis octahedron -> Q truncated cube",
+            classical(perms_signs((2 ** 0.5 - 1, 1, 1))))
     for k, hgt in [(3, 0.4), (3, 1.0), (3, 2.5), (4, 0.6), (4, 1.7), (6, 1.3)]:
         eq = [(np.cos(2 * np.pi * m / k), np.sin(2 * np.pi * m / k), 0) for m in range(k)]
         bip = np.array(eq + [(0, 0, hgt), (0, 0, -hgt)])
@@ -178,9 +182,7 @@ def run_cases():
     def antiprism(z):
         return np.array([(np.cos(m * np.pi / 4), np.sin(m * np.pi / 4), z * (-1) ** m) for m in range(8)])
     # uniform square antiprism: lateral edge = base edge
-    s8 = 2 * np.sin(np.pi / 8)
-    zu = 0.5 * np.sqrt(s8 ** 2 - (2 * np.sin(np.pi / 8) * 0 + np.linalg.norm(antiprism(0)[0] - antiprism(0)[1])) ** 2 + s8 ** 2)
-    # solve lateral edge = side for z
+    # solve lateral edge |q0 q1| = base edge |q0 q2| (= sqrt2) for z
     f = lambda z: np.linalg.norm(antiprism(z)[0] - antiprism(z)[1]) - np.linalg.norm(antiprism(z)[0] - antiprism(z)[2])
     from scipy.optimize import brentq
     zu = brentq(f, 0.01, 2)

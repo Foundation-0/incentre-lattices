@@ -79,12 +79,12 @@
     },
     {
       "all_adjacent_dots_at_distance_2r": true,
-      "classical_radius_ratio": 1.7979327,
+      "classical_radius_ratio": 2.5576473,
       "dim": 3,
       "facets": 24,
       "h1_walls_are_mirrors": true,
-      "h1_walls_checked": 48,
-      "hole_over_ball": 1.7979327,
+      "h1_walls_checked": 36,
+      "hole_over_ball": 2.5576473,
       "hypothesis": "H1",
       "name": "triakis octahedron -> Q truncated cube"
     },
@@ -280,7 +280,7 @@
     "H2": "P has an insphere centred at O and all dihedral angles are equal"
   },
   "inputs": {
-    "results/radius-ratio/radius_ratio.py": "b4a653148892560ed5924277f7848e108435d1f39c8e958fa3d2c15190438e38"
+    "results/radius-ratio/radius_ratio.py": "ae4a1efff4fca7ffdfefe848b24046e13ba240cb5d1cd2c8c1c2652e65c0851f"
   },
   "must_fail_controls_rejected": [
     "counterexample: trapezohedron (dual of stretched x0.7 antiprism)",
