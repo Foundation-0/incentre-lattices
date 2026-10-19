@@ -11,12 +11,18 @@ python3 -m venv .venv
 pip install -r requirements.txt     # numpy, scipy, sympy, mpmath, all pinned
 make verify                         # about 4 to 6 minutes on a laptop
 git diff --exit-code -- results certificates commitment   # must print nothing
+git status --porcelain --untracked-files=all -- results certificates commitment   # must print nothing
 ```
 
 `make verify` runs the verifiers below, rewriting each `results/<name>/certificate.json`, then checks that `certificates/selected-results.json`,
 `certificates/SHA256SUMS` and `commitment/` still match those files. If anything differs, the command fails. `make verify-fast` runs the quick
 targets only (about 30 seconds). `make certificates` is the same as `make verify` but then regenerates the certificate index, the checksum list and
 the commitment; run it only after a deliberate change, and review the diff.
+
+After `make verify`, the two `git` lines check the working tree. `git diff` shows a certificate that changed. `git status` also lists files that
+are not committed, which `git diff` does not report: a certificate missing from the commit is rewritten by `make verify` as an untracked file, and
+`make verify` and `git diff` then both pass. The continuous-integration job runs both lines, and before `make verify` it also runs
+`python tools/sha256check.py commitment/SHA256SUMS` on the checkout as committed.
 
 | Target | Result | Tools | Time | Slow |
 |---|---|---|---|---|

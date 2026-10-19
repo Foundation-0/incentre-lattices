@@ -6,7 +6,8 @@
 #                        certificates/SHA256SUMS and commitment/ (run this after a deliberate change)
 #   make verify-<result> one result: rigidity, radius-ratio, cab6, fold2d, fold3d, fold-cp, fold-exact, fold-m1, fold-tests
 # Setup: python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
-# After `make verify`, `git diff --exit-code results certificates commitment` must be empty.
+# After `make verify`, `git diff --exit-code -- results certificates commitment` must be empty, and so must
+#   `git status --porcelain --untracked-files=all -- results certificates commitment` (git diff ignores untracked files).
 # All finite checks are labelled as such; see docs/audit.md for what each target does and does not show.
 
 PY ?= python3
@@ -21,7 +22,7 @@ SLOW = verify-fold3d verify-fold-cp verify-fold-exact verify-fold-m1   # fold3d 
 .PHONY: verify verify-fast certificates check-hashes clean help $(FAST) $(SLOW)
 
 help:
-	@sed -n '2,10p' Makefile
+	@sed -n '2,11p' Makefile
 
 verify: $(FAST) $(SLOW)
 	$(PY) tools/build_certificates.py --check

@@ -1,8 +1,8 @@
 name: verify
 
 # Reruns every verifier on three Python versions and fails if any regenerated certificate differs
-# from the committed one. Finite checks only: a green run means the recorded computations
-# replay, not that any statement beyond them is proved (see docs/audit.md).
+# from the committed one or was never committed. Finite checks only: a green run means the recorded
+# computations replay, not that any statement beyond them is proved (see docs/audit.md).
 
 on:
   push:
@@ -27,13 +27,21 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12", "3.13"]
     steps:
-      - uses: actions/checkout@v4
+      # Actions are pinned by commit SHA, because a tag can be moved; .github/dependabot.yml proposes updates.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false   # nothing here pushes; keeps the job token out of .git/config
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
           cache-dependency-path: requirements.txt
+
+      # The check in commitment/README.md, run on the checkout as committed: make verify regenerates
+      # a certificate that is missing from the commit, so its own hash checks cannot see the gap.
+      - name: Committed files match the commitment
+        run: python tools/sha256check.py commitment/SHA256SUMS
 
       - name: Install pinned requirements
         run: python -m pip install -r requirements.txt
@@ -44,3 +52,13 @@ jobs:
 
       - name: Regenerated certificates must equal the committed ones
         run: git diff --exit-code -- results certificates commitment
+
+      # git diff ignores untracked files, so it misses a regenerated certificate that was never committed.
+      - name: No untracked or modified outputs
+        run: |
+          changes=$(git status --porcelain --untracked-files=all -- results certificates commitment)
+          if [ -n "$changes" ]; then
+            echo "make verify left files under results/, certificates/ or commitment/ that differ from the commit or are not in it:"
+            echo "$changes"
+            exit 1
+          fi
