@@ -18,4 +18,6 @@
 - Balls lie in 4 close-packed layers per c, layer spacing 0.6764 = sqrt(2/3)*2R: consistent with ABAB stacking.
 - Density pi/sqrt18 = 0.74048 is the maximum for ANY sphere packing (Hales), so within this model nothing above it exists;
   iter4 reaches it with a valid continuous bar-preserving, overlap-free path.
-- Not done: coordination sequence and RCSR lookup (hcp net expected); m >= 3 untested; first-order rigidity is not a proof of jamming.
+- Not done: coordination sequence and RCSR lookup (hcp net expected); m >= 3: the only run in this log (iter3, m = 4) was INVALID
+  on the step limit (later m = 3 and m = 4 free descents did not finish, see results/fold-m1/PROOF.md); for m = 1 and its lift to
+  every m see results/fold-m1; first-order rigidity is not a proof of jamming.

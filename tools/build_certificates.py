@@ -63,7 +63,7 @@ RESULTS = [
     },
     {
         "id": "fold-close-packing",
-        "statement": "In the 2x2x2 supercell (48 balls, 120 bars of length 2R, free lattice) there is a sampled path of 793 states from the open cab state, keeping every bar length and with no overlap, to an hcp packing of density pi/sqrt18; two further rigid layer slides (400 states) reach pure fcc. Both paths are accepted by two independent checkers.",
+        "statement": "In the 2x2x2 supercell (48 balls, 120 bars of length 2R, free lattice) there is a sampled path of 793 states from the open cab state, keeping every bar length and with no overlap, to an hcp packing of density pi/sqrt18; two further rigid layer slides (400 states) reach pure fcc. Both paths are accepted by two checkers written within the project (the locked checker and a separately written checker that does not import it).",
         "value": {"hcp_states": 793, "fcc_states": 1193, "end_density": "pi/sqrt(18)", "end_contacts_per_ball": 12,
                   "fcc_end_cna": {"(4,2,1)": 576}},
         "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
