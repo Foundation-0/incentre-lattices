@@ -5,12 +5,15 @@ Runs BOTH checkers on the hcp fold path and on the fcc extension of it:
   1. autoresearch-fold/verify.py          (locked checker: bars, overlaps, continuity, jamming)
   2. results/fold-close-packing/chk_independent.py   (independent re-implementation + CNA)
 Regenerates the fcc extension from the hcp path and compares it with the stored file,
-runs must-fail controls, and writes certificate.json.
+runs must-fail controls, and writes certificate.json. The checkers are imported and run in
+this process, so their sha256 pins are checked first, with the standard library only.
 
 Dependencies: numpy, scipy (scipy only through autoresearch-fold/verify.py).
-Slow target (about 3 minutes): the independent checker interpolates 10 sub-states between
-every pair of states.   Usage: python verify.py
+Slow target (about 3 minutes): the independent checker checks 9 interior sub-states
+(u = 0.1, ..., 0.9) of every step.   Usage: python verify.py
 """
+import hashlib
+import itertools
 import pathlib
 import sys
 import tempfile
@@ -20,24 +23,33 @@ import numpy as np
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 FOLD = ROOT / "autoresearch-fold"
+
+
+def _pins_ok(sumfile, folder, names):
+    """True if sumfile ('sha256  name' lines) pins every file in `names` and every file it pins
+    in folder matches. Standard library only: it runs before any checker is imported."""
+    pins = {}
+    for ln in sumfile.read_text().splitlines():
+        if ln.strip():
+            digest, _, name = ln.partition("  ")
+            pins[name] = digest
+    return set(names) <= set(pins) and all(
+        (folder / name).is_file() and hashlib.sha256((folder / name).read_bytes()).hexdigest() == digest
+        for name, digest in pins.items())
+
+
+for _sums, _folder, _names in ((FOLD / "verify.sha256", FOLD, ["verify.py"]),
+                               (HERE / "checkers.sha256", HERE, ["chk_independent.py", "make_fcc_path.py"])):
+    if not _pins_ok(_sums, _folder, _names):
+        raise SystemExit(f"REFUSING TO RUN: {_sums.relative_to(ROOT)} does not pin {', '.join(_names)}, "
+                         "or a file it pins does not match its sha256")
+
 sys.path.insert(0, str(ROOT / "tools"))
 sys.path.insert(0, str(HERE))
 import certlib  # noqa: E402
 import chk_independent as chk  # noqa: E402
 import make_fcc_path  # noqa: E402
 locked = make_fcc_path.verify  # autoresearch-fold/verify.py (hash-locked), loaded by path
-
-
-def _check_locked_checker_pin():
-    """The locked checker is loaded by path; refuse to run unless it matches its pin."""
-    import hashlib
-    recorded = (FOLD / "verify.sha256").read_text().split()[0]
-    actual = hashlib.sha256((FOLD / "verify.py").read_bytes()).hexdigest()
-    if actual != recorded:
-        raise SystemExit("REFUSING TO RUN: autoresearch-fold/verify.py does not match verify.sha256")
-
-
-_check_locked_checker_pin()
 
 HCP = FOLD / "best" / "path.npz"
 FCC = HERE / "path_fcc.npz"
@@ -141,9 +153,27 @@ def main():
         rep = chk.check(p, interp=False)
     certlib.must_fail("independent checker: state replaced by a half-way blend (bars not preserved)",
                       chk.accepts(rep, interp=False), log)
+    # Each control above breaks two or three properties at once. Each one below breaks one, and the
+    # replay asserts which clauses reject it, not only that it is rejected.
+    m = int(d["m"])
+    Ls_c, Xs_c = cubic_path(m, 1.25, 625)  # steps of 0.002 rad; past 60 degrees the balls overlap, bars stay 2R
+    single_property_control("cubic [111] path continued to 1.25 rad (overlaps only)", m, Ls_c, Xs_c,
+                            {"overlap"}, {"overlap", "midpoint-overlap"}, log)
+    # the locked checker's overlap search includes bonded pairs, so it reports the shortened bar as an overlap too
+    single_property_control("one dot displaced by 2e-6 (bar lengths broken, far below the step limit)",
+                            m, d["Ls"], _set(d["Xs"], (400, 0, 0), d["Xs"][400, 0, 0] + 2e-6),
+                            {"bars"}, {"bar", "overlap"}, log)
+    # Ls longer than Xs: 34 lattice-only states appended, each 0.9975 times the one before.
+    # Locked checker only: chk_independent.py does not compare the lengths of Ls and Xs.
+    Ls_x = np.concatenate([d["Ls"], d["Ls"][-1] * 0.9975 ** np.arange(1, 35)[:, None, None]])
+    cname = "Ls longer than Xs by 34 lattice-only states (format)"
+    bad = locked.verify_arrays(m, Ls_x, d["Xs"], want_rigidity=False)
+    certlib.require(_reason_kinds(bad) == {"format"}, f"control '{cname}': locked checker reasons {bad['reasons']}")
+    certlib.must_fail("locked checker: " + cname, bad["valid"], log)
     cert["must_fail_controls_rejected"] = log
 
-    cert["inputs"] = certlib.inputs(HCP, FCC, FOLD / "verify.py", HERE / "chk_independent.py", HERE / "make_fcc_path.py")
+    cert["inputs"] = certlib.inputs(HCP, FCC, FOLD / "verify.py", FOLD / "test_verify.py", HERE / "chk_independent.py",
+                                    HERE / "make_fcc_path.py", HERE / "verify.py", ROOT / "tools" / "certlib.py")
     certlib.write_json(HERE / "certificate.json", cert)
     print("fold-close-packing: OK (both checkers accept the hcp and fcc paths; controls rejected: %d)" % len(log))
 
@@ -152,6 +182,63 @@ def _set(a, idx, val):
     a = a.copy()
     a[idx] = val
     return a
+
+
+def _reason_kinds(rep):
+    """The kinds ('bar', 'overlap', 'midpoint-overlap', 'continuity', 'format', ...) of the locked checker's reasons."""
+    return {r.split(":")[0] for r in rep["reasons"]}
+
+
+def _independent_fails(rep):
+    """The clauses of chk.accepts(rep, interp=False) that rep fails, one by one."""
+    held = {"start state": rep["canonical_bar_err"] < 1e-12 and rep["state0_dev_from_canonical"] < 1e-12
+            and rep["lattice0_dev_from_canonical"] < 1e-12,
+            "bars": rep["max_bar_rel_err"] < 1e-9, "overlap": rep["overlap_violations"] == 0,
+            "dot step": rep["max_dot_step"] <= 0.01, "lattice step": rep["max_lattice_step"] <= 0.01}
+    return {k for k, ok in held.items() if not ok}
+
+
+def single_property_control(cname, m, Ls, Xs, independent_fails, locked_kinds, log):
+    """Must-fail control for an input that breaks one property: both checkers must reject it, the
+    independent checker failing exactly the clauses `independent_fails`, and the locked checker giving
+    reasons of exactly the kinds `locked_kinds`."""
+    bad = locked.verify_arrays(m, Ls, Xs, want_rigidity=False)
+    certlib.require(_reason_kinds(bad) == locked_kinds, f"control '{cname}': locked checker reasons {bad['reasons']}")
+    certlib.must_fail("locked checker: " + cname, bad["valid"], log)
+    with tempfile.TemporaryDirectory() as td:
+        p = pathlib.Path(td) / "bad.npz"
+        np.savez(p, m=m, Ls=Ls, Xs=Xs)
+        rep = chk.check(p, interp=False)
+    fails, accepted = _independent_fails(rep), chk.accepts(rep, interp=False)
+    certlib.require(fails == independent_fails and accepted == (not fails),
+                    f"control '{cname}': independent checker fails {sorted(fails)}, accepts() = {accepted}")
+    certlib.must_fail("independent checker: " + cname, accepted, log)
+
+
+def cubic_path(m, th_end, steps):
+    """The cubic [111] family of autoresearch-fold/test_verify.py, rebuilt here: the octahedra of even
+    and odd cells turn by +th and -th about [111], and the cubic cell side 2a solves
+    (2a - 2Kc - q)^2 + 2q^2 = (2R)^2 (c = cos th, q = 2K(1 - c)/3, a = 1 at th = 0), so every bar is
+    2R. th runs from 0 to th_end in `steps` equal steps."""
+    K, R = 2 - np.sqrt(2), np.sqrt(2) - 1
+    n = np.ones(3) / np.sqrt(3)
+    Kx = np.array([[0, -n[2], n[1]], [n[2], 0, -n[0]], [-n[1], n[0], 0]])
+    Ls, Xs = [], []
+    for th in np.linspace(0, th_end, steps + 1):
+        c = np.cos(th)
+        q = 2 * K * (1 - c) / 3
+        a = (2 * K * c + q + np.sqrt(4 * R ** 2 - 2 * q ** 2)) / 2
+        X = np.zeros((6 * m ** 3, 3))
+        for ix, iy, iz in itertools.product(range(m), repeat=3):
+            t = th if (ix + iy + iz) % 2 == 0 else -th
+            rot = np.eye(3) + np.sin(t) * Kx + (1 - np.cos(t)) * Kx @ Kx
+            cell = (ix * m + iy) * m + iz
+            for ax in range(3):
+                for sg in range(2):  # dot 6 cell + 2 axis + (0 for +e_axis, 1 for -e_axis), as in both checkers
+                    X[6 * cell + 2 * ax + sg] = 2 * a * np.array([ix, iy, iz]) + a + K * (1 - 2 * sg) * rot[:, ax]
+        Ls.append(2 * a * m * np.eye(3))
+        Xs.append(X)
+    return np.array(Ls), np.array(Xs)
 
 
 if __name__ == "__main__":

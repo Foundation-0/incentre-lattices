@@ -87,7 +87,7 @@ a jam. Grid adjacency is not a continuous path.
 | A 1193-state extension by two layer slides to pure fcc (576 (4,2,1)) | NEW-COMPUTATION, VERIFIED by the same two checkers | `make_fcc_path.py` generates it; both checkers accept it |
 | The checker itself | 16 unit tests including must-fail cases; hash lock | `autoresearch-fold/test_verify.py`, `verify.sha256` |
 | The second checker and the fcc path generator are part of the lock | sha256 pins, checked by `make verify-fold-cp` (so by `make verify` and CI) | `results/fold-close-packing/checkers.sha256` pins `chk_independent.py` and `make_fcc_path.py`; the second checker derives its image-shift block from the lattice of each state |
-| Controls | must be rejected | displaced dot; lattice scaled in one state; a half-way blend of two states |
+| Controls | must be rejected; for the last three the replay also asserts which clauses reject them | displaced dot; lattice scaled in one state; a half-way blend of two states (each breaks two or three properties); the cubic [111] path past 60 degrees (overlap only; bars 2R up to rounding); one dot displaced by 2e-6 (bars only, for the independent checker); Ls longer than Xs (format, locked checker only) |
 
 Known limits (the important ones):
 

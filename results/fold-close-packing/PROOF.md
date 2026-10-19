@@ -50,7 +50,7 @@ adds no independent confirmation of the certificate.
    bar lengths in all states, the minimum non-bonded distance over all periodic images in all states (the image-shift block is derived from each state's lattice and dots, as in the locked checker's `_image_cloud`, not fixed), step sizes, a
    10-sub-state interpolation between every pair of states, and the density, contacts and common-neighbour analysis of the end state. On the hcp path
    it reproduces the numbers of the original `chk.py` (same maximum bar error 8.1e-14 relative, same minimum interpolated distance 0.999994 * 2R).
-   Both this file and the path generator `make_fcc_path.py` are sha256-pinned in `checkers.sha256`; `make verify-fold-cp` checks the pins (and the locked checker's) before it runs, so weakening either file and rerunning `make certificates` fails `make verify` and CI. A deliberate change to either file means re-pinning by hand (`shasum -a 256 chk_independent.py make_fcc_path.py > checkers.sha256`) in the same commit.
+   Both this file and the path generator `make_fcc_path.py` are sha256-pinned in `checkers.sha256`; `make verify-fold-cp` checks the pins (and the locked checker's) before it runs, so weakening either file and rerunning `make certificates` fails `make verify` and CI; `verify.py` itself also checks both pin files, with the standard library, before it imports either checker, so a direct `python verify.py` refuses a changed checker too. A deliberate change to either file means re-pinning by hand (`shasum -a 256 chk_independent.py make_fcc_path.py > checkers.sha256`) in the same commit.
 
 ## Results (all in `certificate.json`)
 
@@ -65,8 +65,14 @@ interpolated minimum non-bonded distance 0.999994 * 2R (attained in the hcp part
 the same kind of evidence as the hcp path (finite sampling), and both checkers were written within one project; neither is an outside review.
 
 Must-fail controls in the replay (each must be rejected by both checkers where applicable): one dot displaced by 0.05; the lattice scaled by
-0.97 in one state; a state replaced by a half-way blend that breaks bars. The stored `path_fcc.npz` is regenerated from the hcp path in every
-replay and must agree to 1e-9.
+0.97 in one state; a state replaced by a half-way blend that breaks bars. Each of these breaks two or three properties at once (bars, overlap,
+a step limit). Three more break one property each, and the replay asserts which clauses reject them: the cubic [111] path of
+`autoresearch-fold/test_verify.py` (rebuilt in `verify.py`) continued past 60 degrees to 1.25 rad (every bar 2R up to rounding, steps at
+most 0.01; the independent checker fails only its overlap clause, the locked checker gives only overlap and midpoint-overlap reasons); one
+dot displaced by 2e-6 in one state (the independent checker fails only its bar clause; the locked checker gives bar and overlap reasons,
+since its overlap search includes bonded pairs and so counts the shortened bar); and Ls longer than Xs by 34 lattice-only states (the locked
+checker gives only a format reason; the independent checker does not compare the two lengths and is not run on this control). The stored
+`path_fcc.npz` is regenerated from the hcp path in every replay and must agree to 1e-9.
 
 ## Known limits
 
