@@ -32,8 +32,8 @@
 <main>
 <div class="kick">08 // LEDGER</div>
 <h1>Ledger</h1>
-<p class="lede">Follow each claim to its evidence and its limits. The drawing connects established geometry with calculations and proposed proofs. The <a href="research.html#continuous">new continuous fcc motion</a> has a written argument and exact computational certificate in an open draft; the older searched trajectories remain numerical evidence. Historical priority and independent specialist review are unresolved.</p>
-<div class="note">Research status checked 13 October 2026: <a href="https://github.com/aska-digital/incentre-lattice/pull/23">PR 23</a>, <a href="https://github.com/aska-digital/incentre-lattice/pull/25">25</a>, <a href="https://github.com/aska-digital/incentre-lattice/pull/27">27</a>, <a href="https://github.com/aska-digital/incentre-lattice/pull/28">28</a> and <a href="https://github.com/aska-digital/incentre-lattice/pull/29">29</a> are all open. PRs 23, 28 and 29 are drafts. Their results are proposals, with internal AI review; no outside human mathematical review is recorded. The <a href="papers/incentre-lattice.pdf">earlier preprint</a> predates these updates.</div>
+<p class="lede">Follow each claim to its evidence and its limits. The drawing connects established geometry with calculations and proposed proofs. The <a href="research.html#continuous">new continuous fcc motion</a> has a written argument and exact computational certificate, with internal AI review only; the older searched trajectories remain numerical evidence. Historical priority and independent specialist review are unresolved.</p>
+<div class="note">Research status checked 19 October 2026: <a href="https://github.com/Foundation-0/incentre-lattices/pull/23">PRs 23</a>, <a href="https://github.com/Foundation-0/incentre-lattices/pull/25">25</a> and <a href="https://github.com/Foundation-0/incentre-lattices/pull/27">27</a> and the continuous motion (<a href="https://github.com/Foundation-0/incentre-lattices/pull/33">PR 33</a>, replacing <a href="https://github.com/Foundation-0/incentre-lattices/pull/28">PR 28</a>) are merged; the focused-paper draft <a href="https://github.com/Foundation-0/incentre-lattices/pull/29">PR 29</a> was closed in favour of the <a href="papers/incentre-lattice.pdf">version 2 preprint</a> (<a href="https://github.com/Foundation-0/incentre-lattices/pull/34">PR 34</a>). Internal AI review only; no outside human mathematical review is recorded. The <a href="papers/incentre-lattice-v1.pdf">earlier preprint (version 1)</a> predates these updates.</div>
 
 <h2 id="how"><span class="n">1</span>How to read the labels</h2>
 <ul class="cl">
@@ -78,8 +78,8 @@
 </ol>
 
 <h2 id="plain"><span class="n">4</span>The plain statement</h2>
-<p>The value here is a connected route through established geometry, and results that can be inspected and replayed. Periodic bridged cross-polytopes already appear in Borcea and Streinu's 2021 paper (Section 7): the same graph at a different bar length, so our counts cover it. The dimensional counts are likely routine with existing machinery (priority unresolved); the unit-spring results C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate. The newest geometric proposal gives an explicit smooth route from the open cab packing to fcc, with an exact all-parameter non-overlap certificate. It is an open draft, with internal AI checks and independent human review still pending.</p>
-<div class="note">A proof, a numerical trajectory and a literature search answer different questions. The <a href="research.html">research page</a> brings their sources and current review status together. The proposed commitment-coverage fix is still open; the older manifest must not be treated as covering every later result.</div>
+<p>The value here is a connected route through established geometry, and results that can be inspected and replayed. Periodic bridged cross-polytopes already appear in Borcea and Streinu's 2021 paper (Section 7): the same infinite framework at a different bar length; our counts are per cell of 2Z^n. The dimensional counts are likely routine with existing machinery (priority unresolved); the unit-spring results C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate. The newest geometric result gives an explicit smooth route from the open cab packing to fcc, with an exact all-parameter non-overlap certificate. It is labelled PROVEN after internal AI checks only; independent human review is still pending.</p>
+<div class="note">A proof, a numerical trajectory and a literature search answer different questions. The <a href="research.html">research page</a> brings their sources and current review status together. The certificate and commitment manifests now cover all nine result certificates and the four stored fold paths (PRs 25 and 33); the hashes record which files were checked, not that a claim is true.</div>
 </main>
 
 <script src="codex.js"></script>
@@ -150,31 +150,31 @@ const ROWS=[
 ['search','Beauty, read as compressibility, is a good guide to where to look and a poor judge of what is true.',['pos'],VW,'Schmidhuber 2009; Dirac 1963 and Weyl (via Dyson 1956) as testimony; Kepler 1596, Thomson 1867 and Hossenfelder 2018 as counterweights.'],
 ['search','The faculty that finds patterns is the same in discovery and delusion; the separating filter is external and social.',['pos'],VW,'Links the perception and drift pages.'],
 ['search','The one-cell searched hcp and fcc trajectories reach close packing; the fcc samples have increasing density.',[V],NW,'m = 1: hcp 333 states, fcc 268. Maximum dot/lattice step 0.00421/0.00482; linear interpolation can change bar lengths by 1.9e−5 relative. The sampled monotonicity and continuity limits remain.'],
-['research','Exact hcp and fcc endpoint arrangements are recorded for a six-ball, one-cell motif.',[P,V],EL,'Integer-arithmetic endpoint checks and exact density π/√18. These endpoint results alone do not establish a path.'],
+['research','Exact hcp and fcc end states are recorded for the six-ball one-cell paths and for the 48-ball 2×2×2 paths.',[P,V],EL,'Integer-arithmetic endpoint checks and exact density π/√18. These endpoint results alone do not establish a path.'],
 ['research','An exact all-pairs CaB6 attainment proof upgrades attainment from a finite check to PROVEN (PR 23).',[P],NW,'Referee-checked: an exact all-pairs check in Q(√2) agreed. Internal review only; independent human review pending.'],
-['research','The older commitment manifest does not cover every later result certificate and stored path; PR 25 proposes complete coverage.',[D],VW,'Open repository change. Do not treat the old manifest as complete. Its checks bind particular recorded files; they do not supply a mathematical proof.'],
+['research','The certificate and commitment manifests cover all nine result certificates and the four stored fold paths.',[V],VW,'certificates/SHA256SUMS and commitment/SHA256SUMS; PR 25 completed the coverage and PR 33 added the ninth certificate. make check-hashes checks both lists. The hashes bind particular recorded files; they do not supply a mathematical proof.'],
 ['research','Periodic regular cross-polytopes joined by bars occur in arbitrary dimension in Borcea and Streinu (2021), Section 7.',[K],KN,'Family-level novelty withdrawn in PR 27. Same periodic graph as ours (two body orbits, 2d bars per body) with bars at t = √2 − 1 rather than 2 − √2; our counts hold for any 0 < t < 1. Section 7 gives only the 3D count and a folding sketch. n-D counts likely routine (priority unresolved); the unit-spring C11/C12 and nu_100 are the strongest remaining candidate.'],
-['research','A proposed explicit smooth one-cell cab-to-fcc curve preserves all bars, avoids overlap at every parameter value, and strictly increases density from 0.223266 to π/√18.',[D],NW,'PR 28, open draft: analytic infinite-image bound and exact Bernstein check of 3248 distance polynomials, 16,240 coefficients, with two separately written arithmetic implementations. Internal AI review only; no outside specialist review or historical novelty established.'],
-['research','A focused five-page paper presents the explicit continuous curve and exact non-overlap certificate.',[D],NW,'PR 29, open draft manuscript. Evidence is a written argument with an exact computational component. Human review and priority search remain pending.']
+['research','An explicit smooth one-cell cab-to-fcc curve preserves all bars, avoids overlap at every parameter value, and strictly increases density from 0.223266 to π/√18.',[P],NW,'Merged in PR 33, replacing PR 28: analytic infinite-image bound and exact Bernstein check of 3248 distance polynomials, 16,240 coefficients, with two separately written arithmetic implementations. A second, symmetry-reduced written non-overlap proof (HAND-PROOF.md) came with the version 2 preprint. Internal review only; human review pending. No historical novelty established.'],
+['research','The version 2 preprint presents the unit-spring elastic constants for n >= 3 and the explicit continuous curve with its exact non-overlap certificate.',[P],NW,'Preprint, not peer reviewed (PR 34); it supersedes version 1 and the closed focused-paper draft PR 29. The proofs of these results are in results/rigidity-nd and results/fold-continuous-fcc. Internal AI review only; human review and priority search remain pending.']
 ];
 const LAB={proven:'PROVEN',verified:'VERIFIED NUMERICALLY',draft:'DRAFT / OPEN',conj:'CONJECTURE',known:'KNOWN',pos:'POSITION'};
 const NOV={kn:'ESTABLISHED',elem:'ELEMENTARY',new:'PRIORITY UNRESOLVED',view:'OUR ROUTE'};
 const REPO='https://github.com/aska-digital/incentre-lattice';
 const source=(revision,path,label)=>[REPO+'/blob/'+revision+'/'+path,label];
-const pr=(number)=>[REPO+'/pull/'+number,'PR '+number+' (open)'];
+const pr=(number)=>[REPO+'/pull/'+number,'PR '+number+' (merged)'];
 const links=[
- ['Floppy modes',[source('ebd42dbeb3bab980229ff737bf30e93ed12d74dd','results/rigidity-nd/PROOF.md','Written proof'),pr(27)]],
- ['nu_100',[source('ebd42dbeb3bab980229ff737bf30e93ed12d74dd','results/rigidity-nd/LITERATURE.md','Literature and hypotheses'),pr(27)]],
+ ['Floppy modes',[source('main','results/rigidity-nd/PROOF.md','Written proof'),pr(27)]],
+ ['nu_100',[source('main','results/rigidity-nd/LITERATURE.md','Literature and hypotheses'),pr(27)]],
  ['CaB6-type hard-sphere',[source('main','results/cab6-packing/PROOF.md','Existing proof and finite check'),pr(23)]],
  ['Drift chose',[source('main','results/fold-close-packing/PROOF.md','Sampled path and limits')]],
  ['Sampled layer-slide',[source('main','results/fold-close-packing/PROOF.md','Sampled path and limits')]],
  ['The one-cell searched',[source('main','results/fold-m1/PROOF.md','One-cell paths and limits')]],
- ['Exact hcp and fcc',[source('main','results/fold-end-exact/PROOF.md','Exact endpoint proof')]],
- ['An exact all-pairs',[source('8fe316ba50296eb3577ec00a73f929e9ec139d9c','results/cab6-packing/ATTAINMENT.md','Attainment proof'),pr(23)]],
- ['The older commitment',[pr(25)]],
- ['Periodic regular',[source('ebd42dbeb3bab980229ff737bf30e93ed12d74dd','results/rigidity-nd/LITERATURE.md','Primary-source comparison'),['https://doi.org/10.1177/1081286520948116','Borcea–Streinu'],pr(27)]],
- ['A proposed explicit',[source('548c468720dcc550bee2fe61030e3b623e1eb855','results/fold-continuous-fcc/PROOF.md','Draft continuous proof'),['research.html#continuous','Research overview'],pr(28)]],
- ['A focused five-page',[source('94d4e2ffc26614ef66d68d92fc805013afc13e7b','papers/continuous-fcc/continuous-fcc.pdf','Draft paper (PDF)'),pr(29)]]
+ ['Exact hcp and fcc',[source('main','results/fold-m1/PROOF.md','One-cell exact end states'),source('main','results/fold-end-exact/PROOF.md','2×2×2 exact end states')]],
+ ['An exact all-pairs',[source('main','results/cab6-packing/ATTAINMENT.md','Attainment proof'),pr(23)]],
+ ['The certificate and commitment',[source('main','certificates/SHA256SUMS','Certificate manifest'),source('main','commitment/README.md','Public commitment'),pr(25),pr(33)]],
+ ['Periodic regular',[source('main','results/rigidity-nd/LITERATURE.md','Primary-source comparison'),['https://doi.org/10.1177/1081286520948116','Borcea–Streinu'],pr(27)]],
+ ['An explicit smooth',[source('main','results/fold-continuous-fcc/PROOF.md','Continuous proof'),source('main','results/fold-continuous-fcc/HAND-PROOF.md','Written non-overlap proof'),['research.html#continuous','Research overview'],pr(33)]],
+ ['The version 2 preprint',[['papers/incentre-lattice.pdf','Preprint v2 (PDF)'],['https://doi.org/10.5281/zenodo.23340326','DOI 10.5281/zenodo.23340326'],pr(34)]]
 ];
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
 const tb=document.querySelector('#tb tbody');

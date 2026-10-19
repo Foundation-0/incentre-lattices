@@ -18,7 +18,7 @@ and other Claude models by Anthropic, PBC.** Their roles, in general terms:
 
 The October 2026 site update was prepared with **GPT-6** (research synthesis, interactive fcc illustration and content),
 **GPT-6.1 Sol** (shared site controls, claim ledger, accessibility fixes and code review), and **GPT-6 Luna** (link checks and repository publication).
-The research update separately identifies AI contributions to the open result and paper drafts. Publishing their summaries on the site does not constitute acceptance or outside mathematical review.
+The research update separately identifies AI contributions to the continuous-motion result, merged in PR #33. Publishing their summaries on the site does not constitute acceptance or outside mathematical review.
 
 OpenAI Codex (GPT-6) prepared the exact CaB6 attainment proof in `results/cab6-packing/ATTAINMENT.md`; GPT-6 Luna handled its repository submission. No independent human review is claimed for this contribution.
 

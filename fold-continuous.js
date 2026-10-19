@@ -1,4 +1,4 @@
-/* Illustration of the explicit curve in PR #28, proof revision 53e9de8.
+/* Illustration of the explicit curve of results/fold-continuous-fcc (PR #28, merged to main via PR #33 as abeb94b).
    Floating-point display only; the exact certificate lives with the research result. */
 (function () {
   'use strict';
