@@ -7,11 +7,15 @@ keeps every bar length and never overlaps balls (lattice may shear), and what is
 Known: cubic-lattice [111] checkerboard fold reaches 27*pi*sqrt2/256 = 0.4686 at 60 deg (6 contacts per ball).
 
 ## Files
-- `verify.py` LOCKED trusted checker (sha256 in `verify.sha256`). NEVER edit it. `run.sh` refuses to run if it changes.
+- `verify.py` LOCKED trusted checker (sha256 in `verify.sha256`). NEVER edit it. `run.sh` refuses to run if it changes,
+  and checks again after search.py and before it logs or keeps a result (against `verify.sha256` and, in a git checkout,
+  against HEAD). The hash lock is a tripwire against accidental edits, not a sandbox: search.py runs with full write
+  access to this folder, so a result in `best/` counts only after it is replayed with the pinned checker from a clean
+  checkout.
 - `search.py` the ONLY file you edit. It must write `out/path.npz` (keys m, Ls (T,3,3), Xs (T,6m^3,3)) and
   keep a one-line `DESC = "..."` describing the current idea.
-- `run.sh` one experiment (300 s cap): verify hash, run search.py, verify path, append a line to `results.tsv`,
-  copy to `best/` (path.npz, search.py, verify.json) if valid AND max density beat the best so far.
+- `run.sh` one experiment (3300 s cap): verify hash, run search.py, verify hash and path, append a line to
+  `results.tsv`, copy to `best/` (path.npz, search.py, verify.json) if valid AND max density beat the best so far.
 - `results.tsv` the log: timestamp, search hash, valid, final density, max density, end contacts, flex count, m, exit, desc.
 - `search.py.best` the last accepted version of search.py. `notes.md` your ideas, findings, dead ends.
 - Metric: `max_density` of a VALID path (scalar, higher is better). Invalid = worth nothing.
@@ -32,8 +36,11 @@ Known: cubic-lattice [111] checkerboard fold reaches 27*pi*sqrt2/256 = 0.4686 at
   "first-order rigid", never "proven maximal". Second-order flexes and other branches may exist.
 - Different supercells constrain the answer differently: results for one m are lower bounds on what a periodic
   structure of that size can reach. Try m = 2, 3, 4 (checkerboard needs even m; the engine does not).
-  Note m=3,4 are slow (dense least squares); lower HX cost, raise TIME_BUDGET cap only up to 250 s.
-- Keep the whole script under 300 s; search.py has its own soft deadline TIME_BUDGET.
+  Note m=3,4 are slow (dense least squares); lower HX cost.
+- search.py stops after MAX_STEPS stage-B steps or STALL_KICKS kicks without progress; WALL_LIMIT (3000 s) is a safety
+  limit that makes the run INCOMPLETE (exit 2, no path). A full m=2 run takes about 4 minutes; larger m may need a
+  lower MAX_STEPS to finish inside WALL_LIMIT (notes.md iter3: about 200 steps in 240 s at m=4). Keep WALL_LIMIT
+  below run.sh's 3300 s cap.
 - No commits, no posting. Everything stays in this folder.
 
 ## Idea menu (non-exhaustive)
