@@ -101,12 +101,12 @@
     },
     {
       "certificate": "results/fold-close-packing/certificate.json",
-      "certificate_sha256": "95af3421b8ec7d4ead484df0fb09d8e6eaf7fb1a6da75ea6b915bfe7937c7214",
+      "certificate_sha256": "2f06a9d148915319735c955a2fdfd6f4a14bc8c9041df09ebb519acc46906293",
       "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
       "id": "fold-close-packing",
       "input_hashes": {
         "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
-        "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
+        "autoresearch-fold/verify.py": "e449913320b1902175382376691399bd91115aa48b23a49ae87c169a19de9e42",
         "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
         "results/fold-close-packing/make_fcc_path.py": "59f2a6249dc9b76f1a9cad4af0f4bc6fcb0b586403cd656897b7b79233b92138",
         "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1"
@@ -153,11 +153,11 @@
     },
     {
       "certificate": "results/fold-m1/certificate.json",
-      "certificate_sha256": "1a52f356e302f15aec73be9cab3b95a541bd77eb83f2859d8ecf0f5622e6bcff",
+      "certificate_sha256": "1e05c6d653396a398d45a4414a198bc8ee00e35200dee664addf8dcd011bed73",
       "evidence_label": "VERIFIED (finite check, sampled continuity), NEW-COMPUTATION; monotonicity at the fcc samples only; endpoints PROVEN (integer arithmetic); interpolation is not exactly bar-preserving",
       "id": "fold-m1",
       "input_hashes": {
-        "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
+        "autoresearch-fold/verify.py": "e449913320b1902175382376691399bd91115aa48b23a49ae87c169a19de9e42",
         "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
         "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b",
         "results/fold-m1/path_fcc_m1.npz": "79067d0479d905b8cfc9268ca01af9fb544c195ac96930710ff8198dd1033479",
