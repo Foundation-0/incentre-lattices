@@ -28,21 +28,22 @@ M = 1                    # supercell (cubic checkerboard fold needs M even)
 FOLD_END = 0.0          # stage A end angle (rad); 0 = skip stage A (start from canonical state)
 CONTINUE = True          # stage B on/off
 SEED = 1
-TIME_BUDGET = 240.0      # seconds of wall clock for the whole script (run.sh kills at 300)
+WALL_LIMIT = 3000.0      # safety limit only (s). Stages S and B are bounded by MAX_STEPS and STALL_KICKS, not by time.
+                         # If the limit is hit the run is INCOMPLETE: nothing is written and the exit code is 2,
+                         # so a slow machine can never silently produce a different end state.
 HX = 0.006               # max dot displacement per step (verify limit 0.01)
 HL = 0.006               # max lattice Frobenius change per step (verify limit 0.01)
-MAX_STEPS = 4000
+MAX_STEPS = 4000         # step bound of each stage (S ends here, at the target or at a stall; B here or at a stall)
 START_KICKS = 3          # seeded random cone kicks at the start of stage B (makes SEED matter)
 NOPROG_STEPS = 40        # descent steps without a new best -> treat as stationary (cycle breaker)
 STALL_KICKS = 25         # stop after this many consecutive kicks without new best density
 CONTACT_MARGIN = 0.03    # relative distance within which non-bar pairs become LP constraints
-TRIM_TO_BEST = True
+TRIM_TO_BEST = True      # cut path at its max-density state
 TARGET = "fcc"           # None or "fcc": steer (stage S) toward an explicit fcc realisation before stage B
 TARGET_T = [[2, -1, -1], [1, 2, -1], [1, -1, 2]]   # link lattice in fcc units (rows t_a = 2 e_a + n_a), det 12
 W_F = 10.0               # weight of fractional-coordinate mismatch vs metric mismatch
 STEER_TOL = 1e-10
-SKIP_B_IF_REACHED = True  # target is an exact fcc packing (first-order jammed at m=2): skip density descent
-STEER_FRAC = 0.6         # fraction of the remaining time budget given to stage S      # cut path at its max-density state
+SKIP_B_IF_REACHED = True  # target is an exact fcc packing (first-order jammed at m=1): skip density descent
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", "path.npz")
 T0 = time.time()
 
@@ -210,7 +211,8 @@ class Engine:
 
 
 def stage_b(m, L, X, deadline, obj=None, start_kicks=None, tag="B"):
-    """obj None: shrink det L (density).  obj(X,L)->(f, grad over u): drive f down (steering)."""
+    """obj None: shrink det L (density).  obj(X,L)->(f, grad over u): drive f down (steering).
+    Returns (Ls, Xs, complete); complete is False only if the wall-clock safety limit was hit."""
     if start_kicks is None:
         start_kicks = START_KICKS
     val = (lambda X, L: np.linalg.det(L)) if obj is None else (lambda X, L: obj(X, L)[0])
@@ -224,7 +226,8 @@ def stage_b(m, L, X, deadline, obj=None, start_kicks=None, tag="B"):
     logt = time.time()
     for k in range(MAX_STEPS):
         if time.time() > deadline:
-            log("stage %s: deadline" % tag + ""); break
+            log("stage %s: INCOMPLETE (wall-clock safety limit %.0f s hit at step %d)" % (tag, WALL_LIMIT, k))
+            return Ls, Xs, False
         if obj is None:
             u, rate = eng.direction(X, L)
         else:
@@ -290,7 +293,7 @@ def stage_b(m, L, X, deadline, obj=None, start_kicks=None, tag="B"):
             logt = time.time()
             dens = N * 4 / 3 * np.pi * R ** 3 / det
             log("%s k=%d density=%.5f best=%.6g mode=%s h=%.2e" % (tag, k, dens, best, mode, h))
-    return Ls, Xs
+    return Ls, Xs, True
 
 
 # ----------------------------------------------------------------- steering target
@@ -344,13 +347,18 @@ def main():
             np.abs(np.linalg.norm(verify.bar_vectors(Xt, Lt, *bar_graph(m)), axis=1) / D - 1).max() < 1e-12))
         obj = make_objective(m, Lt, Xt)
         log("stage S start f=%.4g" % obj(Xs[-1], Ls[-1])[0])
-        dl = time.time() + STEER_FRAC * (T0 + TIME_BUDGET - time.time())
-        L2, X2 = stage_b(m, Ls[-1], Xs[-1], dl, obj=obj, start_kicks=0, tag="S")
+        L2, X2, complete = stage_b(m, Ls[-1], Xs[-1], T0 + WALL_LIMIT, obj=obj, start_kicks=0, tag="S")
+        if not complete:
+            log("search INCOMPLETE: no path written")
+            sys.exit(2)
         Ls += L2[1:]; Xs += X2[1:]
         log("stage S end f=%.4g density %.5f" % (obj(Xs[-1], Ls[-1])[0], 6 * m ** 3 * 4 / 3 * np.pi * R ** 3 / np.linalg.det(Ls[-1])))
     reached = TARGET == "fcc" and obj(Xs[-1], Ls[-1])[0] < STEER_TOL
     if CONTINUE and not (reached and SKIP_B_IF_REACHED):
-        L2, X2 = stage_b(m, Ls[-1], Xs[-1], T0 + TIME_BUDGET, start_kicks=(START_KICKS if TARGET is None else 0))
+        L2, X2, complete = stage_b(m, Ls[-1], Xs[-1], T0 + WALL_LIMIT, start_kicks=(START_KICKS if TARGET is None else 0))
+        if not complete:
+            log("search INCOMPLETE: no path written")
+            sys.exit(2)
         Ls += L2[1:]
         Xs += X2[1:]
     Ls = np.array(Ls); Xs = np.array(Xs)

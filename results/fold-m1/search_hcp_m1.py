@@ -28,10 +28,12 @@ M = 1                    # supercell (cubic checkerboard fold needs M even)
 FOLD_END = 0.0
 CONTINUE = True          # stage B on/off
 SEED = 1
-TIME_BUDGET = 240.0      # seconds of wall clock for the whole script (run.sh kills at 300)
+WALL_LIMIT = 3000.0      # safety limit only (s). Stage B is bounded by MAX_STEPS and STALL_KICKS, not by time.
+                         # If the limit is hit the run is INCOMPLETE: nothing is written and the exit code is 2,
+                         # so a slow machine can never silently produce a different end state.
 HX = 0.006               # max dot displacement per step (verify limit 0.01)
 HL = 0.006               # max lattice Frobenius change per step (verify limit 0.01)
-MAX_STEPS = 4000
+MAX_STEPS = 4000         # stage B step bound (the search ends here or at a stall, whichever is first)
 START_KICKS = 3          # seeded random cone kicks at the start of stage B (makes SEED matter)
 NOPROG_STEPS = 40        # descent steps without a new best -> treat as stationary (cycle breaker)
 STALL_KICKS = 25         # stop after this many consecutive kicks without new best density
@@ -204,6 +206,7 @@ class Engine:
 
 
 def stage_b(m, L, X, deadline):
+    """Returns (Ls, Xs, complete); complete is False only if the wall-clock safety limit was hit."""
     eng = Engine(m)
     N = eng.N
     Ls, Xs = [L.copy()], [X.copy()]
@@ -214,7 +217,8 @@ def stage_b(m, L, X, deadline):
     logt = time.time()
     for k in range(MAX_STEPS):
         if time.time() > deadline:
-            log("stage B: deadline"); break
+            log("stage B: INCOMPLETE (wall-clock safety limit %.0f s hit at step %d)" % (WALL_LIMIT, k))
+            return Ls, Xs, False
         u, rate = eng.direction(X, L)
         mode = "descent"
         if k < START_KICKS:
@@ -271,7 +275,7 @@ def stage_b(m, L, X, deadline):
             logt = time.time()
             dens = N * 4 / 3 * np.pi * R ** 3 / det
             log("k=%d density=%.5f best=%.5f mode=%s h=%.2e" % (k, dens, N * 4 / 3 * np.pi * R ** 3 / best, mode, h))
-    return Ls, Xs
+    return Ls, Xs, True
 
 
 # ----------------------------------------------------------------- main
@@ -284,7 +288,10 @@ def main():
         Ls, Xs = [L0], [X0]
     log("stage A done: %d states, density %.5f" % (len(Ls), 6 * m ** 3 * 4 / 3 * np.pi * R ** 3 / np.linalg.det(Ls[-1])))
     if CONTINUE:
-        L2, X2 = stage_b(m, Ls[-1], Xs[-1], T0 + TIME_BUDGET)
+        L2, X2, complete = stage_b(m, Ls[-1], Xs[-1], T0 + WALL_LIMIT)
+        if not complete:
+            log("search INCOMPLETE: no path written")
+            sys.exit(2)
         Ls += L2[1:]
         Xs += X2[1:]
     Ls = np.array(Ls); Xs = np.array(Xs)
