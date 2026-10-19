@@ -6,7 +6,9 @@
     "results/fold-m1/path_fcc_m1.npz": "79067d0479d905b8cfc9268ca01af9fb544c195ac96930710ff8198dd1033479",
     "results/fold-m1/path_hcp_m1.npz": "5f54326a2bdb8e386ce93589b993c20210946c3e68aa6f535110ee2083b7ab26",
     "results/fold-m1/search_fcc_m1.py": "8af1e289ee7d0d57a9ab9cf3ff4a628e120ea0dfa9aaeafe69c46595d8ce6b94",
-    "results/fold-m1/search_hcp_m1.py": "f2476ba65a70e862cf8a2f7b3169f7388fead095e2186a881c1bf4dbb15406a9"
+    "results/fold-m1/search_hcp_m1.py": "f2476ba65a70e862cf8a2f7b3169f7388fead095e2186a881c1bf4dbb15406a9",
+    "results/fold-m1/verify.py": "52ecfe5d77bd200b7f227604121ee1ac0bd7e09d3452cf5994faf2248cfb80b5",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
   },
   "model": "m = 1 (6 balls, 15 bars)",
   "must_fail_controls_rejected": [
@@ -16,7 +18,11 @@
     "independent checker: lattice scaled by 0.97 in one state (bars and overlaps broken)",
     "locked checker: states 100 to 199 deleted (step too large)",
     "independent checker: states 100 to 199 deleted (step too large)",
-    "monotone test on the hcp path (its density dips)"
+    "monotone test on the hcp path (its density dips)",
+    "locked checker: bars intact, steps <= 0.01, balls overlap (fold-continuous-fcc curve run past fcc to s = 1.1)",
+    "independent checker: bars intact, steps <= 0.01, balls overlap (fold-continuous-fcc curve run past fcc to s = 1.1)",
+    "locked checker: Ls longer than Xs by 34 lattice-only states (format)",
+    "locked checker: first-order jamming test on the next-to-last fcc state"
   ],
   "paths": {
     "fcc": {

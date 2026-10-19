@@ -153,7 +153,7 @@
     },
     {
       "certificate": "results/fold-m1/certificate.json",
-      "certificate_sha256": "1a52f356e302f15aec73be9cab3b95a541bd77eb83f2859d8ecf0f5622e6bcff",
+      "certificate_sha256": "7569c42c9387d1e5b64851f357f6cb8316e581b5e02c282fa5cdf3cbeea3d36e",
       "evidence_label": "VERIFIED (finite check, sampled continuity), NEW-COMPUTATION; monotonicity at the fcc samples only; endpoints PROVEN (integer arithmetic); interpolation is not exactly bar-preserving",
       "id": "fold-m1",
       "input_hashes": {
@@ -163,7 +163,9 @@
         "results/fold-m1/path_fcc_m1.npz": "79067d0479d905b8cfc9268ca01af9fb544c195ac96930710ff8198dd1033479",
         "results/fold-m1/path_hcp_m1.npz": "5f54326a2bdb8e386ce93589b993c20210946c3e68aa6f535110ee2083b7ab26",
         "results/fold-m1/search_fcc_m1.py": "8af1e289ee7d0d57a9ab9cf3ff4a628e120ea0dfa9aaeafe69c46595d8ce6b94",
-        "results/fold-m1/search_hcp_m1.py": "f2476ba65a70e862cf8a2f7b3169f7388fead095e2186a881c1bf4dbb15406a9"
+        "results/fold-m1/search_hcp_m1.py": "f2476ba65a70e862cf8a2f7b3169f7388fead095e2186a881c1bf4dbb15406a9",
+        "results/fold-m1/verify.py": "52ecfe5d77bd200b7f227604121ee1ac0bd7e09d3452cf5994faf2248cfb80b5",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
       },
       "prior_art": "No separate search for m = 1; see autoresearch-fold/PRIOR-ART-FOLD.md for the fold search. Checkers and endpoint implementation are internal, with no outside review.",
       "statement": "In the m = 1 cell (6 balls, 15 bars, free lattice), a 333-state sampled path reaches hcp and a 268-state sampled path reaches fcc from the open cab state. Both pass the locked and independent checkers. The fcc density rises at every sample; both closed-form endpoints have exact bars, no overlap, 12 contacts per ball and density pi/sqrt18.",

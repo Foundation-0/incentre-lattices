@@ -4,14 +4,20 @@
 For each stored path (path_hcp_m1.npz: free density descent, no steering; path_fcc_m1.npz: steered to
 an explicit fcc end state, density never decreasing):
   1. the locked checker autoresearch-fold/verify.py (bars, overlaps, midpoint, step <= 0.01, jamming);
-  2. the independent checker results/fold-close-packing/chk_independent.py (with 10 sub-states per step);
-  3. the exact end-state check results/fold-end-exact/exact_end.py (integer arithmetic);
+     its end state must have 12 contacts per ball and be first-order jammed (no flex with the contacts
+     as bars, no first-order density ascent);
+  2. the independent checker results/fold-close-packing/chk_independent.py (with 9 interior sub-states
+     u = 0.1, ..., 0.9 per step);
+  3. the exact end-state check results/fold-end-exact/exact_end.py (integer arithmetic); its lattice rows
+     must be the end-state table of PROOF.md;
   4. for the fcc path, det L strictly decreases at every step (density increases at every sample);
-then must-fail controls, and certificate.json.
+then must-fail controls, and certificate.json. Both checkers are checked against their sha256 pins
+(autoresearch-fold/verify.sha256, results/fold-close-packing/checkers.sha256) before they are imported.
 
-Dependencies: numpy, scipy (scipy only through autoresearch-fold/verify.py). About 20 seconds.
+Dependencies: numpy, scipy (scipy only through autoresearch-fold/verify.py). About 10 seconds.
 Usage: python verify.py
 """
+import hashlib
 import importlib.util
 import pathlib
 import sys
@@ -22,8 +28,30 @@ import numpy as np
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 FOLD = ROOT / "autoresearch-fold"
+FCP = ROOT / "results" / "fold-close-packing"
+
+
+def _check_pins(folder, sums, needed):
+    """Refuse to run unless every file pinned in folder/sums matches its sha256. Standard library only,
+    and run before either checker is imported, so a modified checker cannot patch hashlib first."""
+    rel, pinned = folder.relative_to(ROOT).as_posix(), set()
+    for line in (folder / sums).read_text().splitlines():
+        if not line.strip():
+            continue
+        digest, _, name = line.partition("  ")
+        p = folder / name
+        if not (p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() == digest):
+            raise SystemExit(f"REFUSING TO RUN: {rel}/{name} does not match {rel}/{sums}")
+        pinned.add(name)
+    if not needed <= pinned:
+        raise SystemExit(f"REFUSING TO RUN: {rel}/{sums} does not pin {sorted(needed - pinned)}")
+
+
+_check_pins(FOLD, "verify.sha256", {"verify.py"})
+_check_pins(FCP, "checkers.sha256", {"chk_independent.py"})
+
 sys.path.insert(0, str(ROOT / "tools"))
-sys.path.insert(0, str(ROOT / "results" / "fold-close-packing"))
+sys.path.insert(0, str(FCP))
 sys.path.insert(0, str(ROOT / "results" / "fold-end-exact"))
 import certlib  # noqa: E402
 import chk_independent as chk  # noqa: E402
@@ -35,6 +63,9 @@ _spec.loader.exec_module(locked)
 
 PATHS = {"hcp": HERE / "path_hcp_m1.npz", "fcc": HERE / "path_fcc_m1.npz"}
 CNA = {"hcp": {"(4, 2, 1)": 36, "(4, 2, 2)": 36}, "fcc": {"(4, 2, 1)": 72}}
+# the end-state table of PROOF.md: lattice rows in the cube frame of the octahedron, in the given unit
+END = {"fcc": ([[2, -1, -1], [1, 2, -1], [1, -1, 2]], "K/1, K = 2 - sqrt2"),
+       "hcp": ([[7, -1, 4], [-4, 7, -1], [-3, 3, 6]], "K/3, K = 2 - sqrt2")}
 
 
 def locked_summary(rep):
@@ -77,11 +108,16 @@ def main():
     for name, path in PATHS.items():
         lk = locked.verify_file(str(path))
         certlib.require(lk["valid"] and lk["m"] == 1, f"locked checker rejected the {name} path: {lk['reasons']}")
+        certlib.require(lk.get("first_order_jammed") is True and lk.get("flex_bars_plus_contacts") == 0,
+                        f"{name}: end state is not first-order jammed")
+        certlib.require(lk.get("contacts_per_ball_min") == lk.get("contacts_per_ball_max") == 12,
+                        f"{name}: locked checker does not count 12 contacts per ball at the end state")
         ind = chk.check(path)
         certlib.require(chk.accepts(ind), f"independent checker rejected the {name} path")
         certlib.require(ind["end_cna"] == CNA[name], f"{name}: end state CNA is {ind['end_cna']}")
         ex = exact_end.check(path)
         certlib.require(ex["exact_ok"] and ex["structure"] == name, f"{name}: exact end-state check failed")
+        certlib.require((ex["lattice_rows"], ex["unit"]) == END[name], f"{name}: end lattice is not the PROOF.md table")
         d = np.load(path)
         det = np.linalg.det(d["Ls"])
         entry = {"locked_checker": locked_summary(lk), "independent_checker": independent_summary(ind),
@@ -102,21 +138,59 @@ def main():
         L2, X2 = edit(d["Ls"].copy(), d["Xs"].copy())
         bad = locked.verify_arrays(1, L2, X2, want_rigidity=False)
         certlib.must_fail("locked checker: " + cname, bad["valid"], log)
-        with tempfile.TemporaryDirectory() as td:
-            p = pathlib.Path(td) / "bad.npz"
-            np.savez(p, m=1, Ls=L2, Xs=X2)
-            rep = chk.check(p, interp=False)
+        rep = _independent(L2, X2)
         certlib.must_fail("independent checker: " + cname, chk.accepts(rep, interp=False), log)
     h = np.load(PATHS["hcp"])
     certlib.must_fail("monotone test on the hcp path (its density dips)", bool(np.all(np.diff(np.linalg.det(h["Ls"])) < 0)), log)
+
+    # Controls that each break one property; the clause that rejects them is asserted, not only the rejection.
+    # Overlap with bars intact and steps <= 0.01: the curve of results/fold-continuous-fcc, L = K((2 + a) I + t C)
+    # with the dots fixed at the start state, run past its fcc end point s = 1 to s = 1.1. Its bars stay exactly
+    # 2R for every real s (a^2 + 2 t^2 = 2), but past s = 1 balls overlap.
+    s = np.linspace(0.0, 1.1, 441)
+    t, a = 2 * s / (1 + s * s), np.sqrt(2) * (1 - s * s) / (1 + s * s)
+    C = np.array([[0, -1, -1], [1, 0, -1], [1, -1, 0]])
+    Lc = locked.K * ((2 + a)[:, None, None] * np.eye(3) + t[:, None, None] * C)
+    Xc = np.repeat(d["Xs"][:1], len(s), axis=0)
+    cname = "bars intact, steps <= 0.01, balls overlap (fold-continuous-fcc curve run past fcc to s = 1.1)"
+    bad = locked.verify_arrays(1, Lc, Xc, want_rigidity=False)
+    kinds = {r.split(":")[0] for r in bad["reasons"]}
+    certlib.require("overlap" in kinds and kinds <= {"overlap", "midpoint-overlap"},
+                    f"locked checker: the overlap control is not rejected by the overlap tests alone: {sorted(kinds)}")
+    certlib.must_fail("locked checker: " + cname, bad["valid"], log)
+    rep = _independent(Lc, Xc)
+    certlib.require(rep["overlap_violations"] > 0 and chk.accepts(dict(rep, overlap_violations=0), interp=False),
+                    "independent checker: the overlap control is not rejected by the overlap test alone")
+    certlib.must_fail("independent checker: " + cname, chk.accepts(rep, interp=False), log)
+    # Ls longer than Xs: 34 extra lattice-only states, each 0.25% smaller than the last. chk_independent.py does
+    # not yet compare the lengths of Ls and Xs (it accepts this file), so only the locked checker is tested here.
+    L2 = np.concatenate([d["Ls"], d["Ls"][-1] * 0.9975 ** np.arange(1, 35)[:, None, None]])
+    bad = locked.verify_arrays(1, L2, d["Xs"], want_rigidity=False)
+    certlib.require(all(r.startswith("format: bad shapes") for r in bad["reasons"]),
+                    f"locked checker: the length-mismatch control is not rejected by the format test alone: {bad['reasons']}")
+    certlib.must_fail("locked checker: Ls longer than Xs by 34 lattice-only states (format)", bad["valid"], log)
+    # The jamming test on a state that is not jammed: the fcc path's next-to-last state.
+    I, J, S = locked.bar_graph(1)
+    jam = locked.end_state_report(1, d["Ls"][-2], d["Xs"][-2], I, J, S)
+    certlib.must_fail("locked checker: first-order jamming test on the next-to-last fcc state",
+                      jam["first_order_jammed"] is not False, log)
     cert["must_fail_controls_rejected"] = log
 
     cert["inputs"] = certlib.inputs(PATHS["hcp"], PATHS["fcc"], FOLD / "verify.py",
                                     ROOT / "results" / "fold-close-packing" / "chk_independent.py",
                                     ROOT / "results" / "fold-end-exact" / "exact_end.py",
-                                    HERE / "search_hcp_m1.py", HERE / "search_fcc_m1.py")
+                                    HERE / "search_hcp_m1.py", HERE / "search_fcc_m1.py",
+                                    HERE / "verify.py", ROOT / "tools" / "certlib.py")
     certlib.write_json(HERE / "certificate.json", cert)
     print("fold-m1: OK (both checkers and the exact check accept the m = 1 hcp and fcc paths; controls rejected: %d)" % len(log))
+
+
+def _independent(Ls, Xs):
+    """The independent checker, without interpolation, on arrays (it reads a path file)."""
+    with tempfile.TemporaryDirectory() as td:
+        p = pathlib.Path(td) / "bad.npz"
+        np.savez(p, m=1, Ls=Ls, Xs=Xs)
+        return chk.check(p, interp=False)
 
 
 def _set(a, idx, val):
