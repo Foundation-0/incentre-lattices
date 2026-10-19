@@ -24,8 +24,8 @@ inside the project before anything was public, by AI models working under direct
 | [PR #30](https://github.com/aska-digital/incentre-lattice/pull/30) | site research report and claim presentation | `90adcdd` | confirmed with corrections | Internal AI review by GPT-6 and GPT-6.1 Sol; GPT-6 Luna checked links. Corrected sampled-versus-continuous wording and family-level prior art, traced draft claims to pinned open PRs, checked the illustration against 101 Python states (lattice error below 2.3e-16), and replayed all eight baseline results without changing their artifacts. UI/static checks cover links, scripts, ledger filters, controls and dimension highlights. This does not accept the research drafts or establish historical priority; no outside human review. |
 | [PR #23](https://github.com/aska-digital/incentre-lattice/pull/23) | cab6-packing | `2ed2ab7` | confirmed (internal); outside review open | Exact all-pairs distance classification in `ATTAINMENT.md`, prepared with OpenAI Codex (GPT-6); a referee confirmed it correct and complete, and an exact all-pairs check in Q(sqrt2) agreed. Attainment upgraded from VERIFIED to PROVEN. Exact radical checks, 966 translated B-B pairs and 936 (h, gamma) comparisons corroborate it; independent human review pending. |
 
-The unpublished source documents `VERIFY.md` and `PRIOR-ART.md` live in the paper folder, which is not public yet; their findings are incorporated in the
-`PROOF.md` files and in this table.
+The unpublished source documents `VERIFY.md` and `PRIOR-ART.md` live in the git-ignored working folder `paper/` (not the public `papers/`), which is not
+public yet; their findings are incorporated in the `PROOF.md` files and in this table.
 
 ## How to add a row
 

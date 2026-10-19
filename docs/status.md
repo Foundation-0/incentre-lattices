@@ -1,6 +1,6 @@
 # Status: the current best per track
 
-As of 2026-10-12. Labels as in `docs/audit.md`. Preprint v1 published 2026-10-12 (DOI 10.5281/zenodo.23322079); v2 drafted 2026-10-13 (`papers/incentre-lattice.pdf`, release pending; v1 kept as `papers/incentre-lattice-v1.pdf`); not peer reviewed. The continuous fcc motion now also has a written symmetry-reduced non-overlap proof (`results/fold-continuous-fcc/HAND-PROOF.md`, internal review only).
+As of 2026-10-13. Labels as in `docs/audit.md`. Preprint v1 (DOI 10.5281/zenodo.23322080) published 2026-10-12; v2 (DOI 10.5281/zenodo.23340326; all versions 10.5281/zenodo.23322079) released 2026-10-13 (`papers/incentre-lattice.pdf`; v1 kept as `papers/incentre-lattice-v1.pdf`); not peer reviewed. The continuous fcc motion now also has a written symmetry-reduced non-overlap proof (`results/fold-continuous-fcc/HAND-PROOF.md`, internal review only).
 
 | Track | Current best | Label | Replay |
 |---|---|---|---|

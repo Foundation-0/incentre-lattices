@@ -1,6 +1,6 @@
 Incentre lattice
 Copyright (c) 2026 Ahraz Arifuddin, Aska Digital, and contributors.
-Code: MIT License. Text, figures and site content: CC BY 4.0 (see LICENSE).
+Code: MIT License (see LICENSE). Text, figures and site content: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
 
 This repository was produced with substantial AI assistance (Claude models by Anthropic, PBC); see CONTRIBUTORS.md.
 
@@ -23,10 +23,9 @@ Third-party material and what it is licensed under. Nothing below is relicensed 
    Table S1 of C. J. Bartel et al., "New tolerance factor to predict the stability of perovskite oxides and halides",
    Science Advances 5, eaav0693 (2019), https://doi.org/10.1126/sciadv.aav0693, as published in
    https://github.com/CJBartel/perovskite-stability (MIT License, Copyright (c) 2018 Christopher J. Bartel).
-   The file here is byte-identical to the upstream file (checked 2026-10-12). Keep the MIT notice when redistributing:
-   "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-   documentation files ... The above copyright notice and this permission notice shall be included in all copies or
-   substantial portions of the Software." (full text: https://github.com/CJBartel/perovskite-stability/blob/master/LICENSE).
+   The file here is byte-identical to the upstream file (checked 2026-10-12). The upstream MIT licence
+   (https://github.com/CJBartel/perovskite-stability/blob/master/LICENSE) is reproduced in full in
+   research/chemistry/data/LICENSE-TableS1; keep it with the file when redistributing.
 
 3. Reticular Chemistry Structure Resource (RCSR), http://rcsr.net: the nets cab, ubt and sms are cited by name and symbol, and one
    coordination sequence (sms, ten terms) read from the RCSR data file 3dall.txt is quoted as a number in results/fold-3d-cubic.
@@ -41,5 +40,10 @@ Third-party material and what it is licensed under. Nothing below is relicensed 
 
 6. Software dependencies, installed from PyPI and not redistributed: numpy (BSD-3-Clause), scipy (BSD-3-Clause), sympy (BSD-3-Clause),
    mpmath (BSD-3-Clause). Lean 4 (Apache-2.0) is optional and used only for formal/Arithmetic.lean.
+   Optional, for research notes and figures only: pandas (BSD-3-Clause), ase (LGPL-2.1-or-later) and certifi (MPL-2.0) for scripts
+   in research/chemistry; matplotlib (Matplotlib licence, PSF-based) for the README and paper figure scripts.
 
-The paper preprint is pending. The sources of the unpublished manuscript are deliberately not part of this repository.
+The preprint is part of this repository: v1 (DOI 10.5281/zenodo.23322080) as papers/incentre-lattice-v1.pdf and v2
+(DOI 10.5281/zenodo.23340326) as papers/incentre-lattice.pdf, with the LaTeX and figure sources of v2 in papers/source/ (those of
+v1 are in the git history, commit 4d8488e). Its text and figures are under CC BY 4.0 and its figure scripts under MIT. The working
+notes in the git-ignored folder paper/ (including VERIFY.md and PRIOR-ART.md) are not public.
