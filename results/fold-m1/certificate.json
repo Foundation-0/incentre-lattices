@@ -1,7 +1,7 @@
 {
   "inputs": {
     "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
-    "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
+    "results/fold-close-packing/chk_independent.py": "62cdb746117ec0caa9eeec62482cc44757ed6df7fa97f7109d852dd99c11c105",
     "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b",
     "results/fold-m1/path_fcc_m1.npz": "79067d0479d905b8cfc9268ca01af9fb544c195ac96930710ff8198dd1033479",
     "results/fold-m1/path_hcp_m1.npz": "5f54326a2bdb8e386ce93589b993c20210946c3e68aa6f535110ee2083b7ab26",
@@ -69,7 +69,7 @@
         "interp_max_bar_dev_over_2R": 1.626e-05,
         "interp_min_nonbonded_over_2R": 1.00011,
         "max_dot_step": 0.00421,
-        "max_lattice_step": 0.003665,
+        "max_lattice_step": 0.006033,
         "min_nonbonded_over_2R_at_least_1_minus_1e-9": true,
         "overlap_violations": 0,
         "start_density": 0.2232661157,
@@ -144,7 +144,7 @@
         "interp_max_bar_dev_over_2R": 1.888e-05,
         "interp_min_nonbonded_over_2R": 0.999996,
         "max_dot_step": 0.00421,
-        "max_lattice_step": 0.004821,
+        "max_lattice_step": 0.006042,
         "min_nonbonded_over_2R_at_least_1_minus_1e-9": true,
         "overlap_violations": 0,
         "start_density": 0.2232661157,

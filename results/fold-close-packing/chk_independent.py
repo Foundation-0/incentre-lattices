@@ -3,15 +3,20 @@
 
 This is autoresearch-fold/independent/chk.py reorganised into a function that takes the path
 file as an argument and returns its measurements, plus a contact-based common-neighbour
-analysis (CNA) of the end state. The checks are the same as in chk.py:
+analysis (CNA) of the end state. The checks are those of chk.py, except where noted:
 
+  * the file format (not in chk.py): Ls of shape (T, 3, 3) and Xs of shape (T, 6 m^3, 3) with
+    the same T >= 2, m >= 1, all entries finite and det L > 0 in every state. A file that fails
+    this gets the report {"format_ok": False} and nothing else, and accepts() rejects it;
   * the bar graph is rebuilt from the model (cell side 2, dots at centre +- (2-sqrt2) e_i,
     120 bars of length 2R = 2(sqrt2-1) for m = 2) with FIXED integer lattice shifts;
   * every bar length is checked in every state;
   * the minimum distance between non-bonded dots, over all periodic images, is checked in
     every state (overlap = distance < 2R), over all image shifts derived from the lattice;
-  * step sizes between consecutive states; optional 10-substate linear interpolation
-    between every pair of states (the midpoint-style overlap check);
+  * step sizes between consecutive states: the largest dot displacement (Euclidean) and the
+    Frobenius norm of the change of L, as in autoresearch-fold/verify.py (chk.py bounds the
+    largest entry of the change of L instead); optional linear interpolation at the 9 interior
+    sub-states u = 0.1, ..., 0.9 per step (midpoint included), the midpoint-style overlap check;
   * the end state: density, contacts per ball, CNA signatures.
 
 Usage: python chk_independent.py PATH.npz [--no-interp]
@@ -143,10 +148,17 @@ def cna_signatures(X, L, tol=1e-6):
 
 def check(path, interp=True):
     d = np.load(path)
-    Ls, Xs, m = d["Ls"], d["Xs"], int(d["m"])
+    Ls, Xs, m = np.asarray(d["Ls"], float), np.asarray(d["Xs"], float), int(d["m"])
+    # fail closed on a malformed file: return (do not raise) so callers log a rejection
+    out = {"format_ok": bool(m >= 1 and Ls.ndim == 3 and Ls.shape[1:] == (3, 3) and Xs.ndim == 3
+                             and Xs.shape[1:] == (6 * m ** 3, 3) and len(Ls) == len(Xs) >= 2
+                             and np.isfinite(Ls).all() and np.isfinite(Xs).all()
+                             and (np.linalg.det(Ls) > 0).all())}
+    if not out["format_ok"]:
+        return out
     T, N = len(Xs), Xs.shape[1]
     P0, L0, bars = build_bars(m)
-    out = {"states": T, "dots": N, "bars": len(bars)}
+    out.update({"states": T, "dots": N, "bars": len(bars)})
     out["canonical_bar_err"] = float(abs(bar_lengths(P0, L0, bars) - B).max())
     out["state0_dev_from_canonical"] = float(abs(Xs[0] - P0).max())
     out["lattice0_dev_from_canonical"] = float(abs(Ls[0] - L0).max())
@@ -157,7 +169,7 @@ def check(path, interp=True):
     out["min_nonbonded_over_2R"] = float(ovl.min() / B)
     out["overlap_violations"] = int((ovl < B * (1 - 1e-9)).sum())
     dX = np.linalg.norm(Xs[1:] - Xs[:-1], axis=2).max(1)
-    dL = np.abs(Ls[1:] - Ls[:-1]).max((1, 2))
+    dL = np.linalg.norm(Ls[1:] - Ls[:-1], axis=(1, 2))  # Frobenius, as in autoresearch-fold/verify.py
     out["max_dot_step"] = float(dX.max())
     out["max_lattice_step"] = float(dL.max())
     if interp:
@@ -190,7 +202,8 @@ def check(path, interp=True):
 
 def accepts(rep, interp=True):
     """The acceptance rule used by the certificate and by the must-fail controls."""
-    ok = (rep["canonical_bar_err"] < 1e-12 and rep["state0_dev_from_canonical"] < 1e-12
+    ok = (rep.get("format_ok") is True
+          and rep["canonical_bar_err"] < 1e-12 and rep["state0_dev_from_canonical"] < 1e-12
           and rep["lattice0_dev_from_canonical"] < 1e-12
           and rep["max_bar_rel_err"] < 1e-9 and rep["overlap_violations"] == 0
           and rep["max_dot_step"] <= 0.01 and rep["max_lattice_step"] <= 0.01)
