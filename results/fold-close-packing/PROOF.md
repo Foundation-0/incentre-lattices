@@ -1,7 +1,9 @@
 # The cab contact framework folds to close packing (m = 2 supercell)
 
 Evidence label: **VERIFIED (finite check). The path is certified only by sampled continuity (consecutive states differ by at most 0.01
-in every dot position and in the lattice) with a midpoint check and a 10-sub-state linear interpolation between every pair of states.
+in every dot position, as a Euclidean distance, and in the lattice, as the Frobenius norm of the change of L) with a midpoint check
+and a linear interpolation at 9 interior sub-states (each step split into 10 equal parts, u = 0.1, ..., 0.9, midpoint included)
+between every pair of states.
 It is not a proof of a continuous overlap-free motion. The fcc extension is NEW WORK, checked by two checkers.**
 Replay: `make verify-fold-cp` (slow, about 3 minutes; numpy, scipy) and `make verify-fold-tests` (the locked checker's unit tests).
 Certificate: `certificate.json`. Stored paths: `autoresearch-fold/best/path.npz` (hcp, 793 states) and `path_fcc.npz` (this folder, 1193 states).
@@ -48,7 +50,7 @@ adds no independent confirmation of the certificate.
 2. **Independent checker** `chk_independent.py`, a re-implementation (numpy only, no import of `verify.py`) of
    `autoresearch-fold/independent/chk.py`, taking the path as an argument. It rebuilds the bar graph with fixed integer lattice shifts, checks all 120
    bar lengths in all states, the minimum non-bonded distance over all periodic images in all states (the image-shift block is derived from each state's lattice and dots, as in the locked checker's `_image_cloud`, not fixed), step sizes, a
-   10-sub-state interpolation between every pair of states, and the density, contacts and common-neighbour analysis of the end state. On the hcp path
+   linear interpolation at 9 interior sub-states of every step (u = 0.1, ..., 0.9, midpoint included), and the density, contacts and common-neighbour analysis of the end state. On the hcp path
    it reproduces the numbers of the original `chk.py` (same maximum bar error 8.1e-14 relative, same minimum interpolated distance 0.999994 * 2R).
    Both this file and the path generator `make_fcc_path.py` are sha256-pinned in `checkers.sha256`; `make verify-fold-cp` checks the pins (and the locked checker's) before it runs, so weakening either file and rerunning `make certificates` fails `make verify` and CI. A deliberate change to either file means re-pinning by hand (`shasum -a 256 chk_independent.py make_fcc_path.py > checkers.sha256`) in the same commit.
 
@@ -70,11 +72,21 @@ replay and must agree to 1e-9.
 
 ## Known limits
 
-* Continuity is sampled: steps at most 0.01, overlap checked at the states, at midpoints and at 10 interpolation sub-states. Linear
-  interpolation between states changes bar lengths by up to 1.5e-5 (relative to 2R), so the interpolated path is not bar-preserving; the
-  states are. A rigorous path needs interval arithmetic, regularity of the constraint Jacobian between samples with a margin argument, or an
-  analytic piecewise path.
-* The density along the path is not monotone (smallest step -7e-5; dips to 0.7294 during the fcc slides).
+* Continuity is sampled: steps at most 0.01, overlap checked at the states (tolerance 1e-9), at step midpoints (locked checker, all pairs)
+  and at 9 interior sub-states u = 0.1, ..., 0.9 (independent checker, non-bonded pairs); at the midpoints and sub-states both checkers
+  allow 1e-4 (relative to 2R). Linear interpolation between states changes bar lengths by up to 1.5e-5 (relative to 2R), so the
+  interpolated path is not bar-preserving; the states are. A rigorous path needs interval arithmetic, regularity of the constraint
+  Jacobian between samples with a margin argument, or an analytic piecewise path.
+* The interpolated path is not overlap-free either: at the sampled sub-states the interpolants bring two non-bonded balls to
+  0.999994 * 2R on both paths, accepted under the checkers' 1e-4 interpolation tolerance.
+* For same-image pairs (zero lattice shift) the midpoint and sub-state samples add nothing to the state checks and the step bound (internal
+  audit work, checked with sympy; not yet reviewed). If a pair's separation is p at one state and q at the next, then on the linear
+  interpolant, for u in [0, 1], |(1-u)p + uq|^2 = (1-u)|p|^2 + u|q|^2 - u(1-u)|p-q|^2 with u(1-u) <= 1/4. The state checks (bars and
+  overlaps) give |p|, |q| >= 2R(1 - 1e-9), and for a same-image pair the dot step bound gives |p - q| <= 0.02, so such a pair stays at least
+  0.999927 * 2R apart on the whole interpolant, above the 2R(1 - 1e-4) that the samples require. The samples can fail only for a pair
+  across a nonzero lattice shift.
+* The density along the path is not monotone: the smallest step on the hcp path is -7.2e-5; in each of the two fcc slides the density
+  falls for the first 100 steps (by up to 2.3e-4 per step) to 0.7294 and rises back over the next 100.
 * **This result is m = 2 only.** For m = 1 (and so every m, once the m = 1 paths are subdivided for the locked checker's step limit) see `results/fold-m1`.
 * First-order rigidity at the end state is not a proof of jamming.
 * This is a geometry and rigidity result. Real CaB6 and Prussian-blue analogues have bond-angle stiffness and do not behave like this

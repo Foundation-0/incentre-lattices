@@ -66,7 +66,7 @@ RESULTS = [
         "statement": "In the 2x2x2 supercell (48 balls, 120 bars of length 2R, free lattice) there is a sampled path of 793 states from the open cab state, keeping every bar length and with no overlap, to an hcp packing of density pi/sqrt18; two further rigid layer slides (400 states) reach pure fcc. Both paths are accepted by two independent checkers.",
         "value": {"hcp_states": 793, "fcc_states": 1193, "end_density": "pi/sqrt(18)", "end_contacts_per_ball": 12,
                   "fcc_end_cna": {"(4,2,1)": 576}},
-        "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint / 10-substate interpolation; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
+        "evidence_label": "VERIFIED (finite check): continuity certified only by sampling at step <= 0.01 with midpoint checks and linear interpolation at 9 interior sub-states per step; hcp path checked by two checkers; the fcc extension is NEW-COMPUTATION, checked by the same two checkers",
         "verify_command": "make verify-fold-cp (and make verify-fold-tests for the checker's own tests)",
         "prior_art": "NOT FOUND as a statement. Closest: ReO3 to VF3 a-a-a- tilt towards hcp anions (O'Keeffe and Hyde 1977; Glazer 1972); sequential-LP packing methods (Torquato and Jiao 2010). See autoresearch-fold/PRIOR-ART-FOLD.md.",
     },
