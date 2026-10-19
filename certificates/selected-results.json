@@ -85,11 +85,13 @@
     },
     {
       "certificate": "results/fold-3d-cubic/certificate.json",
-      "certificate_sha256": "51c8d2785e96e5f72f834c21d30fff5ab26bf0ffa40c6888d0f094affdb0aa22",
+      "certificate_sha256": "9101ef79cf177c61ea32404a22122504f3f1225154cda060491e3a505e1a2136",
       "evidence_label": "VERIFIED (finite check; exact algebra at 60 degrees, grid scan elsewhere); not a proof of any path",
       "id": "fold-3d-cubic",
       "input_hashes": {
-        "results/fold-3d-cubic/fold3d.py": "4f3c51d467cc91e76a243cd7de389d5211fbb591e934d89831ad4b27f48fe6ea"
+        "results/fold-3d-cubic/fold3d.py": "0da0db329e3d082f78d5171913c64d9fa887497121f3226a98148fda6d571fd0",
+        "results/fold-3d-cubic/verify.py": "83671b6d7d581d0a065b810efd96068e21263692e5998b949f05f41f256bd6cf",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
       },
       "prior_art": "PARTIALLY KNOWN: Prussian-blue topology and a-a-a- tilts known; the 60-degree end net matches RCSR sms in its first 10 coordination-sequence terms (not an isomorphism proof).",
       "statement": "In the 3D framework, rotating the octahedra alternately by +-theta about [111] with the lattice kept cubic reaches a=8c/3 at theta = 60 degrees with six contacts per ball and density 27 pi sqrt2/256 = 0.4686; this is not a jam, because trigonal lattices keep every bar and reach density 0.6477 on a grid scan.",

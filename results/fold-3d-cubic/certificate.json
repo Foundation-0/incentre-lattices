@@ -17,6 +17,7 @@
     "bar_length_deviation_below_1e-12": true,
     "first_nonbonded_contact_deg_grid_3000": 60.007
   },
+  "cubic_path_density_at_30_deg": 0.2637036,
   "exact_at_60_degrees": {
     "a": "8c/3 = 8(2 - sqrt(2))/3",
     "a_value": 1.562097167,
@@ -42,13 +43,16 @@
     "start_density_pi_R3": 0.2232661157
   },
   "inputs": {
-    "results/fold-3d-cubic/fold3d.py": "4f3c51d467cc91e76a243cd7de389d5211fbb591e934d89831ad4b27f48fe6ea"
+    "results/fold-3d-cubic/fold3d.py": "0da0db329e3d082f78d5171913c64d9fa887497121f3226a98148fda6d571fd0",
+    "results/fold-3d-cubic/verify.py": "83671b6d7d581d0a065b810efd96068e21263692e5998b949f05f41f256bd6cf",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
   },
   "model": "octahedra of 6 dots (c = 2 - sqrt2) rotated alternately by +-theta about [111]; lattice cubic; bars of length 2R kept",
   "must_fail_controls_rejected": [
-    "60-degree cubic state claimed to be a jam (no denser feasible state)",
+    "60-degree cubic state claimed to be a jam (no bar-keeping, non-overlapping, denser trigonal shear)",
+    "trigonal shear of the 60-degree cubic state the other way (du = +0.0001..+0.01) claimed to raise the density",
     "lattice constant a(60) + 0.01 claimed to keep six contacts at 2R for a dot",
-    "coordination sequence claimed to match fcc (12, 42, 92, ...)"
+    "contact net at theta = 0 (five contacts per ball) claimed to have the sms coordination sequence"
   ],
   "result": "fold-3d-cubic",
   "trigonal_grid_scan": {
@@ -59,5 +63,14 @@
     "feasible_states": 5008,
     "grid": "theta 0..90 deg step 1; u -0.6..0.6 step 0.01",
     "grid_connected_to_start": 5008
+  },
+  "trigonal_motion_from_60_deg": {
+    "bar_deviation_below_1e-12": true,
+    "density": 0.473305,
+    "density_strictly_increasing_as_du_decreases": true,
+    "du": -0.01,
+    "family": "theta = 60 deg, u = -K2(60) + du (so b = du); du = 0 is the cubic state",
+    "min_distance_at_least_2R_minus_1e-9": true,
+    "samples": "du = 0, -0.0001, ..., -0.01 (101 values)"
   }
 }

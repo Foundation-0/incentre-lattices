@@ -34,9 +34,13 @@ simplifies to 27 pi sqrt2/256 (difference below 1e-25 at 30 digits).
 
 ## What the replay adds
 
-The cubic path scan, the exact 60-degree algebra, the coordination sequence against the RCSR `sms` sequence (hardcoded
-in `verify.py`; checked against the RCSR data file `3dall.txt`, which is not vendored in this repo), and the trigonal grid scan with its connected component. Must-fail controls: the 60-degree state claimed
-to be a jam; a shifted lattice constant claimed to keep six contacts; the coordination sequence claimed to be fcc's.
+The cubic path scan and its density at 30 degrees (0.2637), the exact 60-degree algebra and the next distance 1.3744 * 2R, the coordination sequence against the RCSR `sms` sequence (hardcoded
+in `verify.py`; checked against the RCSR data file `3dall.txt`, which is not vendored in this repo), a direct check at 60 degrees, and the trigonal grid scan with its connected component and its
+densest state (0.647679 at theta = 31 degrees and u = 0.47, where the scan sets b = K2 + u; 5008 feasible states). The direct check shears the 60-degree cubic state into the
+trigonal lattices with b = du (u = -K2 + du, a fixed by the bars) at du = 0, -0.0001, ..., -0.01, where du = 0 is the cubic state: every bar is kept (deviation below 1e-12), no
+distance is below 2R - 1e-9, and the density rises strictly as du decreases, to 0.4733 at du = -0.01 (a finite check at these 101 values, not a proof between them).
+Must-fail controls: the 60-degree state claimed to be a jam on those samples; the shear the other way (du > 0) claimed to raise the density; a shifted lattice
+constant claimed to keep six contacts; the theta = 0 contact net (five contacts per ball) claimed to have the `sms` coordination sequence.
 
 ## Prior art
 

@@ -2,7 +2,8 @@
 
 a(theta) = K1 + sqrt(4R^2 - 2 K2^2); exact at 60 degrees: a = 8c/3, six contacts per ball,
 density 27 pi sqrt2/256; start density pi R^3.  Trigonal (a,b,b) lattices: the feasible set on
-a 1 degree x 0.01 grid, connected to the start, contains denser states.
+a 1 degree x 0.01 grid, connected to the start, contains denser states, and a trigonal shear of
+the 60-degree cubic state keeps every bar and raises the density (checked at samples).
 Engine functions (numpy, scipy, sympy); verify.py is the certificate driver.
 """
 import itertools
@@ -94,8 +95,9 @@ def exact_60():
             "density": float(sp.N(dens, 15)), "start_density": float(sp.N(sp.pi * R_ ** 3, 15))}
 
 
-def coordination_sequence(a60, terms=10):
-    Pbig, labbig = cell3(np.pi / 3, a60 * np.eye(3), rng=6)
+def coordination_sequence(a, terms=10, t=np.pi / 3):
+    """BFS over all pairs within 2R + 1e-7 in the cubic state (t, a I); the default t = pi/3 with a = a(60) is the 60-degree net."""
+    Pbig, labbig = cell3(t, a * np.eye(3), rng=6)
     tree = cKDTree(Pbig)
     adj = [[] for _ in range(len(Pbig))]
     for i, j in tree.query_pairs(2 * R + 1e-7):
@@ -115,37 +117,50 @@ def coordination_sequence(a60, terms=10):
     return [sum(1 for v in dist.values() if v == k) for k in range(1, terms + 1)]
 
 
+SHIFTS = list(itertools.product(range(-2, 3), repeat=3))
+
+
+def trigonal_state(t, u):
+    """Trigonal lattice V = [[a,b,b],[b,a,b],[b,b,a]], b = K2 + u, a fixed by the bars:
+    (density, smallest distance from a central dot to any other dot of the 5x5x5 block, largest bar deviation),
+    or None if no a exists.  u = -K2(t) gives b = 0, the cubic state a(t) I."""
+    K2 = 2 * c * (1 - np.cos(t)) / 3
+    K1 = 2 * c * np.cos(t) + K2
+    if 4 * R ** 2 - 2 * u ** 2 < 0:
+        return None
+    b = K2 + u
+    a = K1 + np.sqrt(4 * R ** 2 - 2 * u ** 2)
+    V = np.array([[a, b, b], [b, a, b], [b, b, a]])
+    Oa = octp @ rot(t).T
+    Ob = octp @ rot(-t).T
+    P = np.array([np.array(s) @ V + (Oa if sum(s) % 2 == 0 else Ob)[m] for s in SHIFTS for m in range(6)])
+    ctr = [SHIFTS.index((0, 0, 0)) * 6 + m for m in range(6)]
+    D = np.linalg.norm(P[ctr][:, None] - P[None], axis=2)
+    D[np.arange(6), ctr] = np.inf
+    bar = max(abs(np.linalg.norm(V[i] + Ob[2 * i + 1] - Oa[2 * i]) - 2 * R) for i in range(3))
+    return 6 * 4 / 3 * np.pi * R ** 3 / abs(np.linalg.det(V)), D.min(), bar
+
+
+def trigonal_shear_60(dus):
+    """trigonal_state(pi/3, -K2(pi/3) + du) for each du: du = 0 is the 60-degree cubic state."""
+    K2 = 2 * c * (1 - np.cos(np.pi / 3)) / 3
+    return [trigonal_state(np.pi / 3, -K2 + du) for du in dus]
+
+
 def trigonal_scan():
     """Grid scan of trigonal lattices V = [[a,b,b],[b,a,b],[b,b,a]], b = K2 + u, bars kept exact."""
-    shifts = list(itertools.product(range(-2, 3), repeat=3))
-    bardev = [0.0]
-
-    def feas(t, u):
-        K2 = 2 * c * (1 - np.cos(t)) / 3
-        K1 = 2 * c * np.cos(t) + K2
-        if 4 * R ** 2 - 2 * u ** 2 < 0:
-            return None
-        b = K2 + u
-        a = K1 + np.sqrt(4 * R ** 2 - 2 * u ** 2)
-        V = np.array([[a, b, b], [b, a, b], [b, b, a]])
-        Oa = octp @ rot(t).T
-        Ob = octp @ rot(-t).T
-        P = np.array([np.array(s) @ V + (Oa if sum(s) % 2 == 0 else Ob)[m] for s in shifts for m in range(6)])
-        ctr = [shifts.index((0, 0, 0)) * 6 + m for m in range(6)]
-        D = np.linalg.norm(P[ctr][:, None] - P[None], axis=2)
-        D[np.arange(6), ctr] = np.inf
-        bar = max(abs(np.linalg.norm(V[i] + Ob[2 * i + 1] - Oa[2 * i]) - 2 * R) for i in range(3))
-        bardev[0] = max(bardev[0], bar)
-        return abs(np.linalg.det(V)), D.min()
-
+    bardev = 0.0
     ts = np.radians(np.arange(0, 90.01, 1.0))
     us = np.arange(-0.6, 0.6001, 0.01)
     F = {}
     for i, t in enumerate(ts):
         for j, u in enumerate(us):
-            r = feas(t, u)
-            if r is not None and r[1] >= 2 * R - 1e-7:
-                F[(i, j)] = 6 * 4 / 3 * np.pi * R ** 3 / r[0]
+            r = trigonal_state(t, u)
+            if r is None:
+                continue
+            bardev = max(bardev, r[2])
+            if r[1] >= 2 * R - 1e-7:
+                F[(i, j)] = r[0]
     j0 = int(np.argmin(abs(us)))
     seen = {(0, j0)}
     dq = deque([(0, j0)])
@@ -158,4 +173,4 @@ def trigonal_scan():
                 dq.append(k)
     best = max(seen, key=lambda k: F[k])
     return {"feasible": len(F), "connected": len(seen), "best_density": float(F[best]),
-            "best_theta_deg": float(np.degrees(ts[best[0]])), "best_u": float(us[best[1]]), "bar_dev": bardev[0]}
+            "best_theta_deg": float(np.degrees(ts[best[0]])), "best_u": float(us[best[1]]), "bar_dev": bardev}
