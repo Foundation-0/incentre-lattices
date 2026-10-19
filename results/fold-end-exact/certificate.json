@@ -38,12 +38,17 @@
   "inputs": {
     "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
     "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1",
-    "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b"
+    "results/fold-end-exact/exact_end.py": "31fbc7736b9c63006ce0ff1988acfdec739225e26e29b86bba9c2ddcc5739960",
+    "results/fold-end-exact/verify.py": "b0ed87261eb55339d7f088c7eed5f4cc0ae8f27fc63786d8c46a01b24285b474",
+    "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
   },
   "must_fail_controls_rejected": [
-    "hcp closed form with one dot moved by K/3",
-    "hcp closed form without the cyclic axis permutation on odd cells",
-    "fcc closed form with third lattice row (-2, 3, 4) instead of (-2, 3, 3)",
+    "hcp closed form with one dot moved by K/3 (bar test)",
+    "hcp closed form without the cyclic axis permutation on odd cells (bar test)",
+    "fcc closed form with third lattice row (-2, 3, 4) instead of (-2, 3, 3) (bar test)",
+    "m = 1 state with exact bars, det 12 and 12 contacts per ball but coincident balls (no-overlap test)",
+    "m = 1 state with exact bars and no overlap but det 14 (density test)",
+    "the same m = 1 state, 10 contacts per ball (12-contact test)",
     "hcp closed form labelled fcc (common-neighbour test)"
   ],
   "paths": {
