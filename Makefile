@@ -65,7 +65,9 @@ verify-fold-cp:  # slow: runs both checkers on the hcp path and on the fcc exten
 verify-fold-exact:  # exact (integer) closed forms of the hcp and fcc end states
 	$(PY) results/fold-end-exact/verify.py
 
-verify-fold-m1:  # m = 1 paths to hcp and fcc (both checkers, exact end states, monotone fcc path)
+verify-fold-m1:  # m = 1 paths to hcp and fcc (both checkers, exact end states, monotone fcc path); both checkers are hash-locked
+	$(PY) tools/sha256check.py results/fold-close-packing/checkers.sha256 results/fold-close-packing
+	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold
 	$(PY) results/fold-m1/verify.py
 
 verify-fold-continuous:  # exact all-parameter certificate; standard library only
