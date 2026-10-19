@@ -126,13 +126,15 @@
     },
     {
       "certificate": "results/fold-end-exact/certificate.json",
-      "certificate_sha256": "545346ce98bf2efe67ad984e78f2b320cecbc8f54f85a3c4ddf61a7235ff2ddf",
+      "certificate_sha256": "95ecbede4094f88363783c83b65a52d52b80b835f3e6b14a103a851c605c92e8",
       "evidence_label": "PROVEN (exact integer arithmetic) for the closed forms; VERIFIED (finite check, 1e-7) for agreement with stored endpoints; no proof of continuous paths",
       "id": "fold-end-exact",
       "input_hashes": {
         "autoresearch-fold/best/path.npz": "510d0c79016068198b8f5af8b127067a200498557bcdb01e1da27ac4e78bddd5",
         "results/fold-close-packing/path_fcc.npz": "010bdabf40c8c7b23a8809bc3a4d107f3417d4e602b98b0723ef6cc7f2e717b1",
-        "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b"
+        "results/fold-end-exact/exact_end.py": "31fbc7736b9c63006ce0ff1988acfdec739225e26e29b86bba9c2ddcc5739960",
+        "results/fold-end-exact/verify.py": "b0ed87261eb55339d7f088c7eed5f4cc0ae8f27fc63786d8c46a01b24285b474",
+        "tools/certlib.py": "64e9264d9ecac4c90b92725abae44fcb120c2baeec8fd883c5d6689cfb1d9606"
       },
       "prior_art": "Exact forms of the endpoints from results/fold-close-packing; no separate prior-art search. See autoresearch-fold/PRIOR-ART-FOLD.md. One internal implementation, no outside review.",
       "statement": "The m = 2 hcp and fcc closed forms have all 120 bars exactly 2R, no overlap, 12 contacts per ball and density pi/sqrt18, with the hcp and fcc common-neighbour signatures. The final states of the stored paths agree with these forms to 1e-7 after a rigid motion.",
@@ -153,13 +155,13 @@
     },
     {
       "certificate": "results/fold-m1/certificate.json",
-      "certificate_sha256": "1a52f356e302f15aec73be9cab3b95a541bd77eb83f2859d8ecf0f5622e6bcff",
+      "certificate_sha256": "bd9d23fbbbadb52ddd37fb4bd0524326130602c4b3aaf7117878aa33cd9405ad",
       "evidence_label": "VERIFIED (finite check, sampled continuity), NEW-COMPUTATION; monotonicity at the fcc samples only; endpoints PROVEN (integer arithmetic); interpolation is not exactly bar-preserving",
       "id": "fold-m1",
       "input_hashes": {
         "autoresearch-fold/verify.py": "05d2385dcd3ec5a4ec7fec5d23971c9df685c2ccedcea2edf43629ac813835cd",
         "results/fold-close-packing/chk_independent.py": "03d27c2fe479e9b17df50c7deaa5260ef14f5ccc6c7d674f1b01f27d34d5744d",
-        "results/fold-end-exact/exact_end.py": "ef0c0cf61101daa3f2a89ca6024fff87bfb12975e6acdfada8b2488fc493cb3b",
+        "results/fold-end-exact/exact_end.py": "31fbc7736b9c63006ce0ff1988acfdec739225e26e29b86bba9c2ddcc5739960",
         "results/fold-m1/path_fcc_m1.npz": "79067d0479d905b8cfc9268ca01af9fb544c195ac96930710ff8198dd1033479",
         "results/fold-m1/path_hcp_m1.npz": "5f54326a2bdb8e386ce93589b993c20210946c3e68aa6f535110ee2083b7ab26",
         "results/fold-m1/search_fcc_m1.py": "8af1e289ee7d0d57a9ab9cf3ff4a628e120ea0dfa9aaeafe69c46595d8ce6b94",

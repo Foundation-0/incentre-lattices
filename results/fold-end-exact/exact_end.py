@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Exact check of a fold end state (numpy for I/O only; every verdict is integer arithmetic).
+"""Exact check of a fold end state (numpy for I/O, the 1e-7 snap, and the floating-point wrap and image-box bound
+only; every verdict of check_exact is integer arithmetic).
 
 The final state of a path is rotated into the cube frame of octahedron 0 and written in units
 u = K/den, K = 2 - sqrt2, for the smallest den <= 12 that makes every coordinate an integer

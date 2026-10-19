@@ -9,9 +9,10 @@ results/fold-close-packing/path_fcc.npz) are exact. For each one this script
   3. checks the closed form in integer arithmetic (exact_end.check_exact): every bar exactly 2R, no
      pair of balls closer than 2R over all periodic images, 12 contacts per ball, density exactly
      pi/sqrt18, and the common-neighbour signature (hcp or fcc);
-  4. runs must-fail controls and writes certificate.json.
+  4. runs must-fail controls, each naming the test that must reject it, and writes certificate.json.
 
-Dependencies: numpy (I/O and the snap only). About 30 seconds.   Usage: python verify.py
+Dependencies: numpy (I/O, the 1e-7 snap, and floating-point wrapping and image-box sizing; every check_exact verdict
+is integer arithmetic). About 30 seconds.   Usage: python verify.py
 """
 import itertools
 import pathlib
@@ -82,11 +83,30 @@ def main():
     log = []
     Y, L, den = closed_form("hcp")
     Y[7] = [Y[7][0] + 1, Y[7][1], Y[7][2]]
-    certlib.must_fail("hcp closed form with one dot moved by K/3", exact_end.check_exact(2, Y, L, den)["exact_ok"], log)
-    certlib.must_fail("hcp closed form without the cyclic axis permutation on odd cells",
-                      exact_end.check_exact(2, *closed_form("hcp", permute=False))["exact_ok"], log)
-    certlib.must_fail("fcc closed form with third lattice row (-2, 3, 4) instead of (-2, 3, 3)",
-                      exact_end.check_exact(2, *closed_form("fcc", L=[(2, -2, 4), (2, 4, -2), (-2, 3, 4)]))["exact_ok"], log)
+    rep = exact_end.check_exact(2, Y, L, den)
+    certlib.must_fail("hcp closed form with one dot moved by K/3 (bar test)", rep["bars_exact"] or rep["exact_ok"], log)
+    rep = exact_end.check_exact(2, *closed_form("hcp", permute=False))
+    certlib.must_fail("hcp closed form without the cyclic axis permutation on odd cells (bar test)",
+                      rep["bars_exact"] or rep["exact_ok"], log)
+    rep = exact_end.check_exact(2, *closed_form("fcc", L=[(2, -2, 4), (2, 4, -2), (-2, 3, 4)]))
+    certlib.must_fail("fcc closed form with third lattice row (-2, 3, 4) instead of (-2, 3, 3) (bar test)",
+                      rep["bars_exact"] or rep["exact_ok"], log)
+    # The three controls above all fail the bar test. The m = 1 integer states below (dots +-e_i, unit K) keep every
+    # bar exact, so they reach the other tests. A one-off search (not part of the replay) over all m = 1 states with
+    # these dots, integer lattice rows and exact bars found none that fails only one of the density and 12-contact
+    # tests. So one state serves both, and dropping just one of those two terms from exact_ok would not be caught.
+    Y1 = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]]
+    rep = exact_end.check_exact(1, Y1, [[1, -1, 0], [1, 3, 0], [-1, 0, 3]], 1)
+    certlib.require(rep["bars_exact"] and rep["density_is_pi_over_sqrt18_exactly"] and set(rep["contacts_per_ball"]) == {12},
+                    "overlap control is not isolating")
+    certlib.must_fail("m = 1 state with exact bars, det 12 and 12 contacts per ball but coincident balls (no-overlap test)",
+                      rep["no_overlap_exact"] or rep["exact_ok"], log)
+    rep = exact_end.check_exact(1, Y1, [[2, -1, -1], [-1, 3, 0], [0, -1, 3]], 1)
+    certlib.require(rep["bars_exact"] and rep["no_overlap_exact"], "density and contact controls are not isolating")
+    certlib.must_fail("m = 1 state with exact bars and no overlap but det 14 (density test)",
+                      rep["density_is_pi_over_sqrt18_exactly"] or rep["exact_ok"], log)
+    certlib.must_fail("the same m = 1 state, 10 contacts per ball (12-contact test)",
+                      set(rep["contacts_per_ball"]) == {12} or rep["exact_ok"], log)
     # (-2, 2, 4) = 2 t_z is NOT a control: it is a second exact fcc end state (PROOF.md), checked here
     alt = exact_end.check_exact(2, *closed_form("fcc", L=[(2, -2, 4), (2, 4, -2), (-2, 2, 4)]))
     certlib.require(alt["exact_ok"] and alt["structure"] == "fcc", "fcc with third lattice row 2 t_z is not exact fcc")
@@ -95,7 +115,7 @@ def main():
     certlib.must_fail("hcp closed form labelled fcc (common-neighbour test)", rep["structure"] == "fcc", log)
     cert["must_fail_controls_rejected"] = log
 
-    cert["inputs"] = certlib.inputs(HCP, FCC, HERE / "exact_end.py")
+    cert["inputs"] = certlib.inputs(HCP, FCC, HERE / "exact_end.py", HERE / "verify.py", ROOT / "tools" / "certlib.py")
     certlib.write_json(HERE / "certificate.json", cert)
     print("fold-end-exact: OK (hcp and fcc end states are exact closed forms; controls rejected: %d)" % len(log))
 
