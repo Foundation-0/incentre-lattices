@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/origin.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="THE DRAWING // LATTICE"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <link rel="stylesheet" href="codex.css">
@@ -25,13 +25,13 @@
 
 <div class="wide" id="fig1">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv1"></canvas><div class="corner" id="c1t">STEP 0 / 6</div><div class="corner r">FIG 1 // CONSTRUCTION</div></div>
+ <div class="cvbox"><canvas id="cv1" role="img" aria-label="Figure 1: the construction drawn step by step, from a square of side 2 and its diagonals to the incentre of each of the four triangles. The readout below describes the current step."></canvas><div class="corner" id="c1t">STEP 0 / 6</div><div class="corner r">FIG 1 // CONSTRUCTION</div></div>
  <section class="panel fp hud" id="p-fig1">
   <header><span class="tabtitle">CTRL // CONSTRUCTION</span><button class="mb" title="minimise">&ndash;</button></header>
   <div class="body">
    <div class="grp">
     <div class="lab">STEP</div>
-    <div class="row"><button id="b1p">&larr;</button><button id="b1n">&rarr;</button><button id="b1play">PLAY</button><button id="b1probe">PROBE</button></div>
+    <div class="row"><button id="b1p" aria-label="Previous step">&larr;</button><button id="b1n" aria-label="Next step">&rarr;</button><button id="b1play">PLAY</button><button id="b1probe">PROBE</button></div>
     <div class="sl"><input id="s1" type="range" min="0" max="6" step="1" value="0"><b id="s1v">0</b></div>
     <div class="hint">Probe: drag a point inside the bottom triangle.</div>
    </div>
@@ -72,7 +72,7 @@
 
 <div class="wide" id="fig2">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv2" class="grab"></canvas><div class="corner">CUBE // 6 PYRAMIDS // DRAG TO TURN</div><div class="corner r">FIG 2 // THE LIFT</div></div>
+ <div class="cvbox"><canvas id="cv2" class="grab" role="img" aria-label="Figure 2: a cube cut into six pyramids, with a ball at the incentre of each pyramid. Drag to turn it."></canvas><div class="corner">CUBE // 6 PYRAMIDS // DRAG TO TURN</div><div class="corner r">FIG 2 // THE LIFT</div></div>
  <section class="panel fp hud" id="p-fig2">
   <header><span class="tabtitle">CTRL // LIFT</span><button class="mb" title="minimise">&ndash;</button></header>
   <div class="body">
@@ -193,6 +193,7 @@ const fig1=CX.canvas(cv1,function(ctx,W,H,t,dt){
 },{aspect:0.56});
 function sync(){
   $('s1').value=st1.cur;$('s1v').textContent=st1.cur;$('b1play').classList.toggle('on',st1.play);$('b1probe').classList.toggle('on',st1.probe);
+  cv1.classList.toggle('drag2d',st1.probe); // free 2D drag only while probing; otherwise a swipe scrolls the page
   $('kv1').innerHTML='<span>step</span><span>'+st1.cur+' of 6</span><span>action</span><span>'+STEPS[st1.cur][0]+'</span>'+
    (st1.probe?'<span>probe radius</span><span id="pr1">&ndash;</span><span>incentre radius R</span><span>'+R.toFixed(4)+'</span>':'');
   $('note1').innerHTML=STEPS[st1.cur][1];

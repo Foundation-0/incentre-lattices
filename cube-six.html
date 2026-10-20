@@ -8,7 +8,7 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/cube-six.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The cube, hands-on | Incentre lattice"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <style>
@@ -36,7 +36,8 @@ canvas:active{cursor:grabbing}
 #ui{left:16px;width:272px;max-height:calc(100vh - 150px)}
 #notes{right:16px;width:332px;max-height:calc(100vh - 150px)}
 .head{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;user-select:none}
-h1{font:600 var(--t-lg)/1.25 var(--sans);margin:0}
+h1,.head h2{font:600 var(--t-lg)/1.25 var(--sans);margin:0}
+.head h2{text-transform:none;letter-spacing:normal;color:var(--ink)}
 h2{font:600 var(--t-xs)/1.3 var(--sans);text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin:16px 0 6px}
 p{margin:0 0 10px;color:var(--ink2);font-size:var(--t-sm)}
 .min-btn{border:0;background:none;font:var(--t-xl)/1 var(--sans);padding:0 4px;color:var(--mute);cursor:pointer;border-radius:6px}
@@ -111,7 +112,7 @@ li b{color:var(--ink)}
 <div class="hint">Press H to hide or show both panels</div>
 
 <section id="notes" class="panel" aria-label="What the shape is doing">
-  <div class="head"><h1>What the shape is doing</h1><button class="min-btn" title="Minimise" aria-label="Minimise this panel" aria-expanded="true">&ndash;</button></div>
+  <div class="head"><h2>What the shape is doing</h2><button class="min-btn" title="Minimise" aria-label="Minimise this panel" aria-expanded="true">&ndash;</button></div>
   <div class="body">
   <p id="caption">Use the &ldquo;Look along&rdquo; buttons to close the cube and view it down each of its three kinds of symmetry axis.</p>
   <h2>Facts hiding in it</h2>

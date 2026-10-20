@@ -13,8 +13,8 @@ const PAGES=[
  ['mind.html','PERCEPTION','mind'],
  ['drift.html','DRIFT','wandering mind'],
  ['seek.html','SEARCH','drift + check'],
- ['research.html','RESEARCH','updates'],
- ['open.html','LEDGER','claims']
+ ['open.html','LEDGER','claims'],
+ ['research.html','RESEARCH','updates']
 ];
 const EXTRA=[['cube-six.html','The cube, hands-on'],['deeper.html','Atoms, tilings and dimensions']];
 const Q=new URLSearchParams(location.search);

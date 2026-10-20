@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/motion.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MOTION // LATTICE"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <link rel="stylesheet" href="codex.css">
@@ -33,7 +33,7 @@
 
 <div class="wide" id="fig7">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv7"></canvas><div class="corner">2D FOLD // EXACT // BALLS DRAWN AT THEIR TRUE RADIUS</div><div class="corner r">FIG 7 // THE FOLD</div></div>
+ <div class="cvbox"><canvas id="cv7" role="img" aria-label="Figure 7: the 2D fold, square clusters of balls joined by bars and turned in opposite directions by the chosen angle. The readout below gives the cell spacing, strain, density and contacts."></canvas><div class="corner">2D FOLD // EXACT // BALLS DRAWN AT THEIR TRUE RADIUS</div><div class="corner r">FIG 7 // THE FOLD</div></div>
  <section class="panel fp hud" id="p-fig7">
   <header><span class="tabtitle">CTRL // FOLD 2D</span><button class="mb" title="minimise">&ndash;</button></header>
   <div class="body">
@@ -63,7 +63,7 @@
 <li>The packing density, the fraction of the plane the balls cover, rises from &pi;(&radic;2&nbsp;&minus;&nbsp;1)&sup2; = 0.5390 to &pi;/4 = 0.7854, the density of the square packing.</li>
 </ul>
 <p>Now move the dot to another position t on the axis. At 45&deg; the framework has two bar lengths, &radic;2&thinsp;t inside a cluster and 2&nbsp;&minus;&nbsp;2t across, and they are equal only when &radic;2&thinsp;t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;2t, which is t&nbsp;=&nbsp;2&nbsp;&minus;&nbsp;&radic;2.<span class="tg proven">PROVEN</span> Whether the fold really ends at 45&deg; for other t was checked on a scan of six values of t (0.45, 0.5, 0.55, 2&nbsp;&minus;&nbsp;&radic;2, 0.62, 0.7) with a 0.01&deg; grid. For t&nbsp;=&nbsp;0.62 and 0.7 the fold locks at 45&deg; with two different contact distances. For t below 2&nbsp;&minus;&nbsp;&radic;2 it does not lock at 45&deg;: the fold continues and locks at 66.37&deg; (t&nbsp;=&nbsp;0.45), 56.96&deg; (0.5) and 49.51&deg; (0.55), with three contacts per ball. So among the values scanned, only the incentre ends in the regular square lattice, where the &ldquo;uniform&rdquo; start state folds onto the &ldquo;uniform&rdquo; end state. This is a finite scan, not a proof for every t.<span class="tg verified">VERIFIED NUMERICALLY</span> The readout in Figure 7 shows the two lengths as you drag t.</p>
-<p><b>Is it known?</b> Yes, the motion itself is. A later, deeper search found it: squares joined by rods equal to their side, turned alternately, carry a square tiling into 4.8.8. This is the &ldquo;hinged tiling&rdquo; in Flores, <i>North American GeoGebra Journal</i> 6(1), &sect;2.9, who credits D. Stuart (1963).<span class="tg known">KNOWN</span> The Poisson ratio of &minus;1 follows from symmetry alone: Mitschke et al., EPL 102, 66005 (2013), prove it for mechanisms that keep a 3-, 4- or 6-fold axis.<span class="tg known">KNOWN</span> The interval of motion is a &ldquo;flexibility window&rdquo; in the sense of Sartbaeva et al., <i>Nature Materials</i> (2006). What we did not find printed is the ball version: that the window ends at 45&deg; in the square packing (density 0.539 to &pi;/4, strain &minus;R&sup2;) and that only the incentre ends in a regular lattice. These follow directly from the known linkage, so treat them as corollaries, not discoveries.<span class="tg verified">ELEMENTARY</span> Related: rotating-squares auxetics (Grima and Evans, 2000); twisted kagome (Sun et al., PNAS 2012), whose disk version at 30&deg; gives the triangular packing.</p>
+<p><b>Is it known?</b> Yes, the motion itself is. A later, deeper search found it: squares joined by rods equal to their side, turned alternately, carry a square tiling into 4.8.8. This is the &ldquo;hinged tiling&rdquo; in Flores, <i>North American GeoGebra Journal</i> 6(1), &sect;2.9, who credits D. Stuart (1963).<span class="tg known">KNOWN</span> The Poisson ratio of &minus;1 follows from symmetry alone: Mitschke et al., EPL 102, 66005 (2013), prove it for mechanisms that keep a 3-, 4- or 6-fold axis.<span class="tg known">KNOWN</span> The interval of motion is a &ldquo;flexibility window&rdquo; in the sense of Sartbaeva et al., <i>Nature Materials</i> (2006). What we did not find printed is the ball version: that the window ends at 45&deg; in the square packing (density 0.539 to &pi;/4, strain &minus;R&sup2;) and that only the incentre ends in a regular lattice. These follow directly from the known linkage, so treat them as corollaries, not discoveries.<span class="tg elem">ELEMENTARY</span> Related: rotating-squares auxetics (Grima and Evans, 2000); twisted kagome (Sun et al., PNAS 2012), whose disk version at 30&deg; gives the triangular packing.</p>
 
 <h2 id="fold3"><span class="n">4</span>The cubic 3D path</h2>
 <p>In three dimensions the clusters are octahedra, coloured in a 3D checkerboard. Even octahedra are rotated by R and odd ones by its inverse, about an axis of your choice. The cross bars again stay on the axes, and the lattice spacing along each axis is chosen so that every bar keeps its length. Three axes give three different endings. The figure computes the exact positions from the same equations as the 2D case.</p>
@@ -78,7 +78,7 @@
 
 <div class="wide" id="fig8">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv8" class="grab"></canvas><div class="corner" id="c8t">3D FOLD // AXIS [111]</div><div class="corner r">FIG 8 // THE 3D FOLD // DRAG TO TURN</div></div>
+ <div class="cvbox"><canvas id="cv8" class="grab" role="img" aria-label="Figure 8: the 3D fold, a block of octahedra of balls joined by cross bars and turned about the chosen tilt axis. Drag to turn it; the readout below gives the spacing, strain, density and contacts."></canvas><div class="corner" id="c8t">3D FOLD // AXIS [111]</div><div class="corner r">FIG 8 // THE 3D FOLD // DRAG TO TURN</div></div>
  <section class="panel fp hud" id="p-fig8">
   <header><span class="tabtitle">CTRL // FOLD 3D</span><button class="mb" title="minimise">&ndash;</button></header>
   <div class="body">

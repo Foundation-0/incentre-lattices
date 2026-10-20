@@ -8,14 +8,14 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/cube-wedges.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cube in four wedges"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <style>
   html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
   canvas{display:block;width:100vw;height:100vh;cursor:grab}
   canvas:active{cursor:grabbing}
-  #ui{position:fixed;top:16px;left:16px;background:#fffdf8e6;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px;max-width:270px}
+  #ui{position:fixed;top:56px;left:16px;background:#fffdf8e6;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px;max-width:270px}
   #ui h1{font-size:15px;margin:0 0 6px}
   #ui p{margin:0 0 10px;color:#5b6573;font-size:12.5px}
   label{display:flex;align-items:center;gap:8px;margin:5px 0;user-select:none}
@@ -27,13 +27,25 @@
 #sign a:hover{color:#c0392b;border-bottom-color:#c0392b}
 @media (max-width:600px){#sign{font-size:10.5px;padding:4px 7px;white-space:normal;max-width:calc(100vw - 24px)}}
 #sign{right:16px;bottom:16px}
+.cbar{position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13.5px/1.4 -apple-system,system-ui,sans-serif;padding:8px 14px;display:flex;gap:6px 16px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cbar b{letter-spacing:.08em;font-size:12px}
+.cbar span{opacity:.7}
+.cbar a{color:#fbf8f1;text-decoration:none;border-bottom:1px solid transparent}
+.cbar a:hover{border-bottom-color:currentColor}
+.cbar a.out{color:#7fe0b0;margin-left:auto}
+@media (max-width:900px){
+  .cbar{font-size:12px;padding:7px 10px;gap:4px 12px}
+  .cbar span{display:none}
+  .cbar a.out{margin-left:0}
+}
 @media (max-width:700px){
-  #ui{left:8px;right:8px;top:8px;max-width:none;max-height:46vh;max-height:46dvh;overflow:auto}
+  #ui{left:8px;right:8px;top:62px;max-width:none;max-height:46vh;max-height:46dvh;overflow:auto}
 }
 </style></head><body>
-<canvas id="c"></canvas>
+<div class="cbar"><b>CLASSIC</b><span>Plain light pages</span><a href="cube-six.html">The cube, hands-on</a><a href="deeper.html">Atoms, tilings and dimensions</a><a class="out" href="lattice.html">Interactive site &rarr;</a></div>
+<canvas id="c" role="img" aria-label="Interactive 3D cube cut into four wedges by two diagonal walls, with a dot in each wedge. Drag to turn it."></canvas>
 <div id="ui">
-  <h1>The drawing, in 3D</h1>
+  <h1>A cube cut into four wedges</h1>
   <p>The X becomes two diagonal walls that cut the cube into four wedges. Each dot sits at the middle height of its wedge and is the same distance from the wedge's three upright walls. Red lines run from the dot to the wedge's six corners. Drag to turn it.</p>
   <label>Pull apart <input id="ex" type="range" min="0" max="1.6" step="0.01" value="0.45"></label>
   <label><input id="faces" type="checkbox" checked> Tinted faces</label>
