@@ -17,7 +17,7 @@ labels: research-review
 - [ ] A finite check does not support the stated claim (range, tolerance or hypothesis too weak)
 - [ ] The replay fails or the certificate changes (`make verify`, Python version, platform)
 - [ ] Prior art that the repository does not cite
-- [ ] Label is too strong or too weak (PROVEN / VERIFIED / KNOWN)
+- [ ] Label is too strong or too weak (PROVEN / VERIFIED / KNOWN / NEW-COMPUTATION / CONJECTURE; definitions in `docs/audit.md`)
 - [ ] Other
 
 ## Evidence
