@@ -18,21 +18,28 @@ write-ups are the ones the formulas give.
    R = sqrt2 - 1 = tan(pi/8). With Mathlib these are `ring_nf`, `nlinarith` and `Real.tan_pi_div_eight` style goals. Also the 2D identities L(pi/4) = 4R and gap(theta) = 2 sqrt2 c cos(theta + pi/4)
    (trigonometric addition formula), and a(60 degrees) = 8c/3 with the density 27 pi sqrt2/256.
 2. **The cab6 upper bound.** For 0 < x < 1/2: min((1/2 - x)/sqrt2, x) <= (sqrt2 - 1)/2 with equality only at x = (sqrt2-1)/2, and the two-branch bound on phi from rL <= 1/2 and rS <= m*. Real analysis, a few lines.
-   The all-pairs non-overlap at the optimum (currently a finite check) is a finite problem over the lattice that a prover could close.
-3. **Rank counts for fixed n by `decide`.** For each fixed n (3 to 8), the rank of the rigidity matrix with entries in Z (scale each row by c sqrt2 so intra rows have entries 0, +-1 and cross rows are e_i)
-   at q = 0, and at a chosen rational point for the phases (a lower bound for the generic rank), with an explicit kernel basis (the rotations) for the upper bound. Exact rational arithmetic, no floating point,
+   Attainment and all-pairs non-overlap are PROVEN (written proof, internal review only) in `results/cab6-packing/ATTAINMENT.md`: the squared distance to Z^3 splits coordinatewise. Its distance lemma
+   (d_CaCa = 1, d_CaB = sqrt((1/2 - h)^2 + 1/2), d_BB = min(sqrt2 h, 1 - 2h) for 0 < h < 1/2) and the attainment step are a short formalisation target.
+3. **Rank counts for fixed n by `decide`.** For each fixed n (3 to 8), the rank of the rigidity matrix with entries in Z (starting from the unit bar directions of `results/rigidity-nd/rigidity_nd.py`, multiply each
+   intra row by sqrt2 so its entries are 0, +-1, and leave the cross rows, which are already +-e_i; row scaling does not change the rank)
+   at q = 0, and at a chosen rational point for the phases (a lower bound for the generic rank; the phases e^(i q.L) can be taken as Gaussian rationals on the unit circle, e.g. (3+4i)/5, so the
+   entries lie in Q(i)), with an explicit kernel basis (the rotations) for the upper bound. Exact arithmetic in Q or Q(i), no floating point,
    and it removes the SVD tolerance from the story. Generic-q counts need the phases as indeterminates (rank over the function field) or a Schwartz-Zippel style argument; a point-evaluation plus the
    explicit kernel is enough for equality.
 4. **The block identities and the minimisation.** Lemma 1 (the stretch formula) is a polynomial identity in the entries, closed by `ring`; the sum identity (*) likewise; the minimisation
    E_min = (2(n-1)^2/n^2) sum e_i^2 + (2/n^2) sum_{i != j} e_i e_j is a positive-definite quadratic with explicit minimiser y_k = (1/n)(2 e_k - (1/n) sum e_j). For symbolic n these need sums over
    `Finset.range n`; fixed n up to 8 is routine. The all-n statement is a good formalisation exercise (kernel of the unsigned incidence matrix of K_n for n >= 3).
-5. **The radius-ratio theorem (H1 and H2).** Elementary Euclidean geometry (reflections, the bisector computation sin(theta) = sin(phi/2)); heavier in Mathlib because it needs polytopes and facets.
+5. **The exact fcc motion** (`results/fold-continuous-fcc/PROOF.md`, PROVEN by written argument and exact finite certificate, internal review only). The bar identity a^2 + 2t^2 = 2; the
+   symmetric-part bound |w L| >= |w| (Cauchy-Schwarz with d - t >= 1), which leaves the 171 integer shifts with |n|^2 <= 11; the 3248 quartics whose 16240 Bernstein coefficients in Q(sqrt2) are all
+   nonnegative (finite exact arithmetic on rational pairs u + v sqrt2, no subdivision); the parity/index endpoint argument (even-sum integer rows of determinant 12, index 6 in D3, six odd-sum motif
+   points in distinct cosets); and D'(t) < 0 for 0 < t < 1. The finite part is at present checked by two Python implementations (`curve.py` and `independent.py` there), not by a proof assistant.
+6. **The radius-ratio theorem (H1 and H2).** Elementary Euclidean geometry (reflections, the bisector computation sin(theta) = sin(phi/2)); heavier in Mathlib because it needs polytopes and facets.
    A plausible first step is the planar and three-dimensional cases with explicit coordinates.
 
 ## Not good targets (for now)
 
-* The fold paths. The statement is a sampled finite check over 793 or 1193 floating-point states; a formal version would be a certified (interval) path, which is the open problem listed in
-  `docs/status.md`, not a formalisation of what exists.
+* The sampled fold paths (793 or 1193 floating-point states at m = 2, 333 or 268 at m = 1). Each is a sampled finite check; a formal version would be a certified (interval) path, not a
+  formalisation of what exists. For fcc the exact motion in item 5 is the target instead; a certified hcp path is the open problem listed in `docs/status.md`.
 * The prior-art statements (they are literature searches).
 
 ## How to contribute
