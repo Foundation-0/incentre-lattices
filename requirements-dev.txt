@@ -1,4 +1,5 @@
 # Extra packages for regenerating the README figures (docs/img/make_readme_figures.py).
 # Kept apart from requirements.txt so the CI dependencies do not change.
+# matplotlib is pinned to the version recorded in the committed PNGs (3.11.2).
 -r requirements.txt
-matplotlib>=3.8
+matplotlib==3.11.2

@@ -59,7 +59,7 @@ searches listed", not "new".
 
 ### Results at a glance
 
-Every number drawn below is read from the committed certificates and path files by [`docs/img/make_readme_figures.py`](docs/img/make_readme_figures.py) (`pip install -r requirements-dev.txt`, then run the script).
+Every value drawn below is read from the committed certificates and path files, or evaluated from a closed form (the CaB6 curve by `phi_closed()` in [`results/cab6-packing/cab6_packing.py`](results/cab6-packing/cab6_packing.py); the rigidity formula curves, the classical radius-ratio limits, the reference lines pi/sqrt18 and cubic-path lock, and the construction geometry in the script itself), by [`docs/img/make_readme_figures.py`](docs/img/make_readme_figures.py) (`pip install -r requirements-dev.txt`, then run the script). The plotted values are reproducible; the PNG bytes also depend on the font and freetype build, so a regenerated image may differ slightly in size or anti-aliasing.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/fold-density-dark.png">

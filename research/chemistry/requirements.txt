@@ -1,0 +1,6 @@
+# Extra packages for the research scripts in research/chemistry (not replayed by make verify; see docs/audit.md).
+# Kept apart from requirements.txt so the CI dependencies do not change.
+-r ../../requirements.txt
+ase==3.29.0      # borides_real.py (LGPL-2.1-or-later)
+pandas==3.0.5    # perovskite_mu.py (BSD-3-Clause)
+certifi          # fetch_borides.py only (MPL-2.0)
