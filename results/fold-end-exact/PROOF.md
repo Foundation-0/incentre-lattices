@@ -37,9 +37,17 @@ only in t_z and the third lattice row:
 
 **Proof.** Multiply every coordinate by den = 3 (hcp) or den = 1 (fcc). All dot coordinates and lattice rows become integers in
 units K/den, every squared distance becomes an integer times (K/den)², and (2R)² = 2 den² in those units. Items 1 to 5 are then
-comparisons of integers, carried out by `exact_end.check_exact`. Item 2 checks every pair whose image shift lies in a box
-|n_a| ≤ ⌈2.02R · |L⁻¹ column a|⌉ + 2 around the wrapped cell. That box is computed in floating point, but it has a margin of one full
-lattice step beyond the rigorous bound, so a rounding error cannot drop a pair. ∎
+comparisons of integers, carried out by `exact_end.check_exact`. Items 2, 3 and 5 use every pair whose image shift lies in a box
+|n_a| ≤ ⌈2.02R · |L⁻¹ column a|⌉ + 2 around the wrapped cell. That box is computed in floating point, so here is why it is
+complete. The wrap subtracts W L from the dots Y, with W the floor of the floating-point product Y L⁻¹, so the wrapped dots Yw are
+integer vectors whose fractional coordinates Yw L⁻¹ lie in [−ε, 1 + ε), where ε bounds the rounding error of that product (in
+exact arithmetic the interval would be [0, 1)). A pair r = Yw_j + n L − Yw_i has n = r L⁻¹ − (Yw_j − Yw_i) L⁻¹. Each
+coordinate of (Yw_j − Yw_i) L⁻¹ is less than 1 + 2ε in absolute value, and |(r L⁻¹)_a| ≤ |r| · |L⁻¹ column a| by
+Cauchy–Schwarz, so every pair with |r| ≤ 2R has |n_a| < 2R · |L⁻¹ column a| + 1 + 2ε. The box adds 1% to the radius and one
+further full step, so it contains every such n as long as ε ≤ 1 and the computed value of 2.02R · |L⁻¹ column a| is not below
+the exact 2R · |L⁻¹ column a|. For the three states in this note ε is below 3e-16 and the computed column norms are within
+2e-16 (relative) of the exact ones. ∎ (Internal audit, not yet reviewed: Claude (Anthropic), via Claude Code, wrote out this
+bound and measured the two rounding errors against exact rational arithmetic with sympy.)
 
 **Finding (VERIFIED, 1e-7).** After a rigid motion that puts octahedron (0,0,0) in its cube frame, the final state of each
 stored path agrees with its closed form to better than 1e-7 in every coordinate (`exact_end.exactify`). So the stored paths end
