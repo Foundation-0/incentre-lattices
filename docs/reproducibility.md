@@ -20,13 +20,17 @@ the commitment; run it only after a deliberate change, and review the diff.
 
 | Target | Result | Tools | Time | Slow |
 |---|---|---|---|---|
+| `verify-certificates-tests` | certificate-index regression tests (`tools/test_build_certificates.py`) | standard library | under a second | |
 | `verify-rigidity` | `results/rigidity-nd` | numpy, sympy | a few seconds | |
 | `verify-radius-ratio` | `results/radius-ratio` | numpy, scipy | a few seconds | |
 | `verify-cab6` | `results/cab6-packing` | numpy, scipy, sympy | a few seconds | |
 | `verify-fold2d` | `results/fold-2d` | numpy, sympy | seconds | |
 | `verify-fold-tests` | the locked fold checker's hash lock and 16 unit tests | numpy, scipy | 12 seconds | |
+| `verify-fold-continuous` | `results/fold-continuous-fcc` | standard library | a few seconds | |
 | `verify-fold3d` | `results/fold-3d-cubic` | numpy, scipy, sympy | about 1 minute | yes |
 | `verify-fold-cp` | `results/fold-close-packing` (both checkers, hcp and fcc paths) | numpy, scipy | about 3 minutes | yes |
+| `verify-fold-exact` | `results/fold-end-exact` (exact end states of the two m = 2 paths) | numpy | about 15 to 30 seconds | yes |
+| `verify-fold-m1` | `results/fold-m1` (both checkers and the exact end-state check, m = 1 hcp and fcc paths) | numpy, scipy | about 5 to 10 seconds | yes |
 
 Times are from a recent laptop. The continuous-integration job has a 15-minute limit and runs `make verify` on Python 3.11, 3.12 and 3.13
 (`.github/workflows/verify.yml`).
@@ -57,11 +61,15 @@ inputs are the files whose hashes are recorded. It does not mean that any statem
   not affected, but the pin must work on the machines of people who replay it.)
 * `autoresearch-fold/verify.py` is the locked checker. Its sha256 is in `autoresearch-fold/verify.sha256` and is checked by `verify-fold-tests`.
   Do not edit it; changes are reviewed separately from results.
-* The stored paths are `autoresearch-fold/best/path.npz` (hcp, 793 states, 0.97 MB) and `results/fold-close-packing/path_fcc.npz` (hcp plus two layer
-  slides, 1193 states, 0.77 MB). Together they are 1.7 MB. `path_fcc.npz` is regenerated from the hcp path (`make_fcc_path.py`, no random numbers) in
+* `results/fold-close-packing/checkers.sha256` holds the sha256 of the second checker (`chk_independent.py`) and of the fcc path generator
+  (`make_fcc_path.py`); `verify-fold-cp` checks it before the replay.
+* The stored paths are `autoresearch-fold/best/path.npz` (hcp, 793 states, 0.97 MB), `results/fold-close-packing/path_fcc.npz` (hcp plus two layer
+  slides, 1193 states, 0.77 MB), and the m = 1 paths `results/fold-m1/path_hcp_m1.npz` (333 states, 73 kB) and `results/fold-m1/path_fcc_m1.npz`
+  (268 states, 59 kB). Together they are about 1.87 MB. `path_fcc.npz` is regenerated from the hcp path (`make_fcc_path.py`, no random numbers) in
   every replay and must agree with the stored file to 1e-9; the stored file is what the checkers read. Nothing was decimated.
-* Random choices: `rigidity_nd.py` samples random wavevectors with a fixed seed; nothing else uses random numbers. The search that produced the hcp path
-  (`autoresearch-fold/search.py`) is not part of `make verify` (it takes minutes and is a search, not a check). It is step-bounded with BLAS pinned to one
+* Random choices: within `make verify` only `rigidity_nd.py` draws random numbers (random wavevectors, fixed seed). The searches
+  `autoresearch-fold/search.py` and `results/fold-m1/search_*_m1.py`, which are not part of `make verify`, use seeded generators. The search that
+  produced the hcp path (`autoresearch-fold/search.py`) takes minutes and is a search, not a check. It is step-bounded with BLAS pinned to one
   thread, but it is not guaranteed to regenerate the stored path on another machine; `best/path.npz` is the certificate (see `docs/audit.md`).
 
 ## Commitment
