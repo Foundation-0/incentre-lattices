@@ -38,7 +38,8 @@ jobs:
       - name: Install pinned requirements
         run: python -m pip install -r requirements.txt
 
-      # Slow targets: verify-fold3d (about 1 minute) and verify-fold-cp (about 3 minutes).
+      # Slow targets: verify-fold3d (about 1 minute), verify-fold-cp (about 3 minutes), verify-fold-exact (about 30 seconds)
+      # and verify-fold-m1 (about 10 seconds).
       - name: Run every verifier
         run: make verify
 
