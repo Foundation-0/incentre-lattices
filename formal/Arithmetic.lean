@@ -3,7 +3,7 @@
     * Maxwell-Calladine: n(n-1)/2 - n(n-3)/2 = n  (zero modes minus self-stresses per cell),
     * the nu_100 denominator: (n-1)^2 + (n-2) = n^2 - n - 1,
     * the bar count 2n(n-1) + n = 2n^2 - n,
-    and for all n by `omega`/`Nat.sub` reasoning where linear. -/
+    plus the six values of the nu_100 denominator for n = 3..8. No statement here is proved for all n. -/
 
 def zeroModes (n : Nat) : Nat := n * (n - 1) / 2
 def selfStresses (n : Nat) : Nat := n * (n - 3) / 2
