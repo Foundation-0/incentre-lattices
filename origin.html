@@ -157,7 +157,7 @@ const fig1=CX.canvas(cv1,function(ctx,W,H,t,dt){
     const feet=[foot(I,A,B),foot(I,A,Cc),foot(I,B,Cc)];
     ctx.setLineDash([3,3]);feet.forEach(q=>glow(I,q,'rgba(255,178,58,.8)',1,fr,0));ctx.setLineDash([]);
     feet.forEach(q=>{if(fr>.9)CX.dot(ctx,X(q[0]),Y(q[1]),2.5,C.a,6)});
-    CX.dot(ctx,X(I[0]),Y(I[1]),4+1.2*Math.sin(t*4)*(P>=4?1:0),'#eafff4',12);
+    CX.dot(ctx,X(I[0]),Y(I[1]),4+(P>=4&&!CX.reduce?1.2*Math.sin(t*4):0),'#eafff4',12);
     ctx.globalAlpha=fr;CX.text(ctx,'R = tan 22.5° = √2 − 1',X(1+R)+10,Y(R)+4,C.a,11);ctx.globalAlpha=1;
   }
   // step 5: grass fire in bottom triangle
@@ -220,7 +220,7 @@ sync();
 
 /* ---------- figure 2: the lift ---------- */
 const cv2=$('cv2'),cam=CX.cam3(),k=2-S2;
-const st2={py:true,bl:true,rd:true,one:false,sp:CX.Q.get('spin')!=='0',n:3,sel:0};
+const st2={py:true,bl:true,rd:true,one:false,sp:CX.Q.get('spin')!=='0'&&!CX.reduce,n:3,sel:0};
 if(CX.Q.has('yaw'))cam.yaw=+CX.Q.get('yaw');if(CX.Q.has('pitch'))cam.pitch=+CX.Q.get('pitch');
 const DIRS=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
 function baseV(d){const ax=d.findIndex(v=>v!==0),o=[0,1,2].filter(i=>i!==ax);return [[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>{const v=[0,0,0];v[ax]=d[ax];v[o[0]]=a;v[o[1]]=b;return v})}

@@ -200,7 +200,7 @@ const STR={
  salt:{name:'ROCK SALT NaCl',t:{Na:{col:'rgba(53,230,255,X)',r:.2,at:'cf',lab:'Na (corner, face)'},Cl:{col:'rgba(255,178,58,X)',r:.27,at:'e0',lab:'Cl (edge, centre)'}},bonds:[['Na','Cl',1]],note:'each ion has six neighbours of the other kind'}
 };
 STR.bcc.bonds=[['X','X',Math.sqrt(3)]];
-const st6={s:STR.hasOwnProperty(CX.Q.get('s'))?CX.Q.get('s'):'perov',bond:true,dots:CX.Q.get('dots')==='1',pair:CX.Q.get('pair')==='1',sp:CX.Q.get('spin')!=='0'};
+const st6={s:STR.hasOwnProperty(CX.Q.get('s'))?CX.Q.get('s'):'perov',bond:true,dots:CX.Q.get('dots')==='1',pair:CX.Q.get('pair')==='1',sp:CX.Q.get('spin')!=='0'&&!CX.reduce};
 function atoms(sk){const S=STR[sk],out=[];for(const k in S.t){for(const cl of S.t[k].at)for(const p of CLS[cl])out.push({t:k,p,cl,w:WT[cl]})}return out}
 const fig6=CX.canvas(cv6,function(ctx,W,H,t,dt){
   ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);

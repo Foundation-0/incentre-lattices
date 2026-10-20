@@ -28,6 +28,7 @@ canvas#gl.drag{cursor:grabbing}
   radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(0,0,0,.65) 100%)}
 #grain{position:fixed;inset:-50px;pointer-events:none;z-index:6;opacity:.07;mix-blend-mode:screen;animation:gr .6s steps(5) infinite}
 @keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-23px,17px)}50%{transform:translate(19px,-31px)}75%{transform:translate(-37px,-9px)}100%{transform:translate(11px,23px)}}
+@media (prefers-reduced-motion:reduce){#sig .rot,#grain{animation:none}}
 #hud{position:fixed;inset:0;pointer-events:none;z-index:10;transition:opacity .25s}
 #hud.off{opacity:0}
 #hud.off *{pointer-events:none!important}
@@ -204,7 +205,7 @@ if(modes.includes('tetra'))st.tetra=true;
 if(modes.includes('explode'))st.explode=true;
 if(modes.includes('nolines')||Q.get('lines')==='0')st.lines=false;
 if(Q.get('signals')==='0')st.signals=false;
-if(Q.get('pause')==='1')st.paused=true;
+if(Q.get('pause')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches)st.paused=true; // reduced motion: start paused
 if(Q.has('yaw'))st.yaw=+Q.get('yaw');
 if(Q.has('pitch'))st.pitch=+Q.get('pitch');
 if(Q.has('zoom'))st.zoomU=+Q.get('zoom');
@@ -551,11 +552,15 @@ function updateReadout(dt){
   $('cx-sub').textContent=st.view==='corner'?'down a body diagonal the cube outline is a regular hexagon':st.view==='face'?'down a face axis the dots fall on a square grid of spacing 2':st.view==='edge'?'down an edge axis the face-centre dots line up in pairs':`${12*N*N*N+3*N*N*(N-1)} kissing contacts in this ${N}×${N}×${N} block`;
 }
 
-/* ---------- main loop ---------- */
-let last=performance.now();
+/* ---------- main loop: stops while the canvas is off screen (the landing page's iframe) or the tab is hidden ---------- */
+let last=performance.now(),raf=0,onscreen=true;
 const tag=$('tag');
+function wake(){if(!raf&&onscreen&&!document.hidden)raf=requestAnimationFrame(t=>{last=t;frame(t)})}
+if('IntersectionObserver' in window)new IntersectionObserver(es=>{onscreen=es[es.length-1].isIntersecting;wake()}).observe(cv);
+document.addEventListener('visibilitychange',wake);
 function frame(now){
-  requestAnimationFrame(frame);
+  raf=0;if(!onscreen||document.hidden)return;
+  raf=requestAnimationFrame(frame);
   let dt=Math.min(0.05,(now-last)/1000);last=now;if(dt<=0)dt=1/60;
   try{
   if(!st.paused){st.T+=dt;if(!tgt&&!dragging)st.yaw+=0.12*dt;stepPulses(dt)}
@@ -629,7 +634,7 @@ function showTag(){
 syncBtns();resetPulses();
 // warm-up so signals are in flight and a first frame is meaningful
 for(let n=0;n<50;n++)stepPulses(0.03);
-requestAnimationFrame(t=>{last=t;frame(t)});
+wake();
 }
 })();
 </script>

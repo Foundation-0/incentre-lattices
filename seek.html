@@ -105,7 +105,7 @@ function stepA(a){
 }
 function trialOnce(kind,N){const a=agent(kind,Math.random(),Math.random());for(let s=0;s<N&&!a.hit;s++)stepA(a);return a.hit}
 /* ---------- state ---------- */
-const st={N:+(CX.Q.get('n')||600),run:CX.Q.get('run')!=='0',fast:false,step:0,trial:1,acc:0,ag:[],tally:{greedy:[0,0],blind:[0,0],drift:[0,0]},batch:null};
+const st={N:+(CX.Q.get('n')||600),run:CX.Q.get('run')!=='0'&&!CX.reduce,fast:false,step:0,trial:1,acc:0,ag:[],tally:{greedy:[0,0],blind:[0,0],drift:[0,0]},batch:null};
 function newTrial(){const x=Math.random(),y=Math.random();st.ag=KINDS.map(k=>agent(k[0],x,y));st.step=0}
 newTrial();
 if(CX.Q.get('batch')==='1')setTimeout(runBatch,50);

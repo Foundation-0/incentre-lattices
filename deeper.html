@@ -283,9 +283,10 @@ function sphere(g,p,r,col,al){const gr=g.createRadialGradient(p.x-r*.35,p.y-r*.3
 function ring(g,p,r,col,w,dash){g.beginPath();g.arc(p.x,p.y,r,0,7);g.setLineDash(dash||[]);g.strokeStyle=col;g.lineWidth=w;g.stroke();g.setLineDash([])}
 
 // ---------- generic rotating 3D view (yaw/pitch, drag, painter's sort) ----------
-const views=[];
+const views=[],reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function View(id,h,extent,draw){
-  const cv=$(id),g=cv.getContext('2d'),v={yaw:-0.6,pitch:0.4,spin:true,W:0,H:h,g,ext:extent};
+  const cv=$(id),g=cv.getContext('2d'),v={yaw:-0.6,pitch:0.4,spin:!reduce,W:0,H:h,g,ext:extent,on:true};
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{v.on=es[es.length-1].isIntersecting}).observe(cv); // skip drawing while off screen
   const rs=()=>{const d=devicePixelRatio||1;v.W=cv.clientWidth;cv.width=v.W*d;cv.height=h*d;g.setTransform(d,0,0,d,0,0)};
   addEventListener('resize',rs);rs();
   let drag=null;
@@ -460,7 +461,7 @@ function upd10(){const n=+$('n10').value;$('n10v').textContent=n;
 $('n10').addEventListener('input',upd10);upd10();
 
 // ================= main loop =================
-(function loop(){for(const v of views)v.render();requestAnimationFrame(loop)})();
+(function loop(){for(const v of views)if(v.on)v.render();requestAnimationFrame(loop)})();
 {const qq=new URLSearchParams(location.search);for(const id of['t4','x4','o_ball','o_ghost'])if(qq.get(id))$(id).checked=true;if(qq.get('mode'))setMode(qq.get('mode'));if(qq.get('r3')){$('r3').checked=true;draw3()}if(qq.get('n3')){$('n3').value=qq.get('n3');draw3()}}
 {const sc=new URLSearchParams(location.search).get('scroll');if(sc)setTimeout(()=>{$(sc).scrollIntoView()},50)}
 window.__ok=true;

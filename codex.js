@@ -22,6 +22,7 @@ const here=(location.pathname.split('/').pop()||'index.html');
 const C={g:'#37ff9a',c:'#35e6ff',a:'#ffb23a',r:'#ff4a3d',dim:'#68aa8e',bg:'#02090c',ink:'#eafff4'};
 const TAU=Math.PI*2;
 const CX=window.CX={C,TAU,Q};
+CX.reduce=matchMedia('(prefers-reduced-motion: reduce)').matches; // figures start still and do not pulse
 
 function el(tag,attrs,html){const e=document.createElement(tag);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(html!=null)e.innerHTML=html;return e}
 
