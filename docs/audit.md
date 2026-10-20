@@ -109,7 +109,7 @@ Known limits (the important ones):
 | The final states of `autoresearch-fold/best/path.npz` and `results/fold-close-packing/path_fcc.npz` are these closed forms | VERIFIED (1e-7, after a rigid motion) | `exact_end.exactify` |
 | Controls | must be rejected | one dot moved by K/3; axis permutation dropped; wrong lattice row; hcp labelled fcc |
 
-Known limits: the end states only, not the path; the image-shift box for the overlap check is computed in floating point with one spare lattice step; one implementation, internal review only.
+Known limits: the end states only, not the path; the image-shift box for the overlap and contact checks is computed in floating point, with one spare lattice step beyond the bound written out in `PROOF.md`; one implementation, internal review only.
 
 ### results/fold-m1: close packing in the 1 x 1 x 1 cell
 
