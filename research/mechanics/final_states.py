@@ -23,4 +23,4 @@ for name, ax, th in [("[001]", [0, 0, 1], np.pi / 4), ("[111]", [1, 1, 1], np.pi
 print("3D theta=0:", contacts(3, np.eye(3))[:2])
 # exact value checks
 R2 = (np.sqrt(2) - 1) ** 2
-print("2R^2 strain check:", 1 - R2)
+print("linear scale factor 1 - R^2 = 2R:", 1 - R2, 2 * (np.sqrt(2) - 1))
