@@ -15,10 +15,10 @@ I am writing with two specific questions about a periodic bar framework: regular
 
 A pointer to a reference, or a short "this is routine", would help us a great deal. We make no claim of priority.
 
-- Repository: https://github.com/aska-digital/incentre-lattice
-- Preprint, version 2: https://github.com/aska-digital/incentre-lattice/blob/main/papers/incentre-lattice.pdf
-- Motion: https://github.com/aska-digital/incentre-lattice/tree/main/results/fold-continuous-fcc
-- Elasticity: https://github.com/aska-digital/incentre-lattice/tree/main/results/rigidity-nd
+- Repository: https://github.com/Foundation-0/incentre-lattices
+- Preprint, version 2: https://github.com/Foundation-0/incentre-lattices/blob/main/papers/incentre-lattice.pdf
+- Motion: https://github.com/Foundation-0/incentre-lattices/tree/main/results/fold-continuous-fcc
+- Elasticity: https://github.com/Foundation-0/incentre-lattices/tree/main/results/rigidity-nd
 
 Disclosure: most of the proofs, code and writing were produced with AI models (Claude from Anthropic; some parts with OpenAI Codex/GPT) under my direction, with internal review only.
 

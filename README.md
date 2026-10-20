@@ -15,7 +15,7 @@ Draw a square and its two diagonals. In each of the four triangles, mark the poi
 
 This repository is an open, agent-assisted research project around that construction. It holds:
 
-- **An interactive site** ([live on GitHub Pages](https://aska-digital.github.io/incentre-lattice/)). Explore the drawing, mirror geometry, chemistry, folding mechanics, perception, and a ledger of claims with evidence labels. The [research update](https://aska-digital.github.io/incentre-lattice/research.html) presents the explicit continuous fcc motion, literature correction, assessment and open review work.
+- **An interactive site** ([live on GitHub Pages](https://foundation-0.github.io/incentre-lattices/)). Explore the drawing, mirror geometry, chemistry, folding mechanics, perception, and a ledger of claims with evidence labels. The [research update](https://foundation-0.github.io/incentre-lattices/research.html) presents the explicit continuous fcc motion, literature correction, assessment and open review work.
 - **Research notes** in `research/`, with the code behind every number.
 - **Open tracks** in `tracks/`: questions with a fixed, trusted checker and a single score, so that people and AI agents can attack them in parallel. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -41,7 +41,7 @@ Most of the geometry is classical. The dot is the Wythoff point of the cube's re
 
 Nothing here has been peer reviewed.
 
-**October 2026 update:** the site now distinguishes the established results on `main` from the proposals in [PR #23](https://github.com/aska-digital/incentre-lattice/pull/23), [#25](https://github.com/aska-digital/incentre-lattice/pull/25), [#27](https://github.com/aska-digital/incentre-lattice/pull/27), [#28](https://github.com/aska-digital/incentre-lattice/pull/28) and [#29](https://github.com/aska-digital/incentre-lattice/pull/29). These include an explicit all-parameter fcc motion and a focused paper. Bridged cross-polytopes in arbitrary dimensions are a known framework family; historical priority of the specific formulas and motion remains unresolved. See the [research update](https://aska-digital.github.io/incentre-lattice/research.html) for the evidence and source-access limits.
+**October 2026 update:** the site now distinguishes the established results on `main` from the proposals in [PR #23](https://github.com/Foundation-0/incentre-lattices/pull/23), [#25](https://github.com/Foundation-0/incentre-lattices/pull/25), [#27](https://github.com/Foundation-0/incentre-lattices/pull/27), [#28](https://github.com/Foundation-0/incentre-lattices/pull/28) and [#29](https://github.com/Foundation-0/incentre-lattices/pull/29). These include an explicit all-parameter fcc motion and a focused paper. Bridged cross-polytopes in arbitrary dimensions are a known framework family; historical priority of the specific formulas and motion remains unresolved. See the [research update](https://foundation-0.github.io/incentre-lattices/research.html) for the evidence and source-access limits.
 
 ## Paper
 
@@ -50,6 +50,8 @@ Preprint, version 2 (not peer reviewed): **The bridged cross-polytope framework:
 The headline results are the unit-spring elastic constants in every dimension n >= 3 (all shear moduli zero, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the exact cab-to-fcc motion of [`results/fold-continuous-fcc`](results/fold-continuous-fcc/PROOF.md), now with a written symmetry-reduced non-overlap proof ([HAND-PROOF.md](results/fold-continuous-fcc/HAND-PROOF.md)). The zero-mode and self-stress counts are lemmas: the same periodic graph is in Borcea and Streinu (2021), Section 7.
 
 Version 1, **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, is kept unchanged as [papers/incentre-lattice-v1.pdf](papers/incentre-lattice-v1.pdf), DOI [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080). Its novelty claims for the rigidity counts are corrected in v2. The v1 PDF's SHA-256 hash is recorded in the public commitment (see below).
+
+The repository was previously at `github.com/aska-digital/incentre-lattice`. The repository links in the version 2 preprint use that address; GitHub redirects them here.
 
 ## Results
 
