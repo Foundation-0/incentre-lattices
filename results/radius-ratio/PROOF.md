@@ -98,3 +98,10 @@ evidence only.
 * Independent human review of the H1 and H2 proofs (internal pre-publication review only so far).
 * Which polytopes satisfy H1 or H2 is not classified here beyond the listed families.
 * The capped CN7 shapes under H2.
+
+## Credit and AI assistance
+
+This note, `radius_ratio.py` and `verify.py` were added in `e84a128`, written with Claude (Anthropic), via Claude Code. PR #20, also
+made with Claude, added the premise, number and H1 checks to the replay and their description above. It answers issue #15, which
+says "Audit by Muse"; what Muse is, and how it is credited, is a pending maintainer decision. Reviews so far are internal AI reviews
+(`docs/review-ledger.md`); no person has re-derived the H1 and H2 proofs.

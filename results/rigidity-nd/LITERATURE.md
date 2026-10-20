@@ -1,7 +1,9 @@
 # Dimensional rigidity and elasticity: literature comparison
 
 Audit date: 2026-10-12. Result reviewed: `2ed2ab7`, [PROOF.md](PROOF.md).
-This is an internal literature audit assisted by GPT-6.1 Sol, not independent human review.
+This is an internal literature audit: source comparison by GPT-6.1 Sol (`f6f7cc1`, reviewed by GPT-6); the Borcea–Streinu
+assessment, the note that a referee read the open PDF, the matching sentence in the access log and focused question 2 were revised
+with Claude (Anthropic), via Claude Code, in `c259d22`. Not independent human review.
 
 **The bridged cross-polytope family is prior art.** Borcea and Streinu explicitly describe it in arbitrary dimension.
 The earlier family-level **NOT FOUND** wording is withdrawn. Priority of this repository's exact formulas remains

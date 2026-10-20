@@ -88,3 +88,12 @@ and title not verified).
 ## Open obligations
 
 * Independent human review (internal pre-publication review only so far).
+
+## Credit and AI assistance
+
+This note, `cab6_packing.py` and `verify.py` were added in `e84a128`, written with Claude (Anthropic), via Claude Code. PR #7, also
+made with Claude, added the Travesset 2017 paragraph. In PR #23, OpenAI Codex (GPT-6) prepared [ATTAINMENT.md](ATTAINMENT.md) and the
+first pointer to it in this note (`4b728d4`); GPT-6 Luna handled the repository submission. The merge commit `8252530` on that PR's
+branch, made with Claude under the author's direction, recorded the internal referee check: it raised the label for attainment and
+all-pairs non-overlap from VERIFIED to PROVEN, rewrote the paragraph on the remaining step and removed the matching open obligation.
+Reviews so far are internal (`docs/review-ledger.md`); no independent human review is claimed.

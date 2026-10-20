@@ -63,3 +63,10 @@ not as a source of our numbers.
 
 * A proof that no non-bonded pair is closer than 2r before pi/4 (currently numerical).
 * The case t < 2 - sqrt2 and the continuation after pi/4 are numerical.
+
+## Credit and AI assistance
+
+This note, `fold2d.py` and `verify.py` were added in `e84a128`, written with Claude (Anthropic), via Claude Code. PR #7, also made
+with Claude, added the Tarnai, Fowler, Guest and Kovacs paragraph. PR #11, whose body names Muse as the model, changed only the
+docstring of `verify.py`; what Muse is, and how it is credited, is a pending maintainer decision. Reviews so far are internal AI
+reviews (`docs/review-ledger.md`); no person has checked the derivation.

@@ -187,3 +187,13 @@ The source comparison, reading depths, elementary deductions and independent-rev
 * A formal (Lean 4) check of the block identities for general n is an open track (`docs/formalization.md`).
 * Physical meaning: the elastic tensor is only positive semi-definite (zero shear moduli); real materials add angular
   stiffness.
+
+## Credit and AI assistance
+
+This note, `rigidity_nd.py`, `proof_steps.py` and `verify.py` were added in `e84a128`, written with Claude (Anthropic), via
+Claude Code. Later changes made with Claude: the replay's relative tolerance and residual output (PR #8) and the Li, Refson and Dove
+citation (PR #7). In PR #27, GPT-6.1 Sol rewrote the prior-art section above and wrote [LITERATURE.md](LITERATURE.md) (`f6f7cc1`;
+the PR body says GPT-6 reviewed the audit). A later commit in the same PR, `c259d22`, made with Claude, revised the Borcea–Streinu
+bullet here and parts of LITERATURE.md, as its first lines record. PR #11, whose body names Muse as the model, changed only the
+docstring of `verify.py`; what Muse is, and how it is credited, is a pending maintainer decision. Reviews so far are internal AI
+reviews (`docs/review-ledger.md`); no person has re-derived the proof.
