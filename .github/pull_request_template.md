@@ -22,7 +22,7 @@
 
 - Searches run:
 - Closest prior work:
-- Label for the claim: PROVEN / VERIFIED (finite check) / KNOWN (cite) / CONJECTURE
+- Label for the claim (definitions in `docs/audit.md`): PROVEN / VERIFIED (finite check) / KNOWN (cite) / NEW-COMPUTATION / CONJECTURE
 
 ## AI assistance
 

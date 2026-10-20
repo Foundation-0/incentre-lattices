@@ -1,11 +1,19 @@
 # Audit: what is checked, by what, and how far it goes
 
-Evidence labels used everywhere in this repository:
+Evidence labels in this repository (`CONTRIBUTING.md`, the README and the pull-request and issue templates refer to this list):
 
-* **PROVEN**: a written proof exists (in the result's `PROOF.md`). A proof is only as good as its review; so far only internal review has happened.
-* **VERIFIED**: a finite computation that replays. It supports the statement on the cases run, with the tolerances stated. It is not a proof.
-* **KNOWN**: published; cited in the `PROOF.md`.
-* **NEW-COMPUTATION**: our own computation, not independently reproduced beyond the checkers listed.
+* **PROVEN**: a written proof exists (for a result, in its `PROOF.md`). A proof is only as good as its review; so far only internal review has happened.
+* **VERIFIED**: a finite computation that replays. It supports the statement on the cases run, with the tolerances stated. It is not a proof. The site, `research/1-mechanics.md` and `research/2-chemistry.md` write it as VERIFIED NUMERICALLY, with the same meaning.
+* **KNOWN**: published, with a citation (for a result, in its `PROOF.md`).
+* **NEW-COMPUTATION**: our own computation, not independently reproduced beyond the checkers listed. In the results it accompanies a VERIFIED label, for example "VERIFIED (finite, sampled), NEW-COMPUTATION".
+* **CONJECTURE**: proposed without proof, and tested only in part or not at all. It is used in `research/` and on the site; no result in `results/` carries it.
+
+Two further labels are used only on the site: **DRAFT / OPEN** (in the claims ledger, `open.html`: a proposed proof,
+manuscript or repository change in an open pull request) and **POSITION** (a philosophical or interpretive stance,
+argued for but not testable as stated; the Drift and Search pages and the ledger). No result in `results/` carries
+either. Some site pages also show page-level tags such as SPECULATIVE or NO REFERENCE FOUND, and
+`research/3-culture-cognition.md` uses SPECULATIVE; these tags are not part of this list (the ledger counts guesses
+and speculation as CONJECTURE).
 
 "Finite check, not formal proof" applies to every VERIFIED entry. Nothing here has been formalised in a proof assistant (see `docs/formalization.md`).
 
