@@ -114,7 +114,7 @@ const STEPS=[
 ];
 /* ---------- figure 1 ---------- */
 const cv1=$('cv1');
-const st1={cur:+(CX.Q.get('step')||0),p:0,play:false,probe:CX.Q.get('probe')==='1',pr:[1.05,0.22],hold:0};
+const st1={cur:Math.max(0,Math.min(6,Math.round(+CX.Q.get('step')||0))),p:0,play:false,probe:CX.Q.get('probe')==='1',pr:[1.05,0.22],hold:0};
 st1.p=CX.Q.has('step')?st1.cur:-0.99;
 const A=[0,0],B=[2,0],Cc=[1,1],I=[1,R];
 function foot(p,a,b){const dx=b[0]-a[0],dy=b[1]-a[1],t=((p[0]-a[0])*dx+(p[1]-a[1])*dy)/(dx*dx+dy*dy);return [a[0]+t*dx,a[1]+t*dy]}

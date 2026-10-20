@@ -502,6 +502,8 @@ syncTabs();
 (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(phoneInit);
 addEventListener('keydown',e=>{
   if(e.ctrlKey||e.metaKey||e.altKey)return;
+  // keys typed into a control belong to it; Space on a focused button or link activates it
+  const tg=e.target;if(tg&&tg.closest){if(tg.isContentEditable||tg.closest('input,select,textarea'))return;if(e.key===' '&&tg.closest('button,a'))return}
   const k=e.key.toLowerCase();
   if(k==='1'){setView('face')}else if(k==='2'){setView('edge')}else if(k==='3'){setView('corner')}else if(k==='0'){setView('free')}
   else if(k==='p')st.ortho=!st.ortho;

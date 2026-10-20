@@ -185,7 +185,8 @@ const fig11=CX.canvas(cv11,function(ctx,W,H,t,dt){
   $('s11v').textContent=h.a.toFixed(1);
 },{aspect:w=>w<600?0.8:0.6});
 $('s11').oninput=e=>{h.a=+e.target.value;h.sweep=false;sy()};
-function sy(){document.querySelectorAll('#p-fig11 button[data-k]').forEach(b=>b.classList.toggle('on',b.dataset.k===h.k));$('b11poly').classList.toggle('on',h.poly);$('b11sweep').classList.toggle('on',h.sweep)}
+function sy(){document.querySelectorAll('#p-fig11 button[data-k]').forEach(b=>b.classList.toggle('on',b.dataset.k===h.k));$('b11poly').classList.toggle('on',h.poly);$('b11sweep').classList.toggle('on',h.sweep);
+  document.querySelectorAll('#p-fig11 button[data-a]').forEach(b=>b.classList.toggle('on',!h.sweep&&Math.abs(+b.dataset.a-h.a)<1e-9))}
 document.querySelectorAll('#p-fig11 button[data-a]').forEach(b=>b.onclick=()=>{h.a=+b.dataset.a;h.sweep=false;$('s11').value=h.a;sy()});
 document.querySelectorAll('#p-fig11 button[data-k]').forEach(b=>b.onclick=()=>{h.k=b.dataset.k;sy()});
 $('b11poly').onclick=()=>{h.poly=!h.poly;sy()};$('b11sweep').onclick=()=>{h.sweep=!h.sweep;sy()};

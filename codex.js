@@ -107,7 +107,8 @@ CX.canvas=function(canvas,draw,opt){
   }
   let last=performance.now(),raf=0;
   const active=()=>!document.hidden&&o.visible&&canvas.isConnected!==false;
-  function paint(dt){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);try{draw(ctx,o.W,o.H,o.t,dt)}catch(err){CX.fail(err)}}
+  // a draw that keeps throwing is reported once, not on every frame
+  function paint(dt){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);try{draw(ctx,o.W,o.H,o.t,dt);o.err=null}catch(err){const m=String(err&&err.stack||err);if(m!==o.err){o.err=m;CX.fail(err)}}}
   o.redraw=function(){if(active())paint(0)};
   function schedule(){
     if(!active()){if(raf)cancelAnimationFrame(raf);raf=0;return}

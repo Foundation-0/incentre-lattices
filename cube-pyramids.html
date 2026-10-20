@@ -13,7 +13,7 @@
 <meta name="twitter:title" content="Cube in three pyramids"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <style>
   html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
-  canvas{display:block;width:100vw;height:100vh;cursor:grab}
+  canvas{display:block;width:100vw;height:100vh;cursor:grab;touch-action:none}
   canvas:active{cursor:grabbing}
   #ui{position:fixed;top:56px;left:16px;background:#fffdf8e6;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px;max-width:270px}
   #ui h1{font-size:15px;margin:0 0 6px}
@@ -70,7 +70,8 @@ const pyr=[0,1,2].map(k=>{
 let yaw=-0.75,pitch=0.5,drag=null;
 cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId)});
 cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.008;pitch+=(e.clientY-drag[1])*0.008;pitch=Math.max(-1.5,Math.min(1.5,pitch));drag=[e.clientX,e.clientY]});
-cv.addEventListener('pointerup',()=>drag=null);
+const endDrag=()=>drag=null;
+cv.addEventListener('pointerup',endDrag);cv.addEventListener('pointercancel',endDrag);cv.addEventListener('lostpointercapture',endDrag);
 const $=id=>document.getElementById(id);
 
 function proj(p){
