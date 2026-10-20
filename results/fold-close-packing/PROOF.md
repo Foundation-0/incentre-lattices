@@ -113,3 +113,15 @@ Full notes in `autoresearch-fold/PRIOR-ART-FOLD.md` (opus novelty judgment, 2026
 * A certified (interval or analytic) path; a closed-form end state (space group, Wyckoff sites, hole pattern).
 * The minimal supercell (m = 1, 3), a monotone path, comparison nets (dia, sodalite, ReO3 with bars), connectivity of the set of close-packed end states.
 * Review by someone outside the project; a third implementation of the checks.
+
+## Credit and AI assistance
+
+The search, the stored hcp path and the locked checker (`autoresearch-fold/`) were added in `18dcb6e`; this note, `verify.py`,
+`chk_independent.py`, `make_fcc_path.py` and `path_fcc.npz` in `e84a128`. Both commits, and the later edits to this note in PRs #2,
+#7, #10, #19 and #21, were made with Claude (Anthropic), via Claude Code. PRs #19 and #21 answer issues #14 and #16, which say "Audit
+by Muse". PR #11 (squash `aea9dd6`) did not change this note. Its first commit, `3495907`, has no co-author trailer, and the PR body
+names Muse as the model. That commit changed `verify.py` here (a check of the locked checker's pin, the half-way-blend control in
+both checkers, the recorded end-state lattice cosines) and `make_fcc_path.py` (a sqrt precondition), and made the locked checker fail
+closed when `end_state_report` raises (re-pinned in `autoresearch-fold/verify.sha256`). The PR's later commits, which carry the
+Claude co-author trailer, are a merge with `main` and a change to how `verify.py` rounds those cosines (`e9c4e95`). What Muse is,
+and how it is credited, is a pending maintainer decision. Both checkers were written inside the project; no outside review.

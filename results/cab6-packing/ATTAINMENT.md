@@ -103,4 +103,5 @@ coordinate; no assertion concerns a real-material transition or optimality among
 
 This note builds on the construction and upper-bound argument in this repository, directed by Ahraz Arifuddin (Aska Digital).
 The existing prior-art qualifications in PROOF.md, including Horst and Travesset's plotted packing curve, remain in force.
-Prepared with OpenAI Codex (GPT-6); no independent human review is claimed.
+Prepared with OpenAI Codex (GPT-6). The status upgrade to PROVEN, recording the internal referee check, was made with Claude
+(Anthropic), via Claude Code, under the author's direction (`8252530`). No independent human review is claimed.

@@ -50,3 +50,12 @@ Fischer's trigonal sphere-packing tables should be checked.
 
 * Identify the 60-degree net with `sms` by an isomorphism, not by ten terms.
 * A continuous (not grid-adjacent) path for the trigonal states; superseded in practice by `results/fold-close-packing`.
+
+## Credit and AI assistance
+
+This note, `fold3d.py` and `verify.py` were added in `e84a128`, written with Claude (Anthropic), via Claude Code. PR #11 (squash
+`aea9dd6`) corrected the description of the RCSR `sms` sequence in "What the replay adds". That edit is in the PR's first commit,
+`3495907`, which has no co-author trailer, and the PR body says "Models and roles: Muse (full audit: code read, verification runs,
+edits, writing)". The Claude co-author trailer on `aea9dd6` comes from the PR's two later commits, which did not change this folder.
+What Muse is, and how it is credited, is a pending maintainer decision. Reviews so far are internal AI reviews
+(`docs/review-ledger.md`); no outside review.

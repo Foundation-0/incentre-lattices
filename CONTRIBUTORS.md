@@ -31,6 +31,12 @@ and first exact arithmetic implementation. GPT-6.1 Sol independently checked the
 a separate polynomial-convolution replay. GPT-6 Luna handled repository publishing. These are internal AI
 contributions under the user's direction; independent human review and historical priority remain open.
 
+The `Co-authored-by` trailers on the squash-merge commits on `main` are copied from the commits of each pull request, so they name
+only models whose commits carried a trailer. Commits made with Claude Code add one; the commits of work that the PR bodies credit to
+GPT-6, GPT-6.1 Sol, GPT-6 Luna or Muse have none (for PR #33, the body of PR #28, which it replaced). So the squash commits of PRs #11,
+#23, #25, #27, #31 and #33 name only Claude, and that of PR #30 names no model. The attribution record is this file, the pull-request
+bodies, the credit sections of the result notes and `docs/review-ledger.md`, not the trailers.
+
 ## Prior work this repository builds on
 
 Credit for the ideas below belongs to the cited people; where we reuse a construction we say so in the `PROOF.md` of the result.
