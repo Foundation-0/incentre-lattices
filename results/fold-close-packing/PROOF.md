@@ -75,7 +75,7 @@ replay and must agree to 1e-9.
   states are. A rigorous path needs interval arithmetic, regularity of the constraint Jacobian between samples with a margin argument, or an
   analytic piecewise path.
 * The density along the path is not monotone (smallest step -7e-5; dips to 0.7294 during the fcc slides).
-* **This result is m = 2 only.** For m = 1 (and so every m, once the m = 1 paths are subdivided for the locked checker's step limit) see `results/fold-m1`.
+* **This result is m = 2 only.** For m = 1 (and, by the lift argument, every m) see `results/fold-m1`.
 * First-order rigidity at the end state is not a proof of jamming.
 * This is a geometry and rigidity result. Real CaB6 and Prussian-blue analogues have bond-angle stiffness and do not behave like this
   model (CaB6 shows no structural transition to about 40 GPa in one study); no prediction about real materials is made.

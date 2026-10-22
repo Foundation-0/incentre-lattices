@@ -117,10 +117,11 @@ Known limits: the end states only, not the path; the image-shift box for the ove
 |---|---|---|
 | A 333-state path from the open cab state to hcp at m = 1 (free density descent, no target) | VERIFIED (finite, sampled), NEW-COMPUTATION | locked `autoresearch-fold/verify.py` and `results/fold-close-packing/chk_independent.py` (10 sub-states) |
 | A 268-state path to pure fcc at m = 1 (steered to an explicit end state), det L strictly decreasing at every step | VERIFIED (finite, sampled), NEW-COMPUTATION | the same two checkers; monotonicity at the samples only |
-| Both end states exact (12 contacts, density pi/sqrt18, hcp / fcc) | PROVEN (integer arithmetic) | `results/fold-end-exact/exact_end.py` |
+| The closed forms of both end states are exact (bars 2R, no overlap, 12 contacts, density pi/sqrt18, hcp / fcc) | PROVEN (integer arithmetic) | `results/fold-end-exact/exact_end.py` |
+| The final states of `path_hcp_m1.npz` and `path_fcc_m1.npz` are these closed forms | VERIFIED (1e-7, after a rigid motion) | `exact_end.exactify` |
 | Controls | must be rejected | displaced dot; scaled lattice; 100 deleted states; monotone test on the hcp path |
 
-Known limits: sampled continuity as for m = 2; the lift to larger m is an argument, not a replayed check, and needs subdivided paths (the locked checker rejects the unsubdivided lifts, only on the continuity step limit); searches reproduce byte for byte on one machine only.
+Known limits: sampled continuity as for m = 2; the lift to larger m is an argument, not a replayed check (the locked checker rejects the unsubdivided lifts at m = 2..4 on the step limit only, acceptance would need re-sampled states projected back onto the bars, and m >= 5 is outside its range); searches reproduce byte for byte on one machine only.
 
 ## What is not covered at all
 

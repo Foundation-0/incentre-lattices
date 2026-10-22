@@ -6,9 +6,9 @@
 
 ## Open problems on the fold
 
-- ~~**A closed-form end state**~~: done for m = 2 (`results/fold-end-exact/`): both end states are exact, with every coordinate an integer multiple of (2 − √2)/3, and are checked in integer arithmetic. Remaining: space group and Wyckoff sites.
+- ~~**A closed-form end state**~~: done for m = 2 (`results/fold-end-exact/`): both end states are exact, with every coordinate an integer multiple of (2 − √2)/3 in the cube frame of octahedron 0, and are checked in integer arithmetic. Remaining: space group and Wyckoff sites.
 - **A certified path**: an [explicit continuous fcc witness](../results/fold-continuous-fcc/PROOF.md) has a written proof and exact Bernstein certificate. Internal review is complete; independent human review and a certified hcp path remain open. The old numerical interpolants keep their sampled labels.
-- ~~**The smallest supercell**~~: m = 1 works (`results/fold-m1/`): 6 balls, free descent to hcp and a steered path to fcc, accepted by both checkers. An m = 1 motion is also an m-periodic motion for every m, so odd m is covered in principle; the lift to larger cells needs subdivided paths (the locked checker rejects the unsubdivided lifts, and only on the continuity step limit).
+- ~~**The smallest supercell**~~: m = 1 works (`results/fold-m1/`): 6 balls, free descent to hcp and a steered path to fcc, accepted by both checkers. An m = 1 motion is also an m-periodic motion for every m, so odd m is covered in principle. The lift is an argument, not a replayed check: the locked checker rejects the unsubdivided lifts at m = 2..4 on the step limit only, acceptance would need re-sampled states projected back onto the bars, and m ≥ 5 is outside its range.
 - **Monotone density**: the new explicit fcc witness is strictly monotone throughout its parameter interval (written derivative argument). The old m = 1 fcc path is monotone at its 268 samples only. Open: outside review and a monotone path to hcp.
 - ~~**fcc second check**~~: done (`results/fold-close-packing/chk_independent.py`). Remaining: a certified, non-sampled path.
 
