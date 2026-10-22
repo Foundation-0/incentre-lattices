@@ -70,9 +70,10 @@ a step count (`MAX_STEPS`) and a stall count (`STALL_KICKS`), not by time, and f
 is a safety limit only: if it is hit, the search writes no path and exits with code 2 (`search INCOMPLETE`), so a slow machine
 cannot silently produce a truncated path (`run.sh` stops any search at 300 s, also with no path written). On one 2-core Linux
 machine (numpy 2.5.4, scipy 1.18.1) both reruns reproduced the stored paths byte for byte. That was with the earlier versions
-of these files, which stopped on a 240 s time budget instead; on another machine (numpy 2.3.5 and 2.5.4) the current and earlier
-versions wrote byte-identical paths. Other BLAS builds may round differently and give a different path, so the stored paths,
-not the searches, are what is certified.
+of these files, which stopped on a 240 s time budget instead; on another machine (numpy 2.3.5 / scipy 1.16.3 and numpy 2.5.4 /
+scipy 1.18.1) the current and earlier versions wrote byte-identical paths to each other, but neither reproduced the stored paths
+there (hcp 324 and 270 states instead of 333; fcc 268 states, differing from the stored path by at most 8e-15). Other machines
+and BLAS builds may round differently and give a different path, so the stored paths, not the searches, are what is certified.
 
 Search engine: the `autoresearch-fold` search.py pipeline (LP step that keeps bars and lets contacts separate, Gauss–Newton
 retraction, sliding contacts), with a one-thread BLAS, a cycle breaker and, in the hcp file, three seeded start kicks. The fcc
@@ -92,9 +93,11 @@ reached.
 * Continuity is sampled (steps ≤ 0.01, midpoint check and 9 interior sub-states per step), as for the m = 2 paths. Linear
   interpolation changes bar lengths by up to 1.9e-5 relative, so the interpolated curve is not exactly bar-preserving. On the hcp
   path the interpolants also bring two non-bonded balls to 0.999996 · 2R (accepted under the checkers' 1e-4 interpolation
-  tolerance), so the interpolated curve is not overlap-free either; the fcc interpolants stay above 2R (minimum 1.00011 · 2R).
-  A certified path through these stored samples, and to hcp, is still open; an exact continuous motion to the same fcc end
-  state (PROVEN, internal review only) is in `results/fold-continuous-fcc`.
+  tolerance); at the fcc sub-states every non-bonded pair stays above 2R (minimum 1.00011 · 2R). Because interpolated bars are
+  chords, bonded balls also come closer than 2R on both paths, so the locked checker's all-pairs midpoint check (minimum
+  0.999981 · 2R hcp, 0.999984 · 2R fcc) accepts both paths only under its 1e-4 tolerance. The interpolated curve is not
+  overlap-free on either path. A certified path through these stored samples, and to hcp, is still open; an exact continuous
+  motion to the same fcc end state (PROVEN, internal review only) is in `results/fold-continuous-fcc`.
 * "Monotone" holds at the 268 samples. Between samples it is not proven.
 * Both fold checkers were written inside the project; `exact_end.py` was written for these results. No outside review.
 * Prior art: see `autoresearch-fold/PRIOR-ART-FOLD.md`. No separate search was run for the m = 1 case.
