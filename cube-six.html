@@ -245,6 +245,6 @@ if(q.get('tet')){$('tets').checked=true;tetIdx=+q.get('tet');showTet()}
 if(VIEWS.hasOwnProperty(q.get('view'))){const v=VIEWS[q.get('view')];yaw=v.yaw;pitch=v.pitch;$('ex').value=0;$('spin').checked=false;$('ortho').checked=true;$('caption').innerHTML=v.text}
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)$('spin').checked=false; // reduced motion: start still
 for(const t of ['pointerdown','input','change','click','keydown','resize'])addEventListener(t,kick);
-frame();
+kick();
 </script><div id="sign">Ahraz Arifuddin from <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5</a> from Anthropic</div>
 </body></html>

@@ -286,7 +286,7 @@ function ring(g,p,r,col,w,dash){g.beginPath();g.arc(p.x,p.y,r,0,7);g.setLineDash
 const views=[],reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function View(id,h,extent,draw){
   const cv=$(id),g=cv.getContext('2d'),v={yaw:-0.6,pitch:0.4,spin:!reduce,W:0,H:h,g,ext:extent,on:true};
-  if('IntersectionObserver' in window)new IntersectionObserver(es=>{v.on=es[es.length-1].isIntersecting}).observe(cv); // skip drawing while off screen
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{v.on=es[es.length-1].isIntersecting}).observe(cv.closest('.fig')||cv); // skip drawing while the figure, with its controls and readouts, is off screen
   const rs=()=>{const d=devicePixelRatio||1;v.W=cv.clientWidth;cv.width=v.W*d;cv.height=h*d;g.setTransform(d,0,0,d,0,0)};
   addEventListener('resize',rs);rs();
   let drag=null;
