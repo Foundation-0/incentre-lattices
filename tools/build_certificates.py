@@ -26,7 +26,7 @@ RESULTS = [
                   "generic_zero_modes_per_cell": "n(n-1)/2", "generic_self_stresses_per_cell": "n(n-3)/2"},
         "evidence_label": "PROVEN for all n >= 3 (written proof, results/rigidity-nd/PROOF.md); VERIFIED (finite check) for n = 3..8 (counts) and n = 2..8 (elastic constants); n = 2 counts (2, 0) at generic q recorded separately",
         "verify_command": "make verify-rigidity",
-        "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). It is the same infinite framework as in Borcea and Streinu 2021 Section 7 at a different bar length; the counts hold for any 0 < t < 1 and are per cell of 2Z^n, while Borcea and Streinu use two body orbits per period. The n-dimensional counts are likely routine (priority unresolved); the unit-spring C11/C12 = (n-1)^2 and nu_100 are the strongest remaining candidate (not found in Borcea and Streinu Section 7 or Goodwin's abstract).",
+        "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The framework is the same infinite framework as in Borcea and Streinu 2021 Section 7 at a different bar length; the counts hold for any 0 < t < 1 and are per cell of 2Z^n, while Borcea and Streinu use two body orbits per period. The n-dimensional counts are likely routine (priority unresolved); the unit-spring C11/C12 = (n-1)^2 and nu_100 are the strongest remaining candidate (not found in Borcea and Streinu Section 7 or Goodwin's abstract).",
     },
     {
         "id": "radius-ratio",
