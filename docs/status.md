@@ -4,7 +4,7 @@ As of 2026-10-12. Labels as in `docs/audit.md`. Preprint v1 published 2026-10-12
 
 | Track | Current best | Label | Replay |
 |---|---|---|---|
-| n-dimensional rigidity of the contact framework | n(n-1)/2 zero modes and n(n-3)/2 self-stresses per cell at generic q; nu_100 = 1/(n^2-n-1) (1/5, 1/11, 1/19, 1/29, 1/41, 1/55 for n = 3..8); all shear moduli 0 | PROVEN n >= 3; VERIFIED n = 2..8 | `make verify-rigidity` |
+| n-dimensional rigidity of the contact framework | n(n-1)/2 zero modes and n(n-3)/2 self-stresses per cell at generic q; nu_100 = 1/(n^2-n-1) (1/5, 1/11, 1/19, 1/29, 1/41, 1/55 for n = 3..8); C44 = 0 (every stiffness component involving an off-diagonal strain vanishes) | PROVEN n >= 3; VERIFIED n = 3..8 (n = 2: 2 zero modes, 0 self-stresses at generic q, outside the theorem); elastic constants VERIFIED n = 2..8 | `make verify-rigidity` |
 | Radius ratio of the dot construction | hole/ball = classical radius ratio under H1 (mirror walls) or H2 (insphere, equal dihedral angles); 20 cases; facet-transitive plus insphere is not enough | PROVEN under H1 or H2; VERIFIED on 20 polytopes | `make verify-radius-ratio` |
 | CaB6 hard-sphere packing | maximum (pi/6)(30 sqrt2 - 41) = 0.746865 at gamma = sqrt2 - 1; beats fcc for 0.41023 < gamma < 0.41591 | PROVEN (upper bound); all-pairs attainment PROVEN (`ATTAINMENT.md`) | `make verify-cab6` |
 | 2D fold (hinged squares) | density 0.5390 to pi/4 at theta = pi/4 for the incentre | KNOWN linkage; corollaries PROVEN exactly | `make verify-fold2d` |

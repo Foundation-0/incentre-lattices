@@ -26,7 +26,7 @@ flowchart TD
     A["Construction<br/>square, diagonals, incentres"] --> B["Wythoff point of the cube's<br/>reflection group<br/>KNOWN"]
     B --> C["4.8.8 tiling and truncated cubic honeycomb<br/>CaB6 boron net<br/>KNOWN"]
     B --> D["Radius-ratio identity<br/>PROVEN under H1 or H2<br/>VERIFIED on 20 polytopes"]
-    B --> E["Contact framework<br/>rigidity in n dimensions<br/>PROVEN n >= 3, VERIFIED n = 2..8"]
+    B --> E["Contact framework<br/>rigidity in n dimensions<br/>PROVEN n >= 3, VERIFIED n = 3..8"]
     C --> G["CaB6 packing maximum<br/>PROVEN upper bound<br/>attainment PROVEN"]
     C --> F["Fold to hcp and fcc<br/>VERIFIED, sampled path,<br/>two checkers"]
     classDef known fill:#e6f2f0,stroke:#0f766e,color:#10302c
@@ -47,7 +47,7 @@ Nothing here has been peer reviewed.
 
 Preprint, version 2 (not peer reviewed): **The bridged cross-polytope framework: unit-spring elastic constants in every dimension and an exact motion from the CaB<sub>6</sub> boron net to face-centred cubic packing**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI: v2 is [10.5281/zenodo.23340326](https://doi.org/10.5281/zenodo.23340326) (all versions: [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079)).
 
-The headline results are the unit-spring elastic constants in every dimension n >= 3 (all shear moduli zero, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the exact cab-to-fcc motion of [`results/fold-continuous-fcc`](results/fold-continuous-fcc/PROOF.md), now with a written symmetry-reduced non-overlap proof ([HAND-PROOF.md](results/fold-continuous-fcc/HAND-PROOF.md)). The zero-mode and self-stress counts are lemmas: the same periodic graph is in Borcea and Streinu (2021), Section 7.
+The headline results are the unit-spring elastic constants in every dimension n >= 3 (C44 = 0, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the exact cab-to-fcc motion of [`results/fold-continuous-fcc`](results/fold-continuous-fcc/PROOF.md), now with a written symmetry-reduced non-overlap proof ([HAND-PROOF.md](results/fold-continuous-fcc/HAND-PROOF.md)). The zero-mode and self-stress counts are lemmas: the same infinite framework, at a different bar length, is in Borcea and Streinu (2021), Section 7.
 
 Version 1, **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, is kept unchanged as [papers/incentre-lattice-v1.pdf](papers/incentre-lattice-v1.pdf), DOI [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080). Its novelty claims for the rigidity counts are corrected in v2. The v1 PDF's SHA-256 hash is recorded in the public commitment (see below).
 
@@ -90,7 +90,7 @@ Every number drawn below is read from the committed certificates and path files 
 
 | Result | Value | Label | Verify | Prior art |
 |---|---|---|---|---|
-| [n-dimensional rigidity](results/rigidity-nd/PROOF.md) | generic zero modes n(n-1)/2, self-stresses n(n-3)/2 per cell; nu_100 = 1/(n^2-n-1); shear moduli 0 | PROVEN n >= 3; VERIFIED n = 2..8 | `make verify-rigidity` | same framework as Borcea and Streinu 2021 Section 7 (their bars are at t = sqrt2 - 1, ours at 2 - sqrt2; counts hold for any 0 < t < 1); n-D counts likely routine, priority unresolved; C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate. Goodwin 2006 studied the same topology's rigid unit modes (abstract only read) |
+| [n-dimensional rigidity](results/rigidity-nd/PROOF.md) | generic zero modes n(n-1)/2, self-stresses n(n-3)/2 per cell; nu_100 = 1/(n^2-n-1); C44 = 0 (every stiffness component involving an off-diagonal strain vanishes) | PROVEN n >= 3; VERIFIED n = 3..8 (n = 2: 2 zero modes, 0 self-stresses at generic q, outside the theorem); elastic constants VERIFIED n = 2..8 | `make verify-rigidity` | the same infinite framework as Borcea and Streinu 2021 Section 7 at a different bar length (their bars are at t = sqrt2 - 1, ours at 2 - sqrt2); our counts are per cell of 2Z^n, while they use two body orbits per period; n-D counts likely routine, priority unresolved; C11/C12 = (n-1)^2 and nu_100 = 1/(n^2-n-1) are the strongest remaining candidate. Goodwin 2006 studied the same topology's rigid unit modes (abstract only read) |
 | [Radius ratio](results/radius-ratio/PROOF.md) | hole/ball of the dot construction = classical radius ratio, under mirror walls or insphere plus equal dihedral angles | PROVEN under H1 or H2; VERIFIED on 20 polytopes | `make verify-radius-ratio` | not found as a statement; ingredients known |
 | [CaB6 packing](results/cab6-packing/PROOF.md) | maximum (pi/6)(30 sqrt2 - 41) = 0.746865 at gamma = sqrt2 - 1; beats fcc for 0.41023 < gamma < 0.41591 | PROVEN upper bound; attainment PROVEN ([ATTAINMENT.md](results/cab6-packing/ATTAINMENT.md)), finite check corroborates | `make verify-cab6` | curve plotted by Horst and Travesset 2016; location of the peak possibly in Travesset 2017 (not read); closed form not found, not confirmed new |
 | [2D fold](results/fold-2d/PROOF.md) | density 0.5390 to pi/4 at theta = pi/4 | KNOWN linkage (Flores; Stuart); corollaries PROVEN | `make verify-fold2d` | known mechanism |

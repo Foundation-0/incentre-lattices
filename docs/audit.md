@@ -33,13 +33,13 @@ remain open; no physical transition or material stability is claimed.
 
 | Claim | Label | Checked by |
 |---|---|---|
-| Generic-q zero modes n(n-1)/2 and self-stresses n(n-3)/2; cross-polytope rigid; q = 0 and plane counts; C11, C12, zero shear, nu_100 = 1/(n^2-n-1) | PROVEN for all n >= 3 (`PROOF.md`) | the written proof; replay only supports it |
-| The same for n = 2..8 | VERIFIED | `rigidity_nd.py`: SVD ranks of the Bloch rigidity matrix at fixed-seed random q, tolerance 1e-9; elastic tensor by full relaxation (Schur complement), 1e-12 |
+| Generic-q zero modes n(n-1)/2 and self-stresses n(n-3)/2; cross-polytope rigid; q = 0 and plane counts; C11, C12, C44 = 0, nu_100 = 1/(n^2-n-1) | PROVEN for all n >= 3 (`PROOF.md`) | the written proof; replay only supports it |
+| The same for n = 3..8; at n = 2 the elastic constants and the separate counts (2, 0) at generic q and (3, 1) at q = 0 | VERIFIED | `rigidity_nd.py`: SVD ranks of the Bloch rigidity matrix at fixed-seed random q, tolerance 1e-9; elastic tensor by full relaxation (Schur complement), 1e-12 |
 | Steps 1 to 3 of the proof | VERIFIED symbolically for n = 2..8 | `proof_steps.py` (sympy) |
 | Controls | must be rejected | n >= 3 counts at n = 2; wrong Poisson formula; wrong C11/C12; deleting a cross bar; wrong stress-basis dimension |
 
 Known limits: numerical ranks depend on an SVD threshold; the proof has had internal review only; n = 2 is outside the theorem and is reported separately;
-the model is ideal central-force springs, so shear moduli of exactly zero say nothing about real crystals.
+the model is ideal central-force springs, so a shear modulus C44 of exactly zero says nothing about real crystals.
 
 ### results/radius-ratio: hole/ball equals the classical radius ratio
 

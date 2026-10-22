@@ -21,12 +21,12 @@ ROOT = certlib.ROOT
 RESULTS = [
     {
         "id": "rigidity-nd",
-        "statement": "The contact framework of the truncated n-cubic honeycomb (2n balls per cell, 2n^2-n bars of one length, dots at the pyramid incentres) has, at a generic wavevector, exactly n(n-1)/2 zero modes (the cluster rotations) and n(n-3)/2 self-stresses per cell, its cross-polytope cell is infinitesimally rigid for n >= 3, and with unit springs and full internal relaxation C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), all shear moduli vanish, nu_100 = 1/(n^2-n-1).",
+        "statement": "For n >= 3, the contact framework of the truncated n-cubic honeycomb (2n balls per cell, 2n^2-n bars of one length, dots at the pyramid incentres) has, at a generic wavevector, exactly n(n-1)/2 zero modes (the cluster rotations) and n(n-3)/2 self-stresses per cell, its cross-polytope cell is infinitesimally rigid, and with unit springs and full internal relaxation C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), C44 = 0 (every stiffness component involving an off-diagonal strain vanishes), nu_100 = 1/(n^2-n-1).",
         "value": {"nu_100": {"n=3": "1/5", "n=4": "1/11", "n=5": "1/19", "n=6": "1/29", "n=7": "1/41", "n=8": "1/55"},
                   "generic_zero_modes_per_cell": "n(n-1)/2", "generic_self_stresses_per_cell": "n(n-3)/2"},
-        "evidence_label": "PROVEN for all n >= 3 (written proof, results/rigidity-nd/PROOF.md); VERIFIED (finite check) for n = 2..8",
+        "evidence_label": "PROVEN for all n >= 3 (written proof, results/rigidity-nd/PROOF.md); VERIFIED (finite check) for n = 3..8 (counts) and n = 2..8 (elastic constants); n = 2 counts (2, 0) at generic q recorded separately",
         "verify_command": "make verify-rigidity",
-        "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The framework is the same periodic graph as Borcea and Streinu 2021 Section 7 at a different bar length; the counts hold for any 0 < t < 1. The n-dimensional counts are likely routine (priority unresolved); the unit-spring C11/C12 = (n-1)^2 and nu_100 are the strongest remaining candidate (not found in Borcea and Streinu Section 7 or Goodwin's abstract).",
+        "prior_art": "3D case KNOWN in substance (Goodwin 2006, rigid unit modes of linearly bridged frameworks; Power 2014). The framework is the same infinite framework as in Borcea and Streinu 2021 Section 7 at a different bar length; the counts hold for any 0 < t < 1 and are per cell of 2Z^n, while Borcea and Streinu use two body orbits per period. The n-dimensional counts are likely routine (priority unresolved); the unit-spring C11/C12 = (n-1)^2 and nu_100 are the strongest remaining candidate (not found in Borcea and Streinu Section 7 or Goodwin's abstract).",
     },
     {
         "id": "radius-ratio",
