@@ -91,12 +91,16 @@ a jam. Grid adjacency is not a continuous path.
 
 Known limits (the important ones):
 
-* **Continuity is certified only by sampling.** Consecutive states differ by at most 0.01 in dot position and lattice; overlap is checked at the states, at midpoints and at 10
-  interpolated sub-states. Linear interpolation between states shortens or lengthens bars by up to 1.5e-5 (relative), so the interpolated curve is not exactly bar-preserving.
+* **Continuity is certified only by sampling.** Consecutive states differ by at most 0.01 in dot position and lattice; overlap is checked at the states (tolerance 1e-9), at step
+  midpoints (locked checker, all pairs) and at 9 interior sub-states u = 0.1, ..., 0.9 of each step (independent checker, non-bonded pairs), with tolerance 1e-4 at the midpoints and
+  sub-states. Linear interpolation between states shortens or lengthens bars by up to 1.5e-5 (relative), so the interpolated curve is not exactly bar-preserving, and at the sampled
+  sub-states it brings two non-bonded balls to 0.999994 * 2R, accepted under the 1e-4 tolerance. Given the state checks and the dot step bound 0.01, every pair with zero lattice
+  shift stays at least 0.999927 * 2R apart on the linear interpolant, so the midpoint and sub-state samples can fail only for pairs across a nonzero lattice shift (internal audit
+  work, not yet reviewed; the argument is in `results/fold-close-packing/PROOF.md`, Known limits).
   This is not an interval-arithmetic or analytic certificate of a continuous motion.
 * **This result is m = 2 only** (48 balls). m = 1, and through it every m in principle (the lift needs subdivided paths; see `results/fold-m1/PROOF.md`), is in `results/fold-m1`.
 * Both checkers were written inside the project, by the same group; they share the model definition. Neither is an outside review.
-* The density along the path is not monotone (dips to 0.7294 during the fcc slides).
+* The density along the path is not monotone (smallest step -7.2e-5 on the hcp path; in each fcc slide it falls by up to 2.3e-4 per step to 0.7294 and rises back).
 * First-order rigidity at the end state is not a proof of jamming.
 * The stored `autoresearch-fold/best/path.npz` is the certificate; the search that found it is not a certificate and is not guaranteed to reproduce that exact path on another machine. The original run bounded stage B by wall clock, and one slower machine stopped at a jammed state (density 0.618718). `search.py` is now bounded by a step count with BLAS pinned to one thread; a rerun on one machine gave a different valid path (791 states, diverging from the stored one at state 285) reaching the same end density 0.740480.
 * A geometry and rigidity result, not a prediction for real CaB6 or Prussian-blue materials.
@@ -115,7 +119,7 @@ Known limits: the end states only, not the path; the image-shift box for the ove
 
 | Claim | Label | Checked by |
 |---|---|---|
-| A 333-state path from the open cab state to hcp at m = 1 (free density descent, no target) | VERIFIED (finite, sampled), NEW-COMPUTATION | locked `autoresearch-fold/verify.py` and `results/fold-close-packing/chk_independent.py` (10 sub-states) |
+| A 333-state path from the open cab state to hcp at m = 1 (free density descent, no target) | VERIFIED (finite, sampled), NEW-COMPUTATION | locked `autoresearch-fold/verify.py` and `results/fold-close-packing/chk_independent.py` (9 interior sub-states per step) |
 | A 268-state path to pure fcc at m = 1 (steered to an explicit end state), det L strictly decreasing at every step | VERIFIED (finite, sampled), NEW-COMPUTATION | the same two checkers; monotonicity at the samples only |
 | Both end states exact (12 contacts, density pi/sqrt18, hcp / fcc) | PROVEN (integer arithmetic) | `results/fold-end-exact/exact_end.py` |
 | Controls | must be rejected | displaced dot; scaled lattice; 100 deleted states; monotone test on the hcp path |
