@@ -11,11 +11,13 @@ between touching balls of radius R = sqrt2 - 1 and c = 2 - sqrt2 (the incentre o
 2R. Balls are joined centre to centre (they may roll on one another); a model with pins at the contact points behaves differently
 and gives L = 2 cos(theta), which shortens the bars.
 
-Rotate alternate squares by +-theta about their centres. The cross bars stay on the axes and the period in both directions is
+Rotate alternate squares by +-theta about their centres. The cross bars stay parallel to the axes and the period in both directions is
 
     L(theta) = 2R + 2c cos(theta).
 
-* The closest pair of non-bonded balls has gap 2 sqrt2 c cos(theta + pi/4), so the first new contact is at **theta = pi/4**.
+* The pair that closes, the c e_1 dots of vertically adjacent counter-rotated squares, has gap 2 sqrt2 c cos(theta + pi/4); it
+  vanishes first at **theta = pi/4**, the first new contact (that no other pair touches earlier is checked numerically; see the
+  derivation). (The two opposite dots of each square keep the constant gap 2c - 2R = 2R^2 and are not the first to touch.)
 * There L = 4R, the linear strain is L/2 - 1 = -R^2 = -(3 - 2 sqrt2), the dots form a square lattice of spacing 2R, and the packing
   fraction has risen from pi (sqrt2 - 1)^2 = 0.5390 to pi/4.
 * The motion is isotropic along the path (equal period in both directions), the symmetric path of the mechanism. The periodic
@@ -31,7 +33,7 @@ at all (two bar constraints force theta = 0); do not conflate the two.
 
 Gap along y between the dots of adjacent counter-rotated squares: L(theta) - 2 c sin(theta) - 2R = 2R + 2c cos(theta) - 2c sin(theta) -
 2R = 2c (cos theta - sin theta) = 2 sqrt2 c cos(theta + pi/4). It vanishes first at theta = pi/4, and sympy confirms
-L(pi/4) - 4R = 0 and the strain identity. That no other non-bonded pair comes closer for theta < pi/4 is checked numerically
+L(pi/4) - 4R = 0 and the strain identity. That no other non-bonded pair reaches distance 2R before theta = pi/4 is checked numerically
 (minimum distance 1.0003 * 2r at theta = 44.99 degrees in the internal review), not proved in general; the replay finds the lock
 angle on a 0.01-degree grid. The statement about t is clear at theta = pi/4 for the spacing argument above; the case t < 2 - sqrt2
 is numerical.
@@ -39,9 +41,20 @@ is numerical.
 ## What the replay adds
 
 Exact simplification of the gap and the values at pi/4; a scan over c in {0.45, 0.5, 0.55, 2 - sqrt2, 0.62, 0.7} giving the lock
-angle (66.37, 56.96, 49.51, 45.00, 45.00, 45.00 degrees) and the nearest-neighbour distances at the lock; must-fail controls (wrong
-gap formula, 45 degrees claimed for c = 0.5, a non-incentre c claimed to end in a single-distance square lattice, a wrong end
-density).
+angle (66.37, 56.96, 49.51, 45.00, 45.00, 45.00 degrees: the first point of the 0.01-degree grid at or past contact) and the
+nearest-neighbour distances at the lock; must-fail controls (wrong gap formula, 45 degrees claimed for c = 0.5, a non-incentre c
+claimed to end in a single-distance square lattice, a wrong end density).
+
+For c < 2 - sqrt2 the contact distance is the square side sqrt2 c (shorter than the cross bar 2 - 2c). The same pair (the c e_1 dots
+of vertically adjacent squares) is at centre distance (2 - 2c) + 2c cos(theta) - 2c sin(theta), which reaches sqrt2 c at
+
+    theta_lock(c) = arccos((sqrt2 c - (2 - 2c)) / (2 sqrt2 c)) - pi/4,
+
+which lies in (pi/4, pi/2] for (4 - sqrt2)/7 = 0.3694 <= c < 2 - sqrt2 and is 66.3609, 56.9529 and 49.5048 degrees for c = 0.45, 0.5
+and 0.55; the grid values 66.37, 56.96 and 49.51 above are the next grid points. This is the closing pair only: that it is the first
+pair to touch is numerical (an all-pairs bisection on the replay's 5 x 5 block of squares agrees to within 1e-9 degree). The closed
+form and its check (sympy, numpy) are internal audit work by Claude (Anthropic), via Claude Code, pending review; the replay does not
+compute them.
 
 ## Prior art
 

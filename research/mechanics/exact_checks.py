@@ -1,5 +1,5 @@
 """Symbolic checks: (1) elastic constants of the unit-spring n-D contact network (symmetric-ansatz reduction);
-(2) 2D fold end state; (3) 3D [111] tilt end spacing."""
+(2) 2D fold end state and gap formula; (3) 3D [111] tilt end spacing."""
 import sympy as sp
 
 # (1) energy per cell E = 2 sum_i (e_i - s_i)^2 + sum_{i<j} (s_i + s_j)^2   (unit springs, cell volume 2^n)
@@ -17,7 +17,15 @@ for n in range(2, 8):
 t = 2 - sp.sqrt(2); R = sp.sqrt(2) - 1
 a45 = 2 - 2 * t * (1 - sp.cos(sp.pi / 4))
 print("2D a(45) =", sp.nsimplify(sp.simplify(a45)), " 2R =", sp.simplify(2 * R), " strain =", sp.simplify(a45 / 2 - 1), " -R^2 =", sp.expand(-R ** 2))
-print("   area ratio =", sp.simplify((a45 / 2) ** 2), " = 4R^2 =", sp.expand(4 * R ** 2), "; density 4*pi*R^2/a^2 =", sp.simplify(4 * sp.pi * R ** 2 / a45 ** 2 / 4))
+dens45 = sp.simplify(4 * sp.pi * R ** 2 / a45 ** 2)
+print("   area ratio =", sp.simplify((a45 / 2) ** 2), " = 4R^2 =", sp.expand(4 * R ** 2), "; density 4*pi*R^2/a^2 =", dens45)
+assert sp.simplify(dens45 - sp.pi / 4) == 0
+# gap between the balls of neighbouring clusters along the bar axis: a(theta) - 2t sin(theta) - 2R = 2 sqrt2 t cos(theta + pi/4)
+th = sp.symbols('theta', real=True)
+a = 2 - 2 * t * (1 - sp.cos(th)); gap = a - 2 * t * sp.sin(th) - 2 * R
+gap_ok = sp.simplify(sp.expand_trig(gap - 2 * sp.sqrt(2) * t * sp.cos(th + sp.pi / 4))) == 0
+print("   gap(theta) = 2 sqrt2 t cos(theta + pi/4):", gap_ok, "; gap(45) =", sp.simplify(gap.subs(th, sp.pi / 4)))
+assert gap_ok and sp.simplify(gap.subs(th, sp.pi / 4)) == 0
 # (3) 3D [111] tilt by 60deg: alpha = 4t/3 + sqrt(L^2 - 2t^2/9)
 L = 2 - 2 * t
 alpha = sp.Rational(4, 3) * t + sp.sqrt(L ** 2 - 2 * t ** 2 / 9)
