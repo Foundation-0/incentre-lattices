@@ -41,6 +41,7 @@ ul.cl li,ol.cl li{margin:0 0 .5em}
 .tg.known{color:#b6c4ff;border-color:#7d8ee6;background:rgba(125,142,230,.1)}
 .tg.noref{color:#ff9a8f;border-color:var(--r);background:rgba(255,74,61,.08)}
 .tg.spec{color:#d9a6ff;border-color:#a56cd6;background:rgba(165,108,214,.1)}
+.tg.elem{color:var(--c);border-color:var(--c);border-style:dashed;background:transparent}
 table.tb{border-collapse:collapse;width:100%;font-size:13px;margin:16px 0 22px;line-height:1.45}
 table.tb th{color:var(--dim);font-weight:400;text-align:left;letter-spacing:.06em;font-size:11.5px;border-bottom:1px solid rgba(55,255,154,.35);padding:5px 8px}
 table.tb td{padding:5px 8px;border-bottom:1px solid rgba(55,255,154,.12);vertical-align:top;color:var(--ink)}
@@ -52,7 +53,8 @@ table.tb tr.hi td{background:rgba(255,178,58,.08);color:#fff0d0}
 .wide{position:relative;left:50%;width:min(940px,calc(100vw - 20px));transform:translateX(-50%);margin:30px 0 34px}
 figure.fig{margin:0}
 .cvbox{position:relative;border:1px solid rgba(55,255,154,.35);background:#02090c;box-shadow:0 0 18px rgba(55,255,154,.1),inset 0 0 22px rgba(55,255,154,.05);overflow:hidden}
-.cvbox canvas{display:block;width:100%;touch-action:none;cursor:crosshair}
+.cvbox canvas{display:block;width:100%;touch-action:pan-y;cursor:crosshair}
+.cvbox canvas.drag2d{touch-action:none}
 .cvbox canvas.grab{cursor:grab}
 .cvbox .corner{position:absolute;left:8px;top:6px;color:var(--dim);font:10.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.14em;pointer-events:none}
 .cvbox .corner.r{left:auto;right:8px;text-align:right}
@@ -99,6 +101,10 @@ label.ck input{accent-color:var(--g)}
 @media (min-width:1220px){
   #p-nav{position:fixed;left:16px;top:16px;width:210px}
 }
+/* the fixed index ends at x = 226px: keep wide figures clear of it until they fit beside it */
+@media (min-width:1220px) and (max-width:1419px){
+  .wide{width:calc(100vw - 500px)}
+}
 @media (max-width:1219px){
   #p-nav{position:relative;max-width:680px;margin:14px auto 0;width:calc(100% - 40px)}
   #p-nav .body{flex-direction:row;flex-wrap:wrap;gap:4px 14px}
@@ -135,6 +141,9 @@ label.ck input{accent-color:var(--g)}
   .wide{left:auto;transform:none;width:100%;margin:22px 0 26px}
   figure.fig,.cvbox,figcaption{max-width:100%}
   img,svg,canvas,video{max-width:100%}
+  /* the two corner captions would collide: the right one moves to a strip under the canvas */
+  .cvbox .corner{letter-spacing:.06em;right:8px}
+  .cvbox .corner.r{position:static;padding:3px 8px 5px}
   h1{font-size:clamp(24px,7.4vw,32px)}
   h2{font-size:19px;margin-top:42px}
   .m{white-space:normal;overflow-wrap:anywhere}

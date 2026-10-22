@@ -9,7 +9,7 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="One abstract drawing. A hunch followed. A thread unravelled."><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. An infographic abstract with proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta name="description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. An infographic abstract with proofs and verified results.">
@@ -20,7 +20,7 @@ main.land{max-width:760px;padding:22px 20px 40px}
 .ip{position:relative;border:1px solid rgba(55,255,154,.35);background:rgba(2,12,9,.80);box-shadow:0 0 18px rgba(55,255,154,.10),inset 0 0 26px rgba(55,255,154,.04);padding:16px 20px 20px;transition:opacity .7s ease,transform .7s ease}
 .js .ip.pre{opacity:0;transform:translateY(16px)}
 .ip .lbl{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font:11px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.2em;color:var(--dim);margin:0 0 12px}
-.ip .lbl b{font-weight:400;color:var(--c);text-shadow:0 0 6px rgba(53,230,255,.5)}
+.ip .lbl h2{margin:0;font:inherit;letter-spacing:inherit;color:var(--c);text-shadow:0 0 6px rgba(53,230,255,.5)}
 .ip h2{margin:0 0 10px;font-size:20px}
 .ip p{margin:0 0 .9em}
 .ip p:last-child{margin-bottom:0}
@@ -144,6 +144,8 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
   .enter .vp{aspect-ratio:4/3}
   .go{padding:13px 16px;font-size:15px;width:100%;justify-content:center}
   .enter .cta small{flex-basis:100%}
+  .vis .corner{letter-spacing:.06em;right:8px}
+  .vis .corner.r{position:static;padding:3px 8px 5px}
 }
 @media (prefers-reduced-motion:reduce){
   .chain i,.go,.ent,.enter .vp:after,.one svg .pulse{animation:none}
@@ -175,7 +177,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 2 THE RULE -->
 <section class="ip" id="s2">
- <div class="lbl"><b>01 // THE RULE</b><span>square + diagonals + four incentres</span></div>
+ <div class="lbl"><h2>01 // THE RULE</h2><span>square + diagonals + four incentres</span></div>
  <div class="vis"><canvas id="cv-rule" aria-label="Animated drawing: a square, its two diagonals, the point equidistant from the three sides of each triangle, and lines from each point to its triangle's corners"></canvas><div class="corner">THE DRAWING</div><div class="corner r">LOOP</div></div>
  <p class="cap">The circles show the equal distances: each dot is exactly R from its three sides. The red lines are the loops of the drawing. Everything on this site follows from repeating this step.</p>
 </section>
@@ -183,7 +185,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 3 ONE NUMBER -->
 <section class="ip" id="s3">
- <div class="lbl"><b>02 // ONE NUMBER</b><span class="tg proven">EXACT</span></div>
+ <div class="lbl"><h2>02 // ONE NUMBER</h2><span class="tg proven">EXACT</span></div>
  <div class="one">
   <div>
    <p class="big">&radic;2 &minus; 1<br>= tan 22.5&deg;<small>&asymp; 0.41421, the dot&rsquo;s distance to each wall (square of side 2)</small></p>
@@ -214,7 +216,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 4 WHERE IT LANDS -->
 <section class="ip" id="s4">
- <div class="lbl"><b>03 // WHERE IT LANDS</b><span>all of this is classical</span></div>
+ <div class="lbl"><h2>03 // WHERE IT LANDS</h2><span>all of this is classical</span></div>
  <div class="thumbs">
   <figure class="th" style="margin:0">
    <div class="vis"><svg id="svg-488" viewBox="-0.5 -0.5 5.8 5.8" preserveAspectRatio="xMidYMid slice" aria-label="The 4.8.8 tiling with regular octagons and squares"></svg></div>
@@ -250,7 +252,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 5 WHAT'S NEW -->
 <section class="ip" id="s5">
- <div class="lbl"><b>04 // RESEARCH RESULTS</b><span>evidence, scope, review</span></div>
+ <div class="lbl"><h2>04 // RESEARCH RESULTS</h2><span>evidence, scope, review</span></div>
  <div class="cards">
   <div class="card">
    <div class="tgs"><span class="tg proven">PROVEN</span><span class="tg noref">PRIORITY OPEN</span></div>
@@ -290,7 +292,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 6 HONEST STATUS -->
 <section class="ip" id="s6">
- <div class="lbl"><b>05 // HONEST STATUS</b><span class="tg conj">NOT PEER REVIEWED</span></div>
+ <div class="lbl"><h2>05 // HONEST STATUS</h2><span class="tg conj">NOT PEER REVIEWED</span></div>
  <div class="status">
   <div class="st k"><h3>KNOWN</h3><ul><li>Wythoff construction, 4.8.8 and the truncated cubic honeycomb</li><li>CaB<sub>6</sub> boron net</li><li>radius-ratio limits</li><li>hinged-squares fold in 2D</li><li>bridged cross-polytopes in arbitrary dimensions</li><li>ReO<sub>3</sub> to VF<sub>3</sub> tilt, reaching hcp by rotation alone</li></ul></div>
   <div class="st n"><h3>RESULTS TO REVIEW</h3><ul><li>all-n rigidity and elasticity formulas</li><li>radius-ratio identity under stated hypotheses</li><li>exact CaB<sub>6</sub> attainment proof (internal review)</li><li>continuous six-ball fcc motion, exact non-overlap certificate, strictly increasing density</li></ul></div>
@@ -302,7 +304,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 7 ENTER -->
 <section class="ip ent" id="s7">
- <div class="lbl"><b>06 // ENTER THE LATTICE</b><span>live, in your browser</span></div>
+ <div class="lbl"><h2>06 // ENTER THE LATTICE</h2><span>live, in your browser</span></div>
  <a class="enter" href="lattice.html" aria-label="Enter the lattice">
   <div class="vp"><div class="ld">LOADING LATTICE</div><iframe id="ifr" data-src="lattice.html?embed=1&amp;n=3&amp;zoom=1.3" title="Live preview of the lattice" tabindex="-1" aria-hidden="true"></iframe><i class="cn a"></i><i class="cn b"></i><i class="cn c"></i><i class="cn d"></i></div>
   <div class="cta"><small>The drawing as a 3D lattice you can turn, fold and read: layers, spheres, the 24 tetrahedra, mirror views and the codex of numbers.</small><span class="go">Enter the lattice <b>&rarr;</b></span></div>
@@ -312,7 +314,7 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
 
 <!-- 8 DOORWAYS -->
 <section class="ip" id="s8">
- <div class="lbl"><b>07 // DOORWAYS</b><span>read in any order</span></div>
+ <div class="lbl"><h2>07 // DOORWAYS</h2><span>read in any order</span></div>
  <div class="doors">
   <a class="door" href="origin.html"><span class="n">01</span><span class="t">THE DRAWING</span><span class="d">The square, its diagonals, the incentre, and why R = &radic;2 &minus; 1.</span></a>
   <a class="door" href="mirrors.html"><span class="n">02</span><span class="t">MIRRORS</span><span class="d">Why this dot is the canonical one.</span></a>
@@ -321,8 +323,8 @@ a.door.soon:hover{background:rgba(55,255,154,.03);box-shadow:none;border-color:r
   <a class="door" href="mind.html"><span class="n">05</span><span class="t">PERCEPTION</span><span class="d">Incentre or centroid: which centre do eyes find?</span></a>
   <a class="door" href="drift.html"><span class="n">06</span><span class="t">DRIFT</span><span class="d">How a wandering mind can land on structure.</span></a>
   <a class="door" href="seek.html"><span class="n">07</span><span class="t">SEARCH</span><span class="d">Drift chooses where to look, a checker decides.</span></a>
-  <a class="door" href="research.html"><span class="n">09</span><span class="t">RESEARCH UPDATE</span><span class="d">The continuous fcc motion, exact certificate, literature correction and review priorities.</span></a>
   <a class="door" href="open.html"><span class="n">08</span><span class="t">LEDGER</span><span class="d">Every claim and its evidence label.</span></a>
+  <a class="door" href="research.html"><span class="n">09</span><span class="t">RESEARCH UPDATE</span><span class="d">The continuous fcc motion, exact certificate, literature correction and review priorities.</span></a>
  </div>
  <div class="sub">CLASSIC // plain light pages</div>
  <div class="doors cls">

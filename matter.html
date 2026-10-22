@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/matter.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MATTER // LATTICE"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <link rel="stylesheet" href="codex.css">
@@ -29,7 +29,7 @@
 
 <div class="wide" id="fig5">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv5"></canvas><div class="corner">SLICE THROUGH SIX NEIGHBOURS</div><div class="corner r">FIG 5 // RADIUS RATIO</div></div>
+ <div class="cvbox"><canvas id="cv5" role="img" aria-label="Figure 5: a small ball in the hole between large balls, in a slice through its six neighbours, above a ruler marking the limits 0.2247, 0.4142 and 0.7321. The readout below states whether the small ball fits."></canvas><div class="corner">SLICE THROUGH SIX NEIGHBOURS</div><div class="corner r">FIG 5 // RADIUS RATIO</div></div>
  <section class="panel fp hud" id="p-fig5">
   <header><span class="tabtitle">CTRL // RATIO</span><button class="mb" title="minimise">&ndash;</button></header>
   <div class="body">
@@ -63,7 +63,7 @@
 
 <div class="wide" id="fig6">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv6" class="grab"></canvas><div class="corner" id="c6t">PEROVSKITE ABO3</div><div class="corner r">FIG 6 // UNIT CELL // DRAG TO TURN</div></div>
+ <div class="cvbox"><canvas id="cv6" class="grab" role="img" aria-label="Figure 6: one cubic unit cell of the chosen crystal structure, optionally with the six dots of the drawing. Drag to turn it; the readout below counts the atoms the cell owns."></canvas><div class="corner" id="c6t">PEROVSKITE ABO3</div><div class="corner r">FIG 6 // UNIT CELL // DRAG TO TURN</div></div>
  <section class="panel fp hud" id="p-fig6">
   <header><span class="tabtitle">CTRL // UNIT CELL</span><button class="mb" title="minimise">&ndash;</button></header>
   <div class="body">
@@ -200,7 +200,7 @@ const STR={
  salt:{name:'ROCK SALT NaCl',t:{Na:{col:'rgba(53,230,255,X)',r:.2,at:'cf',lab:'Na (corner, face)'},Cl:{col:'rgba(255,178,58,X)',r:.27,at:'e0',lab:'Cl (edge, centre)'}},bonds:[['Na','Cl',1]],note:'each ion has six neighbours of the other kind'}
 };
 STR.bcc.bonds=[['X','X',Math.sqrt(3)]];
-const st6={s:CX.Q.get('s')||'perov',bond:true,dots:CX.Q.get('dots')==='1',pair:CX.Q.get('pair')==='1',sp:CX.Q.get('spin')!=='0'};
+const st6={s:STR.hasOwnProperty(CX.Q.get('s'))?CX.Q.get('s'):'perov',bond:true,dots:CX.Q.get('dots')==='1',pair:CX.Q.get('pair')==='1',sp:CX.Q.get('spin')!=='0'&&!CX.reduce};
 function atoms(sk){const S=STR[sk],out=[];for(const k in S.t){for(const cl of S.t[k].at)for(const p of CLS[cl])out.push({t:k,p,cl,w:WT[cl]})}return out}
 const fig6=CX.canvas(cv6,function(ctx,W,H,t,dt){
   ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);

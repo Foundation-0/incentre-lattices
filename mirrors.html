@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/mirrors.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MIRRORS // LATTICE"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <link rel="stylesheet" href="codex.css">
@@ -30,7 +30,7 @@
 
 <div class="wide" id="fig3">
 <figure class="fig">
- <div class="cvbox"><canvas id="cv3"></canvas><div class="corner">KALEIDOSCOPE // DRAG THE POINT P</div><div class="corner r">FIG 3 // MIRRORS</div></div>
+ <div class="cvbox"><canvas id="cv3" class="drag2d" role="img" aria-label="Figure 3: a point P in a triangular chamber of mirror lines, its mirror images, and the edges that join them. Drag the point; the readout below lists its distances to the three walls."></canvas><div class="corner">KALEIDOSCOPE // DRAG THE POINT P</div><div class="corner r">FIG 3 // MIRRORS</div></div>
  <section class="panel fp hud" id="p-fig3">
   <header><span class="tabtitle">CTRL // KALEIDOSCOPE</span><button class="mb" title="minimise">&ndash;</button></header>
   <div class="body">
@@ -148,7 +148,7 @@ const fig=CX.canvas(cv,function(ctx,W,H,t,dt){
   feet.forEach((q,i)=>{if(d[i]>1e-6){ctx.setLineDash([3,3]);CX.glowLine(ctx,X(P[0]),Y(P[1]),X(q[0]),Y(q[1]),COL[i],1.2,0);ctx.setLineDash([])}});
   const eq=nz.length&&Math.max(...nz)-emin<2e-3;
   CX.dot(ctx,X(P[0]),Y(P[1]),6+(st.drag?1.5:0),eq?C.g:'#ffffff',14);
-  ctx.strokeStyle=eq?C.g:'rgba(255,255,255,.5)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(X(P[0]),Y(P[1]),12+2*Math.sin(t*3),0,TAU);ctx.stroke();
+  ctx.strokeStyle=eq?C.g:'rgba(255,255,255,.5)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(X(P[0]),Y(P[1]),12+(CX.reduce?0:2*Math.sin(t*3)),0,TAU);ctx.stroke();
   if(eq)CX.text(ctx,'ALL EDGES EQUAL',X(P[0])+18,Y(P[1])-14,C.g,11);
   fig.upd=[P,d,e,eq];
   upd();

@@ -8,7 +8,7 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/cube-six.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The cube, hands-on | Incentre lattice"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <style>
@@ -36,7 +36,8 @@ canvas:active{cursor:grabbing}
 #ui{left:16px;width:272px;max-height:calc(100vh - 150px)}
 #notes{right:16px;width:332px;max-height:calc(100vh - 150px)}
 .head{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;user-select:none}
-h1{font:600 var(--t-lg)/1.25 var(--sans);margin:0}
+h1,.head h2{font:600 var(--t-lg)/1.25 var(--sans);margin:0}
+.head h2{text-transform:none;letter-spacing:normal;color:var(--ink)}
 h2{font:600 var(--t-xs)/1.3 var(--sans);text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin:16px 0 6px}
 p{margin:0 0 10px;color:var(--ink2);font-size:var(--t-sm)}
 .min-btn{border:0;background:none;font:var(--t-xl)/1 var(--sans);padding:0 4px;color:var(--mute);cursor:pointer;border-radius:6px}
@@ -111,7 +112,7 @@ li b{color:var(--ink)}
 <div class="hint">Press H to hide or show both panels</div>
 
 <section id="notes" class="panel" aria-label="What the shape is doing">
-  <div class="head"><h1>What the shape is doing</h1><button class="min-btn" title="Minimise" aria-label="Minimise this panel" aria-expanded="true">&ndash;</button></div>
+  <div class="head"><h2>What the shape is doing</h2><button class="min-btn" title="Minimise" aria-label="Minimise this panel" aria-expanded="true">&ndash;</button></div>
   <div class="body">
   <p id="caption">Use the &ldquo;Look along&rdquo; buttons to close the cube and view it down each of its three kinds of symmetry axis.</p>
   <h2>Facts hiding in it</h2>
@@ -168,7 +169,7 @@ document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{
 
 // The 24 tetrahedra: dot, apex (centre), two neighbouring base corners.
 let tetIdx=0,playing=null;
-function showTet(){$('tetLabel').textContent=$('tets').checked?`${tetIdx+1} of 24`:''}
+function showTet(){$('tetLabel').textContent=$('tets').checked?`${tetIdx+1} of 24`:'';kick()}
 $('tets').onchange=showTet;
 $('next').onclick=()=>{$('tets').checked=true;tetIdx=(tetIdx+1)%24;showTet()};
 $('prev').onclick=()=>{$('tets').checked=true;tetIdx=(tetIdx+23)%24;showTet()};
@@ -191,7 +192,11 @@ const mid=(a,b)=>a.map((v,i)=>(v+b[i])/2);
 const avg=ps=>ps.reduce((s,p)=>s+p.z,0)/ps.length;
 const ease=(a,b)=>a+(b-a)*0.09;
 
+// draw only while something moves; any input or resize draws again
+let raf=0;
+function kick(){if(!raf)raf=requestAnimationFrame(frame)}
 function frame(){
+  raf=0;
   if(anim){
     yaw=ease(yaw,anim.yaw);pitch=ease(pitch,anim.pitch);$('ex').value=ease(+$('ex').value,anim.ex);
     if(Math.abs(anim.yaw-yaw)+Math.abs(anim.pitch-pitch)+Math.abs(anim.ex-$('ex').value)<1e-3){yaw=anim.yaw;pitch=anim.pitch;$('ex').value=anim.ex;anim=null}
@@ -216,7 +221,7 @@ function frame(){
     items.push({z:C.z-0.1,f:()=>dot(C)});
   });
   items.sort((a,b)=>b.z-a.z).forEach(i=>i.f());
-  requestAnimationFrame(frame);
+  if($('spin').checked||drag||anim)kick();
 }
 function tetra(P,col,items){
   for(const f of [[0,1,2],[0,1,3],[0,2,3],[1,2,3]]){const ps=f.map(i=>P[i]);items.push({z:avg(ps)-0.02,f:()=>{poly(ps,col,.32);outline(ps,col)}})}
@@ -237,7 +242,9 @@ const q=new URLSearchParams(location.search);
 for(const id of ['spheres','halves'])if(q.get(id))$(id).checked=true;
 if(q.get('faces')==='0')$('faces').checked=false;
 if(q.get('tet')){$('tets').checked=true;tetIdx=+q.get('tet');showTet()}
-if(q.get('view')){const v=VIEWS[q.get('view')];yaw=v.yaw;pitch=v.pitch;$('ex').value=0;$('spin').checked=false;$('ortho').checked=true;$('caption').innerHTML=v.text}
-frame();
+if(VIEWS.hasOwnProperty(q.get('view'))){const v=VIEWS[q.get('view')];yaw=v.yaw;pitch=v.pitch;$('ex').value=0;$('spin').checked=false;$('ortho').checked=true;$('caption').innerHTML=v.text}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)$('spin').checked=false; // reduced motion: start still
+for(const t of ['pointerdown','input','change','click','keydown','resize'])addEventListener(t,kick);
+kick();
 </script><div id="sign">Ahraz Arifuddin from <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5</a> from Anthropic</div>
 </body></html>

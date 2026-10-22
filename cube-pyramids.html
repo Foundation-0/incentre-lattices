@@ -8,14 +8,14 @@
 <meta property="og:url" content="https://aska-digital.github.io/incentre-lattice/cube-pyramids.html">
 <meta property="og:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled..">
+<meta property="og:image:alt" content="A glowing lattice of touching spheres seen down a cube diagonal, beside the title One abstract drawing. A hunch followed. A thread unravelled.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cube in three pyramids"><meta name="twitter:description" content="Incentres in a square, carried into every dimension: tilings, crystals, sphere packing and rigidity. Interactive site, proofs and verified results."><meta name="twitter:image" content="https://aska-digital.github.io/incentre-lattice/og.jpg">
 <style>
   html,body{margin:0;height:100%;background:#fbf8f1;font:14px/1.4 -apple-system,system-ui,sans-serif;color:#1d2b3a;overflow:hidden}
-  canvas{display:block;width:100vw;height:100vh;cursor:grab}
+  canvas{display:block;width:100vw;height:100vh;cursor:grab;touch-action:none}
   canvas:active{cursor:grabbing}
-  #ui{position:fixed;top:16px;left:16px;background:#fffdf8e6;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px;max-width:270px}
+  #ui{position:fixed;top:56px;left:16px;background:#fffdf8e6;border:1px solid #e3ddd0;border-radius:10px;padding:12px 14px;max-width:270px}
   #ui h1{font-size:15px;margin:0 0 6px}
   #ui p{margin:0 0 10px;color:#5b6573;font-size:12.5px}
   label{display:flex;align-items:center;gap:8px;margin:5px 0;user-select:none}
@@ -26,11 +26,23 @@
 #sign a:hover{color:#c0392b;border-bottom-color:#c0392b}
 @media (max-width:600px){#sign{font-size:10.5px;padding:4px 7px;white-space:normal;max-width:calc(100vw - 24px)}}
 #sign{right:16px;bottom:16px}
+.cbar{position:fixed;top:0;left:0;right:0;z-index:50;background:#1d2b3a;color:#fbf8f1;font:13.5px/1.4 -apple-system,system-ui,sans-serif;padding:8px 14px;display:flex;gap:6px 16px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cbar b{letter-spacing:.08em;font-size:12px}
+.cbar span{opacity:.7}
+.cbar a{color:#fbf8f1;text-decoration:none;border-bottom:1px solid transparent}
+.cbar a:hover{border-bottom-color:currentColor}
+.cbar a.out{color:#7fe0b0;margin-left:auto}
+@media (max-width:900px){
+  .cbar{font-size:12px;padding:7px 10px;gap:4px 12px}
+  .cbar span{display:none}
+  .cbar a.out{margin-left:0}
+}
 @media (max-width:700px){
-  #ui{left:8px;right:8px;top:8px;max-width:none;max-height:46vh;max-height:46dvh;overflow:auto}
+  #ui{left:8px;right:8px;top:62px;max-width:none;max-height:46vh;max-height:46dvh;overflow:auto}
 }
 </style></head><body>
-<canvas id="c"></canvas>
+<div class="cbar"><b>CLASSIC</b><span>Plain light pages</span><a href="cube-six.html">The cube, hands-on</a><a href="deeper.html">Atoms, tilings and dimensions</a><a class="out" href="lattice.html">Interactive site &rarr;</a></div>
+<canvas id="c" role="img" aria-label="Interactive 3D cube cut into three pyramids that share one apex, with a dot at the incentre of each pyramid. Drag to turn it."></canvas>
 <div id="ui">
   <h1>A cube cut into three pyramids</h1>
   <p>All three share one apex. Each dot is equidistant from all five faces of its pyramid, and red lines run from it to the pyramid's five corners. Drag to turn it.</p>
@@ -58,7 +70,8 @@ const pyr=[0,1,2].map(k=>{
 let yaw=-0.75,pitch=0.5,drag=null;
 cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId)});
 cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.008;pitch+=(e.clientY-drag[1])*0.008;pitch=Math.max(-1.5,Math.min(1.5,pitch));drag=[e.clientX,e.clientY]});
-cv.addEventListener('pointerup',()=>drag=null);
+const endDrag=()=>drag=null;
+cv.addEventListener('pointerup',endDrag);cv.addEventListener('pointercancel',endDrag);cv.addEventListener('lostpointercapture',endDrag);
 const $=id=>document.getElementById(id);
 
 function proj(p){
@@ -71,7 +84,11 @@ function proj(p){
 const add=(a,b,t=1)=>a.map((v,i)=>v+b[i]*t);
 const avg=ps=>ps.reduce((s,p)=>s+p.z,0)/ps.length;
 
+// draw only while something moves; any input or resize draws again
+let raf=0;
+function kick(){if(!raf)raf=requestAnimationFrame(frame)}
 function frame(){
+  raf=0;
   if($('spin').checked&&!drag)yaw+=0.003;
   g.clearRect(0,0,W,H);
   const ex=+$('ex').value,items=[];
@@ -89,12 +106,14 @@ function frame(){
     items.push({z:C.z-0.1,f:()=>dot(C)});
   }
   items.sort((a,b)=>b.z-a.z).forEach(i=>i.f());
-  requestAnimationFrame(frame);
+  if($('spin').checked||drag)kick();
 }
 function poly(ps,col,a){g.beginPath();ps.forEach((p,i)=>i?g.lineTo(p.x,p.y):g.moveTo(p.x,p.y));g.closePath();g.globalAlpha=a;g.fillStyle=col;g.fill();g.globalAlpha=1}
 function seg(a,b,col,w){g.beginPath();g.moveTo(a.x,a.y);g.lineTo(b.x,b.y);g.strokeStyle=col;g.lineWidth=w;g.lineCap='round';g.stroke()}
 function dot(p){const R=5.5*p.s/80;const gr=g.createRadialGradient(p.x-R/3,p.y-R/3,R/5,p.x,p.y,R);gr.addColorStop(0,'#5a6b80');gr.addColorStop(1,'#111a24');g.beginPath();g.arc(p.x,p.y,R,0,7);g.fillStyle=gr;g.fill()}
 function sphere(p,R,col){const gr=g.createRadialGradient(p.x-R*.35,p.y-R*.35,R*.1,p.x,p.y,R);gr.addColorStop(0,'#ffffff');gr.addColorStop(1,col);g.globalAlpha=.28;g.beginPath();g.arc(p.x,p.y,R,0,7);g.fillStyle=gr;g.fill();g.globalAlpha=1}
-frame();
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)$('spin').checked=false; // reduced motion: start still
+for(const t of ['pointerdown','input','change','click','keydown','resize'])addEventListener(t,kick);
+kick();
 </script><div id="sign">Ahraz Arifuddin from <a href="https://digital.askaconsult.com" target="_blank" rel="noopener">Aska Digital</a><br><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Opus 5.5</a> from Anthropic</div>
 </body></html>

@@ -13,8 +13,8 @@ const PAGES=[
  ['mind.html','PERCEPTION','mind'],
  ['drift.html','DRIFT','wandering mind'],
  ['seek.html','SEARCH','drift + check'],
- ['research.html','RESEARCH','updates'],
- ['open.html','LEDGER','claims']
+ ['open.html','LEDGER','claims'],
+ ['research.html','RESEARCH','updates']
 ];
 const EXTRA=[['cube-six.html','The cube, hands-on'],['deeper.html','Atoms, tilings and dimensions']];
 const Q=new URLSearchParams(location.search);
@@ -22,6 +22,7 @@ const here=(location.pathname.split('/').pop()||'index.html');
 const C={g:'#37ff9a',c:'#35e6ff',a:'#ffb23a',r:'#ff4a3d',dim:'#68aa8e',bg:'#02090c',ink:'#eafff4'};
 const TAU=Math.PI*2;
 const CX=window.CX={C,TAU,Q};
+CX.reduce=matchMedia('(prefers-reduced-motion: reduce)').matches; // figures start still and do not pulse
 
 function el(tag,attrs,html){const e=document.createElement(tag);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(html!=null)e.innerHTML=html;return e}
 
@@ -107,7 +108,8 @@ CX.canvas=function(canvas,draw,opt){
   }
   let last=performance.now(),raf=0;
   const active=()=>!document.hidden&&o.visible&&canvas.isConnected!==false;
-  function paint(dt){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);try{draw(ctx,o.W,o.H,o.t,dt)}catch(err){CX.fail(err)}}
+  // a draw that keeps throwing is reported once, not on every frame
+  function paint(dt){ctx.setTransform(o.dpr,0,0,o.dpr,0,0);try{draw(ctx,o.W,o.H,o.t,dt);o.err=null}catch(err){const m=String(err&&err.stack||err);if(m!==o.err){o.err=m;CX.fail(err)}}}
   o.redraw=function(){if(active())paint(0)};
   function schedule(){
     if(!active()){if(raf)cancelAnimationFrame(raf);raf=0;return}
