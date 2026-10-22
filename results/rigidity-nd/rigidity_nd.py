@@ -19,12 +19,15 @@ rng = np.random.default_rng(1)
 TOL = 1e-9
 
 
-def framework(n, c):
+def framework(n, c, shift=None):
     """dots (i,s) at s*c*e_i in a cell of side 2 centred at 0; lattice 2Z^n.
-    bars: list of (a, b, L) meaning dot a (cell 0) -- dot b (cell L)."""
+    bars: list of (a, b, L) meaning dot a (cell 0) -- dot b (cell L).
+    shift: optional (2n, n) array added to the dot positions (a broken input for the must-fail controls)."""
     verts = [(i, s) for i in range(n) for s in (1, -1)]
     idx = {v: k for k, v in enumerate(verts)}
     pos = np.array([s * c * np.eye(n)[i] for i, s in verts])
+    if shift is not None:
+        pos = pos + shift
     bars, kind = [], []
     for (i, s), (j, t) in itertools.combinations(verts, 2):
         if i != j:
@@ -36,8 +39,8 @@ def framework(n, c):
     return verts, pos, bars, kind
 
 
-def rigidity(n, c, q):
-    verts, pos, bars, kind = framework(n, c)
+def rigidity(n, c, q, shift=None):
+    verts, pos, bars, kind = framework(n, c, shift)
     V = len(verts)
     R = np.zeros((len(bars), n * V), complex)
     for r, (a, b, L) in enumerate(bars):
@@ -61,9 +64,9 @@ def nullspace(M):
     return vh[r:].conj().T
 
 
-def check_n(n, c=2 - np.sqrt(2)):
+def check_n(n, c=2 - np.sqrt(2), shift=None):
     out = {}
-    verts, pos, bars, kind = framework(n, c)
+    verts, pos, bars, kind = framework(n, c, shift)
     V, E = len(verts), len(bars)
     out["dofs"], out["bars"] = n * V, E
     # bar lengths
@@ -73,18 +76,18 @@ def check_n(n, c=2 - np.sqrt(2)):
     zs = []
     for _ in range(3):
         q = rng.uniform(-np.pi, np.pi, n)
-        R = rigidity(n, c, q)
+        R = rigidity(n, c, q, shift)
         rk = rank(R)
         zs.append((n * V - rk, E - rk))
     out["generic"] = zs
-    R0 = rigidity(n, c, np.zeros(n))
+    R0 = rigidity(n, c, np.zeros(n), shift)
     rk0 = rank(R0)
     out["q0"] = (n * V - rk0, E - rk0)
     planes = []
     for k in range(n + 1):
         q = rng.uniform(0.3, 2.8, n)
         q[:k] = 0.0
-        R = rigidity(n, c, q)
+        R = rigidity(n, c, q, shift)
         rk = rank(R)
         planes.append((k, n * V - rk, E - rk))
     out["planes"] = planes
@@ -105,7 +108,7 @@ def check_n(n, c=2 - np.sqrt(2)):
             if kk[0] == "intra":
                 S[r, col] = W[pairs.index((kk[1], kk[2])), col]
     q = rng.uniform(-np.pi, np.pi, n)
-    Rq = rigidity(n, c, q)
+    Rq = rigidity(n, c, q, shift)
     resid = np.abs(S.T @ Rq).max() if S.size else 0.0
     left = nullspace(Rq.conj().T)  # all self-stresses at q
     span_ok = rank(np.hstack([left, S.astype(complex)])) == left.shape[1] == W.shape[1] if n >= 3 else None
@@ -138,8 +141,9 @@ def check_n(n, c=2 - np.sqrt(2)):
     return out
 
 
-def elastic(n, c):
-    """Full relaxation: W(eps) = min_w (1/2V) sum_b (d_b.(eps l_b + w_b - w_a))^2, V = 2^n."""
+def elastic(n, c, relax=True):
+    """Full relaxation: W(eps) = min_w (1/2V) sum_b (d_b.(eps l_b + w_b - w_a))^2, V = 2^n.
+    relax=False keeps w = 0 (no internal relaxation, P = I): a broken input for the must-fail controls."""
     verts, pos, bars, kind = framework(n, c)
     V = len(verts)
     sym = [(i, i) for i in range(n)] + list(itertools.combinations(range(n), 2))
@@ -169,7 +173,7 @@ def elastic(n, c):
                            "(largest 'zero' %.3e, smallest 'nonzero' %.3e)"
                            % (n, c, zero.max() if zero.size else 0.0, nonzero.min()))
     Ur = U[:, :nonzero.size]
-    P = np.eye(len(bars)) - Ur @ Ur.T
+    P = np.eye(len(bars)) - Ur @ Ur.T if relax else np.eye(len(bars))
     K = Aeps.T @ P @ Aeps / 2 ** n  # W = (1/2) x^T K x in variables (eps_ii, eps_ij)
     C11 = K[0, 0]
     C12 = K[0, 1]
