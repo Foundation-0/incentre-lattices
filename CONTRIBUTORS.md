@@ -63,3 +63,13 @@ Full citations are in the `PROOF.md` of each result. See `NOTICE` for third-part
 
 Open a pull request using `.github/pull_request_template.md`. Say what you contributed, disclose AI assistance, and your credit will be recorded here
 and in `docs/review-ledger.md` for reviews.
+
+## Submission and review provenance
+
+GitHub account `abu-aska` submitted the exact end-state result in PR #1 (head `877f494056d75ac2ee6489edd0a7a3f6908ea23d`, squash `603e654`) and the one-cell paths in PR #2 (head `85f21fd19bf35feaf0219bbbfb61f747bf4b708e`, squash `627ec4b`). This records submission provenance. It does not identify an additional scholarly author or establish a human proof review.
+
+The historical PR #11 and PR #31 records name Muse. A co-author trailer naming Claude does not establish which system performed each part of that work. The provider, model and preferred credit for those contributions remain unconfirmed; the historical name is retained without assigning a provider.
+
+The published v2 acknowledgment says that no person other than the author checked the proofs, while several result notes say no person checked them. The available record does not establish which proofs the author personally checked or when. Neither a claim that the author checked all proofs nor a claim that the author checked none is made here. Independent human review remains unrecorded.
+
+For a future manuscript, the supported wording is: “The recorded reviews were performed by AI models under the author's direction. The repository does not document a human proof-checking scope. Responsibility for the content rests with the author.” Any confirmed human review should name the proof, revision, date and scope before that wording changes.
