@@ -11,6 +11,9 @@ Geometry that is drawn rather than measured (the construction figure) uses the
 exact incentre formula r = (sqrt2 - 1)/2 for the unit square.
 Each figure is written twice, <name>-light.png and <name>-dark.png, with a
 transparent background, for use in a <picture> element.
+The plotted values are reproducible; the PNG bytes also depend on the font and
+freetype build, so a regenerated image may differ slightly in size or
+anti-aliasing.
 """
 import contextlib
 import importlib.util

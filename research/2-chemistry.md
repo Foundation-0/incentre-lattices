@@ -1,6 +1,7 @@
 # 2 · Chemistry, crystals and materials: what the "dot in each pyramid" rule does
 
-Code: `research/chemistry/` (venv in `.venv`). Scripts:
+Code: `research/chemistry/` (install with `pip install -r research/chemistry/requirements.txt`: numpy, scipy, ase,
+pandas; certifi only for `fetch_borides.py`; run each script from inside `research/chemistry/`). Scripts:
 `polytopes.py` (rule on every polytope, linear-programming insphere, brute-force contact check),
 `isohedral.py` (bipyramids, trapezohedra, Catalan solids), `borides_ideal.py` (tile space with the rule),
 `fetch_borides.py` + `borides_real.py` (45 COD crystal structures), `bnsl.py` (binary hard-sphere packings),
