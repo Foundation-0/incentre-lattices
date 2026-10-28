@@ -7,8 +7,8 @@ authors:
     given-names: "Ahraz"
     affiliation: "Aska Digital"
 doi: "10.5281/zenodo.23322079"
-repository-code: "https://github.com/aska-digital/incentre-lattice"
-url: "https://github.com/aska-digital/incentre-lattice"
+repository-code: "https://github.com/Foundation-0/incentre-lattices"
+url: "https://github.com/Foundation-0/incentre-lattices"
 license:
   - MIT
   - CC-BY-4.0
@@ -36,5 +36,5 @@ preferred-citation:
   year: 2026
   doi: "10.5281/zenodo.23322079"
   status: preprint
-  url: "https://aska-digital.github.io/incentre-lattice/papers/incentre-lattice.pdf"
+  url: "https://foundation-0.github.io/incentre-lattices/papers/incentre-lattice.pdf"
   notes: "Preprint version 2 (v2 release pending), not peer reviewed; supersedes v1 (doi:10.5281/zenodo.23322080, kept as papers/incentre-lattice-v1.pdf). Source in papers/source."
