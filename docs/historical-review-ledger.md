@@ -20,4 +20,8 @@ The branch-head SHA identifies the submitted tree. The squash SHA identifies the
 | [PR #31](https://github.com/Foundation-0/incentre-lattices/pull/31) | `9a1e7a76442522f596c5c9af497da86e8d261224` | `9d9bb0aae8d496266297d5498e9197d8d91073e3` | `ahrazzle` | No GitHub review recorded |
 | [PR #33](https://github.com/Foundation-0/incentre-lattices/pull/33) | `56537f03f3e3fa7744912d7c569189a093b9d474` | `abeb94b0aa5f7c59b14dab139aa380d2ce5d81e2` | `ahrazzle` | No GitHub review recorded |
 
+| [PR #9](https://github.com/Foundation-0/incentre-lattices/pull/9) | `431f32b81411d6a080423a99bcebc9fbe140b63c` | `ceb1a34392d0cc8fe86174234ae07edf4ef0d1df` | `ahrazzle` | No GitHub review recorded |
+
+| [PR #34](https://github.com/Foundation-0/incentre-lattices/pull/34) | `4d2e3012fd033118d90aeb3af90d1da3dc8ea631` | `38bbf45ee48e68ee77ddea365681b5c649c9151c` | `ahrazzle` | No GitHub review recorded |
+
 PR #28 was superseded by PR #33. The existing continuous-motion ledger row describes internal work, not an approval of the superseded branch. Its landed reference is the PR #33 squash recorded above.
