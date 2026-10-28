@@ -10,7 +10,7 @@
 
 <!-- Say exactly what was run. Keep finite tests and proofs apart. -->
 
-- [ ] `make verify` passes locally and `git diff --exit-code -- results certificates commitment` is empty (or the change to the certificates is explained below)
+- [ ] `make verify` passes locally, and both `git diff --exit-code -- results certificates commitment` and `git status --porcelain --untracked-files=all -- results certificates commitment` print nothing (or the change to the certificates is explained below)
 - [ ] Finite checks (computations that replay but prove nothing beyond the cases run): list them, with ranges and tolerances
 - [ ] Proofs (written arguments): link the section of the relevant `PROOF.md`; say which steps are checked only numerically
 - [ ] Must-fail controls added or updated where meaningful
