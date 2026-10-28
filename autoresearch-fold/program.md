@@ -6,6 +6,8 @@ the next cell. The framework folds. What is the MAXIMUM packing density reachabl
 keeps every bar length and never overlaps balls (lattice may shear), and what is the end structure?
 Known: cubic-lattice [111] checkerboard fold reaches 27*pi*sqrt2/256 = 0.4686 at 60 deg (6 contacts per ball).
 
+Maintainer changes to the locked checker are recorded in `../docs/checker-history.md`. “NEVER edit” applies to the search agent.
+
 ## Files
 - `verify.py` LOCKED trusted checker (sha256 in `verify.sha256`). NEVER edit it. `run.sh` refuses to run if it changes,
   and checks again after search.py and before it logs or keeps a result (against `verify.sha256` and, in a git checkout,

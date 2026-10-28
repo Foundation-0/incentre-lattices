@@ -2,7 +2,7 @@
 
 This project runs like an autoresearch loop that anyone can join. Each track in `tracks/` has three parts:
 
-1. **A locked checker** (`verify.py`). It is the only judge. Its sha256 is recorded, and the run script refuses to start if it changes. Pull requests that edit a checker are reviewed separately and never merged together with a result.
+1. **A locked checker** (`verify.py`). It is the only judge. Its sha256 is recorded, and the run script refuses to start if it changes. An existing checker is changed in a separate pull request. That change may update its pin, regenerate certificates and describe the replay, but it must not add a result or change a mathematical claim. A new result may include its own new checker. Every checker change records its old and new hashes and gets a review-ledger entry; a new check of an unchanged claim does not itself change the claim. Search agents must never edit a locked checker.
 2. **A search file** that you or your agent edit freely.
 3. **One score**, logged with every run in `results.tsv`.
 
