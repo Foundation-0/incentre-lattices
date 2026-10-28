@@ -8,7 +8,8 @@ to pyramids over the facets of a polytope), chose the questions, and directed th
 ## AI assistance
 
 Most of the computation, proofs, checking and writing in this repository was done by AI models under his direction: **Claude Opus 5.5
-and other Claude models by Anthropic, PBC.** Their roles, in general terms:
+and other Claude models by Anthropic, PBC**, and **GPT-6 (Codex), GPT-6.1 Sol and GPT-6 Luna by OpenAI**. The roles of the Claude models,
+in general terms (except where another model is named below):
 
 | Model family | Role |
 |---|---|
@@ -21,6 +22,13 @@ The October 2026 site update was prepared with **GPT-6** (research synthesis, in
 The research update separately identifies AI contributions to the open result and paper drafts. Publishing their summaries on the site does not constitute acceptance or outside mathematical review.
 
 OpenAI Codex (GPT-6) prepared the exact CaB6 attainment proof in `results/cab6-packing/ATTAINMENT.md`; GPT-6 Luna handled its repository submission. No independent human review is claimed for this contribution.
+
+GPT-6.1 Sol completed the certificate registry in `tools/build_certificates.py` (the eight result certificates and four stored fold paths
+then in the repository, with guards against omitted or duplicate entries) and wrote its regression tests in `tools/test_build_certificates.py`
+([PR #25](https://github.com/Foundation-0/incentre-lattices/pull/25)). GPT-6.1 Sol also prepared the primary-source literature comparison in
+`results/rigidity-nd/LITERATURE.md` ([PR #27](https://github.com/Foundation-0/incentre-lattices/pull/27)). GPT-6 reviewed both changes and
+GPT-6 Luna handled their repository submission. GPT-6 (Codex) prepared the research assessment in
+[issue #26](https://github.com/Foundation-0/incentre-lattices/issues/26). No independent human review is claimed for these contributions.
 
 No AI model is an author in the legal or scholarly sense, and none can vouch for a result. The labels PROVEN, VERIFIED and KNOWN in
 `docs/audit.md` say what was actually done; a person has not independently re-derived every proof. Internal reviews so far were performed

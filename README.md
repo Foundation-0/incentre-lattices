@@ -128,4 +128,4 @@ COD extracts), [CITATION.cff](CITATION.cff) (cites the preprint). Pull requests 
 
 ## Licence
 
-Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [@claude](https://github.com/claude) (Claude Opus 5.5 from Anthropic).
+Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [@claude](https://github.com/claude) (Claude Opus 5.5 from Anthropic). OpenAI models (GPT-6 via Codex, GPT-6.1 Sol and GPT-6 Luna) also contributed; [CONTRIBUTORS.md](CONTRIBUTORS.md) records which model did what.
