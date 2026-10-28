@@ -30,7 +30,7 @@ are not committed, which `git diff` does not report: a certificate missing from 
 | `verify-radius-ratio` | `results/radius-ratio` | numpy, scipy | a few seconds | |
 | `verify-cab6` | `results/cab6-packing` | numpy, scipy, sympy | a few seconds | |
 | `verify-fold2d` | `results/fold-2d` | numpy, sympy | seconds | |
-| `verify-fold-tests` | the locked fold checker's hash lock and 16 unit tests | numpy, scipy | 12 seconds | |
+| `verify-fold-tests` | the locked fold checker's hash lock and 24 unit tests | numpy, scipy | 12 seconds | |
 | `verify-fold3d` | `results/fold-3d-cubic` | numpy, scipy, sympy | about 1 minute | yes |
 | `verify-fold-cp` | `results/fold-close-packing` (both checkers, hcp and fcc paths) | numpy, scipy | about 3 minutes | yes |
 

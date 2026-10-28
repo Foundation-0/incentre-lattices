@@ -259,13 +259,13 @@ def verify_arrays(m, Ls, Xs, want_rigidity=True):
     else:
         res["final_density"] = None
         res["max_density"] = None
-    res["valid"] = len(reasons) == 0
     if np.isfinite(dens[-1]) and np.all(np.isfinite(Xs[-1])):
         try:
             res.update(end_state_report(m, Ls[-1], Xs[-1], I, J, S, want_rigidity))
         except Exception as e:
             # Fail closed: an end-state analysis that throws must not report a valid path.
             fail("end-state analysis failed: %s" % e)
+    res["valid"] = len(reasons) == 0     # after the end-state analysis, so its failure counts
     return res
 
 
