@@ -5,7 +5,9 @@ pandas; certifi only for `fetch_borides.py`; run each script from inside `resear
 `polytopes.py` (rule on every polytope, linear-programming insphere, brute-force contact check),
 `isohedral.py` (bipyramids, trapezohedra, Catalan solids), `borides_ideal.py` (tile space with the rule),
 `fetch_borides.py` + `borides_real.py` (45 COD crystal structures), `bnsl.py` (binary hard-sphere packings),
-`perovskite_mu.py` (Bartel et al. 2019 data). Every number below is printed by one of these.
+`perovskite_mu.py` (Bartel et al. 2019 data). Computed numbers below are printed by one of these or by the
+`results/` folder cited beside them, or derived by hand from that output where stated. The source articles of the
+IUCr-provided COD files are listed under "Data sources" at the end.
 
 Labels: **PROVEN** (argument given), **VERIFIED NUMERICALLY**, **CONJECTURE**, **KNOWN** (with citation).
 
@@ -29,13 +31,15 @@ and the corners are the calcium atoms.
   the truncated cubic honeycomb is the RCSR net **cab** ("CaB6 boron net", = pcu-a, a tiling by octahedra
   and truncated cubes; OEIS A299266 gives coordination sequence 1, 5, 9, 22, …). Known too.
 - **What real crystals do (VERIFIED NUMERICALLY, 45 COD entries).** 14 of the 31 MB6 entries carry x = 0.207
-  exactly (Ba, Ca, Ce, Er, Gd, Nd, Pr, Pu, Sr, Th, Y, Yb; these are records from 1934 to 1954 and handbook
+  exactly (Ba, Ca, Ce, Er, Gd, Nd, Pr, Pu, Sr, Th, Y, Yb; these are records from 1934 to 1960 and handbook
   re-entries; COD 1009052, 2311004 and 5910016 were checked by hand). These entries are the equal-bond
-  assumption copied forward, not measurements. The 17 modern refinements (Ca, Ce, Eu, La, Sm, Th) give
-  x = 0.197–0.204. Over those 17 entries (x ≠ 0.207) inter/intra B–B = **0.947 on average** (range 0.920–0.977);
-  `borides_real.py` itself prints the mean over all 31 MB6 entries, 0.9704 (range 0.920–0.999), because the 14
-  copied-forward entries sit at 0.999. So in modern refinements the bond between octahedra is ~5% shorter than
-  the "touching" ideal. This is consistent with the known bonding picture:
+  assumption copied forward, not measurements. The 17 entries with x ≠ 0.207 (16 refinements for Ce, Eu, La, Sm
+  and Th, dated 1981–2010 except the undated COD 1000055, plus the 1932 von Stackelberg–Neumann CaB6 entry,
+  COD 1010302, x = 0.20(2)) give x = 0.197–0.204. Over those 17 entries inter/intra B–B = **0.947 on average**
+  (range 0.920–0.977; also 0.947 over the 16 without COD 1010302); `borides_real.py` itself prints the mean
+  over all 31 MB6 entries, 0.9704 (range 0.920–0.999), because the 14 copied-forward entries sit at 0.999.
+  So in modern refinements the bond between octahedra is ~5% shorter than the "touching" ideal. This is
+  consistent with the known bonding picture:
   each B has one 2-centre exo bond and multicentre bonds inside the cage (Longuet-Higgins & Roberts 1954).
   **The ideal is a geometric zero, and the deviation from it measures the bonding asymmetry.**
 - The perovskite reading (KNOWN in outline, framing ours): Ca is at the A site and the empty octahedron centre
@@ -66,10 +70,11 @@ are mirrors, and it has 12 rhombic pyramids:
   polyhedron whose radius ratio is the cage's hole/ball ratio. The bcc cell (truncated octahedron) **fails**:
   it has two pyramid types (R = 0.500 and 0.634) and no contacts across the square/hexagon walls. Real
   bcc-based borides are not of this type. (VERIFIED NUMERICALLY)
-- Using the cage ratios, MB6 cages hold M–B ≈ 3.07 Å and MB12 cages ≈ 2.79 Å (with real mean B–B 1.726 and
-  1.767 Å). That fits the known trend that MB12 forms with smaller metals (Zr, Lu, Y, U) and MB6 with
-  larger ones (Ca, Sr, Ba, La, Eu). (CONJECTURE as a predictor. We did not build a classifier with a vetted
-  list of formers, so this is qualitative only, and the size trend itself is KNOWN in boride literature.)
+- Using the cage ratios, MB6 cages hold M–B ≈ 3.07 Å and MB12 cages ≈ 2.79 Å (worked out by hand: the ideal
+  M–B/d(B–B) of 1.7788 and 1.5811 times the real mean B–B 1.726 and 1.767 Å printed by `borides_real.py`).
+  That fits the known trend that MB12 forms with smaller metals (Zr, Lu, Y, U) and MB6 with larger ones
+  (Ca, Sr, Ba, La, Eu). (CONJECTURE as a predictor. We did not build a classifier with a vetted list of formers,
+  so this is qualitative only, and the size trend itself is KNOWN in boride literature.)
 - Novelty: UB12 = B12 cuboctahedra in a NaCl arrangement, with M in truncated B24 octahedra, is KNOWN (AFLOW
   prototype A12B_cF52_225_h_b; arXiv 2010.16239). That the equal-bond x is 1/6, and that both boride families
   come from one "pyramid insphere in the Voronoi cell" rule: **we found no prior reference** after
@@ -83,21 +88,27 @@ are mirrors, and it has 12 rhombic pyramids:
 
 Treat Ca as a large sphere and B as small spheres, then maximise the packing fraction over x and a for each
 size ratio γ = r_S/r_L (`bnsl.py`):
-- The maximum of the CaB6 type is at **γ = 0.4142, x = 0.2071, φ = 0.746865**. At that point the large spheres
+- The maximum of the CaB6 type is at **γ = √2−1 = 0.4142, x = 0.2071, φ = (π/6)(30√2−41) = 0.746865**
+  (`bnsl.py` prints φ = 0.7469 for the dot-ideal configuration; its 0.005 γ grid misses √2−1, and its grid
+  maximum is 0.7439 at γ = 0.415; exact value and proof in `results/cab6-packing`). At that point the large spheres
   form a touching simple-cubic array, and each small sphere touches five other small spheres. Ca and B do **not**
   touch: d(Ca–B) = 0.7368 a against r_L + r_S = 0.7071 a, a gap of 0.0297 a, so Ca is held by Ca–Ca contact
-  (`results/cab6-packing`). φ = (4π/3)[1/8 + 6((√2−1)/2)³] = (π/6)(30√2 − 41). (VERIFIED NUMERICALLY; closed form checked)
-- This is slightly above fcc (0.7405) but below NaCl at the same γ (0.793), so hard spheres alone do not favour
-  it. That is consistent with CaB6 nanocrystal superlattices being described as low-density, kinetically or
-  ligand-stabilised phases (KNOWN: Shevchenko et al., *Nature* 439, 55 (2006) reports CaB6-type BNSLs;
-  ligand-exchange study, ACS figshare 2105017). One supplementary-table example gives core diameters
-  Au 5 nm / γ-Fe2O3 13.4 nm (γ_core ≈ 0.37). Ligand shells push the effective γ up toward ~0.4, but we could
-  not pin down effective sizes. (CONJECTURE that observed CaB6 BNSLs cluster near γ_eff ≈ 0.41)
+  (`results/cab6-packing`). φ = (4π/3)[1/8 + 6((√2−1)/2)³] = (π/6)(30√2 − 41). (PROVEN: upper bound and exact
+  all-pairs attainment, `results/cab6-packing/PROOF.md` and `ATTAINMENT.md`, internal review only; `bnsl.py`
+  corroborates numerically)
+- This is slightly above fcc (0.7405) but below NaCl at the same γ (0.793; both values from
+  `results/cab6-packing`), so hard spheres alone do not favour it. That is consistent with CaB6 nanocrystal
+  superlattices being described as low-density, kinetically or ligand-stabilised phases (KNOWN: Shevchenko
+  et al., *Nature* 439, 55 (2006) reports CaB6-type BNSLs; ligand-exchange study, ACS figshare 2105017). One
+  supplementary-table example gives core diameters Au 5 nm / γ-Fe2O3 13.4 nm (γ_core ≈ 0.37). Ligand shells
+  push the effective γ up toward ~0.4, but we could not pin down effective sizes.
+  (CONJECTURE that observed CaB6 BNSLs cluster near γ_eff ≈ 0.41)
 - The UB12 type's optimum is **not** at its dot point (γ = 0.4625 gives φ = 0.606; the best is a degenerate
   small-γ limit), so the coincidence is special to the cube. (VERIFIED NUMERICALLY)
-- Novelty: packing curves for CaB6-type BNSLs exist in the literature (Shevchenko 2006 SI and later), and the
-  peak is probably plotted there. We found no explicit statement of the closed form or of its identity with
-  the √2−1 octahedral limit.
+- Novelty (PARTIALLY KNOWN): the curve φ_max(γ) for this lattice was plotted by Horst and Travesset,
+  *J. Chem. Phys.* 144, 014502 (2016), Fig. 3, so the peak can be read off it; Travesset, *ACS Nano* 11,
+  5375 (2017) may state its location (not read). No explicit statement of the closed form, or of its identity
+  with the √2−1 octahedral limit, was found (`results/cab6-packing/PROOF.md`, Prior art).
 
 ## Finding 4. The general rule reproduces exactly the radius-ratio limits of equal-edged, vertex-transitive coordination polyhedra, and nothing else
 
@@ -194,7 +205,7 @@ Archimedean radius ratio and the real MB6 structures about 5% off ideal and the 
 resulting augmented nets as candidate MBn frameworks;
 (b) explain the dodecahedron case: icosahedral B12 (5+1 bonding, α-boron) is the frustrated version that cannot
 tile, a Frank–Kasper-like story;
-(c) test whether the measured inter/intra ratio (0.92–0.98) tracks the metal's electron count, cage filling
+(c) test whether the measured inter/intra ratio (0.92–1.01) tracks the metal's electron count, cage filling
 or temperature with DFT and modern refinements. That would turn the geometric zero into a quantitative bond
 descriptor.
 
@@ -205,5 +216,30 @@ descriptor.
 - cab net tiling: https://oeis.org/A299266 ; https://yaghi.cchem.berkeley.edu/research-news/MOK-nets2.pdf
 - George et al. 2020: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7217010/
 - Shevchenko et al. 2006: https://ideas.repec.org/a/nat/nature/v439y2006i7072d10.1038_nature04414.html
+- Horst & Travesset 2016, *J. Chem. Phys.* 144, 014502, Fig. 3: https://doi.org/10.1063/1.4939238 ; Travesset 2017,
+  *ACS Nano* 11, 5375 (not read): https://doi.org/10.1021/acsnano.7b02219
 - Bartel et al. 2019 data: https://github.com/CJBartel/perovskite-stability
 - Hexaboride B–B bond lengths: https://www.jmst.org/EN/10.1016/j.jmst.2017.01.022
+
+## Data sources
+
+25 of the 45 COD files in `research/chemistry/cod/` (all the 2xxxxxx entries: 15 MB6 and 10 MB12) state that
+their data were provided by IUCr Journals and may be used "so long as proper attribution is given to the journal
+article from which the data were obtained" (see `NOTICE`). All 25 enter the statistics of Findings 1 and 2. Their
+articles, as each file names them (`_publ_author_name`, `_journal_name_full`, `_journal_volume`, pages,
+`_journal_year`, `_journal_paper_doi`):
+
+| COD | compound | authors | article | DOI |
+|---|---|---|---|---|
+| 2101693 | CeB6 | K. Tanaka, Y. Kato, Y. Ōnuki | *Acta Cryst. B* 53, 143–152 (1997) | 10.1107/S0108768196009019 |
+| 2102953 | CeB6 | R. Makita, K. Tanaka, Y. Ōnuki, H. Tatewaki | *Acta Cryst. B* 63, 683–692 (2007) | 10.1107/S0108768107035021 |
+| 2103133, 2103136 | CeB6 | K. Tanaka, Y. Ōnuki | *Acta Cryst. B* 58, 423–436 (2002) | 10.1107/S010876810102167X |
+| 2104215, 2104216 | CeB6 | R. Makita, K. Tanaka, Y. Ōnuki | *Acta Cryst. B* 64, 534–549 (2008) | 10.1107/S0108768108026542 |
+| 2104736, 2104747 | LaB6 (a phase in a powder study of pyrrhotite) | A. D. Elliot | *Acta Cryst. B* 66, 271–279 (2010) | 10.1107/S0108768110011845 |
+| 2104762–2104765 | SmB6 | S. Funahashi, K. Tanaka, F. Iga | *Acta Cryst. B* 66, 292–306 (2010) | 10.1107/S0108768110009250 |
+| 2108722–2108730 | YbB12 | N. Bolotina, O. Khrykina, A. Azarevich, S. Gavrilkin, N. Sluchanko | *Acta Cryst. B* 76, no. 6 (2020; the files give no page) | 10.1107/S2052520620013566 |
+| 2310102 | YB12 | R. Barrett, V. I. Matkovic, R. F. Giese Jr., J. Economy | *Acta Cryst.* 19, 1056–1058 (1965) | 10.1107/S0365110X65004954 |
+| 2310112 | PuB6 | W. I. Stuart, B. J. McDonald | *Acta Cryst.* 13, 447–448 (1960) | 10.1107/S0365110X60001059 |
+| 2311004, 2311005 | NdB6, YbB6 | P. Blum, F. Bertaut | *Acta Cryst.* 7, 81–86 (1954) | none in these files; COD 1008115 and 1009032 give 10.1107/S0365110X54000151 for the same article |
+
+The other 20 files carry the COD public-domain header and are not listed here.
