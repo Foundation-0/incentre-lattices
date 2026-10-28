@@ -49,7 +49,7 @@ Preprint, version 2 (not peer reviewed): **The bridged cross-polytope framework:
 
 The headline results are the unit-spring elastic constants in every dimension n >= 3 (all shear moduli zero, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the exact cab-to-fcc motion of [`results/fold-continuous-fcc`](results/fold-continuous-fcc/PROOF.md), now with a written symmetry-reduced non-overlap proof ([HAND-PROOF.md](results/fold-continuous-fcc/HAND-PROOF.md)). The zero-mode and self-stress counts are lemmas: the same periodic graph is in Borcea and Streinu (2021), Section 7.
 
-Version 1, **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, is kept unchanged as [papers/incentre-lattice-v1.pdf](papers/incentre-lattice-v1.pdf), DOI [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080). Its novelty claims for the rigidity counts are corrected in v2. The v1 PDF's SHA-256 hash is recorded in the public commitment (see below).
+Version 1, **The incentre of the centre-cut pyramid: rigidity of the truncated n-cubic contact framework, a radius-ratio identity, and the CaB<sub>6</sub> packing maximum**, is kept unchanged as [papers/incentre-lattice-v1.pdf](papers/incentre-lattice-v1.pdf), DOI [10.5281/zenodo.23322080](https://doi.org/10.5281/zenodo.23322080). Its novelty claims for the rigidity counts are corrected in v2. The v1 PDF's SHA-256 hash is recorded in the gist that posted the earlier commitment (see below).
 
 ## Results
 
@@ -117,7 +117,7 @@ per track), [docs/review-ledger.md](docs/review-ledger.md) (reviews so far; inte
 ## Certificates and commitment
 
 `certificates/selected-results.json` has one record per result (statement, value, label, verifier command, input hashes); `certificates/SHA256SUMS` lists every certificate and path
-file; `commitment/` holds a SHA-256 manifest and its root hash, with instructions to check it ([commitment/README.md](commitment/README.md)). The commitment was posted publicly on 2026-10-12 ([gist](https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706)).
+file; `commitment/` holds a SHA-256 manifest and its root hash, with instructions to check it ([commitment/README.md](commitment/README.md)). An earlier commitment (root `213275970171...`, commit `e84a128`) was posted publicly on 2026-10-12 ([gist](https://gist.github.com/ahrazzle/46adf76f15bf766e24b8df626f9c5706)). The current root covers more files, some files bound by the earlier root have changed since, and it is not separately timestamped (see "Public timestamp" in [commitment/README.md](commitment/README.md)).
 
 ## Credit, notices, citation
 
