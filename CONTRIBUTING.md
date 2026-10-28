@@ -19,7 +19,7 @@ A result counts only if the checker accepts it. A better score is a candidate, n
 
 - Credit every idea, construction and person you build on. Keep licences.
 - Disclose AI assistance and which model.
-- Label claims: PROVEN, VERIFIED NUMERICALLY, CONJECTURE, or KNOWN (with citation).
+- Label claims: PROVEN, VERIFIED (finite check), KNOWN (with citation), NEW-COMPUTATION or CONJECTURE (definitions in `docs/audit.md`).
 - No hype. Exact statements, honest limits.
 
 ## Research prompt

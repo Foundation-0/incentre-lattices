@@ -56,8 +56,9 @@ The repository was previously at `github.com/aska-digital/incentre-lattice`. The
 ## Results
 
 Every result below has a folder in `results/` with a `PROOF.md` (statement, scope, evidence label, proof, prior art, open obligations), a deterministic `verify.py`, and a
-`certificate.json`. Labels: **PROVEN** = written proof; **VERIFIED** = finite check, not a proof; **KNOWN** = published and cited. Prior-art entries mean "not found in the
-searches listed", not "new".
+`certificate.json`. Labels (defined in [docs/audit.md](docs/audit.md)): **PROVEN** = written proof; **VERIFIED** = finite check, not a proof; **KNOWN** = published and cited;
+**NEW-COMPUTATION** = our own computation, not independently reproduced beyond the listed checkers; **CONJECTURE** = proposed without proof (used in `research/` and on the site,
+not for these results). Prior-art entries mean "not found in the searches listed", not "new".
 
 ### Results at a glance
 
