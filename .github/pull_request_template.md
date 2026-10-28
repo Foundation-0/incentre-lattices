@@ -16,6 +16,8 @@
 - [ ] Must-fail controls added or updated where meaningful
 - [ ] `docs/status.md`, `docs/audit.md` and `certificates/selected-results.json` updated if a claim or its label changed (run `make certificates`)
 
+- [ ] A review-ledger entry identifies the exact branch head and landed squash separately, and states the reviewer and evidence limits.
+
 ## Prior art
 
 <!-- What did you search, where, and what did you find? "Not found" is not "new". Cite the closest work. -->
