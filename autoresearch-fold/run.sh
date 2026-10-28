@@ -1,23 +1,32 @@
 #!/bin/bash
-# One experiment: lock check -> search.py (300 s cap) -> verify.py -> results.tsv line -> keep best.
+# One experiment: lock check -> search.py (3300 s cap) -> lock check -> verify.py -> lock check -> results.tsv line -> keep best.
+# The cap stays above search.py's WALL_LIMIT (3000 s), so a slow run ends INCOMPLETE (exit 2) instead of being killed.
+# The lock is a tripwire against accidental edits, not a sandbox: search.py can write anything in this folder.
 cd "$(dirname "$0")" || exit 1
 PY=.venv/bin/python
-if ! shasum -a 256 -c verify.sha256 >/dev/null 2>&1; then
-  echo "REFUSING TO RUN: verify.py does not match verify.sha256 (it is locked; never edit it)" >&2
-  exit 3
-fi
+CAP=3300
+lock_check() {  # verify.py must match verify.sha256 and, in a git checkout, neither file may differ from HEAD
+  if ! shasum -a 256 -c verify.sha256 >/dev/null 2>&1 ||
+     { git rev-parse -q --verify HEAD >/dev/null 2>&1 && ! git diff --quiet HEAD -- verify.py verify.sha256; }; then
+    echo "$1: verify.py or verify.sha256 does not match the pin or git HEAD (they are locked; never edit them)" >&2
+    exit 3
+  fi
+}
+lock_check "REFUSING TO RUN"
 mkdir -p out best
 rm -f out/path.npz out/verify.json
-if command -v timeout >/dev/null 2>&1; then TO="timeout 300"; elif command -v gtimeout >/dev/null 2>&1; then TO="gtimeout 300"; else TO="perl -e alarm(300);exec(@ARGV) --"; fi
+if command -v timeout >/dev/null 2>&1; then TO="timeout $CAP"; elif command -v gtimeout >/dev/null 2>&1; then TO="gtimeout $CAP"; else TO="perl -e alarm($CAP);exec(@ARGV) --"; fi
 $TO $PY search.py > out/search.log 2>&1
 rc=$?
 tail -n 3 out/search.log
+lock_check "REFUSING TO JUDGE (changed while search.py ran)"
 if [ -f out/path.npz ]; then
-  $PY verify.py out/path.npz > out/verify.json 2>out/verify.err
+  $PY -I verify.py out/path.npz > out/verify.json 2>out/verify.err  # -I: neither this folder nor the cwd is on sys.path
 else
   echo '{"valid": false, "reasons": ["no path written (search exit code '$rc')"]}' > out/verify.json
 fi
-$PY - "$rc" <<'PYEOF'
+lock_check "REFUSING TO LOG OR KEEP"
+$PY -I - "$rc" <<'PYEOF'
 import json, re, subprocess, sys, shutil, time, os, hashlib
 rc = sys.argv[1]
 rep = json.load(open("out/verify.json"))
