@@ -40,8 +40,9 @@ check-hashes: verify-certificates-tests
 	$(PY) tools/sha256check.py certificates/SHA256SUMS
 	$(PY) tools/sha256check.py commitment/SHA256SUMS
 
-verify-certificates-tests:  # standard-library regression tests; in-memory filesystem only
+verify-certificates-tests:  # standard-library regression tests; in-memory filesystem or a temporary directory only
 	$(PY) -B tools/test_build_certificates.py
+	$(PY) -B tools/test_sha256check.py
 
 verify-rigidity:
 	$(PY) results/rigidity-nd/verify.py
@@ -59,8 +60,8 @@ verify-fold3d:   # slow
 	$(PY) results/fold-3d-cubic/verify.py
 
 verify-fold-cp:  # slow: runs both checkers on the hcp path and on the fcc extension; the second checker and the path generator are hash-locked
-	$(PY) tools/sha256check.py results/fold-close-packing/checkers.sha256 results/fold-close-packing
-	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold
+	$(PY) tools/sha256check.py results/fold-close-packing/checkers.sha256 results/fold-close-packing --expect chk_independent.py make_fcc_path.py
+	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold --expect verify.py
 	$(PY) results/fold-close-packing/verify.py
 
 verify-fold-exact:  # exact (integer) closed forms of the hcp and fcc end states
@@ -73,7 +74,7 @@ verify-fold-continuous:  # exact all-parameter certificate; standard library onl
 	$(PY) results/fold-continuous-fcc/verify.py
 
 verify-fold-tests:  # the locked checker's own unit tests, and its hash lock
-	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold
+	$(PY) tools/sha256check.py autoresearch-fold/verify.sha256 autoresearch-fold --expect verify.py
 	cd autoresearch-fold && $(PY) test_verify.py
 
 clean:
