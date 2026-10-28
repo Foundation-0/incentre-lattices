@@ -29,6 +29,8 @@ inside the project before anything was public, by AI models working under direct
 The unpublished source documents `VERIFY.md` and `PRIOR-ART.md` live in the paper folder, which is not public yet; their findings are incorporated in the
 `PROOF.md` files and in this table.
 
+The missing historical submissions are inventoried in [historical-review-ledger.md](historical-review-ledger.md), with API evidence in [historical-review-record.json](historical-review-record.json). No retrospective approval is inferred.
+
 ## How to add a row
 
 1. Link the pull request (or write "external" and link the issue or message).
