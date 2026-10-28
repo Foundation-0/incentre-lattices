@@ -81,16 +81,6 @@ def pic(poly_pts,theta):
         if r and r[0]>0 and r[1]>0:
             q=(m1[0]+f1[0]*r[0],m1[1]+f1[1]*r[0]); segs+=[(m1,q),(m2,q)]
     return segs
-def tiling488(nx,ny):
-    """regular 4.8.8: octagons at 2*(i,j) centred on user's square corners, squares at centres."""
-    ro=1/math.cos(math.pi/8)  # circumradius for inradius 1
-    polys=[]
-    for i in range(nx+1):
-        for j in range(ny+1): polys.append(regular(8,2*i,2*j,ro,math.pi/8))
-    rs=(2*T)/R2  # small square circumradius: side 2T
-    for i in range(nx):
-        for j in range(ny): polys.append(regular(4,2*i+1,2*j+1,rs,math.pi/4*0+math.pi/2*0+math.pi/4*0+math.pi/4*0))
-    return polys
 # small square: dots at (1,T),(2-T,1)... axis-aligned diamond => rotation 90 deg offset: vertices at angles 270,0,... => rot=0 with circumradius=1-T
 def tiling488(nx,ny):
     ro=1/math.cos(math.pi/8); polys=[]

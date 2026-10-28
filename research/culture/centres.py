@@ -1,5 +1,6 @@
 """Triangle centres: where incentre (= medial-axis branch point = Chebyshev centre = pole of inaccessibility) and centroid diverge. stdlib only."""
-import math
+import math, os
+OUT=os.path.dirname(os.path.abspath(__file__))
 def cen(A,B,C):
     a=math.dist(B,C);b=math.dist(A,C);c=math.dist(A,B);s=a+b+c
     inc=tuple((a*A[i]+b*B[i]+c*C[i])/s for i in (0,1))
@@ -20,5 +21,5 @@ for k,(n,(A,B,C)) in enumerate(tris.items()):
     svg+='<polygon points="'+" ".join("%.1f,%.1f"%f(p) for p in (A,B,C))+'" fill="#efe3c8" stroke="#333"/>'
     svg+='<circle cx="%.1f" cy="%.1f" r="3.5" fill="#c0392b"/><circle cx="%.1f" cy="%.1f" r="3.5" fill="#1f6f8b"/>'%(*f(inc),*f(cg))
     svg+=f'<text x="{ox}" y="{oy+10}" font-size="8" font-family="sans-serif">{n}</text>'
-open("09_triangle_centres.svg","w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 250" width="760" height="500"><rect width="380" height="250" fill="#fbf7ee"/>'+svg+'<text x="10" y="240" font-size="9" font-family="sans-serif"><tspan fill="#c0392b">red = incentre</tspan>  <tspan fill="#1f6f8b">blue = centroid</tspan></text></svg>')
+open(f"{OUT}/09_triangle_centres.svg","w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 250" width="760" height="500"><rect width="380" height="250" fill="#fbf7ee"/>'+svg+'<text x="10" y="240" font-size="9" font-family="sans-serif"><tspan fill="#c0392b">red = incentre</tspan>  <tspan fill="#1f6f8b">blue = centroid</tspan></text></svg>')
 for n,p,d in rows: print(f"{n:28s} |incentre-centroid| = {p:5.2f}% of perimeter")

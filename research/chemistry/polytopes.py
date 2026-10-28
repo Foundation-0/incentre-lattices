@@ -5,9 +5,10 @@ point equidistant from all its walls (base facet + lateral walls through the cen
 distance. Report: number of balls, whether all edge-neighbour balls touch, and hole/ball = (t - R)/R where t =
 distance of dots from centre (the largest central ball touching all balls).
 
-Checked by brute force: we compute the pyramid insphere by linear programming-free geometry (point on facet
-axis, distances to all walls computed numerically), not by formula. Then compare with the classical
-radius-ratio value for the dual (coordination) polyhedron: circumradius/(half edge) - 1.
+Checked numerically: the pyramid insphere is the largest ball in conv(0, facet), found by linear programming
+over centre and radius (scipy linprog), and tangency to every wall is then checked; not by formula. Then
+compare with the classical radius-ratio value for the dual (coordination) polyhedron:
+circumradius/(half edge) - 1.
 """
 import itertools as it
 import numpy as np

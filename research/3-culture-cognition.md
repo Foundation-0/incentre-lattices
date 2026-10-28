@@ -36,4 +36,4 @@ Rhythm: sqrt2-1 = [0;2,2,2,...] is the silver ratio family (Pell), the shortest-
 4. Education pathway via Bridges-style workshop.
 
 ## Files (research/culture/)
-gen.py (all SVGs), centres.py, 01-02, 05 (the drawing and 4.8.8), 03/04/07/08 (Hankin sweeps), 09_triangle_centres.svg, png/ (previews via qlmanage).
+gen.py (SVGs 01-08), centres.py (09 and the separation table in section 3), 01-02, 05 (the drawing and 4.8.8), 03/04/07/08 (Hankin sweeps), 09_triangle_centres.svg, png/ (previews via qlmanage).
