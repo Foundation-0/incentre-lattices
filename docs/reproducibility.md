@@ -62,7 +62,7 @@ inputs are the files whose hashes are recorded. It does not mean that any statem
   pin, scipy 1.15.3, failed to import on a recent macOS because of a linker-section problem in that wheel; scipy 1.16.3 imports fine. Linux was
   not affected, but the pin must work on the machines of people who replay it.)
 * `autoresearch-fold/verify.py` is the locked checker. Its sha256 is in `autoresearch-fold/verify.sha256` and is checked by `verify-fold-tests`.
-  Do not edit it; changes are reviewed separately from results.
+  Search agents must not edit it. Maintainer changes follow the existing-checker policy in CONTRIBUTING.md; hash history is in docs/checker-history.md.
 * The stored paths are `autoresearch-fold/best/path.npz` (hcp, 793 states, 0.97 MB) and `results/fold-close-packing/path_fcc.npz` (hcp plus two layer
   slides, 1193 states, 0.77 MB). Together they are 1.7 MB. `path_fcc.npz` is regenerated from the hcp path (`make_fcc_path.py`, no random numbers) in
   every replay and must agree with the stored file to 1e-9; the stored file is what the checkers read. Nothing was decimated.
