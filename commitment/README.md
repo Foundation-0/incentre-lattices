@@ -47,4 +47,4 @@ Preprint v1 was published on 2026-10-12 as `papers/incentre-lattice.pdf` (commit
 
 `papers/incentre-lattice.pdf` now holds v2 (commit `38bbf45`, sha256 `632d7debf3dc06a55e18de70dfaee90da3b664cea9b5be31de8a02599f72a003`, DOI 10.5281/zenodo.23340326); v2 is not covered by the public timestamp.
 
-`papers/incentre-lattice-v3.pdf` holds the v3 revision (sha256 `142d30a671ba75b1ac1ae933f0b18232a575af1b4c3e295e9b20f77f2a521613`, built with Tectonic 0.17.0; see `papers/source/README.md`). It is not yet released or archived and is not covered by the public timestamp; the v2 file above is unchanged.
+`papers/incentre-lattice-v3.pdf` holds the v3 revision (sha256 `142d30a671ba75b1ac1ae933f0b18232a575af1b4c3e295e9b20f77f2a521613`, built with Tectonic 0.17.0; see `papers/source/README.md`). It was released as v3.0.0 on 2026-11-03 (DOI 10.5281/zenodo.23841188, concept DOI 10.5281/zenodo.23322079) and is not covered by the public timestamp; the v2 file above is unchanged.

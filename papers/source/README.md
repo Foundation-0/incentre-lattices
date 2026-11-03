@@ -4,7 +4,7 @@
 
 | File | Version | Status |
 |---|---|---|
-| `papers/incentre-lattice-v3.pdf` | 3 | built from this source; not yet released or archived |
+| `papers/incentre-lattice-v3.pdf` | 3 | built from this source; released as v3.0.0 on 2026-11-03, doi:10.5281/zenodo.23841188 (concept doi:10.5281/zenodo.23322079) |
 | `papers/incentre-lattice.pdf` | 2 | archived, doi:10.5281/zenodo.23340326; kept unchanged, built from the v2.0.0 source |
 | `papers/incentre-lattice-v1.pdf` | 1 | archived, doi:10.5281/zenodo.23322080; kept unchanged |
 
