@@ -1,6 +1,6 @@
 # Maximal hard-sphere packing fraction of the CaB6 structure type
 
-Evidence label: **PROVEN (elementary upper-bound argument below); attainment and all-pairs non-overlap PROVEN (exact classification of every pair over the whole lattice, [ATTAINMENT.md](ATTAINMENT.md); internal AI review reported historically; the exact check and reviewer identity are not available in the repository); the finite replay (all pairs in a 5 x 5 x 5 block, 15 size ratios) corroborates it.** Replay: `make verify-cab6` (a few seconds; numpy, scipy, sympy). Certificate:
+Evidence label: **PROVEN (elementary upper-bound argument below); attainment and all-pairs non-overlap PROVEN (exact classification of every pair over the whole lattice, [ATTAINMENT.md](ATTAINMENT.md); internal review by a referee who is unnamed at the maintainer's choice; the exact all-pairs check in Q(sqrt2) reported with PR #23 is not in the repository, cannot be replayed and is not evidence here; independent human review pending); the finite replay (all pairs in a 5 x 5 x 5 block, 15 size ratios) corroborates it.** Replay: `make verify-cab6` (a few seconds; numpy, scipy, sympy). Certificate:
 `certificate.json`.
 
 ## Statement

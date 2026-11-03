@@ -45,7 +45,7 @@ Nothing here has been peer reviewed.
 
 ## Paper
 
-Preprint, version 2 (not peer reviewed): **The bridged cross-polytope framework: unit-spring elastic constants in every dimension and an exact motion from the CaB<sub>6</sub> boron net to face-centred cubic packing**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI: v2 is [10.5281/zenodo.23340326](https://doi.org/10.5281/zenodo.23340326) (all versions: [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079)).
+Preprint, version 3 (not peer reviewed; not yet released or archived): [PDF](papers/incentre-lattice-v3.pdf). It proves the point-group step of Theorem 2(e) that v2 asserted and corrects scope, wording and credits; no result changed. Version 2, as archived: **The bridged cross-polytope framework: unit-spring elastic constants in every dimension and an exact motion from the CaB<sub>6</sub> boron net to face-centred cubic packing**, Ahraz Arifuddin (Aska Digital), 2026. [PDF](papers/incentre-lattice.pdf) · [LaTeX source](papers/source/) · DOI: v2 is [10.5281/zenodo.23340326](https://doi.org/10.5281/zenodo.23340326) (all versions: [10.5281/zenodo.23322079](https://doi.org/10.5281/zenodo.23322079)).
 
 The headline results are the unit-spring elastic constants in every dimension n >= 3 (all shear moduli zero, C11/C12 = (n-1)^2, nu_100 = 1/(n^2-n-1)) and the exact cab-to-fcc motion of [`results/fold-continuous-fcc`](results/fold-continuous-fcc/PROOF.md), now with a written symmetry-reduced non-overlap proof ([HAND-PROOF.md](results/fold-continuous-fcc/HAND-PROOF.md)). The zero-mode and self-stress counts are lemmas: the same periodic graph is in Borcea and Streinu (2021), Section 7.
 
@@ -129,4 +129,4 @@ COD extracts), [CITATION.cff](CITATION.cff) (cites the preprint). Pull requests 
 
 ## Licence
 
-Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [@claude](https://github.com/claude) (Claude Opus 5.5 from Anthropic). OpenAI models (GPT-6 via Codex, GPT-6.1 Sol and GPT-6 Luna) also contributed; [CONTRIBUTORS.md](CONTRIBUTORS.md) records which model did what.
+Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [@claude](https://github.com/claude) (Claude Opus 5.5 from Anthropic). OpenAI models (GPT-6 via Codex, GPT-6.1 Sol and GPT-6 Luna) also contributed. Muse, an AI agent by Meta, reviewed, proofread and audited parts of the work, and [@abu-aska](https://github.com/abu-aska) proofread it; proofreading is not a check of the proofs. [CONTRIBUTORS.md](CONTRIBUTORS.md) records which model did what.

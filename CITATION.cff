@@ -6,6 +6,7 @@ authors:
   - family-names: "Arifuddin"
     given-names: "Ahraz"
     affiliation: "Aska Digital"
+version: "3.0.0"
 doi: "10.5281/zenodo.23322079"
 repository-code: "https://github.com/Foundation-0/incentre-lattices"
 url: "https://github.com/Foundation-0/incentre-lattices"
@@ -36,5 +37,5 @@ preferred-citation:
   year: 2026
   doi: "10.5281/zenodo.23322079"
   status: preprint
-  url: "https://foundation-0.github.io/incentre-lattices/papers/incentre-lattice.pdf"
-  notes: "Preprint version 2 (v2 release pending), not peer reviewed; supersedes v1 (doi:10.5281/zenodo.23322080, kept as papers/incentre-lattice-v1.pdf). Source in papers/source."
+  url: "https://foundation-0.github.io/incentre-lattices/papers/incentre-lattice-v3.pdf"
+  notes: "Preprint version 3 (not yet released or archived), not peer reviewed; supersedes v2 (doi:10.5281/zenodo.23340326, kept as papers/incentre-lattice.pdf) and v1 (doi:10.5281/zenodo.23322080, kept as papers/incentre-lattice-v1.pdf). Source in papers/source."
