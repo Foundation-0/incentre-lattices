@@ -49,7 +49,7 @@
     {
       "certificate": "results/cab6-packing/certificate.json",
       "certificate_sha256": "966c50c15ae70d5033bbc9359551dfcd6657c3fffcbe0afba0d40db4bf2e3e02",
-      "evidence_label": "PROVEN (elementary upper-bound argument, PROOF.md); attainment and all-pairs non-overlap PROVEN (results/cab6-packing/ATTAINMENT.md; internal referee review, human review pending), corroborated by the finite check (5x5x5 block, 15 size ratios)",
+      "evidence_label": "PROVEN (elementary upper-bound argument, PROOF.md); attainment and all-pairs non-overlap PROVEN (results/cab6-packing/ATTAINMENT.md; written proof, internal AI review reported; reviewer identity and cited exact check unavailable; human review pending), corroborated by the finite check (5x5x5 block, 15 size ratios)",
       "id": "cab6-packing",
       "input_hashes": {
         "results/cab6-packing/cab6_packing.py": "be1b3e8e1b4ad856a8f6491f451dd7bcdea3ca990e5afcfaa37ac6b52adb86f4"
