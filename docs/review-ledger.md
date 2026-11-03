@@ -35,4 +35,11 @@ The unpublished source documents `VERIFY.md` and `PRIOR-ART.md` live in the pape
 2. Name the result folder and the commit you reviewed (`git rev-parse HEAD` at review time).
 3. Give one verdict from the list above and put the reason in Notes: what you re-derived, with which tool, what you found, and what you did NOT check.
 4. Keep finite checks and proofs apart: "reran the verifier" is not "checked the proof".
-5. Say who reviewed and whether AI tools were used.
+5. Say who reviewed and whether AI tools were used; for an AI reviewer, name the model or agent and its provider.
+
+## Reviewer attribution of earlier records
+
+Recorded in [issue #39](https://github.com/Foundation-0/incentre-lattices/issues/39) from the maintainer's statement. This names who did the work; it changes no verdict above.
+
+* "Muse" in [PR #11](https://github.com/Foundation-0/incentre-lattices/pull/11), [PR #31](https://github.com/Foundation-0/incentre-lattices/pull/31) and audit issues #12–#16 and #32 is Muse, an AI agent by Meta. Its audits are internal AI review. The merged commits of PR #11 and PR #31 also carry Claude Opus 5.5 co-author trailers; the split between the two is not recorded.
+* abu-aska, who submitted [PR #1](https://github.com/Foundation-0/incentre-lattices/pull/1) and [PR #2](https://github.com/Foundation-0/incentre-lattices/pull/2), is a human proofreader. Proofreading is not recorded here as a check of any proof; no row above is a human proof review.

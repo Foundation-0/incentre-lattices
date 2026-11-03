@@ -8,7 +8,8 @@ to pyramids over the facets of a polytope), chose the questions, and directed th
 ## AI assistance
 
 Most of the computation, proofs, checking and writing in this repository was done by AI models under his direction: **Claude Opus 5.5
-and other Claude models by Anthropic, PBC**, and **GPT-6 (Codex), GPT-6.1 Sol and GPT-6 Luna by OpenAI**. The roles of the Claude models,
+and other Claude models by Anthropic, PBC**, **GPT-6 (Codex), GPT-6.1 Sol and GPT-6 Luna by OpenAI**, and, for review, proofreading and audits,
+**Muse, an AI agent by Meta** (see "Submission and review provenance" below). The roles of the Claude models,
 in general terms (except where another model is named below):
 
 | Model family | Role |
@@ -66,10 +67,10 @@ and in `docs/review-ledger.md` for reviews.
 
 ## Submission and review provenance
 
-GitHub account `abu-aska` submitted the exact end-state result in PR #1 (head `877f494056d75ac2ee6489edd0a7a3f6908ea23d`, squash `603e654`) and the one-cell paths in PR #2 (head `85f21fd19bf35feaf0219bbbfb61f747bf4b708e`, squash `627ec4b`). This records submission provenance. It does not identify an additional scholarly author or establish a human proof review.
+**abu-aska** (GitHub) is a human proofreader who helps the author by proofreading the research. That account submitted the exact end-state result in PR #1 (head `877f494056d75ac2ee6489edd0a7a3f6908ea23d`, squash `603e654`) and the one-cell paths in PR #2 (head `85f21fd19bf35feaf0219bbbfb61f747bf4b708e`, squash `627ec4b`). The code and notes in those PRs were made with Claude Opus 5.5 (Claude Code), as the result notes say. Proofreading is credited as proofreading; it is not recorded as a check of the proofs.
 
-The historical PR #11 and PR #31 records name Muse. A co-author trailer naming Claude does not establish which system performed each part of that work. The provider, model and preferred credit for those contributions remain unconfirmed; the historical name is retained without assigning a provider.
+**Muse, an AI agent by Meta**, was used at times to review and proofread the work. Muse did the repository audit in [PR #11](https://github.com/Foundation-0/incentre-lattices/pull/11) (code read, verification runs, edits, writing) and the re-review in [PR #31](https://github.com/Foundation-0/incentre-lattices/pull/31), and wrote the audit reports in issues [#12](https://github.com/Foundation-0/incentre-lattices/issues/12)–[#16](https://github.com/Foundation-0/incentre-lattices/issues/16) and [#32](https://github.com/Foundation-0/incentre-lattices/issues/32). The merged commits of PR #11 and PR #31 also carry Claude Opus 5.5 co-author trailers; how the work in those two PRs was split between Muse and Claude is not recorded. Like the other AI reviews, Muse's work is internal review, not outside review.
 
 The published v2 acknowledgment says that no person other than the author checked the proofs, while several result notes say no person checked them. The available record does not establish which proofs the author personally checked or when. Neither a claim that the author checked all proofs nor a claim that the author checked none is made here. Independent human review remains unrecorded.
 
-For a future manuscript, the supported wording is: “The recorded reviews were performed by AI models under the author's direction. The repository does not document a human proof-checking scope. Responsibility for the content rests with the author.” Any confirmed human review should name the proof, revision, date and scope before that wording changes.
+For a future manuscript, the supported wording is: “The recorded reviews of the proofs were performed by AI models under the author's direction; abu-aska proofread the text. The repository does not document a human proof-checking scope. Responsibility for the content rests with the author.” Any confirmed human review should name the proof, revision, date and scope before that wording changes.
