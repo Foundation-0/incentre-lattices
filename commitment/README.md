@@ -46,3 +46,5 @@ The gist also records the sha256 of the then-unpublished preprint PDF: `9d6dbf35
 Preprint v1 was published on 2026-10-12 as `papers/incentre-lattice.pdf` (commit `4d8488e`, DOI 10.5281/zenodo.23322080). Since v2 that file is kept unchanged as `papers/incentre-lattice-v1.pdf`, sha256 `64a59f3c6fdd15419f0819ee897091dcb02ebff1bfc1b7b2a42c1b156404ee26`. It differs from the PDF whose hash was timestamped earlier the same day only by bibliography corrections and the placement of the origin note. Both hashes are recorded in the gist.
 
 `papers/incentre-lattice.pdf` now holds v2 (commit `38bbf45`, sha256 `632d7debf3dc06a55e18de70dfaee90da3b664cea9b5be31de8a02599f72a003`, DOI 10.5281/zenodo.23340326); v2 is not covered by the public timestamp.
+
+`papers/incentre-lattice-v3.pdf` holds the v3 revision (sha256 `142d30a671ba75b1ac1ae933f0b18232a575af1b4c3e295e9b20f77f2a521613`, built with Tectonic 0.17.0; see `papers/source/README.md`). It is not yet released or archived and is not covered by the public timestamp; the v2 file above is unchanged.

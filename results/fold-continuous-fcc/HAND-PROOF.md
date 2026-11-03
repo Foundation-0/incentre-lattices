@@ -15,7 +15,9 @@ Notation as in PROOF.md: motif `P = {+-e_i}`, balls of radius `1/sqrt(2)`, row-v
 For `0 < s <= 1` the framework (balls and bars) has point group `{I, -I, m, -m}` of order 4, where `m` swaps the
 second and third coordinates. Indeed `m` commutes with `L(s)` (it fixes `L_1`, swaps `L_2` and `L_3`), maps the motif
 to itself, and maps bridge vectors to bridge vectors: `b_1 m = b_1`, `b_2 m = b_3`, where `b_i = L_i - 2e_i = a e_i + t C_i`.
-No other signed permutation preserves the lattice (checked numerically at several s). The space group is `C2/m`
+No other signed permutation is a symmetry: the v3 preprint (`papers/source/main.tex`, proof of Theorem 2(e))
+shows that every symmetry is a signed permutation commuting with `C` for `t > 0`, and of the 48 signed permutations
+only `+-I` and `+-m` commute with `C` (a finite exact check with sympy, not in `hand_proof_check.py`). The space group is `C2/m`
 (No. 12); balls occupy two orbits, `{+-e_1}` on the mirror and `{+-e_2, +-e_3}` in general position. At `s = 0`
 the group is `Pm-3m`. At `s = 1` the sphere packing is fcc, while the framework keeps the order-4 symmetry.
 
