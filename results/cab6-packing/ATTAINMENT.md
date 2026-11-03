@@ -1,6 +1,6 @@
 # Exact all-pairs distances and attainment for the CaB6 packing bound
 
-Status: **PROVEN** (written proof; internal AI review reported historically; the cited exact check and reviewer identity are unavailable; independent human review pending). This note closes the all-pairs obligation identified in
+Status: **PROVEN** (written proof; internal review by a referee who is unnamed at the maintainer's choice; the exact all-pairs check in Q(sqrt2) reported with PR #23 is not in the repository and cannot be replayed, so it is not cited as evidence; independent human review pending). This note closes the all-pairs obligation identified in
 [PROOF.md](PROOF.md) by minimizing over the entire integer lattice. The numerical certificate is unchanged and now corroborates the proof. This is an elementary completion of the project's argument, with no claim of literature novelty.
 
 ## Model and exact distance lemma
