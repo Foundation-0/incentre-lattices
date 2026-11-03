@@ -76,4 +76,5 @@ two empty gaps.
 
 The end states were found by the fold search in `autoresearch-fold/` and the layer slides in `results/fold-close-packing/`.
 This folder adds only the exact form. AI assistance: Claude Opus 5.5 (Claude Code) wrote `exact_end.py`, `verify.py` and this
-note; no person has checked them yet.
+note; no person has checked them yet. The result was submitted in PR #1 by abu-aska, who is credited for proofreading;
+that is not a check of the proof.

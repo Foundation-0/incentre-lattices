@@ -86,3 +86,4 @@ stage whose objective is the mismatch to the fcc lattice above, in metric and fr
 
 The search engine and both checkers are the project's (`autoresearch-fold/`, `results/fold-close-packing/`). The m = 1 runs, the fcc
 steering stage and this note were made with Claude Opus 5.5 (Claude Code) in a copy of `autoresearch-fold/`. No person has checked them yet.
+The result was submitted in PR #2 by abu-aska, who is credited for proofreading; that is not a check of the proof.
