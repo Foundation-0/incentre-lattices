@@ -1,4 +1,4 @@
-"""Figure 2 of the paper (v2): the exact motion from the cab framework to fcc.
+"""Figure 3 of the paper (v3; Figure 2 in v2): the exact motion from the cab framework to fcc.
 
 Everything is computed from the closed form of results/fold-continuous-fcc/PROOF.md:
 motif P = {+-e_i}, ball radius 1/sqrt(2), lattice rows L(s) = (2 + a) I + t C with

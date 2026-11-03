@@ -1,5 +1,7 @@
-"""Generate all figures of the paper as PDFs in this folder.
-Run: ../.venv/bin/python make_figures.py
+"""Generate Figures 1, 2 and 4 of the paper (fig1_construction, fig3_modes, fig4_cab6) as PDFs
+in this folder, and fig2_fold.pdf, which the paper no longer includes (Figure 3 is fig_motion.pdf,
+made by make_fold_figure.py).
+Run from papers/source/figures:  ../../../.venv/bin/python make_figures.py
 """
 import itertools
 import os
@@ -72,7 +74,7 @@ def fig_construction():
                 ax.plot(*zip(d[p_], d[q_]), color=BLUE, lw=0.9)
         ax.scatter(*d.T, s=40, color=BLUE, depthshade=False, edgecolor="white", linewidth=0.5)
     ax.plot([c, 2 - c], [0, 0], [0, 0], color=ORANGE, lw=2.2)
-    ax.text(1.0, 0, -1.55, "cross bar", color=INK, fontsize=7, ha="center")
+    ax.text(1.0, 0, -1.55, "bridge", color=INK, fontsize=7, ha="center")
     ax.set_box_aspect((2, 1, 1)); ax.axis("off"); ax.view_init(18, -60)
     ax.set_title("(c)", fontsize=9)
     save(fig, "fig1_construction.pdf")
