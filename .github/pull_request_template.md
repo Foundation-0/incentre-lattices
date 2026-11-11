@@ -4,7 +4,7 @@
 
 - Result(s) touched:
 - Type: new result / correction / new check / documentation / tooling
-- Does it edit a checker (`verify.py`, `chk_independent.py`, `autoresearch-fold/verify.py`)? Checker edits are reviewed on their own and are not merged together with a result.
+- Does it edit a checker (`verify.py`, `chk_independent.py`, `autoresearch-fold/verify.py`)? Existing-checker edits are reviewed separately from new results and mathematical claim changes; pin updates, certificate regeneration and replay documentation belong with the checker. New results may include new checkers. Record the old/new hashes and a review-ledger entry.
 
 ## Validation
 
