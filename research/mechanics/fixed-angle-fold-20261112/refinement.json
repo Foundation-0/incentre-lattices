@@ -1,0 +1,47 @@
+[
+  {
+    "s": 0.012421026305365252,
+    "kappa": 0.0001,
+    "wavevectors": 2024,
+    "grid_n": 12,
+    "random_wavevectors": 200,
+    "minimum_eigenvalue": 9.197353416256764e-14,
+    "witness_q": [
+      0.0001,
+      0.0,
+      0.0
+    ],
+    "negative_count_below_minus_1e_10": 0,
+    "minimum_small_q_eigenvalue_over_q_squared": 9.197353416256763e-06
+  },
+  {
+    "s": 0.001,
+    "kappa": 1e-06,
+    "wavevectors": 2024,
+    "grid_n": 12,
+    "random_wavevectors": 200,
+    "minimum_eigenvalue": -3.954672223962772e-16,
+    "witness_q": [
+      0.0,
+      0.0001,
+      0.0
+    ],
+    "negative_count_below_minus_1e_10": 0,
+    "minimum_small_q_eigenvalue_over_q_squared": -3.954672223962772e-08
+  },
+  {
+    "s": 1.0,
+    "kappa": 1e-06,
+    "wavevectors": 2024,
+    "grid_n": 12,
+    "random_wavevectors": 200,
+    "minimum_eigenvalue": -2.8411147193601906e-07,
+    "witness_q": [
+      3.141592653589793,
+      3.141592653589793,
+      3.141592653589793
+    ],
+    "negative_count_below_minus_1e_10": 139,
+    "minimum_small_q_eigenvalue_over_q_squared": -8.945073428568639e-08
+  }
+]

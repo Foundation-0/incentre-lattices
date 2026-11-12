@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-12",
+  "model": "gpt-6-astra",
+  "repository": "Foundation-0/incentre-lattices",
+  "commit": "2d374fff2a59cc9331566733043a4bb25c1040bf",
+  "current_main_verified": true,
+  "repository_files": [
+    {
+      "path": "README.md",
+      "blob_sha": "dc718351e634ff14a068f4defb96ae5723f17d17",
+      "sha256": "38b87aad99378cc9de6d80f2a603b89402bdf11147356020a5c9f14b7bb3e1a4",
+      "url": "https://github.com/Foundation-0/incentre-lattices/blob/2d374fff2a59cc9331566733043a4bb25c1040bf/README.md"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "blob_sha": "b98a203fc7160275de1084200970fa89912de27b",
+      "sha256": "2fac6c9917c71f04e79857d65da6bbaafacd15203081131c65cdf51e9fc6534d",
+      "url": "https://github.com/Foundation-0/incentre-lattices/blob/2d374fff2a59cc9331566733043a4bb25c1040bf/CONTRIBUTING.md"
+    },
+    {
+      "path": "docs/audit.md",
+      "blob_sha": "cc09844d4cfd6bbcbf7d2e9e63ef579fa9359292",
+      "sha256": "ed5a1a32a66380ac8d79c5a05e5134dbeb175e93f8df2c143815c2997ebf8ee8",
+      "url": "https://github.com/Foundation-0/incentre-lattices/blob/2d374fff2a59cc9331566733043a4bb25c1040bf/docs/audit.md"
+    },
+    {
+      "path": "research/1-mechanics.md",
+      "blob_sha": "8faacd2aae947dd0a2de6f7fcaa42dff204d04fe",
+      "sha256": "bfa41c6c2a7eac84e3f7eb7569b73810948daba3f59cfa640bff36348962263a",
+      "url": "https://github.com/Foundation-0/incentre-lattices/blob/2d374fff2a59cc9331566733043a4bb25c1040bf/research/1-mechanics.md"
+    },
+    {
+      "path": "results/fold-continuous-fcc/PROOF.md",
+      "blob_sha": "966bffe597948d7b53ead878925567d5fbf331cc",
+      "sha256": "45d1021cc3a7fcac11276a4c09b4367903731d041190f9e65685d0d8411d158e",
+      "url": "https://github.com/Foundation-0/incentre-lattices/blob/2d374fff2a59cc9331566733043a4bb25c1040bf/results/fold-continuous-fcc/PROOF.md"
+    }
+  ],
+  "prior_calculation": {
+    "public_url": "https://github.com/Foundation-0/gravity/pull/11",
+    "scope": "Ideal fold tensor and weak-spring comparison family with reference lengths reset at each fold."
+  },
+  "primary_literature": [
+    {
+      "title": "A degenerate polar lattice for cloaking in full two-dimensional elastodynamics and statics",
+      "authors": "Nassar, Chen and Huang",
+      "year": 2018,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6283905/",
+      "access": "Indexed full-text equations 2.8-2.12 and 3.2-3.10 retrieved by web search. Direct opening encountered a browser challenge.",
+      "overlap": "Rank-one media and torque-regularized rational response are established. The cited example uses grounded torque and a different lattice. It does not establish priority for this three-dimensional fold."
+    },
+    {
+      "title": "Rigid unit modes and intrinsic flexibility in linearly bridged framework structures",
+      "author": "Andrew L. Goodwin",
+      "year": 2006,
+      "url": "https://doi.org/10.1103/PhysRevB.74.134302",
+      "access": "Publisher abstract only. Full-text priority comparison remains incomplete.",
+      "overlap": "Extensive reciprocal-space rigid-unit modes in linearly bridged frameworks including Prussian-blue topology are prior work."
+    },
+    {
+      "title": "Mechanics of elastic networks",
+      "author": "Andrew N. Norris",
+      "year": 2014,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4241013/",
+      "access": "Indexed primary-paper abstract retrieved. Direct opening encountered a browser challenge.",
+      "overlap": "General elastic-network response and soft modes. Adding bending stiffness is not claimed as new."
+    }
+  ],
+  "targeted_search_queries": [
+    "Nassar Chen Huang 2018 A degenerate polar lattice elastic moduli octahedral framework",
+    "bridged octahedra bending elastic lattice",
+    "CaB6 elastic hinge folding",
+    "octahedral fold 136 elastic modulus",
+    "octahedral cosine bending lattice elastic modulus",
+    "rigid unit elastic bending crossover square root"
+  ],
+  "priority_verdict": "No historical novelty established. Search did not settle whether this exact fold-specific fixed-angle formula appeared elsewhere. Known scaling structure and generic rank-one elasticity are not claimed as new.",
+  "runtime": {
+    "python": "3.14.6",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0"
+  },
+  "scope": "Independent code for the declared ideal mechanical design. Distributed dead nodal/cell loads, point joints, no contact forces, no measured material constants. Finite numerical stability tests only."
+}
