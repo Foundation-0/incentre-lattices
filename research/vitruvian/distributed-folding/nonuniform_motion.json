@@ -1,0 +1,6859 @@
+{
+  "statement": "Any separated angle sequences theta_i(k) in [40deg,50deg] define a globally non-overlapping, bar-preserving infinite framework through integrated cell increments.",
+  "evidence": "Written analytic construction and bounds plus exact integer-pair certificate for nearby cell translations. Not a formal proof-assistant result.",
+  "nearby_distance_conditions": 488,
+  "all_nearby_comparisons_strictly_positive": true,
+  "weakest_comparison": {
+    "translation": [
+      -1,
+      0,
+      0
+    ],
+    "motif_difference": [
+      1,
+      -1,
+      0
+    ],
+    "a": 255,
+    "b": -80
+  },
+  "row_perturbation_upper_bound": "1/8",
+  "far_translation_argument": "|m|>=2 => distance > (9/4-1/4)|m|-2 >=2>sqrt(2)",
+  "positions": "X(n)=sum_i S_i(n_i), where S_i(k+1)-S_i(k)=L_i(k)",
+  "example": "theta_1(k,t)=45deg+5deg*sin(2*pi*k/m-omega*t), theta_2=theta_3=45deg, any positive integer m.",
+  "scope": "Kinematic traveling modulation, fixed motif orientations; no actuation, material stability, forces, finite rods, or autonomous wave dynamics established.",
+  "conditions": [
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2999,
+      "b": -176
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 2871,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 2871,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 2103,
+      "b": -176
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 2103,
+      "b": -176
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2999,
+      "b": -688
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 2871,
+      "b": -688
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 2103,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2999,
+      "b": -688
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1975,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1463,
+      "b": -176
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 2103,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1335,
+      "b": -176
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1463,
+      "b": -176
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 2103,
+      "b": -688
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 2103,
+      "b": -688
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1335,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1335,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1463,
+      "b": -688
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2236,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 2108,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1724,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1724,
+      "b": 160
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1340,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2236,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1724,
+      "b": -224
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1724,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1468,
+      "b": -288
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1212,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1468,
+      "b": 224
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 956,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 956,
+      "b": 160
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 700,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1340,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 956,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 572,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 700,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 2615,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1207,
+      "b": 80
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1719,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2743,
+      "b": 592
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1079,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2236,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1724,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 2108,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1340,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1724,
+      "b": 160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1468,
+      "b": -288
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1724,
+      "b": -224
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 956,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2236,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1212,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 700,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1724,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 956,
+      "b": 160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1468,
+      "b": 224
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1340,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 572,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 956,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 700,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1535,
+      "b": -16
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 639,
+      "b": -144
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 511,
+      "b": -16
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 639,
+      "b": 112
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2108,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1212,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1980,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 572,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1084,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2108,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 444,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1212,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 572,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 2615,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1207,
+      "b": 80
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1719,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2743,
+      "b": 592
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1079,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2108,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1212,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1980,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 572,
+      "b": -160
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1084,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2108,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 444,
+      "b": -32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1212,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 572,
+      "b": 96
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 2743,
+      "b": -688
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1847,
+      "b": -560
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1847,
+      "b": -560
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 2615,
+      "b": -560
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 2615,
+      "b": -560
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1207,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1079,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1847,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1207,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1719,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2743,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1847,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 2615,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2743,
+      "b": -432
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1079,
+      "b": -304
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1079,
+      "b": -304
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1847,
+      "b": -304
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1847,
+      "b": -304
+    },
+    {
+      "translation": [
+        -1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1207,
+      "b": -176
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1468,
+      "b": -160
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1724,
+      "b": -352
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1724,
+      "b": -352
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2236,
+      "b": -544
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 2108,
+      "b": -544
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1340,
+      "b": -416
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2236,
+      "b": -544
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1212,
+      "b": -416
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 700,
+      "b": -288
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1340,
+      "b": -416
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 572,
+      "b": -288
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 700,
+      "b": -288
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1724,
+      "b": -608
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1724,
+      "b": -608
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 956,
+      "b": -480
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 956,
+      "b": -480
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1468,
+      "b": -672
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 639,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1535,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 511,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 639,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1340,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2108,
+      "b": 480
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1212,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1980,
+      "b": 480
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 572,
+      "b": 224
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1084,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2108,
+      "b": 480
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 444,
+      "b": 224
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1212,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 572,
+      "b": 224
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1340,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 639,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1535,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 511,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 639,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 639,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 511,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1535,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 639,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1340,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 572,
+      "b": 224
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1212,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 444,
+      "b": 224
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2108,
+      "b": 480
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1084,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 572,
+      "b": 224
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1980,
+      "b": 480
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1212,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2108,
+      "b": 480
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 828,
+      "b": 288
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1596,
+      "b": 416
+    },
+    {
+      "translation": [
+        0,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1340,
+      "b": 352
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 639,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 511,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1535,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 639,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1468,
+      "b": -672
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 956,
+      "b": -480
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 956,
+      "b": -480
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1724,
+      "b": -608
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1724,
+      "b": -608
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 700,
+      "b": -288
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 572,
+      "b": -288
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1340,
+      "b": -416
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 700,
+      "b": -288
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1212,
+      "b": -416
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2236,
+      "b": -544
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1340,
+      "b": -416
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 2108,
+      "b": -544
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2236,
+      "b": -544
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1724,
+      "b": -352
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1724,
+      "b": -352
+    },
+    {
+      "translation": [
+        0,
+        1,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1468,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1207,
+      "b": -176
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1847,
+      "b": -304
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1847,
+      "b": -304
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1079,
+      "b": -304
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1079,
+      "b": -304
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2743,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 2615,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1847,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2743,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1719,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1207,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1847,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1079,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1207,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 2615,
+      "b": -560
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 2615,
+      "b": -560
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1847,
+      "b": -560
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1847,
+      "b": -560
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2743,
+      "b": -688
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 572,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1212,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 444,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2108,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1084,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 572,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1980,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1212,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        0
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2108,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1079,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 2743,
+      "b": 592
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1719,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1207,
+      "b": 80
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 2615,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        -1,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 572,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1212,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 444,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 828,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2108,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1084,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 572,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1596,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 828,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1340,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1980,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1212,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1596,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2108,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 255,
+      "b": 48
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 255,
+      "b": -80
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 639,
+      "b": 112
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 767,
+      "b": 112
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 511,
+      "b": -16
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 639,
+      "b": -16
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 639,
+      "b": -144
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 767,
+      "b": -144
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1023,
+      "b": 48
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1023,
+      "b": -80
+    },
+    {
+      "translation": [
+        1,
+        0,
+        0
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 1535,
+      "b": -16
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 700,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 956,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 572,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1340,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1468,
+      "b": 224
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 956,
+      "b": 160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1724,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 700,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1212,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2236,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 956,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1724,
+      "b": -224
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 1468,
+      "b": -288
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1724,
+      "b": 160
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1340,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 2108,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 1724,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        0,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2236,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1079,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1207,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1847,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 1079,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 2743,
+      "b": 592
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1719,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1207,
+      "b": 80
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1847,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 2615,
+      "b": 464
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1847,
+      "b": 208
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 2615,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        -1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2743,
+      "b": 336
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 700,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 572,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 956,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 956,
+      "b": -224
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 1340,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 700,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 956,
+      "b": 160
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 956,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1468,
+      "b": 224
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1212,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 1468,
+      "b": -288
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 1724,
+      "b": 32
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 1724,
+      "b": -224
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2236,
+      "b": -160
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 1340,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 1724,
+      "b": 160
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 1724,
+      "b": -96
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 2108,
+      "b": -32
+    },
+    {
+      "translation": [
+        1,
+        1,
+        0
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2236,
+      "b": 96
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -2,
+        0,
+        0
+      ],
+      "a": 1463,
+      "b": -688
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        -1,
+        0
+      ],
+      "a": 1335,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        -1
+      ],
+      "a": 1335,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        0,
+        1
+      ],
+      "a": 2103,
+      "b": -688
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        -1,
+        1,
+        0
+      ],
+      "a": 2103,
+      "b": -688
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -2,
+        0
+      ],
+      "a": 1463,
+      "b": -176
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        -1
+      ],
+      "a": 1335,
+      "b": -176
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        -1,
+        1
+      ],
+      "a": 2103,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        -2
+      ],
+      "a": 1463,
+      "b": -176
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        0
+      ],
+      "a": 1975,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        0,
+        2
+      ],
+      "a": 2999,
+      "b": -688
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        -1
+      ],
+      "a": 2103,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        1,
+        1
+      ],
+      "a": 2871,
+      "b": -688
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        0,
+        2,
+        0
+      ],
+      "a": 2999,
+      "b": -688
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        -1,
+        0
+      ],
+      "a": 2103,
+      "b": -176
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        -1
+      ],
+      "a": 2103,
+      "b": -176
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        0,
+        1
+      ],
+      "a": 2871,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        1,
+        1,
+        0
+      ],
+      "a": 2871,
+      "b": -432
+    },
+    {
+      "translation": [
+        1,
+        1,
+        1
+      ],
+      "motif_difference": [
+        2,
+        0,
+        0
+      ],
+      "a": 2999,
+      "b": -176
+    }
+  ]
+}

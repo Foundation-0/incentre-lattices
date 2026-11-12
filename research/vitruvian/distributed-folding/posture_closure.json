@@ -1,0 +1,48 @@
+{
+  "statement": "With fixed motif orientation, a common phase increasing by delta along one cell coordinate fails the transverse square-loop closure condition.",
+  "exact_norm": "2*sqrt(2)*abs(sin(delta/2))",
+  "derivation": "The closure error is L_2(theta+delta)-L_2(theta), the chord of a radius-sqrt(2) circle separated by angle delta.",
+  "examples": [
+    {
+      "base_degrees": 0,
+      "phase_step_degrees": 10,
+      "closure_error_vector": [
+        0.17364817766693053,
+        -0.021485081733056965,
+        -0.17364817766693033
+      ],
+      "closure_error_norm": 0.24651366686487752
+    },
+    {
+      "base_degrees": 20,
+      "phase_step_degrees": 10,
+      "closure_error_vector": [
+        0.1579798566743313,
+        -0.10418117738575994,
+        -0.15797985667433123
+      ],
+      "closure_error_norm": 0.24651366686487722
+    },
+    {
+      "base_degrees": 45,
+      "phase_step_degrees": 10,
+      "closure_error_vector": [
+        0.11204526310244445,
+        -0.1888404246547224,
+        -0.11204526310244445
+      ],
+      "closure_error_norm": 0.24651366686487766
+    },
+    {
+      "base_degrees": 70,
+      "phase_step_degrees": 10,
+      "closure_error_vector": [
+        0.045115132226299814,
+        -0.2381139173580049,
+        -0.0451151322262997
+      ],
+      "closure_error_norm": 0.24651366686487752
+    }
+  ],
+  "limits": "Does not rule out nonuniform motions with independently assigned phases, motif rotations, strain, defects, or changed connections. No collision or dynamics conclusion."
+}
