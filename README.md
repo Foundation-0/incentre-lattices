@@ -133,4 +133,4 @@ Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https:
 
 ## Fixed angle fold benchmark
 
-The [fixed angle spring protocol](research/mechanics/fixed-angle-fold-20261112/PROTOCOL.md) tests internal motion along the continuous fold under specified holding loads. The protocol fixes the geometry and angular energy. Calculations and independent review are pending.
+The [fixed angle spring calculation](research/mechanics/fixed-angle-fold-20261112/RESULTS.md) finds a finite internal-motion peak under specified holding loads and an unstable fully folded endpoint. It includes the fixed energy law, symbolic response formula and finite spatial stability checks. Independent scientific review is pending.

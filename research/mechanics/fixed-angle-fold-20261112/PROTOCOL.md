@@ -2,7 +2,7 @@
 
 This calculation tests whether the large internal motion of an ideal folded framework survives a fixed bending law. It describes an ideal mechanical design with specified joints and holding loads. No material constants or fabrication tolerance are fitted.
 
-Status: protocol fixed, 12 November 2026. Calculations and independent review are pending. AI assistance: gpt-forge using the requested gpt-6-astra model.
+Status: protocol, 12 November 2026. Calculations are recorded in [RESULTS.md](RESULTS.md). Independent review is pending. AI assistance: gpt-forge using the requested gpt-6-astra model.
 
 The source geometry is Foundation-0/incentre-lattices at `2d374fff2a59cc9331566733043a4bb25c1040bf`, verified as its current main commit on this date.
 
