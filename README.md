@@ -133,4 +133,4 @@ Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https:
 
 ## Fixed angle fold benchmark
 
-The [fixed angle spring calculation](research/mechanics/fixed-angle-fold-20261112/RESULTS.md) finds a finite internal-motion peak under specified holding loads and an unstable fully folded endpoint. It includes the fixed energy law, symbolic response formula and finite spatial stability checks. Independent scientific review is pending.
+The [fixed angle spring calculation](research/mechanics/fixed-angle-fold-20261112/README.md) finds a finite internal-motion peak under specified holding loads. A separate Astra review reproduces the response law and proves endpoint instability for every positive angular stiffness in that model. Positive spatial stability remains limited to finite checks.
