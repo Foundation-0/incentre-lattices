@@ -1,0 +1,11 @@
+{
+  "source_main": "2d374fff2a59cc9331566733043a4bb25c1040bf",
+  "protocol_sha256": "f6839bdfc9ed3c6f7d6ac4ecd511a96675336d685620542a45df6f350e8f491e",
+  "stage": "protocol; calculations and independent review pending",
+  "related_research": [
+    "https://github.com/Foundation-0/gravity/pull/11",
+    "https://github.com/Foundation-0/fractals/pull/53",
+    "https://github.com/Foundation-0/physics0/pull/17"
+  ],
+  "no_historical_priority_claim": true
+}

@@ -130,3 +130,7 @@ COD extracts), [CITATION.cff](CITATION.cff) (cites the preprint). Pull requests 
 ## Licence
 
 Code: MIT. Text, figures and site content: CC BY 4.0. Credit: [@ahrazzle](https://github.com/ahrazzle) (Ahraz Arifuddin), [@aska-digital](https://github.com/aska-digital) (Aska Digital) and [@claude](https://github.com/claude) (Claude Opus 5.5 from Anthropic). OpenAI models (GPT-6 via Codex, GPT-6.1 Sol and GPT-6 Luna) also contributed. Muse, an AI agent by Meta, reviewed, proofread and audited parts of the work, and [@abu-aska](https://github.com/abu-aska) proofread it; proofreading is not a check of the proofs. [CONTRIBUTORS.md](CONTRIBUTORS.md) records which model did what.
+
+## Fixed angle fold benchmark
+
+The [fixed angle spring protocol](research/mechanics/fixed-angle-fold-20261112/PROTOCOL.md) tests internal motion along the continuous fold under specified holding loads. The protocol fixes the geometry and angular energy. Calculations and independent review are pending.
