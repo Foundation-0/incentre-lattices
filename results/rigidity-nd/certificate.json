@@ -412,6 +412,7 @@
       "C11_exact": "1/4",
       "C11_over_C12": "1",
       "C12_exact": "1/4",
+      "c44_zero": true,
       "matches_numerics_for_c_values": [
         0.585786,
         0.3,
@@ -420,13 +421,13 @@
       "n": 2,
       "nu100_exact": "1",
       "nu100_value": 1.0,
-      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-      "shear_moduli_zero": true
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10"
     },
     {
       "C11_exact": "2/9",
       "C11_over_C12": "4",
       "C12_exact": "1/18",
+      "c44_zero": true,
       "matches_numerics_for_c_values": [
         0.585786,
         0.3,
@@ -435,13 +436,13 @@
       "n": 3,
       "nu100_exact": "1/5",
       "nu100_value": 0.2,
-      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-      "shear_moduli_zero": true
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10"
     },
     {
       "C11_exact": "9/64",
       "C11_over_C12": "9",
       "C12_exact": "1/64",
+      "c44_zero": true,
       "matches_numerics_for_c_values": [
         0.585786,
         0.3,
@@ -450,13 +451,13 @@
       "n": 4,
       "nu100_exact": "1/11",
       "nu100_value": 0.09090909091,
-      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-      "shear_moduli_zero": true
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10"
     },
     {
       "C11_exact": "2/25",
       "C11_over_C12": "16",
       "C12_exact": "1/200",
+      "c44_zero": true,
       "matches_numerics_for_c_values": [
         0.585786,
         0.3,
@@ -465,13 +466,13 @@
       "n": 5,
       "nu100_exact": "1/19",
       "nu100_value": 0.05263157895,
-      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-      "shear_moduli_zero": true
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10"
     },
     {
       "C11_exact": "25/576",
       "C11_over_C12": "25",
       "C12_exact": "1/576",
+      "c44_zero": true,
       "matches_numerics_for_c_values": [
         0.585786,
         0.3,
@@ -480,13 +481,13 @@
       "n": 6,
       "nu100_exact": "1/29",
       "nu100_value": 0.03448275862,
-      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-      "shear_moduli_zero": true
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10"
     },
     {
       "C11_exact": "9/392",
       "C11_over_C12": "36",
       "C12_exact": "1/1568",
+      "c44_zero": true,
       "matches_numerics_for_c_values": [
         0.585786,
         0.3,
@@ -495,13 +496,13 @@
       "n": 7,
       "nu100_exact": "1/41",
       "nu100_value": 0.0243902439,
-      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-      "shear_moduli_zero": true
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10"
     },
     {
       "C11_exact": "49/4096",
       "C11_over_C12": "49",
       "C12_exact": "1/4096",
+      "c44_zero": true,
       "matches_numerics_for_c_values": [
         0.585786,
         0.3,
@@ -510,8 +511,7 @@
       "n": 8,
       "nu100_exact": "1/55",
       "nu100_value": 0.01818181818,
-      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-      "shear_moduli_zero": true
+      "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10"
     }
   ],
   "evidence": {
@@ -520,7 +520,7 @@
   },
   "inputs": {
     "results/rigidity-nd/proof_steps.py": "4f7bed89024d02133291542327b09e5ce8f410a41daf4bb783f6a396190604e0",
-    "results/rigidity-nd/rigidity_nd.py": "4a113d40e26c871441e4a8d5bf086950af1810d43962beb67e25d8ac028dccb2"
+    "results/rigidity-nd/rigidity_nd.py": "8ece5c4b9881030512207ec250367da3106bce55647a0135304a4035dbdc4eb4"
   },
   "must_fail_controls_rejected": [
     "n >= 3 generic counts claimed at n = 2",

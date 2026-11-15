@@ -25,7 +25,7 @@ ROOT = certlib.ROOT
 RESULTS = [
     {
         "id": "rigidity-nd",
-        "statement": "The contact framework of the truncated n-cubic honeycomb (2n balls per cell, 2n^2-n bars of one length, dots at the pyramid incentres) has, at a generic wavevector, exactly n(n-1)/2 zero modes (the cluster rotations) and n(n-3)/2 self-stresses per cell, its cross-polytope cell is infinitesimally rigid for n >= 3, and with unit springs and full internal relaxation C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), all shear moduli vanish, nu_100 = 1/(n^2-n-1).",
+        "statement": "The contact framework of the truncated n-cubic honeycomb (2n balls per cell, 2n^2-n bars of one length, dots at the pyramid incentres) has, at a generic wavevector, exactly n(n-1)/2 zero modes (the cluster rotations) and n(n-3)/2 self-stresses per cell, its cross-polytope cell is infinitesimally rigid for n >= 3, and with unit springs and full internal relaxation C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), C44 = 0 (while (C11 - C12)/2 = 2(n-2)/(n 2^n), zero only at n = 2), nu_100 = 1/(n^2-n-1); the bars carry no stress at rest and the constants are the relaxed ones, taken after the joints settle.",
         "value": {"nu_100": {"n=3": "1/5", "n=4": "1/11", "n=5": "1/19", "n=6": "1/29", "n=7": "1/41", "n=8": "1/55"},
                   "generic_zero_modes_per_cell": "n(n-1)/2", "generic_self_stresses_per_cell": "n(n-3)/2"},
         "evidence_label": "PROVEN for all n >= 3 (written proof, results/rigidity-nd/PROOF.md); VERIFIED (finite check) for n = 2..8",
