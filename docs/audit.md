@@ -41,13 +41,13 @@ remain open; no physical transition or material stability is claimed.
 
 | Claim | Label | Checked by |
 |---|---|---|
-| Generic-q zero modes n(n-1)/2 and self-stresses n(n-3)/2; cross-polytope rigid; q = 0 and plane counts; C11, C12, zero shear, nu_100 = 1/(n^2-n-1) | PROVEN for all n >= 3 (`PROOF.md`) | the written proof; replay only supports it |
+| Generic-q zero modes n(n-1)/2 and self-stresses n(n-3)/2; cross-polytope rigid; q = 0 and plane counts; C11, C12, C44 = 0, (C11 - C12)/2 = 2(n-2)/(n 2^n), nu_100 = 1/(n^2-n-1) | PROVEN for all n >= 3 (`PROOF.md`) | the written proof; replay only supports it |
 | The same for n = 2..8 | VERIFIED | `rigidity_nd.py`: SVD ranks of the Bloch rigidity matrix at fixed-seed random q, tolerance 1e-9; elastic tensor by full relaxation (Schur complement), 1e-12 |
 | Steps 1 to 3 of the proof | VERIFIED symbolically for n = 2..8 | `proof_steps.py` (sympy) |
 | Controls | must be rejected | n >= 3 counts at n = 2; wrong Poisson formula; wrong C11/C12; deleting a cross bar; wrong stress-basis dimension |
 
 Known limits: numerical ranks depend on an SVD threshold; the proof has had internal review only; n = 2 is outside the theorem and is reported separately;
-the model is ideal central-force springs, so shear moduli of exactly zero say nothing about real crystals.
+the model is ideal central-force springs, so a C44 of exactly zero says nothing about real crystals. The constants assume no stress in the bars at rest and are the relaxed ones, taken after the joints settle.
 
 ### results/radius-ratio: hole/ball equals the classical radius ratio
 

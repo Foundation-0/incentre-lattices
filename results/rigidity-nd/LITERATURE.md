@@ -100,10 +100,10 @@ The elastic calculation requires finite stiffness of the internal edges as well 
 PROOF.md obtains, with `e_i = eps_ii`,
 
     E_min = 2(n-2)/n sum_i e_i^2 + 2/n^2 (sum_i e_i)^2,
-    C11 = 4(n-1)^2/(n^2 2^n),    C12 = 4/(n^2 2^n),    C_shear = 0.
+    C11 = 4(n-1)^2/(n^2 2^n),    C12 = 4/(n^2 2^n),    C44 = 0,    (C11 - C12)/2 = 2(n-2)/(n 2^n).
 
 These values follow from minimizing spring energy. Rigid-body kinematics alone does not supply finite `C11` or `C12`:
-it eliminates the internal distortions that carry some of that energy. With zero shear moduli the tensor is only
+it eliminates the internal distortions that carry some of that energy. With C44 = 0 the tensor is only
 positive semi-definite; `nu_100` describes normal strains under stress along a cube axis, not an isotropic material
 Poisson ratio or a measured property of a real compound.
 
@@ -137,7 +137,7 @@ Focused questions:
    intersections where exactly k coordinates satisfy `z_i = 1`?
 2. The Section 7 graph is the same and only t differs, so our counts cover it. Do Goodwin's full text, Borcea–Streinu–Tanigawa or other periodic body-and-bar results already state the n-dimensional counts or the unit-spring C11/C12 and nu_100?
 3. Is the homogeneous-strain relaxation and normalization correct for finite unit spring stiffness on **all** bars?
-   Are the zero shear moduli and axial Poisson formula stated with sufficient hypotheses?
+   Are C44 = 0 and the axial Poisson formula stated with sufficient hypotheses?
 4. Are these dimensional formulas already published, or routine consequences best presented as a worked example?
    Which exact citations should replace any remaining candidate-priority wording?
 

@@ -29,9 +29,11 @@ cross-polytope) and n *cross* bars X_i joining neighbouring cells. Each ball tou
   If exactly k of the q_i lie in pi Z there are n(n-1)/2 + k zero modes and n(n-3)/2 + k self-stresses. At q = 0 there are
   n(n+1)/2 zero modes and n(n-1)/2 self-stresses: for every w, tension w_ij on the four bars of the pair (i,j) and
   tension tau_i = sqrt2 (sum over j of w_ij) on X_i.
-* (c) Give every bar unit spring constant and relax all joints under a homogeneous strain eps. The energy per unit volume is
+* (c) Give every bar unit spring constant and relax all joints under a homogeneous strain eps. Two assumptions are used: the bars
+  carry no stress at rest (each rest length is its present length), and the constants are the relaxed ones, taken after the joints
+  settle. Before the joints settle the tensor obeys C12 = C44. The energy per unit volume is
   W(eps) = 2^-n [ (2(n-1)^2/n^2) sum_i eps_ii^2 + (2/n^2) sum_{i != j} eps_ii eps_jj ], independent of the off-diagonal
-  strains. So C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), every shear modulus is 0, C11/C12 = (n-1)^2, and the Poisson
+  strains. So C11 = 4(n-1)^2/(n^2 2^n), C12 = 4/(n^2 2^n), C44 = 0, (C11 - C12)/2 = 2(n-2)/(n 2^n) (zero only at n = 2, 1/12 at n = 3), C11/C12 = (n-1)^2, and the Poisson
   ratio for uniaxial stress along a cube axis is **nu_100 = 1/(n^2 - n - 1)**: 1/5, 1/11, 1/19, 1/29, 1/41, 1/55 for n = 3..8.
 
 Scope. Bars are ideal central-force springs, the framework is the infinite periodic one with one-cell periodic strain, and
@@ -119,8 +121,7 @@ zero. So it is enough to relax over one-cell-periodic displacements. By Lemma 1 
     E = sum over i<j of [ (c(eps_ii + eps_jj) + kappa_ij)^2 + alpha_ij^2 + beta_ij^2 + (2c eps_ij + sigma_ij)^2 ] + 2 sum_i (R eps_ii - b_i^i)^2.
 
 The a-variables appear only in alpha, beta; choose a = 0. The off-diagonal b_i^j appear only in sigma_ij, and each sigma_ij
-can be chosen freely: take sigma_ij = -2c eps_ij. This removes every off-diagonal strain from the energy, so all shear
-moduli vanish. (The relaxed motion keeps each cross-polytope undeformed; shear is taken up by first-order rotations.)
+can be chosen freely: take sigma_ij = -2c eps_ij. This removes every off-diagonal strain from the energy, so C44 = 0. (The relaxed motion keeps each cross-polytope undeformed; shear is taken up by first-order rotations.)
 
 Put e_i = eps_ii, x_i = b_i^i and y_i = x_i + c e_i. Using c + R = 1 the remaining energy is
 
@@ -135,8 +136,8 @@ Divide by the cell volume 2^n to get W. For uniaxial stress along e_1 the condit
 C12 e_1 + (C11 + (n-2) C12) e_perp = 0, so nu_100 = C12/(C11 + (n-2) C12). With C11 + (n-2) C12 = (4/(n^2 2^n)) ((n-1)^2 + n - 2)
 this is 1/(n^2 - n - 1). QED (c)
 
-**The case n = 2.** The proof of (c) does not use n >= 3, so W holds for n = 2: C11 = C12 = 1/4, all shear moduli vanish,
-only the bulk modulus is non-zero, and nu_100 = 1 formally. The counts in (a) and (b) change: the kappa-block of K_2 is the
+**The case n = 2.** The proof of (c) does not use n >= 3, so W holds for n = 2: C11 = C12 = 1/4, C44 = 0 and (C11 - C12)/2 = 0,
+so only the bulk modulus is non-zero, and nu_100 = 1 formally. The counts in (a) and (b) change: the kappa-block of K_2 is the
 single condition b_1^1 + b_2^2 = 0, so the four-bar square has one internal flex, which couples to the translations through
 the cross bars at generic q. Result: 2 zero modes and 0 self-stresses at generic q, 3 and 1 at q = 0. The replay confirms
 exactly these numbers.
@@ -185,5 +186,5 @@ The source comparison, reading depths, elementary deductions and independent-rev
 
 * Independent human review of the written proof (internal pre-publication review only so far; see `docs/review-ledger.md`).
 * A formal (Lean 4) check of the block identities for general n is an open track (`docs/formalization.md`).
-* Physical meaning: the elastic tensor is only positive semi-definite (zero shear moduli); real materials add angular
+* Physical meaning: the elastic tensor is only positive semi-definite (C44 = 0); real materials add angular
   stiffness.
