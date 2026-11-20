@@ -1,0 +1,796 @@
+{
+  "arithmetic": "exact Q(i) with Fraction; the common factor c is divided out of every row; no floats, no tolerance",
+  "claims_replayed": {
+    "cross_polytope": "infinitesimally rigid for n >= 3 with n(n-3)/2 self-stresses (n = 2: one internal flex)",
+    "generic_z": "n(n-1)/2 zero modes, n(n-3)/2 self-stresses per cell (two generic phase families)",
+    "planes": "k phases equal to 1 add k to each count",
+    "q0": "n(n+1)/2 zero modes, n(n-1)/2 self-stresses (n = 2: 3 and 1)"
+  },
+  "control_details": {
+    "delete_one_bar_n3": {
+      "after": {
+        "bars": 11,
+        "rank": 11,
+        "self_stresses": 0,
+        "zero_modes": 7
+      },
+      "before": {
+        "bars": 12,
+        "rank": 12,
+        "self_stresses": 0,
+        "zero_modes": 6
+      }
+    },
+    "delete_one_bar_n4": {
+      "after": {
+        "bars": 23,
+        "rank": 22,
+        "self_stresses": 1,
+        "zero_modes": 10
+      },
+      "before": {
+        "bars": 24,
+        "rank": 22,
+        "self_stresses": 2,
+        "zero_modes": 10
+      }
+    },
+    "delete_one_bar_n5": {
+      "after": {
+        "bars": 39,
+        "rank": 35,
+        "self_stresses": 4,
+        "zero_modes": 15
+      },
+      "before": {
+        "bars": 40,
+        "rank": 35,
+        "self_stresses": 5,
+        "zero_modes": 15
+      }
+    },
+    "delete_one_bar_n6": {
+      "after": {
+        "bars": 59,
+        "rank": 51,
+        "self_stresses": 8,
+        "zero_modes": 21
+      },
+      "before": {
+        "bars": 60,
+        "rank": 51,
+        "self_stresses": 9,
+        "zero_modes": 21
+      }
+    },
+    "delete_one_bar_n7": {
+      "after": {
+        "bars": 83,
+        "rank": 70,
+        "self_stresses": 13,
+        "zero_modes": 28
+      },
+      "before": {
+        "bars": 84,
+        "rank": 70,
+        "self_stresses": 14,
+        "zero_modes": 28
+      }
+    },
+    "delete_one_bar_n8": {
+      "after": {
+        "bars": 111,
+        "rank": 92,
+        "self_stresses": 19,
+        "zero_modes": 36
+      },
+      "before": {
+        "bars": 112,
+        "rank": 92,
+        "self_stresses": 20,
+        "zero_modes": 36
+      }
+    },
+    "joint_degree_n-1_n3": {
+      "bars": 10,
+      "rank": 10,
+      "self_stresses": 0,
+      "zero_modes": 8
+    },
+    "joint_degree_n-1_n4": {
+      "bars": 21,
+      "rank": 21,
+      "self_stresses": 0,
+      "zero_modes": 11
+    },
+    "joint_degree_n-1_n5": {
+      "bars": 36,
+      "rank": 33,
+      "self_stresses": 3,
+      "zero_modes": 17
+    },
+    "joint_degree_n-1_n6": {
+      "bars": 55,
+      "rank": 49,
+      "self_stresses": 6,
+      "zero_modes": 23
+    },
+    "joint_degree_n-1_n7": {
+      "bars": 78,
+      "rank": 67,
+      "self_stresses": 11,
+      "zero_modes": 31
+    },
+    "joint_degree_n-1_n8": {
+      "bars": 105,
+      "rank": 89,
+      "self_stresses": 16,
+      "zero_modes": 39
+    },
+    "move_joint_along_axis_n3": {
+      "counts": {
+        "bars": 12,
+        "rank": 12,
+        "self_stresses": 0,
+        "zero_modes": 6
+      },
+      "squared_lengths": [
+        "10/9",
+        "2"
+      ]
+    },
+    "move_joint_along_axis_n4": {
+      "counts": {
+        "bars": 24,
+        "rank": 22,
+        "self_stresses": 2,
+        "zero_modes": 10
+      },
+      "squared_lengths": [
+        "10/9",
+        "2"
+      ]
+    },
+    "move_joint_along_axis_n5": {
+      "counts": {
+        "bars": 40,
+        "rank": 35,
+        "self_stresses": 5,
+        "zero_modes": 15
+      },
+      "squared_lengths": [
+        "10/9",
+        "2"
+      ]
+    },
+    "move_joint_along_axis_n6": {
+      "counts": {
+        "bars": 60,
+        "rank": 51,
+        "self_stresses": 9,
+        "zero_modes": 21
+      },
+      "squared_lengths": [
+        "10/9",
+        "2"
+      ]
+    },
+    "move_joint_along_axis_n7": {
+      "counts": {
+        "bars": 84,
+        "rank": 70,
+        "self_stresses": 14,
+        "zero_modes": 28
+      },
+      "squared_lengths": [
+        "10/9",
+        "2"
+      ]
+    },
+    "move_joint_along_axis_n8": {
+      "counts": {
+        "bars": 112,
+        "rank": 92,
+        "self_stresses": 20,
+        "zero_modes": 36
+      },
+      "squared_lengths": [
+        "10/9",
+        "2"
+      ]
+    },
+    "move_joint_offaxis_n3": {
+      "counts": {
+        "bars": 12,
+        "rank": 12,
+        "self_stresses": 0,
+        "zero_modes": 6
+      },
+      "squared_lengths": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ]
+    },
+    "move_joint_offaxis_n4": {
+      "counts": {
+        "bars": 24,
+        "rank": 22,
+        "self_stresses": 2,
+        "zero_modes": 10
+      },
+      "squared_lengths": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ]
+    },
+    "move_joint_offaxis_n5": {
+      "counts": {
+        "bars": 40,
+        "rank": 35,
+        "self_stresses": 5,
+        "zero_modes": 15
+      },
+      "squared_lengths": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ]
+    },
+    "move_joint_offaxis_n6": {
+      "counts": {
+        "bars": 60,
+        "rank": 51,
+        "self_stresses": 9,
+        "zero_modes": 21
+      },
+      "squared_lengths": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ]
+    },
+    "move_joint_offaxis_n7": {
+      "counts": {
+        "bars": 84,
+        "rank": 70,
+        "self_stresses": 14,
+        "zero_modes": 28
+      },
+      "squared_lengths": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ]
+    },
+    "move_joint_offaxis_n8": {
+      "counts": {
+        "bars": 112,
+        "rank": 92,
+        "self_stresses": 20,
+        "zero_modes": 36
+      },
+      "squared_lengths": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ]
+    }
+  },
+  "counts_by_n": [
+    {
+      "bars_per_cell": 6,
+      "crosspolytope": {
+        "bars": 4,
+        "rank": 4,
+        "self_stresses": 0,
+        "zero_modes": 4
+      },
+      "crosspolytope_nontrivial_motions": 1,
+      "crosspolytope_rigid": false,
+      "dofs_per_cell": 8,
+      "generic_z_minus1_and_pythagorean_zero_modes_selfstresses": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "intra_bars": 4,
+      "intra_squared_length_over_c2": [
+        2
+      ],
+      "n": 2,
+      "note": "n = 2: the square has one internal flex (outside the theorem)",
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          3,
+          1
+        ]
+      ],
+      "q0": {
+        "bars": 6,
+        "rank": 5,
+        "self_stresses": 1,
+        "zero_modes": 3
+      }
+    },
+    {
+      "bars_per_cell": 15,
+      "crosspolytope": {
+        "bars": 12,
+        "rank": 12,
+        "self_stresses": 0,
+        "zero_modes": 6
+      },
+      "crosspolytope_nontrivial_motions": 0,
+      "crosspolytope_rigid": true,
+      "dofs_per_cell": 18,
+      "explicit_stress_basis_dimension": 0,
+      "explicit_stress_basis_is_stress": true,
+      "generic_z_minus1_and_pythagorean_zero_modes_selfstresses": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "intra_bars": 12,
+      "intra_squared_length_over_c2": [
+        2
+      ],
+      "n": 3,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          1,
+          4,
+          1
+        ],
+        [
+          2,
+          5,
+          2
+        ],
+        [
+          3,
+          6,
+          3
+        ]
+      ],
+      "q0": {
+        "bars": 15,
+        "rank": 12,
+        "self_stresses": 3,
+        "zero_modes": 6
+      }
+    },
+    {
+      "bars_per_cell": 28,
+      "crosspolytope": {
+        "bars": 24,
+        "rank": 22,
+        "self_stresses": 2,
+        "zero_modes": 10
+      },
+      "crosspolytope_nontrivial_motions": 0,
+      "crosspolytope_rigid": true,
+      "dofs_per_cell": 32,
+      "explicit_stress_basis_dimension": 2,
+      "explicit_stress_basis_is_stress": true,
+      "generic_z_minus1_and_pythagorean_zero_modes_selfstresses": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "intra_bars": 24,
+      "intra_squared_length_over_c2": [
+        2
+      ],
+      "n": 4,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          6,
+          2
+        ],
+        [
+          1,
+          7,
+          3
+        ],
+        [
+          2,
+          8,
+          4
+        ],
+        [
+          3,
+          9,
+          5
+        ],
+        [
+          4,
+          10,
+          6
+        ]
+      ],
+      "q0": {
+        "bars": 28,
+        "rank": 22,
+        "self_stresses": 6,
+        "zero_modes": 10
+      }
+    },
+    {
+      "bars_per_cell": 45,
+      "crosspolytope": {
+        "bars": 40,
+        "rank": 35,
+        "self_stresses": 5,
+        "zero_modes": 15
+      },
+      "crosspolytope_nontrivial_motions": 0,
+      "crosspolytope_rigid": true,
+      "dofs_per_cell": 50,
+      "explicit_stress_basis_dimension": 5,
+      "explicit_stress_basis_is_stress": true,
+      "generic_z_minus1_and_pythagorean_zero_modes_selfstresses": [
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          5
+        ]
+      ],
+      "intra_bars": 40,
+      "intra_squared_length_over_c2": [
+        2
+      ],
+      "n": 5,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          10,
+          5
+        ],
+        [
+          1,
+          11,
+          6
+        ],
+        [
+          2,
+          12,
+          7
+        ],
+        [
+          3,
+          13,
+          8
+        ],
+        [
+          4,
+          14,
+          9
+        ],
+        [
+          5,
+          15,
+          10
+        ]
+      ],
+      "q0": {
+        "bars": 45,
+        "rank": 35,
+        "self_stresses": 10,
+        "zero_modes": 15
+      }
+    },
+    {
+      "bars_per_cell": 66,
+      "crosspolytope": {
+        "bars": 60,
+        "rank": 51,
+        "self_stresses": 9,
+        "zero_modes": 21
+      },
+      "crosspolytope_nontrivial_motions": 0,
+      "crosspolytope_rigid": true,
+      "dofs_per_cell": 72,
+      "explicit_stress_basis_dimension": 9,
+      "explicit_stress_basis_is_stress": true,
+      "generic_z_minus1_and_pythagorean_zero_modes_selfstresses": [
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          9
+        ]
+      ],
+      "intra_bars": 60,
+      "intra_squared_length_over_c2": [
+        2
+      ],
+      "n": 6,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          15,
+          9
+        ],
+        [
+          1,
+          16,
+          10
+        ],
+        [
+          2,
+          17,
+          11
+        ],
+        [
+          3,
+          18,
+          12
+        ],
+        [
+          4,
+          19,
+          13
+        ],
+        [
+          5,
+          20,
+          14
+        ],
+        [
+          6,
+          21,
+          15
+        ]
+      ],
+      "q0": {
+        "bars": 66,
+        "rank": 51,
+        "self_stresses": 15,
+        "zero_modes": 21
+      }
+    },
+    {
+      "bars_per_cell": 91,
+      "crosspolytope": {
+        "bars": 84,
+        "rank": 70,
+        "self_stresses": 14,
+        "zero_modes": 28
+      },
+      "crosspolytope_nontrivial_motions": 0,
+      "crosspolytope_rigid": true,
+      "dofs_per_cell": 98,
+      "explicit_stress_basis_dimension": 14,
+      "explicit_stress_basis_is_stress": true,
+      "generic_z_minus1_and_pythagorean_zero_modes_selfstresses": [
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          14
+        ]
+      ],
+      "intra_bars": 84,
+      "intra_squared_length_over_c2": [
+        2
+      ],
+      "n": 7,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          21,
+          14
+        ],
+        [
+          1,
+          22,
+          15
+        ],
+        [
+          2,
+          23,
+          16
+        ],
+        [
+          3,
+          24,
+          17
+        ],
+        [
+          4,
+          25,
+          18
+        ],
+        [
+          5,
+          26,
+          19
+        ],
+        [
+          6,
+          27,
+          20
+        ],
+        [
+          7,
+          28,
+          21
+        ]
+      ],
+      "q0": {
+        "bars": 91,
+        "rank": 70,
+        "self_stresses": 21,
+        "zero_modes": 28
+      }
+    },
+    {
+      "bars_per_cell": 120,
+      "crosspolytope": {
+        "bars": 112,
+        "rank": 92,
+        "self_stresses": 20,
+        "zero_modes": 36
+      },
+      "crosspolytope_nontrivial_motions": 0,
+      "crosspolytope_rigid": true,
+      "dofs_per_cell": 128,
+      "explicit_stress_basis_dimension": 20,
+      "explicit_stress_basis_is_stress": true,
+      "generic_z_minus1_and_pythagorean_zero_modes_selfstresses": [
+        [
+          28,
+          20
+        ],
+        [
+          28,
+          20
+        ]
+      ],
+      "intra_bars": 112,
+      "intra_squared_length_over_c2": [
+        2
+      ],
+      "n": 8,
+      "planes_k_zeromodes_selfstresses": [
+        [
+          0,
+          28,
+          20
+        ],
+        [
+          1,
+          29,
+          21
+        ],
+        [
+          2,
+          30,
+          22
+        ],
+        [
+          3,
+          31,
+          23
+        ],
+        [
+          4,
+          32,
+          24
+        ],
+        [
+          5,
+          33,
+          25
+        ],
+        [
+          6,
+          34,
+          26
+        ],
+        [
+          7,
+          35,
+          27
+        ],
+        [
+          8,
+          36,
+          28
+        ]
+      ],
+      "q0": {
+        "bars": 120,
+        "rank": 92,
+        "self_stresses": 28,
+        "zero_modes": 36
+      }
+    }
+  ],
+  "evidence_label": "VERIFIED (finite check): n = 2..8 at chosen exact points; not a proof for all n or all q",
+  "must_fail_controls_rejected": [
+    "rank and stress count unchanged after deleting one bar (n=3)",
+    "still rigid with one joint of degree n-1 (n=3)",
+    "all intra bars still equal length after moving a joint off axis (n=3; lengths only)",
+    "generic-q zero-mode count unchanged after deleting cross bar X_n (n=3)",
+    "rank and stress count unchanged after deleting one bar (n=4)",
+    "still rigid with one joint of degree n-1 (n=4)",
+    "all intra bars still equal length after moving a joint off axis (n=4; lengths only)",
+    "sign-twisted tensions accepted as a self-stress (n=4)",
+    "generic-q zero-mode count unchanged after deleting cross bar X_n (n=4)",
+    "rank and stress count unchanged after deleting one bar (n=5)",
+    "still rigid with one joint of degree n-1 (n=5)",
+    "all intra bars still equal length after moving a joint off axis (n=5; lengths only)",
+    "sign-twisted tensions accepted as a self-stress (n=5)",
+    "generic-q zero-mode count unchanged after deleting cross bar X_n (n=5)",
+    "rank and stress count unchanged after deleting one bar (n=6)",
+    "still rigid with one joint of degree n-1 (n=6)",
+    "all intra bars still equal length after moving a joint off axis (n=6; lengths only)",
+    "sign-twisted tensions accepted as a self-stress (n=6)",
+    "generic-q zero-mode count unchanged after deleting cross bar X_n (n=6)",
+    "rank and stress count unchanged after deleting one bar (n=7)",
+    "still rigid with one joint of degree n-1 (n=7)",
+    "all intra bars still equal length after moving a joint off axis (n=7; lengths only)",
+    "sign-twisted tensions accepted as a self-stress (n=7)",
+    "generic-q zero-mode count unchanged after deleting cross bar X_n (n=7)",
+    "rank and stress count unchanged after deleting one bar (n=8)",
+    "still rigid with one joint of degree n-1 (n=8)",
+    "all intra bars still equal length after moving a joint off axis (n=8; lengths only)",
+    "sign-twisted tensions accepted as a self-stress (n=8)",
+    "generic-q zero-mode count unchanged after deleting cross bar X_n (n=8)"
+  ],
+  "not_covered": [
+    "equal bar length from c = 2 - sqrt2",
+    "elastic constants",
+    "all wavevectors",
+    "identification of zero modes as rotations"
+  ],
+  "result": "rigidity-exact-replay"
+}
