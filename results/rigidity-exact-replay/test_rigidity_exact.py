@@ -11,8 +11,10 @@ evaluated by hand), not computed from the formulas in the scripts, so a wrong fo
 import importlib.util
 import json
 import pathlib
+import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -120,11 +122,35 @@ class ExactMustFail(unittest.TestCase):
         RE.must_fail("broken input was rejected", False, log)
         self.assertEqual(log, ["broken input was rejected"])
 
+    def test_check_mode_recomputes_n_up_to_8_and_rejects_an_edited_file(self):
+        # --check recomputes n = 2..8 (the other tests stop at n = 5) and must reject a stored file with one count changed
+        with tempfile.TemporaryDirectory() as tmp:
+            copy = pathlib.Path(tmp)
+            for name in ("rigidity_exact.py", "exact_counts.json"):
+                shutil.copy(HERE / name, copy / name)
+            stored = json.loads((copy / "exact_counts.json").read_text())
+            stored["counts_by_n"][-1]["crosspolytope"]["self_stresses"] += 1
+            (copy / "exact_counts.json").write_text(json.dumps(stored, indent=2, sort_keys=True) + "\n")
+            cmd = [sys.executable, "-I", "-B"]
+            good = subprocess.Popen(cmd + [str(HERE / "rigidity_exact.py"), "--check"],
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            bad = subprocess.Popen(cmd + [str(copy / "rigidity_exact.py"), "--check"],
+                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            good_out, bad_out = good.communicate(timeout=600), bad.communicate(timeout=600)
+        self.assertEqual(good.returncode, 0, good_out)
+        self.assertIn("stored file matches (n = 2..8", good_out[0])
+        self.assertEqual(bad.returncode, 1, bad_out)
+        self.assertIn("recomputed counts differ", bad_out[1])
+
     def test_corrupt_runs_exit_1(self):
-        for script in ("rigidity_exact.py", "modp_check.py"):
+        # the mismatch must come from the corrupted count itself, not from the end-of-run guard
+        expect = {"rigidity_exact.py": "MISMATCH: n=3: cross-polytope zero modes 6, expected 7",
+                  "modp_check.py": "MISMATCH: mod 1000000009 n=3 cp: got (6, 0), expected (7, 0)"}
+        for script, msg in expect.items():
             r = run(script, "--corrupt", *(("--nmax", "4") if script == "rigidity_exact.py" else ()))
             self.assertEqual(r.returncode, 1, script)
-            self.assertIn("MISMATCH", r.stderr + r.stdout, script)
+            self.assertIn(msg, r.stderr + r.stdout, script)
+            self.assertNotIn("reached the end", r.stderr + r.stdout, script)
 
 
 class ModPKnownAnswers(unittest.TestCase):
@@ -152,6 +178,21 @@ class ModPKnownAnswers(unittest.TestCase):
                 self.assertEqual(len(sq), 1, "all bars one length")
                 rows, _ = MP.system(n, p, c, [p - 1] * n)
                 self.assertEqual(MP.counts(rows, n, p), GEN[n], f"p={p} z=-1 n={n}")
+
+    def test_full_run_covers_n_2_to_8_for_every_prime(self):
+        out, log = MP.run()
+        self.assertEqual(sorted(out), sorted(str(p) for p in MP.PRIMES))
+        for p in MP.PRIMES:
+            res = out[str(p)]
+            self.assertEqual(sorted(res, key=int), [str(n) for n in range(2, 9)], f"p={p}")
+            for n in range(2, 9):
+                self.assertEqual(tuple(res[str(n)]["counts"]["cp"]), CP[n], f"p={p} n={n}")
+                self.assertEqual(tuple(res[str(n)]["counts"]["q0"]), Q0[n], f"p={p} n={n}")
+                self.assertEqual(tuple(res[str(n)]["counts"]["gen"]), GEN[n], f"p={p} n={n}")
+                if n >= 3:
+                    want = [[GEN[n][0] + k, GEN[n][1] + k] for k in range(n + 1)]
+                    self.assertEqual(res[str(n)]["planes"], want, f"p={p} n={n} planes")
+        self.assertEqual(len(log), 27)
 
     def test_agrees_with_the_exact_method(self):
         p = MP.PRIMES[0]

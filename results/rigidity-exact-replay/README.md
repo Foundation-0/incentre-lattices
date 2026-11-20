@@ -10,9 +10,9 @@ A rank of the rigidity matrix gives the zero modes (motions that cost no bar str
 
 | Statement | Where it is stated | Replayed for |
 |---|---|---|
-| The lone cross-polytope is infinitesimally rigid for n >= 3, with n(n+1)/2 zero modes and n(n-3)/2 self-stresses. For n = 2 the square has one internal flex. | `PROOF.md` (a) and (c) | n = 2..8 |
-| At generic wavevector: n(n-1)/2 zero modes and n(n-3)/2 self-stresses per cell | `PROOF.md` (b) | n = 2..8, two phase families |
-| With k phases equal to 1: both counts rise by k | `PROOF.md` (b) | n = 2..8, k = 0..n |
+| The lone cross-polytope is infinitesimally rigid for n >= 3, with n(n+1)/2 zero modes and n(n-3)/2 self-stresses. For n = 2 the square has one internal flex. | `PROOF.md` (a), and "The case n = 2" | n = 2..8 |
+| At generic wavevector: n(n-1)/2 zero modes and n(n-3)/2 self-stresses per cell | `PROOF.md` (b), and "The case n = 2" | n = 3..8, two phase families. For n = 2 the stated values are 2 and 0, and those are checked. |
+| With k phases equal to 1: both counts rise by k | `PROOF.md` (b) | n = 3..8, k = 0..n. `PROOF.md` states no plane counts for n = 2. Those values are written to `exact_counts.json` but not compared. |
 | At q = 0: n(n+1)/2 zero modes and n(n-1)/2 self-stresses | `PROOF.md` (b) | n = 2..8 |
 | The explicit stress basis of `PROOF.md` (a) is a self-stress and has dimension n(n-3)/2 | `PROOF.md` (a) | n = 3..8 |
 
@@ -20,11 +20,11 @@ All of these agree with the stated numbers. Nothing differs.
 
 ## Two methods
 
-`rigidity_exact.py` works over Q(i) with Python `fractions`. Every bar vector is a nonzero multiple of an integer direction, so the irrational factor c = 2 - sqrt2 divides out of each row. Scaling a row does not change a rank or a left kernel. The Bloch phase exp(2iq) is taken at exact points: 1, -1, and Pythagorean points such as (3+4i)/5.
+`rigidity_exact.py` works over Q(i) with Python `fractions`. Every bar vector is a nonzero multiple of an integer direction, so the irrational factor c = 2 - sqrt2 divides out of each row. Scaling a row by a nonzero number does not change the rank or the number of self-stresses. The Bloch phase exp(2iq) is taken at exact points: 1, -1, and Pythagorean points such as (3+4i)/5.
 
 `modp_check.py` keeps the true coordinates, with c = 2 - sqrt2, and works in the field GF(p) for the primes 1000000009, 998244353 and 2013265921. Each is 1 mod 8, so sqrt2 and i exist in GF(p). It also checks that the intra and cross bars have equal length. The two scripts share no code.
 
-A rank mod p is at most the rank over the rationals, so a zero-mode count mod p is at least the true count. Three primes agreeing with the formulas is evidence, not proof.
+Reducing a matrix modulo p can lower its rank but never raise it. So a zero-mode count mod p is at least the true count. Three primes agreeing with the formulas is evidence, not proof.
 
 ## How it differs from the open draft
 

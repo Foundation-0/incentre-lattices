@@ -12,8 +12,8 @@ How it differs from rigidity_exact.py:
   * It also checks that the intra and cross bars have equal length, which the other script does not: 2 c^2 and
     (2 - 2c)^2 must agree in GF(p).
 
-What a rank mod p shows: the rank of an integer-valued matrix mod p is at most its rank over the rationals, so a zero-mode
-count mod p is at least the true count. Three different primes agreeing with the formulas is evidence, not proof.
+What a rank mod p shows: reducing a matrix modulo p can lower its rank but never raise it, so a zero-mode count mod p is
+at least the true count. Three different primes agreeing with the formulas is evidence, not proof.
 Evidence label: VERIFIED (finite check).
 
 Usage:
