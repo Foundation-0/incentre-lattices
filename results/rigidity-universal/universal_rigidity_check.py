@@ -538,6 +538,8 @@ def run_controls(rng):
     om2 = list(om)
     om2[k] *= 2
     must_reject("Maxwell identity on a non-equilibrium stress", maxwell_defects(pts, bars, om2))
+    must_reject("Maxwell sum alone on a non-equilibrium stress",
+                [p for p in maxwell_defects(pts, bars, om2) if p.startswith("sum omega")])
     # 6. The indefiniteness detector must not flag a PSD matrix (the periodic Omega(0) and the square below).
     n, c = 3, F(1, 2)
     pts, bars = incentre(n, c)

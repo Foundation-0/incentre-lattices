@@ -4,6 +4,8 @@
 Run: python3 -I -B results/rigidity-universal/test_universal_rigidity.py
 The known-answer numbers below are written as literals, not computed by the module under test.
 """
+import contextlib
+import io
 import itertools
 import pathlib
 import random
@@ -98,6 +100,13 @@ class FullRun(unittest.TestCase):
         rng = random.Random(u.SEED)
         u.check_maxwell(rng)
         u.run_controls(rng)
+
+    def test_main_passes(self):
+        # Runs parts A to E exactly as the command line does, including the cross-polytope checks.
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            self.assertEqual(u.main([]), 0)
+        self.assertTrue(buf.getvalue().rstrip().endswith("ALL CHECKS PASSED"))
 
 
 if __name__ == "__main__":

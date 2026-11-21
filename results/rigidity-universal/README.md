@@ -10,6 +10,7 @@ Label: PROVEN (written proof in [PROOF.md](PROOF.md)) and VERIFIED (finite exact
 2. If every stressed bar has the same length and the framework has at least d + 2 vertices in R^d, the only positive semidefinite stress is zero. So no super-stability certificate exists.
 
    A framework is super stable when a positive semidefinite stress of the right rank exists, plus a mild condition on bar directions. Connelly's theorem then gives universal rigidity.
+
 3. More strongly, a finite framework with all bars of one length and at least d + 2 vertices is not universally rigid. Send vertex k to the k-th unit vector of R^V, scaled to the bar length. Every bar keeps its length and the map is not a congruence.
 
    This covers the finite cross-polytope for every n >= 2.
@@ -70,10 +71,12 @@ The check takes about one second. Standard library only. The three modes print i
 
 ## Where this sits in the repository
 
-This folder is outside `make verify`. The script is named `universal_rigidity_check.py`, not `verify.py`, because `tools/build_certificates.py` requires a certificate for every `results/*/verify.py`. It has no certificate and is not in `commitment/`. `SHA256SUMS` binds the files. A maintainer who wants it in CI can add a Makefile target that runs the two commands above. That is a change to an existing file and is left out here.
+This folder is outside `make verify`. The script is named `universal_rigidity_check.py`, not `verify.py`, because `tools/build_certificates.py` requires a certificate for every `results/*/verify.py`. It has no certificate and is not in `commitment/`.
 
-The open drafts for the exact replay of the rigidity counts and for the folds touch other folders. This note touches neither. The fold drafts study motions where the lattice changes. This note shows that no motion keeps the lattice fixed and every bar length.
+`SHA256SUMS` binds the files. A maintainer who wants it in CI can add a Makefile target that runs the two commands above. That is a change to an existing file and is left out here.
+
+The open drafts for the exact replay of the rigidity counts and for the folds touch other folders. This note touches neither. The fold drafts study motions where the lattice changes. This note shows that, with the lattice fixed, every periodic configuration that keeps every bar length is a translate.
 
 ## AI assistance
 
-Claude Sonnet 5.5 (Anthropic) wrote this note, the script and the tests, and re-derived each formula before writing it. An independent check by a separate Claude Opus run reached the same results. No human has reviewed the proofs.
+Claude Sonnet 5.5 (Anthropic) wrote this note, the script and the tests, and re-derived each formula before writing it. Claude Fable 5.2 directed the work. Separate Claude Opus 5.5 runs checked the results independently and reviewed this folder. They reached the same results. No human has reviewed the proofs.

@@ -9,11 +9,11 @@ A bar framework (G, p) has V vertices p_1, ..., p_V in R^d and a set of bars. A 
 
 A framework is **universally rigid** if every configuration in any R^D with the same bar lengths is congruent to it. It is **super stable** if some positive semidefinite (PSD) stress has rank V - d - 1 and the bar directions do not lie on a conic at infinity.
 
-Connelly proved that a super stable framework is universally rigid (KNOWN: Connelly 1982, "Rigidity and energy", Inventiones Mathematicae 66, and Connelly and Whiteley 1996, "Second-order rigidity and prestress stability for tensegrity frameworks"). Connelly, Gortler and Theran (2017, "Affine rigidity and conics at infinity", IMRN) give the conic condition.
+Connelly proved that a super stable framework is universally rigid (KNOWN: Connelly 1982, "Rigidity and energy", Inventiones Mathematicae 66). Connelly, Gortler and Theran (2017, "Affine rigidity and conics at infinity", IMRN) give the conic condition.
 
 ## 1. Maxwell's identity
 
-**Proposition 1 (KNOWN: Maxwell 1870, "On reciprocal figures and diagrams of forces").** For every self-stress, sum over bars of omega_ij |p_i - p_j|^2 = 0. So trace Omega = 2 sum of omega_ij.
+**Proposition 1 (KNOWN: Maxwell 1870, "On reciprocal figures, frames, and diagrams of forces").** For every self-stress, sum over bars of omega_ij |p_i - p_j|^2 = 0. So trace Omega = 2 sum of omega_ij.
 
 *Proof.* Take the dot product of the equilibrium equation at vertex i with p_i and sum over i. A bar ij contributes omega_ij p_i . (p_i - p_j) at i and omega_ij p_j . (p_j - p_i) at j. These add to omega_ij |p_i - p_j|^2. The total is zero. The diagonal of Omega is the sum of omega_ij over the bars at i, so trace Omega counts each bar twice. QED
 
@@ -49,13 +49,17 @@ The vertices (i, +) and (i, -) of one axis share no bar, so the diagonal block o
 
 A nonzero stress has trace Omega^2 > 0 and trace Omega = 0. A PSD matrix with trace 0 is zero, so Omega is not PSD. For an explicit witness, take a pair with w_ij nonzero. The vector with 1 on the four vertices of axes i and j gives the value -8 w_ij. The vector with 1 on axis i and -1 on axis j gives +8 w_ij. QED
 
-Proposition 4 also follows from Proposition 2, since all bars have one length. The explicit form is what the script checks.
+The last claim of Proposition 4 also follows from Proposition 2. All bars have one length and V = 2n >= n + 2, so neither omega nor -omega is PSD unless omega = 0. The explicit form is what the script checks.
 
 ## 5. The periodic framework with the lattice fixed
 
-Take the periodic framework of `results/rigidity-nd/PROOF.md`. The dots are p(i, s) = s c e_i for i = 1..n and s = +-1, with the lattice 2 Z^n. Here 0 < c < 1 is any value. The incentre uses c = 2 - sqrt 2. Bars are the 2n(n-1) intra bars between dots of different axes in one cell, and n cross bars joining p(i, +) to p(i, -) + 2 e_i of the next cell. A bar e from dot a to dot b with lattice shift L has vector l_e = p_b + L - p_a.
+Take the periodic framework of `results/rigidity-nd/PROOF.md`. The dots are p(i, s) = s c e_i for i = 1..n and s = +-1, with the lattice 2 Z^n. Here 0 < c < 1 is any value. The incentre uses c = 2 - sqrt 2.
+
+Bars are the 2n(n-1) intra bars between dots of different axes in one cell, and n cross bars joining p(i, +) to p(i, -) + 2 e_i of the next cell. A bar e from dot a to dot b with lattice shift L has vector l_e = p_b + L - p_a.
 
 A **stress at zero wavevector** gives each bar a tension omega_e so that the pulls omega_e l_e on the two ends of every bar balance at every dot. The matrix Omega(0) has x^T Omega(0) x = sum over bars of omega_e (x_b - x_a)^2.
+
+Here omega_e is force per unit length. The rigidity-nd proof uses the force itself, which is omega_e |l_e|. At c = 2 - sqrt 2 every bar has length 2R, so the two scales differ by the factor 2R. The cross value c (n-1) / (1-c) below is then sqrt 2 (n-1), as in part (b) there with w = 1.
 
 **Proposition 5.** Let w_ij = 1 for all i < j and r_i = n - 1. Put tension 1 on every intra bar and tension tau = c (n-1) / (1-c) on every cross bar. This is a stress at zero wavevector. For x in R^(2n) put m_i = (x(i,+) + x(i,-)) / 2 and d_i = (x(i,+) - x(i,-)) / 2. Then
 
@@ -77,7 +81,7 @@ With w = 1 the first sum is the quadratic form of the Laplacian of the complete 
 
 The middle term is 2 times the sum over dots a of u(a) . (net pull on a), and this is zero by balance. The last term is the sum over the D coordinates k of u_k^T Omega(0) u_k, where u_k is the k-th coordinate of u. If every bar keeps its length, then E(p + u) = E(p). So the last term is zero. By Proposition 5, each u_k is constant. So u is a constant vector. QED
 
-**Stated hypotheses of Theorem 5.8 in Dewar, Schulze, Tanigawa and Theran** (arXiv:2510.19529, "Uniquely realizable crystalline structures"). This is KNOWN. An independent check read the statement as follows: the lattice is fixed, there is an equilibrium stress of the periodic framework, its stress matrix at zero wavevector is positive semidefinite with a one-dimensional kernel, and no conic condition is needed. 
+**Stated hypotheses of Theorem 5.8 in Dewar, Schulze, Tanigawa and Theran** (arXiv:2510.19529, "Uniquely realizable crystalline structures"). This is KNOWN. An independent check read the statement as follows: the lattice is fixed, there is an equilibrium stress of the periodic framework, its stress matrix at zero wavevector is positive semidefinite with a one-dimensional kernel, and no conic condition is needed.
 
 The conclusion is universal rigidity among periodic configurations with that lattice.
 
@@ -108,4 +112,4 @@ The open fold drafts (pull requests 106 and 107) study bar-preserving motions in
 
 ## Novelty
 
-Default N0, meaning known. Maxwell 1870, Connelly 1982, Connelly and Whiteley 1996, Connelly, Gortler and Theran 2017, and Dewar, Schulze, Tanigawa and Theran (2025) cover the mathematics. The bridged cross-polytope family is prior art (see `results/rigidity-nd/LITERATURE.md`). A bounded search by mechanism did not find the incentre instance of Propositions 5 and 6 written down. That is not a priority claim.
+Default N0, meaning known. Maxwell 1870, Connelly 1982, Connelly, Gortler and Theran 2017, and Dewar, Schulze, Tanigawa and Theran (2025) cover the mathematics. The bridged cross-polytope family is prior art (see `results/rigidity-nd/LITERATURE.md`). A bounded search by mechanism did not find the incentre instance of Propositions 5 and 6 written down. That is not a priority claim.
