@@ -93,7 +93,7 @@ What was taken from the paper by that check and not re-read for this note: the e
 
 ## 6. A remark on a free lattice (not a theorem)
 
-Let the lattice be free to deform. The balance condition then has an extra term. As an independent check reads it from the literature (Borcea and Streinu, and Dewar et al., equation 2), the matrix S = sum over bars of omega_e l_e kron l_e must vanish. This condition is taken from that reading and not re-derived here.
+Let the lattice be free to deform. The balance condition then has an extra term. As an independent check reads it from the literature (Dewar et al., equation 2), the matrix S = sum over bars of omega_e l_e kron l_e must vanish. This condition is taken from that reading and not re-derived here.
 
 For the stresses of Proposition 5 with general weights w_ij, a direct sum gives S = diag(4 c r_i). The script checks this with exact arithmetic. So S = 0 forces every r_i = 0, and then every cross-bar tension is zero. The remaining stressed bars are intra bars of one length c sqrt 2, and Proposition 2 applies to them.
 
@@ -112,4 +112,8 @@ The open fold drafts (pull requests 106 and 107) study bar-preserving motions in
 
 ## Novelty
 
-Default N0, meaning known. Maxwell 1870, Connelly 1982, Connelly, Gortler and Theran 2017, and Dewar, Schulze, Tanigawa and Theran (2025) cover the mathematics. The bridged cross-polytope family is prior art (see `results/rigidity-nd/LITERATURE.md`). A bounded search by mechanism did not find the incentre instance of Propositions 5 and 6 written down. That is not a priority claim.
+Default N0, meaning known. Maxwell 1870, Connelly 1982, Connelly, Gortler and Theran 2017, and Dewar, Schulze, Tanigawa and Theran (2025) cover the mathematics.
+
+Of these, only the last was read for this note, in part: its Theorem 5.8 and its equation 2. The others are cited as standard references.
+
+The bridged cross-polytope family is prior art (see `results/rigidity-nd/LITERATURE.md`). A bounded search by mechanism did not find the incentre instance of Propositions 5 and 6 written down. That is not a priority claim.
