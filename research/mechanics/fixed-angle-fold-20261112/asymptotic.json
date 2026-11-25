@@ -1,0 +1,11 @@
+{
+  "central_rotation_matrix": "Matrix([[16/3, 8/3, 8/3], [8/3, 80/9, -56/9], [8/3, -56/9, 80/9]])",
+  "exx_rotation_forcing": "Matrix([[0], [-20*sqrt(2)/9 - 20/9], [20/9 + 20*sqrt(2)/9]])",
+  "angular_rotation_matrix": "Matrix([[8*sqrt(2) + 12, 0, 0], [0, 8*sqrt(2) + 12, 0], [0, 0, 8*sqrt(2) + 12]])",
+  "scaled_variable": "x=s/sqrt(kappa)",
+  "scaled_gain": "sqrt(kappa)*||du/de_xx|| -> (40*(2+sqrt(2))/9)*x / ((136/9)*x^2+2*(2+sqrt(2))^2)",
+  "peak_x": "3*(2+sqrt(2))/(2*sqrt(17))",
+  "peak_scaled_gain": "5/(3*sqrt(17))",
+  "peak_x_decimal": 1.2421026305365255,
+  "peak_scaled_gain_decimal": 0.4042260417272216
+}

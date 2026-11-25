@@ -1,0 +1,51 @@
+{
+  "source_hashes": {
+    "PROTOCOL.md": "e78c9739b9be930e41ba701012b6435da8993a094daa40db7d990cc45c552973",
+    "RESULTS.md": "32e9ff75bc75191f019daf48f6a9defb14c977a9f4b65717e123b65b32923c67",
+    "DERIVATION.md": "86f82f7ee5af5053e17b1a357324e591e1a539f04d68d995a2b2e08e0ba30802",
+    "probe.py": "a530c0921a06f0d10e57cd45b7e221f66c3fc2eb21f65c6437d53a1d53177356",
+    "asymptotic.py": "c1e3221158895601e1b70f3f8772b6e9d3396fc8bbc45848c5008f0d89256726",
+    "asymptotic.json": "b2d6032181cc9fe9b426297a338b9c2897692aeed8e47f16c0241b410c694710",
+    "evidence.json": "3592435176a89849efef14d15bcda7bf4238222a8e5bb01bf7f4d252f8ec9a9a",
+    "sources.json": "abcce1607bcedbb17e5e7d1de4fec824da59987bd66def98ff5c2d9f6451da45",
+    "refine.py": "f4427a96f87d0b89d471df9ba1035c69a2a4511a4aa6a359c1fc90a972f6b558",
+    "refinement.json": "24ef6135a90b5e1b8ad12f1e5771a9e573251afe8c88b76e77de5608d70f7d63",
+    "requirements.txt": "74768555325820c65c18d6f16ca6d625283569829d851e9b60456d455405a0e8"
+  },
+  "exact": {
+    "central_null_dimension_open": 6,
+    "left_null_dimension_open": 3,
+    "central_rotation_matrix": "Matrix([[16/3, 8/3, 8/3], [8/3, 80/9, -56/9], [8/3, -56/9, 80/9]])",
+    "forcing": "Matrix([[0], [-20*sqrt(2)/9 - 20/9], [20/9 + 20*sqrt(2)/9]])",
+    "open_angular_rotation_matrix": "Matrix([[8*sqrt(2) + 12, 0, 0], [0, 8*sqrt(2) + 12, 0], [0, 0, 8*sqrt(2) + 12]])",
+    "peak_s_over_sqrt_kappa": "3*sqrt(68*sqrt(2) + 102)/34",
+    "peak_gain_times_sqrt_kappa": "5*sqrt(34)*(sqrt(2) + 2)/(102*sqrt(2*sqrt(2) + 3))",
+    "endpoint_rotation_matrix": "Matrix([[2, 2, 2], [2, 2, -2 + sqrt(2)], [2, -2 + sqrt(2), 2]])",
+    "endpoint_gauss_newton_rotation_matrix": "Matrix([[6, 2, 2], [2, 6, -2], [2, -2, 6]])",
+    "endpoint_trial_rayleigh_over_kappa": "1/4 - 3*sqrt(2)/8",
+    "endpoint_trial_rayleigh_decimal": -0.28033008588991065,
+    "endpoint_projected_minimum_over_kappa": "-sqrt(38 - 4*sqrt(2))/8 + sqrt(2)/8 + 1/4",
+    "endpoint_projected_minimum_decimal": -0.28411123704690877,
+    "endpoint_disposition": "negative trial curvature proves local instability for every kappa>0 in the stated dead-load point-joint model"
+  },
+  "independent_finite_energy": [
+    {
+      "amplitude": "1e-5",
+      "curvature": "-0.0000002799988357856058945313159553448655890879750653005728770877139736230621",
+      "predicted": "-0.0000002803300858899106433006332715786367794636269532663555274412549017465247",
+      "relative_error": 0.001181643073568761
+    },
+    {
+      "amplitude": "1e-7",
+      "curvature": "-0.0000002803300527649002067482349376277806934791827388635249381562325170933395",
+      "predicted": "-0.0000002803300858899106433006332715786367794636269532663555274412549017465247",
+      "relative_error": 1.1816430737855598e-07
+    },
+    {
+      "amplitude": "1e-9",
+      "curvature": "-0.0000002803300858865981422569779709700276571280050098887027683528702879471401",
+      "predicted": "-0.0000002803300858899106433006332715786367794636269532663555274412549017465247",
+      "relative_error": 1.1816430737855814e-11
+    }
+  ]
+}
