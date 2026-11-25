@@ -8,7 +8,7 @@ spring-network elastic tensor directly from the geometry, for n = 2..8, and chec
       sum_j w_ij = 0) spans the self-stresses at generic q;
   (d) the explicit q = 0 stresses (w, tau) with tau_i = sqrt2 sum_j w_ij (tensions);
   (e) generic-q zero modes are exactly the cluster rotations u_{i,s} = s c Omega e_i;
-  (f) C11, C12, all shear moduli = 0, nu100 = 1/(n^2-n-1), with FULL internal relaxation
+  (f) C11, C12, C44 = 0, nu100 = 1/(n^2-n-1), with FULL internal relaxation
       (no symmetry restriction), for the incentre c = 2 - sqrt2 and for other c.
 Run:  python rigidity_nd.py   (the certificate driver is verify.py)
 """

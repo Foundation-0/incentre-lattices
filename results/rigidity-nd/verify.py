@@ -10,7 +10,7 @@ What is replayed (all finite checks, for n = 2..8):
   * the cross-polytope alone is infinitesimally rigid for n >= 3;
   * the explicit stress basis spans the generic self-stresses; the explicit q = 0 stresses;
     the generic zero modes are exactly the cluster rotations;
-  * elastic constants with full internal relaxation: C11, C12, vanishing shear, nu_100 = 1/(n^2-n-1),
+  * elastic constants with full internal relaxation: C11, C12, C44 = 0, nu_100 = 1/(n^2-n-1),
     for the incentre c = 2 - sqrt2 and for c = 0.3, 0.75;
   * the three steps of the written proof, symbolically (proof_steps.py).
 Must-fail controls: the n >= 3 counts fail at n = 2; a wrong Poisson formula and a wrong C11/C12 ratio
@@ -91,7 +91,7 @@ def main():
                         "nu100_exact": str(pn), "nu100_value": certlib.sig(float(pn), 10),
                         "matches_numerics_for_c_values": [certlib.sig(c, 6) for c in CS],
                         "numerical_agreement": "C11, C12 to 1e-12; shear and normal-shear coupling below 1e-12; nu100 to 1e-10",
-                        "shear_moduli_zero": True})
+                        "c44_zero": True})
 
     with contextlib.redirect_stdout(io.StringIO()):
         steps_ok = proof_steps.run()
