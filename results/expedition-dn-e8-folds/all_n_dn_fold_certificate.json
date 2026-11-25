@@ -1,0 +1,190 @@
+{
+  "theorem": "All-Dimension Continuous Folding F_n -> D_n (n >= 3) + Clifford-Nilpotent C4",
+  "universal_Cn_exact_dims_3_to_9": [
+    {
+      "n": 3,
+      "det_at_2": 12,
+      "kissing_number": 12,
+      "ldlt_min_pivot": "3/2",
+      "chebyshev_poly": [
+        2,
+        1,
+        0,
+        1
+      ],
+      "adv_pairs_verified": 6004,
+      "gauge_Bn_verified": true
+    },
+    {
+      "n": 4,
+      "det_at_2": 16,
+      "kissing_number": 24,
+      "ldlt_min_pivot": "4/3",
+      "chebyshev_poly": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "adv_pairs_verified": 8075,
+      "gauge_Bn_verified": true
+    },
+    {
+      "n": 5,
+      "det_at_2": 20,
+      "kissing_number": 40,
+      "ldlt_min_pivot": "5/4",
+      "chebyshev_poly": [
+        2,
+        -3,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "adv_pairs_verified": 8225,
+      "gauge_Bn_verified": true
+    },
+    {
+      "n": 6,
+      "det_at_2": 24,
+      "kissing_number": 60,
+      "ldlt_min_pivot": "6/5",
+      "chebyshev_poly": [
+        4,
+        0,
+        -3,
+        0,
+        -2,
+        0,
+        1
+      ],
+      "adv_pairs_verified": 8400,
+      "gauge_Bn_verified": true
+    },
+    {
+      "n": 7,
+      "det_at_2": 28,
+      "kissing_number": 84,
+      "ldlt_min_pivot": "7/6",
+      "chebyshev_poly": [
+        2,
+        5,
+        0,
+        -2,
+        0,
+        -3,
+        0,
+        1
+      ],
+      "adv_pairs_verified": 8600,
+      "gauge_Bn_verified": true
+    },
+    {
+      "n": 8,
+      "det_at_2": 32,
+      "kissing_number": 112,
+      "ldlt_min_pivot": "8/7",
+      "chebyshev_poly": [
+        0,
+        0,
+        8,
+        0,
+        0,
+        0,
+        -4,
+        0,
+        1
+      ],
+      "adv_pairs_verified": 8825,
+      "gauge_Bn_verified": true
+    },
+    {
+      "n": 9,
+      "det_at_2": 36,
+      "kissing_number": 144,
+      "ldlt_min_pivot": "9/8",
+      "chebyshev_poly": [
+        2,
+        -7,
+        0,
+        10,
+        0,
+        3,
+        0,
+        -5,
+        0,
+        1
+      ],
+      "adv_pairs_verified": 9075,
+      "gauge_Bn_verified": true
+    }
+  ],
+  "exhaustive_bernstein": [
+    {
+      "label": "universal_C3_full_bound",
+      "n": 3,
+      "R2_bound": 11,
+      "shifts": 171,
+      "pairs": 3248,
+      "bernstein_coeffs": 16240,
+      "zero_coeffs": 114,
+      "ident_zero_bars": 18,
+      "all_nonnegative": true,
+      "elapsed_s": 0.654
+    },
+    {
+      "label": "clifford_nilpotent_C4_full_bound",
+      "n": 4,
+      "R2_bound": 11,
+      "shifts": 665,
+      "pairs": 21944,
+      "bernstein_coeffs": 109720,
+      "zero_coeffs": 236,
+      "ident_zero_bars": 32,
+      "all_nonnegative": true,
+      "elapsed_s": 1.353
+    },
+    {
+      "label": "universal_C4_sharp_bound",
+      "n": 4,
+      "R2_bound": 14,
+      "shifts": 1065,
+      "pairs": 35144,
+      "bernstein_coeffs": 175720,
+      "zero_coeffs": 236,
+      "ident_zero_bars": 32,
+      "all_nonnegative": true,
+      "elapsed_s": 3.42
+    }
+  ],
+  "C4_nilpotent_identities": {
+    "C4_squared_is_zero": true,
+    "det_dI_plus_tC_equals_d4": true,
+    "I_plus_sym_is_2x_orth_projector_PSD": true,
+    "endpoint_det": 16,
+    "endpoint_density": "pi^2 / 16 (optimal 4D sphere packing, kissing number 24)"
+  },
+  "high_n_exact_stress": [
+    {
+      "n": 12,
+      "det_at_2": 48,
+      "adv_pairs_verified": 9975
+    },
+    {
+      "n": 16,
+      "det_at_2": 64,
+      "adv_pairs_verified": 11525
+    }
+  ],
+  "must_fail_controls_rejected": [
+    "untwisted_symmetric_cycle_det_zero_rejected",
+    "corrupted_sign_C4_bad_overlap_rejected",
+    "type_II_motif_collision_b4_negative_rejected",
+    "mutated_C4_breaks_nilpotency_and_D4_det_rejected",
+    "exact_Zsqrt2_pell_near_cancellation_verified"
+  ],
+  "total_elapsed_s": 66.331,
+  "status": "ALL_EXACT_CHECKS_PASS"
+}

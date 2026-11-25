@@ -1,0 +1,87 @@
+{
+  "arithmetic": "zero-float pure Python stdlib (int, Fraction)",
+  "must_fail_controls": {
+    "C1_bw16_row_mutation_rejected": true,
+    "C2_bw16_negated_strain_rejected": true,
+    "C3_bw16_overaggressive_tau_rejected": true,
+    "C4_leech24_row_mutation_rejected": true,
+    "C5_leech24_unprojected_X0_rejected": true,
+    "C6_leech24_overaggressive_tau_rejected": true,
+    "C7_excessive_lam0_ldlt_rejected": true,
+    "C8_r3_bool_float_type_guards": {
+      "rejected_count": 4
+    },
+    "C9_norm3_gate2_boundary_rejected": {
+      "K_X_tau2": "1/50",
+      "rejected": true
+    }
+  },
+  "oracle": "exact",
+  "status": "ALL_EXACT_CHECKS_PASS",
+  "theorem": "Complete Optimal-Lattice Classification from F_n: Direct-Sum Obstruction + Exact Bar-Preserving Realization & Global-Z^n Quantitative Unjamming of 16D Barnes-Wall Lambda_16 & 24D Leech Lambda_24/sqrt(2)",
+  "theorem_1_obstructions": {
+    "D16_root_graph_components": [
+      480
+    ],
+    "Dn_plus_bar_unique_dimension": 8,
+    "E6_E7_gram_ratios": {
+      "E_6": "4/3 (non-square)",
+      "E_7": "2 (non-square)",
+      "E_8": "4 = 2^2"
+    },
+    "E8_plus_E8_root_graph_components": [
+      240,
+      240
+    ],
+    "F16_to_E8_plus_E8_obstructed": true
+  },
+  "theorem_2_barnes_wall_16": {
+    "X16_denom_bits": 41,
+    "cayley_global_Z16_arc": {
+      "K_E_ceil_log10": 4,
+      "K_X_bit_ratio": [
+        42,
+        38
+      ],
+      "delta_certified": "9013632701/54363048705",
+      "lam0_certified": "1/5",
+      "tau_star_certified": "1/4000",
+      "tr_X": "3004059032383/217452194820"
+    },
+    "det_L16": 2,
+    "exact_bar_zeros": 32,
+    "inter_contacts": 137280,
+    "intra_contacts": 960,
+    "kissing_all_32_balls": 4320,
+    "min_nonbar_vel_gt_1_over_7": true,
+    "neg_contacts": 0,
+    "quotient_cosets": 32,
+    "quotient_group": "(Z/2Z)^5"
+  },
+  "theorem_3_leech_24": {
+    "X24_denom_bits": 134,
+    "canonical_pm_roots_checked": 98280,
+    "cayley_global_Z24_arc": {
+      "K_E_ceil_log10": 16,
+      "K_X_bit_ratio": [
+        145,
+        141
+      ],
+      "delta_certified": "88404195577780169791036470236014274037/1078974096795643707026442788399656158208",
+      "lam0_certified": "1/5",
+      "tau_star_certified": "1/10000000000",
+      "tr_X": "42993192497062832699775532403948634590869/2157948193591287414052885576799312316416"
+    },
+    "delta_certified_ge_2_over_25": true,
+    "det_L24": "3/256",
+    "exact_bar_zeros": 48,
+    "explicit_48ball_checked_roots": 3101,
+    "fast_bound_passed_roots": 95179,
+    "inter_contacts": 9432672,
+    "intra_contacts": 2208,
+    "kissing_all_48_balls": 196560,
+    "neg_contacts": 0,
+    "quotient_cosets": 48,
+    "quotient_group": "(Z/2Z)^4 x Z/3Z"
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "arithmetic": "zero-float pure Python stdlib (int, Fraction, Z[sqrt(2)])",
+  "b8_gauge_invariance": {
+    "b8_gauge_trials_verified": 5
+  },
+  "lemma_5_bernstein_and_kissing": {
+    "R2_cutoff": 11,
+    "kissing_number_all_16_balls": 240,
+    "ldlt_pivots": [
+      "8",
+      "7/2",
+      "20/7",
+      "5",
+      "4/5",
+      "7/5",
+      "8/7",
+      "1/2"
+    ],
+    "negative_pairs": 0,
+    "nonbar_interior_zeros": 0,
+    "persistent_bar_pairs": 8,
+    "s1_contacts_V2e_nonbar": 120,
+    "s1_contacts_Vee_n2_4": 784,
+    "shell_counts_canonical_pm": {
+      "4": 120,
+      "8": 1080
+    },
+    "subdivisions_needed": 0,
+    "total_degree8_bernstein_coeffs": 293760,
+    "total_pairs": 32640,
+    "zero_coeffs_total": 976
+  },
+  "lemma_6_uniqueness_obstruction": {
+    "Dn_plus_uniqueness_even_4_to_24": {
+      "10": "BAR_TRAPPED_IN_Dn (spinor norm^2=5/2 > 2)",
+      "12": "BAR_TRAPPED_IN_Dn (spinor norm^2=3 > 2)",
+      "14": "BAR_TRAPPED_IN_Dn (spinor norm^2=7/2 > 2)",
+      "16": "BAR_TRAPPED_IN_Dn (spinor norm^2=4 > 2)",
+      "18": "BAR_TRAPPED_IN_Dn (spinor norm^2=9/2 > 2)",
+      "20": "BAR_TRAPPED_IN_Dn (spinor norm^2=5 > 2)",
+      "22": "BAR_TRAPPED_IN_Dn (spinor norm^2=11/2 > 2)",
+      "24": "BAR_TRAPPED_IN_Dn (spinor norm^2=6 > 2)",
+      "4": "OVERLAP (spinor norm^2=1 < 2)",
+      "6": "OVERLAP (spinor norm^2=3/2 < 2)",
+      "8": "UNIQUE_EXACT_MATCH (E_8 = D_8^+, spinor norm^2=2)"
+    },
+    "gram_dets": {
+      "D_n": 4,
+      "E_6": 3,
+      "E_7": 2,
+      "E_8": 1
+    },
+    "index_squared_ratios": {
+      "E_6": "4/3 (obstructed)",
+      "E_7": "2 (obstructed)",
+      "E_8": "4 = 2^2 (allowed)"
+    }
+  },
+  "lemmas_1_to_4": {
+    "Nm_bernstein_signs": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "Np_bernstein_signs": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "block_diag_exact_polynomial_verified": true,
+    "det_L1": 16,
+    "loewner_G_minus_G1_blocks": {
+      "M_+2": {
+        "d00_over_1ms_bernstein_signs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "d00_over_1ms_deg": 3,
+        "d11_over_1ms_bernstein_signs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "d11_over_1ms_deg": 3,
+        "det_over_s_1ms2_bernstein_signs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "det_over_s_1ms2_deg": 5
+      },
+      "M_-2": {
+        "d00_over_1ms_bernstein_signs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "d00_over_1ms_deg": 3,
+        "d11_over_1ms_bernstein_signs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "d11_over_1ms_deg": 3,
+        "det_over_s_1ms2_bernstein_signs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "det_over_s_1ms2_deg": 5
+      }
+    },
+    "neg_det_deriv_over_s_bernstein_signs": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "neg_det_deriv_over_s_deg": 10,
+    "quotient_cosets": 16,
+    "quotient_group": "(Z/2Z)^4"
+  },
+  "must_fail_controls": {
+    "C1_single_entry_flip": {
+      "det_mutated": "20",
+      "rejected": true
+    },
+    "C2_all_minus_orientation_collapse": {
+      "det_inverted": -256,
+      "m_all_ones_bernstein_signs": [
+        1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "rejected": true
+    },
+    "C3_octonion_skew_hadamard": {
+      "det_scaled_orthogonal": 256,
+      "rejected": true
+    },
+    "C4_tightened_target_2001_1000": {
+      "negative_pairs": 912,
+      "rejected": true
+    },
+    "C5_incomplete_ellipsoid_cutoff": {
+      "rejected": true
+    },
+    "C6_r3_bool_float_type_guards": {
+      "rejected_count": 4
+    },
+    "C7_e6_e7_obstruction_rejected": {
+      "rejected": true
+    }
+  },
+  "oracle": "exact",
+  "status": "ALL_EXACT_CHECKS_PASS",
+  "sylvester_H8": [
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      -1,
+      1,
+      -1,
+      1,
+      -1,
+      1,
+      -1
+    ],
+    [
+      1,
+      1,
+      -1,
+      -1,
+      1,
+      1,
+      -1,
+      -1
+    ],
+    [
+      1,
+      -1,
+      -1,
+      1,
+      1,
+      -1,
+      -1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    [
+      1,
+      -1,
+      1,
+      -1,
+      -1,
+      1,
+      -1,
+      1
+    ],
+    [
+      1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      1,
+      1
+    ],
+    [
+      1,
+      -1,
+      -1,
+      1,
+      -1,
+      1,
+      1,
+      -1
+    ]
+  ],
+  "theorem": "Canonical Sylvester-Hadamard Continuous Bar-Preserving Fold F_8 -> E_8 + E_6/E_7/D_n^+ Uniqueness"
+}
